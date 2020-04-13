@@ -15,7 +15,7 @@ const customRules = require('./lib/customrules');
 clear();
 
 console.log(
-  chalk.yellow(figlet.textSync('PBS Convert', { horizontalLayout: 'full' }))
+  chalk.yellow(figlet.textSync('TTT Convert', { horizontalLayout: 'full' }))
 );
 
 program
