@@ -79,7 +79,7 @@ function generateIndex() {
 function downloadZips() {
     mkdir  -p ${SOURCEDIR}/zip
     cd ${SOURCEDIR}/zip
-    for f in $(grep 'ttt.*\.zip' ../*.html | cut -d'=' -f2 | cut -d'"' -f 2 | grep 'wp-content')
+    for f in $(grep '.*\.zip' ../*.html | cut -d'=' -f2 | cut -d'"' -f 2 | grep 'wp-content')
     do
         curl $f -O
     done
