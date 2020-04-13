@@ -86,7 +86,7 @@ function turndown(string) {
 /**
  * output the markdown
  *
- * @param {string} markdown
+ * @param {JSDOM} markdown
  */
 function output(markdown) {
   if (program.output) {
