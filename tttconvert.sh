@@ -102,7 +102,7 @@ echo -n > $INDEXFILE
 
 for f in ${SOURCEDIR}/*.html
 do
-    TTTNO=$(echo $f | cut -d' ' -f 2)
+    TTTNO=$(echo $f | cut -d' ' -f3)
     TTTMD=ttt${TTTNO}.md
     processAndTest "${f}" ${TTTMD}
 
