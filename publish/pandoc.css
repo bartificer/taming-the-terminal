@@ -11,7 +11,8 @@ html {
 
 body {
   color: #444;
-  font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+  /* font-family: Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif; */
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.7;
   padding: 1em;
@@ -69,14 +70,21 @@ img {
   max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #111;
   line-height: 125%;
   margin-top: 2em;
   font-weight: normal;
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-weight: bold;
 }
 
@@ -121,7 +129,10 @@ hr {
   padding: 0;
 }
 
-pre, code, kbd, samp {
+pre,
+code,
+kbd,
+samp {
   color: #000;
   font-family: monospace, monospace;
   _font-family: 'courier new', monospace;
@@ -134,7 +145,8 @@ pre {
   word-wrap: break-word;
 }
 
-b, strong {
+b,
+strong {
   font-weight: bold;
 }
 
@@ -155,7 +167,8 @@ mark {
   font-weight: bold;
 }
 
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -170,7 +183,8 @@ sub {
   bottom: -0.25em;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 1em 0;
   padding: 0 0 0 2em;
 }
@@ -179,7 +193,8 @@ li p:last-child {
   margin-bottom: 0;
 }
 
-ul ul, ol ol {
+ul ul,
+ol ol {
   margin: .3em 0;
 }
 
@@ -255,11 +270,13 @@ table td {
     font-size: 14px;
   }
 }
+
 @media only screen and (min-width: 768px) {
   body {
     font-size: 16px;
   }
 }
+
 @media print {
   * {
     background: transparent !important;
@@ -273,7 +290,8 @@ table td {
     max-width: 100%;
   }
 
-  a, a:visited {
+  a,
+  a:visited {
     text-decoration: underline;
   }
 
@@ -284,24 +302,28 @@ table td {
   }
 
   a[href]:after {
-    content: " (" attr(href) ")";
+    content: " ("attr(href) ")";
   }
 
   abbr[title]:after {
-    content: " (" attr(title) ")";
+    content: " ("attr(title) ")";
   }
 
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
     content: "";
   }
 
-  pre, blockquote {
+  pre,
+  blockquote {
     border: 1px solid #999;
     padding-right: 1em;
     page-break-inside: avoid;
   }
 
-  tr, img {
+  tr,
+  img {
     page-break-inside: avoid;
   }
 
@@ -311,18 +333,21 @@ table td {
 
   @page :left {
     margin: 15mm 20mm 15mm 10mm;
-}
+  }
 
   @page :right {
     margin: 15mm 10mm 15mm 20mm;
-}
+  }
 
-  p, h2, h3 {
+  p,
+  h2,
+  h3 {
     orphans: 3;
     widows: 3;
   }
 
-  h2, h3 {
+  h2,
+  h3 {
     page-break-after: avoid;
   }
 }

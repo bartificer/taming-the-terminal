@@ -7,6 +7,7 @@ SOURCEDIR=../../convert2
 
 cp metadata.txt ${SOURCEDIR}
 cp pandoc.css ${SOURCEDIR}
+cp bash.xml ${SOURCEDIR}
 
 cd ${SOURCEDIR}
 pandoc --defaults ${CURRENTDIR}/pandoc.defaults

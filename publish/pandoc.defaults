@@ -1,5 +1,5 @@
-from: markdown+emoji
-to: epub
+from: gfm+emoji+backtick_code_blocks
+to: asciidoc
 
 output-file: ttt.epub
 input-files:
@@ -49,6 +49,8 @@ table-of-contents: true
 toc-depth: 1
 number-sections: false
 highlight-style: pygments
+syntax-definitions:
+- bash.xml
 
 tab-stop: 8
 preserve-tabs: true
