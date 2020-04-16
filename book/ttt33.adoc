@@ -1,7 +1,7 @@
 = TTT Part 33 of n -- SSH '`Bookmarks`'
 
 This is the final SSH instalment.
-So far we've learned how to <<ttt29.adoc,securely execute terminal commands on remote computers>>, how to <<ttt31.adoc,securely copy files across the network using SSH>>, how to <<ttt30.adoc,add both security and convenience>> to both those operations with SSH key pairs, and how to <<ttt32.adoc,tunnel just about anything through SSH>>.
+So far we've learned how to <<ttt29.adoc#ttt29,securely execute terminal commands on remote computers>>, how to <<ttt31.adoc#ttt31,securely copy files across the network using SSH>>, how to <<ttt30.adoc#ttt30,add both security and convenience>> to both those operations with SSH key pairs, and how to <<ttt32.adoc#ttt32,tunnel just about anything through SSH>>.
 In this final instalment we'll look two approaches for creating SSH bookmarks, SSH config files, and SSH GUIs.
 
 == Matching Postcast Episode 33

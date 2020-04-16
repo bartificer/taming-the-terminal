@@ -5,8 +5,8 @@ This is the third instalment of an on-going series.
 These blog posts are only part of the series, they are actually the side-show, being effectively just my show notes for discussions with Allison Sheridan on my bi-weekly Chit Chat Across the Pond segment on her show, http://www.podfeet.com/[the NosillaCast Mac Podcast].
 This instalment will be featured in NosillaCast episode 418 (scheduled for release late on Sunday the 12th of May 2013).
 
-In the <<ttt1.adoc,first installment>> we started with the 40,000ft view, looking at what command shells are, and why they're still relevant in today's GUI-dominated world.
-In the <<ttt2.adoc,second instalment>> we looked at OS X's Terminal.app, the anatomy of the Bash command prompt, and the anatomy of a Unix/Linux command.
+In the <<ttt1.adoc#ttt1,first installment>> we started with the 40,000ft view, looking at what command shells are, and why they're still relevant in today's GUI-dominated world.
+In the <<ttt2.adoc#ttt2,second instalment>> we looked at OS X's Terminal.app, the anatomy of the Bash command prompt, and the anatomy of a Unix/Linux command.
 This time we'll be looking at the anatomy of file systems in general, and the Unix/Linux file system in particular, and how it differs from the Windows/DOS file system many of us grew up using.
 
 == Matching Postcast Episode 3

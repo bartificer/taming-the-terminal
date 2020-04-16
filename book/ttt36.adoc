@@ -168,7 +168,7 @@ To see your crontab, simply run the command `crontab -l` (for list).
 Unless you have added something to your cron previously, this command probably returns nothing.
 
 You can edit your crontab with the command `crontab -e` (for edit).
-This will open your crontab with your system's default text editor (probably `vi`, which we learned about in <<ttt11.adoc,instalment 11>>).
+This will open your crontab with your system's default text editor (probably `vi`, which we learned about in <<ttt11.adoc#ttt11,instalment 11>>).
 Your cron jobs need to be specified one per line in a special format.
 
 First, you specify when the command should be run as five space-delimited time specifiers, then you add another space, and then you add the command to be run, along with all its arguments.
@@ -250,7 +250,7 @@ Your second option is to use the built-in command line mail client in OS X to re
 The command is `mail`, and there is a man page explaining how it works.
 This works, but it's quite clunky.
 
-If email doesn't _just work_ for you, my advice would be to change tack, and use stream redirection (as described in instalments <<ttt15.adoc,15>> and <<ttt16.adoc,16>>) instead.
+If email doesn't _just work_ for you, my advice would be to change tack, and use stream redirection (as described in instalments <<ttt15.adoc#ttt15,15>> and <<ttt16.adoc#ttt16,16>>) instead.
 This is the approach we will use in our examples in this instalment.
 
 === A simple cron Example
@@ -282,7 +282,7 @@ Every two minutes you should see the current date and time be appended to the fi
 
 You may notice that I used the full path to the `date` command in the above example.
 The reason for this is that cron executes your cron jobs with a very minimal environment.
-As we learned in <<ttt12.adoc,instalment 12>>, you can see the content of your environment in a regular shell with the command `env`.
+As we learned in <<ttt12.adoc#ttt12,instalment 12>>, you can see the content of your environment in a regular shell with the command `env`.
 To see what the environment looks like from cron's point of view, add the following to your crontab, then wait for at least two minutes:
 
 `*/2 * * * * /usr/bin/env > /tmp/cronenv.txt`

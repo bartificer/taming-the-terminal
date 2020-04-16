@@ -1,6 +1,6 @@
 = TTT Part 18 of n -- More REs
 
-In <<ttt17.adoc,the previous instalment>> we introduced the concept of Regular Expressions, and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Per Compatible Regular Expression (PCRE) language.
+In <<ttt17.adoc#ttt17,the previous instalment>> we introduced the concept of Regular Expressions, and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Per Compatible Regular Expression (PCRE) language.
 
 In this instalment we'll learn more POSIX ERE syntax, and have a look at some examples of REs in GUI apps.
 

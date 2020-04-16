@@ -1,6 +1,6 @@
 = TTT Part 28 of n -- Network Troubleshooting
 
-In <<ttt23.adoc,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+In <<ttt23.adoc#ttt23,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP

@@ -1,7 +1,7 @@
 = TTT Part 31 of n -- SSH File Transfers
 
-In <<ttt29.adoc,Part 29 of n>> we learned how to use SSH to execute commands on a remote computer.
-In <<ttt30.adoc,the previous instalment>> we learned how to add security and convenience to SSH connections using SSH key-pairs.
+In <<ttt29.adoc#ttt29,Part 29 of n>> we learned how to use SSH to execute commands on a remote computer.
+In <<ttt30.adoc#ttt30,the previous instalment>> we learned how to add security and convenience to SSH connections using SSH key-pairs.
 
 The most important thing SSH provides is an encrypted connection between two computers.
 As we've seen, that encrypted connection can be used to securely issue terminal commands to a remote computer, but that same secured channel can also be used to secure other network connections between computers.
