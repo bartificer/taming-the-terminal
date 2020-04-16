@@ -1,0 +1,280 @@
+[ttt2]]]
+= TTT Part 2 of n -- Commands
+
+This is the second instalment of an on-going series.
+In <<ttt1.adoc,the first instalment>> I tried to give you a sort of 40,000ft view of command shells -- some context, some history, a very general description of what command shells do, and a little bit on why they are still very useful in the modern GUI age.
+The most important points to remember from last time are that command shells execute commands, that there are lots of different command shells on lots of different OSes, but that we will be focusing on https://en.wikipedia.org/wiki/Bash_(Unix_shell)[Bash] on Linux/Unix in general, and Bash on OS X in particular.
+The vast majority of topics I plan to discuss in these segments will be applicable on any system that runs Bash, but, the screen shots I use will be from OS X, and some of the cooler stuff will be OS X only.
+This segment, like all the others will be used as part of my bi-weekly Chit Chat Across The Pond (CCATP) segment with Allison Sheridan on http://www.podfeet.com/[the NosillaCast Mac Podcast].
+
+Last time I focused on the shell, and avoided getting in any way specific about the actual commands that we will be executing within the Bash shell.
+I thought it was very important to make as clear a distinction between command shells and commands as possible, so I split the two concepts into two separate segments.
+Having focused on command shells last time, this instalment will focus on the anatomy of a command, but will start with a quick intro to the Terminal app in OS X first.
+
+== Matching Postcast Episode 2
+
+Listen Along: Taming the Terminal Podcast Episode 2
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT02Commands/TTT_02_Commands.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT02Commands/TTT_02_Commands.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Introducing the Terminal Window
+
+You'll find Terminal.app in `/Applications/Utilities`.
+Unless you've changed some of the default settings (or are using a very old version of OS X), you will now see a white window that is running the bash command shell that looks something like this:
+
+image::./assets/ttt2/Screen-Shot-2013-04-26-at-20.47.07.png[An OS X Terminal Window]
+
+Lets start at the very top of the window with its title bar.
+At the left of the title is a proxy icon representing the _current directory_ for the current Bash command shell, and beside it the name of that folder.
+(Note that _directory_ is the Unix/Linux/DOS word for what OS X and Windows refers to as a _folder_.) Like Finder windows, Terminal sessions are always "`in`" a particular directory/folder.
+After the current directory will be a dash, followed by the name of the process currently running in the Terminal session (in our case, a bash shell).
+The current process is followed by another dash, and then the dimensions of the window in fixed-width characters.
+
+Within the window itself you will likely see a line of output telling you when you last logged in, and from where (if it was on this computer it will say ttys followed by some number, if it was from another computer, it will give the computer's hostname).
+This will be followed on the next line by the so-called _command prompt_, and then the input cursor.
+
+image::./assets/ttt2/Screenshot_26_04_2013_20_28.png[The Anatomy of a Terminal Window]
+
+Lets have a closer look at the command prompt.
+As with almost everything in Linux/Unix, the prompt is entirely customisable, so although Bash is the default shell on lots of different operating systems, the default prompt on each of those systems can be different.
+Lets first look at the default Bash command prompt on OS X:
+
+image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.01.29.png[]
+
+On OS X, the prompt takes the following form:
+
+`**hostname**:**current_directory** **username**$`
+
+First you have the hostname of the computer on which the command shell is running (defined in `System Preferences → Sharing → Computer Name`).
+This might seem superfluous, but it becomes exceptionally useful once you start using ssh to log in to other computers via the Terminal.
+
+The hostname is followed by a `:` and then the command shell's current directory (note that `~` is short-hand for "`the current user's home folder`", more on this next time).
+
+The current directory is followed by a space, and then the Unix username of the user running the command shell (defined when you created your OS X account, defaults to your first name if available).
+Finally, there is a `$` character (which changes to a `#` when you run bash as the root user).
+Again, this might not seem very useful at first, but there are many reason you may want to switch your command shell to run as a different user from time to time, so it is also very useful information.
+
+As an example of how the default shells differ on different operating systems, below is an example from a RedHat-style Linux distribution (CentOS in this case):
+
+image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.11.39.png[Default Bash Command Prompt on CentOS]
+
+As you can see, it contains the same information, but arranged a little differently:
+
+`[**username**@**hostname** **current_directory**]$`
+
+Finally, Debian-style Linux distributions like Ubuntu use a different default promote again, but also showing the same information:
+
+image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command Prompt on Ubuntu]
+
+`**username**@**hostname**:**current_directory**$`
+
+_**Handy Tip:** if you find the text in the Terminal window to small to read, you can make it bigger or smaller with cmd+ or cmd-.
+This will affect just your current Terminal window.
+You can permanently change the default by editing the default profile in `+Terminal → Preferences ...
+→ Settings+`_
+
+== The Anatomy of a Command
+
+Now that we understand the different parts of our Terminal window, lets have a look at the structure of the actual commands we will be typing at that cursor!
+
+I want to start by stressing that the commands executed by a command shell are not determined by the command shell, but by the operating system.
+Regardless of whether you use Bash on OS X, or zsh on OS X, you will have to enter OS X commands.
+Similarly, if you use Bash on Linux, you will have to enter Linux commands.
+Thankfully Linux and Unix agree almost entirely on the structure of their basic commands, so with a very few (and very annoying) exceptions, you can use the same basic commands on any Linux or Unix distribution (remember that at its heart OS X is Free BSD Unix).
+
+Commands take the form of the command itself optionally followed by a list of _arguments_ separated by spaces i.e.:
+
+`**command argument_1 argument_2** ...
+**argument_n**`
+
+Arguments are a mechanism for passing information to a command.
+Most commands need at least one argument to be able to perform their task, but some don't.
+Both commands and arguments are case-sensitive, so beware your capitalisation!
+
+For example, the `cd` (change directory) command takes one argument (a directory path):
+
+[source,shell]
+----
+bart-imac:~ bart$ cd /Users/Shared/
+bart-imac:Shared bart$
+----
+
+In this example, the command is `cd`, and the one argument passed is `/Users/Shared/`.
+
+Some commands don't require any arguments at all, e.g.
+the `pwd` (present working directory) command:
+
+[source,shell]
+----
+bart-imac:~ bart$ pwd
+/Users/bart
+bart-imac:~ bart$
+----
+
+It is up to each command to determine how it will process the arguments it is given.
+When the developer was creating the command he or she will have had to make decisions about what arguments are compulsory, what arguments are optional, and how to parse the list of arguments the command is given by the shell when being executed.
+
+In theory every developer could come up with their own mad complex scheme for parsing argument lists, but in reality most developers loath re-inventing the wheel (thank goodness), so a small number of standard libraries have come into use for parsing arguments.
+This means that many apps use very similar argument styles.
+
+As well as accepting simple arguments like the `cd` command above, many apps accept specially formatted arguments referred to as `flags`.
+Flags are usually used to specify optional extra information, with information that is required taken as simple arguments.
+Flags are arguments (or pairs of arguments) that start with the `-` symbol.
+
+The simplest kinds of flags are those that don't take a value, they are specified using a single argument consisting of a `-` sign followed by a single letter.
+For example, the `ls` (list directory) command can accept the flag `-l` (long form listing) as an argument.
+e.g.
+
+[source,bash]
+----
+bart-imac:Shared bart$ ls -l
+total 632
+drwxrwxrwx  3 root   wheel     102  5 Dec  2010 Adobe
+drwxrwxrwx  3 bart   wheel     102 27 Mar  2012 Library
+drwxrwxrwx@ 5 bart   wheel     170 28 Dec 21:24 SC Info
+drwxr-xr-x  4 bart   wheel     136 22 Feb 21:42 cfx collagepro
+bart-imac:Shared bart$
+----
+
+The way the standard argument processing libraries work, flags can generally be specified in an arbitrary order.
+The `ls` command also accepts the flag -a (list all), so the following are both valid and equivalent:
+
+[source,bash]
+----
+bart-imac:Shared bart$ ls -l -a
+----
+
+and
+
+[source,shell]
+----
+bart-imac:Shared bart$ ls -a -l
+----
+
+The standard libraries also allow flags that don't specify values to be compressed into a single argument like so:
+
+[source,bash]
+----
+bart-imac:Shared bart$ ls -al
+----
+
+Sometimes flags need to accept a value, in which case the flag stretches over two arguments which have to be contiguous.
+For example, the `ssh` (secure shell) command allows the port to be used for the connection to be specified with the `-p` flag, and the username to connect as with the `-l` flag, e.g.:
+
+[source,bash]
+----
+bart-imac:Shared bart$ ssh bw-server.localdomain -l bart -p 443
+----
+
+These single-letter flags works great for simple commands that don't have too many options, but more complex commands often support many tens of optional flags.
+For that reason another commonly used argument processing library came into use that accepts long-form flags that start with a `--` instead of a single `-`.
+As well as allowing a command to support more flags, these longer form flags also allow values to be set within a single argument by using the `=` sign.
+
+As an example, the `mysql` command (needs to be installed separately on OS X) allows the username and password to be used when making a database connection to be specified using long-form flags:
+
+[source,bash]
+----
+...$ mysql --username=bart --password=open123 example_database
+----
+
+Many commands support both long and short form arguments, and they can be used together, e.g.:
+
+[source,bash]
+----
+...$ mysql --username=bart --password=open123 example_database -v
+----
+
+So far we know that commands consist of a command optionally followed by a list of arguments separated by spaces, and that many Unix/Linux commands use similar schemes for processing arguments where arguments starting with `-` or `--` are treated in a special way, and referred to as flags.
+That all seems very simple, but, there is one important complication that we have to address before finishing up for this segment, and that's special characters.
+
+Within Bash (and indeed every other command shell), there are some characters that have a special meaning, so they cannot be used in commands or arguments without signifying to the command shell in some way that is should interpret these symbols as literal symbols, and not as representations of some sort of special value or function.
+
+The most obvious example from what we have learned today is the space character, it is used as the separator between commands and the argument list that follows, and within that argument list as the separator between individual arguments.
+What if we want to pass some text that contains a space to a command as an argument?
+This happens a lot because spaces are valid characters within file and folder names on Unix and Linux, and file and folder names are often passed as arguments.
+
+As well as the space there are other symbols that have special meanings.
+I won't explain what they mean today, but I will list them:
+
+* space
+* `#`
+* `;`
+* `"`
+* `'`
+* ```
+* `\`
+* `!`
+* `$`
+* `(`
+* `)`
+* `&`
+* `<`
+* `>`
+* `|`
+
+You have two choices for how you deal with these special characters when you need to include them within an argument, you can _escape_ each individual special character within the argument, or you can _quote_ the entire argument.
+
+Escaping is easy, you simply pre-fix the special character in question with a `\`.
+If there are only one or two special characters in an argument this is the simplest and easiest solution.
+But, it can become tedious if there are many such special characters.
+
+Lets use the `echo` command to illustrate escaping.
+The `echo` command simply prints out the input it receives.
+The follow example passes the phrase _Hello World!_ to the echo command as a single argument.
+Note that this phrase contains two special characters that will need to be escaped, the space and the `!`:
+
+[source,bash]
+----
+bart-imac:~ bart$ echo Hello\ World\!
+Hello World!
+bart-imac:~ bart$
+----
+
+If you don't want to escape each special character in an argument, you can quote the argument by prepending and appending either a `"` or a `'` symbol to it.
+There is a subtle difference between using `'` or `"`.
+
+When you quote with `'` you are doing so-called _full quoting_, every special character can be used inside a full quote, but, it is impossible to use a `'` character inside a fully quoted argument.
+For example:
+
+[source,bash]
+----
+bart-imac:~ bart$ echo '# ;"\!$()&<>|'
+# ;"\!$()&<>|
+bart-imac:~ bart$
+----
+
+When you quote with `"` on the other hand you are doing so-called _partial quoting_, which means you can use most special characters without escaping them, but not all.
+Partial quoting will become very important later when we start to use variables and things, because the biggest difference between full and partial quoting is that you can't use variable substitution with full quoting, but you can with partial quoting (don't worry if that makes no sense at the moment, it will later in the series).
+
+When using partial quoting you still have to escape the following special characters:
+
+* `"`
+* ```
+* `\`
+* `$`
+
+For example:
+
+[source,bash]
+----
+bart-imac:~ bart$ echo "# ;\!()&<>|"
+# ;\!()&<>|
+bart-imac:~ bart$
+----
+
+and:
+
+[source,bash]
+----
+bart-imac:~ bart$ echo "\\ \$ \" \`"
+\ $ " `
+bart-imac:~ bart$
+----
+
+There are a few other peculiar edge cases with partial quoting -- for example, you can't end a partial quote with a `!`, and you can't quote just a `*` on its own (there may well be more edge cases I haven't bumped into yet).
+
+That's where we'll leave it for this segment.
+We've now familiarised ourselves with the OS X Terminal window, and we've described the anatomy of a Unix/Linux command.
+In the next segment we'll look at the Unix/Linux file system, and at some of the commands used to navigate around it.

@@ -1,0 +1,153 @@
+= TTT Part 22 of n -- Tips & Tricks
+
+This instalment is a little breather between the fairly heavy instalments on searching, and the upcoming set of instalments on networking.
+We'll start with a look at some tips and tricks for getting the most out of BASH, and then transition to some tips and tricks for getting the most out of the OS X Terminal app.
+
+== Matching Postcast Episode 22
+
+Listen Along: Taming the Terminal Podcast Episode 22
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT22TipsAndTricks/TTT_22_Tips_and_Tricks.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT22TipsAndTricks/TTT_22_Tips_and_Tricks.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== BASH Tips & Tricks
+
+=== Repeating Previous Commands
+
+BASH provides a number of different ways to repeat commands you've executed in the past.
+The simplest command of all of these is `!!`.
+You can use this on it's own:
+
+[source,bash]
+----
+cc-dsk-2ss:Desktop bart$ ls -l
+total 96
+-rw-r--r--@ 1 bart  staff  21301  1 Oct 15:15 Screen Shot 2014-10-01 at 15.15.44.png
+-rw-r--r--@ 1 bart  staff  20982  1 Oct 15:15 Screen Shot 2014-10-01 at 15.15.55.png
+cc-dsk-2ss:Desktop bart$ !!
+ls -l
+total 96
+-rw-r--r--@ 1 bart  staff  21301  1 Oct 15:15 Screen Shot 2014-10-01 at 15.15.44.png
+-rw-r--r--@ 1 bart  staff  20982  1 Oct 15:15 Screen Shot 2014-10-01 at 15.15.55.png
+cc-dsk-2ss:Desktop bart$
+----
+
+You'll see that when you issue `!!` as a command the first thing it does is print out what it is that is being executed, then it does it.
+
+You don't have to use !!
+on it's own, you can use it to represent your previous command as part of a new, larger command.
+For example, you may want to try a command to be sure it does what you think, and then, when you know it does, pipe the output to a file, or to another command:
+
+[source,bash]
+----
+cc-dsk-2ss:Desktop bart$ find ~/Downloads -iname '*.iso'
+/Users/bart/Downloads/CentOS-6.5-x86_64-bin-DVD1.iso
+/Users/bart/Downloads/CentOS-6.5-x86_64-LiveDVD.iso
+cc-dsk-2ss:Desktop bart$ !! | wc -l
+find ~/Downloads -iname '*.iso' | wc -l
+       2
+cc-dsk-2ss:Desktop bart$
+----
+
+The `!!` command lets you go back just a single command, you can go back further using the up arrow key (and the down arrow key if you go past the command you wanted by mistake).
+
+____
+*Aside:* by default BASH on OS X (and RHEL/CentOS Linux) saves every command you execute into its history, so if you run the same command four times in a row, you will have to hit the up arrow four times to get past it in the history.
+You can alter this behaviour by setting the environment variable `HISTCONTROL` to the value `ignoredups`.
+If you want to configure BASH in this way you'll want to set that environment variable automatically each time you open a new Terminal, so do do that you need to add the line below into `~/.bash_profile`:
+
+[source,bash]
+----
+export HISTCONTROL=ignoredups
+----
+
+Ubuntu does this by default, and I find it a much nicer way of working, so much so that I add the above command to my `~/.bash_profile` on all my Macs.
+____
+
+Scrolling through the BASH history is very useful, but sometimes you need to do a more powerful search of previously executed commands, this is where the reverse history search comes in.
+To enter into this search mode hit ctrl+r, your prompt is now replaced with:
+
+[source,bash]
+----
+(reverse-i-search)`':
+----
+
+As you type, what you enter will appear before the `:`, and the most recent matching command will appear after the `:`.
+To accept a match just hit enter and you'll return to the regular prompt with that command entered and your cursor positioned at the end of the command.
+To search for older matches to the same search string hit `ctrl+r` again, and if you go past the one you wanted, hit `ctrl+shift+r` to go the other way.
+This all sounds more complicated than it is, and with a little practice you'll soon get the hang of it.
+
+=== Moving the Cursor to the Start of a Command
+
+You can move the cursor within a command with the left and right arrow keys, but if you use the up and down arrows or ctrl+r to search the history your cursor will always be placed at the end of the command, and you will often need to edit the start of the command.
+You can just use the left arrow key until you get there, but with long commands this can be a real pain.
+`ctrl+a` will jump the cursor to the start of the command.
+
+== OS X Terminal Tips & Tricks
+
+=== Dragging & Dropping
+
+If you drop a file or folder onto the Terminal its path will be typed into the Terminal.
+This includes proxy icons at the top of document windows, the folder proxy icons at the top of Finder windows, and the folder proxy icon at the top of other Terminal windows.
+
+image::./assets/ttt22/exampletxt.png[Drag and Drop Exampls]
+
+=== Opening Files & Folders Form the Terminal
+
+You can use the `open` command to open files form the Terminal as if you had double-clicked them in the Finder.
+The usage is very simple:
+
+[source,bash]
+----
+open PATH_TO_FILE [...]
+----
+
+With this basic usage, OS X will open the file with the default app for the given file type.
+If you use `open` on a folder then that folder will open in the Finder.
+For example, you can open the current folder your Terminal is in with the command:
+
+[source,bash]
+----
+open .
+----
+
+The `open` command is also very useful for accessing hidden folders in the Finder, e.g.:
+
+[source,bash]
+----
+open ~/Library
+----
+
+If you want to open a file or folder with an app that is not the default app, you can use the `-a` flag to tell `open` which app to open the file or folder with.
+For example, the following command will open your ~/.bash_profile file in TextEdit:
+
+[source,bash]
+----
+open ~/.bash_profile -a /Applications/TextEdit.app/
+----
+
+Because using a TextEditor is a common thing to want to do, `open` supports a shortcut especially for opening files in TextEdit.
+Rather than using `-a /Applications/TextEdit.app/`, you can just use `-e` instead, so we could re-write the previous command as:
+
+[source,bash]
+----
+open ~/.bash_profile -e
+----
+
+Finally, you can also use `open` to reveal a given file in the Finder, you can do that with the `-R` flag.
+E.g.:
+
+[source,bash]
+----
+open -R /etc/hosts
+----
+
+Note that this will not work for hidden files.
+
+== Final Thoughts
+
+Hopefully you'll find at least some of these tips and trips useful, and find yourself being a little more efficient on the command line.
+
+In the next instalment we'll make a start on what will be a quite long series on networking.
+We'll start by laying a theoretical foundation, and then get stuck in with a selection of network-related terminal commands.

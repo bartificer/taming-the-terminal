@@ -1,0 +1,209 @@
+= TTT Part 14 of n -- Aliases & Prompts
+
+In <<ttt13,the previous instalment>> we looked at how to make permanent changes to our environment.
+We made a permanent change to the `PATH` environment variable to demonstrate how it's done (by editing `~/.bash_profile` on a Mac, or `~/.bashrc` on Linux).
+In this instalment we'll look at two other kinds of environment changes you may wish to make by editing these files -- specifically, aliases, and custom prompts.
+
+== Matching Postcast Episode 14
+
+Listen Along: Taming the Terminal Podcast Episode 14
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT14AliasesAndPrompts/TTT_14_Aliases_and_Prompts.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT14AliasesAndPrompts/TTT_14_Aliases_and_Prompts.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Aliases
+
+Aliases are basically command shortcuts.
+When used as a command, the alias gets expanded to a longer string by BASH before execution.
+Aliases can contain arguments as well as commands.
+Aliases can be used to create short mnemonics for long complex commands, or to add default arguments to existing commands.
+
+Lets start with an example of the first kind.
+The command `ls -l` often results in very long output, so it would be nice to be able to automatically run this output through a pager so we can see it one page at a time instead of having to scroll back up to find the start of the output.
+As we'll learn in the next instalment, you can do this using the `|` (pronounced '`pipe`') operator.
+To run the output of `ls -l` through `less` the command is:
+
+[source,bash]
+----
+ls -l | less
+----
+
+Lets create a short alias for this command, `ll`:
+
+[source,bash]
+----
+alias ll='ls -l | less'
+----
+
+As you can see, you create an alias using the `alias` command.
+The bit before the `=` is the shortcut, and the bit after the `=` is what it will expand into.
+If the expansion contains spaces or other special characters then either the entire replacement needs to be quoted, or each special character needs to be escaped.
+The vast majority of aliases you create will contain spaces and/or at least one special character, so it's best to get into the habit of always quoting your aliases.
+In the above example both the spaces and the `|` would need to be escaped, so the un-quoted version of the above alias would be the following difficult to read mess:
+
+[source,bash]
+----
+alias ll=ls\ -l\ \|\ less
+----
+
+Another common use of aliases is to add default arguments to existing commands.
+Lets look at two common examples of this.
+
+By default, the `ls` command does not clearly distinguish the types of the items it lists.
+`ls -F` makes things quite a bit clearer by adding a trailing `/` to all folders in the listing, and `-G` makes things even clearer still by using colours to distinguish different types of files (remember that on Linux it's `--color` rather than `-G`).
+To have `ls` always show trailing slashes and use colours we can alias `ls` to `ls -FG` (or `ls -F --color` on Linux):
+
+[source,bash]
+----
+alias ls='ls -FG'
+----
+
+Secondly, we can use aliases to make commands that might unintentionally remove or override files behave in safer manner by automatically adding the `-i` flag to `rm`, `cp` & `mv`:
+
+[source,bash]
+----
+alias rm='rm -i' cp='cp -i' mv='mv -i'
+----
+
+Note that you can use the `alias` command to add multiple aliases at once.
+If you set these aliases then rm, cp, and mv will ask for your permission before deleting or overriding a file.
+If you're manipulating many files at once this will get tedious, so remember that even if you do this, you can over-ride the `-i` by adding a `-f` (for force) to the commands.
+This means you have to be explicit about deleting or overriding files, instead of the commands implicitly assuming you are happy to have the files destroyed.
+
+To see a list of all currently defined aliases, simply run the `alias` command without any arguments:
+
+[source,bash]
+----
+bart-imac2013:~ bart$ alias
+alias cp='cp -i'
+alias ll='ls -l | less'
+alias ls='ls -FG'
+alias mv='mv -i'
+alias rm='rm -i'
+bart-imac2013:~ bart$
+----
+
+To remove an alias, use the `unalias` command with the shortcut to be removed as an argument.
+E.g.
+to remove our `ll` alias, run:
+
+[source,bash]
+----
+unalias ll
+----
+
+Aliases are part of the BASH environment, and are not persistent.
+If you create an alias and then close your command shell it will be gone.
+To make aliases permanent we need to add them into our BASH startup scripts.
+As we learned in the previous instalment, for Mac users that means adding our aliases to `~/.bash_profile`, while Linux users should add their aliases to `~/.bashrc`.
+
+If we include the examples from the previous instalment an updated `~/.bash_profile` file to include the `ll` alias would look something like:
+
+----
+
+# print warning message (leave out the echo lines if you prefer)
+echo "NOTE – applying customisations in ~/.bash_profile"
+echo " If you make a mistake and need to remove the customisations"
+echo " execute the following then restart your Terminal:"
+echo " /bin/mv ~/.bash_profile ~/bash_profile.disabled"
+
+# update the path
+export PATH="$PATH:$HOME/myScripts"
+
+# create our aliases
+alias ll='ls -l | less'
+alias ls='ls -FG'
+alias rm='rm -i' cp='cp -i' mv='mv -i'
+----
+
+== Customising the BASH Prompt
+
+As we discussed right back in the first instalment, the format of your command prompt varies from system to system.
+This variation is not just between command shells, but also within command shells, because many allow customisations to the format of the prompt.
+BASH is one of the command shells that supports command prompt customisation.
+
+In BASH, the format of the prompt is defined in the shell variable `PS1`.
+You can see the current format used with the command:
+
+[source,bash]
+----
+echo $PS1
+----
+
+On OS X the default value of `PS1` is `\h:\W \u\$`, giving prompts that look like:
+
+[source,bash]
+----
+bart-imac2013:~ bart$
+----
+
+On the RedHat and CentOS variants of Linus the default is `[\u@\h \W]\$`, which give prompts that look like:
+
+[source,bash]
+----
+[bart@www ~]$
+----
+
+From the above you should be able to deduce that any letter in the code pre-fixed with a `\` is replaced with a value.
+Below is a list of some of the variables at your disposal:
+
+* `\h` -- your computer's host name (e.g.
+`bart-imac2013`)
+* `\H` -- your computer's FQDN, or fully qualified domain name (e.g.
+`bart-imac2013.localdomain`)
+* `\d` -- the current date
+* `\t` -- the current time in 24 hour HH:MM:SS format
+* `\T` -- the current time in 12 hour HH:MM:SS format
+* `\@` -- the current time in 12 hour am/pm format
+* `\A` -- the current time in 24-hour HH:MM format
+* `\u` -- the username of the current user
+* `\w` -- the complete path of the present working directory (`$HOME` abbreviated to `~`)
+* `\W` -- the current folder, i.e.
+the last part of the print working directory (`$HOME` abbreviated to `~`)
+* `\$` -- if running as root a `#` symbol, otherwise, a `$` symbol
+* `\n` -- a new line (yes, your prompt can span multiple lines if you like)
+
+As an example, lets create a very descriptive BASH prompt:
+
+[source,bash]
+----
+PS1='\d \t - \u@\H:\w\n\$ '
+----
+
+Like with any shell variable, any changes we made to `PS1` are confined to our current command shell.
+Opening a new Terminal window will restore `PS1` to its default value.
+If we want to make the change permanent, we need to add it to our bash startup file (`~/.bash_profile` on OS X or `~/.bashrc` on Linux).
+
+A `~/.bash_profile` file setting all the customisations we've discussed in this instalment and the previous instalment would look like:
+
+----
+
+# print warning message (leave out the echo lines if you prefer)
+echo "NOTE – applying customisations in ~/.bash_profile"
+echo " If you make a mistake and need to remove the customisations"
+echo " execute the following then restart your Terminal:"
+echo " /bin/mv ~/.bash_profile ~/bash_profile.disabled"
+
+# update the path
+export PATH="$PATH:$HOME/myScripts"
+
+# create our aliases
+alias ll='ls -l | less'
+alias ls='ls -FG'
+alias rm='rm -i' cp='cp -i' mv='mv -i'
+
+# set a custom prompt
+PS1='\d \t – \u@\H:\w\n\$ ';
+----
+
+Personally I like to keep my prompts set to their default values -- it helps me recognise the OS I'm on at a glance.
+
+== Conclusions:
+
+Over the past few instalments we have looked at what the shell environment is, how we can manipulate shell and environment variables and aliases.
+We looked at two variables in particular, `PATH` and `PS1`.
+We also discussed BASH aliases, and how to make permanent changes to your BASH environment, allowing you to customise your PATH and prompt and define aliases.
+
+This is where we'll leave the concept of the environment for now.
+In the next instalment we'll move on to look at what I joking call '`plumbing`' -- how commands can be chained together, and how files and be used for input to and output from commands.

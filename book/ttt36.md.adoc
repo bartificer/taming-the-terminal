@@ -1,0 +1,338 @@
+= TTT Part 36 of n -- screen & cron
+
+The previous 13 instalments in this series related to networking, but we're going to change tack completely for this instalment, and look at two un-reltaed, but very useful terminal commands -- `screen`, and `cron`.
+
+`screen` is a utility that allows for the creation of persistent virtual terminal sessions that you can disconnect from without terminating, and reconnect and pick up where you left off at a later time.
+`screen` is particularly useful when used in conjunction with SSH.
+
+`cron` on the other hand is a system for automatically executing recurring tasks.
+It's extremely flexible, and very useful for things like scheduling backups to run in the middle of the night.
+
+== Matching Postcast Episode 36
+
+Listen Along: Taming the Terminal Podcast Episode 36
+
++++<audio controls='1' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== The `screen` Utility
+
+The `screen` command is included with OS X by default, but it is not included by default on all Linux distros.
+It is however usually available through the distor's standard package manager.
+
+Screen creates a virtual terminal that detaches itself from the shell that starts it, so it will continue to run, even when that shell ends because you closed the terminal window or logged out of the computer.
+This means that screen sessions keep running until they explicitly ended, or the computer is rebooted.
+The idea is that you can connect and disconnect as often as you like, allowing you to pick up right where you left off.
+
+There are many situations in which this is very useful.
+Below are just few examples:
+
+* When connecting to a server over SSH from a laptop that is regularly put to sleep -- if you do all your work on the remove server in a screen session, you can disconnect and reconnect without interrupting your work flow.
+* When connecting to a server over SSH from a location with poor internet connectivity -- if you use screen, a network interruption will not terminate a running command.
+* When running commands that will take a long time to execute -- you can start the command in a screen session, disconnect, and check back on it a few hours, or even days, later.
+* When multiple real humans have to share a single login account on a computer.
+Each can do their work in their own named screen session.
+
+Remember that `screen` must be installed on the computer where the session will run, so if you want to run a session on a remote machine you are SSHing to, `screen` needs to be installed on the remote machine.
+
+Screen sessions run as, and belong to, the user that creates them.
+You can run arbitrarily many screen sessions at any one time.
+To see all your currently running sessions, use the command:
+
+`screen -ls`
+
+If you have no running screen sessions, it will give you output something like:
+
+[source,bash]
+----
+$ screen -ls
+No Sockets found in /var/folders/0f/8m9p9bj556394xd50jl4g_340000gn/T/.screen.
+
+$
+----
+
+You can start a new screen session with the command:
+
+`screen`
+
+You may get a welcome message asking you to hit space to continue, if you do, hit space.
+You'll then get a new command prompt.
+This is your screen session, not your original shell.
+You can run commands in here as normal.
+As an example, let's run a command that never ends, `top`.
+
+We can now disconnect from this screen session and return to our regular command prompt with the key combination `ctrl+a+d`.
+
+If we now list our current sessions, we should see one listed:
+
+`screen -ls`
+
+We can reconnect to our most recent screen session with the command:
+
+`screen -r`
+
+This will get us back into our session, where `top` is still running, just like we left it.
+
+Let's end this session by typing `q` to quit out of `top`, and get our shell back within our screen session, and then `exit` to end the screen session.
+
+You may want to use different screen sessions for different tasks, in which case it makes sense to give them human-friendly names.
+You can create a named session with the following command (replacing `SESSION_NAME` with the name you would like to give the session):
+
+`screen -S SESSION_NAME`
+
+At a later time, you can then re-connect to that session with:
+
+`screen -r SESSION_NAME`
+
+Let's create a named session for top:
+
+`screen -S top`
+
+In this session, start top:
+
+`top`
+
+Now, disconnect from the session (`ctrl+a+d`).
+
+You can see that the session has been named:
+
+`   $ screen -ls   There is a screen on:   6125.top (Detached)   1 Socket in /var/folders/0f/8m9p9bj556394xd50jl4g_340000gn/T/.screen.`
+
+`$   `
+
+(The number before the name is the process ID for the session.)
+
+We can now re-connect to our named session with:
+
+`screen -r top`
+
+By default, each screen can only be attached to by one client at a time.
+If you try to attach to a screen session that already has a client attached, you will not succeed.
+
+When you use screen over SSH, you can easily end up in a situation where you have accidentally left yourself attached to a session on a computer at home or in the office, and you now need to attach to that same session from your laptop while out and about.
+
+When you find yourself in this situation, you have two choices -- you can use the `-d` flag to remotely detach the other client, e.g.
+`screen -rd SCREEN_NAME`, or, you can choose to share the session in real-time using the `-x` flag, e.g.
+`screen -rx SCREEN_NAME`.
+You can test both of these behaviours on a single machine by opening two terminal windows.
+In the first window, start a named session with: `screen -S test`.
+In the second terminal window, try attach to this session with just the `-r` flag: `screen -r test`.
+You will get an error something like:
+
+[source,bash]
+----
+$ screen -r test
+There is a screen on:
+	31366.test	(Attached)
+There is no screen to be resumed matching test.
+$
+----
+
+Let's now try the first of our options by entering the following in the second terminal window:
+
+`screen -rd test`
+
+Notice that the screen session in the first window was detached.
+
+Finally, let's use the first window to try our second option, sharing the session.
+In the first, now detached terminal window, enter:
+
+`screen -rx test`
+
+Notice that now, both terminal windows are seeing the same session, and they are sharing it in real-time, if you type in one, you'll see yourself in the other!
+
+As well as allowing you to have multiple sessions, `screen` also allows you to have multiple virtual windows within each session.
+When in a screen session, you can create a new window with the key combination `ctrl+a+c` (for create).
+You'll see that gives us a new window.
+You can toggle between the two most recent windows within a session with `ctrl+a` twice in a row.
+If you have more than two windows you'll need to use either `ctrl+a+n` (for next) to move forward through the windows, or `ctrl+a+p` (for previous) to move backwards through the windows.
+To see a list of your windows in the bottom left of the terminal, press `ctrl+a+w` (this will not work if you are in an app that is constantly re-writting the screen like `top`).
+Windows are numbered from zero, and your current window is indicated with a `*` after the number.
+
+Personally, I find virtual windows within virtual screens much too confusing, so I never use this feature.
+Some people do find it very useful though, so I thought it was worth mentioning in case it is of use to some.
+
+== The `cron` Utility
+
+Unix/Linux systems, including OS X, use a system known as cron for automating the repeated execution of tasks.
+The rules of the repetition are extremely flexible, and as a result, the syntax can be a little daunting at first.
+
+The way the cron system works is that each user may define a so-called _crontab_, which is a table listing tasks to be run, and defining when they should be run.
+Tasks, or jobs, in a user's crontab will run as that user, but with a very minimal environment.
+Any output sent to `STDOUT` or `STDERR` by a cron job will be emailed to the user using the local mail exchanger.
+On modern OS X desktops, that means it goes into your user's unix mailbox, which you do not see in Mail.app, and probably have no idea exists.
+We'll look in more detail at what to do with output from cron jobs later.
+
+To see your crontab, simply run the command `crontab -l` (for list).
+Unless you have added something to your cron previously, this command probably returns nothing.
+
+You can edit your crontab with the command `crontab -e` (for edit).
+This will open your crontab with your system's default text editor (probably `vi`, which we learned about in <<ttt11.adoc,instalment 11>>).
+Your cron jobs need to be specified one per line in a special format.
+
+First, you specify when the command should be run as five space-delimited time specifiers, then you add another space, and then you add the command to be run, along with all its arguments.
+The five time-specifiers tend to be the cause of people's confusion when it comes to the crontab.
+
+The way it works is that every minute, every cron job who's five-part time specifier matches the current time gets executed.
+
+Lines in the crontab starting with `#` are comment lines, that is to say, `cron` ignores them.
+Blank lines are also ignored.
+
+As well as lines starting with time specifiers, and comment lines, a crontab can also contain a number of special command lines.
+We'll see some of these later in this instalment.
+
+=== Specifying When
+
+The five parts to the time specifier are:
+
+. Minute (0-59)
+. Hour (0-23)
+. Day of Month (1-31)
+. Month (1-12)
+. Day of Week (0-6, with Sunday as zero)
+
+For each of these five specifies, you can enter a number, or, the character `*`, which is interpreted to mean _any_.
+
+So, to run a command on-the-hour-every-hour, you would use the specifier:
+
+`0 * * * *`
+
+This will match when the minutes are exactly zero, the hour is anything, the day of the month is anything, the month is anything, and the day of the week is anything.
+
+To run a command at 4:30am on the first of every month you would use the specifier:
+
+`30 4 1 * *`
+
+In other words, the specifier will match when the minute is 30, the hour is 4, the day of the month is 1, the month is anything, and the day of the week is anything.
+
+As well as taking single numbers, each of the five parts of the specifier can take multiple coma-separated values, and ranges (don't add spaces after the comas).
+So, to run a task at 8am and 8pm every weekday you would use the specifier:
+
+`0 8,20 * * 1-5`
+
+That is, when the minute is zero, the hour is 8 or 20, any day of the month, any month, and the day of the week is between 1 and 5 inclusive, i.e.
+Monday to Friday.
+
+Finally, you can use the `*/n` syntax to specify that something should happen every `n` minutes (or hours etc.).
+To run a command every two minutes you would use the specifier:
+
+`*/2 * * * *`
+
+As a final example, to run a command every two minutes during business hours on week days you would use the following specifier:
+
+`*/2 9-18 * * 1-5`
+
+=== Dealing with Output
+
+By default, all output to either `STDOUT` or `STDERR` will get emailed to the local unix mailbox for the user that owns the crontab.
+You can specify a different email address to send the output to with the special `MAILTO` command.
+The format is very simple (replacing `an.email@addre.ss` with the actual email address output should be emailed to):
+
+`MAILTO an.email@addre.ss`
+
+A single crontab can specify multiple different `MAILTO` commands.
+The way it works is that all defined cron jobs use the `MAILTO` definition that precedes them most closely.
+You should consider the top of the file to have an implicit `MAILTO` command of the form:
+
+`MAILTO username@localhost`
+
+If both your ISP and the email provider hosting the target email address are accommodating, this will work from your desktop or laptop.
+It does for me.
+However, many ISPs, and many mail servers will reject email coming from home IP addresses rather than trusted mail servers.
+
+If you definitely want to use email, you have two options.
+Firstly, OS X uses the open source MTA (Mail Transfer Agent) http://www.postfix.org[Postfix], so you could re-configure postfix to use a mail relay to send the emails on your behalf.
+In the past many ISPs provided an SMTP server for their customers to use, so if your ISP does, this is at least a plausible option.
+This is not for the faint-hearted though -- you'll need to take the time to familiarise yourself with Postfix, and to learn what the different settings in the config file do.
+
+Your second option is to use the built-in command line mail client in OS X to read your unix inbox directly.
+The command is `mail`, and there is a man page explaining how it works.
+This works, but it's quite clunky.
+
+If email doesn't _just work_ for you, my advice would be to change tack, and use stream redirection (as described in instalments <<ttt15.adoc,15>> and <<ttt16.adoc,16>>) instead.
+This is the approach we will use in our examples in this instalment.
+
+=== A simple cron Example
+
+To see cron in action, let's create a simple crontab that will write the current time to a text file every 2 minutes.
+The terminal command to see the current date and time is `date`.
+We'll write our file to a location that is universally writeable on all Macs -- the temporary folder, `/tmp`.
+
+To edit your crontab, run the command `crontab -e`.
+You are now in `vi`.
+Enter insert mode by pressing the `i` key.
+
+Enter the following:
+
+`*/2 * * * * /bin/date >> /tmp/crontest.log`
+
+Exit insert mode by hitting the escape key.
+Save the crontab by typing `:wq` and then enter/return.
+
+Verify that your crontab has been saved with `crontab -l`.
+
+Now watch for the output to the file with:
+
+`tail -f /tmp/crontest.log`
+
+Every two minutes you should see the current date and time be appended to the file.
+
+=== Cron & the Environment
+
+You may notice that I used the full path to the `date` command in the above example.
+The reason for this is that cron executes your cron jobs with a very minimal environment.
+As we learned in <<ttt12.adoc,instalment 12>>, you can see the content of your environment in a regular shell with the command `env`.
+To see what the environment looks like from cron's point of view, add the following to your crontab, then wait for at least two minutes:
+
+`*/2 * * * * /usr/bin/env > /tmp/cronenv.txt`
+
+When more than two minutes have passed, you should see a copy of the environment from the point of view of a cron job with with command:
+
+[source,bash]
+----
+$ cat /tmp/cronenv.txt
+SHELL=/bin/sh
+USER=bart
+PATH=/usr/bin:/bin
+PWD=/Users/bart
+SHLVL=1
+HOME=/Users/bart
+LOGNAME=bart
+_=/usr/bin/env
+$
+----
+
+Notice that while there is a `PATH` environment variable, it has very little in it.
+This is why you are best off always using full paths when executing commands via cron.
+
+You can set environment variables in the crontab.
+You simply assign them on a line by themselves.
+We can add a new variable by adding a line like:
+
+`DUMMY_ENVIRONMENT_VARIABLE=boogers`
+
+The definition needs to be earlier in the crontab than the cron jobs that will use the variable.
+If you edit your crontab so it contains the following:
+
+[source,bash]
+----
+DUMMY_ENVIRONMENT_VARIABLE=boogers
+*/2 * * * * /usr/bin/env > /tmp/cronenv.txt
+----
+
+Then wait at least two minutes, and then run the command:
+
+`cat /tmp/cronenv.txt`
+
+You should now see your new variable has indeed been added to your cron job's environment.
+
+You could use this technique to set your own value for the `PATH` environment variable.
+My preference is not to alter the `PATH` within the crontab, but to always use full paths in my cron jobs.
+That seems a more robust and explicit approach to me.
+
+== Final Thoughts
+
+In this instalment we've seen how to use `screen` to create persistent virtual terminals that can be disconnected from and re-connected to later, and how to use `cron` to schedule periodic tasks.
+This is the first taming the terminal in some time, and will probably be the last one for a while too.
+There will be more instalments, but not at regular intervals.

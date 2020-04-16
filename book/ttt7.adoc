@@ -1,0 +1,176 @@
+= TTT Part 7 of n -- Managing Files
+
+So far in this series we've focused mostly on the file system, looking at the details of file systems, how to navigate them, and at file permissions and metadata.
+We're almost ready to move on and start looking at how processes work in Unix/Linux/OS X, but we have a few more file-related commands to look at before we do.
+In this instalment we'll be looking at how to manipulate the file system, in other words, how to create files and folders, how to copy them, how to move them, how to rename them, and finally how to delete them.
+
+== Matching Postcast Episode 7
+
+Listen Along: Taming the Terminal Podcast Episode 7
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Creating Folders & Files
+
+This is one of those topics that I think is best thought through example, so lets start by opening a Terminal window and navigating to our Documents folder:
+
+[source,bash]
+----
+cd ~/Documents
+----
+
+We'll then create a folder called `TtT6n` in our `Documents` folder with the command:
+
+[source,bash]
+----
+mkdir TtT6n
+----
+
+As you can see, directories/folders are created using the `mkdir` (make directory) command.
+When used normally the command can only create folders within existing folders.
+A handy flag to know is the `-p` (for _path_) flag which will instruct `mkdir` to create all parts of a path that do not yet exist in one go, e.g.:
+
+[source,bash]
+----
+mkdir -p TtT6n/topLevelFolder/secondLevelFolder
+----
+
+Since the `TtT6n` folder already existed the command will have no effect on it, however, within that folder it will first create a folder called `topLevelFolder`, and then within that folder it will create a folder called `secondLevelFolder`.
+
+At this stage lets move into the TtT6n folder from where we'll execute the remainder of our examples:
+
+[source,bash]
+----
+cd TtT6n
+----
+
+We can now use the `-R` (for recursive) flag for `ls` to verify that the `mkdir -p` command did what we expect it to (I like to use the `-F` flag we met before with `-R` so that folder names have a trailing `/` appended):
+
+[source,bash]
+----
+ls -RF
+----
+
+When using `ls -R` the contents of each folder is separated by a blank line, and for folders deeper down than the current folder each listing is pre-fixed with the relative path to the folder about to be listed followed by a `:`.
+
+In other words, we are expecting to see just a single entry in the first segment, a folder called `topLevelFolder`, then we expect to see a blank line followed by the name of the next folder to be listed, which will be the aforementioned `topLevelFolder`, followed by the listing of it's contents, which is also just one folder, this time called `secondLevelFolder`.
+This will then be followed by a header and listing of the contents of `secondLevelFolder`, which is currently empty.
+
+Lets now create two empty files in the deepest folder within our test folder (`secondLevelFolder`).
+There are many ways to create a file in Unix/Linux, but one of the simplest is to use the `touch` command -- the main purpose of this command is to change the last edited date of an existing file to the current time, but, if you try to `touch` a file that doesn't exist, `touch` creates it for you:
+
+[source,bash]
+----
+touch topLevelFolder/secondLevelFolder/file1.txt topLevelFolder/secondLevelFolder/file2.txt
+----
+
+You can use `ls -RF` to verify that these files have indeed been created (you can use the `-lh` flags along with the `-RF` flags to see that the files are indeed empty -- i.e.
+0 bytes in size).
+
+[source,bash]
+----
+ls -RFlh
+----
+
+== Copying Files/Folders
+
+Lets now create a second top-level folder, and copy the files to it:
+
+[source,bash]
+----
+mkdir topLevelFolder2
+cp topLevelFolder/secondLevelFolder/file1.txt topLevelFolder2
+cp topLevelFolder/secondLevelFolder/file2.txt topLevelFolder2
+----
+
+As you can see, the command to copy a file is `cp`.
+Here we have used `cp` in its simplest form, with just two arguments, the first being what to copy, the second being where to copy it to.
+The first argument must be a file, and the last a folder.
+
+The `cp` command is a cleverer than this though -- it can take any number of arguments greater than two, all arguments but the last one will be treated as sources, and the last one will be treated as the destination to copy all these sources to.
+So, we can re-write our two `cp` commands above as simply:
+
+[source,bash]
+----
+cp topLevelFolder/secondLevelFolder/file1.txt topLevelFolder/secondLevelFolder/file2.txt topLevelFolder2
+----
+
+(You can verify that the copy has worked with the `ls -RF` command.)
+
+We can be even more efficient though -- we can use the shell's wild card completion functionality to simplify things even further:
+
+[source,bash]
+----
+cp topLevelFolder/secondLevelFolder/*.txt topLevelFolder2
+----
+
+Note that the `cp` command will happily work with either full or relative paths.
+Also, you may remember that a few instalments back I mentioned that every folder contains a file called `.` that's a reference to the folder containing it, and that while this sounds useless, it's actually very useful.
+Well, the `cp` command provides a great example to illustrate this point.
+To copy a file to the folder you are currently in, you can use `.` as the destination path.
+
+By default, `cp` will only copy files, but, it can copy folders (and their contents) if you use the `-R` (recursive) flag.
+The flag should precede the argument list.
+
+Lets now create yet another empty folder and copy the folder `secondLevelFolder`, and all it's contents, into the new folder:
+
+[source,bash]
+----
+mkdir topLevelFolder3
+cp -R topLevelFolder/secondLevelFolder topLevelFolder3
+----
+
+(Again, you can use `ls -RF` to verify that the copy has worked as expected.)
+
+== Moving Files/Folders
+
+The `mv` (move) command works in a similar way to `cp`, but, it removes the source files and folders after it has copied them to the destination folder.
+The `mv` command can move folders without needing to specify any flags.
+As an example, lets create yet another folder, and move our original `secondLevelFolder` and its contents to it:
+
+[source,bash]
+----
+mkdir topLevelFolder4
+mv topLevelFolder/secondLevelFolder topLevelFolder4
+----
+
+(Again, we can use `ls -RF` to verify that the folder and the files within it have indeed been moved.)
+
+Users of DOS may remember that in DOS the commands to copy and move were simply `copy` and `move`, and, that there was a separate command to rename a file or folder which was simply `rename`.
+Unix/Linux does not have a separate rename command, instead, you rename a file or folder by moving it from its old name to its new name.
+As an example, lets rename our first folder (`topLevelFolder`) to `topLevelFolder0`:
+
+[source,bash]
+----
+mv topLevelFolder topLevelFolder0
+----
+
+We can use a simple `ls` command to verify that the folder has indeed been renamed.
+
+== Deleting Files & folders
+
+Finally, I want to briefly mention the `rm` (remove) command, which can be used to delete files and/or folders.
+The `rm` command simply takes the list of files to be nuked as arguments.
+Unlike deleting files in the Finder, the `rm` command doesn't have any kind of safety net -- it does not use the recycle bin, if you mess it up, you'd better hope you have a recent backup because your files are GONE!
+This is why I advise people to avoid using deleting files/folders from the command line unless you absolutely have to, or, are very comfortable on the Terminal.
+It's much safer to delete things in the Finder.
+When ever you do use the `rm` command, ALWAYS check over your command before hitting enter!
+To adapt the older carpentry adage that you should _always measure twice and cut once_, my advice when using `rm` is to _think twice and execute once_.
+
+By default the `rm` command will only allow you to delete regular files, but if you add the `-r` flag it will delete folders and their contents too.
+A great additional safety net when using `rm` either in recursive mode or with shell wild card completion is the use the `-i` flag to enter interactive mode -- in this mode you will be asked to confirm the deletion of each file and folder.
+
+Lets end by going back up one level, and then deleting our digital play pen recursively:
+
+[source,bash]
+----
+cd ..
+rm -ri TtT6n
+----
+
+== Conclusion
+
+Today we learned how to create files and folders with `touch` and `mkdir`, to copy files with `cp`, move and rename them with `mv`, and delete them with `rm`.
+Next time we'll move on to looking at how Unix/Linux/OS X handled processes.

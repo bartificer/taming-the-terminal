@@ -1,0 +1,87 @@
+Taming the Terminal
+===================
+Bart Busschots
+:doctype: book
+:docinfo:
+:doctitle: Taming the Terminal
+:lang: en-US
+:toc:
+:toclevels: 0
+:pagenums:
+:copyright: CC-BY-SA 3.0
+:front-cover-image: assets/cover.jpg
+:icons: font
+
+ifdef::ebook-format[:leveloffset: -1]
+
+include::ttt1.adoc[]
+
+include::ttt2.adoc[]
+
+include::ttt3.adoc[]
+
+include::ttt4.adoc[]
+
+include::ttt5.adoc[]
+
+include::ttt6.adoc[]
+
+include::ttt7.adoc[]
+
+include::ttt8.adoc[]
+
+include::ttt9.adoc[]
+
+include::ttt10.adoc[]
+
+include::ttt11.adoc[]
+
+include::ttt12.adoc[]
+
+include::ttt13.adoc[]
+
+include::ttt14.adoc[]
+
+include::ttt15.adoc[]
+
+include::ttt16.adoc[]
+
+include::ttt17.adoc[]
+
+include::ttt18.adoc[]
+
+include::ttt19.adoc[]
+
+include::ttt20.adoc[]
+
+include::ttt21.adoc[]
+
+include::ttt22.adoc[]
+
+include::ttt25.adoc[]
+
+include::ttt26.adoc[]
+
+include::ttt27.adoc[]
+
+include::ttt28.adoc[]
+
+include::ttt29.adoc[]
+
+include::ttt30.adoc[]
+
+include::ttt31.adoc[]
+
+include::ttt32.adoc[]
+
+include::ttt33.adoc[]
+
+include::ttt34.adoc[]
+
+include::ttt35.adoc[]
+
+include::ttt36.adoc[]
+
+include::ttt37.adoc[]
+
+ifndef::ebook-format[include::index.asc[]]

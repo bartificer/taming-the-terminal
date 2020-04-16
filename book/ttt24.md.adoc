@@ -1,0 +1,254 @@
+= TTT Part 24 of n -- Ethernet & ARP
+
+In <<ttt23.adoc,the previous instalment>> we took a big-picture look at how TCP/IP networking works.
+As a quick reminder, the most important points were:
+
+* Networking is complicated!
+* Our computer networks use a stack of protocols known as TCP/IP
+* We think of the stack of protocols as being broken into four layers:
+* The Link Layer -- lets computers that are on the same network send single packets of data to each other
+* The Internet Layer -- Lets computers on different networks send single packets of data to each other
+* The Transport Layer -- lets computers send meaningful streams of data between each other
+* The Application Layer -- where all the networked apps we use live
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+
+In this instalment we'll take a quick look at the lowest of these four layers -- the Link Layer.
+Specifically, we'll look at MAC addresses, the difference between hubs, switches, and routers, and the ARP protocol.
+
+== Matching Postcast Episode 24
+
+Listen Along: Taming the Terminal Podcast Episode 24
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Before we Start ...
+
+Later in the instalment we're going to refer back to results of the following command and explain it, but it takes time for the packets to be collected, so before we start, please open a Terminal window and leave the following command running for at least 5 or 10 minutes:
+
+[source,bash]
+----
+sudo tcpdump -nneq arp
+----
+
+== Ethernet -- A Quick Overview
+
+As we discussed in the previous instalment, the bottom of the four layers in the TCP/IP model is the _Link Layer_.
+It's function is to move a single packet of data from one device connected to a network to another device connected to the same network.
+Within our homes we use ethernet to provide our layer 1 connectivity.
+We use two different implementations of ethernet -- we use ethernet over copper wire (usually called ethernet cables), and we use ethernet over radio waves, commonly known as WiFi.
+
+The ethernet protocol addresses hosts on the network by their Media Access Control address, or MAC address.
+Every network card on your computer has a MAC address, regardless of whether it's a wired or wireless ethernet card.
+An ethernet packet travelling through your network has a source and a destination MAC address.
+
+Ethernet was designed to work on a shared medium -- i.e., all network cards see all ethernet packets travelling across the network.
+In normal use a network card ignores all ethernet packets that are not addressed to it, but a card can be instructed to pass all packets that reach it up to the OS, even those addressed to different MAC addresses, this is known as _promiscuous mode_.
+
+The special MAC address `ff:ff:ff:ff:ff:ff` is used to _broadcast_ an ethernet packet to every device on the network.
+All network cards consider packets addressed to this special MAC address to be addressed to them, and pass that packet up to the OS, even when not in promiscuous mode.
+
+You can see the MAC addresses associated with your Mac/Linux/Unix computer with the command:
+
+[source,bash]
+----
+ifconfig -a
+----
+
+(the `-a` stands for '`all`' and is needed one many flavours of Linux to see network devices that are not currently active -- OS X defaults to showing all devices, so the `-a` is optional on OS X.)
+
+This command will list every network interface defined on your computer, both physical and virtual.
+The output is broken into sections with the content of the section tabbed in.
+Each section belongs to a different network interface, and the associated MAC address is labeled `ether`.
+The naming conventions for the network interfaces vary massively between different OSes, but one thing is always the same, they are confusing as all heck, and figuring out which name matches which physical network interface is non-trivial.
+Things are always confusing, but if you have a VPN installed they get even more confusing because VPNs are implemented using virtual network interfaces.
+On the whole, the simplest way to figure out which MAC address matches which device is to use your OS's control panel GUI.
+On OS X that means the `Network` System Preference pane.
+To see which MAC address matches which interface, select a network interface in the left side bar, then click `+Advanced...+` and navigate to the `Hardware` tab:
+
+image::./assets/ttt24/fcedfaa3-f075-4d2a-87fe-48c813c25b9d.png[OS X - Find MAC (1 of 2)]
+
+image::./assets/ttt24/1a178fa7-0a88-4f67-8273-e2ec2c0900fa.png[OS X Find MAC (2 of 2)]
+
+While the the naming of network devices on Linux/Unix/OS X is confusing, there are some general rules that may help you figure out which device is which:
+
+[cols=2*]
+|===
+| lo0
+| This is the so-called _loop-back address_, it's a virtual network interface that can be used to communicate internally within a computer using the TCP/IP stack.
+`lo0` will usually have the IP address `127.0.0.1` and map to the hostname `localhost`.
+(this is also the genesis of the two popular nerd T-shirts _"`There's no place like 127.0.0.1`"_ and _"`127.0.0.1 sweet 127.0.0.1`"_)
+
+| gif0
+| This is an OS X-specific virtual network interface called the _Software Network Interface_.
+It's used by the OS in some way, but is of no relevance to users, so it can be ignored.
+
+| stf0
+| This is another OS X-Specifig virtual network interface which is used by the OS to bridge IPV4 and IPV6 traffic -- again, this is not relevant to users, so it can be ignored.
+
+| fw0, fw1 ...
+| OS X addresses firewire interfaces as `fw0` and up, this is because a FireWire connection between two computers can be used as a network connection between those computers.
+
+| en0, en1 ...
+| OS X addresses ethernet cards, be they wired or wireless, as `en0` and up.
+
+| eth0, eth1 ...
+| Most Linux and Unix variants address ethernet cards, be they wired ore wireless, as `eth0` and up.
+
+| em1, em2 ...
+| These names are used by the _Consistent Network Device Naming_ convention which aims to map the labels on the back of computers to the devices names within the OS.
+At the moment you'll only see these on Dell servers running a RedHat variant (e.g.
+RHEL, CentOR and Fedora).
+I really hope this idea takes off and more manufacturers start implementing this!
+
+| br0, br1 ...
+or bridge0, bridge1 ...
+| These virtual network devices are known as _bridged networks_, and are often created by virtualisation software to allow VMs to access the network with their own dedicated MAC addresses.
+
+| vmnetX
+| VMWare uses it's own convention for allowing virtual machines to access the network, it created virtual network devices with names consisting of `vmnet` followed by a number.
+
+| p2p0, p2p1 ...
+| These virtual network devices are known as _point to point networks_, and are used by things like VPNs to send traffic through some kind of tunnel to server located somewhere else on the internet.
+|===
+
+Realistically, if you're running Linux or Unix the network interfaces you care about are probably the ones starting with `eth`, and for Mac users it's probably the ones starting with `en`.
+
+To see all MAC addresses associated with your computer, regardless of which network card they belong to, you can use:
+
+[source,bash]
+----
+ifconfig -a | egrep '^\s*ether'
+----
+
+== Hubs, Switches & Routers -- What's the Difference?
+
+Because ethernet uses a shared medium, it's susceptible to congestion -- if two network cards try to transmit a packet at the same time they interfere with each other, and both messages become garbled.
+This is known as a _collision_.
+When an ethernet card detects a collision, it stops transmitting and waits a random amount of milliseconds before trying again.
+This simple approach has been proven to be very effective, but, it's Achilles heal is that it's very prone to congestion.
+When an ethernet network gets busy the ratio of successful transitions to collisions can collapse to the point where almost no packets actually get through.
+
+With WiFi this shortcoming is unavoidable -- a radio frequency is a broadcast medium, so collisions are always going to be a problem, and this is why it's very important to choose a WiFi channel that's not also being used by too many of your neighbours!
+
+A copper cable is not the same as a radio frequency though!
+In order to create a copper-based ethernet network we need some kind of box to connect all the cables coming from all our devices together.
+
+Originally these boxes had no intelligence at all -- they simply created an electrical connection between all the cables plugged into them -- creating a broadcast medium very much like a radio frequency.
+This kind of simplistic device is known as an _ethernet hub_.
+An ethernet network held together by one or more hubs is prone to congestion.
+
+A way to alleviate this problem is to add some intelligence into the box that connects the ethernet cables together.
+Rather than blindly re-transmitting every packet, the device can interpret the ethernet packet, read the destination MAC address, and then only repeat it down the cable connected to the destination MAC address.
+Intelligent devices like this are called _ethernet switches_.
+In order to function, an ethernet switch maintains a lookup table of all MAC addresses reachable via each cable plugged into it (connections to hubs/switches are often referred to as _legs_ or _ports_).
+These lookup tables take into account the fact that you can connect switches together, so they allow the mapping of multiple MAC addresses to each leg/port.
+If you have an eight-port switch with seven devices connected to it, and you then connect that switch to another switch, that second switch sees seven MAC addresses at the end of one of it's legs.
+
+Because switches intelligently repeat ethernet packets, they are much more efficient than hubs, but congestion can still become a problem because broadcast packets have to be repeated out of every port/leg.
+
+10 years ago you had to be careful when buying an ethernet '`switch`' to be sure you weren't buying a hub by mistake.
+Thankfully, switches are ubiquitous today, and it's almost impossible to find a hub.
+
+There is a third kind of network device that we should also mention in this conversation -- the _router_.
+A router is a device that has a layer 1 connection to two or more different networks.
+It uses the layer 2 IP protocol to intelligently move packets between those networks.
+
+Our home routers cause a lot of confusion because they are actually hybrid devices happen to contain a router.
+The best way to think of a home router is as a box containing two or three component devices -- a router to pass packets between your home network and the internet, an ethernet switch that forms the heart of your home network, and, optionally, a wireless access point, which is the wifi-equivalent of an ethernet hub.
+Importantly, if it's present, the wireless access point is connected to the ethernet switch, ensuring that a single ethernet network exists on both the copper and the airwaves.
+This means that an ethernet packet can be sent from a wired network card to a wireless network card in a single layer 1 hop -- i.e.
+Layer 2 is not needed to get a single packet from a phone on your wifi to a desktop computer on your wired ethernet.
+Confusingly, while this single packet will pass through a device you *call* a router, it will *not* be routed -- it will go nowhere near the router inside your home router, it will stay on the switch and the wireless access points inside your home router.
+The diagram below illustrates the typical setup:
+
+image::./assets/ttt24/HomeRouter.png[Home Router]
+
+== The Address Resolution Protocol (ARP)
+
+The protocol that sits on top of ethernet is the IP Protocol.
+The IP protocol moves a packet from one IP address to another, and it does so by repeatedly dropping the packet down to the link layer below to move the packet one _hop_ at a time from directly connected device to directly connected device until it arrives at its destination.
+As a quick reminder, see the diagram below from the previous instalment:
+
+image::https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/IP_stack_connections.svg/256px-IP_stack_connections.svg.png[IP stack connections,link=http://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
+
+Within our LAN, the layer 1 protocol IP uses to move a packet from one device on our LAN to another device on our LAN is ethernet.
+Ethernet can only move a packet from one MAC address to another, and IP moves packets from one IP address to another, so how does the IP protocol figure out what MAC address matches to what IP address so it knows where to ask ethernet to send the packet?
+
+The Address Resolution Protocol, or ARP, is an ethernet protocol that maps IP addresses to MAC addresses.
+It's a supremely simplistic protocol.
+When ever a computer needs to figure out what MAC address matches a given IP address, it sends an ARP request to the broadcast MAC address (`ff:ff:ff:ff:ff:ff`), and what ever computer has the the requested IP answers back to the MAC address asking the question with an ARP reply saying that their MAC address matches the requested IP.
+
+The command you've had running in the background since the start of this instalment has been listening for ARP packets, and printing every one your computer sees.
+You should see output something like:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ sudo tcpdump -nneq arp
+Password:
+tcpdump: data link type PKTAP
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on pktap, link-type PKTAP (Packet Tap), capture size 65535 bytes
+15:06:04.868430 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.206 tell 192.168.10.100, length 46
+15:06:05.706152 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.206 tell 192.168.10.100, length 46
+15:06:06.868324 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.206 tell 192.168.10.100, length 46
+15:06:10.623603 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.206 tell 192.168.10.100, length 46
+15:06:11.705482 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.206 tell 192.168.10.100, length 46
+15:06:12.868490 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.206 tell 192.168.10.100, length 46
+15:09:11.698813 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.1 tell 192.168.10.100, length 46
+15:10:11.696476 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.1 tell 192.168.10.100, length 46
+15:10:38.977585 dc:86:d8:09:97:09 > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.1 tell 192.168.10.215, length 46
+15:10:40.588396 dc:86:d8:09:97:09 > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.1 tell 192.168.10.215, length 46
+15:11:07.962791 68:5b:35:97:f1:84 > ff:ff:ff:ff:ff:ff, ARP, length 42: Request who-has 192.168.10.5 tell 192.168.10.42, length 28
+15:11:07.963048 50:46:5d:74:ce:66 > 68:5b:35:97:f1:84, ARP, length 60: Reply 192.168.10.5 is-at 50:46:5d:74:ce:66, length 46
+15:11:40.716850 40:6c:8f:4d:0b:9b > ff:ff:ff:ff:ff:ff, ARP, length 60: Request who-has 192.168.10.42 tell 192.168.10.100, length 46
+15:11:40.716859 68:5b:35:97:f1:84 > 40:6c:8f:4d:0b:9b, ARP, length 42: Reply 192.168.10.42 is-at 68:5b:35:97:f1:84, length 28
+15:12:04.557253 68:5b:35:97:f1:84 > 00:13:3b:0e:3f:30, ARP, length 42: Request who-has 192.168.10.1 (00:13:3b:0e:3f:30) tell 192.168.10.42, length 28
+15:12:04.557500 00:13:3b:0e:3f:30 > 68:5b:35:97:f1:84, ARP, length 60: Reply 192.168.10.1 is-at 00:13:3b:0e:3f:30, length 46
+----
+
+What you can see is a whole bunch of ARP requests asking the network who has various IP addresses, and, a few replies.
+If you're entire home network uses WiFi you'll probably see an approximately even number of requests and responses, but, if your network includes devices connected via wired ethernet you should notice a distinct asymmetry between requests and responses, especially if your computer is connected to the network via ethernet.
+This is not because requests are going un-answered, but rather because there is a switch in the mix, and that switch is only passing on ethernet packets that are relevant to you.
+Requests are broadcast, so ethernet switches send those packets to everyone, but responses are directed at a single MAC address, so those are only passed out the relevant port on the switch.
+In effect, what you are seeing is the efficiency of an ethernet switch in action!
+
+While we're on the subject of efficiency, computers don't send an ARP request each and every time they want to transmit an IP packet, ARP responses are cached by the OS, so new ARP requests are only sent when a mapping is not found in the cache.
+You can see the MAC to IP mappings currently cached by your OS with the command `arp -an`.
+You'll get output something like:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ arp -an
+? (192.168.10.1) at 0:13:3b:e:3f:30 on en0 ifscope [ethernet]
+? (192.168.10.2) at 90:84:d:d1:f0:be on en0 ifscope [ethernet]
+? (192.168.10.5) at 50:46:5d:74:ce:66 on en0 ifscope [ethernet]
+? (192.168.10.42) at 68:5b:35:97:f1:84 on en0 ifscope permanent [ethernet]
+? (192.168.10.100) at 40:6c:8f:4d:b:9b on en0 ifscope [ethernet]
+? (192.168.10.255) at ff:ff:ff:ff:ff:ff on en0 ifscope [ethernet]
+bart-iMac2013:~ bart$
+----
+
+The more devices on your LAN you are interacting with, the more mappings you'll see.
+
+== ARP Security (or the Utter Lack Thereof)
+
+Something you may have noticed about ARP is that it assumes all computers are truthful, that is to say, that no computer will falsely assert their MAC address maps to any given IP.
+This assumption is why *ALL* untrusted ethernet networks are dangerous -- be they wired or wireless.
+This is why the ethernet port in a hotel room is just as dangerous as public wifi.
+To intercept other people's network traffic, an attacker simply has to send out false ARP replies and erroneously advertise their MAC address as matching their victim's IP address.
+The attacker can then read the packets before passing them on to the correct MAC address.
+Users will not lose connectivity because the packets all get where they are supposed to eventually but, the attacker can read and alter every packet.
+This technique is known as http://en.wikipedia.org/wiki/ARP_spoofing[ARP Spoofing] or ARP Poison Routing (APR) and is staggeringly easy to execute.
+
+ARP is just the first example we have met of the Internet's total lack of built-in security.
+It illustrates the point that the designers of the IP stack simply never imagined there would be malicious actors on their networks.
+If it didn't have such detrimental effects on all our security, the naive innocence of those early pioneers would be very endearing!
+
+== Conclusions
+
+This is the last we'll see of Layer 1 in this series.
+In the next instalment we'll be moving up the stack layer 2 and the IP protocol -- the real work-horse of the internet.
+In particular we'll be tackling one of the single most confusing, and most critical, networking concepts -- that of the IP subnet.
+It's impossible to effectively design or trouble shoot home networks without understanding subnets, and yet they are a mystery to so many.

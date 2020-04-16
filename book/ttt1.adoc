@@ -1,0 +1,85 @@
+[ttt1]]]
+= TTT Part 1 of n -- Command Shells
+
+== Introduction
+
+I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond segment on the http://www.podfeet.com[NosillaCast Mac Podcast] (to be released Sunday evening PST) I'm going to try start what will hopefully be an on-going series of short un-intimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app.
+I'm on with Allison every second week, and I'll have other topics to talk about, so the most frequent the instalments in this series could be would be bi-weekly, but I think they'll turn out to be closer to monthly on average.
+While the focus will be on OS X, the majority of the content will be equally applicable to any other Unix or Linux operating system.
+
+In the http://www.podfeet.com/wordpress/2013/03/31/412-rslsteeper-autismate-audio-hijack-pro-mail-security/[last CCATP] we did a very detailed segment on email security, and despite the fact that with the benefit of hind-sight I realise it was too much to do at once and should have been split into two segments, it received the strongest listener response of anything of any of my many contributions to the NosillaCast in the last 5 or more years.
+I hope I'm right in interpreting that as evidence that there are a lot of NosillaCast listeners who want to get a little more technical, and get their hands dirty with some good old-fashioned nerdery!
+
+== Matching Postcast Episode 1
+
+Listen Along: Taming the Terminal Podcast Episode 1
+
++++<audio controls='1'>+++
++++<source src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3">+++
++++</source>+++ Your browser does not support HTML 5 audio+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+In this first segment I just want to lay a very basic foundation.
+I plan to take things very slowly with this series, so I'm going to start the way I mean to continue.
+Lets start with some history and some wider context.
+
+Before the days of GUIs (Graphical User Interfaces), and even before the days of simple menu-driven non-graphical interfaces like the http://en.wikipedia.org/wiki/File:Wordperfect-5.1-dos.png[original Word Perfect on DOS], the way humans interacted with computers was through a "`command shell`".
+Computers couldn't (and still can't) speak or interpret human languages properly, and humans find it very hard to speak in native computer languages like binary machine codes (though early programers did actually have to do that), so new languages were invented to help bridge the gap, and allow humans and computers to meet somewhere in the middle.
+The really big problem is that computers have absolutely no intelligence, so they can't deal with ambiguity at all.
+Command shells use commands that look Englishy, but they have very rigid structures (or grammars if you will) that remove all ambiguity.
+It's this rigid structure that allows the automated translation from shell commands to binary machine code the computer can execute.
+
+When using any command shell, the single most important thing to remember is that computers are absolutely stupid, so they will do EXACTLY what you tell them to, no matter how silly the command you give them.
+If you tell a computer to delete all the files on a hard drive, it will, because, well, that's what you asked it to do!
+Another important effect of the computers`' total lack of intelligence is that there is no such thing as "`close enough`" -- if you give it a command that's nearly valid, a computer can no more execute it than if you'd just mashed the keyboard with your face.
+Nearly right and absolute gibberish are just as unintelligible to a computer.
+You must be exact, and you must be explicit at all times.
+
+No wonder we went on to invent the GUI, this command shell malarky sounds really complicated!
+There is no doubt that if the GUI hadn't been invented the personal computer wouldn't have taken off like it has.
+If it wasn't for the GUI there's no way there would be more computers than people in my parents home (two of them, and including iPhones and tablets, 6 computers)!
+Even the nerdiest of nerds use GUI operating systems most of the time, because they make a lot of things both easier and more pleasant.
+BUT -- not everything.
+
+We all know that a picture says a thousand words, but when you are using a GUI it's the computer that is showing you a picture, all you get to do is make crude hand gestures at the computer, which I'd say is worth about a thousandth of a word -- so, a single shell command can easily be worth a thousand clicks.
+This is why all desktop OSes still have command shells built in -- not as their ONLY user interface like in times past, but as a window within the GUI environment that lets you communicate with the computer using the power of a command shell.
+Even Microsoft understands the power of the command shell, DOS may be dead, but the new http://en.wikipedia.org/wiki/Windows_PowerShell[Windows Power Shell] is giving Windows power users a new, more modern, and more powerful command shell than ever before.
+Windows 8 may have removed the Start menu, but Powershell is still there!
+All Linux and Unix distros have command shells, and OS X gives you access to an array of different Command Shells through Terminal.app.
+
+Just like there is no one GUI interface, there is no one command shell.
+Also, just like most GUIs are at least somewhat similar to each other, they all use icons for example, most command shells are also quite similar, having a command prompt that accepts commands with arguments to supply input to the commands or alter their behaviour.
+OS X does not ship with one command shell, it ships with SIX (http://en.wikipedia.org/wiki/Bourne_shell[sh], http://en.wikipedia.org/wiki/Bash_(Unix_shell)[bash], http://en.wikipedia.org/wiki/Zsh[zsh], http://en.wikipedia.org/wiki/C_shell[csh], http://en.wikipedia.org/wiki/Tcsh[tcsh], and http://en.wikipedia.org/wiki/Korn_shell[ksh])!
+
+You can see the list of available shells (and set your default shell) by opening `System Preferences`, going to the `Users & Groups` pref pane, unlocking it, then right-clicking on your username in the side bar, and selecting `+Advanced Options ...+`:
+
+image::./assets/ttt1/Screen-Shot-2013-04-13-at-15.29.39.png[Select Advanced Options ...]
+
+image::./assets/ttt1/Screen-Shot-2013-04-13-at-15.30.07.png[Select Login Shell]
+
+The default shell on OS X is the Bourne Again Shell (bash), so that's the shell we'll be using for the remainder of this series.
+If you've not altered the defaults, then when ever you open a Terminal window on OS X, what you're presented with is a bash command shell.
+Bash is an updated and improved version of the older Bourne Shell (sh), which was the default shell in Unix for many years.
+The original Bourne Shell dates all the way back to 1977, and is called after it's creator, http://en.wikipedia.org/wiki/Stephen_Richard_Bourne[Stephen Bourne].
+The Bourne Again Shell is a '`newer`' update to the Bourne Shell dating back to 1989, the name being a nerdy religious joke by it's author, http://en.wikipedia.org/wiki/Brian_Fox_(computer_programmer)[Brian Fox].
+The Bourne Again Shell was not the last in the line of shells tracing their origins to the Bourne Shell, there is also zsh which dates back to 1990, but despite being a more powerful shell, it hasn't taken off like bash has.
+
+So, what does a shell do?
+Does it just let you enter a single command and then run it?
+Or is there more to it?
+Unsurprisingly, there's a lot more to it!
+The shell does it's own pre-processing before issuing a command for you, so a lot of things that we think of as being part of how a command works, are actually features provided by the command shell.
+The best example is the almost ubiquitous `*` symbol.
+When you issue a command like `chmod 755 *.php`, the actual command is not given `*.php` as a single argument that it must then interpret, no, the `*` is interpreted and processed by the shell before being passed on to the `chmod` command.
+It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `*.php` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
+
+As well as providing wildcard substitution (the * thing), almost all shells also provide '`plumbing`' for routing command inputs and outputs between commands and files, the definition of variables to allow sequences of commands to be generalised in a more re-usable way, simple programming constructs to enable conditional actions, looping, and the grouping of sequences of commands into named functions, and the execution of a sequence of commands inside a file (scripting), and much more.
+Different shells also provide their own custom features to help make life at the command prompt easier for users -- my favourite is tab-completion which is the single best thing bash has to offer over sh IMO.
+OS X also brings some unique features to the table, with superb integration between the GUI and the command shell through features like drag-and-drop support in Terminal.app and shell scripting support Automator.
+Of all the OSes I've used, OS X is the one that makes it the easiest to integrate command line programs into the GUI.
+
+I'll end today by explaining an important part of the Unix philosophy, a part that's still very much alive and well within OS X today -- Unix aims to provide a suite of many simple command line tools that each do just one thing, but do it very well -- complex tasks can then be achieved by chaining these simple commands together using a powerful command shell.
+Each Unix/Linux command line program can be seen as a lego brick -- not all that exciting on their own, but using a bunch of them, you can build fantastic things!
+My hope for this series is to help readers and listeners like you develop the skills to build your own fantastic things to make your computing lives easier.
+Ultimately the goal is to help you create more and better things by using automation to free you from as many of your repetitive tasks as possible!

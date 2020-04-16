@@ -1,0 +1,467 @@
+= TTT Part 28 of n -- Network Troubleshooting
+
+In <<ttt23.adoc,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+As a quick reminder, the most important points were:
+
+* Our computer networks use a stack of protocols known as TCP/IP
+* We think of the stack of protocols as being broken into four layers:
+* The Link Layer -- lets computers that are on the same network send single packets of data to each other
+* The Internet Layer -- Lets computers on different networks send single packets of data to each other
+* The Transport Layer -- lets computers send meaningful streams of data between each other
+* The Application Layer -- where all the networked apps we use live
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+
+Since that big-picture introduction we've looked at the first three layers in detail, and we've also looked at two layer-4 protocols that function as part of the network infrastructure -- DHCP for the automatic discovery of network settings, and DNS for mapping domain names to IP addresses.
+Later in the series we will move on to look at some more layer 4 protocols, but before we do I want to consolidate what we've learned so-far into a strategy for debugging network problems.
+In short -- how to get from a vague complaint like "`the internet is broken`" to a specific problem that can be addressed.
+
+== Matching Postcast Episode 28
+
+Listen Along: Taming the Terminal Podcast Episode 28
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+When troubleshooting network problems, the basic advice is to start at the bottom of the stack and work your way up until you find the problem.
+You can break the process down into four loose steps:
+
+. *Basic Network Connectivity:* make sure the computer has at least one active network connection.
+. *IP Configuration:* make sure the computer has the three required IP settings configured:
+ .. An IP address
+ .. A Netmask
+ .. A default gateway
+. *IP Connectivity:*
+ .. Test whether the computer can communicate with the default gateway (probably your home router)
+ .. Test whether the computer can communicate with a server on the internet
+. *Domain Name Resolution:* make sure the computer can use DNS to resolve domain names to IP addresses.
+
+Let's now look at these steps in more detail, and at the terminal commands we'll need for each.
+At the end of each section w'll also describe what we should see if everything is working correctly at that level of the stack, and some things to consider if you find results that are not as expected.
+
+== Step 1 -- Check Basic Network Connectivity
+
+Starting at the very bottom of the network stack we need to make sure there is at least one network interface up and connected before we continue.
+
+The terminal command for listing network interfaces is `ifconfig`.
+We've seen this command in previous instalments, but never looked at it in detail.
+Note that there are some subtle differences between the versions of this command available on OS X and on Linux.
+In our examples we will be using the OS X version of the command.
+
+`ifconfig` can be used to both show and alter the configuration of network interfaces.
+Note that we will only be using the command to display the current settings, not to alter them.
+On OS X you should use the Networks system preference pane to change network settings.
+
+To get a list of the names of all network interfaces defined on a Mac run the following command (does not work in Linux):
+
+[source,bash]
+----
+ifconfig -l
+----
+
+The command will return the names on a single line separated by spaces.
+
+Remember that `lo0` is the so-called loop-back address used for purely internal network communication, and that on Macs, '`real`' network interfaces will be named `en` followed by a number, e.g.
+`en0` and `en1`.
+Any other network interfaces you see are either non-traditional interfaces like firewire, or virtual interfaces created by software like VPN clients.
+When it comes to basic network trouble shooting it's the `en` devices that we are interested in.
+
+Once you know the names of your network devices you can see more information for any given device by passing the device name as an argument.
+E.g.
+the following is the description of my `en0` interface:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ ifconfig en0
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=10b<RXCSUM,TXCSUM,VLAN_HWTAGGING,AV>
+	ether 68:5b:35:97:f1:84
+	inet6 fe80::6a5b:35ff:fe97:f184%en0 prefixlen 64 scopeid 0x4
+	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
+	nd6 options=1<PERFORMNUD>
+	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-ethernet>)
+	status: active
+bart-iMac2013:~ bart$
+----
+
+You can also see the details for all network interfaces by replacing the interface name with the `-a` flag (this is what the OS X version of `ifconfig` does implicitly if called with no arguments):
+
+[source,bash]
+----
+ifconfig -a
+----
+
+A more useful option is `-u`, which lists all interface marked by the OS as being in an _up_ state.
+Note that an interface can be up, but inactive.
+
+By default `ifconfig` returns quite a bit of information for each interface, but not enough to make it obvious which interface matches which physical network connection.
+You can get more information by adding the `-v` flag (for verbose).
+
+Putting it all together, the command to run when verifying that there is basic network connectivity is `ifconfig -uv`.
+
+The following sample output shows one active ethernet network connection, *en0*, and one inactive wifi connection (en1).
+The important parts of the output have been bolded for clarity:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ ifconfig -uv
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384 index 1
+	eflags=10000000<SENDLIST>
+	options=3<RXCSUM,TXCSUM>
+	inet6 ::1 prefixlen 128
+	inet 127.0.0.1 netmask 0xff000000
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1
+	inet 127.94.0.1 netmask 0xff000000
+	inet 127.94.0.2 netmask 0xff000000
+	nd6 options=1<PERFORMNUD>
+	link quality: 100 (good)
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500 index 4
+	eflags=980<TXSTART,RXPOLL,ARPLL>
+	options=10b<RXCSUM,TXCSUM,VLAN_HWTAGGING,AV>
+	ether 68:5b:35:97:f1:84
+	inet6 fe80::6a5b:35ff:fe97:f184%en0 prefixlen 64 scopeid 0x4
+	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
+	nd6 options=1<PERFORMNUD>
+	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-ethernet>)
+	status: active
+	type: Ethernet
+	link quality: 100 (good)
+	scheduler: QFQ
+	link rate: 1.00 Gbps
+en1: flags=8823<UP,BROADCAST,SMART,SIMPLEX,MULTICAST> mtu 1500 index 5
+	eflags=200080<TXSTART,NOACKPRI>
+	ether c8:e0:eb:48:02:7b
+	nd6 options=1<PERFORMNUD>
+	media: autoselect (<unknown type>)
+	status: inactive
+	type: Wi-Fi
+	scheduler: TCQ (driver managed)
+bart-iMac2013:~ bart$
+----
+
+=== Expected Results
+
+If all is well, there should be two network interfaces active, the loop back interface (`lo0`), and an interface of either type `Ethernet` or `Wi-Fi`.
+
+=== Possible Problems/Solutions
+
+* No interface is active -- turn one on in the Networks System Preference Pane
+* If using ethernet, the cable could be bad, or the router/switch it is plugged into could be bad -- check for a link light on the router/switch
+* The network card could be broken (unlikely)
+
+== Step 2 -- Check Basic IP Configuration
+
+For a computer to have IP connectivity is needs three settings.
+It needs to know its IP address, it needs to know its Netmask, and it needs to know the IP address of the router it should use to communicate beyond the local network.
+This last setting is referred to by a number of different names, including _default gateway_, _default route_, and just _router_.
+A network is incorrectly configured if the IP address for the default gateway is outside the subnet defined by the combination of the IP address and netmask.
+If you're not sure if the gateway address is contained within the defined subnet, you may find an online ip subnet calculator like http://subnetcalc.it[subnetcalc.it] helpful.
+
+If an IP address has been configured for an interface there will be a line stating with `inet` in that interface's description in the output from `ifconfig`.
+This line will give you the IP address and netmask.
+
+Below is an example of the output for my one active network interface, `en0`:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ ifconfig -v en0
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500 index 4
+	eflags=980<TXSTART,RXPOLL,ARPLL>
+	options=10b<RXCSUM,TXCSUM,VLAN_HWTAGGING,AV>
+	ether 68:5b:35:97:f1:84
+	inet6 fe80::6a5b:35ff:fe97:f184%en0 prefixlen 64 scopeid 0x4
+	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
+	nd6 options=1<PERFORMNUD>
+	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-ethernet>)
+	status: active
+	type: Ethernet
+	link quality: 100 (good)
+	scheduler: QFQ
+	link rate: 1.00 Gbps
+bart-iMac2013:~ bart$
+----
+
+While looking at this output it's also worth checking that the link quality is being shows as good.
+
+To read the default route you'll need to use the `netstat` command.
+We haven't looked at this command in detail yet, and we won't be until a future instalment.
+For now we just need to know that the following command will show us the IP address of the default router:
+
+[source,bash]
+----
+netstat -rn | egrep '^default'
+----
+
+The following sample output shows that my default gateway is set to `192.168.10.1`:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ netstat -rn | egrep '^default'
+default            192.168.10.1       UGSc           28        0     en0
+bart-iMac2013:~ bart$
+----
+
+=== Expected Result
+
+There will be an IP address, netmask, and default gateway configured, and the default gateway will be within the subnet defined by the IP address and netmask.
+Make a note of these three settings for future reference.
+
+=== Possible Problems/Solutions
+
+* DHCP has been disabled on the interface -- enable it using the Networks System Preference Pane
+* DHCP is not working on the network -- this will need to be addressed on the router
+
+== Step 3 -- Test IP Connectivity
+
+At this point we can have some confidence that the settings on the computer itself are at least sane.
+It's now time to start probing the network the computer is connected to.
+
+The `ping` command allows us to test connectivity to a specified IP address.
+This command is ubiquitous across OSes, and even exists on Windows, though there are some subtle differences in the commands behaviour across the different OSes.
+
+`ping` uses the Internet Control Message Protocol (ICMP).
+This is a protocol that sits in layer 2 next to IP, and is used for network diagnostics rather than information transport.
+`ping` works by sending an ICPM echo request packet to the target IP, and waiting for an ICMP echo response packet back.
+According to the RFCs all TCP/IP stacks should respond to ICMP echo requests, but many do not.
+Service's like Steve Gibson's Shields Up even go so far as to actively discourage obeying the RFCs.
+Personally, I think it's reasonable for home routers not to reply to pings, but world-facing servers should be good netizens and obey the RFCs.
+(Windows Server also blocks ICMP requests by default, which is very annoying when trying to monitor your own network's health!)
+
+To use the `ping` command simply pass it the IP address to be pinged as an argument.
+
+On OS X, Unix, and Linux `ping` will default to continuously sending pings until the user interrupts the process, while on Windows `ping` defaults to sending exactly 4 pings and then stopping.
+To get the Windows version of `ping` to ping continuously use the `-t` flag.
+If ping is running continuously, you stop it by pressing `ctrl+c`.
+That will stop new pings being sent, and `ping` will then print some summary information before exiting.
+
+To avoid having to hit `ctrl+c`, while still getting a good sample size, the `-c` flag can be used to specify the desired number of pings to send.
+10 is a sensible value to choose.
+
+To start to probe our connectivity we should first try ping the default gateway we discovered in the previous step.
+The example below shows my output, pinging my default gateway `192.168.10.1`.
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ ping -c 10 192.168.10.1
+PING 192.168.10.1 (192.168.10.1): 56 data bytes
+64 bytes from 192.168.10.1: icmp_seq=0 ttl=64 time=0.378 ms
+64 bytes from 192.168.10.1: icmp_seq=1 ttl=64 time=0.365 ms
+64 bytes from 192.168.10.1: icmp_seq=2 ttl=64 time=0.398 ms
+64 bytes from 192.168.10.1: icmp_seq=3 ttl=64 time=0.383 ms
+64 bytes from 192.168.10.1: icmp_seq=4 ttl=64 time=0.409 ms
+64 bytes from 192.168.10.1: icmp_seq=5 ttl=64 time=0.363 ms
+64 bytes from 192.168.10.1: icmp_seq=6 ttl=64 time=0.273 ms
+64 bytes from 192.168.10.1: icmp_seq=7 ttl=64 time=0.396 ms
+64 bytes from 192.168.10.1: icmp_seq=8 ttl=64 time=0.265 ms
+64 bytes from 192.168.10.1: icmp_seq=9 ttl=64 time=0.385 ms
+
+--- 192.168.10.1 ping statistics ---
+10 packets transmitted, 10 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 0.265/0.362/0.409/0.048 ms
+bart-iMac2013:~ bart$
+----
+
+If all is well on the local network (LAN), then there should be 0% packet loss reported by `ping`.
+You would also expect the round trip times to be very small -- fraction of a millisecond would be normal.
+The round trip times should also be reasonably similar to each other -- at the very least of the same order of magnitude.
+
+If there is little or no packet loss, we need to probe further for the source of the problems.
+To do this we need to ping an IP address that is outside of the LAN.
+If you happen to know your ISP's router's address you could try ping that, but realistically people won't know that kind of thing, and many ISPs configure their routers not to respond to pings.
+What you can do instead is ping any IP out on the internet that you know exists, and that you know answers pings.
+I tend to use Google's public DNS resolver for the simple reason that I know it's very likely to be up, that it answers pings, and that it has a very memorable IP address -- `8.8.8.8`.
+
+Below is a sample of the output I get when I ping Google's public DNS resolver:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ ping -c 10 8.8.8.8
+PING 8.8.8.8 (8.8.8.8): 56 data bytes
+64 bytes from 8.8.8.8: icmp_seq=0 ttl=56 time=30.380 ms
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=56 time=18.387 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=56 time=18.423 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=56 time=13.232 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=56 time=11.189 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=56 time=13.054 ms
+64 bytes from 8.8.8.8: icmp_seq=6 ttl=56 time=17.855 ms
+64 bytes from 8.8.8.8: icmp_seq=7 ttl=56 time=12.875 ms
+64 bytes from 8.8.8.8: icmp_seq=8 ttl=56 time=22.634 ms
+64 bytes from 8.8.8.8: icmp_seq=9 ttl=56 time=34.798 ms
+
+--- 8.8.8.8 ping statistics ---
+10 packets transmitted, 10 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 11.189/19.283/34.798/7.488 ms
+bart-iMac2013:~ bart$
+----
+
+Notice that the round trip times are much longer now -- not fractions of a millisecond but tens of milliseconds.
+If you have a slower internet connection the times could even rise to hundreds of milliseconds.
+What is important though is that they are all similar.
+If there are massive fluctuations in response times that suggests that your ISP is having capacity issues, and that your internet connection is unstable.
+
+If there is ping connectivity all the way out to Google, then you know you have a working internet connection.
+
+=== Expected Result
+
+Both the default gateway and the IP address on the internet reply to the pings, and have 0% packet loss.
+
+Any packet loss at all when pinging your default gateway is a bad sign.
+It is indicative of an unhealthy LAN, or at the very least an unhealthy connection between the computer being tested and the core of the LAN.
+
+If your ISP's network is healthy packets loss out to google should be zero too, but if your ISP's network is a little congested, you might see the odd dropped packet creep in.
+Losing the occasional packet is tolerable, especially at peak times, but it does suggest that your ISP's network is under stress, or that your connection to your ISP is perhaps a little lossy.
+
+If your default gateway reports expected results, but the public IP address doesn't, that implies there is a problem somewhere between your default gateway and the public IP address you were pinging.
+It could be that the server hosting the public IP is down, and everything else is OK, but if you use a big server like Google's DNS resolver for your test, that would be extremely unlikely.
+The most likely scenario would be that your ISP is having a problem.
+
+If you have a simple setup with just one home router, it's probably safe to call your ISP as soon as a ping to an outside IP fails, but if you have a more complex setup, you might want to do a little more investigation before making that call.
+After all, it would be embarrassing to phone your ISP only to find that the problem is actually somewhere within your own setup!
+
+You can use the `traceroute` command to attempt to clarify the location of the problem.
+The `traceroute` command streams out a series of packets with different TTLs (Time To Live specified not in time but in hops between IP routers).
+Every TCP/IP stack that interacts with a `traceroute` packet at an IP level should decrement the TTL by one before passing the packet on to the next router along the packet's route to the destination being tested.
+If a TCP/IP stack gets a `traceroute` packet and there is no TTL left, it should reply to the originator informing it of where the packet got to within it's TTL.
+By piecing together the information contained in all the returned packets for each TTL it's possible to see how packets between the source and destination IPs traverse the internet.
+Because this protocol uses many packets, you are not seeing the journey any one packet took, but the average journey of all the packets.
+
+Note that not all routers respond to traceroute packets, so there may be no information for some TTLs, in which case that network hop is shown with just stars in `traceroute`'`s output.
+
+The `traceroute` command is available in Windows, Linux, Unix and OS X, but there is one caveat, it's spelled differently on windows!
+To trace your route to Google's public DNS resolver you would issue the following command on OS X, Linux or Unix:
+
+[source,bash]
+----
+traceroute 8.8.8.8
+----
+
+On Windows the command would be:
+
+[source,bash]
+----
+tracert 8.8.8.8
+----
+
+On my home network I have two routers -- one provided by my ISP which doesn't give me the level of control or security I want, and my own router which does.
+I can see both of these internal hops when I `traceroute` to Googles DNS resolver.
+The command issued and the two internal hops are shown in bold in the sample output below:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 64 hops max, 52 byte packets
+ 1  bw-pfsense (192.168.10.1)  0.482 ms  0.339 ms  0.251 ms
+ 2  192.168.192.1 (192.168.192.1)  0.822 ms  0.927 ms  0.911 ms
+ 3  * * *
+ 4  * * *
+ 5  109.255.250.254 (109.255.250.254)  15.475 ms  12.704 ms  10.010 ms
+ 6  84.116.238.62 (84.116.238.62)  15.239 ms  12.699 ms  11.892 ms
+ 7  213.46.165.54 (213.46.165.54)  20.095 ms  14.596 ms  14.963 ms
+ 8  66.249.95.135 (66.249.95.135)  13.044 ms  17.823 ms  16.784 ms
+ 9  google-public-dns-a.google.com (8.8.8.8)  13.102 ms  27.005 ms  14.958 ms
+bart-iMac2013:~ bart$
+----
+
+If the home router provided by my ISP were to be down I would expect the trace to get stuck after it hits my main router (`bw-pfsense`), if that hop showed up, but then the trace went dark, then I would know that all equipment within my house is working fine, but that nothing is getting out onto the internet from my house, implicating my ISP.
+
+=== Possible Problems/Solutions
+
+* If there is not even connectivity as far as the default gateway then either the network settings are wrong, or there is a hardware problem with the LAN
+* If there is packet loss when pinging the default gateway, then either there is congestion on the LAN, or there is a hardware problem -- perhaps a faulty switch/router or perhaps a faulty network card.
+If using ethernet it could also be a damaged ethernet cable, and if using wifi it could be low signal strength, congestion of the channel because too many of your neighbours are using the same channel, or RF interference of some kind.
+* If the ping to the public IP does not respond at all then either the server you are pinging is down, or, more likely, your connection to the internet is down.
+`traceroute` may help you prove it really is your ISP that is the problem before you spend an eternity on hold with them!
+
+== Step 4 -- Check Name Resolution
+
+Almost everything we do online involves domain names rather than IP addresses, so if a computer has lost the ability to convert domain names to IP addresses it will appear to have lots it's internet connection even if it has full IP-level connectivity.
+
+To test name resolution simply try resolve a known-good domain name like `google.com`:
+
+[source,bash]
+----
+host google.com
+----
+
+If name resolution is working you should see output something like:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ host google.com
+google.com has address 74.125.24.113
+google.com has address 74.125.24.100
+google.com has address 74.125.24.101
+google.com has address 74.125.24.139
+google.com has address 74.125.24.138
+google.com has address 74.125.24.102
+google.com has IPv6 address 2a00:1450:400b:c02::71
+google.com mail is handled by 10 aspmx.l.google.com.
+google.com mail is handled by 40 alt3.aspmx.l.google.com.
+google.com mail is handled by 20 alt1.aspmx.l.google.com.
+google.com mail is handled by 50 alt4.aspmx.l.google.com.
+google.com mail is handled by 30 alt2.aspmx.l.google.com.
+bart-iMac2013:~ bart$
+----
+
+The actual details returned could vary depending on where and when you run the command, what matters is that you get back a list if IPs.
+
+If that fails, check that DNS resolvers have been configured on the computer by running:
+
+[source,bash]
+----
+cat /etc/resolv.conf | egrep '^nameserver'
+----
+
+If all is well there should be at least one line returned.
+The example below shows that my Mac is configured to use one DNS resolver, `192.168.10.1`:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ cat /etc/resolv.conf | egrep '^nameserver'
+nameserver 192.168.10.1
+bart-iMac2013:~ bart$
+----
+
+It is also worth testing whether or not Google's public DNS resolver will work from the given computer:
+
+[source,bash]
+----
+dig +short google.com @8.8.8.8
+----
+
+If you can resolve names using Google's public resolver you should see output something like:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ dig +short google.com @8.8.8.8
+74.125.138.100
+74.125.138.113
+74.125.138.138
+74.125.138.102
+74.125.138.139
+74.125.138.101
+bart-iMac2013:~ bart$
+----
+
+The actual IPs returned could well be different depending on where and when you run the command, the important thing is that a list of IPs is returned.
+
+=== Expected Result
+
+The test name resolves to one or more IP addresses without error.
+
+=== Possible Problems/Solutions
+
+* If there are no resolvers listed in `/etc/resolve.conf`, then ideally the user's home router should be checked to make sure DNS is properly configured there, because DNS settings should be passed down to the computer via DHCP.
+* Only if the problem can't be addressed on the router does it make sense to try fix it on the computer itself by hard-coding it to use a particular resolver in the Networks System Preference Pane.
+
+== Conclusions
+
+When a family member, colleague, or friend comes to you with a vague problem statement like "`the internet is down`", it's very hard to know where to begin.
+By starting at the bottom of the stack and working your way up methodically you should be able to discover the point at which things break down, and hence know where to focus your efforts at fixing the problem.
+The methodology described here does not tell you exactly what to do in any given situation because the variability is infinite, but it should help you focus your efforts where they are needed.
+
+Up until now the networking segment of this series has focused on how the internet works.
+We've looked in detail at the protocols that could best be described as the infrastructure of the internet.
+The series is now going to shift focus away from the infrastructure itself, and onto some uses of that infrastructure.
+
+The next few instalments are going to focus on a very powerful layer 4 protocol that allows for secure communication between two computers -- the Secure Shell Protocol, better known as SSH.

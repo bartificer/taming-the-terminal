@@ -1,0 +1,173 @@
+= TTT Part 10 of n -- man
+
+Like with so many things in tech, it doesn't matter if you don't know everything, what matters is that you have the skills to quickly find the information you need when you needed it.
+Programmers don't memorise entire APIs, they simply learn how to search them, and how to interpret the results of their searches.
+
+This is an area where the Linux/Unix command line environment really shines.
+All Linux & Unix distributions, including OS X, have a built-in manual that allows you to quickly find the documentation you need, when you need it.
+Every command line command/program can add its documentation to the system manual.
+In fact, each command/program can actually add multiple documents to the manual.
+Tools that make use of configuration files will often add a separate document to describe the structure of the configuration file for example.
+
+Every built-in command will have an entry in the manual, and any software you install via the standard package management tools for your distribution will almost certainly bundle the related manual entries as part of the package.
+This is also true on OS X, where package mangers like http://www.macports.org[Mac Ports] will also bundle manual pages with the software they install, and even stand-alone `.pkg` installers for command line tools will usually also install manual entries.
+If you run it from the command line, the changes are very high that there will be a manual entry for it on Linux, Unix and OS X.
+
+== Matching Postcast Episode 10
+
+Listen Along: Taming the Terminal Podcast Episode 10
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+I'm getting tired of typing '`manual entry`', so lets introduce a little jargon.
+The command to read a manual entry is `man`, so command line aficionados will almost always refer to manual entries simply as _man pages_, so I'm going to do the same from here on.
+
+In theory the authors of man pages are free to write in any style the wish, and to organise their pages into any structure they see fit.
+Thankfully, a very strong convention has established itself, so just about every man page in existence is written in the same style, and organised in approximately the same way.
+Initially, you'll find the style odd, and perhaps even off-putting, but you'll soon get used to it.
+Sadly there is no shortcut -- the only way to get good at reading man pages, is to read man pages!
+
+== Navigation
+
+Lets start with the practicalities of opening, closing, and navigating a man page before we look at the structure and formatting.
+
+To open a man page simply use the `man` command with a single argument, the name of the command or config file you would like to read the entry for.
+
+As an example, lets call up the documentation for the `ls` command:
+
+[source,bash]
+----
+man ls
+----
+
+You'll immediately notice that you've lost your command prompt, and are viewing a text document in your terminal window.
+The most important thing to learn is how to exit out of the man page and get back to your command prompt.
+To get out, simply hit the q key (for quit)!
+
+OK, now that we know to get back out, lets re-open the man page for `ls` and have a look around.
+
+You can navigate up and down in a man page with the up and down arrow keys.
+You can also scroll down a single line by hitting enter, or a whole page at once with the spacebar.
+To scroll up a whole page at once hit `b` (for back).
+You can also go back half a page with the `u` key (for up).
+
+You can search in a document by typing `/` followed by your search pattern, and then hitting enter.
+To get to the next result hit the `n` key (and to get to the previous result, `shift+n`).
+
+== Structure
+
+Now that we can navigate around, lets have a closer look at the structure of a man page.
+The first thing to note is that each man page is divided into sections, which are labeled in all capitals, and their content is indented by one tab.
+Sections can contain sub-sections who's content is indented by two tabs, and so on.
+
+Just about every man page you'll ever see will have the following three sections:
+
+*NAME* -- this will be the first section, and will simply contain the name of the thing the man page is documenting, perhaps with a very short description.
+e.g.
+the name section in the `ls` man page contains "`ls -- list directory contents`".
+
+*SYNOPSIS* -- this is a very important section and one we'll look at in a lot more detail below.
+This section uses a somewhat cryptic notation to describe the structure of the arguments a command expects.
+
+*DESCRIPTION* -- this is where the main body of the documentation will be contained.
+The description is usually the longest section by far, and often contains sub-sections.
+This is where you expect to find a list of all the options a command accepts, and a description of what they do.
+
+Just to reiterate, there is no formal strutter every man page has to follow, but there are conventions, so most man pages will contain at least some of the sections listed below, in addition to the three above.
+Man page may contain custom sections though, so the list below is not exhaustive.
+
+*OVERVIEW* -- very long man pages sometimes contain a one-paragraph summary of what the command does between the SYNOPSIS and DESCRIPTION sections.
+
+*OPTIONS* -- more complicated commands may separate their list of command line flags into a separate OPTIONS section immediately after the DESCRIPTION section.
+
+*EXAMPLES* -- many man pages contain annotated examples of how the command being documented can be used.
+If present, this is usually a very helpful section, and often worth jumping straight to.
+
+*TIPS* -- some man pages use this section to offer some useful advice to users.
+
+*SEE ALSO* -- this section is used to list related man pages, often describing related commands, or associated configuration files.
+
+*FILES* -- if a command's function is affected by one or more configuration files, the default file system locations for these files are often listed in this section.
+E.g.
+the FILES section from the `ntpdate` man page:
+
+[source,bash]
+----
+FILES
+     /etc/ntp.keys  contains the encryption keys used by ntpdate.
+----
+
+*STANDARDS* -- if the command conforms to some kind of standard set out by some sort of standards authority (perhaps the IEEE or the ISO), then the relevant standards may be listed in this section.
+E.g.
+the STANDARDS section from the `ls` man page:
+
+[source,bash]
+----
+STANDARDS
+	The ls utility conforms to IEEE Std 1003.1-2001 (``POSIX.1'').
+----
+
+*DIAGNOSTICS* -- for now, you can probably ignore this section.
+If it's present it contains information that's usually only useful when writing or debugging scripts.
+
+*ENVIRONMENT* -- we haven't discussed the command line environment yet in this series, although it is next on the list.
+For now, you can ignore this section.
+
+*COMPATIBILITY* -- this section will only be present if the command has potential compatibility problems, perhaps it doesn't quite comply to a standard or something like that.
+
+*LEGACY DESCRIPTION* -- some commands have changed their behaviour over time.
+This section is where the old behaviours will be documented.
+This is really only useful when working with old scripts which might still be assuming the command's old behaviour.
+
+*BUGS* -- if there are known problems with the command, or known conditions which cause unusual or undesirable behaviour, they may be listed in this section.
+
+*HISTORY* -- this can be a fun section, and is usually very short, and details the origins of the command.
+E.g.
+the HISTORY section of the `ls` man page tells us that "`An ls command appeared in Version 1 AT&T UNIX`".
+
+*AUTHOR* -- details the authors of the command being documented.
+
+*COPYRIGHT* -- the copyright information for the command being documented.
+
+== Understanding the SYNOPSIS Section
+
+When you're first learning about a command the DESCRIPTION section is probably the most useful to you, but when it comes to re-learning something you were once familiar with, the SYNOPSIS section is often the most useful.
+Although it's short it's very dense with information.
+However, to be able to extract the meaning form this short section you need to understand the meaning of the formatting:
+
+`+**BOLD TEXT**+` -- any text in bold should be entered verbatim
+
+`UNDERLINED/ITALIC` -- any text that is either in italics or underlined (depending on your version of man, usually underlines in modern OSes) needs to be replaced with a real value as described by the text.
+E.g.
+`file` should be replaced with the path to an actual file.
+
+`+...+` -- anything followed by an ellipsis (three dots) can be optionally repeated
+
+`[]` -- anything contained within square brackets is optional
+
+`|` -- the pipe symbol should be read as '`or`'
+
+== Final Thoughts
+
+The most important thing is not to be afraid of man pages.
+At first they will seem archaic and confusing, but you'll soon get used to their style, and you might even come to like it!
+There is no substitute for practice though -- the only way to learn to read man pages is to read man pages!
+
+Finally, lets end on a really bad nerd joke!
+
+====
+Q: How do you know woman are more complicated than men?
+
+A: Because you can man man, but you can't man woman!
+____
+
+[source,bash]
+----
+$ man woman
+No manual entry for woman
+$
+----
+
+====

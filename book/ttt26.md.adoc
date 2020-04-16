@@ -1,0 +1,330 @@
+= TTT Part 26 of n -- DHCP
+
+In <<ttt23.adoc,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+As a quick reminder, the most important points were:
+
+* Our computer networks use a stack of protocols known as TCP/IP
+* We think of the stack of protocols as being broken into four layers:
+* The Link Layer -- lets computers that are on the same network send single packets of data to each other
+* The Internet Layer -- Lets computers on different networks send single packets of data to each other
+* The Transport Layer -- lets computers send meaningful streams of data between each other
+* The Application Layer -- where all the networked apps we use live
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+
+In <<ttt25.adoc,the previous instalment>> we looked at how IP subnet works.
+The key takeaway was that a computer needs a minimum of three settings correctly configured to be able to participate in an IP network: an IP address, a subnet mask, and a default gateway (the IP address of the router providing access outside the subnet).
+We also looked at how to read those three settings from your Mac using the GUI and the Terminal.
+Finally, we noted that historically, those settings had to manually configured, but that today, almost all computers acquire those settings automatically.
+In this instalment we'll look at the protocol that makes that possible, the Dynamic Host Configuration Protocol, or DHCP.
+
+== Matching Postcast Episode 26
+
+Listen Along: Taming the Terminal Podcast Episode 26
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT26DHCP/TTT_26_DHCP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT26DHCP/TTT_26_DHCP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== The Problem to be Solved
+
+If we re-wind the clock to the days before laptops (let alone tablets and smartphones), the only computers connecting to networks were stationary devices.
+A network admin would connect the computer to the network, configure the three vital settings, and that would be the computer set up on the network, probably for its entire life.
+
+Even at this early stage there was some friction with this process.
+Manually configured network settings make seamless network changes impossible.
+Once the network is changed in some way, a network engineer has to re-visit each computer one by one to update the settings.
+
+However, it was the invention of the portable networked computer that turned this friction into a major problem.
+We all expect to be able to get network access where ever we go with our laptops, iPhones, and iPads.
+If we were doing things the old way and manually configuring out devices, we would need to know what IP address, netmask, and gateway for every network we used, and, we would have to manually change the settings each time we moved from one network to another.
+Obviously, manually configured network settings are just not practical in the modern world!
+
+The solution was to develop a protocol that would allow computers to automatically discover their own settings.
+
+The first attempt at developing such a protocol was http://en.wikipedia.org/wiki/Reverse_Address_Resolution_Protocol[RARP] (the Reverse ARP Protocol), which was published in 1984.
+RARP was a link-layer protocol (layer 1 in the TCP/IP model), which meant that the RARP server had to be on the same ethernet network as the clients.
+This also meant that organisations with multiple subnets needed multiple RARP servers.
+RARP was a short-lived experiment, being superseded with the release of http://en.wikipedia.org/wiki/Bootstrap_Protocol[BOOTP] (the Bootstrap Protocol) in 1985.
+BOOTP was a significant step forward, introducing the concept of a relay agent that could forward BOOTP requests from multiple subnets to a single centralised BOOTP server.
+BOOTP was still very much a product of its time though -- it was designed around the concept of allocating IPs to computers permanently.
+BOOTP has no way to re-claim addresses, so it's useless in environments were lots of computer come and go all the time.
+
+In 1993 BOOTP was extended to create the protocol we use today, http://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol[DHCP] (the Dynamic Host Configuration Protocol).
+DHCP is built around the concept of computers temporarily _leasing_ an IP address.
+As computers come and go, IP addresses are leased to those computers for a set amount of time, and then re-claimed for later re-use.
+
+== The Chicken & the Egg
+
+As perverse as it sounds, DHCP is an Application Layer protocol (layer 4 in the TCP/IP model) that's used to configure a computer's IP settings (layer 2 in the TCP/IP model).
+DHCP uses UDP, which in turn uses IP.
+How can a protocol that relies on the IP protocol be used to configure the computer's IP settings?
+
+The reason DHCP can work is that even an un-configured IP stack can send and receive so-called _broadcast packets_.
+ARP maps the IP address `255.255.255.255` to the MAC address `FF:FF:FF:FF:FF:FF`.
+As we learned in <<ttt24.adoc,Instalment 24>>, `FF:FF:FF:FF:FF:FF` is a special MAC address that's used to send a packet to every device on an ethernet network.
+Devices with an un-configured IP stack can send and receive IP (and hence UDP) packets with a source address of `0.0.0.0` and a destination address of `255.255.255.255`.
+The DHCP protocol makes liberal use of these broadcast packets.
+
+== Prerequisites
+
+For DHCP to work on a given ethernet network that network must contain one of two things -- a DHCP server, or a DHCP relay agent.
+We've already mentioned that so-called home routers are not actually routers, but boxes containing many components.
+We already know that these devices contain a router component, an ethernet switch component, and a wireless access point component, but they actually contain more components than that.
+Another one of the components contained within the little boxes we refer to as home routers is a DHCP server.
+This means that on our home networks we have a DHCP server directly connected to our ethernet network.
+
+On larger networks like those you'd find in corporations or educational institutions you won't find home routers powering the network.
+Instead, what you'll find is that the managed switches and routers used by these organisations contain DHCP relay agents, which relay DHCP requests from all the different subnets on the network to a single central cluster of DHCP servers (usually with redundancy built in incase a server crashes).
+This more complex environment is outside of the scope of this series.
+We'll be ignoring DHCP relay agents for the remainder of this discussion.
+
+== How DHCP Works
+
+DHCP is a simple request-response protocol.
+DHCP relies heavily on UDP broadcast packets, but when ever possible it uses regular UDP packets because they cause less congestion on a network.
+
+When a computer configured to use DHCP is first connected to a network a four-part conversation should follow, at the end of which the computer should have a fully configured TCP/IP stack.
+Assuming everything goes to plan, the following should be the sequence of events:
+
+. The client broadcasts a DHCP DISCOVER packet to `255.255.255.255`.
+. A DHCP server received that packet and responds with A DHCP OFFER packet also broadcast to `255.255.255.255`.
+. The client receives the OFFER and broadcasts a DHCP REQUEST packet.
+. The server receives the REQUEST and broadcasts back a DHCP ACK packet.
+
+What does that sequence of four packets really mean?
+
+The initial DHCP DISCOVER is the client broadcasting its request for configuration settings to the entire network in the hope that a DHCP server will respond to it.
+That request contains a minimum of the MAC address of the requesting computer, a list of configuration settings it would like a value for, and a so-called _magic cookie_.
+The DISCOVER packet can also contain extra information like the client's hostname, and the length of lease the client would like.
+
+The DHCP server will hear the broadcast and, assuming it's configured to do so, respond by broadcasting a DHCP OFFER.
+The DHCP OFFER will contain the magic cookie, an IP, subnet, and gateway for the client's use, a lease time, and values for as many of the requested settings as possible.
+
+If the client is happy with the settings it was offered it will broadcast a DHCP REQUEST, formally asking that it be assigned the offered IP.
+The REQUEST contains the IP being requested, the client's MAC address, the magic cookie again, and another copy of the list of desired settings.
+
+Assuming the requested IP is still free, the server will broadcast back a DHCP ACK packet confirming to the client that it can use those details.
+The ACK contains the same information as the original OFFER.
+
+Once that four-way transaction is complete, the DHCP server marks the IP as being in use for the duration of the lease, and the client uses the supplied details to configure its IP stack.
+
+The so-called _magic cookie_ is just a random value generated by the client that is used to tie the different DHCP packets together.
+On a busy network there could be many DISCOVERs, OFFERs, REQUESTs, and ACKs broadcast every second, so without the magic cookie it would be impossible to tell which response is meant for which client.
+
+When the lease comes to an end, the whole process does not have to be repeated.
+The client can simply send a new DHCP REQUEST, asking for the lease on its current IP to be extended.
+If the server is happy to extend the lease it will respond with a DHCP ACK.
+Because the client machine has an IP at this point, there is no need to use inefficient broadcast packets, so these REQUEST and ACK packets are sent directly using regular UDP packets.
+
+== Seeing DHCP Packets
+
+We can use the tcpdump command to display all the DHCP packets reaching our computer:
+
+[source,bash]
+----
+sudo tcpdump -ennv port 67 or port 68
+----
+
+This will create quite verbose output, showing the full content of every DHCP packet.
+The content of a packet is tabbed in, so each line starting at the left edge is the start of a new packet.
+
+Below is a capture if the DHCP conversation between my laptop and my router, with the critical information highlighted in bold, and a blank line inserted between each packet for extra clarity:
+
+[source,bash]
+----
+20:00:18.229408 60:c5:47:9b:e7:88 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x0, ttl 255, id 45669, offset 0, flags [none], proto UDP (17), length 328)
+    0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 60:c5:47:9b:e7:88, length 300, xid 0x6e151923, secs 2, Flags [none]
+  Client-Ethernet-Address 60:c5:47:9b:e7:88
+  Vendor-rfc1048 Extensions
+    Magic Cookie 0x63825363
+    DHCP-Message Option 53, length 1: Discover
+    Parameter-Request Option 55, length 9:
+      Subnet-Mask, Default-Gateway, Domain-Name-Server, Domain-Name
+      Option 119, LDAP, Option 252, Netbios-Name-Server
+      Netbios-Node
+    MSZ Option 57, length 2: 1500
+    Client-ID Option 61, length 7: ether 60:c5:47:9b:e7:88
+    Lease-Time Option 51, length 4: 7776000
+    Hostname Option 12, length 8: "BW-MBP-2"
+
+20:00:18.234197 00:13:3b:0e:3f:30 > 60:c5:47:9b:e7:88, ethertype IPv4 (0x0800), length 342: (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    192.168.10.1.67 > 192.168.10.206.68: BOOTP/DHCP, Reply, length 300, xid 0x6e151923, Flags [none]
+  Your-IP 192.168.10.206
+  Client-Ethernet-Address 60:c5:47:9b:e7:88
+  Vendor-rfc1048 Extensions
+    Magic Cookie 0x63825363
+    DHCP-Message Option 53, length 1: Offer
+    Server-ID Option 54, length 4: 192.168.10.1
+    Lease-Time Option 51, length 4: 86400
+    Subnet-Mask Option 1, length 4: 255.255.255.0
+    Default-Gateway Option 3, length 4: 192.168.10.1
+    Domain-Name-Server Option 6, length 4: 192.168.10.1
+    Domain-Name Option 15, length 11: "local domain"
+
+20:00:19.235167 60:c5:47:9b:e7:88 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x0, ttl 255, id 45670, offset 0, flags [none], proto UDP (17), length 328)
+    0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 60:c5:47:9b:e7:88, length 300, xid 0x6e151923, secs 3, Flags [none]
+  Client-Ethernet-Address 60:c5:47:9b:e7:88
+  Vendor-rfc1048 Extensions
+    Magic Cookie 0x63825363
+    DHCP-Message Option 53, length 1: Request
+    Parameter-Request Option 55, length 9:
+      Subnet-Mask, Default-Gateway, Domain-Name-Server, Domain-Name
+      Option 119, LDAP, Option 252, Netbios-Name-Server
+      Netbios-Node
+    MSZ Option 57, length 2: 1500
+    Client-ID Option 61, length 7: ether 60:c5:47:9b:e7:88
+    Requested-IP Option 50, length 4: 192.168.10.206
+    Server-ID Option 54, length 4: 192.168.10.1
+    Hostname Option 12, length 8: "BW-MBP-2"
+
+20:00:19.239426 00:13:3b:0e:3f:30 > 60:c5:47:9b:e7:88, ethertype IPv4 (0x0800), length 342: (tos 0x10, ttl 128, id 0, offset 0, flags [none], proto UDP (17), length 328)
+    192.168.10.1.67 > 192.168.10.206.68: BOOTP/DHCP, Reply, length 300, xid 0x6e151923, secs 3, Flags [none]
+  Your-IP 192.168.10.206
+  Client-Ethernet-Address 60:c5:47:9b:e7:88
+  Vendor-rfc1048 Extensions
+    Magic Cookie 0x63825363
+    DHCP-Message Option 53, length 1: ACK
+    Server-ID Option 54, length 4: 192.168.10.1
+    Lease-Time Option 51, length 4: 7200
+    Subnet-Mask Option 1, length 4: 255.255.255.0
+    Default-Gateway Option 3, length 4: 192.168.10.1
+    Domain-Name-Server Option 6, length 4: 192.168.10.1
+    Domain-Name Option 15, length 11: "localdomain"
+----
+
+== Beware of NACKs
+
+We've already seen the four most common types of DHCP packet, DISCOVER, OFFER, REQUEST, and ACK.
+There are three more types you may see:
+
+DHCP INFORM packets are used by clients to request more information from the server.
+If you configure your browser to use automatic proxy configuration, your computer can send a DHCP INFORM packet to ask the DHCP server if it knows what proxy settings should be used.
+
+Polite DHCP clients can also use DHCP RELEASE packets to tell a DHCP server they are finished with an IP address.
+This allows the IP to marked as free before the lease expires.
+
+The final type of DHCP packet is the one you need to be wary of -- the DHCP NACK.
+
+As the name may suggest to you, NACK stands for NOT ACK, in other words, it's a negative response to a DHCP REQUEST.
+It's perfectly normal for a small percentage of the DHCP packets on a network to be NACKs, they can be produced in innocent ways.
+However, on a healthy network you should see far fewer NACKs than ACKS.
+
+When a client's lease is coming to an end it sends a DHCP REQUEST to ask that its lease be extended.
+If for any reason the server does not want to extend the lease, it will respond with a DHCP NACK.
+On receiving this NACK the client simply starts from zero again, and sends a DHCP DISCOVER, at which point it will receive an OFFER of a different IP, which it can then REQUEST, and which the sever should then ACK.
+This means that the pattern REQUEST, NACK, DISCOVER, OFFER, REQUEST, ACK is entirely innocent, and nothing to worry about.
+
+DHCP NACKs can also be generated when an address that's supposed to be managed by DHCP is hard-coded onto a device somewhere on the network.
+Before sending out an ACK for an IP that's not supposed to be leased to anyone yet, the DHCP server will try ping the IP to make sure it really is free, if it gets a reply, it will respond to the REQUEST with a NACK.
+
+Finally, some computers, when waking up from sleep or booting, like to request their old IP again, even if the lease time has expired.
+When this happens, it's quite possible that the server has re-used the IP, and hence it has to NACK that request.
+This will result in the innocent pattern REQUEST, NACK, DISCOVER, OFFER, REQUEST, ACK.
+
+When you need to start worrying is when you see the same client get NACKed over and over again, and never get to an ACK, or, when you start to see as many or more NACKs as ACKs.
+
+There are two common problems that can lead to excessive NACKs.
+
+Firstly, if a network contains two DHCP servers (or more), they can end up fighting with each other.
+One can NACK every offer made by the other, and vica-versa.
+It's possible for two duelling DHCP servers to make it impossible for anyone on the network to get an IP via DHCP.
+This is something I've witnessed a few times during my day job.
+This can be done accidentally, or maliciously.
+
+Secondly, it is possible to configure your DHCP server to always assign the same IP address to a given MAC address.
+These so-called _static leases_ allow you to have all the advantages of manually configured IP addresses without the disadvantages.
+Many home routers allow you to configure these kinds of static leases.
+Where things can go wrong is when there is a static lease defined for a given MAC address, and some other device on the network has been manually configured to use that IP address.
+The DHCP server will offer the same IP over and over again, and each time the client responds with a DHCP REQUEST it will receive a NACK because the IP is responding to PINGs.
+In this situation the DHCP client will fail to connect to the network until the usurper is removed from the network.
+
+== The `ipconfig` Command (OS X Only)
+
+We've already encountered the `ifconfig` command which is common to all POSIX OSes, but OS X also contains a separate command which provides command line access to many of the functions exposed in the Network System Preference Pane.
+I'm referring to the confusingly named `ipconfig`.
+The reason I say this is a confusing name is that it's very similar to `ifconfig`, and identical to a completely different Windows command.
+
+`ipconfig` can be used to turn a network interface off as follows (replacing `enX` with the actual interface you want to disable):
+
+[source,bash]
+----
+sudo ipconfig set enX NONE
+----
+
+`ipconfig` can be used to enable a network interface in DHCP mode as follows (again replacing `enX` with the actual interface you want to disable):
+
+[source,bash]
+----
+sudo ipconfig set enX DHCP
+----
+
+Finally, `ipconfig` can be used to show the DHCP ACK packet that was used to configure a network interface (again replacing `enX` with the actual interface you want to get the packet for):
+
+[source,bash]
+----
+sudo ipconfig getpacket enX
+----
+
+The relevant information is in the options section near the bottom of the output, marked in bold below:
+
+[source,bash]
+----
+BW-MBP-2:~ bart$ sudo ipconfig getpacket en1
+Password:
+op = BOOTREPLY
+htype = 1
+flags = 0
+hlen = 6
+hops = 0
+xid = 1846876452
+secs = 0
+ciaddr = 192.168.10.206
+yiaddr = 192.168.10.206
+siaddr = 0.0.0.0
+giaddr = 0.0.0.0
+chaddr = 60:c5:47:9b:e7:88
+sname =
+file =
+options:
+Options count is 8
+dhcp_message_type (uint8): ACK 0x5
+server_identifier (ip): 192.168.10.1
+lease_time (uint32): 0x15180
+subnet_mask (ip): 255.255.255.0
+router (ip_mult): {192.168.10.1}
+domain_name_server (ip_mult): {192.168.10.1}
+domain_name (string): localdomain
+end (none):
+BW-MBP-2:~ bart$
+----
+
+For a full description of everything `ipconfig` can do, see its man page:
+
+[source,bash]
+----
+man ipconfig
+----
+
+== The Security Elephant in the Room (Again)
+
+As we saw with ARP previously, there is no security built into the DHCP protocol.
+DHCP clients will blindly implement what ever settings a DHCP server hands them.
+This is usually fine, because most of the time, the only DHCP server on your network is one that is there to help, but not always.
+A DHCP server process is small and simple.
+Any computer can act as a DHCP server.
+An attacker could connect to an open wireless network and run their own DHCP server, advertising their IP as the gateway, and hence become a Man In The Middle.
+Similarly, a malicious DHCP server could advertise a malicious DNS server, also allowing them to redirect all internet traffic to malicious servers.
+
+As a user, your only defence is to assume the worst on all networks you don't control, and use technologies like VPNs and TLS/SSL to protect your data.
+
+Network administrators can also protect their users by monitoring the source addresses of all DHCP OFFER, DHCP ACK, DHCP NACK, and DHCP INFORM packets and triggering an alarm if any unauthorised DHCP servers become active on the network.
+
+== Conclusions
+
+The two critical pieces of information to take away from this instalment are that DHCP is used to automatically configure the IP stack on our computers, and that a healthy DHCP transaction takes the following form: DISCOVER, OFFER, REQUEST, ACK.
+
+In the previous two instalments we learned how ethernet and IP provide the basic networking functionality our computers need to communicate.
+In this instalment we've seen how our home routers use the DHCP protocol to automatically configure the IP settings on our devices.
+In the next instalment we'll learn how DNS allows us humans to ignore IP addresses while surfing the web, sending emails, playing games, and so much more.
+
+Once we've added an understanding of DNS to our mental toolkit, we'll be ready to apply everything we have learned in instalments 23 through 27 together in a single instalment dedicated to terminal commands for network trouble-shooting.

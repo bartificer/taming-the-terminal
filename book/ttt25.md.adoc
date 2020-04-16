@@ -1,0 +1,543 @@
+= TTT Part 25 of n -- IP Subnets
+
+In <<ttt23.adoc,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+As a quick reminder, the most important points were:
+
+* Our computer networks use a stack of protocols known as TCP/IP
+* We think of the stack of protocols as being broken into four layers:
+* The Link Layer -- lets computers that are on the same network send single packets of data to each other
+* The Internet Layer -- Lets computers on different networks send single packets of data to each other
+* The Transport Layer -- lets computers send meaningful streams of data between each other
+* The Application Layer -- where all the networked apps we use live
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+
+In <<ttt24.adoc,the previous instalment>> we focused on the lowest of the four layers, the link layer, and looked at how ethernet and ARP work.
+In this instalment we'll move one layer up the stack and take a closer look at the IP protocol.
+A concept absolutely central to IP's operation is that of related groups of IP addresses known as IP Subnetworks or just subnets.
+This is the concept we'll be focusing on in this instalment.
+
+== Matching Postcast Episode 25
+
+Listen Along: Taming the Terminal Podcast Episodes 25a & 25b+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>++++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+
+== IP Addresses
+
+At the IP level, packets are sent from one IP address to another.
+Every computer connected to an IP network has one or more IP addresses.
+For the purpose of this series we will be ignoring IPv6, so IP addresses are of the form `n1.n2.n3.n4`, where `n1` to `n4` are numbers between 0 and 255, E.g.
+`192.168.0.1`.
+
+Unlike MAC addresses, IP addresses are not hard-coded into our network interfaces.
+Instead, they have to be configured within the operating system.
+Historically this was always a manual process, but today it's usually automated using the _Dynamic Host Configuration Protocol_, or DHCP.
+We'll be looking at how DHCP works in detail later in the series.
+Also, a single network interface can have many IP addresses assigned to it, and a single computer can have many network interfaces, so it's not uncommon for a computer to have multiple IP addresses.
+
+The vast address-space of possible IP addresses is managed by the https://www.icann.org[_Internet Corporation for Assigned Names and Numbers_] (ICANN).
+ICANN assign blocks of IP addresses to organisations.
+There are also three special blocks of IP addresses that ICANN have reserved for use on private networks, and it's these IPs that we use within our homes.
+These private IP addresses can never appear on the public internet, they must always be either completely disconnected from the internet, or isolated from the internet by a NAT router.
+We'll look at NAT in more detail later, but for now all we need to know is that just about every home router is a NAT router.
+
+The private IP address ranges:
+
+* `10.0.0.0` to `10.255.255.255` (in common use)
+* `172.16.0.0` to `172.31.255.255` (rarely seen)
+* `192.168.0.0` to `192.168.255.255` (in very common use)
+
+Additionally, there are two other special ranges of IPs you may encounter:
+
+* `127.0.0.0` to `127.255.255.255` -- the range reserved for so-called _loop-back traffic_ within a computer
+* `169.254.0.0` to `169.254.255.255` -- the range reserved for self-asssigned IP addresses -- if you see one of these on your computer, it almost always means something has gone wrong!
+
+== Routing Packets
+
+Unlike ethernet, the IP protocol can send packets across different networks.
+The act of moving a packet through different networks from source to destination is known as _routing_.
+The heavy-lifting in routing, figuring out a route through the maze of interconnected networks that make up the internet, is done by routers, and is beyond the scope of this series.
+However, each and every device that speaks IP needs to make some simple routing decisions.
+Fundamentally our computers have to answer one simple routing question _"`is the destination IP address for this packet on my local network, or is it on a different network?`"_.
+
+If your computer determines that the destination IP address is on the local network, then it looks up the MAC address for the destination IP using ARP (as described in <<ttt24.adoc,the previous instalment>>), and sends the packet directly to its destination using ethernet.
+
+On the other hand, if your computer determines that the destination IP is not on your local network, then it must send the packet to your router for processing.
+To do this your computer must know the IP address of your router, and, it must find your router's MAC address using ARP.
+Once your computer has that information it sends the packet to your router using ethernet.
+Your router then sends the packet on to your IPS's router which will send it on it's way across the internet.
+
+At this stage we know that for your computer to work on an IP network it must have an IP address, and it must know the IP address of the router it should use to send remote packets on their way.
+But how does it know whether or not a packet is destined for the local network?
+The key to answering that question is IP subnets.
+
+== IP Subnets
+
+When we say that a device must figure out whether or not a packet's destination IP is local or not, what we really mean is that it must determine whether or not the destination IP is in the same subnet.
+
+A subnet is a collection of similar IP addresses that share a single ethernet network.
+In other words, every device on a subnet must be able to send ethernet packets to every other device on the same subnet.
+There is not a one-to-one mapping between ethernet networks and IP subnets though, so while a subnet can't be spread over multiple ethernet networks, one ethernet network can host multiple IP subnets.
+Having said that, in reality, the mapping usually is one-to-one, especially within our homes.
+
+Note that when people talk about a _Local Area Network_, or LAN, they are often referring to an IP subnet.
+Do bear in mind though that many people use those terms very loosely, and often inaccurately.
+
+In order to understand how a subnet is defined, we need a deeper understanding of IP addresses.
+We are accustomed to seeing them as so-called _dotted quads_ (like `192.168.0.1`), but those dotted quads are just a human-friendly way of representing what an IP address really is -- a 32bit binary number.
+The IP address `192.168.0.3` is really `11000000101010000000000000000011`.
+
+We create subnets of different sizes by choosing a dividing line somewhere inside this 32bit block, and saying that everything before our dividing line will be kept constant for this subnet.
+In other words, all IP addresses on a given subnet share the same prefix when expressed in binary form.
+This means that to define a subnet we need two pieces of information -- the first address in the subnet, and the location of the dividing line, or, to use the correct terms, we need a _network address_ (or _net address_), and a _netmask_.
+The size of the subnet (the number of IP addresses it contains) is determined by where you choose to place the divider.
+The closer to the front of the 32bits the bigger the subnet, the closer to the back, the smaller.
+
+Netmasks are represented using 32bit binary numbers.
+All the bits before the chosen divide are set to `1`, and all the bits after the divide are set to `0`.
+When written in binary, a netmask MUST be 32 bits long, and MUST consist of a series of ``1``s followed by a series of ``0``s.
+The chosen dividing line represented by the netmask is the point where the ``1``s change to ``0``s.
+
+Because netmasks are 32bit numbers, just like IP addresses, we can represented them in the same way, as dotted quads.
+(There are other ways to represent them too though -- as we'll see later)
+
+== Basic Routing Math
+
+Remember, the problem to be solved is that our computers need to be able to determine if a given IP address is local or remote.
+Local IP packets should be sent directly to the destination, while remote packets should be sent to the router.
+
+The key fact here is that you can use a binary AND operator to calculate your net address based on just your IP address and netmask.
+In other words, when you take your own IP address and AND it with your netmask you get your net address.
+You then take the destination IP address and AND it with your netmask, and compare the result to your net address.
+If the result is the same as your net address, the IP is local, if not, it's remote and needs to be routed.
+
+Firstly, lets define what we mean by an `AND` operation in a binary context:
+
+|===
+| A | B | A AND B
+
+| `0`
+| `0`
+| `0`
+
+| `0`
+| `1`
+| `0`
+
+| `1`
+| `0`
+| `0`
+
+| `1`
+| `1`
+| `1`
+|===
+
+This probably all sounds very abstract, so lets work through an example.
+We are computer A, and the two computers we want to communicate with are Computers B and C.
+Subnet masks are not published, they are an internal OS setting, so we do not know the recipients`' netmasks, only our own.
+So, this is what we know:
+
+* *Computer A*: IP = `192.168.0.3`, netmask = `255.255.255.248`
+* *Computer B*: IP = `192.168.0.5`
+* *Computer C*: IP = `192.168.0.9`
+
+First, let's do some conversions:
+
+* `192.168.0.3` = `11000000101010000000000000000011`
+* `192.168.0.5` = `11000000101010000000000000000101`
+* `192.168.0.9` = `11000000101010000000000000001001`
+* `255.255.255.248` = `11111111111111111111111111111000`
+
+Using the simple _truth table_ for AND shown above, we can AND each IP address with our netmask to get the results below.
+Note that you need to apply the AND rule 32 times for each conversation, once for each bit.
+This is known in computer science as a _bitwise AND_ operation.
+
+* IP A AND netmask = `11000000101010000000000000000000` (our net address)
+* IP B AND netmask = `11000000101010000000000000000000`
+* IP C AND netmask = `11000000101010000000000000001000`
+
+What we see here is that A and B are in the same subnet, but C is not.
+
+You can play around with this, and see all the binary calculations using my free IP Subnet calculator at http://subnetcalc.it[www.subnetcalc.it].
+You can use http://subnetcalc.it/?ip=192.168.0.3&mask=255.255.255.248&sc=y[this link] to load the IP and Netmask into the interface automatically and save yourself some copying and pasting.
+You can then paste IP B and IP C into the IP Test text box near the bottom of the page to see why one is local and the other is not.
+
+If we write out all the IP addresses between `192.168.0.0` and `192.168.0.9`, as well as our netmask (`255.255.255.248`) the pattern will hopefully become clear.
+For extra clarity, I've also included the imaginary separator represented by the netmask by inserting a `|` character into the binary strings.
+
+|===
+| IP in Binary (With Imaginary Separator) | IP quads
+
+| `11000000101010000000000000000\|000`
+| `192.168.0.0`
+
+| `11000000101010000000000000000\|001`
+| `192.168.0.1`
+
+| `11000000101010000000000000000\|010`
+| `192.168.0.2`
+
+| `11000000101010000000000000000\|011`
+| `192.168.0.3`
+
+| `11000000101010000000000000000\|100`
+| `192.168.0.4`
+
+| `11000000101010000000000000000\|101`
+| `192.168.0.5`
+
+| `11000000101010000000000000000\|110`
+| `192.168.0.6`
+
+| `11000000101010000000000000000\|111`
+| `192.168.0.7`
+
+| `11000000101010000000000000001\|000`
+| `192.168.0.8`
+
+| `11000000101010000000000000001\|001`
+| `192.168.0.9`
+
+| `11111111111111111111111111111\|000`
+| `255.255.255.248`
+|===
+
+== The Structure of a Subnet
+
+A subnet is, by definition, defined by its netmask and the first IP address within the subnet, known as the network address.
+A netmask of `255.255.255.248` only allows 3 bits of freedom within a subnet, so that means it defines 8 IP addressees (see above), but only SIX can actually be used.
+The first and last IP addresses of all subnets are reserved, and cannot be used by devices.
+
+The first IP address is the network address, or net address, for the subnet, while the last is the so-called _broadcast address_.
+
+The table below shows the subnet `192.168.0.0/255.255.255.248`:
+
+|===
+| IP in Binary | IP quads | Comment
+
+| `11000000101010000000000000000000`
+| `192.168.0.0`
+| Network Address
+
+| `11000000101010000000000000000001`
+| `192.168.0.1`
+| Usable IP Address
+
+| `11000000101010000000000000000010`
+| `192.168.0.2`
+| Usable IP Address
+
+| `11000000101010000000000000000011`
+| `192.168.0.3`
+| Usable IP Address
+
+| `11000000101010000000000000000100`
+| `192.168.0.4`
+| Usable IP Address
+
+| `11000000101010000000000000000101`
+| `192.168.0.5`
+| Usable IP Address
+
+| `11000000101010000000000000000110`
+| `192.168.0.6`
+| Usable IP Address
+
+| `11000000101010000000000000000111`
+| `192.168.0.7`
+| Broadcast Address
+
+| `11111111111111111111111111111000`
+| `255.255.255.248`
+| Netmask
+|===
+
+== Broadcast Addresses
+
+Using your subnet's broadcast address, you can single IP packet every device on your local subnet.
+Like the network address, the broadcast address can be calculated given only a computer's IP address and netmask.
+In this case, the maths is a little more complicated, but not much.
+
+To calculate broadcast addresses we need to learn about two more binary operators -- binary inversion, and the OR operator.
+Inversion is as simply as it sounds, all ``1``s are turned to ``0``s, and all ``0``s to ``1``s.
+The OR operator is defined by the truth table below:
+
+|===
+| A | B | A OR B
+
+| `0`
+| `0`
+| `0`
+
+| `0`
+| `1`
+| `1`
+
+| `1`
+| `0`
+| `1`
+
+| `1`
+| `1`
+| `1`
+|===
+
+To calculate the broadcast address, first invert the netmask, then OR that inverted netmask with your IP address.
+
+== Representing Netmasks
+
+We've already seen that you can represent a netmask as a dotted quad, just like an IP address, but unfortunately, this is not the only notation in common use.
+The list below shows all the commonly used representations:
+
+* Netmasks are 32bit binary numbers, just like IP addresses, so they can be represented using dotted quads, just like IP addresses.
+This is the most intuitive representation of a netmask, and for our example network it would be `255.255.255.248`.
+This is the most commonly used representation, and is used in the System Preferences app on OS X and the Windows Control Panel.
+* Netmasks can also be written in hexadecimal, every group of four bits gets converted to a symbol between `0` and `f` in the following way:
++
+[source,bash]
+----
+  0000 = 0
+  0001 = 1
+  0010 = 2
+  0011 = 3
+  0100 = 4
+  0101 = 5
+  0110 = 6
+  0111 = 7
+  1000 = 8
+  1001 = 9
+  1010 = a
+  1011 = b
+  1100 = c
+  1101 = d
+  1110 = e
+  1111 = f
+----
++
+In computer science hexadecimal numbers are signified by pre-fixing them with `0x`, so our example netmask can be written as `0xfffffff8`.
+This is by far the least human-friendly representation, but it is the one BSD Unix, and OS X, use in the output from the `ifconfig` command.
+
+* A netmask can also be represented in bits, that is to say, the number of the 32 possible bits that are set to 1.
+So, for our example network, it has a netmask of 29 bits.
+
+== Representing Subnets
+
+The correct way to write down a subnet definition is as follows: `IP_ADDRESS/NETMASK`, where any of the above representations for netmasks are permissible
+
+This means that our example subnet above can be written in all the following ways:
+
+[source,bash]
+----
+192.168.0.0/255.255.255.248
+192.168.0.0/29
+192.168.0.0/0xfffffff8
+----
+
+== Real-world Simplifications
+
+While it is entirely permissible to have a subnet of any size between 0 and 32 bits, not all sizes are equally common.
+There are three very common sizes, and, not coincidentally, they have the advantage that you can visually interpret them when written as dotted quads, so no need to revert to binary!
+These three common sizes are:
+
+|===
+| Netmask dotted quad | bits | Hex | #IP addresses | Common Name
+
+| `255.0.0.0`
+| `8`
+| `0xff000000`
+| 16,777,214
+| Class A network
+
+| `255.255.0.0`
+| `16`
+| `0xffff0000`
+| 65,534
+| Class B network
+
+| `255.255.255.0`
+| `24`
+| `0xffffff00`
+| 254
+| Class C network
+|===
+
+If our computer has a *class C* netmask, then our network address is the first three quads of our IP with the last quad set to 0.
+Also, all IPs that start with the same three quads as our IP are local.
+
+Similarly, if our computer has a *class B* netmask, then our network address is the first two quads of our IP with the last two quads set to 0.
+Also, all IPs that start with the same two quads as our IP are local.
+
+Finally, if our computer has a *class A* netmask, then our network address is the first quad of our IP with the last three quads set to 0.
+Also, all IPs that start with the same first quad as our IP are local.
+
+Most home routers create class C networks by default, so understanding class C networks is enough to allow most home users get by.
+
+== IP Network Configuration
+
+In order for a device to properly use an IP network it needs to have three settings correctly configured:
+
+. IP Address
+. Netmask
+. Default gateway AKA default route (the IP address of the router) -- the router's IP MUST fall within the subnet defined by the IP address combined with the netmask
+
+You can see these three settings in the Networks system preference pane in OS X:
+
+image::./assets/ttt25/3d970446-33cb-4cc8-8358-5040cb13b8d0.png[OS X Network Settings,link=https://www.bartbusschots.ie/s/wp-content/uploads/2014/12/3d970446-33cb-4cc8-8358-5040cb13b8d0.png]
+
+Or, you can access them via the command line with the following two commands:
+
+[source,bash]
+----
+ifconfig -a
+netstat -rn
+----
+
+Both of these commands are VERY talkative, and while all the needed info is in there somewhere, we can use the power of `egrep` to filter those outputs down to just what we want:
+
+[source,bash]
+----
+ifconfig -a | egrep '\binet\b' | egrep -v '127[.]'
+netstat -rn | egrep '^default'
+----
+
+With these filtered versions of the commands, we can clearly see the three pieces of information we are looking for.
+Below is my output, with the desired information highlighted in bold:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ ifconfig -a | egrep '\binet\b' | egrep -v '127[.]'
+	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
+bart-iMac2013:~ bart$ netstat -rn | egrep '^default'
+default            192.168.10.1       UGSc           55        0     en0
+bart-iMac2013:~ bart$
+----
+
+If you copy and paste the IP and netmask values from the above commands into the calculator at http://subnetcalc.it/[www.subnetcalc.it] you can see the structure of your subnet.
+
+== Routable -v- Un-Routable Protocols -- A Home Networking Pitfall
+
+The application layer protocols we use to actually do things on our networks or the internet use protocols which sit on top of IP (usually TCP or UDP).
+Because IP can send packets between subnets, you might assume that all Application layer protocols that use IP under the hood would also be able to work across different subnets, but you'd be mistaken.
+Many, even most, application layer protocols can indeed cross routers to move between subnets, but a sub-set of them can't.
+Protocols that rely on IP broadcast packets are confined to the reach of those packets, i.e., to the local subnet.
+Because these protocols can't cross routers, they are known as _un-routable protocols_.
+
+The un-routable protocols you are likely to encounter on your home network are mostly designed around zero-config sharing of some sort.
+The idea is that computers that share a subnet can easily share data or some other resource without the user needing to do much, if any, configuration.
+Probably the most common such protocol is mDNS, better known as Bonjour.
+Apple are very fond of un-routable protocols for things like AirVideo, iTunes sharing and printer sharing.
+The fact that these protocols are confined within the local subnet is actually a security feature.
+Something which can't possibly be accessed remotely needs a lot less security than something which could be accessed by anyone on the internet!
+If anyone anywhere on the planet could send their screen to your Apple TV you'd definitely need to set a password on it, and a long one at that, but because AirPlay is un-routable, you don't need to bother, making the experience much more pleasant!
+
+A very common problem is that people accidentally break their network into multiple subnets, and then find that sharing services have become mysteriously unreliable.
+
+Imagine you have half of your devices on one subnet, and half on another -- those sharing a subnet with an Apple TV can share their screens no problem, but the devices on the other subnet can't.
+You think they are all on the same network, because they are all in your home, and all eventually connect back to your internet router, so you have no idea why something that should just work is just refusing to work!
+
+It's actually very easy to accidentally break up your network.
+Imagine you start with the basic network setup we described last week, you have one home router which connects you to the internet, and provides you with an ethernet switch and a wireless access point:
+
+image::./assets/ttt25/HomeRouter.png[Home Router,link=https://www.bartbusschots.ie/s/wp-content/uploads/2014/11/HomeRouter.png]
+
+This is working quite well, but you have terrible wifi reception in the back bedroom, so you buy another wireless router, and plug it in.
+That device, like your home router, is probably three devices in one, a router, an ethernet switch, and a wireless access point, that means that depending on your configuration, you can end up with one big IP subnet in the house, or, with two separate IP subnets.
+The diagrams below show two possible configurations with two home routers -- one with a single IP Subnet, the other with two separate subnets.
+
+=== Good -- A Single Subnet
+
+image::./assets/ttt25/HomeNetwork-WirelessAccessPoint-Good.png[Wireless Access Point - Good]
+
+=== Bad -- Two Subnets
+
+image::./assets/ttt25/HomeNetwork-WirelessAccessPoint-BAD.png[Wireless Access Point - BAD]
+
+Unless you intentionally want to isolate off some users, you probably want a single subnet, and if you accidentally ended up with more you're probably experiencing all sorts of sharing frustrations.
+Why can I send my screen to the Apple TV, but my husband can't?
+Why can my daughter print, but I can't?
+Why can the Apple TV not see my shared iTunes library while my son's computer can?
+When you start experiencing strange symptoms like this, the fist thing to check is that you haven't accidentally divided your network into multiple subnets.
+
+== Are All the Devices On Your Home on the Same Network?
+
+When the IP stack is trying to decide how to route a packet it only knowns its own IP address and netmask, and the destination IP, but when you are trying to figure out if two devices on your home network share a subnet, you have access to more information because you and discover each computer's IP AND netmask (by reading them from the UI to terminal).
+
+If your intention was to create a single home network, and you want to verify that any two devices really are on the same subnet, you can use the following simple algorithm:
+
+. Are the netmasks on the two computers the same?
+Yes -- continue to step 2, NO -- the two computers are NOT on the same subnet
+. Figure out the network addresses for both IPs, if they are the same, the computers are on the same subnet.
+
+The following flow chart will walk you through the process:
+
+https://www.bartbusschots.ie/s/wp-content/uploads/2014/12/SubnetWorkflow.png[image:./assets/ttt25/SubnetWorkflow.png[Subnet Workflow\] + (click to enlarge)]
+
+Since most of our home networks use Class C netmasks, you'll probably only ever need a small section of the diagram.
+
+With a little practice, determining whether or not two devices are on the same subnet will become second nature.
+Below is a quick little self-test to get some practice:
+
+* `192.168.0.1/255.255.255.0` & `192.168.0.1/255.255.0.0`
++
+Answer
++
+NOT same subnet -- this is in fact a misconfiguration, one of the two computers needs their netmask changed
++
+NOT same subnet -- this is in fact a misconfiguration, one of the two computers needs their netmask changed
+
+* `192.168.0.23/255.255.255.0` & `192.168.1.24/255.255.255.0`
++
+Answer
++
+NOT same subnet -- the network addresses are different (`192.168.0.0` and `192.168.1.0`)
++
+NOT same subnet -- the network addresses are different (`192.168.0.0` and `192.168.1.0`)
+
+* `192.168.5.214/255.255.0.0` & `196.168.45.169/255.255.0.0`
++
+Answer
++
+SAME subnet -- both are in the class B network with network address `192.168.0.0`
++
+SAME subnet -- both are in the class B network with network address `192.168.0.0`
+
+* `10.0.0.5/24` & `10.0.0.124/24`
++
+Answer
++
+SAME subnet -- both are in the class C network with network address `10.0.0.0`
++
+SAME subnet -- both are in the class C network with network address `10.0.0.0`
+
+* `10.10.10.54/0xffffff00` & `10.10.11.54/24`
++
+Answer
++
+NOT same subnet -- both are in class C networks, but one has a network address of `10.10.10.0` while the other has the network address `10.10.11.0`
++
+NOT same subnet -- both are in class C networks, but one has a network address of `10.10.10.0` while the other has the network address `10.10.11.0`
+
+* `10.245.6.11/16` & `10.245.7.11/0xffff0000`
++
+Answer
++
+SAME subnet -- both are in the class B network with network address `10.245.0.0`
++
+SAME subnet -- both are in the class B network with network address `10.245.0.0`
+
+== Conclusions
+
+For a computer to work correctly on an IP network, it must have the following three things properly configured:
+
+. An IP Address
+. A Netmask
+. A Default Router
+
+When troubleshooting home network sharing problems, one of the first things to do is verify that all devices are on the same subnet.
+Usually when they're not, that was unintentional, and the cause of the problems.
+Learning to read and understand IP addresses and netmasks is a vital skill for just about any network troubleshooting.
+
+In this instalment we concentrated on understanding the network settings we see in our computers, in the next instalment we'll take a look at the protocol that is almost certainly passing those settings to your computers, DHCP.

@@ -1,0 +1,241 @@
+= TTT Part 35 of n -- HTTP Commands
+
+The previous instalment we introduced the HTTP protocol.
+In this instalment we'll look at three terminal commands which make use of the HTTP protocol.
+
+We'll start by browsing from the terminal, and then move on to a pair of very similar commands for making HTTP requests from the terminal.
+These two commands can do many things, but we'll focus on two specific use-cases, downloading files, and viewing HTTP headers.
+
+== Matching Postcast Episode 35
+
+Listen Along: Taming the Terminal Podcast Episode 35
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Browsing the Web from the Terminal
+
+The modern internet tends to be a flashy place full of pictures and videos, but, much of its value still comes from the text it contains.
+Sometimes it's actually an advantage to see the web free from everything but the text.
+For example, text is very efficient when it comes to bandwidth, so if you have a particularly poor internet connection, cutting out the images and videos can really speed things up.
+The visually impaired may also find it helpful to distil the internet down to just the text.
+
+In both of these situations, the `lynx` text-based web browser can be very useful.
+It allows you to browse the web from the terminal.
+While many versions of Linux come with lynx installed by default, OS X doesn't.
+The easiest way to install it is using https://www.macports.org/install.php[MacPorts].
+Once you have MacPorts installed, you can install `lynx` on your Mac with the command:
+
+[source,bash]
+----
+sudo port install lynx
+----
+
+Once you have `lynx` installed, you can open any web page in your browser by passing the URL as an argument to the command `lynx`, e.g.:
+
+[source,bash]
+----
+lynx http://www.podfeet.com
+----
+
+As `lynx` loads the page, you'll see it tell you what it's doing, and it may ask your permission to accept some cookies.
+Once the page is loaded, you can move down a whole screen of text at a time with the space bar, up a whole screen with the `b` key, and hop from link to link within the page with the up and down arrow keys.
+To follow a link, hit the right arrow key, to go back to the previous page, hit the left arrow key.
+You can go to a different URL by pressing the `g` key, and you can quit the app with the `q` key.
+
+You can also search within a page with the `/` key.
+Hitting `/` will allow you to enter a search string.
+When you want to submit the search, hit `enter`.
+If a match is found, you will be taken to it.
+You can move to the next match with the `n` key, and back to the previous match with `shift+n`.
+
+== Viewing HTTP Headers & Downloading Files
+
+`wget` and `curl` are a pair of terminal commands that can be used to make HTTP connections, and view the results.
+Both commands can do almost all the same things, but they each do them in a slightly different way.
+Just about every version of Linux and Unix will comes with one or both of these commands installed.
+OS X comes with `curl`, while `wget` seems to be more common on Linux.
+Most Linux distributions will allow you to install both of these commands, and you can install `wget` on OS X using MacPorts:
+
+[source,bash]
+----
+sudo port install wget
+----
+
+=== Downloading Files
+
+Both `curl` and `wget` can be used to download a file from the internet, but `wget` makes it a little easier.
+
+The URL to download a zip file containing the latest version of `Crypt::HSXKPasswd` from GitHub is `+https://github.com/bbusschots/xkpasswd.pm/archive/master.zip+`.
+The two commands below can be used to download that file to the present working directory:
+
+[source,bash]
+----
+wget https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
+curl -O https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
+----
+
+By default `wget` downloads URLs, while `curl`'`s default is to print their contents to `STDOUT`.
+The `-O` option tells `curl` to output to a file rather than `STDOUT`.
+Both of the commands above will save the file locally with the name at the end of the URL.
+While that is a sensible default, it's not always what you want.
+In fact, in this case, the default file name is probably not what you want, since `master.zip` is very nondescript.
+Both commands allow an alternative output file to be specified:
+
+[source,bash]
+----
+wget -O HSXKPasswd.zip https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
+curl -o HSXKPasswd.zip https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
+curl https://github.com/bbusschots/xkpasswd.pm/archive/master.zip > HSXKPasswd.zip
+----
+
+=== Viewing HTTP Headers
+
+When developing websites, or when configuring redirects, it can be very helpful to see exactly what is being returned by the web server.
+Web browsers have a tendency to cache things, which can make broken sites appear functional, and functional sites appear broken.
+When using `curl` or `wget`, you can see exactly what is happening at the HTTP level.
+
+As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `+http://www.podfeet.com/twitter+`.
+To see exactly what Allison's server is returning, we can use `wget` with the `--spider` and `-S` options:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ wget --spider -S http://www.podfeet.com/twitter
+Spider mode enabled. Check if remote file exists.
+--2015-07-04 17:36:12--  http://www.podfeet.com/twitter
+Resolving www.podfeet.com (www.podfeet.com)... 173.254.94.93
+Connecting to www.podfeet.com (www.podfeet.com)|173.254.94.93|:80... connected.
+HTTP request sent, awaiting response...
+  HTTP/1.1 301 Moved Permanently
+  Date: Sat, 04 Jul 2015 16:36:12 GMT
+  Server: Apache
+  Location: https://twitter.com/podfeet
+  Keep-Alive: timeout=10, max=500
+  Connection: Keep-Alive
+  Content-Type: text/html; charset=iso-8859-1
+Location: https://twitter.com/podfeet [following]
+Spider mode enabled. Check if remote file exists.
+--2015-07-04 17:36:12--  https://twitter.com/podfeet
+Resolving twitter.com (twitter.com)... 199.16.156.198, 199.16.156.70, 199.16.156.102, ...
+Connecting to twitter.com (twitter.com)|199.16.156.198|:443... connected.
+HTTP request sent, awaiting response...
+  HTTP/1.1 200 OK
+  cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+  content-length: 262768
+  content-security-policy: default-src https:; connect-src https:; font-src https: data:; frame-src https: twitter:; img-src https: blob: data:; media-src https: blob:; object-src https:; script-src 'unsafe-inline' 'unsafe-eval' https:; style-src 'unsafe-inline' https:; report-uri https://twitter.com/i/csp_report?a=NVQWGYLXFVZXO2LGOQ%3D%3D%3D%3D%3D%3D&ro=false;
+  content-type: text/html;charset=utf-8
+  date: Sat, 04 Jul 2015 16:36:13 GMT
+  expires: Tue, 31 Mar 1981 05:00:00 GMT
+  last-modified: Sat, 04 Jul 2015 16:36:13 GMT
+  ms: A
+  pragma: no-cache
+  server: tsa_b
+  set-cookie: _twitter_sess=BAh7CSIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%250ASGFzaHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCD%252Fg7FlOAToMY3NyZl9p%250AZCIlMDc5ODNiZjRjY2VmYTZmMzkyMjViNzUzMzBjMTlmN2M6B2lkIiVlMGRl%250AMGUxNThhOGFlYjQ2MDk5MzhlYTg5MDVhZjkwYg%253D%253D--eb013985df212afa338abf74675b639d75a96486; Path=/; Domain=.twitter.com; Secure; HTTPOnly
+  set-cookie: guest_id=v1%3A143602777299066731; Domain=.twitter.com; Path=/; Expires=Mon, 03-Jul-2017 16:36:13 UTC
+  status: 200 OK
+  strict-transport-security: max-age=631138519
+  x-connection-hash: 781f41ed342615977688eb6f432f7fc4
+  x-content-type-options: nosniff
+  x-frame-options: SAMEORIGIN
+  x-response-time: 127
+  x-transaction: b3fb3de740391d24
+  x-twitter-response-tags: BouncerCompliant
+  x-ua-compatible: IE=edge,chrome=1
+  x-xss-protection: 1; mode=block
+Length: 262768 (257K) [text/html]
+Remote file exists and could contain further links,
+but recursion is disabled -- not retrieving.
+
+bart-iMac2013:~ bart$
+----
+
+The `--spider` option tells `wget` not to download the actual contents of the URL, and the `-S` flag tells `wget` to show the server headers.
+By default, `wget` will follow up to 20 redirects, so there is much more output here than we really need.
+The information we need is there, and I have highlighted it in bold, but it would be easier to get to if `wget` didn't follow the redirect and then ask Twitter's server for it's headers too.
+Since we only need the first set of headers, we need to tell `wget` not to follow any redirects at all, and we can do that with the `--max-redirect` flag:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ wget --spider -S --max-redirect 0 http://www.podfeet.com/twitter
+Spider mode enabled. Check if remote file exists.
+--2015-07-04 17:38:45--  http://www.podfeet.com/twitter
+Resolving www.podfeet.com (www.podfeet.com)... 173.254.94.93
+Connecting to www.podfeet.com (www.podfeet.com)|173.254.94.93|:80... connected.
+HTTP request sent, awaiting response...
+  HTTP/1.1 301 Moved Permanently
+  Date: Sat, 04 Jul 2015 16:38:45 GMT
+  Server: Apache
+  Location: https://twitter.com/podfeet
+  Keep-Alive: timeout=10, max=500
+  Connection: Keep-Alive
+  Content-Type: text/html; charset=iso-8859-1
+Location: https://twitter.com/podfeet [following]
+0 redirections exceeded.
+bart-iMac2013:~ bart$
+----
+
+The information we need is now much easier to find.
+We can see that Allison's server is returning a permanent redirect (HTTP response code 301) which is redirecting browsers to `+https://twitter.com/podfeet+`.
+
+We can of course do the same with `curl`:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ curl -I http://www.podfeet.com/twitter
+HTTP/1.1 301 Moved Permanently
+Date: Sat, 04 Jul 2015 16:43:49 GMT
+Server: Apache
+Location: https://twitter.com/podfeet
+Content-Type: text/html; charset=iso-8859-1
+
+bart-iMac2013:~ bart$
+----
+
+The `-I` flag tells `curl` to only fetch the headers, and not the contents of the URL.
+When fetching headers, `curl` does not follow redirects by default, so there is no need to suppress that behaviour.
+
+Often, you only care about the response headers, so the output of `curl -I` is perfect, but, when you do want to see the request headers too, you can add the `-v` flag to put `curl` into verbose mode:
+
+[source,bash]
+----
+bart-iMac2013:~ bart$ curl -vI http://www.podfeet.com/twitter
+* Hostname was NOT found in DNS cache
+*   Trying 173.254.94.93...
+* Connected to www.podfeet.com (173.254.94.93) port 80 (#0)
+> HEAD /twitter HTTP/1.1
+> User-Agent: curl/7.37.1
+> Host: www.podfeet.com
+> Accept: */*
+>
+< HTTP/1.1 301 Moved Permanently
+HTTP/1.1 301 Moved Permanently
+< Date: Sat, 04 Jul 2015 16:46:29 GMT
+Date: Sat, 04 Jul 2015 16:46:29 GMT
+* Server Apache is not blacklisted
+< Server: Apache
+Server: Apache
+< Location: https://twitter.com/podfeet
+Location: https://twitter.com/podfeet
+< Content-Type: text/html; charset=iso-8859-1
+Content-Type: text/html; charset=iso-8859-1
+
+<
+* Connection #0 to host www.podfeet.com left intact
+bart-iMac2013:~ bart$
+----
+
+=== And More ...
+
+This is just a taster of what `curl` and `wget` can do.
+For more details see their relevant `man` pages.
+
+I like to have both `curl` and `wget` installed on all my computers because I find `wget` easier to use for downloading files, and `curl` easier to use for viewing HTTP headers.
+
+== Conclusions
+
+Armed with `lynx`, `curl`, and `wget`, you can use the terminal to browse we web, download files, and peep under the hood of HTTP connections.
+When working on websites, you may find you can save a lot of time and energy by using these terminal commands to see exactly what your web server is returning.
+
+This instalment concludes our look at the HTTP protocol.
+In the next instalment we'll move on to look at two commands that allow you to see what your computer is doing on the network in great detail.

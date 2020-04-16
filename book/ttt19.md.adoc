@@ -1,0 +1,240 @@
+= TTT Part 19 of n -- Text Searches
+
+In the previous two instalments (<<ttt17.adoc,17>> & <<ttt18.adoc,18>>) of this series we learned how to represent patters with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).
+We used the `egrep` command to test our regular expressions, but we didn't discus the command itself in detail.
+Now that we understand regular expressions, it's time to take a closer look at both `egrep`, and it's older brother `grep`, both commands for filtering and searching text.
+
+== Matching Postcast Episode 19
+
+Listen Along: Taming the Terminal Podcast Episode 19
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearches/TTT_19_Text_Searches.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearches/TTT_19_Text_Searches.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== To `grep` or to `egrep` -- that is the question!
+
+The `grep` command goes back a very long way, and has been the staple text-searching command on POSIX operating systems like Unix and Linux for decades.
+To this day it's used millions of times each day for simple text searches.
+But, it has a shortcoming -- it's stuck in the past when it comes to regular expressions -- `grep` pre-dates the invention of POSIX ERE!
+`egrep` is identical to `grep` except that it interprets patterns passed to it as POSIX EREs.
+
+If you can, it's probably best to get into the habit of always using `egrep`, and never using `grep`, but for those of us who've been around the block a few times, this could be asking for too much (old habits die hard!).
+What I usually do is use `grep` when I don't need regular expressions, and `egrep` when I do.
+However, in this series I'm going to follow my own advice, and only use `egrep`.
+
+== `egrep` Basics
+
+For `egrep`, lines of text are atomic.
+In other words, egrep searches or filters text one line at a time, checking the entire line against the given pattern, and considering the whole line to match the pattern or not.
+
+There are two basic ways in which `egrep` can be used -- it can filter what ever is sent to via standard in (`STDIN` -- see <<ttt15.adoc,part 15>>) against a given pattern, or, it can search for lines matching a given pattern in one or more files.
+
+== Filtering `STDIN`
+
+Lets start with the first use-case, using using `egrep` to filter `STDIN`.
+When `egrep` is used in this mode it passes every line of text sent to `STDIN` that matches the given pattern to standard out (`STDOUT`), and ignores all others.
+If you send 5,000 lines of text to `egrep` via `STDIN`, and only 5 of those lines match the specified pattern, then only 5 lines will be passed to `STDOUT` (which is the screen unless the output is redirected elsewhere).
+
+When content is redirected to `egrep`'`s `STDIN` `egrep` only needs one argument -- the pattern to filter on.
+
+On Unix/Linux/OS X computers configured to act as servers there will be a lot of log files being written to continuously, and sysadmins will very often need to filter those logs while troubleshooting an issue, or tweaking the server's configuration.
+In my day-job as a Linux sysadmin I do this all the time.
+Regardless of the log file to be filtered, the approach is the same, use `tail -f` to stream the log file in question to `tail`'`s `STDOUT` in real-time, then redirect that stream to `egrep`'`s `STDIN` with the pipe operator.
+
+For example, on a Linux server running a BIND DNS server process, DNS log entries are mixed with other entries in the central system messages log (`/var/log/messages`).
+When debugging a problem with the DNS server, you don't want to be distracted by all the other messages flowing into that log file.
+The following command will filter that log so that you only see messages from the DNS server process, which all start with the prefix `named:`:
+
+[source,bash]
+----
+tail -f /var/log/messages | egrep '^named:'
+----
+
+The log files on our personal computers are much quieter places, so PC users will rarely find themselves needing to filter log files.
+However, that doesn't mean PC terminal users won't find themselves wanting to use `egrep` to filter `STDIN`.
+
+You can use `egrep` to filter the output from any command using the pipe operator.
+To generate a meaningful example we need a command that we will generate a lot of formatted output at will.
+We're going to use a command we'll come back to in much more detail in future instalments, `tcpdump`.
+As its name suggests, `tcpdump` prints the details of every TCP packet that enters or leaves your computer to `STDOUT`.
+Every time your computer interacts with the network, `tcpdump` will generate output -- in our modern connected world, that means `tcpdump` generates a LOT of output!
+
+Firstly, let's run `tcpdump` without filtering it's output to see see just how much network traffic there is on our computers:
+
+[source,bash]
+----
+sudo tcpdump -i any -nn
+----
+
+`tcpdump` will keep capturing traffic until it is interrupted, so when you've seen enough, you can exit it with `ctrl+c`.
+
+It probably won't be long until you start seeing packets fly by, but if it's a bit sluggish, try checking your email or visiting a web page and the packets will soon start to fly!
+
+Now, lets say we want to watch what DNS queries our computer is making.
+Given that DNS queries are over port 53, and that your router is almost certainly your DNS server, we know that all DNS queries will be sent to your router on port 53.
+Before we construct the pattern to pass to `egrep`, we need to find the IP address of our router.
+We can do this by filtering the output from another command that we'll be looking at in much more detail later, `netstat`.
+With the appropriate flags, `netstat` prints out our computer's routing table, and the default route in that table is to your router, so filtering the output of `netstat` for a line starting with the word `default` will show the IP of your router:
+
+[source,bash]
+----
+netstat -rn | egrep '^default'
+----
+
+When I run this command I get the following output:
+
+[source,bash]
+----
+default            192.168.10.1       UGSc           32        0     en0
+----
+
+This tells me that my router has the IP address `192.168.10.1` (yours will probably be different, very likely `10.0.0.1` or `192.168.0.1`, my network is set up a little unusually).
+
+Given this information I can now use `egrep` to filter the output of tcpdump to show me only my DNS queries with the following command:
+
+[source,bash]
+----
+sudo tcpdump -i any -nn | egrep '192.168.10.1.53:'
+----
+
+You can construct a similar command for your computer by inserting your IP address into the above command.
+E.g.
+if your router's IP address is `10.0.0.1` the command will be:
+
+[source,bash]
+----
+sudo tcpdump -i any -nn | egrep '10.0.0.1.53:'
+----
+
+Notice that, rather confusingly, `tcpdump` adds the port number to the end of the IP as a fifth number.
+
+Note that if we wanted to be really accurate with our regular expression, we would use something like the example below, which is more explicit, and hence much less prone to picking up the odd false positive:
+
+[source,bash]
+----
+sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
+----
+
+When you execute your command, visit a few web pages, and watch as DNS queries are sent from your computer to your router.
+When I visit http://www.whitehouse.gov[www.whitehouse.gov] I get the following output:
+
+[source,bash]
+----
+bart-imac2013:~ bart$ sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
+tcpdump: data link type PKTAP
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on any, link-type PKTAP (Packet Tap), capture size 65535 bytes
+16:07:33.855986 IP 192.168.10.42.62854 > 192.168.10.1.53: 14228+ A? www.whitehouse.gov. (36)
+16:07:34.032251 IP 192.168.10.42.63205 > 192.168.10.1.53: 18279+ A? s7.addthis.com. (32)
+16:07:34.247111 IP 192.168.10.42.61908 > 192.168.10.1.53: 61513+ A? ct1.addthis.com. (33)
+16:07:34.324604 IP 192.168.10.42.49410 > 192.168.10.1.53: 19744+ A? wwws.whitehouse.gov. (37)
+16:07:34.374799 IP 192.168.10.42.51554 > 192.168.10.1.53: 27443+ A? www.youtube-nocookie.com. (42)
+16:07:34.664967 IP 192.168.10.42.54293 > 192.168.10.1.53: 17308+ A? search.usa.gov. (32)
+16:07:35.968991 IP 192.168.10.42.55988 > 192.168.10.1.53: 34309+ A? www.letsmove.gov. (34)
+16:07:35.969510 IP 192.168.10.42.63332 > 192.168.10.1.53: 32194+ A? apply.whitehouse.gov. (38)
+16:07:35.969644 IP 192.168.10.42.54380 > 192.168.10.1.53: 11407+ A? t.co. (22)
+16:07:35.969823 IP 192.168.10.42.54328 > 192.168.10.1.53: 32595+ A? plus.google.com. (33)
+16:07:35.970295 IP 192.168.10.42.53706 > 192.168.10.1.53: 58317+ A? usa.gov. (25)
+16:07:35.970528 IP 192.168.10.42.61971 > 192.168.10.1.53: 4237+ A? www.twitter.com. (33)
+16:07:36.425466 IP 192.168.10.42.49283 > 192.168.10.1.53: 18130+ A? www-google-analytics.l.google.com. (51)
+16:07:36.429381 IP 192.168.10.42.56459 > 192.168.10.1.53: 18915+ A? vimeo.com. (27)
+16:07:36.429535 IP 192.168.10.42.55061 > 192.168.10.1.53: 4390+ A? petitions.whitehouse.gov. (42)
+16:07:36.429677 IP 192.168.10.42.58086 > 192.168.10.1.53: 51451+ A? twitter.com. (29)
+16:07:36.441638 IP 192.168.10.42.57427 > 192.168.10.1.53: 7567+ A? searchstats.usa.gov. (37)
+16:07:36.442115 IP 192.168.10.42.59259 > 192.168.10.1.53: 62371+ A? s.ytimg.com. (29)
+16:07:36.584244 IP 192.168.10.42.65060 > 192.168.10.1.53: 58436+ A? www.facebook.com. (34)
+16:07:36.584542 IP 192.168.10.42.65022 > 192.168.10.1.53: 16848+ A? www.linkedin.com. (34)
+16:07:36.585051 IP 192.168.10.42.58670 > 192.168.10.1.53: 10667+ A? www.flickr.com. (32)
+16:07:36.585184 IP 192.168.10.42.49857 > 192.168.10.1.53: 14702+ A? foursquare.com. (32)
+16:07:36.684281 IP 192.168.10.42.61667 > 192.168.10.1.53: 30012+ A? www.google.com. (32)
+16:07:36.972650 IP 192.168.10.42.61971 > 192.168.10.1.53: 4237+ A? www.twitter.com. (33)
+16:07:37.152113 IP 192.168.10.42.62562 > 192.168.10.1.53: 64882+ A? m.addthis.com. (31)
+16:07:38.223524 IP 192.168.10.42.56628 > 192.168.10.1.53: 34626+ A? i1.ytimg.com. (30)
+^C3125 packets captured
+3125 packets received by filter
+0 packets dropped by kernel
+
+bart-imac2013:~ bart$
+----
+
+This gives you some idea of just how many resources from disparate sources get pulled together to create a modern web page!
+
+== Searching Files
+
+Lets move on now to using `egrep` to search the contents of one or more files for a given pattern.
+
+When using `egrep` to search file(s), it requires a minimum of two arguments, first the pattern to be search for, and secondly at least one file to search.
+If you want to search multiple files, you can keep adding more file paths as arguments.
+
+In this mode, `egrep` will filter the lines in the file in the same way it did when filtering a stream, but if you ask it to filter more than one file it will pre-pend any output with the name of the file the matching line came from.
+This is a very useful feature.
+
+The vast majority of the examples we used in the previous two instalments used `egrep` to search the Unix words file.
+As a quick reminder, the following command will find all lines in the words file that start with the letters `th`:
+
+[source,bash]
+----
+egrep '^th' /usr/share/dict/words
+----
+
+A very common use-case for using `egrep` on a single file is to quickly check a setting in a configuration file.
+For example, on a Linux web server with PHP installed, you could use the command below to check the maximum file upload size the server is configured to accept:
+
+[source,bash]
+----
+egrep '^upload_max_filesize' /etc/php.ini
+----
+
+On a server with a default PHP install that will return the following output:
+
+[source,bash]
+----
+upload_max_filesize = 2M
+----
+
+Most of us are probably not running web server processes on our personal computers, so let's look at a more practical example.
+On any POSIX OS (Linux, Unix or OS X), you can see what DNS server(s) are configured by searching the file `/etc/resolv.conf` for lines beginning with the word `nameserver`.
+The following command does just that:
+
+[source,bash]
+----
+egrep '^nameserver' /etc/resolv.conf
+----
+
+So far we have only searched one file at a time, but you can point `egrep` at as many files as you like, either explicitly, or by using shell wild-card expansion.
+For example, the command below looks for lines containing `apple.com` in all the log files in the folder `/var/log`:
+
+[source,bash]
+----
+egrep 'apple[.]com' /var/log/*.log
+----
+
+== Useful `egrep` Flags
+
+`egrep` is a very powerful command that supports a staggering array of flags.
+We couldn't possibly go through them all here.
+Remember, you can use the man pages to see everything `egrep` can do:
+
+[source,bash]
+----
+man egrep
+----
+
+However, there are a few flags that are so useful they bear special mention.
+Firstly, to make `egrep` case-insensitive, you can use the `-i` flag.
+If you're not sure of the capitalisation of the text you're looking for, use `egrep -i`.
+
+If you want to see the line numbers within the files for all the matches found by `egrep` you can use the `-n` flag.
+
+And finally, the biggie, you can use the `-r` flag to recursively search ever single file in a given directory.
+Be careful with this one -- if you ask `egrep` to search too much, it will take a very long time indeed to finish!
+
+== Final Thoughts
+
+In this instalment we've seen how `egerp` can be used to filter a stream or to search one or more files for lines of text matching a specified pattern.
+This is very useful, and something sysadmins do a lot in the real world.
+In the next instalment we'll be moving on to a different, but equally important, type of search -- file searches.
+We'll use the aptly-named `find` command to find files that meet one or more criteria.
+find supports a huge variety of different search criteria, including simple things like like the name of the file, and more advanced things like the amount of time elapsed since the file was last edited.
+All these criteria can be combined to create powerful searches that will show all MS Office files in your Documents folder that were edited within the last week and are bigger than 1MB in size.

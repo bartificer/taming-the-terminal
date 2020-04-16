@@ -1,0 +1,270 @@
+= TTT Part 11 of n -- Text Files
+:icons: font
+
+In the next instalment we'll be moving on to look at the so-called _Environment_ within a command shell, but before we do that we need to lay some ground work.
+Specifically, we need to learn how to read and edit text files from the command line.
+
+In this instalment we'll start with the most common commands for reading files, and then move on to look at the simplest of the command line editors.
+For those interested in learning a little more I'll also give a very quick overview of one of the more powerful command line editors, but feel free to skip over that section if you like, future instalments won't assume that knowledge.
+
+== Matching Postcast Episode 11
+
+Listen Along: Taming the Terminal Podcast Episode 11
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Reading Text Files
+
+The simplest command for dealing with text files is `cat`.
+You can use `cat` to print the contents of a text file to the screen by calling it with one argument, the path to the text file you'd like printed out.
+
+E.g., using `cat` to read the content of your computer's network time configuration (definitely works on OS X, should work on most other Linux and Unix distros too):
+
+[source,bash]
+----
+cat /etc/ntp.conf
+----
+
+`cat` works great for short files, but it's not well suited for reading longer files.
+For example, using cat to show the config for `man`:
+
+[source,bash]
+----
+cat /etc/man.conf
+----
+
+While it's useful to be able to print out the contents of a file, what would be much more useful is a command to allow us to read a file at our own pace.
+In Unix-speak, what we want is a pager.
+
+Historically the pager of choice on Unix and Linux systems was `more`.
+Like `cat`, you invoke `more` by passing it a file as an argument, but unlike `cat`, after `more` has printed a screen-full of text, it will stop.
+You can then use the enter key or the down arrow key to move down one line at a time, or the spacebar to move down a whole screen at a time.
+E.g.
+
+[source,bash]
+----
+more /etc/man.conf
+----
+
+While you'll find `more` included in just about every modern Unix or Linux OS, it's only there for legacy reasons.
+`more` has been superseded by a newer and more feature-rich pager, which is humorously called `less` (because we all know less is more).
+
+We're actually already familiar with `less`, because it's the pager used by the `man` command.
+All the commands we learned in <<ttt10.adoc,the previous instalment>> for navigating around man pages are actually commands for navigation around text files with `less`!
+
+The `less` command is invoked in the same way as `cat` and `more`, e.g.:
+
+[source,bash]
+----
+less /etc/man.conf
+----
+
+[NOTE]
+====
+*Aside* -- on OS X `less` has literally replaced `more`.
+While there is a `more` command, it's actually a copy of `less`, as can be seen by running: `more --version` (CentOS & Ubuntu Linux still ship with both `more` and `less`).
+====
+
+
+The `less` command is very powerful, and it can deal with very large files without getting bogged down -- as an example, most Linux and Unix distributions contain a dictionary file, usually located at `/usr/share/dict/words`.
+This file is 235,886 long on OS X, and `less` has no problems searching or navigating it:
+
+[source,bash]
+----
+less /usr/share/dict/words
+----
+
+While `less` is without doubt the best pager on modern Unix/Linux systems, and while it should be your command of choice for reading most text files, there is another pair of text-file-related commands every command line user should know -- `head` and `tail`.
+
+The `head` and `tail` commands really come into their own when it comes to dealing with log files.
+The `head` command will show you the first 10 lines of a file, and the `tail` command the last 10.
+Simply using `head` and `tail` on a log file will quickly answer a very simply but very important question -- what date range does my log file span?
+(Note -- Linux and most Unix users will find the system log at `/var/log/messages`, OS X is unusual in storing it's system log in `system.log`)
+
+[source,bash]
+----
+head /var/log/system.log
+tail /var/log/system.log
+----
+
+Both `head` and `tail` can actually show any number of lines at the beginning or end of a file by using a rather strange flag, `-` followed by an integer number.
+E.g.
+to see the last 50 lines of the system log use:
+
+[source,bash]
+----
+tail -50 /var/log/system.log
+----
+
+Or, to see just the first line use:
+
+[source,bash]
+----
+head -1 /var/log/system.log
+----
+
+Finally, the `tail` command has one more very useful trick up its sleeve, it can continue to print out new lines at the end of a file in real time as they are added.
+This is perfect for monitoring log files while you're troubleshooting.
+To enter this real-time mode invoke `tail` with the `-f` flag.
+Remember that the only way out of a `tail -f` is with `ctrl+c`.
+
+You could run the command below to get a live view of the system log, but it's hard to force log entries to appear there.
+On OS X, a nice example to use is the App Store log file.
+If you run the command below in a Terminal window and then open up the App Store app and start navigating around or checking for updates you should see entries appear in the log file in real time:
+
+[source,bash]
+----
+tail -f /var/log/appstore.log
+----
+
+== Editing Files -- The Easy Way
+
+You can roughly divide the command line text editors into two categories, the quick and simple editors, and the power editors.
+The simpler editors are much easier to learn, but much less powerful.
+If you spend a lot of time on the command line, learning at least one of the power editors is worth the effort IMO.
+
+Anyway, lets start simple.
+There are two common quick and simple command line text editors, `pico` and `nano`, and the chances are very high that no matter what modern Linux or Unix OS you are using, one of these two will be available.
+(OS X comes with `nano`, but like with `more`, it pretends to have `pico` too, until you run `pico --version` when it fesses up to really being nano)
+
+Once opened `pico` and `nano` are virtually indistinguishable anyway, so which you have really doesn't matter.
+If you want to edit an existing file, you invoke `nano` (or `pico`) with the path to the file you want to edit.
+If you want to create a new file, you invoke `nano` with the path you'd like the new file to be created at.
+
+Lets play it safe and start a new file for our experimentations:
+
+[source,bash]
+----
+nano ~/Documents/nanoTest.txt
+----
+
+(on OSes other than OS X use `nano ~/nanoTest.txt` instead)
+
+Once in `nano` you'll see a cursor where you can start to type, and along the bottom a list of possible commands with their key combinations next to them (remember, `^` is short-hand for the control key).
+
+Lets keep this simple and just type the utterly clicheéd sentence:
+
+[source,bash]
+----
+Hello World!
+----
+
+You're probably guessing that to save a file you'd use some kind of save option, perhaps `+^s+`, but that would be much too simple.
+Instead, in nano-speak you want to _write the file out_, so you use the command `+^o+`.
+After hitting `ctrl+o` `nano` will then show you the path it's about to write the file to (which is editable should you change your mind about the destination of your edits), and when you're happy with the path, you hit enter to actually save the file.
+Note that if you try to exit `nano` without writing out first, `nano` will offer to save the file for you, so you can also save with the sequence `+^x+`, `y`, `enter`.
+
+At this stage you actually have all the skills you're likely to truly need, so feel free to tune out at this point.
+However, if you're interested, I'm also going to give a very brief and very superficial overview of one of the two most popular modal editors.
+
+== A Quick Taste of Advanced Editing with vi -- OPTIONAL
+
+There are two leviathans in the command line text editing world, and both have been around since the 1970s.
+In nerd circles your choice of text editor is about as polarising as the Republican and Democratic political parties in the US.
+You almost never meet someone who excels at both of them, and every Unix nerd has their favourite of the two.
+The two editors I'm talking about are http://en.wikipedia.org/wiki/Emacs[Emacs] and http://en.wikipedia.org/wiki/Vi[vi].
+
+As it happens I'm a `vi` guy, so it's `vi` that I'm going to give a quick overview of.
+
+[NOTE]
+====
+*Aside* -- there are actually two major variants of `vi`, the original `vi`, and a more powerful enhanced version called `vim`.
+Some older Linux and Unix distributions ship both `vi` and `vim`, so if you're running an older OS, always open `vi` with the command `vim`.
+However, on modern distributions (including OS X), the only version of `vi` installed is `vim`, and when you run `vi` you are actually running `vim`.
+If in doubt, `vi --version` will tell you whether or not `vi` is `vim` on your OS.
+This overview assumes you are using `vim`.
+====
+
+
+The single most important thing to know about `vi` is that it is modal, that means that at any given time `vi` is in one mode OR another.
+Specifically, `vi` is always in either _insert mode_ OR _command mode_.
+In insert mode everything you type is entered into the file where the cursor is, and in command mode, nothing you type is entered into the file, and everything you type is interpreted as a command by `vi`.
+This confuses the heck out of people, and it takes some getting used to!
+
+You invoke `vi` in the same way you would `nano`, so for our example lets do the following:
+
+[source,bash]
+----
+vi ~/Documents/viTest.txt
+----
+
+(on OSes other than OS X use `vi ~/viTest.txt` instead)
+
+When the file opens we are in command mode.
+If we were editing a pre-existing file instead of creating a new one, we would be able to move the cursor around, but anything we type would be treated as a command by `vi`, not as input for the file.
+
+Lets start by switching from command mode into insert mode.
+To do this, hit the `i` key (i for insert).
+Notice that at the bottom of the screen it now says INSERT in all caps -- you'll always see this when you are in insert mode.
+
+Lets be boring and insert the same text as before:
+
+[source,bash]
+----
+Hello World!
+----
+
+To get back out of insert mode you use the escape key.
+You'll see that when you hit escape the INSERT at the bottom of the screen goes away and there is actually a prompt down there for you to enter commands into.
+
+The most important commands to know are the following:
+
+* *`:w`* -- write the current buffer to the file (i.e.
+save your changes)
+* *`:q`* -- quit `vi`
+
+You can combine those commands into one, so to save an exit you would use the command `:wq`.
+
+If you start hammering away on the keyboard in command mode, erroneously assuming you are in insert mode, it's inevitable that you'll accidentally invoke a command you REALLY didn't want to invoke.
+This is why the most important `vi` command to know after `:wq` is `:q!`, which is exit without saving (if you try `:q` without the `!` when there are unsaved changes `vi` won't let you exit).
+
+So far this all sounds needlessly complex, so lets step things up a gear, and start to make real use of `vi`'`s command mode.
+Let's start by copying a line of text, or, in `vi`-speak, lets _yank_ a line of text.
+
+While in command mode command mode (hit escape to make double-sure), move the cursor (with the arrow keys) so it's somewhere on the line that says '`Hello World!`', then type `yy`.
+You have now yanked the current line.
+
+Now that we have a line yanked, we can paste a copy of it by hitting the `p` key (for put).
+You can keep hammering on the `p` key as often as you like to keep adding more copies of the line.
+
+One of the things I like most about `vi` is that you can enter a number before many of the commands to repeat them that many times.
+To put our yanked line 500 times the command is `500p`.
+
+Lets say our aspirations have expanded, we'd like to greet the entire universes, not just the world!
+We could make over 500 edits, or, we could ask `vi` to do a global find and replace for us with the command:
+
+[source,bash]
+----
+:%s/World/UNIVERSE
+----
+
+You can also use `vi` commands to navigate around a file.
+E.g.
+`:n` (where `n` is a number) will take you to the nth line.
+So to get to the 25th line you would enter the command `:25`.
+
+Similarly, `$` jumps the cursor to the end of the current line, and `0` jumps the cursor to the start of the current line.
+
+`vi` will of course also let you easily delete content.
+To delete the current line just enter `dd`.
+You can probably guess how to delete 400 lines in one go, it is of course `400dd`.
+To delete everything from the cursor to the end of the line enter `D`, and to delete one character use `x`.
+
+One final thing to mention in this VERY brief overview is that there are multiple ways to enter into insert mode from command mode.
+We already know that `i` will start you inserting at the cursor, bit it's often useful to start inserting one character after the cursor, which you do with `a` (for append).
+You can also enter insert mode on a new blank line after the line containing the cursor with `o` (for open line).
+Similarly `O` opens a new line before the line with the cursor on it.
+
+This is just the tip of the `vi`-iceberg, it can do much much more.
+There are literally books written about it.
+However, IMO once you understand the modal nature of `vi`, all you really need is a good cheat-sheet to help you find the commands you need until they become second nature.
+(I have a printout of the first diagram on http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html[this page] hanging on my wall at work).
+
+== Final Thoughts
+
+It's very important to be able to read the content of text files from the command line, and also to be able to do at least basic edits from there.
+Everyone command line user needs to at least remember `less` and `tail -f`.
+Every command line user also needs to familiarise themselves with `pico`/`nano` at the very least.
+If you spend a lot of time on the command line I think it's definitely worth investing the time to learn `vi` or `emacs`.

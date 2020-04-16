@@ -1,0 +1,386 @@
+= TTT Part 18 of n -- More REs
+
+In <<ttt17.adoc,the previous instalment>> we introduced the concept of Regular Expressions, and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Per Compatible Regular Expression (PCRE) language.
+
+In this instalment we'll learn more POSIX ERE syntax, and have a look at some examples of REs in GUI apps.
+
+== Matching Postcast Episode 18
+
+Listen Along: Taming the Terminal Podcast Episodes 18a & 18b+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>++++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+
+== Inverted Character Clases
+
+As we have already seen, character classes can be used to specify a list of allowed characters.
+We've seen that you can simply list the characters that are allowed one after the other, and, that you can use the `-` operator to specify a range of characters.
+Something else you can do with a character class is invert it, in other words, have it match every character *except* the ones you list.
+To do this, you must start the character class with the `^` symbol.
+
+For example, the following command will find all five letter words that don't start with a vowel:
+
+[source,bash]
+----
+egrep '^[^aeiou]....$' /usr/share/dict/words
+----
+
+Notice that the meaning of the `^` symbol chagnes depending on where it is used, outside character classes it means _start of line_, and inside character classes it means _not any of the following_.
+
+== This Or That
+
+When we're describing patterns in English, we'll often find ourselves using the word _or_, so it's not surprising that there is a POSIX ERE operator to allow us to search for one pattern, or another (or another, or another ...).
+The pipe symbol (`|`) means _or_ in POSIX ERE.
+This symbol has a different meaning in BASH (it's one of the stream redirection operators), so it's vital you quote any RE containing the `|` symbol.
+
+As an example, the following command will search the standard Unix words file for all five-letter words starting in `th` or ending in `ing`:
+
+[source,bash]
+----
+egrep '^th...$|^..ing$' /usr/share/dict/words
+----
+
+== Grouping
+
+It's often very helpful to be able to group together a part of a pattern, effectively defining a sub-pattern.
+To do this, surround the sub-pattern in round brackets (aka parentheses).
+We can do this to limit the scope of an _or_ operator, or, as we'll see shortly, to define which parts of a pattern can and cannot be repeated.
+
+As a simple example, the following command will find all seven letter words starting with `th` or `ab`:
+
+[source,bash]
+----
+egrep '^(th|ab).....$' /usr/share/dict/words
+----
+
+== Cardinalities
+
+Many patterns contain some form of repetition, hence, regular expression languages generally contain a number of operators for expressing different ways in which a pattern, or a part of a pattern can be repeated.
+There are four POSIX ERE operators that allow you to specify differing amounts of repetition.
+
+The first and most common is the `*` operator which you should read as _zero or more occurrences of_.
+The operator applies to just the single character or group directly to it's left.
+
+For example, the command below will find all words of any length starting with `th` and ending with `ing`, including the word `thing` which has no letters between the `th` and the `ing`:
+
+[source,bash]
+----
+egrep '^th.*ing$' /usr/share/dict/words
+----
+
+The next operator we'll look at is the `+` operator, which you should read as _one or more occurrences of_.
+Like the `*`, this operator also only operates on the single character or group directly to its left.
+If we repeat the above example but with a `+` rather than a `*`, then we are searching for all words starting in `th` and ending in `ing` with at least one letter between the `th` and the `ing`.
+In other words, the same results as before, but without the word `thing`, which has zero letters between the `th` and the `ing`:
+
+[source,bash]
+----
+egrep '^th.+ing$' /usr/share/dict/words
+----
+
+The last of the simple cardinality operators is the `?` operator which you should read as either _zero or one occurrence of_ or, more succinctly _optionally_.
+Again, like the `*` and `+` operators, this operator also only operates on the single character or group directly to its left.
+
+As an example, the following command finds all words that end in `ing` or `ings`:
+
+[source,bash]
+----
+egrep 'ings?$' /usr/share/dict/words
+----
+
+The above returns both `winning`, and `winnings`.
+
+The first three cardinality operators will usually give you what you need, but, sometimes you need to specify an arbitrary range of times a pattern may be repeated, in which case, you'll need the final cardinality operator, `{}`.
+This operator can be used in a number of ways:
+
+[cols=2*]
+|===
+| `+{n}+`
+| _exactly `n` occurrences of_
+
+| `{n,m}`
+| _at least `n` and no more than `m` occurrences of_
+
+| `{n,}`
+| _at least `n` occurrences of_
+|===
+
+Like the other three cardinality operators, this operator also only acts on the one character or group directly to its left.
+
+As a first example, the following command lists all 10 letter words:
+
+[source,bash]
+----
+egrep '^.{10}$' /usr/share/dict/words
+----
+
+As another example, the following command lists all words between 10 and 12 characters long (inclusive):
+
+[source,bash]
+----
+egrep '^.{10,12}$' /usr/share/dict/words
+----
+
+Finally, the following command list all words at least 15 letters long:
+
+[source,bash]
+----
+egrep '^.{15,}$' /usr/share/dict/words
+----
+
+== Special Characters
+
+We've now seen all the symbols that have a meaning within a POSIX ERE (except for one which we'll see in a moment), so, we know that all the following characters have a special meaning:
+
+[cols=2*]
+|===
+| `^`
+| _Starts with_ (outside a character class), or _not any of_ (at the start of a character class)
+
+| `$`
+| _End with_
+
+| `.`
+| _Any one character_
+
+| `[]`
+| Start and end of a character class
+
+| `-`
+| The range operator (only within a character class)
+
+| `()`
+| specify groupings/sub-patterns
+
+| `\|`
+| _Or_
+
+| `*`
+| _Zero or more occurrences of_
+
+| `+`
+| _One or more occurrences of_
+
+| `?`
+| _Zero or one occurrences of_
+
+| `{}`
+| The cardinality operator
+
+| `\`
+| The escape character (more on this in a moment)
+|===
+
+If you want to include any of these characters in your patterns, you have to escape them if they occur somewhere in the pattern where they have a meaning.
+The way you do this is by preceding them with the escape character, `\`.
+
+If you wanted to match an actual full-stop (aka period) within your RE, you would need to escape it, so, an RE to match an optionally decimal temperature (in Celsius, Fahrenheit, or Kelvin) could be written like so:
+
+[source,bash]
+----
+[0-9]+(\.[0-9]+)?[CFK]
+----
+
+Similarly, an RE to find all optionally decimal dollar amounts could be written as:
+
+[source,bash]
+----
+\$[0-9]+(\.[0-9]+)?
+----
+
+However, we could write this in a more clear way by using the fact that very few characters have a special meaning within character classes, and hence don't need to be escaped if they are used in that context:
+
+[source,bash]
+----
+[0-9]+([.][0-9]+)?[CFK]
+[$][0-9]+([.][0-9]+)?
+----
+
+As a general rule, this kind of notation is easier to read than using the escape character, so, it's generally accepted best practice to use character classes where possible to avoid having to escape symbols.
+This is of course not always possible, but when it is it's worth doing IMO.
+
+== Escape Sequences
+
+As well as being used to escape special characters, the `\` operator can also be used to match some special characters or sets of characters, e.g.:
+
+[cols=2*]
+|===
+| `\\`
+| matches a `\` character
+
+| `\n`
+| matches a newline character
+
+| `\t`
+| matches a tab character
+
+| `\d`
+| matches any digit, i.e.
+is equivalent to `[0-9]`
+
+| `\D`
+| matches any non-digit, i.e.
+is equivalent to `+[^0-9]+`
+
+| `\w`
+| matches any word character, i.e.
+is equivalent to `[0-9a-zA-Z_]`
+
+| `\W`
+| matches any non-word character, i.e.
+is equivalent to `+[^0-9a-zA-Z_]+`
+
+| `\s`
+| matches any space character, i.e.
+a space or a tab
+
+| `\S`
+| matches any non-space character, i.e.
+not a space or a tab
+
+| `\b`
+| matches a word boundary (start or end of a word)
+
+| `\<`
+| matches the start of a word
+
+| `\>`
+| matches the end of a word
+|===
+
+Note that the above is not an exhaustive list, these are just the escape sequences you're most likely to come across or need.
+
+Given the above, we could re-write our regular expressions for temperatures and dollar amounts as follows:
+
+[source,bash]
+----
+\b\d+([.]\d+)?[CFK]\b
+\b[$]\d+([.]\d+)?\b
+----
+
+We have also improved our regular expressions by surrounding them in word boundary markers, this means the RE will only match such amounts if they are not stuck into the middle of another word.
+
+For our examples we have been using the standard Unix words file, which has one word per line, so, we have been able to use the start and end of line operators to specify the start and end of words.
+However, this would not work if we were searching a file with multiple words on the same line.
+To make our examples more generic, replace the `^` and `$` dollar operators at the start and end of the patterns with `\b` (or the start with `\<` and the end with `\>`).
+
+== Putting it All Together
+
+Given everything we now know, lets re-visit the example we ended with in the previous instalment, our big un-ginaly RE for matching MAC addresses:
+
+[source,bash]
+----
+[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]
+----
+
+We can now re-write it as simply:
+
+[source,bash]
+----
+[0-9a-f]{2}(:[0-9a-f]{2}){5}
+----
+
+The above will do everything our original RE did, but, actually, it's not as good as it could be, because it really should specify that the entire MAC address should appear as a word, so we should surround it with `\b` escape sequences:
+
+[source,bash]
+----
+\b[0-9a-f]{2}(:[0-9a-f]{2}){5}\b
+----
+
+To really get practical, it's time to stop using the standard unix words file, and start using more complex input.
+Specifically, we're going to use the `ifconfig` command which prints the details for all the network devices on a computer.
+We'll be looking at this command in much more detail later in the series, but for now, we'll just be using the command with no arguments.
+To see what it is we'll be pattern-matching against, run the command on its own first:
+
+[source,bash]
+----
+ifconfig
+----
+
+So far we have been using the `egrep` command in it's two-argument form, but, it can also be used with only one argument, the pattern to be tested, if the input is passed via `STDIN`.
+We'll be using stream redirection to pipe the output of `ifconfig` to `egrep`.
+
+Let's use our new MAC address RE to find all the MAC addresses our computer has:
+
+[source,bash]
+----
+ifconfig | egrep '\b[0-9a-f]{2}(:[0-9a-f]{2}){5}\b'
+----
+
+Having created an RE for MAC addresses, we can also create one for IP addresses (IPV4 to be specific):
+
+[source,bash]
+----
+\b\d{1,3}([.]\d{1,3}){3}\b
+----
+
+We can use `ifconfig` and `egrep` again to find all the IP addresses our computer has:
+
+[source,bash]
+----
+ifconfig | egrep '\b\d{1,3}([.]\d{1,3}){3}\b'
+----
+
+So, let's go right back to the examples we used at the very very start of all this.
+Firstly, to the RE for domain names:
+
+[source,bash]
+----
+[a-zA-Z0-9][-a-zA-Z0-9]*([.][a-zA-Z0-9][-a-zA-Z0-9]*)*
+----
+
+Hopefully you can now read this RE as follows:
+
+____
+A letter or digit followed by zero or more letters, digits, or dashes, optionally followed by as many instances of a dot followed by a letter or digits followed by zero or more letters, digits or dashes as desired.
+____
+
+And finally, to the RE that I promised was a funny joke:
+
+[source,bash]
+----
+(bb)|[^b]{2}
+----
+
+You could read it as:
+
+____
+two ``b``s or two characters that are not ``b``s
+____
+
+Or, you could read it as:
+
+____
+To be, or not to be
+____
+
+Given that Shakespeare's 450th birthday was last month, it seemed appropriate to include this bit of nerd humour!
+
+We've now covered most of the POSIX ERE spec, and probably more than most people will ever need to know, but if you'd like to learn more I can recommend http://www.boost.org/doc/libs/1_44_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html[this tutorial].
+
+== Some Examples of REs in GUI Applications
+
+Regular expressions make sense when you want to search for things, so, it's not surprising that you mostly find them in apps where searching is important.
+
+You'll very often find REs in advanced text editors (not in basic editors like TextEdit.app).
+Two examples are included below, the _Advanced Find and Replace_ window in http://www.peterborgapps.com/smultron/[Smultron 6], and the _Find_ dialogue in the http://www.activestate.com/komodo-edit/downloads[Komodo Edit 8] cross-platform IDE (the two editors I do all my programming in):
+
+image::./assets/ttt18/Screen-Shot-2014-05-10-at-17.49.36.png[Smultron 6 Advanced Find and Replace]
+
+image::./assets/ttt18/Screen-Shot-2014-05-10-at-17.55.51.png[The Komodo Edit Find Window]
+
+Another place you'll often find regular expressions is in apps for renaming files, for example, http://manytricks.com/namemangler/[Name Mangler 3] or the bulk-renaming tool within http://cocoatech.com/pathfinder/[Path Finder]:
+
+image::./assets/ttt18/Screen-Shot-2014-05-10-at-18.14.12.png[Name Mangler]
+
+image::./assets/ttt18/Screen-Shot-2014-05-10-at-18.17.19.png[Screen Shot 2014-05-10 at 18.17.19]
+
+== Update (19 Oct 2015) -- A Nice Web Tool
+
+Thanks to NosillaCast listener Caleb Fong for recommending a great online RE testing tool which you can find at https://regex101.com[regex101.com]
+
+== Next Time ...
+
+We've now learned enough about REs to move on to looking at command line tools for searching for text in files, and files in the filesystem.
+This is what we'll be moving on to next in this series.

@@ -1,0 +1,309 @@
+= TTT Part 34 of n -- Introducing HTTP
+
+In <<ttt33.adoc,the previous instalment>> we finished a five-part series on SSH.
+Before moving on, lets take a moment to step back and look at the big-picture.
+The five SSH instalments are all part of the now long-running series on networking.
+We have been working our way through the networking stack since <<ttt23.adoc,instalment 23>>.
+We started at the bottom of the stack, and have worked our way up.
+We are not exploring protocols in the Application Layer.
+
+In this instalment we're moving on from SSH to HTTP, the protocol that powers the world wide web.
+
+Before we look at some HTTP-related terminal commands, we need a basic understanding of how HTTP works, so that's what this instalment is all about.
+
+== Matching Postcast Episode 34
+
+Listen Along: Taming the Terminal Podcast Episode 34
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Introducing HTTP
+
+HTTP, the Hyper Text Transfer Protocol, is an application layer protocol that sits on top of TCP.
+By default HTTP servers listen on TCP port 80.
+HTTP is a request-response protocol, where the clients (usually web browsers) formulate an HTTP request and send it to an HTTP server, which then interprets it and formulates a HTTP response, which the client then processes.
+The HTTP protocol is plain-text and human-readable.
+
+The HTTP protocol is most closely associated with web browsers, which use it to fetch web pages, but its used by other apps too.
+Another common example is pod-catchers, which use HTTP to fetch the RSS feeds that define podcasts, as well as the media files those feeds link to.
+Many modern phone & tablet apps also use HTTP to communicate with the so-called cloud that powers them.
+HTTP is on of the real work-horses of the modern internet.
+
+== HTTP Requests
+
+A HTTP request consists of between one and three sections.
+It always starts with a request line.
+This request line can be followed by zero or more request header lines, and finally, a data section may follow, separated from the headers by an empty line.
+The data section, should it be present, contains data entered into web forms, including file uploads.
+
+The HTTP request line specifies the HTTP method to use, the path to request from the server, and the version of the HTTP protocol the remainder of the request will use.
+
+The HTTP request headers are specified one per line, as name-value pairs, with the name separated from the value by a `:` character.
+The headers are used by the client to pass information to the server which it can use in generating its response.
+
+The following is an actual HTTP request for http://www.podfeet.com/blog/[www.podfeet.com/blog/] as emitted by FireFox:
+
+[source,bash]
+----
+GET /blog/ HTTP/1.1
+Host: www.podfeet.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:37.0) Gecko/20100101 Firefox/37.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en,en-US;q=0.7,ga;q=0.3
+Accept-Encoding: gzip, deflate
+Cookie: __utma=188241321.1236907656.1162169166.1408563404.1431184789.53; __qca=P0-1257128144-1331857305112; PHPSESSID=n7uq31arql1uao8g3rahchu743; __utmb=188241321.2.10.1431184789; __utmc=188241321; __utmz=188241321.1431184789.53.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1
+DNT: 1
+Connection: keep-alive
+Cache-Control: max-age=0
+----
+
+The first line is the request line, which states that the HTTP `GET` method should be used, that the path `/blog/` is being requested, and that the request is being made using version 1.1 of the HTTP protocol.
+
+The remainder of the lines are request headers, there is no data included in this request.
+We won't look at all the headers, but I do want to draw attention to a few notable ones.
+
+The `Host` header is what makes it possible for multiple web sites to be served from a single IP address.
+The receiving web server will have many different domains configured, and this header will tell it which content is being requested.
+The `User-Agent` header identifies the browser to the server, and makes it possible to gather browser and OS usage stats.
+Notice how you can tell from the above header that I was using FireFox 37 on OS X 10.10.
+
+Notice that any cookies my browser has stored for the domain `podfeet.com` have been added to the request via the `Cookie` header.
+Each HTTP request to a server is completely independent of all other requests.
+There is no relationship between then, no concept of an extended connection or session.
+This was a major shortcoming of HTTP, and cookies were added later to make it possible for multiple requests to be tied together.
+When sending a reply to the client, the server can include a `Set-Cookie` header containing a string of text.
+It is expected that the client will include this cookie in the request headers of all future requests to that same domain until the cookie expires.
+The server can then tie together all the separate requests into a persistent state, making it possible to log in to websites.
+Without cookies, there would have been no so-called _web 2.0_!
+
+The `Accept-Language` header enables internationalisation of websites.
+Servers can store multiple versions of the same site in different languages, and use this header to return the correct version to the user.
+
+You might also notice that I have the Do Not Track (`DNT`) header set to 1, which means I am asking not to be tracked.
+
+=== HTTP Methods
+
+There are quite a few different HTTP methods, but there are only two in common use, `GET` and `POST`.
+
+`GET` requests should be used when there is little or no form data to send to the server.
+What little data there may be gets added to the end of the URL after a `?` symbol.
+`GET` requests should never be used to send sensitive data, as the data is included in the URL, and hence recorded in logs.
+`GET` requests should be used to retrieve data, and should not be used to alter the internal state of a web app.
+Because `GET` requests append their data to the end of the URL, and because there is a maximum allowed length for URLs, there is a limit to how much data can be sent using a `GET` request.
+A big advantage to `GET` requests is that their URLs can be bookmarked and shared with others.
+E.g., when I use Google to search for something, the text I type into the text box is sent to Google's servers using a `GET` request.
+I can see it in the URL of the search results.
+I can then copy and paste that URL into an email to share that search with someone else.
+
+`POST` requests should be used when there is a lot of data to send, or when the data is sensitive.
+`POST` requests should be used for all request that change the internal state of a web app, e.g.
+to send an email in a webmail interface, add a post on a social media site, or change a password.
+`POST` requests add the form data after the headers, so it is not logged, and has no restrictions on the length of the data.
+`POST` requests cannot be bookmarked or shared.
+
+=== Encoding Form Data
+
+When ever we submit a web form, the data we have entered is submitted to the server as part f a HTTP request.
+If the submit button is configured to use `GET`, then the data is appended to the URL, like a Google search, and if the submit button is configured to use `POST`, the data is added to the end of the HTTP request, after the request headers, separated from them by a blank line.
+However, regardless of how the data is sent, it is always encoded in the same way.
+
+Each form element on a page has a name, and a value.
+The data is encoded as a sequence of `name=value` pairs, separated with `&` symbols.
+Neither names nor values can contain special characters, so any such characters in the data must be encoded using URL escape sequences.
+These are two-digit hexidecimal codes pre-fixed with the `%` symbol.
+You'll find a http://www.w3schools.com/tags/ref_urlencode.asp[full list of URL escape codes here], but as an example, a space character is encode as `%20`.
+
+== HTTP Responses
+
+When a web server receives a HTTP request, it interprets it, and tries to fetch the data requested, and return it.
+It may well fail, but what ever the result of attempting to fulfil the request, the server will formulate a HTTP response to communicate the outcome of the request to the client.
+
+Similar to the request, a HTTP response has three parts, a status line, zero or more response header lines, and a final optional data segment, separated from the headers by a blank line.
+
+Below is a truncated version of the HTTP response from Allison's web server to a request for http://www.podfeet.com/blog/:
+
+[source,bash]
+----
+HTTP/1.1 200 OK
+Date: Sat, 09 May 2015 15:52:42 GMT
+Server: Apache
+X-Pingback: http://www.podfeet.com/blog/xmlrpc.php
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Set-Cookie: PHPSESSID=eand2g7q77privgcpvi6m7i7g2; path=/
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http//www.w3.org/1999/xhtml' lang='en-US'>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+	<title>NosillaCast</title>
+...
+----
+
+The first line of the response gives the HTTP version, and most importantly, the HTTP response code.
+This tells the client what kind of response it is receiving.
+You could receive a successful response, a response instructing the client to re-issue its request to a different URL (i.e.
+a redirect), a request for authentication (a username and password popup), or an error message.
+
+After the HTTP response line comes a list of HTTP header lines, again, we won't go into them all, but I do want to draw your attention to a few important ones.
+Firstly, the `Server` header makes it possible to gather statistics on the web servers in use on the internet -- notice that Allison's site is powered by an Apache web server.
+The single most important response header is `Content-Type`, which tells the client what type of data it will receive after the blank line, and optionally, how it's encoded.
+In this case, the data section contains HTML markup encoded using UTF-8.
+Also notice that the server is requesting the client set a new cookie using the `Set-Cookie` header, and that the `Cache-Control` header is telling the client, in many different ways, that it absolutely positively should not cache a copy of this page.
+The actual HTML markup for Allison's home page is hundreds of lines long, I have only shown the first six lines.
+
+It's important to note that rendering a single web page generally involves many HTTP requests, often to multiple servers.
+The first response will usually be the HTML markup for the web page in question, but that HTML will almost certainly contain links to other resources need to render the page, like style sheets, images, JavaScript files, etc..
+As an example, rendering Allison's home page requires 107 HTTP requests!
+That's on the high side because Allison has a lot of videos embedded in her home page, and quite a few widgets embedded in her sidebars.
+However, on the modern web it's not unusual to need this many requests to render a single page.
+
+=== HTTP Response Codes
+
+There are many supported HTTP response codes (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html[click here for a full list]), and we're not going to go into them all, but I do want to explain the way they are grouped, and highlight some common ones you're likely to come across.
+
+HTTP response codes are three-digit numbers starting with 1, 2, 3, 4, or 5.
+They are grouped into related groups by their first digit.
+All response codes starting with a 1 are so-called informational responses.
+These are rarely used.
+All response codes starting with a 2 are successful responses to requests.
+All response codes starting with a 3 are redirection responses.
+All responses starting with a 4 are client errors (in a very loose sense), and finally, all responses starting with a 5 are server errors.
+
+Some common HTTP response codes:
+
+`200 - OK`
+
+This is the response code you always hope to get, it means your request was successful
+
+`301 - Moved Permanently`
+
+A permanent redirect, this redirect may be cached by clients
+
+`302 - Found`
+
+A temporary redirect, this redirect should not be cached by clients, it could change at any time
+
+`400 - Bad Request`
+
+The HTTP request sent to the server was not valid.
+You're unlikely to ever see this in a browser, but if you muck around constructing your own requests on the terminal you might well see it when you get something wrong!
+
+`401 - Not Authorised`
+
+Tells the client to request a username and password from the user
+
+`403 - Forbidden`
+
+The requested URL exists, but the client has been denied access, perhaps based on the user they have logged in as, the IP address they are accessing the site from, or the file-type of the URL they are attempting to access.
+
+`404 - Not Found`
+
+One of the most common errors you'll see -- your request was valid, the server understood it, but it has no content to return to you at that URL.
+
+`500 - Internal Server Error`
+
+The web programmers's most hated error -- it just means the server encountered and error while trying to fulfil your request.
+
+`502 - Bad Gateway`
+
+In the days of CDNs (Content Delivery Networks), these errors are becoming ever more common.
+It means that your browser has successfully contacted a front-end web server, probably at the CDN, but that the back-end server that actually contains the information you need is not responding to the front-end server.
+The front-end server is considered a gateway to the backend server, hence the name of the error.
+
+`503 - Service Unavailable`
+
+The server is temporarily too busy to deal with you -- effectively a request to try again later.
+
+`504 - Gateway Timeout`
+
+This error is similar to a 502, and is also becoming ever more common with the rise of CDNs, it means the backend server is up, but is responding too slowly to the front-end server, and the front-end server is giving up.
+
+=== MIME Types
+
+HTTP uses the `Content-Type` header to specify the type of data being returned.
+The value of that header must be a so-called MIME Type, or _internet media type_.
+MIME Types have their origins in the common suite of email protocols, and were later adopted for use on the world wide web -- after all, why re-invent the wheel!?
+
+There are MIME types for just about everything, and they consist of two parts, a general type, and then a more specific identifier.
+E.g.
+all the text-based code files used on the web have MIME types starting with `text`, e.g.:
+
+[cols=2*]
+|===
+| `text/html`
+| HTML markup
+
+| `text/javascript`
+| JavaScript code
+
+| `text/css`
+| CSS Style Sheet definitions
+|===
+
+Some other common web MIME Types include:
+
+[cols=2*]
+|===
+| `image/jpeg`
+| JPEG Photos
+
+| `image/png`
+| PNG graphics
+
+| `audio/mpeg`
+| MP3 audio
+
+| `video/mp4`
+| MPEG 4 video
+|===
+
+== Exploring HTTP With Your Browser
+
+Before moving on to the HTTP-related terminal commands, lets look at some of the debugging tools contained within our browsers.
+All modern browsers have developer tools, and they all do similar things, but the UI is different in each.
+My personal preference is to use Safari's developer tools, but so as to make this section accessible to as many people as possible, we'll use the cross-platform FireFox browser.
+
+To enable the developer tools we are interested in today, browse to the site you want to explore, e.g.
+http://www.bartb.ie/[www.bartb.ie], and click on `Tools` → `Web Developer` → `Network`.
+
+https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.33.50.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools\] + Click to Enlarge]
+
+This will open a new sub-window at the bottom of your FireFox window with a message telling you to re-load the page.
+
+https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.33.58.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.58.png[FireFox Dev Tools - Reload Page\] + Click to Enlarge]
+
+When you do, you'll see all the HTTP requests needed to load my home page scroll by, with a timeline next to the list.
+If you scroll up to the very top of the list you'll see the initial request, which received HTML markup in response from my server.
+All the other requests are follow-up requests for resources needed to render my home page, like JavaScript code files, CSS style sheets, and images.
+
+https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.34.54.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.34.54.png[FireFox Dev Tools - Timeline\] + Click to Enlarge]
+
+You can click on any request to see more details.
+This will add a tab to the right with lots of tabs to explore, though the Headers tab is the one we are interested in.
+There is a button to show the raw headers.
+
+https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.51.48.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.51.48.png[FireFox De Tools - Request Details\] + Click to Enlarge]
+
+You'll notice a lot of `304` response codes.
+This is a sign of efficient use of caching.
+If you click on one of these requests and look at the raw headers, you'll see that the request headers included a header called `If-Modified-Since`, which specifies a date.
+That tells the server that the browser has a cached copy of this URL that was retrieved at the specified date.
+The server can use this date to check if the content of the URL has changed since then.
+If the data is unchanged, the server can respond with a `304` status code rather than a fresh copy of the data, this tells the client that the data has not changed, so it's OK to use cached version.
+This kind of caching of static content like images saves a lot of bandwidth.
+
+== Conclusions
+
+Hopefully you now have a basic understanding of what your browser is doing when you visit a webpage.
+Do bear in mind though that we have ignored some of the subtle detail of the process so as not to add unnecessary confusion.
+While this description will be sufficient to understand the terminal commands that interact with web servers, it would not be sufficient to pass an exam on the subject!
+
+Now that we understand the fundamentals of how HTTP works, we are ready to look at some related terminal commands.
+In the next instalment we'll learn about three such terminal commands, `lynx`, `wget`, and `curl`.

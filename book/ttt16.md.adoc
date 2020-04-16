@@ -1,0 +1,266 @@
+= TTT Part 16 of n -- Crossing the Streams
+
+In <<ttt15.adoc,the previous instalment>> we introduced the concepts of streams, and looked at how every process has references to three streams as part of their environment -- `STDIN`, `STDOUT` & `STDERR`.
+We went on to introduce the concept of operators that manipulate these streams, and we focused on the so-called '`pipe`' operator which connects `STDOUT` in one process to `STDIN` in another, allowing commands to be chained together to perform more complex tasks.
+We mentioned the existence of operators for connecting streams to files, and the possibility of streams being merged together, but didn't go into any detail.
+Well, that's what we'll be doing in this instalment.
+
+== Matching Postcast Episode 16
+
+Listen Along: Taming the Terminal Podcast Episode 16
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT16CrossingTheStreams/TTT_16_Crossing_the_Streams.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT16CrossingTheStreams/TTT_16_Crossing_the_Streams.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Turning Files into Streams
+
+So far we've been redirecting the output of one command to the input of another, but we can also use files as the source of our streams using the `<` operator.
+The operator works by connecting the content of the file to the right of the operator to `STDIN` in the command to the left of the operator.
+
+As an example, lets use the `wc` command we learned about in the previous instalment to count the number of lines in the standard Unix/Linux hosts file again, but this time, we'll use the `<` operator:
+
+[source,bash]
+----
+wc -l < /etc/hosts
+----
+
+Because the `wc` command can take its input either from `STDIN`, or from one or more files passed as arguments, the above command achieves the same things as the command we saw in the previous instalment:
+
+[source,bash]
+----
+wc -l /etc/hosts
+----
+
+The `wc` command is not in any way unusual in this, the vast majority of Unix/Linux commands which operate on text or binary data can accept that data either from `STDIN` or from a file path passed as an argument.
+For example, all the following commands we have met before can take their input from `STDIN` rather than by specifying a file path as an argument.
+
+[source,bash]
+----
+less < /etc/hosts
+cat < /etc/hosts
+head -3 < /etc/hosts
+----
+
+It's easier to just pass paths as arguments through, hence the `<` operator is probably the least-used of the stream redirection operators.
+However, just because it's the least-used, doesn't mean it's never needed!
+There are some commands that will only accept input via `STDIN`, and for such commands it's vital to have an understanding of the `<` operator in your command line toolkit.
+In my professional life the one example I meet regularly is the `mysql` command, which does not take a file path as an argument (Note that MySQL is not installed by default on OS X).
+To load an SQL file into a MySQL database from the command line you have to do something like:
+
+[source,bash]
+----
+mysql -h db_server -u db_username -p db_name < sql_file.sql
+----
+
+== Sending Streams to a File
+
+While you're not likely to find yourself using files as input streams very often, you are quite likely to find yourself using files as output streams.
+There are two operators which perform this task, and the difference between them is subtle but very important.
+
+The first of these operators is `>`.
+This operator directs the output from the command to its left to a *NEW* file at the path specified to its right.
+If a file already exists at the specified path it will be *REPLACED*.
+This means that after the command finishes the file will only contain the output from that one command execution.
+Because of this overwriting behaviour, always use the `>` operator with great care!
+
+The second of the file output operators is `>>`.
+This operates in a very similar way to `>`, directing the output of the command to its left to the file specified to its right, but with one very important difference -- if a file already exists at the specified path it will not be replaced, instead, the new output will be appended to the end of the file.
+This makes the `>>` operator much safer, but, it means you cannot easily see which content in the file came from the latest execution of the command.
+
+As a practical example, lets re-visit our command for generating random characters from the previous instalment, but this time, rather than outputting the random characters to the terminal, we'll send them to a file:
+
+[source,bash]
+----
+N=256
+head -c $N /dev/random | base64 | head -c $N > random.txt
+----
+
+We can verify that we have generated 256 random characters by using the `wc` command with the `-c` flag to get it to count characters:
+
+[source,bash]
+----
+wc -c random.txt
+----
+
+If we re-run the command we can verify that the file still only contains 256 characters, because the original version of the file was simply replaced by a new version because we used the `>` operator:
+
+[source,bash]
+----
+head -c $N /dev/random | base64 | head -c $N > random.txt
+wc -c random.txt
+head -c $N /dev/random | base64 | head -c $N > random.txt
+wc -c random.txt
+----
+
+Now lets change things up and generate 8 random characters at a time, but append them to a file with the `>>` operator:
+
+[source,bash]
+----
+N=8
+head -c $N /dev/random | base64 | head -c $N >> randomAccumulator.txt
+----
+
+As before we can verify the amount of characters in the file using:
+
+[source,bash]
+----
+wc -c randomAccumulator.txt
+----
+
+Now, each time we repeat the command we will add 8 more characters to the file rather than replacing its contents each time:
+
+[source,bash]
+----
+head -c $N /dev/random | base64 | head -c $N >> randomAccumulator.txt
+wc -c randomAccumulator.txt
+head -c $N /dev/random | base64 | head -c $N >> randomAccumulator.txt
+wc -c randomAccumulator.txt
+----
+
+== Redirecting Streams Other Than `STDIN` & `STDOUT`
+
+So far we have always operated on `STDIN` and `STDOUT`.
+This is true for our use of all four of the operators we've met so far (`|`, `<`, `>` & `>>`).
+However, there is often a need to control other streams, particularly `STDERR`.
+
+Unfortunately, we now have no choice but to take a look at some rather deep Unix/Linux internals.
+We've already learned that each process has a reference to three streams within it's environment which we've been calling by their Englishy names `STDIN`, `STDOUT` & `STDERR`.
+We now need to remove this abstraction.
+What the process's environment actually contains is something called a "`File Descriptor Table`", which contains a numbered table of streams.
+Three of these streams are created by default, and always present, but processes can add as many more streams as they wishes.
+Within the file descriptor table all streams are referenced by number, rather than with nice Englishy names, and the numbers start counting from zero.
+To make use of the file descriptor table, we need to know the following mappings:
+
+|===
+| File Descriptor | Maps to
+
+| `0`
+| `STDIN`
+
+| `1`
+| `STDOUT`
+
+| `2`
+| `STDERR`
+|===
+
+If we were to define our own streams, the first stream we defined would get the file descriptor `3`, the next one `4` and so on.
+We are not going to be defining our own streams in this series, so all we have to remember is the contents of the small table above.
+
+We can use the numbers in the file descriptor table in conjunction with the `<`, `>` & `>>` operators to specify which streams the files should be connected to.
+For example, we could re-write the examples from today as follows:
+
+[source,bash]
+----
+wc -l 0< /etc/hosts
+head -c $N /dev/random | base64 | head -c $N 1> random.txt
+head -c $N /dev/random | base64 | head -c $N 1>> randomAccumulator.txt
+----
+
+Since these operators use `0` and `1` by default, you'd never write the above commands with the ``0``s and ``1``s included, but, you have to use the file descriptor table to redirect `STDERR`.
+
+Let's revisit the command we used to intentionally trigger output to `STDERR` in the previous instalment:
+
+[source,bash]
+----
+ls -l ~/DesktopDONKEY | wc -l
+----
+
+This command tries to count the files in a non-existent folder.
+Because the folder does not exist, the `ls` command writes nothing to `STDOUT`.
+Because the `|` only operates on `STDOUT` the `wc` command counts zero lines, and the error message which was written to `STDERR` is printed to the screen.
+We could now redirect the error message to a file as follows:
+
+[source,bash]
+----
+ls -l ~/DesktopDONKEY 2> error.txt | wc -l
+cat error.txt
+----
+
+Note that we have to redirect `STDERR` before the `|` operator, otherwise we would be redirecting `STDERR` from the `wc` command rather than the `ls` command.
+
+== Multiple Redirects
+
+You can use multiple redirects in the one command.
+For example, you could use one redirect to send data from a file to a command, and another redirect the send the output to a different file.
+This is not something you'll see very often, but again, it's something MySQL command line users will know well, where this is a common construct:
+
+[source,bash]
+----
+mysql -h db_server -u db_username -p db_name < query.sql > query_result.tab
+----
+
+You might also want to send `STDOUT` to one file, and `STDERR` to a different file:
+
+[source,bash]
+----
+ls -l ~/DesktopDONKEY 2> error.txt | wc -l > fileCount.txt
+----
+
+== Crossing the Streams
+
+Unlike in the Ghost Busters universe, in the Unix/Linux universe it's often desirable to cross the streams -- i.e.
+to merge two streams together.
+The most common reason to do this is to gather all output, regular and error, into a single stream for writing to a file.
+The way this is usually done is to divert `STDERR` to `STDOUT` and then redirect `STDOUT` to a file.
+
+In order to construct a meaningful example, lets preview a command we're going to be returning to in great detail in a future instalment, the `find` command.
+This command often writes to both `STDOUT` and `STDERR` during normal operation.
+
+As its name suggests, the `find` command can be used to search for files that meet a certain criteria.
+If you run the command as a regular user and ask it to search your entire hard drive, or a system folder, it will run into a lot of permission errors interspersed with the regular output as the OS prevents it from searching some protected system folders.
+As a simple example, lets use find to search for `.pkg` files in the system library folder:
+
+[source,bash]
+----
+find /Library -name *.pkg
+----
+
+Almost straight away you'll see a mix of permission errors and files with the `.pkg` extension.
+The key point is that there is a mix of errors and results.
+If we try capture all the output with the command below we'll see that the error messages are not sent to the file, instead, they are sent to our screen (as expected):
+
+[source,bash]
+----
+find /Library -name *.pkg > findOutput.txt
+cat findOutput.txt
+----
+
+As we've just learned, we could send the errors to one file and the files to another with:
+
+[source,bash]
+----
+find /Library -name *.pkg > findOutput.txt 2> findErrors.txt
+cat findOutput.txt
+cat findErrors.txt
+----
+
+But how could we capture all the output together?
+
+To do this we need to introduce one more operator, the `&` operator.
+This operator allows a file descriptor table entry to be used in place of a file path by the `<`, `>` & `>>` operator.
+Hence, we can redirect `STDERR` (`2`) to `STDOUT` (`1`) as follows:
+
+[source,bash]
+----
+find /Library -name *.pkg 2>&1
+----
+
+This has no noticeable effect until you send `STDOUT` to a file, then you can see that we have indeed diverted `STDERR` to `STDOUT`, and the combined stream to a file:
+
+[source,bash]
+----
+find /Library -name *.pkg > findCombinedOutput.txt 2>&1
+cat findCombinedOutput.txt
+----
+
+*IMPORTANT:* notice the counter-intuitive ordering of the above command, although the redirect happens first, it MUST be specified at the end of the command or it will not work.
+
+There is much much more than can be done with streams, but, this is all most people are likely to need in their day-to-day life on the command line, so we'll stop here before we confuse everyone too much 🙂
+
+== Conclusions
+
+We have now seen how streams, and a process's file descriptor table, can be manipulated using the stream redirection commands to chain commands together and funnel input and output to and from files in a very flexible way.
+This ability to manipulate streams opens up a whole new world to us, allowing us to build up complex commands from simple commands.
+This ability to chain commands is a pre-requisite for our next topic -- searching at the command line.

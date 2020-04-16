@@ -1,0 +1,254 @@
+= TTT Part 37 of n -- SSH Agents
+
+Since we covered SSH in parts <<ttt29.adoc,29>> & <<ttt30.adoc,30>>, Apple have changed how their desktop OS deals with the passphrases protecting SSH identities (key pairs).
+This provides us a good opportunity to have a look at the SSH Agent in general, and, how things have changed on the Mac in particular.
+
+The good news is that while things have changed on the Mac, with a small amount of effort, you can get back all the convenience and security you had before.
+
+Quick Links
+
+* <<Revision_8211_SSH_Identities,1 Revision -- SSH Identities>>
+* <<SSH_Agents,2 SSH Agents>>
+ ** <<It8217s_All_About_the_ssh-add_Command,2.1 It's All About the ssh-add Command>>
+ ** <<Loading_Identities_into_an_SSH_Agent,2.2 Loading Identities into an SSH Agent>>
+ ** <<Removing_Identities_from_an_SSH_Agent,2.3 Removing Identities from an SSH Agent>>
+* <<SSH_Agent_on_OS_X_038_macOS,3 SSH Agent on OS X & macOS>>
+ ** <<Changes_in_macOS_Sierra,3.1 Changes in macOS Sierra>>
+* <<Final_Thoughts,4 Final Thoughts>>
+
+== Matching Postcast Episode 37
+
+Listen Along: Taming the Terminal Podcast Episode 37
+
++++<audio controls='1' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2017_05_26.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2017_05_26.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== Revision -- SSH Identities
+
+As a quick reminder -- SSH can authenticate users in many ways.
+The two most common are passwords, and so-called _SSH identities_ (sometimes referred to as _SSH keys_).
+An SSH identity consists of a private key, a matching public key, and some metadata.
+The two keys are stored in separate files, and the name of the file containing the public key must be identical to the one for the private key, but with `.pub` appended to it.
+When SSH config files or commands require the path to an identity, what they're looking for is the path to the private key's file.
+SSH identities are created using the `ssh-keygen` command.
+
+SSH has the concept of a default identity.
+Where ever an identity can be used, SSH will check a number of pre-defined file paths (in a pre-defined order) for a valid identity file, and use the first one it finds.
+Today, using the most modern versions of SSH and the default key algorithms, that effectively means that your default identity is `~/.ssh/id_rsa` (and `~/.ssh/id_rsa.pub`).
+
+As with any cryptographic system based on public & private keys, your security completely depends on keeping the private key secret, and the publication of your public key has no impact on your security at all.
+That means that the half of the identity that doesn't end in `.pub` is the crown jewels, and you are free to share the half that does end in `.pub` freely.
+
+No sysadmin should ever ask you for your private key, they should only ever need your public key.
+If you want to be granted access to a computer, you give the person who manages that computer your public key, they grant access to that key, and you can then log on from the computer that had the matching private key.
+
+To protect your private key, SSH identity files support passphrase-based encryption.
+The actual values stored in the files can be the result of encrypting the private key with a passphrase.
+The ssh-keygen command will allow you to set a blank password on an identity, but it very much encourages you not to do that, and to set a good secure passphrase.
+
+If you follow best practice and do indeed set a passphrase on your identity, SSH will prompt you for that passphrase when ever it needs the private key part of that identity.
+This gets very tedious very quickly, and that's where the SSH Agent comes in.
+
+== SSH Agents
+
+The SSH Agent's _raison d'être_ is to take the pain out of using passphrase-protected SSH identities.
+SSH Agents securely cache the decrypted private keys belonging to SSH identities.
+SSH Agent processes are generally not shared between users, in fact, they're generally not even shared between login sessions.
+When I log into my Mac, a new SSH Agent is automatically started, and that specific SSH Agent is only accessible by apps or commands that I start within that login session.
+SSH Agents don't store anything permanently -- they forget everything as soon as they stop running, and logging out will kill the SSH Agent associated with a specific login session.
+
+The core SSH libraries are aware of SSH Agents and can communicate with them, so the caching they provide is available to all the SSH-related terminal commands like `ssh`, `scp`, `sftp`, as well as to any GUI apps that make use of the appropriate SSH APIs, for example, both Transmit and SequelPro have SSH Agent support.
+
+The exact mechanisms for configuring an SSH Agent to automatically start and stop on login and logout varies from OS to OS, but many desktop Unix/Linux flavours start SSH Agents by default.
+Apple have done so on the Mac since Mac OS X 10.5 Leopard.
+If you're not a Mac user you'll need to do a little Googling to figure out what the state of play is on your particular OS.
+Note that there are even SSH Agent implementations for Windows.
+You can use https://cygwin.com/[Cygwin] to run OpenSSH's SSH Agent, or, you can use `pageant.exe`, an SSH Agent from the people behind the venerable https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html[PuTTY SSH client].
+
+=== It's All About the `ssh-add` Command
+
+On Linux/Unix systems (including Apple's OSes), the SSH Agent is provided by the command `ssh-agent`, but that's not the command you use to interact with your particular SSH Agent.
+Instead, all your interaction with your SSH Agent will be via the command `ssh-add`.
+
+Firstly, you can check that you actually have a running SSH Agent associated with your login using the `-l` flag (for list).
+If you do have a running SSH Agent you'll either see a list of loaded identities, or, a message like the following:
+
+[source,bash]
+----
+$ ssh-add -l
+The agent has no identities.
+$
+----
+
+If there's no SSH Agent running you'll get an error message something like:
+
+[source,bash]
+----
+$ ssh-add -l
+Could not open a connection to your authentication agent.
+$
+----
+
+=== Loading Identities into an SSH Agent
+
+You can load your default identity (generally `~/.ssh/id_rsa`) into your SSH agent with the command:
+
+[source,bash]
+----
+ssh-add
+----
+
+And, you can add a specific identity with the `-a` flag, e.g.:
+
+[source,bash]
+----
+ssh-add -a ~/some_ssh_identity_file
+----
+
+Note that you will be asked to enter the passphrase for each identity as you load it.
+
+Once you have one or more identities loaded into your SSH Agent you should see them when you run `ssh-add` with the `-l` flag:
+
+[source,bash]
+----
+$ ssh-add -l
+2048 SHA256:UNP5g9KBBOfqi2RYrtY2aGILNbcvp2pe23+38Ignvsc /Users/bart/.ssh/id_rsa (RSA)
+$
+----
+
+=== Removing Identities from an SSH Agent
+
+Counter-intuitively, you also use the `ssh-add` command to remove identities from your SSH Agent.
+You can remove just your default identity by passing only the `-d` flag:
+
+[source,bash]
+----
+$ ssh-add -d
+Identity removed: /Users/bart/.ssh/id_rsa (bart@localhost)
+$
+----
+
+You can remove other identities by passing the path to the file representing the identity in question as an argument after the `-d` flag, e.g.:
+
+[source,bash]
+----
+ssh-add -d ~/some_ssh_identity_file
+----
+
+You can also remove all identities at once with the `-D` flag:
+
+[source,bash]
+----
+$ ssh-add -D
+All identities removed.
+$
+----
+
+== SSH Agent on OS X & macOS
+
+Since Mac OS X 10.5 Leopard, Apple have integrated SSH Agents into their OS.
+When you log in to a Mac, you'll find an SSH Agent running and ready to accept identities.
+As well as taking care of starting and stopping an agent for each user on login and logout, Apple also added their own additional features to the standard SSH Agent from OpenSSH to allow it to integrate with the OS's Keychain feature.
+This allows the passphrase for SSH identities to be safely stored in the Keychain, and easily flowed from there to your SSH Agent as needed.
+
+In versions of Apple's OS from Mac OS X 10.5 Leopard up to and including OS X 10.11 El Capitan, Apple completely automated the integration between the Keychain and the SSH Agent -- it just worked.
+No setup, no configuration, no user action at all, it just made users`' lives easier!
+
+Each time SSH on a Mac tried to load an encrypted SSH identity it would try find the matching passphrase in the user's Login keychain, if found, the passphrase would be would used to decrypt the private key, which SSH would then cache in the user's SSH Agent.
+From the user's point of view, this meant that if the passphrase for an SSH identity was in their keychain, they could use that identity without every being asked to enter their passphrase.
+If the needed passphrase was not found in the Keychain, the OS would pop up a GUI dialogue box requesting the passphrase, and, providing a tick box to save the passphrase into the Keychain if desired.
+
+From a user's point of view this meant that if you ticked the box to save the passphrase once, you'd never need to enter it ever again.
+
+=== Changes in macOS Sierra
+
+This behaviour was very convenient, but also completely non-standard.
+Other Unix/Linux OSes don't behave like this.
+And, as of macOS 10.12 Sierra, neither does Apple's OS!
+The core abilities haven't changed, but the integration with the Keychain is no longer enabled by default.
+
+MacOS Sierra still automatically starts an SSH Agent when you log in, and shuts it down when you log out, so there's still an SSH Agent waiting for you by default.
+However, by default, that SSH Agent won't go looking for passphrase in your keychain, nor will it save any passphrase you do enter into your Keychain.
+
+The integration isn't gone though, it's just dormant by default.
+
+If you only want the integration between your Keychain and your SSH Agent every now and then, Apple provide a quick and easy way to load all SSH identities for which there are passphrase in your keychain into your SSH Agent -- simply call `ssh-add` with the `-A` flag.
+I keep the passphrase for just one SSH key in my keychain (the one for my default key), so when I load all identities from my keychain, this is what I see:
+
+[source,bash]
+----
+$ ssh-add -A
+Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
+$
+----
+
+How is this different to `ssh-add` with no arguments?
+Let's see -- I'll empty the SSH Agent, and re-add the same identity without using the Keychain integration:
+
+[source,bash]
+----
+$ ssh-add -D
+All identities removed.
+$ ssh-add
+Enter passphrase for /Users/bart/.ssh/id_rsa:
+Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
+$
+----
+
+Notice that without the Keychain integration, I have to enter my passphrase.
+
+Initially, when macOS Sierra first shipped and people started to notice that their SSH identities were no longer automatically loading into their SSH Agents using the passphrases in their keychains, the internet was full of people insisting that the `ssh-add -A` command was the only solution.
+Many people also suggested that the only way to automate the integration between your keychain and your SSH Agent was to add this command into one of your shell's startup files, e.g.
+`~/.bash_profile`.
+I'm happy to tell you that these people were mistaken, and that you shouldn't follow their advice.
+
+You'll be happy to learn that Apple have provided an official, documented, mechanism for enabling the integration between your keychain and your SSH Agent.
+What the internet mavens offering their poor advice had failed to do was RTFM (Read The _Fine_ Manual):
+
+[source,bash]
+----
+man ssh_config
+----
+
+Don't worry, I'll summaries the relevant bits for you -- with macOS Sierra, Apple introduced two new SSH configuration options for controlling the integration between the SSH Agent and the Keychain.
+Both of these options can be specified in your `~/.ssh/config` file.
+
+The first option, `UseKeychain`, controls the flow of passphrases from the SSH Agent to your Keychain -- setting this option to `yes` will cause all passphrases entered into your SSH Agent to be stored in your Login keychain.
+
+The second option, `AddKeysToAgent`, controls the auto-fetching of passphrases from the Keychain by the SSH Agent as required.
+The two valid values for this option are `yes` and `no`.
+
+So, to restore the old pre-macOS behaviour, edit your `~/.ssh/config` file so it contains the following (the first line is just a comment and has no effect on the OS's actual behaviour):
+
+[source,bash]
+----
+# enable integration between Keychain and SSH Agent
+UseKeychain yes
+AddKeysToAgent yes
+----
+
+Once that's done, log out and log back in, and all should be as it was under El Capitan.
+
+We can verify that everything is working as it should, and, that the loading of keys happens on demand, not on login, with a little experiment.
+
+Start by logging out and then back in.
+At this point, you should have a running SSH Agent, but it should contain no identities.
+You can verify this with the `ssh-add -l` command.
+
+Next, SSH to a sever which you have configured to use an encrypted SSH identity.
+The first thing you should notice is that you get logged in to the server without needing to enter your passphrase -- the `ssh` command tried to load your identity from disk, but found the private key to be encrypted, so it asked your SSH Agent if it had a cached copy of the private key, which it didn't, so it asked your keychain if it had the passphrase for the relevant identity, which it did, so it decrypted and cached the private key, and then passed it back to the `ssh` command, which logged you into the server.
+You can verify that the identity has been cached in your SSH Agent with the `ssh-add -l` command.
+
+One final thing to note is that the GUI for entering SSH identity passphrases has been removed from macOS Sierra.
+This means that you may have to explicitly add your identity to your SSH Agent once using the `ssh-add` command, even if you enable keychain integration.
+
+You'll find more detailed information about the SSH Agent-related changes Apple made in macOS Sierra in https://developer.apple.com/library/content/technotes/tn2449/_index.html[Apple Technical Note TN2449].
+
+== Final Thoughts
+
+Regardless of your OS, you can make use of an SSH Agent to avoid having to re-enter passwords for SSH identities over and over again.
+This is true on all OSes, even Windows.
+This is yet another reason to stop using password-less SSH identities -- with an SSH Agent, you can have both security and convenience!
+
+And, for all you Mac users like me who were cranky at the loss of the automated integration between the Keychain and the SSH Agent in macOS Sierra, you've not got a robust and supported fix.

@@ -1,0 +1,416 @@
+= TTT Part 13 of n -- PATH
+
+In <<ttt12.adoc,the previous instalment>> we introduced the concept of the command shell environment, and we looked in detail at how shell and environment variables work.
+In this instalment we'll focus on probably the single most important environment variable, `PATH`.
+We'll look at what it does, how it's initialised, and, in the process, we'll learn how to make persistent customisations to our shell environment.
+
+== Matching Postcast Episode 13
+
+Listen Along: Taming the Terminal Podcast Episode 13
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+So far in this series I have been a little loose with the term _command_, I've avoided putting too fine a point on exactly what a terminal command is, but we'll remedy that today.
+If you remember right back to <<ttt2.adoc,the second instalment>>, we said that when entering commands on the command line, the first word is the command, and the other words (separated by spaces) formed the arguments to that command.
+We spent a lot of time discussing the vagaries of quoting the arguments, but we didn't discus the command itself in any detail.
+
+In BASH, when you enter a command, that command can actually be one of two things, a builtin BASH command, or, an executable file which BASH will execute for you.
+You can see the list of builtin commands on BSD-style Unixes (including OS X) with `man builtin`.
+On Linux you need to navigate to the `SHELL BUILTIN COMMANDS` section of the VERY long BASH man page for the same information.
+
+When you enter a command in BASH the first thing it does is figure out whether or not the command is a builtin.
+If it is a builtin then BASH just does what ever it is you asked.
+Where things get interesting is when you enter a command that is not a builtin.
+What BASH does then is interpret the command as a request to run an executable file with that name.
+If BASH finds such a file it runs it, and if not, it gives an error like:
+
+[source,bash]
+----
+bart-imac2013:~ bart$ donky
+-bash: donky: command not found
+bart-imac2013:~ bart$
+----
+
+The obvious question is, how does BASH find the executable files to run?
+This is where `PATH` comes in.
+
+Before we continue, lets print out the current value of `PATH` with the `echo` command and `$` operator we learned about in the previous instalment:
+
+[source,bash]
+----
+echo $PATH
+----
+
+You should see a value that looks something like the following (though yours may well be shorter, mine is extra long because I use http://www.macports.org[MacPorts] to install Linux command line tools onto my Mac):
+
+[source,bash]
+----
+/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+----
+
+*The value of `PATH` is a `:` delimited ordered list of folders.*
+
+Each time you enter a command that is not a builtin, what BASH does is search each of the folders listed in `PATH` in order until it finds an executable file with the name you entered.
+The order is important, if two folders in your path contain files with the same names, it's the files in the folders nearest the front of the list that will get executed.
+
+
+[NOTE]
+====
+*Aside:* notice that the folder `.` is not in the standard `PATH` on Unix or Linux.
+This means that executable files in the present working directory are not searched.
+This is different to Windows/DOS where `.` is included in the standard path.
+Not including `.` in the path is a security feature, it stops malicious versions of common commands dropped into folders being inadvertently executed.
+
+You can of course still run executable files in the present working directory on Unix/Linux, but you need to be explicit about it by pre-fixing the command with `./`, e.g.:
+
+[source,bash]
+----
+cd /bin
+./pwd
+----
+====
+
+
+
+The `which` command can be used to show you which file will be executed when you use a given command, e.g.
+
+[source,bash]
+----
+which bash
+----
+
+[NOTE]
+====
+*Aside:* the location of common commands on the file system may seem random at first, but there is a logic to it.
+
+Firstly, command regular users can run are usually in folders ending in `bin` (short for binary), while commands which require root/admin privileges are usually in folders ending in `sbin`.
+
+Secondly, there is a hierarchy of importance:
+
+. Core OS commands will be in `/bin` and `/sbin`.
+E.g.
+`/bin/ls` & `/bin/bash`, and `/sbin/mount`
+. Commands that are supported as part of the OS, but not considered core are one step down the hierarchy in `/usr/bin` and `/usr/bin`.
+E.g.
+`/usr/bin/man`& `/usr/bin/perl`, and `/usr/sbin/automount`
+. Finally, third-party commands tend to show up in two distinct sets of locations, `/usr/local/bin` and `/usr/local/sbin` and/or `/opt/local/bin` and `/opt/local/sbin`.
+E.g.
+MacPorts installs all it's binaries in `+/opt/local/...+`, so when I install http://www.imagemagick.org/[Image Magick] via MacPorts the `convert` binary is installed to `/opt/local/bin/convert`.
+====
+
+
+
+Something people often find confusing is that many of the builtin commands are actually executable files, as can be demonstrated with which (which is itself a builtin):
+
+[source,bash]
+----
+which cd
+which pwd
+----
+
+What makes these commands special is that BASH does not use `PATH` to figure out where they are, it maps to them directly, so, even if you delete your `PATH`, the builtins will continue to work.
+
+In fact, lets do just that (in a safe way that won't do any harm to your computer)!
+
+[source,bash]
+----
+export PATH=''
+----
+
+We have now blanked the `PATH` environment variable in our command shell -- note that we have ONLY altered the copy of `PATH` stored in this one command shell -- all other command shells, including any new ones opened in the future, are totally unaffected by this change.
+
+[source,bash]
+----
+cd ~/Desktop
+pwd
+----
+
+But we can't do things like:
+
+[source,bash]
+----
+ls -alh
+which nano
+nano testFile.txt
+----
+
+It's not that the executable files have gone, or no longer work, it's that our instance of BASH has lost the ability to find them because it's `PATH` is blank.
+We can still run the executables by using their full paths, e.g.:
+
+[source,bash]
+----
+/bin/ls -alh
+/usr/bin/which nano
+/usr/bin/nano testFile.txt
+----
+
+Before we continue, lets restore our `PATH` to its normal value by closing this command shell and opening a new one.
+
+When you get to the stage of writing your own scripts (or downloading other people's scripts), you'll probably want your scripts to run without needing to give the full paths to the scripts each time.
+As an example lets create a new folder in our home directory and create a simple script within it:
+
+[source,bash]
+----
+mkdir ~/myScripts
+nano ~/myScripts/whereAmI
+----
+
+Enter the following content into the file `whereAmI` and save:
+
+[source,Perl]
+----
+#!/usr/bin/perl
+
+print "Hi $ENV{USER}, you are currently in $ENV{PWD}\n";
+----
+
+NOTE: *Aside:* in the last instalment we used a BASH shell script for our example, this time, for some variety, I'm using a Perl script, the language used has no baring on how all this works.
+
+
+Then make the script executable, and test it:
+
+[source,bash]
+----
+chmod 755 ~/myScripts/whereAmI
+~/myScripts/whereAmI
+----
+
+At the moment we have to enter the full path to `whereAmI` each time we want to use it, lets remedy that by adding our new `myScripts` folder to the end of our `PATH`:
+
+[source,bash]
+----
+export PATH="$PATH:$HOME/myScripts"
+----
+
+*Note that we have to include the current value of `PATH` in the new value we set for `PATH` or we would be _replacing_ the `PATH` rather than adding to it.* This is a very common pit-fall, and the effect would be that all non-builtin commands apart from those in the one new folder would break.
+Note also that we used `$HOME` instead of `~` because you can't use `~` in `PATH`.
+
+Verify that `PATH` has been updated:
+
+[source,bash]
+----
+echo $PATH
+which whereAmI
+----
+
+We can now use our script as a command without having to specify the full path:
+
+[source,bash]
+----
+whereAmI
+----
+
+Now, close your command shell, and open a new one, and try to use your script as a command again:
+
+[source,bash]
+----
+bart-imac2013:~ bart$ whereAmI
+-bash: whereAmI: command not found
+bart-imac2013:~ bart$
+----
+
+Why was the command not found?
+The answer is simply that the change we made to `PATH` in our previous shell's environment vanished the moment we closed that shell.
+What we need to do is make a permanent change, and to do that we need to understand how BASH initialises it's environment.
+
+When SH or BASH are initialising they they start the environment building process by sourcing the file /etc/profile.
+The out-of-the-box content of this file will be determined by your choice of OS.
+On my Ubuntu server `/etc/profile` contains the following:
+
+[source,Shell]
+----
+# /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
+# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
+
+if [ "$PS1" ]; then
+  if [ "$BASH" ] && [ "$BASH" != "/bin/sh" ]; then
+    # The file bash.bashrc already sets the default PS1.
+    # PS1='\h:\w\$ '
+    if [ -f /etc/bash.bashrc ]; then
+      . /etc/bash.bashrc
+    fi
+  else
+    if [ "`id -u`" -eq 0 ]; then
+      PS1='# '
+    else
+      PS1='$ '
+    fi
+  fi
+fi
+
+# The default umask is now handled by pam_umask.
+# See pam_umask(8) and /etc/login.defs.
+
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+----
+
+While OS X comes with a much shorter and easier to understand `/etc/profile`:
+
+[source,Shell]
+----
+# System-wide .profile for sh(1)
+
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
+if [ "${BASH-no}" != "no" ]; then
+	[ -r /etc/bashrc ] && . /etc/bashrc
+fi
+----
+
+In this series we are focusing on OS X, so we'll only look at how OS X initialises it's Environment in detail.
+
+What the above OS X /etc/profile does is two things:
+
+. assuming it exists and is executable, it loads the output of `/usr/libexec/path_helper` into it's environment
+. if the process starting up is a BASH process (rather than an SH process), it executes `/etc/bashrc`
+
+As you might guess from the name, `path_helper` is a utility for constructing the default path.
+You can run it yourself to see what it produces:
+
+[source,bash]
+----
+/usr/libexec/path_helper
+----
+
+If you're curious, you can learn how it builds the path by reading the relevant man page with: `man path_helper`.
+The skinny version is that it reads the system-wide default path from `/etc/paths`, and then adds any extra paths defined in files contained in the folder `/etc/paths.d`.
+To have a look at the default paths you can use:
+
+[source,bash]
+----
+cat /etc/paths
+cat /etc/paths.d/*
+----
+
+(On a default OS X install the last command will fail because there are no files present in /etc/paths.d by default)
+
+If we wanted to add our new scripts folder to the default path for all users on the system we could edit `/etc/paths`, or add a new file with the path or our scripts folder in `/etc/paths.d`, but don't do that!
+These system-level paths should only be used for system-level things, as we'll see shortly, there is a better way to make user-specific customisations.
+
+For completeness, lets have a look at `/etc/bashrc`.
+
+[source,Shell]
+----
+# System-wide .bashrc file for interactive bash(1) shells.
+if [ -z "$PS1" ]; then
+   return
+fi
+
+PS1='\h:\W \u\$ '
+# Make bash check its window size after a process completes
+shopt -s checkwinsize
+# Tell the terminal about the working directory at each prompt.
+if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
+    update_terminal_cwd() {
+        # Identify the directory using a "file:" scheme URL,
+        # including the host name to disambiguate local vs.
+        # remote connections. Percent-escape spaces.
+	local SEARCH=' '
+	local REPLACE='%20'
+	local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+	printf '\e]7;%s\a' "$PWD_URL"
+    }
+    PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
+fi
+----
+
+What's going on here is mostly OS X-specific customisations to BASH.
+The Ubuntu equivalent to this file is `/etc/bash.bashrc`, and just like with `/etc/profile`, the contents of the file is completely different to what you get on OS X.
+
+There is really only one line in this file that I want to draw your attention to, and then, only as a preview of the next instalment.
+The line in questions is:
+
+[source,Shell]
+----
+PS1='\h:\W \u\$ '
+----
+
+It looks like gobbledegook, but, it's actually the line that sets the format of the command prompt.
+`\h` is the host name, `\W` is the current folder, and `\u` the current user.
+You should recognise that as the format of the command prompt in you OS X Terminal windows.
+We'll look at this in more detail next time.
+
+So far there are two files doing the customisation of BASH for us, `/etc/profile` and `/etc/bashrc`.
+These are both system files, and if you try to edit them as a regular user you'll find your don't have permission:
+
+[source,bash]
+----
+bart-imac2013:~ bart$ ls -l /etc/profile /etc/bashrc
+-r--r--r--  1 root  wheel  745 10 Nov 18:55 /etc/bashrc
+-r--r--r--  1 root  wheel  189 10 Nov 18:55 /etc/profile
+bart-imac2013:~ bart$
+----
+
+It's with good reason that you don't have editing rights to these files -- you could do serious damage to your system if you make a mistake in these files.
+Unless you really know what you are doing, never edit either of them!
+
+The system level configuration files are only the first half of BASH's startup procedure, when a new BASH process has finished running those files, it moves on to a new phase where it checks the user's home directory for certain specially named files.
+
+For reasons we won't go into now, if you're a Linux user the user-level file to create/edit is `~/.bashrc`, while Mac users should create/edit `~/.bash_profile` (if you really care about why there is a difference you can have a read of http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html[this short article]).
+
+So, any customisations we wish to make to BASH on our Macs should be made in `~/.bash_profile`.
+Lets go ahead and set a custom `PATH` that includes the folder we created earlier:
+
+[source,bash]
+----
+nano ~/.bash_profile
+----
+
+Enter the following and save the file (BE CAREFUL TO GET IT RIGHT):
+
+[source,Shell]
+----
+# print warning message (leave out the echo lines if you prefer)
+echo "NOTE - applying customisations in ~/.bash_profile"
+echo "       If you make a mistake and need to remove the customisations"
+echo "       execute the following then restart your Terminal:"
+echo "       /bin/mv ~/.bash_profile ~/bash_profile.disabled"
+
+# update the path
+export PATH="$PATH:$HOME/myScripts"
+----
+
+[NOTE]
+====
+*Aside:* Note that any line in a shell script starting with a `#` is a comment, so it is ignored by the computer and there purely for your information.
+Also, note that the echo lines are there only as a helpful hint in case you make a mistake and break your `PATH`.
+The command simply renames `~/.bash_profile` to `~/bash_profile.disabled`, hence disabling it, and, because the new name does not start with a `.`, making it visible in the Finder should you want to delete or edit it easily.
+You can test any changes you make to try fix what ever problem you were having by editing the file and then running:
+
+[source,bash]
+----
+source ~/bash_profile.disabled
+----
+
+When you're happy you've fixed the problem you can move it back into place with:
+
+[source,bash]
+----
+mv ~/bash_profile.disabled ~/.bash_profile
+----
+====
+
+
+To test your newly customised environment simply open a new Terminal.
+If you've done everything right you should see the warning message telling you `~/.bash_profile` has been executed, and, your path should have been updated to include `~/myScripts`.
+You can verify this by running:
+
+[source,bash]
+----
+echo $PATH
+whereAmI
+----
+
+You should use `~/.bash_profile` to make all your BASH customisations, not just customisations to your `PATH`.
+In the next instalment we'll have a look at some of the other customisations you might like to configure in your `~/.bash_profile` file.

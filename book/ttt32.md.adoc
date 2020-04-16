@@ -1,0 +1,196 @@
+= TTT Part 32 of n -- SSH Tunnelling
+
+This is the fourth SSH instalment.
+So far we've learned how to <<ttt29.adoc,securely execute terminal commands on remote computers>>, how to <<ttt31.adoc,securely copy files across the network using SSH>>, and how to <<ttt30.adoc,add both security and convenience>> to both those operations with SSH key pairs.
+
+As we saw in <<ttt31.adoc,the previous instalment>>, SSH's ability to provide a secure connection between two computers can be used in many different ways.
+In this instalment we'll learn about three more ways to encapsulate other network traffic within an SSH connection, adding encryption to that traffic.
+
+Running commands and copying files are the kinds of things most people do, so the three SSH instalments to date have been quite generally applicable.
+That is not the case for this instalment.
+The three SSH features we'll be discussing are all very useful to those who need them, but only a minority will have a use for any one of these features.
+However, even if you don't need these features today, I would argue that it's good to know these features exist, because they could well solve a problem you'll have in the future.
+
+There will be illustrations of the uses for these technologies, but not commands you type into your terminal to play along at home.
+That makes this an unusual instalment, but I hope you will still find it worthwhile.
+
+== Matching Postcast Episode 32
+
+Listen Along: Taming the Terminal Podcast Episode 32
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+== X11 Forwarding
+
+=== The Problem To Be Solved
+
+SSH makes it easy to execute terminal commands on remote computers, but what about running GUI apps on remote computers?
+That's the problem X11 forwarding solves.
+
+=== Description
+
+Linux and Unix OSes use a technology called http://en.wikipedia.org/wiki/X_Window_System[The X Window System] (more commonly known as X11) to render the GUI.
+OS X is different, Apple chose to use their own Quartz technology rather than X11.
+But, there is an officially sanctioned version of X11 for OS X called http://xquartz.macosforge.org/landing/[XQuartz], which allows X11 GUIs to be displayed on OS X.
+With XQuartz installed, X11 apps can run in a regular OS X window.
+
+What X11 Forwarding allows you to do is have a app running on the remote computer but with the GUI rendered on your local computer.
+SSH effectively teleports the GUI across the network!
+
+For this to work the remote computer must have X11 installed, the remotely running app must use X11 to render it's GUI, and the local computer must have X11 installed.
+
+This means that Macs with XQuartz installed can receive remote GUIs, but cannot be the source or remote GUIs unless there are X11 apps installed on the Mac (possible, but uncommon).
+
+=== Instructions
+
+To enable X11 forwarding on an SSH connection, use the `-X` flag.
+This might result in an error that looks something like:
+
+[source,bash]
+----
+Warning: untrusted X11 forwarding setup failed: xauth key data not generated
+----
+
+If you see the above error, also add the `-Y` flag (the two flags can be cuddled as `-XY`).
+
+You don't need an interactive shell to use X11 forwarding, for example, to run FireFox on a remote Linux computer but have the GUI show up on your local computer you would use a command of the form:
+
+[source,bash]
+----
+ssh -XY my_user@my_server 'firefox'
+----
+
+An important caveat is that X11 forwarding is very bandwidth inefficient.
+It works very well over a local network, but can be painfully slow across the internet.
+
+=== Example Use Cases
+
+* *Running GUI Control Panels* -- just about anything on Linux can be configured using a text file (probably in `/etc/` somewhere), but sometimes it's much easier to just run a little GUI tool to configure the setting you need.
+X11 forwarding makes it possible to do this on remote Linux servers.
+* *Accessing web interfaces that are restricted to local access Only* -- if you have a web interface that allows something sensitive to be configured, it's good security practice to limit access to it to `localhost` only.
+This means it can only be accessed by a browser running on the computer itself.
+If you don't have physical access that gets awkward, unless you have X11 forwarding which will allow you to run a browser on the remote computer, but with the GUI forwarded to your local computer.
+Two common examples of this are the CUPS (Common Unix Printing System) printer sharing configuration interface (you'll find it at `+http://localhost:631+` if it's configured), and the http://www.webmin.com[webmin] server management interface.
+
+== SSH Port Forwarding
+
+=== The Problem To Be Solved
+
+Wrap encryption around an otherwise un-encrypted network connection.
+
+=== Description
+
+SSH port forwarding allows you to map a local TCP port to a TCP port on a remote computer.
+Any traffic you send to the local port is sent through the SSH connection and then routed to its final destination after it comes out of the other end of the SSH connection.
+
+While it is inside the SSH connection it is encrypted.
+Once it leaves the SSH connection on the other side it continues the rest of its journey unprotected.
+
+This can be used in two ways:
+
+. To map a port on the computer you are SSHing to to a port in your local computer.
+When used in this way the traffic is encrypted for its entire journey.
+This is the most secure way to use port forwarding.
+. To map a port on third computer to a port on your local computer, with all traffic flowing through the computer you are SSHing to.
+In this scenario the traffic is encrypted between your computer and the computer you are SSHing to, but not for the remainder of the journey from the computer you are SSHing to onto the third computer.
+I would recommend against using port forwarding in this way if possible.
+
+A crude analogy would be to think of SSH port forwarding as a single-port VPN.
+
+=== Instructions
+
+A single SSH connection can forward many ports.
+For each port to be forwarded, an instance of the `-L` flag should be used in the following way:
+
+[source,bash]
+----
+-L[LOCAL_PORT]:[DESTINATION_HOST]:[DESTINATION_PORT]
+----
+
+=== Example Use Case -- MySQL
+
+Many websites are powered by https://www.mysql.com[MySQL] databases.
+It's common when working on a website to need access to the MySQL server powering your site from your local computer.
+You can do this using the MySQL command line tools, or, using a MySQL GUI.
+The problem is that the MySQL protocol is insecure (at least by default, it is possible to configure it to use SSL, but that's not straight forward).
+Your username, password, and all the queries you issue and the server's responses are all sent across the network un-encrypted.
+Because this is so dangerous, it's common to limit MySQL to using the `localhost` IP address (`127.0.0.1`), or to firewall off access so that only computers within a secured network segment can access the server.
+
+This is no good if you are working from home!
+SSH port forwarding can save the day, assuming you have SSH access to either the server running MySQL (or another server in the same network as the MySQL server that has been granted access to it.)
+
+Assuming the most secure scenario, MySQL limited to `127.0.0.1` only, and SSH access to the server running MySQL, you would map the port with a command of the form:
+
+[source,bash]
+----
+ssh user@computer -L 3306:127.0.0.1:3306
+----
+
+As long as that SSH connection is left open, port 3306 on your computer (the standard MySQL port) is mapped to port 3306 on the remote computer's localhost IP.
+You now instruct your favourite MySQL client to connect to port 3306 on your local computer, and SSH then securely forwards that connection to the remote server for you, allowing you safe and secure access to MySQL.
+
+This is such a common use case that many modern MySQL QUI clients allow you to configure this kind of port forwarding from within the GUI, removing the need to remember the terminal command.
+An example of a beautiful free MySQL GUI with SSH port forwarding support is http://www.sequelpro.com[Sequel Pro] (OS X Only).
+I use SSH port forwarding with Sequel Pro each and every day!
+
+== Dynamic SSH Port Forwarding (SSH+SOCKS)
+
+=== The Problem to be Solved
+
+Regular SSH port forwarding requires that the local port, the destination IP and the destination port all be specified at the moment the SSH connection is created.
+This means it can only be used when all that information is known in advance, and does not need to be changed while the connection is open.
+
+This limitation makes it effectively impossible to route applications that make many network connections to many destinations, like a web browser, through regular SSH port forwarding.
+
+Dynamic Port Forwarding makes it possible for any app that can use the standard http://en.wikipedia.org/wiki/SOCKS[SOCKS protocol] to route traffic though an SSH connection, that includes apps like web browsers, chat clients, and email clients.
+
+=== Description
+
+Dynamic port forwarding is a relatively recent addition to SSH, and one of SSH's little-known gems.
+
+The SOCKS protocol can be used to proxy a TCP connection from any port to any port on behalf of any client that supports the protocol.
+It is normally used at the permitter of corporate networks to regulate external internet access.
+All computers inside the corporation that need to make out-going network connections use the SOCKS proxy, which can then apply any rules to those connection requests the corporation desires.
+All network connections effectively get broken in two.
+The clients talk to the SOCKS proxy, and the SOCKS proxy talks to the destination server.
+
+When using SSH dynamic port forwarding, what happens is that a SOCKS server is started on your local computer, running on a port you specify, and it sends all the traffic it proxyies through the SSH connection, and out onto the internet from the remote end of the SSH connection.
+While the traffic is encapsulated within the SSH connection it's encrypted.
+Once it leaves the SSH connection it is un-encrypted for the remainder of it's journey.
+
+This really is analogous to a VPN, with the caveat that only traffic sent to the locally running SOCKS proxy is secured.
+
+The good news is that the SOCKS standard is very widely implemented.
+All the major browser can use SOCKS, and there is OS-level support for SOCKS in Windows and OS X.
+
+The down-side over a real VPN is that you MUST be sure all apps are configured to use the SOCKS proxy before you start to use them, and you must remove the SOCKS configuration once the SSH connection is closed or all your apps will lose internet access.
+
+=== Instructions
+
+To instruct SSH to behave as a SOCKS proxy, use the `-D` flag.
+The `-D` flag requires that the local port the SOCKS server should listen on be specified.
+The default SOCKS port is 1080, so that's a good choice.
+To set up a SOCKS proxy on the default port use a command of the following form:
+
+[source,bash]
+----
+ssh -D 1080 user@computer
+----
+
+=== Example Use Cases
+
+. *Access local-only web servers on remote servers* -- if X11 forwarding is not a viable option for what ever reason, dynamic port forwarding can be used as an alternative to access local-only web interfaces like those for CUPS or webmin.
+Simply configure your locally running browser to use the SOCKS server provided by SSH, and then browser to the local URL (be sure the browser is not configured to bypass the proxy for local addresses).
+. *Securely browse the web in coffee shops/hotels* -- if you set up an SSH server in your home, you can use SSH dynamic port forwarding to route all your browser traffic through an SSH connection to your home, safely getting you through the hostile coffee shop or hotel network.
+. *Bypass geographic restrictions* -- some websites are only available from some countries.
+If you set up an SSH server in your home, you can use dynamic port forwarding to browse the web from anywhere and make it appear you are at home.
+This is a great way to keep up with your favourite sports ball matches while travelling.
+Assuming you have no moral objections to doing so, you could also rent a cheap virtual server in a country who's TV you like better than the TV in your own country, and use dynamic SSH port forwarding to watch streaming TV from that country from anywhere in the world.
+
+== Conclusions
+
+We've almost covered everything about SSH that we will be covering in this series.
+We can now issue remote terminal commands, run remote GUI apps, transfer files, and tunnel TCP connections through SSH.
+All that remains now is for a few little tips to make your SSHing easier, which is what we'll cover in the next, and final, SSH instalment.
