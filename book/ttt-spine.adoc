@@ -5,8 +5,9 @@ Bart Busschots
 :docinfo:
 :doctitle: Taming the Terminal
 :lang: en-US
+:source-highlighter: pyments
 :toc:
-:toclevels: 0
+:toclevels: 1
 :pagenums:
 :copyright: CC-BY-SA 3.0
 :front-cover-image: assets/cover.jpg
