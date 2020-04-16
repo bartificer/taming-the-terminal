@@ -1,4 +1,4 @@
-[[ttt3]]
+[#ttt3]
 = TTT Part 3 of n -- File Systems
 
 This is the third instalment of an on-going series.

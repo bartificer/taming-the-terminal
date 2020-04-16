@@ -1,4 +1,4 @@
-[ttt2]]]
+[#ttt2]
 = TTT Part 2 of n -- Commands
 
 This is the second instalment of an on-going series.
