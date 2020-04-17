@@ -2,3 +2,5 @@ sourcefiles
 convert2
 book/output
 .ruby-version
+book-original
+testbook
