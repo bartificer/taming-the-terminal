@@ -161,7 +161,6 @@ Finally, lets end on a really bad nerd joke!
 Q: How do you know woman are more complicated than men?
 
 A: Because you can man man, but you can't man woman!
-____
 
 [source,bash]
 ----
