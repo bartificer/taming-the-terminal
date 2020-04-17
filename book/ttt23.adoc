@@ -11,7 +11,11 @@ Ultimately, it's actually a very elegant design, but that elegance may not be im
 
 == Matching Postcast Episode 23
 
-Listen Along: Taming the Terminal Podcast Episodes 23a & 23b+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>++++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 
 You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
 
