@@ -18,9 +18,15 @@ If you run it from the command line, the changes are very high that there will b
 
 Listen Along: Taming the Terminal Podcast Episode 10
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 I'm getting tired of typing '`manual entry`', so lets introduce a little jargon.
 The command to read a manual entry is `man`, so command line aficionados will almost always refer to manual entries simply as _man pages_, so I'm going to do the same from here on.

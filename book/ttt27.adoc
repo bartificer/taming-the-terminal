@@ -23,13 +23,25 @@ The Domain Name System (DNS) exists to bridge this gap, allowing domain names to
 
 Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
 
 == The Hosts File
 

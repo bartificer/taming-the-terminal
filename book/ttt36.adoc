@@ -13,9 +13,15 @@ It's extremely flexible, and very useful for things like scheduling backups to r
 
 Listen Along: Taming the Terminal Podcast Episode 36
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 == The `screen` Utility
 

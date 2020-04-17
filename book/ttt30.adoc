@@ -10,9 +10,15 @@ In this instalment we're going to look at how we can improve both SSH security a
 
 Listen Along: Taming the Terminal Podcast Episode 30
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 SSH keys utilise asymmetric encryption, specifically public/private key cryptography.
 It's important to have a clear understanding of how this works before proceeding.

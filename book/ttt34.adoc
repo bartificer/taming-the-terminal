@@ -16,9 +16,15 @@ Before we look at some HTTP-related terminal commands, we need a basic understan
 
 Listen Along: Taming the Terminal Podcast Episode 34
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 == Introducing HTTP
 

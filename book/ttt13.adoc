@@ -11,9 +11,15 @@ We'll look at what it does, how it's initialised, and, in the process, we'll lea
 
 Listen Along: Taming the Terminal Podcast Episode 13
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 So far in this series I have been a little loose with the term _command_, I've avoided putting too fine a point on exactly what a terminal command is, but we'll remedy that today.
 If you remember right back to <<ttt2,the second instalment>>, we said that when entering commands on the command line, the first word is the command, and the other words (separated by spaces) formed the arguments to that command.

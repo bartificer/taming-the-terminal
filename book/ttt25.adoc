@@ -21,13 +21,25 @@ This is the concept we'll be focusing on in this instalment.
 
 Listen Along: Taming the Terminal Podcast Episodes 25a & 25b
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
 
 == IP Addresses
 

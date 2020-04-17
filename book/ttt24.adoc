@@ -20,9 +20,15 @@ Specifically, we'll look at MAC addresses, the difference between hubs, switches
 
 Listen Along: Taming the Terminal Podcast Episode 24
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 == Before we Start ...
 

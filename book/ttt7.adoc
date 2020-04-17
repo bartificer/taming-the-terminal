@@ -10,9 +10,15 @@ In this instalment we'll be looking at how to manipulate the file system, in oth
 
 Listen Along: Taming the Terminal Podcast Episode 7
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 == Creating Folders & Files
 

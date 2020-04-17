@@ -14,13 +14,25 @@ Ultimately, it's actually a very elegant design, but that elegance may not be im
 
 Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
 
 As complicated as computer networks are today, they've actually gotten a lot simpler than they used to be, for the simple reason that everyone has settled on a single protocol stack -- the so-called TCP/IP stack.
 Because TCP/IP is the clear winner, it's the only kind of networking we need to look at in this series.

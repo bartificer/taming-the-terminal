@@ -13,9 +13,15 @@ In future instalments we'll take a brief look at the extra file information and 
 
 Listen Along: Taming the Terminal Podcast Episode 5
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT05FilePermissions/TTT_05_File_Permissions.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT05FilePermissions/TTT_05_File_Permissions.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT05FilePermissions/TTT_05_File_Permissions.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 Lets start with some context.
 Just like every command shell has a present working directory, every process on a Linux/Unix system is also owned by a user, including shell processes.

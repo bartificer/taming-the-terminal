@@ -11,9 +11,15 @@ These two commands can do many things, but we'll focus on two specific use-cases
 
 Listen Along: Taming the Terminal Podcast Episode 35
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 == Browsing the Web from the Terminal
 

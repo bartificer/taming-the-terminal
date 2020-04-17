@@ -12,9 +12,15 @@ In this instalment we'll look at three different ways of securely copying files 
 
 Listen Along: Taming the Terminal Podcast Episode 31
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 == Examples Prep.
 

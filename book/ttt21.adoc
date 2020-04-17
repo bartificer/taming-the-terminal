@@ -12,9 +12,15 @@ Then we'll end by looking at an OS X-only alternative to `find` that makes use o
 
 Listen Along: Taming the Terminal Podcast Episode 21
 
+ifndef::backend-pdf[]
 +++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+endif::[]
 
-You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 == Executing Commands with `find`
 
