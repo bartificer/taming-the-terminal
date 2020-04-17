@@ -1,7 +1,6 @@
 [#ttt1]
 = TTT Part 1 of n -- Command Shells
 
-== Introduction
 
 I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond segment on the http://www.podfeet.com[NosillaCast Mac Podcast] (to be released Sunday evening PST) I'm going to try start what will hopefully be an on-going series of short un-intimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app.
 I'm on with Allison every second week, and I'll have other topics to talk about, so the most frequent the instalments in this series could be would be bi-weekly, but I think they'll turn out to be closer to monthly on average.
