@@ -5,7 +5,9 @@ In the <<ttt8,previous instalment>> we looked how Unix-like operating systems li
 We then went on to look at the commands for listing running processes, and filtering and sorting them in various ways.
 This time we'll move on to controlling processes, specifically, starting and stopping them.
 
+ifndef::backend-epub3[]
 +++&nbsp;+++
+endif::[]
 
 == Matching Postcast Episode 9
 
