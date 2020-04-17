@@ -66,14 +66,14 @@ In the examples below I'll be connecting to my file server, a Linux server on my
 The simplest thing you can do with SSH is use it to execute a single command on a remote computer.
 This can be done using the SSH command in the following way:
 
-[source,bash]
+[source,shell]
 ----
 ssh username@remote_computer 'command'
 ----
 
 For example, the following command returns a list of all running processes on my file server:
 
-[source,bash]
+[source,shell]
 ----
 ssh bart@192.168.10.20 'ps -ef'
 ----
@@ -82,7 +82,7 @@ Note that when you are asked for a password, you should enter the password for t
 
 Note that if your username is the same on the machine you are SSHing from and the one your are SSHing to, you can leave out the username, so since I log in to both computers as the user `bart`, I could simplify the above command to:
 
-[source,bash]
+[source,shell]
 ----
 ssh 192.168.10.20 'ps -ef'
 ----
@@ -92,7 +92,7 @@ ssh 192.168.10.20 'ps -ef'
 If you've never used SSH before on a computer, the chances are very high that when you tried to play along with the previous section you encountered a strange notification that may have looked like an error, asking you to enter `yes` or `no`.
 It probably looked something like:
 
-[source,bash]
+[source,shell]
 ----
 The authenticity of host '192.168.10.20 (192.168.10.20)' can't be established.
 RSA key fingerprint is 29:b0:59:4f:ef:2e:6d:ee:81:97:40:04:aa:03:f7:66.
@@ -123,7 +123,7 @@ Once you understand this process, the message you get when you first connect to 
 You are being asked if you want to trust a server for which there is no saved public key, and hence who's identity cannot be confirmed.
 When you say yes a second message will pop up, telling you the key has been saved, it will look something like:
 
-[source,bash]
+[source,shell]
 ----
 Warning: Permanently added '192.168.10.20' (RSA) to the list of known hosts.
 ----
@@ -133,14 +133,14 @@ On future connections to the server you should not see any more messages, becaus
 The database of public keys is stored in a plain text file, `~/.ssh/known_hosts`, one entry per line.
 You can view the content of this file with the command:
 
-[source,bash]
+[source,shell]
 ----
 cat ~/.ssh/known_hosts
 ----
 
 If for some reason the server validation fails, you'll see an error message something like:
 
-[source,bash]
+[source,shell]
 ----
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
@@ -171,7 +171,7 @@ Conveniently, the line number is given in the error message, it's the number aft
 *Update:* an alternative to manually editing the file is to use the `ssh-keygen` command to delete the offending key for you.
 You do this using the `-R` flag (R for remove) to pass the IP or hostname who's key you need to remove:
 
-[source,bash]
+[source,shell]
 ----
 ssh-keygen -R computer_name_or_ip
 ----
@@ -183,14 +183,14 @@ Thanks to Twitter user https://twitter.com/adrianluff[@adrianluff] for the tip!
 If you need to run more than one command on a remote computer, it's more convenient to get a full remote command shell, which you can easily do by leaving off the final argument (the command to execute remotely).
 So, the general form would be:
 
-[source,bash]
+[source,shell]
 ----
 ssh username@remote_computer
 ----
 
 Again, the username can be omitted if it's the same on both computers, so for me I can get a remote shell on my file server with:
 
-[source,bash]
+[source,shell]
 ----
 ssh 192.168.10.20
 ----
@@ -203,7 +203,7 @@ This will not protect from targeted attacks, but it will stop automated scans of
 If the SSH server you are connecting to is not running on port 22, you need to use the `-p` flag to specify the port number, e.g.
 if I were to move the SSH service on my file store to port 2222 the two example commands above would become:
 
-[source,bash]
+[source,shell]
 ----
 ssh -p 2222 192.168.10.20 'ps -ef'
 ssh -p 2222 192.168.10.20

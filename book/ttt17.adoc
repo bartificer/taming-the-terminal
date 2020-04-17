@@ -56,7 +56,7 @@ Think of it like a mathematical equation, until you know what all the symbols me
 
 The following apparent gibberish is a regular expression describing the domain name pattern described above:
 
-[source,bash]
+[source,shell]
 ----
 [a-zA-Z0-9][-a-zA-Z0-9]*([.][a-zA-Z0-9][-a-zA-Z0-9]*)*
 ----
@@ -66,7 +66,7 @@ For now, that looks horrific, but, when we've finished this instalment and the o
 Also, I promise the following is a really funny joke -- when you get it, you'll know you get REs!
 (I have this one a T-shirt, and it works as a great nerd-test)
 
-[source,bash]
+[source,shell]
 ----
 (bb)|[^b]{2}
 ----
@@ -120,14 +120,14 @@ In this instalment we're going to start with the simpler parts of the ERE langua
 
 Ordinary characters represent themselves in a pattern, so the POSIX ERE to represent the letter `a` is simply:
 
-[source,bash]
+[source,shell]
 ----
 a
 ----
 
 Similarly, the RE to represent the character `t` followed by the character `h` is simply:
 
-[source,bash]
+[source,shell]
 ----
 th
 ----
@@ -135,7 +135,7 @@ th
 Lets start with a simple example -- finding all words that contain a double `e` in the words file.
 Remember, the `egrep` command prints any line from the input file that matches the specified pattern, so, to find all words with a double `e` you could use the following command:
 
-[source,bash]
+[source,shell]
 ----
 egrep 'ee' /usr/share/dict/words
 ----
@@ -146,14 +146,14 @@ Its opposite number is the special character `$`, which represents _end of line_
 
 So, the following command will find all words starting with the character `b`:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^b' /usr/share/dict/words
 ----
 
 Similarly, the following command will find all words ending in the three letters `ing`:
 
-[source,bash]
+[source,shell]
 ----
 egrep 'ing$' /usr/share/dict/words
 ----
@@ -169,7 +169,7 @@ We can do that using the period character, which you should read in an RE as _an
 As an example, lets say you're stuck on a thorny crossword puzzle, and you need a word that fits into _something e something something f something_.
 You could use the following terminal command to find a list of possible answers:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^.e..f.$' /usr/share/dict/words
 ----
@@ -181,14 +181,14 @@ The last thing we're going to look at in this instalment is character classes, t
 You can think of everything inside a character class as being a big list of _or_s.
 Character classes are enclosed inside square brackets, so, you should read the character class below as _a or b or c or d or e or f_:
 
-[source,bash]
+[source,shell]
 ----
 [abcdef]
 ----
 
 As an example, lets search for all four letter words starting with a vowel:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^[aeiou]...$' /usr/share/dict/words
 ----
@@ -213,7 +213,7 @@ You don't have to stick to those common ranges though, you can use sub-sets of t
 As an example, the regular expression below matches valid MAC addresses in OS X (and Linux) format.
 On POSIX OSes like OS X and Linux, MAC addresses are represented as a series of six two-character lower-case hexadecimal numbers separated by colon symbols, so, they could be matched with the following regular expression:
 
-[source,bash]
+[source,shell]
 ----
 [0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]
 ----

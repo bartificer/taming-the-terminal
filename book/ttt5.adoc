@@ -23,7 +23,7 @@ So, when you execute a command in a command shell that process has a file system
 By default your shell will be running as the user you logged into your computer as, though you can become a different user if and when you need to (more on that in future instalments).
 You can see which user you are running as with the very intuitive command:
 
-[source,bash]
+[source,shell]
 ----
 whoami
 ----
@@ -32,7 +32,7 @@ Secondly, users on Unix/Linux systems can be members of one or more groups.
 On OS X there are a number of system groups to which your user account may belong, including one called `staff` to which all admin users belong.
 You can see what groups you belong to with the command:
 
-[source,bash]
+[source,shell]
 ----
 groups
 ----

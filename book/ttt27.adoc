@@ -39,7 +39,7 @@ While DNS superseded the hosts file, it did not replace it.
 The hosts file still exists in Linux, Unix, OS X, and even Windows!
 On a POSIX OS like OS X you can view the content of the file with the command:
 
-[source,bash]
+[source,shell]
 ----
 cat /etc/hosts
 ----
@@ -55,7 +55,7 @@ The hosts file is a plain text file with a very simplistic format.
 Each line must start with an IP address followed by one or more names separated by blank space.
 If I wanted to add two aliases to my home router, I could add a line like:
 
-[source,bash]
+[source,shell]
 ----
 192.168.10.1 myrouter myrouter.localdomain
 ----
@@ -67,7 +67,7 @@ If you're going to use the hosts file extensively, it's a good idea to comment y
 
 Finally, be aware that the file is owned by root, so you need to use `sudo` to gain root privileges to edit the file, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 sudo vi /etc/hosts
 sudo pico /etc/hosts
@@ -196,7 +196,7 @@ This file is present in OS X, but is used as a way for the OS to expose the sett
 The file on OS X is in the identical format to the ones on Linus and Unix.
 You can have a look at this file with the command:
 
-[source,bash]
+[source,shell]
 ----
 cat /etc/resolv.conf
 ----
@@ -274,7 +274,7 @@ Authoritative servers and DNS resolvers listen on UDP port 53.
 
 Windows users must use the old `nslookup` command to resolve domain names:
 
-[source,bash]
+[source,shell]
 ----
 nslookup domain.name
 ----
@@ -287,7 +287,7 @@ The `host` command is superbly simple, it accepts one argument, the domain name 
 If the domain has an MX record that value is printed out too, and if the answer had to be arrived at by following one or more CNAME aliases those intermediate steps are printed out as well.
 E.g.
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ host www.bartb.ie
 www.bartb.ie has address 46.22.130.125
@@ -305,14 +305,14 @@ bart-iMac2013:~ bart$
 The `dig` command is the swiss-army knife of DNS.
 For a full list of its many features see:
 
-[source,bash]
+[source,shell]
 ----
 man dig
 ----
 
 The basic structure of the command is as follows:
 
-[source,bash]
+[source,shell]
 ----
 dig [options] domain.name [record_type] [@server]
 ----
@@ -325,7 +325,7 @@ E.g.
 the following shows the output when trying to resolve `www.bartb.ie` which exists, and `wwww.bartb.ie` which does not.
 There is so much output that at first glance you might think both queries had succeeded.
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ dig www.bartb.ie
 
@@ -377,7 +377,7 @@ Secondly, there is no `ANSWER` section in the output.
 Sometimes this detailed output is very useful, but often times it just gets in the way.
 You can suppress the extra information by using the `+short` option:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ dig +short www.bartb.ie
 46.22.130.125
@@ -387,7 +387,7 @@ bart-iMac2013:~ bart$
 
 You can request records other than A records by specifying the type of record you want after the domain name, e.g.:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ dig +short podfeet.com NS
 ns02.domaincontrol.com.
@@ -409,7 +409,7 @@ This can useful when trying to figure out whether or not a given DNS resolver is
 
 Below is an example of each use, first querying Google's free public resolver for the name server for `bartb.ie`, and then querying the authoritative server for `bartb.ie` for the A record for `www.bartb.ie` (I've left off the `+short` so you can see which servers were queried in the metadata at the bottom of the output):
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ dig bartb.ie NS @8.8.8.8
 
@@ -458,7 +458,7 @@ bart-iMac2013:~ bart$
 Finally, the `+trace` command can be used to do a full top-down resolution of a given domain name in the same way that a resolver would if the result was not cached.
 To see what question is being asked at each stage of the trace, I like to add the `+question` option as well.
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ dig +trace +question www.bartb.ie
 

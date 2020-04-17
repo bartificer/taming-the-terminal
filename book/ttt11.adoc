@@ -23,7 +23,7 @@ You can use `cat` to print the contents of a text file to the screen by calling 
 
 E.g., using `cat` to read the content of your computer's network time configuration (definitely works on OS X, should work on most other Linux and Unix distros too):
 
-[source,bash]
+[source,shell]
 ----
 cat /etc/ntp.conf
 ----
@@ -31,7 +31,7 @@ cat /etc/ntp.conf
 `cat` works great for short files, but it's not well suited for reading longer files.
 For example, using cat to show the config for `man`:
 
-[source,bash]
+[source,shell]
 ----
 cat /etc/man.conf
 ----
@@ -44,7 +44,7 @@ Like `cat`, you invoke `more` by passing it a file as an argument, but unlike `c
 You can then use the enter key or the down arrow key to move down one line at a time, or the spacebar to move down a whole screen at a time.
 E.g.
 
-[source,bash]
+[source,shell]
 ----
 more /etc/man.conf
 ----
@@ -57,7 +57,7 @@ All the commands we learned in <<ttt10,the previous instalment>> for navigating 
 
 The `less` command is invoked in the same way as `cat` and `more`, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 less /etc/man.conf
 ----
@@ -72,7 +72,7 @@ While there is a `more` command, it's actually a copy of `less`, as can be seen 
 The `less` command is very powerful, and it can deal with very large files without getting bogged down -- as an example, most Linux and Unix distributions contain a dictionary file, usually located at `/usr/share/dict/words`.
 This file is 235,886 long on OS X, and `less` has no problems searching or navigating it:
 
-[source,bash]
+[source,shell]
 ----
 less /usr/share/dict/words
 ----
@@ -84,7 +84,7 @@ The `head` command will show you the first 10 lines of a file, and the `tail` co
 Simply using `head` and `tail` on a log file will quickly answer a very simply but very important question -- what date range does my log file span?
 (Note -- Linux and most Unix users will find the system log at `/var/log/messages`, OS X is unusual in storing it's system log in `system.log`)
 
-[source,bash]
+[source,shell]
 ----
 head /var/log/system.log
 tail /var/log/system.log
@@ -94,14 +94,14 @@ Both `head` and `tail` can actually show any number of lines at the beginning or
 E.g.
 to see the last 50 lines of the system log use:
 
-[source,bash]
+[source,shell]
 ----
 tail -50 /var/log/system.log
 ----
 
 Or, to see just the first line use:
 
-[source,bash]
+[source,shell]
 ----
 head -1 /var/log/system.log
 ----
@@ -115,7 +115,7 @@ You could run the command below to get a live view of the system log, but it's h
 On OS X, a nice example to use is the App Store log file.
 If you run the command below in a Terminal window and then open up the App Store app and start navigating around or checking for updates you should see entries appear in the log file in real time:
 
-[source,bash]
+[source,shell]
 ----
 tail -f /var/log/appstore.log
 ----
@@ -136,7 +136,7 @@ If you want to create a new file, you invoke `nano` with the path you'd like the
 
 Lets play it safe and start a new file for our experimentations:
 
-[source,bash]
+[source,shell]
 ----
 nano ~/Documents/nanoTest.txt
 ----
@@ -147,7 +147,7 @@ Once in `nano` you'll see a cursor where you can start to type, and along the bo
 
 Lets keep this simple and just type the utterly clicheéd sentence:
 
-[source,bash]
+[source,shell]
 ----
 Hello World!
 ----
@@ -186,7 +186,7 @@ This confuses the heck out of people, and it takes some getting used to!
 
 You invoke `vi` in the same way you would `nano`, so for our example lets do the following:
 
-[source,bash]
+[source,shell]
 ----
 vi ~/Documents/viTest.txt
 ----
@@ -202,7 +202,7 @@ Notice that at the bottom of the screen it now says INSERT in all caps -- you'll
 
 Lets be boring and insert the same text as before:
 
-[source,bash]
+[source,shell]
 ----
 Hello World!
 ----
@@ -236,7 +236,7 @@ To put our yanked line 500 times the command is `500p`.
 Lets say our aspirations have expanded, we'd like to greet the entire universes, not just the world!
 We could make over 500 edits, or, we could ask `vi` to do a global find and replace for us with the command:
 
-[source,bash]
+[source,shell]
 ----
 :%s/World/UNIVERSE
 ----

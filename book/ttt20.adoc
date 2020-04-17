@@ -18,7 +18,7 @@ You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT
 
 Regardless of the criteria you wish to use, the basic form of the `find` command is always the same, you first need to tell it where to look, then you tell it what criteria to use when searching:
 
-[source,bash]
+[source,shell]
 ----
 find path criteria 1 [criteria 2 ...]
 ----
@@ -46,7 +46,7 @@ Let's start with a really simple example, you know the full name of the file you
 This is something you often come across when someone asks you to take a look at their server.
 You know you need to edit, say, `php.ini`, but you have no idea where their version of PHP is installed (this is very common when using web server packages for OS X like MAMP or XAMPP), the command below will find all files called `php.ini` anywhere in your computer:
 
-[source,bash]
+[source,shell]
 ----
 find / -name 'php.ini'
 ----
@@ -57,21 +57,21 @@ To avoid this, run the command with `sudo`, or, if you want to just ignore the e
 Something else you very often want to do is find all files of a given extension in a given location.
 For example, the command below will list all text files in your home directory:
 
-[source,bash]
+[source,shell]
 ----
 find ~ -name '*.txt'
 ----
 
 You can get more creative by looking for all text files with names starting with a `b`:
 
-[source,bash]
+[source,shell]
 ----
 find ~ -name 'b*.txt'
 ----
 
 Or all text files with a four letter name with `a` as the second letter:
 
-[source,bash]
+[source,shell]
 ----
 find ~ -name '?a??.txt'
 ----
@@ -80,7 +80,7 @@ JPEG files are an interesting case, you'll very often see them with two differen
 The key is the `-or` flag.
 So, to look for files ending in either `.jpg` or `.jpeg` in our home directory, we could use the following:
 
-[source,bash]
+[source,shell]
 ----
 find ~ -name '*.jpg' -or -name '*.jpeg'
 ----
@@ -90,7 +90,7 @@ Some cameras, for reasons I simply cannot fathom, use the extension `.JPG` inste
 To get around this we could either add two sets of `-or -name` criteria, or, we could do a case-insensitive name-search by replacing `-name` with `-iname`.
 This gives us a final JPEG-finding command of:
 
-[source,bash]
+[source,shell]
 ----
 find ~ -iname '*.jpg' -or -iname '*.jpeg'
 ----
@@ -107,7 +107,7 @@ Don't worry, you can make find use EREs, you just need to add a `-E` flag to the
 
 Given our knowledge of regular expressions, we could re-write our JPEG search as follows:
 
-[source,bash]
+[source,shell]
 ----
 find -E ~ -iregex '.*[.]jpe?g'
 ----
@@ -147,7 +147,7 @@ Instead, what you generally want are all files modified less than a certain amou
 
 So, to find all files in your Documents folder that have been updated less than an hour ago you could use:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Documents -ctime -1h
 ----
@@ -188,14 +188,14 @@ Also Like with `-ctime`, if you don't pre-fix the number with a symbol, only fil
 
 For example, the following command shows all files in your downloads folder that are bigger than 200MiB in size:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Downloads -size +200M
 ----
 
 Similarly, the following command shows all files in your documents folder smaller than 1MiB in size:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Downloads -size -1M
 ----
@@ -223,7 +223,7 @@ The list below is not exhaustive, but it covers everything you're likely to need
 This flag will almost always be used in conjunction with one or more other search flags.
 For example, the following command finds all directories in your documents folder that contain the word `temp` in their name in any case:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Documents -type d -iname '*temp*'
 ----
@@ -237,7 +237,7 @@ You can do this with the `-not` flag.
 For example, you may have a folder where you keep your music, and it should only contain MP3 files and folders.
 To be sure that's true you could search for all regular files that do not end in `.mp3` and are not hidden (like those ever-present `.DS_Store` files) with a command like:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Music/MyMP3s -type f -not -iname '*.mp3' -not -name '.*'
 ----
@@ -251,7 +251,7 @@ Note that limiting the depth can really speed up searches of large folders if yo
 For example, if you have a lot of documents in your documents folder it can take ages to search it, but, if you are only interested in finding stuff at the top level you can really speed things up.
 Lets say we are the kind of person who makes lots of temp folders at the top level of their Documents folder (guilty as charged), and you want to find them all so you can do a bit of house keeping, you could search your entire Documents folder with:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Documents -type d -iname '*temp*'
 ----
@@ -259,7 +259,7 @@ find ~/Documents -type d -iname '*temp*'
 When I do this it takes literally minutes to return because I have over a TB of files in my Documents folder.
 I can get that down to fractions of a seconds by telling `find` that I'm only interested in the top level stuff with:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Documents -type d -iname '*temp*' -maxdepth 1
 ----
@@ -271,14 +271,14 @@ In fact, if you don't separate your criteria with a `-or` flag, a `-and` flag is
 
 The following example from above:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Music/MyMP3s -type f -not -iname '*.mp3' -not -name '.*'
 ----
 
 Is actually interpreted as:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Music/MyMP3s -type f -and -not -iname '*.mp3' -and -not -name '.*'
 ----
@@ -290,7 +290,7 @@ Since I find escaping makes everything hard to read and understand, I recommend 
 As a final example, the following command will find large powerpoint presentations in your Documents folder, i.e.
 all files bigger than 100MiB in size that end in `.ppt` or `.pptx`.
 
-[source,bash]
+[source,shell]
 ----
 find ~/Documents -size +100M '(' -iname '*.ppt' -or -iname '*.pptx' ')'
 ----

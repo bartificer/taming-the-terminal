@@ -128,7 +128,7 @@ The simplest kinds of flags are those that don't take a value, they are specifie
 For example, the `ls` (list directory) command can accept the flag `-l` (long form listing) as an argument.
 e.g.
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:Shared bart$ ls -l
 total 632
@@ -142,7 +142,7 @@ bart-imac:Shared bart$
 The way the standard argument processing libraries work, flags can generally be specified in an arbitrary order.
 The `ls` command also accepts the flag -a (list all), so the following are both valid and equivalent:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:Shared bart$ ls -l -a
 ----
@@ -156,7 +156,7 @@ bart-imac:Shared bart$ ls -a -l
 
 The standard libraries also allow flags that don't specify values to be compressed into a single argument like so:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:Shared bart$ ls -al
 ----
@@ -164,7 +164,7 @@ bart-imac:Shared bart$ ls -al
 Sometimes flags need to accept a value, in which case the flag stretches over two arguments which have to be contiguous.
 For example, the `ssh` (secure shell) command allows the port to be used for the connection to be specified with the `-p` flag, and the username to connect as with the `-l` flag, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:Shared bart$ ssh bw-server.localdomain -l bart -p 443
 ----
@@ -175,14 +175,14 @@ As well as allowing a command to support more flags, these longer form flags als
 
 As an example, the `mysql` command (needs to be installed separately on OS X) allows the username and password to be used when making a database connection to be specified using long-form flags:
 
-[source,bash]
+[source,shell]
 ----
 ...$ mysql --username=bart --password=open123 example_database
 ----
 
 Many commands support both long and short form arguments, and they can be used together, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 ...$ mysql --username=bart --password=open123 example_database -v
 ----
@@ -226,7 +226,7 @@ The `echo` command simply prints out the input it receives.
 The follow example passes the phrase _Hello World!_ to the echo command as a single argument.
 Note that this phrase contains two special characters that will need to be escaped, the space and the `!`:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:~ bart$ echo Hello\ World\!
 Hello World!
@@ -239,7 +239,7 @@ There is a subtle difference between using `'` or `"`.
 When you quote with `'` you are doing so-called _full quoting_, every special character can be used inside a full quote, but, it is impossible to use a `'` character inside a fully quoted argument.
 For example:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:~ bart$ echo '# ;"\!$()&<>|'
 # ;"\!$()&<>|
@@ -258,7 +258,7 @@ When using partial quoting you still have to escape the following special charac
 
 For example:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:~ bart$ echo "# ;\!()&<>|"
 # ;\!()&<>|
@@ -267,7 +267,7 @@ bart-imac:~ bart$
 
 and:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:~ bart$ echo "\\ \$ \" \`"
 \ $ " `

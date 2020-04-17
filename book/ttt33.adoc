@@ -30,21 +30,21 @@ For readability, the options for each host are usually indented with 2 or 4 spac
 You can add comment lines by starting them with the `#` symbol.
 Option lines can be added in three forms:
 
-[source,bash]
+[source,shell]
 ----
 Option_name Option_value
 ----
 
 or
 
-[source,bash]
+[source,shell]
 ----
 Option_name "Option value"
 ----
 
 or
 
-[source,bash]
+[source,shell]
 ----
 Option_name=Option Value
 ----
@@ -53,7 +53,7 @@ The first form can only be used if there are no spaces in the value for the opti
 
 You can get a full list of all the supported options and values with the command:
 
-[source,bash]
+[source,shell]
 ----
 man ssh_config
 ----
@@ -97,7 +97,7 @@ For example, `rsync` does not allow you to specify an SSH port number, so if you
 E.g.
 if the computer `my-rsync-server.com` has SSH listening on port 2222, you would use the following host declaration in an SSH config file to enable `rsync` connections over SSH:
 
-[source,bash]
+[source,shell]
 ----
 Host my-rsync-server.com
   Port 2222
@@ -109,21 +109,21 @@ You can use them to create what are effectively SSH bookmarks.
 As an exmaple, let's say we regularly have to connect to the server `this-is-a-really-long-name.com` on port 2222 with the username `rhododendron`.
 You could type the following each time you wanted to connect:
 
-[source,bash]
+[source,shell]
 ----
 ssh rhododendron@this-is-a-really-long-name.com -p 2222
 ----
 
 Or, you could shorten that command to:
 
-[source,bash]
+[source,shell]
 ----
 ssh myserver
 ----
 
 All you would have to do to make your life that much easier would be to create the following host definition in your SSH config file:
 
-[source,bash]
+[source,shell,linenums]
 ----
 Host myserver
   HostName this-is-a-really-long-name.com
@@ -139,7 +139,7 @@ Finally, you can use wild cards when specifying a `Host` declaration.
 This can be very useful if, for example, you have the same username on all servers for a given company (perhaps the one you work for).
 You could set SSH to use that username on all servers in the organisations domain with an entry like:
 
-[source,bash]
+[source,shell]
 ----
 Host *.my-company.com
   User my_username

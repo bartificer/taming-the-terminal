@@ -121,7 +121,7 @@ Because the client machine has an IP at this point, there is no need to use inef
 
 We can use the tcpdump command to display all the DHCP packets reaching our computer:
 
-[source,bash]
+[source,shell]
 ----
 sudo tcpdump -ennv port 67 or port 68
 ----
@@ -131,7 +131,7 @@ The content of a packet is tabbed in, so each line starting at the left edge is 
 
 Below is a capture if the DHCP conversation between my laptop and my router, with the critical information highlighted in bold, and a blank line inserted between each packet for extra clarity:
 
-[source,bash]
+[source,shell,linenums]
 ----
 20:00:18.229408 60:c5:47:9b:e7:88 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x0, ttl 255, id 45669, offset 0, flags [none], proto UDP (17), length 328)
     0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 60:c5:47:9b:e7:88, length 300, xid 0x6e151923, secs 2, Flags [none]
@@ -247,28 +247,28 @@ The reason I say this is a confusing name is that it's very similar to `ifconfig
 
 `ipconfig` can be used to turn a network interface off as follows (replacing `enX` with the actual interface you want to disable):
 
-[source,bash]
+[source,shell]
 ----
 sudo ipconfig set enX NONE
 ----
 
 `ipconfig` can be used to enable a network interface in DHCP mode as follows (again replacing `enX` with the actual interface you want to disable):
 
-[source,bash]
+[source,shell]
 ----
 sudo ipconfig set enX DHCP
 ----
 
 Finally, `ipconfig` can be used to show the DHCP ACK packet that was used to configure a network interface (again replacing `enX` with the actual interface you want to get the packet for):
 
-[source,bash]
+[source,shell]
 ----
 sudo ipconfig getpacket enX
 ----
 
 The relevant information is in the options section near the bottom of the output, marked in bold below:
 
-[source,bash]
+[source,shell,linenums]
 ----
 BW-MBP-2:~ bart$ sudo ipconfig getpacket en1
 Password:
@@ -301,7 +301,7 @@ BW-MBP-2:~ bart$
 
 For a full description of everything `ipconfig` can do, see its man page:
 
-[source,bash]
+[source,shell]
 ----
 man ipconfig
 ----

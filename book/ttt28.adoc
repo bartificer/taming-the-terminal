@@ -55,7 +55,7 @@ On OS X you should use the Networks system preference pane to change network set
 
 To get a list of the names of all network interfaces defined on a Mac run the following command (does not work in Linux):
 
-[source,bash]
+[source,shell]
 ----
 ifconfig -l
 ----
@@ -71,7 +71,7 @@ Once you know the names of your network devices you can see more information for
 E.g.
 the following is the description of my `en0` interface:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ ifconfig en0
 en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
@@ -87,7 +87,7 @@ bart-iMac2013:~ bart$
 
 You can also see the details for all network interfaces by replacing the interface name with the `-a` flag (this is what the OS X version of `ifconfig` does implicitly if called with no arguments):
 
-[source,bash]
+[source,shell]
 ----
 ifconfig -a
 ----
@@ -103,7 +103,7 @@ Putting it all together, the command to run when verifying that there is basic n
 The following sample output shows one active ethernet network connection, *en0*, and one inactive wifi connection (en1).
 The important parts of the output have been bolded for clarity:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ ifconfig -uv
 lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384 index 1
@@ -163,7 +163,7 @@ This line will give you the IP address and netmask.
 
 Below is an example of the output for my one active network interface, `en0`:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ ifconfig -v en0
 en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500 index 4
@@ -188,14 +188,14 @@ To read the default route you'll need to use the `netstat` command.
 We haven't looked at this command in detail yet, and we won't be until a future instalment.
 For now we just need to know that the following command will show us the IP address of the default router:
 
-[source,bash]
+[source,shell]
 ----
 netstat -rn | egrep '^default'
 ----
 
 The following sample output shows that my default gateway is set to `192.168.10.1`:
 
-[source,bash]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ netstat -rn | egrep '^default'
 default            192.168.10.1       UGSc           28        0     en0
@@ -241,7 +241,7 @@ To avoid having to hit `ctrl+c`, while still getting a good sample size, the `-c
 To start to probe our connectivity we should first try ping the default gateway we discovered in the previous step.
 The example below shows my output, pinging my default gateway `192.168.10.1`.
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ ping -c 10 192.168.10.1
 PING 192.168.10.1 (192.168.10.1): 56 data bytes
@@ -274,7 +274,7 @@ I tend to use Google's public DNS resolver for the simple reason that I know it'
 
 Below is a sample of the output I get when I ping Google's public DNS resolver:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ ping -c 10 8.8.8.8
 PING 8.8.8.8 (8.8.8.8): 56 data bytes
@@ -331,14 +331,14 @@ Note that not all routers respond to traceroute packets, so there may be no info
 The `traceroute` command is available in Windows, Linux, Unix and OS X, but there is one caveat, it's spelled differently on windows!
 To trace your route to Google's public DNS resolver you would issue the following command on OS X, Linux or Unix:
 
-[source,bash]
+[source,shell]
 ----
 traceroute 8.8.8.8
 ----
 
 On Windows the command would be:
 
-[source,bash]
+[source,shell]
 ----
 tracert 8.8.8.8
 ----
@@ -347,7 +347,7 @@ On my home network I have two routers -- one provided by my ISP which doesn't gi
 I can see both of these internal hops when I `traceroute` to Googles DNS resolver.
 The command issued and the two internal hops are shown in bold in the sample output below:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ traceroute 8.8.8.8
 traceroute to 8.8.8.8 (8.8.8.8), 64 hops max, 52 byte packets
@@ -379,14 +379,14 @@ Almost everything we do online involves domain names rather than IP addresses, s
 
 To test name resolution simply try resolve a known-good domain name like `google.com`:
 
-[source,bash]
+[source,shell]
 ----
 host google.com
 ----
 
 If name resolution is working you should see output something like:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ host google.com
 google.com has address 74.125.24.113
@@ -408,7 +408,7 @@ The actual details returned could vary depending on where and when you run the c
 
 If that fails, check that DNS resolvers have been configured on the computer by running:
 
-[source,bash]
+[source,shell]
 ----
 cat /etc/resolv.conf | egrep '^nameserver'
 ----
@@ -416,7 +416,7 @@ cat /etc/resolv.conf | egrep '^nameserver'
 If all is well there should be at least one line returned.
 The example below shows that my Mac is configured to use one DNS resolver, `192.168.10.1`:
 
-[source,bash]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ cat /etc/resolv.conf | egrep '^nameserver'
 nameserver 192.168.10.1
@@ -425,14 +425,14 @@ bart-iMac2013:~ bart$
 
 It is also worth testing whether or not Google's public DNS resolver will work from the given computer:
 
-[source,bash]
+[source,shell]
 ----
 dig +short google.com @8.8.8.8
 ----
 
 If you can resolve names using Google's public resolver you should see output something like:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ dig +short google.com @8.8.8.8
 74.125.138.100

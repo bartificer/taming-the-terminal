@@ -28,14 +28,14 @@ While many versions of Linux come with lynx installed by default, OS X doesn't.
 The easiest way to install it is using https://www.macports.org/install.php[MacPorts].
 Once you have MacPorts installed, you can install `lynx` on your Mac with the command:
 
-[source,bash]
+[source,shell]
 ----
 sudo port install lynx
 ----
 
 Once you have `lynx` installed, you can open any web page in your browser by passing the URL as an argument to the command `lynx`, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 lynx http://www.podfeet.com
 ----
@@ -59,7 +59,7 @@ Just about every version of Linux and Unix will comes with one or both of these 
 OS X comes with `curl`, while `wget` seems to be more common on Linux.
 Most Linux distributions will allow you to install both of these commands, and you can install `wget` on OS X using MacPorts:
 
-[source,bash]
+[source,shell]
 ----
 sudo port install wget
 ----
@@ -71,7 +71,7 @@ Both `curl` and `wget` can be used to download a file from the internet, but `wg
 The URL to download a zip file containing the latest version of `Crypt::HSXKPasswd` from GitHub is `+https://github.com/bbusschots/xkpasswd.pm/archive/master.zip+`.
 The two commands below can be used to download that file to the present working directory:
 
-[source,bash]
+[source,shell]
 ----
 wget https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
 curl -O https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
@@ -84,7 +84,7 @@ While that is a sensible default, it's not always what you want.
 In fact, in this case, the default file name is probably not what you want, since `master.zip` is very nondescript.
 Both commands allow an alternative output file to be specified:
 
-[source,bash]
+[source,shell,linenums]
 ----
 wget -O HSXKPasswd.zip https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
 curl -o HSXKPasswd.zip https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
@@ -100,7 +100,7 @@ When using `curl` or `wget`, you can see exactly what is happening at the HTTP l
 As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `+http://www.podfeet.com/twitter+`.
 To see exactly what Allison's server is returning, we can use `wget` with the `--spider` and `-S` options:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ wget --spider -S http://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
@@ -156,7 +156,7 @@ By default, `wget` will follow up to 20 redirects, so there is much more output 
 The information we need is there, and I have highlighted it in bold, but it would be easier to get to if `wget` didn't follow the redirect and then ask Twitter's server for it's headers too.
 Since we only need the first set of headers, we need to tell `wget` not to follow any redirects at all, and we can do that with the `--max-redirect` flag:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ wget --spider -S --max-redirect 0 http://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
@@ -181,7 +181,7 @@ We can see that Allison's server is returning a permanent redirect (HTTP respons
 
 We can of course do the same with `curl`:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ curl -I http://www.podfeet.com/twitter
 HTTP/1.1 301 Moved Permanently
@@ -198,7 +198,7 @@ When fetching headers, `curl` does not follow redirects by default, so there is 
 
 Often, you only care about the response headers, so the output of `curl -I` is perfect, but, when you do want to see the request headers too, you can add the `-v` flag to put `curl` into verbose mode:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ curl -vI http://www.podfeet.com/twitter
 * Hostname was NOT found in DNS cache

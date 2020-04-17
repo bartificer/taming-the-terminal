@@ -29,7 +29,7 @@ It can either execute the same command once on each file that was found, or, it 
 
 To execute a command repeatedly, once on each file or folder found, you use the following construct:
 
-[source,bash]
+[source,shell]
 ----
 find search_path conditions -exec command args_or_flags {} ';'
 ----
@@ -41,21 +41,21 @@ This sounds quite complicated, but hopefully a practical example will help.
 A real-world problem you may encounter is that you need to make all perl scripts in a given set of nested folders executable.
 As we learned in <<ttt6,instalment 6>>, we can make a file executable with the command:
 
-[source,bash]
+[source,shell]
 ----
 chmod 755 path_to_file
 ----
 
 Perl scripts have the extension `.pl`, so using what we learned in the previous instalment we can find all perl scripts in a given path with the command:
 
-[source,bash]
+[source,shell]
 ----
 find search_path -name '*.pl'
 ----
 
 If we assume all our perl files will be in a folder called `scripts` in our Documents folder, we can put all this together to find and chown all perl files in a single command like so:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Documents/scripts -name '*.pl' -exec chmod 755 {} ';'
 ----
@@ -64,7 +64,7 @@ find ~/Documents/scripts -name '*.pl' -exec chmod 755 {} ';'
 
 Sometimes we may want to run a command once with all the found files and/or folders as arguments, you can do that with the following construct:
 
-[source,bash]
+[source,shell]
 ----
 find search_path conditions -exec command args_or_flags {} '+'
 ----
@@ -78,21 +78,21 @@ you know all relevant files have `.pl` and `.pm` file extensions.
 
 We know from last time that we can find all relevant files with the command:
 
-[source,bash]
+[source,shell]
 ----
 find search_path -name '*.pl' -or -name '*.pm'
 ----
 
 We also know from <<ttt15,instalment 15>> that we can use the `wc` command with the `-l` flag to count the number of lines in a one or more files:
 
-[source,bash]
+[source,shell]
 ----
 wc -l file 1..n
 ----
 
 Assuming our code is still in a folder called `scripts` in the Documents folder, the command to find the total number of lines in all the perl files would be:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Documents/scripts '(' -name '*.pl' -or -name '*.pm' ')' -exec wc -l {} '+'
 ----
@@ -101,14 +101,14 @@ Note that we have to group the two conditions in bracket operators so the scope 
 
 If you installed the XKPasswd 2 perl module via the quick install instructions at https://github.com/bbusschots/xkpasswd.pm[], you can use the example below to see how many lines of code and documentation went into that project:
 
-[source,bash]
+[source,shell]
 ----
 find /usr/local/xkpasswd.pm '(' -name '*.pl' -or -name '*.pm' ')' -and -not -type d -exec wc -l {} '+'
 ----
 
 One final example that might depress you -- the command below tells you how much disk space you are wasting with large files (>500MiB) in your downloads folder:
 
-[source,bash]
+[source,shell]
 ----
 find ~/Downloads -size +500M -exec du -ch {} '+'
 ----
@@ -119,7 +119,7 @@ My approach is to run the command without the `-exec` first, to be sure ONLY the
 
 Finally -- the nerd joke I think I promised during the last instalment:
 
-[source,bash]
+[source,shell]
 ----
 find / -iname '*base*' -exec chown -R us {} ';'
 ----
@@ -141,28 +141,28 @@ If you add a drive or a folder to spotlight's ignore list, `mdfind` can never fi
 
 The `mdfind` command is very easy to use:
 
-[source,bash]
+[source,shell]
 ----
 mdfind 'spotlight search string'
 ----
 
 For example, to find all PDFs on your computer you could use:
 
-[source,bash]
+[source,shell]
 ----
 mdfind 'kind:pdf'
 ----
 
 To find all PDFs that contain the word '`internet`' you could use:
 
-[source,bash]
+[source,shell]
 ----
 mdfind 'kind:pdf internet'
 ----
 
 To find every PDF you have edited today you could use:
 
-[source,bash]
+[source,shell]
 ----
 mdfind 'date:today kind:pdf'
 ----
@@ -171,7 +171,7 @@ I haven't been able to find a definitive list of all possible spotlight search c
 
 mdfind supports a number of arguments, and it can also search based on deep metadata, but I'm going to leave most of that as an exercise for the user -- you can get the full documentation through the manual:
 
-[source,bash]
+[source,shell]
 ----
 man mdfind
 ----
@@ -180,7 +180,7 @@ However, there are two flags I do want to draw attention to.
 
 By default `mdfind` will search the entire spotlight index, but you can ask it to only return results contained within a given folder using the `-onlyin` flag, for example, to find all PDFs in your Documents folder you could use:
 
-[source,bash]
+[source,shell]
 ----
 mdfind -onlyin ~/Documents 'kind:pdf'
 ----
@@ -190,14 +190,14 @@ Note that the search is always recursive, even when using the `-onlyin` flag.
 The other flag I want to mention is `-count`, if this flag is set the number of matching files will be returned rather than the files themselves.
 So, to see how many music files you have in your Music folder you could use:
 
-[source,bash]
+[source,shell]
 ----
 mdfind -onlyin ~/Music -count 'kind:music'
 ----
 
 Or, to answer the eternal question of just how many apps you have installed:
 
-[source,bash]
+[source,shell]
 ----
 mdfind -onlyin /Applications -count 'kind:app'
 ----

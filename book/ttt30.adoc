@@ -62,7 +62,7 @@ _**Update -- February 2020:** I blogged https://www.bartbusschots.ie/s/2020/02/2
 The process stars on the computer you will be SSHing from.
 You need to open a terminal as the user who will be SSHing to the remote computer, and in that terminal type the command:
 
-[source,bash]
+[source,shell]
 ----
 ssh-keygen -t rsa
 ----
@@ -87,14 +87,14 @@ This is much more memorable to humans than the fingerprint, show us two differen
 
 To get a sense of how difficult an SSH key is to brute-force attack, you can have a look at the private key you just generated with the command:
 
-[source,bash]
+[source,shell]
 ----
 cat ~/.ssh/id_rsa
 ----
 
 And the public key with the command:
 
-[source,bash]
+[source,shell]
 ----
 cat ~/.ssh/id_rsa.pub
 ----
@@ -125,7 +125,7 @@ Because public keys are not sensitive information, SSH does not care of other us
 To prevent this from happening, SSH will not accept a key if it's contained in a file that is writeable by anyone but the owner of the account.
 An example of working permissions on an account with the username `bart` is show below:
 
-[source,bash]
+[source,shell,linenums]
 ----
 [bart@www ~]$ ls -al ~/.ssh
 total 20
@@ -151,7 +151,7 @@ OS X users can install `ssh-copy-id` onto their Mac using the free and open sour
 
 If you follow the link above you'll see that installing `ssh-copy-id` onto your mac is as simple as running the command:
 
-[source,bash]
+[source,shell]
 ----
 curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh
 ----
@@ -160,7 +160,7 @@ The above command has to be run from an admin account, and it uses `sudo` for th
 
 What ever OS you are on, once you have `ssh-copy-id` installed, copying over your public key becomes as easy as running the command below (replacing `user` and `computer` as appropriate):
 
-[source,bash]
+[source,shell]
 ----
 ssh-copy-id user@computer
 ----

@@ -36,7 +36,7 @@ For this to work you'll need to be on OS X, have FireFox installed, and have it 
 
 First, lets start FireFox from the Terminal as a regular foreground process:
 
-[source,bash]
+[source,shell]
 ----
 /Applications/Firefox.app/Contents/MacOS/firefox-bin
 ----
@@ -67,14 +67,14 @@ The number in square brackets is a counter for the number of background processe
 
 You can use a command prompt to quickly check your FireFox version number without even having to launch the FireFox GUI with:
 
-[source,bash]
+[source,shell]
 ----
 /Applications/Firefox.app/Contents/MacOS/firefox-bin --version
 ----
 
 Also, when you launch FireFox from a command shell you can pass it flags and arguments to alter it's behaviour, for a list of valid options run:
 
-[source,bash]
+[source,shell]
 ----
 /Applications/Firefox.app/Contents/MacOS/firefox-bin -h
 ----
@@ -90,7 +90,7 @@ Note that if you pass `open` a folder rather than a file it will open the folder
 
 A very handy trick is to use `open` to get a Finder window showing the contents of your command shell's present working directory as follows:
 
-[source,bash]
+[source,shell]
 ----
 open .
 ----
@@ -98,7 +98,7 @@ open .
 Another useful tip is to use `open` to quickly view hidden folders in the Finder.
 On recent versions of OS X, where the Library folder is hidden, I often use:
 
-[source,bash]
+[source,shell]
 ----
 open ~/Library
 ----
@@ -113,14 +113,14 @@ However, being a big IDE, it's a bit of a hog -- it takes so long to open that i
 So, when I just want to make a quick edit, I prefer to use the light-weight http://www.peterborgapps.com/smultron/[Smultron] editor instead.
 I can use `open` with the `-a` flag to specify that I want my Perl file opened with Smultron using a command something like:
 
-[source,bash]
+[source,shell]
 ----
 open my_perl_file.pl -a /Applications/Smultron\ 5.app/
 ----
 
 Similarly, if I was using a computer that didn't have Smultron installed I could open the Perl file with TextEdit using a command like:
 
-[source,bash]
+[source,shell]
 ----
 open my_perl_file.pl -a /Applications/TextEdit.app/
 ----
@@ -140,7 +140,7 @@ Note that you can use kill to end as many processes at once as you like, just ke
 Let's work through another example, using FireFox again.
 We'll start by opening FireFox and backgrounding it with:
 
-[source,bash]
+[source,shell]
 ----
 /Applications/Firefox.app/Contents/MacOS/firefox-bin &
 ----
@@ -151,7 +151,7 @@ Since we started FireFox from the terminal, it will show up when we use `ps` wit
 
 Once you have the PID you can quit FireFox with (replacing `[the_PID]` with the actual PID of course):
 
-[source,bash]
+[source,shell]
 ----
 kill [the_PID]
 ----
@@ -163,14 +163,14 @@ There is another command for ending processes that uses process names rather tha
 
 For what seems like the millionth time today, lets start FireFox and background it:
 
-[source,bash]
+[source,shell]
 ----
 /Applications/Firefox.app/Contents/MacOS/firefox-bin &
 ----
 
 Rather than looking up it's PID, lets now exit it with the `killall` command:
 
-[source,bash]
+[source,shell]
 ----
 killall firefox-bin
 ----

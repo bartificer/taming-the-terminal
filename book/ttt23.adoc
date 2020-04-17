@@ -190,7 +190,7 @@ Assuming I have everything properly configured on my end, you open your favourit
 
 Your browser speaks HTTP, so it starts by formulating a HTTP request which will look something like:
 
-[source,bash]
+[source,html,linenums]
 ----
 GET /~bart/ttt23/ HTTP/1.1
 Accept:	         text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -214,7 +214,7 @@ This is a two-way connection, so the browser can send data to the web server pro
 Your browser then sends the HTTP request it formulated to the web server process on my server through the TCP connection your OS negotiated with my OS on your browser's behalf.
 The web server process receives the request, understands it because it speaks HTTP, and formulates a response in the form of a HTTP response that will look something like:
 
-[source,bash]
+[source,html,linenums]
 ----
 HTTP/1.1 200 OK
 Date: Fri, 24 Oct 2014 22:40:07 GMT
@@ -286,7 +286,7 @@ This continues for as long as it takes for the packet to arrive at the router in
 ____
 *Aside:* you can use the terminal command `traceroute` (`tracert` on Windows) to see what routers a packet follows from your computer to my server as follows:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ traceroute -n 46.22.130.125
 traceroute to 46.22.130.125 (46.22.130.125), 64 hops max, 52 byte packets
@@ -337,7 +337,7 @@ ____
 
 In the first window, we'll use the `tcpdump` command to print out each packet that is sent from your computer to my server as follows:
 
-[source,bash]
+[source,shell]
 ----
 sudo tcpdump -nn host 46.22.130.125
 ----
@@ -346,7 +346,7 @@ This will print some metadata and then sit there and do nothing until matching p
 
 In the other terminal window we will use the `curl` command to fetch the website in question (and print out the HTTP request and response for good measure) using:
 
-[source,bash]
+[source,html,linenums]
 ----
 bart-iMac2013:~ bart$ curl -v http://www.so-4pt.net/~bart/ttt23/
 * Hostname was NOT found in DNS cache
@@ -389,7 +389,7 @@ Once we enter the above command in our second terminal window we should see some
 Click on this window and end the capture by hitting `ctrl+c`.
 You should now have something that looks like:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ sudo tcpdump -nn host 46.22.130.125
 Password:

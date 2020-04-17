@@ -46,7 +46,7 @@ In this instalment we'll be focusing on Environment Variables, and specifically,
 The command to list the names and values of all currently set environment variables is simply `env` (or `printenv` on some systems).
 E.g.:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-imac2013:~ bart$ env
 TERM_PROGRAM=Apple_Terminal
@@ -84,7 +84,7 @@ We already know that `env` lets us see all the environment variables which exist
 To see all the shell variables that exist, call `set` with no arguments.
 E.g.
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-imac2013:~ bart$ set
 Apple_PubSub_Socket_Render=/tmp/launch-MLs1hi/Render
@@ -157,14 +157,14 @@ When you enter `$VARIABLE_NAME` in the shell it will be replaced with the value 
 E.g.
 to change to the `Desktop` directory in your home folder you could use:
 
-[source,bash]
+[source,shell]
 ----
 cd $HOME/Desktop
 ----
 
 or (if you have a Mac configured in the default way)
 
-[source,bash]
+[source,shell]
 ----
 cd /Users/$LOGNAME/Desktop
 ----
@@ -174,7 +174,7 @@ If you use the `$` operator within a string enclosed by double quotes the variab
 
 This is why the following do work (this is an OS X-specific example):
 
-[source,bash]
+[source,shell]
 ----
 cd $HOME/Library/Application\ Support
 cd "$HOME/Library/Application Support"
@@ -182,7 +182,7 @@ cd "$HOME/Library/Application Support"
 
 But the following does not:
 
-[source,bash]
+[source,shell]
 ----
 cd '$HOME/Library/Application Support'
 ----
@@ -190,7 +190,7 @@ cd '$HOME/Library/Application Support'
 Note that you can also inhibit the `$` operator by escaping it with a `\` character.
 Hence, the following has exact the same effect as the previous command:
 
-[source,bash]
+[source,shell]
 ----
 cd \$HOME/Library/Application\ Support
 ----
@@ -203,21 +203,21 @@ While we can list the values stored in all variables with `set`, it's also helpf
 The easiest way to do this is to make use of the initially useless-seeming command `echo`.
 All echo does is print out the argument you pass to it, so, a simple example would be:
 
-[source,bash]
+[source,shell]
 ----
 echo 'Hellow World!'
 ----
 
 This seems pretty dull, but, when you combine `echo` with the `$` operator it becomes much more useful:
 
-[source,bash]
+[source,shell]
 ----
 echo $LOGNAME
 ----
 
 We can even get a little more creative:
 
-[source,bash]
+[source,shell]
 ----
 echo "I am logged in as the user $LOGNAME with the home directory $HOME"
 ----
@@ -229,28 +229,28 @@ In our examples we won't use a variable set by the system, but we'll create our 
 
 Before we start, we can verify that our variable does not exist yet:
 
-[source,bash]
+[source,shell]
 ----
 echo $MY_FIRST_VAR
 ----
 
 Now lets create our variable by giving it a value:
 
-[source,bash]
+[source,shell]
 ----
 MY_FIRST_VAR='Hello World!'
 ----
 
 Now lets verify that we did indeed initialise our new variable with the value we specified:
 
-[source,bash]
+[source,shell]
 ----
 echo $MY_FIRST_VAR
 ----
 
 Now lets get a little more creating and change the value stored in our variable using values stored in two variables inherited from the environment:
 
-[source,bash]
+[source,shell]
 ----
 MY_FIRST_VAR="Hi, my name is $LOGNAME and my home directory is $HOME"
 ----
@@ -259,7 +259,7 @@ Because we used double quotes, it is the value stored in the variables `LOGNAME`
 
 At this stage our new variable exists only as a local shell variable, it is not stored in our process's environment:
 
-[source,bash]
+[source,shell]
 ----
 env
 ----
@@ -268,14 +268,14 @@ The `export` command can be used to to '`promote`' a variable into the Environme
 Simply call the command with the name of the variable to be promoted as an argument, e.g.
 to push our variable to the environment use:
 
-[source,bash]
+[source,shell]
 ----
 export MY_FIRST_VAR
 ----
 
 We can now verify that we really have pushed our new variable to the environment:
 
-[source,bash]
+[source,shell]
 ----
 env
 ----
@@ -293,7 +293,7 @@ While we won't be looking at shell scripting in detail until much later in this 
 
 Lets start by creating a very simple shell script that will print the value of an environment variable:
 
-[source,bash]
+[source,shell]
 ----
 nano ~/Documents/ttt12script1.sh
 ----
@@ -318,35 +318,35 @@ If we were writing a Perl script instead of a BASH script we would start our fil
 
 Before we can run our new script we need to make it executable:
 
-[source,bash]
+[source,shell]
 ----
 chmod 755 ~/Documents/ttt12script1.sh
 ----
 
 The environment variable `TTT_VAR` does not exist yet, so running our shell script now will show that:
 
-[source,bash]
+[source,shell]
 ----
 ~/Documents/ttt12script1.sh
 ----
 
 We can now give our variable a value:
 
-[source,bash]
+[source,shell]
 ----
 TTT_VAR='Hello World!'
 ----
 
 And if we run our script again, we can see that it still does not print out the value because we have only created a local shell variable, not an environment variable:
 
-[source,bash]
+[source,shell]
 ----
 ~/Documents/ttt12script1.sh
 ----
 
 Now lets push our variable to the environment and run our script again:
 
-[source,bash]
+[source,shell]
 ----
 export TTT_VAR
 ~/Documents/ttt12script1.sh
@@ -354,7 +354,7 @@ export TTT_VAR
 
 To prove that the sub-shell is working on a copy of the environment variable, lets copy our first script and create a new script that alters the value of the variable:
 
-[source,bash]
+[source,shell]
 ----
 cp ~/Documents/ttt12script1.sh ~/Documents/ttt12script2.sh
 nano ~/Documents/ttt12script2.sh
@@ -362,8 +362,8 @@ nano ~/Documents/ttt12script2.sh
 
 Update the new script so it contains the following code, then save and exit:
 
+[source,shell,linenums]
 ----
-
 #!/bin/bash
 
 echo "Initially: TTT_VAR=$TTT_VAR"
@@ -374,7 +374,7 @@ echo "Now: TTT_VAR=$TTT_VAR"
 
 Now run the following:
 
-[source,bash]
+[source,shell]
 ----
 echo $TTT_VAR
 ~/Documents/ttt12script2.sh
@@ -383,7 +383,7 @@ echo $TTT_VAR
 
 You should get output that looks something like:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-imac2013:~ bart$ echo $TTT_VAR
 Hello World!
@@ -402,7 +402,7 @@ You might expect that this means that you can't use scripts to build or alter yo
 You just can't do it by accident, you must be explicit about it, and use the `source` command.
 To see this in action run the following:
 
-[source,bash]
+[source,shell]
 ----
 echo $TTT_VAR
 source ~/Documents/ttt12script2.sh
@@ -411,7 +411,7 @@ echo $TTT_VAR
 
 This should give you output something like:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-imac2013:~ bart$ echo $TTT_VAR
 Hello World!

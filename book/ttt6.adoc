@@ -27,7 +27,7 @@ The command to change the user that owns one or more files or folders is `chown`
 The command takes a minimum of two arguments, the username to change the ownership to, and one or more files or folders to modify.
 E.g.:
 
-[source,bash]
+[source,shell]
 ----
 chown bart myFile.txt
 ----
@@ -35,7 +35,7 @@ chown bart myFile.txt
 The command can also optionally take a `-R` flag to indicate that the changes should be applied '`recursively`', that is that if the ownership of a folder is changed, the ownership of all files and folders contained within that folder should also be changed.
 The `chown` command is very picky about the placement of the flag though, it MUST come before any other arguments E.g.:
 
-[source,bash]
+[source,shell]
 ----
 chown -R bart myFolder
 ----
@@ -43,14 +43,14 @@ chown -R bart myFolder
 Similarly, the command to change the group that a file belongs to is `chgrp` (change group), it behaves in the same was as `chown`, and also supports the `-R` flag to recursively change the group.
 E.g.:
 
-[source,bash]
+[source,shell]
 ----
 chgrp -R staff myFolder
 ----
 
 Finally, if you want to change both user and group ownership of files or folders at the same time the `chown` command provides a handy shortcut -- instead of passing just a username as the first argument, you can pass a username and group name pair separated by a :, so the previous two examples can be rolled into the one example below:
 
-[source,bash]
+[source,shell]
 ----
 chown -R bart:staff myFolder
 ----
@@ -94,14 +94,14 @@ If you run a website for example, regular files like images or HTML pages and im
 Lets end with a few examples.
 If you want to alter a file you own so that you have read, write and execute permission, but no one else can access the file in any way you would use the command:
 
-[source,bash]
+[source,shell]
 ----
 chmod 700 myFile.txt
 ----
 
 If the file should not be executable even by you, then you would use:
 
-[source,bash]
+[source,shell]
 ----
 chmod 600 myFile.txt
 ----
@@ -123,7 +123,7 @@ Each ACL associated with a file is numbered, and the numbering starts from 0.
 The ACLs read as quite Englishy, so you should be able to figure out what they mean just by looking at them.
 As an example, lets have a look at the extended permissions on OS X home directories:
 
-[source,bash]
+[source,shell,linenums,highlight=5,7]
 ----
 bart-imac:~ bart$ ls -le /Users
 total 0
@@ -140,7 +140,7 @@ You can see here that my home folder (`bart`) has one or more file ACLs associat
 On the lines below you can see that there is only one ACL associated with my home folder, and that it's numbered `0`.
 The contents of the ACL is:
 
-[source,bash]
+[source,shell]
 ----
 group:everyone deny delete
 ----
@@ -177,7 +177,7 @@ To see the list of the names/keys for the extended attributes belonging to a fil
 You can't use `ls` to see the actual contents of the extended attributes though, only to get their names.
 To see the names and values of all extended attributes on one or more files use:
 
-[source,bash]
+[source,shell]
 ----
 xattr -l [file list]
 ----
@@ -190,7 +190,7 @@ Because of this every file in your `Downloads` folder will contain extended attr
 As an example I downloaded the latest version of the XKpasswd library from my website (`xkpasswd-v0.2.1.zip`).
 I can now use `xattr` to see all the extended attributes OS X added to that file like so:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac:~ bart$ xattr -l ~/Downloads/xkpasswd-v0.2.1.zip
 com.apple.metadata:kMDItemDownloadedDate:

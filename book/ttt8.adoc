@@ -92,14 +92,14 @@ Most of the time, the output of `ps` without arguments is of little to no intere
 
 Lets start by listing all the processes owned by a given user, regardless of whether or not they are terminal-based processes:
 
-[source,bash]
+[source,shell]
 ----
 ps -u <strong>[username]</strong>
 ----
 
 e.g.
 
-[source,bash]
+[source,shell]
 ----
 ps -u allison
 ----
@@ -111,14 +111,14 @@ Something else you're likely to want to do is to see all current processes, rega
 On Linux we would do that with the `-e` (for everyone) flag, while on Unix we would do that with the `-A` (for ALL) flag.
 OS X conveniently supports both, so just use which ever one your find easiest to remember.
 
-[source,bash]
+[source,shell]
 ----
 ps -e
 ----
 
 or
 
-[source,bash]
+[source,shell]
 ----
 ps -A
 ----
@@ -130,7 +130,7 @@ For this list to be useful you need to ask `ps` to give you more information abo
 Your first instinct might well be to try the `-l` flag in the hope that `ps` behaves like `ls`.
 Give it a go:
 
-[source,bash]
+[source,shell]
 ----
 ps -el
 ----
@@ -142,7 +142,7 @@ For example, `-l` gives the UID number of the user who owns the process, rather 
 A better, though still imperfect, option is the `-j` flag (no idea what it stands for).
 Try it:
 
-[source,bash]
+[source,shell]
 ----
 ps -ej
 ----
@@ -152,7 +152,7 @@ This still gives you more information than you need, but it does at least give y
 Thankfully there is a better option, you can use the `-o` flag to specify the list of headings you want in the output from `ps`.
 To see a list of all the possible headings, use:
 
-[source,bash]
+[source,shell]
 ----
 ps -L
 ----
@@ -160,7 +160,7 @@ ps -L
 To specify the headings you want, use the `-o` flag followed by a comma-separated list of headings WITHOUT SPACES AFTER THE COMMAS.
 IMO the following gives the most useful output format:
 
-[source,bash]
+[source,shell]
 ----
 ps -e -o user,pid,%cpu,%mem,command
 ----
@@ -168,7 +168,7 @@ ps -e -o user,pid,%cpu,%mem,command
 Finally, you can also use flags to sort the output in different ways.
 of particular use are `-m` to sort by memory usage, and `-r` to sort by CPU usage.
 
-[source,bash]
+[source,shell]
 ----
 ps -er -o user,pid,%cpu,%mem,command
 
@@ -177,7 +177,7 @@ ps -em -o user,pid,%cpu,%mem,command
 
 The `ps` command is a good way to get an instantaneous snapshot of the processes running on your system, but usually, what you really want is a real-time sorted list of processes, and for that we have the top command:
 
-[source,bash]
+[source,shell]
 ----
 top
 ----
@@ -190,7 +190,7 @@ You can either re-sort after starting `top` by hitting `o` and then typing somet
 
 Or, you can pass the same arguments when starting `top` from the command line:
 
-[source,bash]
+[source,shell]
 ----
 top -o -cpu
 

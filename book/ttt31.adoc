@@ -30,7 +30,7 @@ We'll use SSH to create the remote files.
 In order to make the commands easier to copy and paste, we're going to use shell variables to store the username to SSH as, and the computer to SSH to.
 You'll need to replace `my_remote_username` with your username on the remote computer, and `my_remote_computer` with the IP address or DNS name of the remote computer in the variable definitions below.
 
-[source,bash]
+[source,shell]
 ----
 SSH_USER=my_remote_username
 SSH_COMP=my_remote_computer
@@ -38,7 +38,7 @@ SSH_COMP=my_remote_computer
 
 === Create the Local Dummy Files
 
-[source,bash]
+[source,shell,linenums]
 ----
 mkdir -p /tmp/ttt31/fromRemote
 echo "Hello World! (Local Text File 1)" > /tmp/ttt31/scp_local1.txt
@@ -48,14 +48,14 @@ echo "#Hello World! (Local Markdown File 2)" > /tmp/ttt31/scp_local2.md
 
 As we move files around, you can monitor the content of the local folder, and it's sub-folders, with the command:
 
-[source,bash]
+[source,shell]
 ----
 ls -R /tmp/ttt31/
 ----
 
 === Create the Remote Dummy Files
 
-[source,bash]
+[source,shell,linenums]
 ----
 ssh $SSH_USER@$SSH_COMP 'mkdir -p /tmp/ttt31/fromLocal'
 ssh $SSH_USER@$SSH_COMP 'echo "Hello World! (Remote Text File)" > /tmp/ttt31/scp_remote.txt'
@@ -69,7 +69,7 @@ ssh $SSH_USER@$SSH_COMP 'echo "Hello World! (Remote Text File 2)" > /tmp/ttt31/r
 
 As we move files around, you can monitor the content of the remote folder, and it's sub-folders, with the command:
 
-[source,bash]
+[source,shell]
 ----
 ssh $SSH_USER@$SSH_COMP 'ls -R /tmp/ttt31/'
 ----
@@ -78,7 +78,7 @@ ssh $SSH_USER@$SSH_COMP 'ls -R /tmp/ttt31/'
 
 If you want to start over at any stage, or to clean up after yourself when finished, the following commands will remove the local and remote dummy files:
 
-[source,bash]
+[source,shell]
 ----
 rm -rf /tmp/ttt31
 ssh $SSH_USER@$SSH_COMP 'rm -rf /tmp/ttt31'
@@ -91,7 +91,7 @@ As its name would suggest, it is very like the regular POSIX copy command, `cp`,
 
 The basic syntax is the same as that for the copy command:
 
-[source,bash]
+[source,shell]
 ----
 scp source_file_1 [source_file_2 ...] destination
 ----
@@ -104,28 +104,28 @@ Because the scp command uses SSH to connect to remote computers, it can use SSH 
 
 As a first example, lets copy the remote file `/tmp/ttt31/scp_remote.txt` to the local folder `/tmp/ttt31/fromRemote`:
 
-[source,bash]
+[source,shell]
 ----
 scp $SSH_USER@$SSH_COMP:/tmp/ttt31/scp_remote.txt /tmp/ttt31/fromRemote/
 ----
 
 You can verify that the remote file was downloaded with:
 
-[source,bash]
+[source,shell]
 ----
 ls /tmp/ttt31/fromRemote
 ----
 
 Next, let's copy the local file `/tmp/ttt31/scp_local1.txt` to the remote folder `/tmp/ttt31/fromLocal`.
 
-[source,bash]
+[source,shell]
 ----
 scp /tmp/ttt31/scp_local1.txt $SSH_USER@$SSH_COMP:/tmp/ttt31/fromLocal/
 ----
 
 You can verify that the file transferred over with the command:
 
-[source,bash]
+[source,shell]
 ----
 ssh $SSH_USER@$SSH_COMP 'ls /tmp/ttt31/fromLocal'
 ----
@@ -133,14 +133,14 @@ ssh $SSH_USER@$SSH_COMP 'ls /tmp/ttt31/fromLocal'
 We can specify as many source files as we like, and we can use wild card characters to specify multiple files at once.
 As an example, let's copy all MarkDown files in the local folder `/tmp/ttt31/` to the remote folder `/tmp/ttt31/fromLocal`.
 
-[source,bash]
+[source,shell]
 ----
 scp /tmp/ttt31/*.md $SSH_USER@$SSH_COMP:/tmp/ttt31/fromLocal/
 ----
 
 Again, you can verify that the files transferred over with the command:
 
-[source,bash]
+[source,shell]
 ----
 ssh $SSH_USER@$SSH_COMP 'ls /tmp/ttt31/fromLocal'
 ----
@@ -150,14 +150,14 @@ However, I do want to mention that like `cp`, `scp` allows entire folders to be 
 
 As an example, lets copy the entire remote folder `/tmp/ttt31/scp_folder` to the local folder `/tmp/ttt31/fromRemote/`.
 
-[source,bash]
+[source,shell]
 ----
 scp -r $SSH_USER@$SSH_COMP:/tmp/ttt31/scp_folder /tmp/ttt31/fromRemote/
 ----
 
 You can verify that the folder, and its contents, were downloaded with the command:
 
-[source,bash]
+[source,shell]
 ----
 ls -R /tmp/ttt31/fromRemote
 ----
@@ -170,14 +170,14 @@ So powerful in fact, that many GUI backup tools are little more than GUIs for th
 
 The basic structure of the `rsync` command is shown below, but in practice, a number of flags are needed in order to use `rsync` as an effective backup tool.
 
-[source,bash]
+[source,shell]
 ----
 rsync source_folder destination_folder
 ----
 
 In order to create a good backup, I would advise always using a number of flags, so the command I suggest remembering is:
 
-[source,bash]
+[source,shell]
 ----
 rsync -av --delete source_folder destination_folder
 ----
@@ -220,7 +220,7 @@ The `-n` flag is here to save your nerves!
 When you issue an `rsync` command with the `-n` flag (I remember it as `n` for _not really_), `rsync` will print the changes it would make, but not actually do anything -- think if it as a dry run.
 Lets start by running our example backup as a dry run, just to be sure we have everything correct.
 
-[source,bash]
+[source,shell]
 ----
 rsync -avn --delete -e ssh $SSH_USER@$SSH_COMP:/tmp/ttt31/rsync_folder/ /tmp/ttt31/fromRemote/rsync_backup
 ----
@@ -230,14 +230,14 @@ Note that because we want to backup the content of the folder `rsync_folder`, ra
 You'll see from the output that a folder to hold the backup named `rsync_backup` would be created, and that two files would be downloaded to that folder.
 This is as expected, so we can now run the command for real by removing the `-n` flag:
 
-[source,bash]
+[source,shell]
 ----
 rsync -av --delete -e ssh $SSH_USER@$SSH_COMP:/tmp/ttt31/rsync_folder/ /tmp/ttt31/fromRemote/rsync_backup
 ----
 
 You can verify that the files have been downloaded with the command:
 
-[source,bash]
+[source,shell]
 ----
 ls /tmp/ttt31/fromRemote/rsync_backup
 ----
@@ -247,7 +247,7 @@ Try it!
 
 Lets give `rsync` some work to do by creating a third remote file:
 
-[source,bash]
+[source,shell]
 ----
 ssh $SSH_USER@$SSH_COMP 'echo "Hello World! (Remote Text File 3)" > /tmp/ttt31/rsync_folder/file3.txt'
 ----
@@ -258,7 +258,7 @@ You can verify that the file was downloaded by running the `ls` command again.
 Finally, let's edit one of the remote files, and delete another.
 We'll add some text to `file1.txt`, and delete `file2.txt`:
 
-[source,bash]
+[source,shell]
 ----
 ssh $SSH_USER@$SSH_COMP 'echo "EDITED" >> /tmp/ttt31/rsync_folder/file1.txt'
 ssh $SSH_USER@$SSH_COMP 'rm /tmp/ttt31/rsync_folder/file2.txt'
@@ -268,14 +268,14 @@ With those changes made, run the `rsync` command again.
 You should see `file1.txt` get downloaded again, and `file2.txt` get deleted.
 You can verify that `file1.txt` was updated with:
 
-[source,bash]
+[source,shell]
 ----
 cat /tmp/ttt31/fromRemote/rsync_backup/file1.txt
 ----
 
 And you can verify that `file2.txt` has been deleted from the local backup with:
 
-[source,bash]
+[source,shell]
 ----
 ls /tmp/ttt31/fromRemote/rsync_backup
 ----
@@ -307,14 +307,14 @@ Let's looks at how to initiate an SFTP session, at some of the most important FT
 
 You can connect to the remote computer with the command:
 
-[source,bash]
+[source,shell]
 ----
 sftp user@computer
 ----
 
 If you know the remote folder you want to copy files from, you can also specify that while connecting as follows:
 
-[source,bash]
+[source,shell]
 ----
 sftp user@computer:remote_path
 ----

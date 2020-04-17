@@ -49,7 +49,7 @@ This means that Macs with XQuartz installed can receive remote GUIs, but cannot 
 To enable X11 forwarding on an SSH connection, use the `-X` flag.
 This might result in an error that looks something like:
 
-[source,bash]
+[source,shell]
 ----
 Warning: untrusted X11 forwarding setup failed: xauth key data not generated
 ----
@@ -58,7 +58,7 @@ If you see the above error, also add the `-Y` flag (the two flags can be cuddled
 
 You don't need an interactive shell to use X11 forwarding, for example, to run FireFox on a remote Linux computer but have the GUI show up on your local computer you would use a command of the form:
 
-[source,bash]
+[source,shell]
 ----
 ssh -XY my_user@my_server 'firefox'
 ----
@@ -105,7 +105,7 @@ A crude analogy would be to think of SSH port forwarding as a single-port VPN.
 A single SSH connection can forward many ports.
 For each port to be forwarded, an instance of the `-L` flag should be used in the following way:
 
-[source,bash]
+[source,shell]
 ----
 -L[LOCAL_PORT]:[DESTINATION_HOST]:[DESTINATION_PORT]
 ----
@@ -124,7 +124,7 @@ SSH port forwarding can save the day, assuming you have SSH access to either the
 
 Assuming the most secure scenario, MySQL limited to `127.0.0.1` only, and SSH access to the server running MySQL, you would map the port with a command of the form:
 
-[source,bash]
+[source,shell]
 ----
 ssh user@computer -L 3306:127.0.0.1:3306
 ----
@@ -175,7 +175,7 @@ The `-D` flag requires that the local port the SOCKS server should listen on be 
 The default SOCKS port is 1080, so that's a good choice.
 To set up a SOCKS proxy on the default port use a command of the following form:
 
-[source,bash]
+[source,shell]
 ----
 ssh -D 1080 user@computer
 ----

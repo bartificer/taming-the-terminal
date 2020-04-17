@@ -22,7 +22,7 @@ To do this, you must start the character class with the `^` symbol.
 
 For example, the following command will find all five letter words that don't start with a vowel:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^[^aeiou]....$' /usr/share/dict/words
 ----
@@ -37,7 +37,7 @@ This symbol has a different meaning in BASH (it's one of the stream redirection 
 
 As an example, the following command will search the standard Unix words file for all five-letter words starting in `th` or ending in `ing`:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^th...$|^..ing$' /usr/share/dict/words
 ----
@@ -50,7 +50,7 @@ We can do this to limit the scope of an _or_ operator, or, as we'll see shortly,
 
 As a simple example, the following command will find all seven letter words starting with `th` or `ab`:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^(th|ab).....$' /usr/share/dict/words
 ----
@@ -65,7 +65,7 @@ The operator applies to just the single character or group directly to it's left
 
 For example, the command below will find all words of any length starting with `th` and ending with `ing`, including the word `thing` which has no letters between the `th` and the `ing`:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^th.*ing$' /usr/share/dict/words
 ----
@@ -75,7 +75,7 @@ Like the `*`, this operator also only operates on the single character or group 
 If we repeat the above example but with a `+` rather than a `*`, then we are searching for all words starting in `th` and ending in `ing` with at least one letter between the `th` and the `ing`.
 In other words, the same results as before, but without the word `thing`, which has zero letters between the `th` and the `ing`:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^th.+ing$' /usr/share/dict/words
 ----
@@ -85,7 +85,7 @@ Again, like the `*` and `+` operators, this operator also only operates on the s
 
 As an example, the following command finds all words that end in `ing` or `ings`:
 
-[source,bash]
+[source,shell]
 ----
 egrep 'ings?$' /usr/share/dict/words
 ----
@@ -111,21 +111,21 @@ Like the other three cardinality operators, this operator also only acts on the 
 
 As a first example, the following command lists all 10 letter words:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^.{10}$' /usr/share/dict/words
 ----
 
 As another example, the following command lists all words between 10 and 12 characters long (inclusive):
 
-[source,bash]
+[source,shell]
 ----
 egrep '^.{10,12}$' /usr/share/dict/words
 ----
 
 Finally, the following command list all words at least 15 letters long:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^.{15,}$' /usr/share/dict/words
 ----
@@ -178,21 +178,21 @@ The way you do this is by preceding them with the escape character, `\`.
 
 If you wanted to match an actual full-stop (aka period) within your RE, you would need to escape it, so, an RE to match an optionally decimal temperature (in Celsius, Fahrenheit, or Kelvin) could be written like so:
 
-[source,bash]
+[source,shell]
 ----
 [0-9]+(\.[0-9]+)?[CFK]
 ----
 
 Similarly, an RE to find all optionally decimal dollar amounts could be written as:
 
-[source,bash]
+[source,shell]
 ----
 \$[0-9]+(\.[0-9]+)?
 ----
 
 However, we could write this in a more clear way by using the fact that very few characters have a special meaning within character classes, and hence don't need to be escaped if they are used in that context:
 
-[source,bash]
+[source,shell]
 ----
 [0-9]+([.][0-9]+)?[CFK]
 [$][0-9]+([.][0-9]+)?
@@ -254,7 +254,7 @@ Note that the above is not an exhaustive list, these are just the escape sequenc
 
 Given the above, we could re-write our regular expressions for temperatures and dollar amounts as follows:
 
-[source,bash]
+[source,shell]
 ----
 \b\d+([.]\d+)?[CFK]\b
 \b[$]\d+([.]\d+)?\b
@@ -270,21 +270,21 @@ To make our examples more generic, replace the `^` and `$` dollar operators at t
 
 Given everything we now know, lets re-visit the example we ended with in the previous instalment, our big un-ginaly RE for matching MAC addresses:
 
-[source,bash]
+[source,shell]
 ----
 [0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]
 ----
 
 We can now re-write it as simply:
 
-[source,bash]
+[source,shell]
 ----
 [0-9a-f]{2}(:[0-9a-f]{2}){5}
 ----
 
 The above will do everything our original RE did, but, actually, it's not as good as it could be, because it really should specify that the entire MAC address should appear as a word, so we should surround it with `\b` escape sequences:
 
-[source,bash]
+[source,shell]
 ----
 \b[0-9a-f]{2}(:[0-9a-f]{2}){5}\b
 ----
@@ -294,7 +294,7 @@ Specifically, we're going to use the `ifconfig` command which prints the details
 We'll be looking at this command in much more detail later in the series, but for now, we'll just be using the command with no arguments.
 To see what it is we'll be pattern-matching against, run the command on its own first:
 
-[source,bash]
+[source,shell]
 ----
 ifconfig
 ----
@@ -304,21 +304,21 @@ We'll be using stream redirection to pipe the output of `ifconfig` to `egrep`.
 
 Let's use our new MAC address RE to find all the MAC addresses our computer has:
 
-[source,bash]
+[source,shell]
 ----
 ifconfig | egrep '\b[0-9a-f]{2}(:[0-9a-f]{2}){5}\b'
 ----
 
 Having created an RE for MAC addresses, we can also create one for IP addresses (IPV4 to be specific):
 
-[source,bash]
+[source,shell]
 ----
 \b\d{1,3}([.]\d{1,3}){3}\b
 ----
 
 We can use `ifconfig` and `egrep` again to find all the IP addresses our computer has:
 
-[source,bash]
+[source,shell]
 ----
 ifconfig | egrep '\b\d{1,3}([.]\d{1,3}){3}\b'
 ----
@@ -326,7 +326,7 @@ ifconfig | egrep '\b\d{1,3}([.]\d{1,3}){3}\b'
 So, let's go right back to the examples we used at the very very start of all this.
 Firstly, to the RE for domain names:
 
-[source,bash]
+[source,shell]
 ----
 [a-zA-Z0-9][-a-zA-Z0-9]*([.][a-zA-Z0-9][-a-zA-Z0-9]*)*
 ----
@@ -339,7 +339,7 @@ ____
 
 And finally, to the RE that I promised was a funny joke:
 
-[source,bash]
+[source,shell]
 ----
 (bb)|[^b]{2}
 ----

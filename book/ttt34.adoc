@@ -46,7 +46,7 @@ The headers are used by the client to pass information to the server which it ca
 
 The following is an actual HTTP request for http://www.podfeet.com/blog/[www.podfeet.com/blog/] as emitted by FireFox:
 
-[source,bash]
+[source,shell,linenums]
 ----
 GET /blog/ HTTP/1.1
 Host: www.podfeet.com
@@ -125,7 +125,7 @@ Similar to the request, a HTTP response has three parts, a status line, zero or 
 
 Below is a truncated version of the HTTP response from Allison's web server to a request for http://www.podfeet.com/blog/:
 
-[source,bash]
+[source,shell,linenums]
 ----
 HTTP/1.1 200 OK
 Date: Sat, 09 May 2015 15:52:42 GMT

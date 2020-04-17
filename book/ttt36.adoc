@@ -45,7 +45,7 @@ To see all your currently running sessions, use the command:
 
 If you have no running screen sessions, it will give you output something like:
 
-[source,bash]
+[source,shell]
 ----
 $ screen -ls
 No Sockets found in /var/folders/0f/8m9p9bj556394xd50jl4g_340000gn/T/.screen.
@@ -121,7 +121,7 @@ In the first window, start a named session with: `screen -S test`.
 In the second terminal window, try attach to this session with just the `-r` flag: `screen -r test`.
 You will get an error something like:
 
-[source,bash]
+[source,shell]
 ----
 $ screen -r test
 There is a screen on:
@@ -290,7 +290,7 @@ To see what the environment looks like from cron's point of view, add the follow
 
 When more than two minutes have passed, you should see a copy of the environment from the point of view of a cron job with with command:
 
-[source,bash]
+[source,shell,linenums]
 ----
 $ cat /tmp/cronenv.txt
 SHELL=/bin/sh
@@ -316,7 +316,7 @@ We can add a new variable by adding a line like:
 The definition needs to be earlier in the crontab than the cron jobs that will use the variable.
 If you edit your crontab so it contains the following:
 
-[source,bash]
+[source,shell]
 ----
 DUMMY_ENVIRONMENT_VARIABLE=boogers
 */2 * * * * /usr/bin/env > /tmp/cronenv.txt

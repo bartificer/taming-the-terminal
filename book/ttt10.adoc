@@ -38,7 +38,7 @@ To open a man page simply use the `man` command with a single argument, the name
 
 As an example, lets call up the documentation for the `ls` command:
 
-[source,bash]
+[source,shell]
 ----
 man ls
 ----
@@ -94,7 +94,7 @@ If present, this is usually a very helpful section, and often worth jumping stra
 E.g.
 the FILES section from the `ntpdate` man page:
 
-[source,bash]
+[source,shell]
 ----
 FILES
      /etc/ntp.keys  contains the encryption keys used by ntpdate.
@@ -104,7 +104,7 @@ FILES
 E.g.
 the STANDARDS section from the `ls` man page:
 
-[source,bash]
+[source,shell]
 ----
 STANDARDS
 	The ls utility conforms to IEEE Std 1003.1-2001 (``POSIX.1'').
@@ -163,7 +163,7 @@ Q: How do you know woman are more complicated than men?
 
 A: Because you can man man, but you can't man woman!
 
-[source,bash]
+[source,shell]
 ----
 $ man woman
 No manual entry for woman

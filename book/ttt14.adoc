@@ -25,14 +25,14 @@ The command `ls -l` often results in very long output, so it would be nice to be
 As we'll learn in the next instalment, you can do this using the `|` (pronounced '`pipe`') operator.
 To run the output of `ls -l` through `less` the command is:
 
-[source,bash]
+[source,shell]
 ----
 ls -l | less
 ----
 
 Lets create a short alias for this command, `ll`:
 
-[source,bash]
+[source,shell]
 ----
 alias ll='ls -l | less'
 ----
@@ -43,7 +43,7 @@ If the expansion contains spaces or other special characters then either the ent
 The vast majority of aliases you create will contain spaces and/or at least one special character, so it's best to get into the habit of always quoting your aliases.
 In the above example both the spaces and the `|` would need to be escaped, so the un-quoted version of the above alias would be the following difficult to read mess:
 
-[source,bash]
+[source,shell]
 ----
 alias ll=ls\ -l\ \|\ less
 ----
@@ -55,14 +55,14 @@ By default, the `ls` command does not clearly distinguish the types of the items
 `ls -F` makes things quite a bit clearer by adding a trailing `/` to all folders in the listing, and `-G` makes things even clearer still by using colours to distinguish different types of files (remember that on Linux it's `--color` rather than `-G`).
 To have `ls` always show trailing slashes and use colours we can alias `ls` to `ls -FG` (or `ls -F --color` on Linux):
 
-[source,bash]
+[source,shell]
 ----
 alias ls='ls -FG'
 ----
 
 Secondly, we can use aliases to make commands that might unintentionally remove or override files behave in safer manner by automatically adding the `-i` flag to `rm`, `cp` & `mv`:
 
-[source,bash]
+[source,shell]
 ----
 alias rm='rm -i' cp='cp -i' mv='mv -i'
 ----
@@ -74,7 +74,7 @@ This means you have to be explicit about deleting or overriding files, instead o
 
 To see a list of all currently defined aliases, simply run the `alias` command without any arguments:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-imac2013:~ bart$ alias
 alias cp='cp -i'
@@ -89,7 +89,7 @@ To remove an alias, use the `unalias` command with the shortcut to be removed as
 E.g.
 to remove our `ll` alias, run:
 
-[source,bash]
+[source,shell]
 ----
 unalias ll
 ----
@@ -101,8 +101,8 @@ As we learned in the previous instalment, for Mac users that means adding our al
 
 If we include the examples from the previous instalment an updated `~/.bash_profile` file to include the `ll` alias would look something like:
 
+[source,shell,linenums]
 ----
-
 # print warning message (leave out the echo lines if you prefer)
 echo "NOTE – applying customisations in ~/.bash_profile"
 echo " If you make a mistake and need to remove the customisations"
@@ -127,21 +127,21 @@ BASH is one of the command shells that supports command prompt customisation.
 In BASH, the format of the prompt is defined in the shell variable `PS1`.
 You can see the current format used with the command:
 
-[source,bash]
+[source,shell]
 ----
 echo $PS1
 ----
 
 On OS X the default value of `PS1` is `\h:\W \u\$`, giving prompts that look like:
 
-[source,bash]
+[source,shell]
 ----
 bart-imac2013:~ bart$
 ----
 
 On the RedHat and CentOS variants of Linus the default is `[\u@\h \W]\$`, which give prompts that look like:
 
-[source,bash]
+[source,shell]
 ----
 [bart@www ~]$
 ----
@@ -167,7 +167,7 @@ the last part of the print working directory (`$HOME` abbreviated to `~`)
 
 As an example, lets create a very descriptive BASH prompt:
 
-[source,bash]
+[source,shell]
 ----
 PS1='\d \t - \u@\H:\w\n\$ '
 ----
@@ -178,8 +178,8 @@ If we want to make the change permanent, we need to add it to our bash startup f
 
 A `~/.bash_profile` file setting all the customisations we've discussed in this instalment and the previous instalment would look like:
 
+[source,shell,linenums]
 ----
-
 # print warning message (leave out the echo lines if you prefer)
 echo "NOTE – applying customisations in ~/.bash_profile"
 echo " If you make a mistake and need to remove the customisations"

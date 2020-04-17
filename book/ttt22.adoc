@@ -20,7 +20,7 @@ BASH provides a number of different ways to repeat commands you've executed in t
 The simplest command of all of these is `!!`.
 You can use this on it's own:
 
-[source,bash]
+[source,shel,linenums]
 ----
 cc-dsk-2ss:Desktop bart$ ls -l
 total 96
@@ -40,7 +40,7 @@ You don't have to use !!
 on it's own, you can use it to represent your previous command as part of a new, larger command.
 For example, you may want to try a command to be sure it does what you think, and then, when you know it does, pipe the output to a file, or to another command:
 
-[source,bash]
+[source,shell,linenums]
 ----
 cc-dsk-2ss:Desktop bart$ find ~/Downloads -iname '*.iso'
 /Users/bart/Downloads/CentOS-6.5-x86_64-bin-DVD1.iso
@@ -58,7 +58,7 @@ ____
 You can alter this behaviour by setting the environment variable `HISTCONTROL` to the value `ignoredups`.
 If you want to configure BASH in this way you'll want to set that environment variable automatically each time you open a new Terminal, so do do that you need to add the line below into `~/.bash_profile`:
 
-[source,bash]
+[source,shell]
 ----
 export HISTCONTROL=ignoredups
 ----
@@ -69,7 +69,7 @@ ____
 Scrolling through the BASH history is very useful, but sometimes you need to do a more powerful search of previously executed commands, this is where the reverse history search comes in.
 To enter into this search mode hit ctrl+r, your prompt is now replaced with:
 
-[source,bash]
+[source,shell]
 ----
 (reverse-i-search)`':
 ----
@@ -99,7 +99,7 @@ image::./assets/ttt22/exampletxt.png[Drag and Drop Exampls]
 You can use the `open` command to open files form the Terminal as if you had double-clicked them in the Finder.
 The usage is very simple:
 
-[source,bash]
+[source,shell]
 ----
 open PATH_TO_FILE [...]
 ----
@@ -108,14 +108,14 @@ With this basic usage, OS X will open the file with the default app for the give
 If you use `open` on a folder then that folder will open in the Finder.
 For example, you can open the current folder your Terminal is in with the command:
 
-[source,bash]
+[source,shell]
 ----
 open .
 ----
 
 The `open` command is also very useful for accessing hidden folders in the Finder, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 open ~/Library
 ----
@@ -123,7 +123,7 @@ open ~/Library
 If you want to open a file or folder with an app that is not the default app, you can use the `-a` flag to tell `open` which app to open the file or folder with.
 For example, the following command will open your ~/.bash_profile file in TextEdit:
 
-[source,bash]
+[source,shell]
 ----
 open ~/.bash_profile -a /Applications/TextEdit.app/
 ----
@@ -131,7 +131,7 @@ open ~/.bash_profile -a /Applications/TextEdit.app/
 Because using a TextEditor is a common thing to want to do, `open` supports a shortcut especially for opening files in TextEdit.
 Rather than using `-a /Applications/TextEdit.app/`, you can just use `-e` instead, so we could re-write the previous command as:
 
-[source,bash]
+[source,shell]
 ----
 open ~/.bash_profile -e
 ----
@@ -139,7 +139,7 @@ open ~/.bash_profile -e
 Finally, you can also use `open` to reveal a given file in the Finder, you can do that with the `-R` flag.
 E.g.:
 
-[source,bash]
+[source,shell]
 ----
 open -R /etc/hosts
 ----

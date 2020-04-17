@@ -28,7 +28,7 @@ You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT
 
 Later in the instalment we're going to refer back to results of the following command and explain it, but it takes time for the packets to be collected, so before we start, please open a Terminal window and leave the following command running for at least 5 or 10 minutes:
 
-[source,bash]
+[source,shell]
 ----
 sudo tcpdump -nneq arp
 ----
@@ -52,7 +52,7 @@ All network cards consider packets addressed to this special MAC address to be a
 
 You can see the MAC addresses associated with your Mac/Linux/Unix computer with the command:
 
-[source,bash]
+[source,shell]
 ----
 ifconfig -a
 ----
@@ -118,7 +118,7 @@ Realistically, if you're running Linux or Unix the network interfaces you care a
 
 To see all MAC addresses associated with your computer, regardless of which network card they belong to, you can use:
 
-[source,bash]
+[source,shell]
 ----
 ifconfig -a | egrep '^\s*ether'
 ----
@@ -184,7 +184,7 @@ When ever a computer needs to figure out what MAC address matches a given IP add
 The command you've had running in the background since the start of this instalment has been listening for ARP packets, and printing every one your computer sees.
 You should see output something like:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ sudo tcpdump -nneq arp
 Password:
@@ -207,6 +207,7 @@ listening on pktap, link-type PKTAP (Packet Tap), capture size 65535 bytes
 15:11:40.716859 68:5b:35:97:f1:84 > 40:6c:8f:4d:0b:9b, ARP, length 42: Reply 192.168.10.42 is-at 68:5b:35:97:f1:84, length 28
 15:12:04.557253 68:5b:35:97:f1:84 > 00:13:3b:0e:3f:30, ARP, length 42: Request who-has 192.168.10.1 (00:13:3b:0e:3f:30) tell 192.168.10.42, length 28
 15:12:04.557500 00:13:3b:0e:3f:30 > 68:5b:35:97:f1:84, ARP, length 60: Reply 192.168.10.1 is-at 00:13:3b:0e:3f:30, length 46
+
 ----
 
 What you can see is a whole bunch of ARP requests asking the network who has various IP addresses, and, a few replies.
@@ -219,7 +220,7 @@ While we're on the subject of efficiency, computers don't send an ARP request ea
 You can see the MAC to IP mappings currently cached by your OS with the command `arp -an`.
 You'll get output something like:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ arp -an
 ? (192.168.10.1) at 0:13:3b:e:3f:30 on en0 ifscope [ethernet]

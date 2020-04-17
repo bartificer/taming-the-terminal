@@ -21,14 +21,14 @@ The operator works by connecting the content of the file to the right of the ope
 
 As an example, lets use the `wc` command we learned about in the previous instalment to count the number of lines in the standard Unix/Linux hosts file again, but this time, we'll use the `<` operator:
 
-[source,bash]
+[source,shell]
 ----
 wc -l < /etc/hosts
 ----
 
 Because the `wc` command can take its input either from `STDIN`, or from one or more files passed as arguments, the above command achieves the same things as the command we saw in the previous instalment:
 
-[source,bash]
+[source,shell]
 ----
 wc -l /etc/hosts
 ----
@@ -36,7 +36,7 @@ wc -l /etc/hosts
 The `wc` command is not in any way unusual in this, the vast majority of Unix/Linux commands which operate on text or binary data can accept that data either from `STDIN` or from a file path passed as an argument.
 For example, all the following commands we have met before can take their input from `STDIN` rather than by specifying a file path as an argument.
 
-[source,bash]
+[source,shell]
 ----
 less < /etc/hosts
 cat < /etc/hosts
@@ -49,7 +49,7 @@ There are some commands that will only accept input via `STDIN`, and for such co
 In my professional life the one example I meet regularly is the `mysql` command, which does not take a file path as an argument (Note that MySQL is not installed by default on OS X).
 To load an SQL file into a MySQL database from the command line you have to do something like:
 
-[source,bash]
+[source,shell]
 ----
 mysql -h db_server -u db_username -p db_name < sql_file.sql
 ----
@@ -71,7 +71,7 @@ This makes the `>>` operator much safer, but, it means you cannot easily see whi
 
 As a practical example, lets re-visit our command for generating random characters from the previous instalment, but this time, rather than outputting the random characters to the terminal, we'll send them to a file:
 
-[source,bash]
+[source,shell]
 ----
 N=256
 head -c $N /dev/random | base64 | head -c $N > random.txt
@@ -79,14 +79,14 @@ head -c $N /dev/random | base64 | head -c $N > random.txt
 
 We can verify that we have generated 256 random characters by using the `wc` command with the `-c` flag to get it to count characters:
 
-[source,bash]
+[source,shell]
 ----
 wc -c random.txt
 ----
 
 If we re-run the command we can verify that the file still only contains 256 characters, because the original version of the file was simply replaced by a new version because we used the `>` operator:
 
-[source,bash]
+[source,shell,linenums]
 ----
 head -c $N /dev/random | base64 | head -c $N > random.txt
 wc -c random.txt
@@ -96,7 +96,7 @@ wc -c random.txt
 
 Now lets change things up and generate 8 random characters at a time, but append them to a file with the `>>` operator:
 
-[source,bash]
+[source,shell]
 ----
 N=8
 head -c $N /dev/random | base64 | head -c $N >> randomAccumulator.txt
@@ -104,14 +104,14 @@ head -c $N /dev/random | base64 | head -c $N >> randomAccumulator.txt
 
 As before we can verify the amount of characters in the file using:
 
-[source,bash]
+[source,shell]
 ----
 wc -c randomAccumulator.txt
 ----
 
 Now, each time we repeat the command we will add 8 more characters to the file rather than replacing its contents each time:
 
-[source,bash]
+[source,shell,linenums]
 ----
 head -c $N /dev/random | base64 | head -c $N >> randomAccumulator.txt
 wc -c randomAccumulator.txt
@@ -152,7 +152,7 @@ We are not going to be defining our own streams in this series, so all we have t
 We can use the numbers in the file descriptor table in conjunction with the `<`, `>` & `>>` operators to specify which streams the files should be connected to.
 For example, we could re-write the examples from today as follows:
 
-[source,bash]
+[source,shell]
 ----
 wc -l 0< /etc/hosts
 head -c $N /dev/random | base64 | head -c $N 1> random.txt
@@ -163,7 +163,7 @@ Since these operators use `0` and `1` by default, you'd never write the above co
 
 Let's revisit the command we used to intentionally trigger output to `STDERR` in the previous instalment:
 
-[source,bash]
+[source,shell]
 ----
 ls -l ~/DesktopDONKEY | wc -l
 ----
@@ -173,7 +173,7 @@ Because the folder does not exist, the `ls` command writes nothing to `STDOUT`.
 Because the `|` only operates on `STDOUT` the `wc` command counts zero lines, and the error message which was written to `STDERR` is printed to the screen.
 We could now redirect the error message to a file as follows:
 
-[source,bash]
+[source,shell]
 ----
 ls -l ~/DesktopDONKEY 2> error.txt | wc -l
 cat error.txt
@@ -187,14 +187,14 @@ You can use multiple redirects in the one command.
 For example, you could use one redirect to send data from a file to a command, and another redirect the send the output to a different file.
 This is not something you'll see very often, but again, it's something MySQL command line users will know well, where this is a common construct:
 
-[source,bash]
+[source,shell]
 ----
 mysql -h db_server -u db_username -p db_name < query.sql > query_result.tab
 ----
 
 You might also want to send `STDOUT` to one file, and `STDERR` to a different file:
 
-[source,bash]
+[source,shell]
 ----
 ls -l ~/DesktopDONKEY 2> error.txt | wc -l > fileCount.txt
 ----
@@ -213,7 +213,7 @@ As its name suggests, the `find` command can be used to search for files that me
 If you run the command as a regular user and ask it to search your entire hard drive, or a system folder, it will run into a lot of permission errors interspersed with the regular output as the OS prevents it from searching some protected system folders.
 As a simple example, lets use find to search for `.pkg` files in the system library folder:
 
-[source,bash]
+[source,shell]
 ----
 find /Library -name *.pkg
 ----
@@ -222,7 +222,7 @@ Almost straight away you'll see a mix of permission errors and files with the `.
 The key point is that there is a mix of errors and results.
 If we try capture all the output with the command below we'll see that the error messages are not sent to the file, instead, they are sent to our screen (as expected):
 
-[source,bash]
+[source,shell]
 ----
 find /Library -name *.pkg > findOutput.txt
 cat findOutput.txt
@@ -230,7 +230,7 @@ cat findOutput.txt
 
 As we've just learned, we could send the errors to one file and the files to another with:
 
-[source,bash]
+[source,shell]
 ----
 find /Library -name *.pkg > findOutput.txt 2> findErrors.txt
 cat findOutput.txt
@@ -243,14 +243,14 @@ To do this we need to introduce one more operator, the `&` operator.
 This operator allows a file descriptor table entry to be used in place of a file path by the `<`, `>` & `>>` operator.
 Hence, we can redirect `STDERR` (`2`) to `STDOUT` (`1`) as follows:
 
-[source,bash]
+[source,shell]
 ----
 find /Library -name *.pkg 2>&1
 ----
 
 This has no noticeable effect until you send `STDOUT` to a file, then you can see that we have indeed diverted `STDERR` to `STDOUT`, and the combined stream to a file:
 
-[source,bash]
+[source,shell]
 ----
 find /Library -name *.pkg > findCombinedOutput.txt 2>&1
 cat findCombinedOutput.txt

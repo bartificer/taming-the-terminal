@@ -47,7 +47,7 @@ For example, on a Linux server running a BIND DNS server process, DNS log entrie
 When debugging a problem with the DNS server, you don't want to be distracted by all the other messages flowing into that log file.
 The following command will filter that log so that you only see messages from the DNS server process, which all start with the prefix `named:`:
 
-[source,bash]
+[source,shell]
 ----
 tail -f /var/log/messages | egrep '^named:'
 ----
@@ -63,7 +63,7 @@ Every time your computer interacts with the network, `tcpdump` will generate out
 
 Firstly, let's run `tcpdump` without filtering it's output to see see just how much network traffic there is on our computers:
 
-[source,bash]
+[source,shell]
 ----
 sudo tcpdump -i any -nn
 ----
@@ -78,14 +78,14 @@ Before we construct the pattern to pass to `egrep`, we need to find the IP addre
 We can do this by filtering the output from another command that we'll be looking at in much more detail later, `netstat`.
 With the appropriate flags, `netstat` prints out our computer's routing table, and the default route in that table is to your router, so filtering the output of `netstat` for a line starting with the word `default` will show the IP of your router:
 
-[source,bash]
+[source,shell]
 ----
 netstat -rn | egrep '^default'
 ----
 
 When I run this command I get the following output:
 
-[source,bash]
+[source,shell]
 ----
 default            192.168.10.1       UGSc           32        0     en0
 ----
@@ -94,7 +94,7 @@ This tells me that my router has the IP address `192.168.10.1` (yours will proba
 
 Given this information I can now use `egrep` to filter the output of tcpdump to show me only my DNS queries with the following command:
 
-[source,bash]
+[source,shell]
 ----
 sudo tcpdump -i any -nn | egrep '192.168.10.1.53:'
 ----
@@ -103,7 +103,7 @@ You can construct a similar command for your computer by inserting your IP addre
 E.g.
 if your router's IP address is `10.0.0.1` the command will be:
 
-[source,bash]
+[source,shell]
 ----
 sudo tcpdump -i any -nn | egrep '10.0.0.1.53:'
 ----
@@ -112,7 +112,7 @@ Notice that, rather confusingly, `tcpdump` adds the port number to the end of th
 
 Note that if we wanted to be really accurate with our regular expression, we would use something like the example below, which is more explicit, and hence much less prone to picking up the odd false positive:
 
-[source,bash]
+[source,shell]
 ----
 sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
 ----
@@ -120,7 +120,7 @@ sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
 When you execute your command, visit a few web pages, and watch as DNS queries are sent from your computer to your router.
 When I visit http://www.whitehouse.gov[www.whitehouse.gov] I get the following output:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-imac2013:~ bart$ sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
 tcpdump: data link type PKTAP
@@ -174,7 +174,7 @@ This is a very useful feature.
 The vast majority of the examples we used in the previous two instalments used `egrep` to search the Unix words file.
 As a quick reminder, the following command will find all lines in the words file that start with the letters `th`:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^th' /usr/share/dict/words
 ----
@@ -182,14 +182,14 @@ egrep '^th' /usr/share/dict/words
 A very common use-case for using `egrep` on a single file is to quickly check a setting in a configuration file.
 For example, on a Linux web server with PHP installed, you could use the command below to check the maximum file upload size the server is configured to accept:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^upload_max_filesize' /etc/php.ini
 ----
 
 On a server with a default PHP install that will return the following output:
 
-[source,bash]
+[source,shell]
 ----
 upload_max_filesize = 2M
 ----
@@ -198,7 +198,7 @@ Most of us are probably not running web server processes on our personal compute
 On any POSIX OS (Linux, Unix or OS X), you can see what DNS server(s) are configured by searching the file `/etc/resolv.conf` for lines beginning with the word `nameserver`.
 The following command does just that:
 
-[source,bash]
+[source,shell]
 ----
 egrep '^nameserver' /etc/resolv.conf
 ----
@@ -206,7 +206,7 @@ egrep '^nameserver' /etc/resolv.conf
 So far we have only searched one file at a time, but you can point `egrep` at as many files as you like, either explicitly, or by using shell wild-card expansion.
 For example, the command below looks for lines containing `apple.com` in all the log files in the folder `/var/log`:
 
-[source,bash]
+[source,shell]
 ----
 egrep 'apple[.]com' /var/log/*.log
 ----
@@ -217,7 +217,7 @@ egrep 'apple[.]com' /var/log/*.log
 We couldn't possibly go through them all here.
 Remember, you can use the man pages to see everything `egrep` can do:
 
-[source,bash]
+[source,shell]
 ----
 man egrep
 ----

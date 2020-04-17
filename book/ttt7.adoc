@@ -17,14 +17,14 @@ You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT
 
 This is one of those topics that I think is best thought through example, so lets start by opening a Terminal window and navigating to our Documents folder:
 
-[source,bash]
+[source,shell]
 ----
 cd ~/Documents
 ----
 
 We'll then create a folder called `TtT6n` in our `Documents` folder with the command:
 
-[source,bash]
+[source,shell]
 ----
 mkdir TtT6n
 ----
@@ -33,7 +33,7 @@ As you can see, directories/folders are created using the `mkdir` (make director
 When used normally the command can only create folders within existing folders.
 A handy flag to know is the `-p` (for _path_) flag which will instruct `mkdir` to create all parts of a path that do not yet exist in one go, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 mkdir -p TtT6n/topLevelFolder/secondLevelFolder
 ----
@@ -42,14 +42,14 @@ Since the `TtT6n` folder already existed the command will have no effect on it, 
 
 At this stage lets move into the TtT6n folder from where we'll execute the remainder of our examples:
 
-[source,bash]
+[source,shell]
 ----
 cd TtT6n
 ----
 
 We can now use the `-R` (for recursive) flag for `ls` to verify that the `mkdir -p` command did what we expect it to (I like to use the `-F` flag we met before with `-R` so that folder names have a trailing `/` appended):
 
-[source,bash]
+[source,shell]
 ----
 ls -RF
 ----
@@ -62,7 +62,7 @@ This will then be followed by a header and listing of the contents of `secondLev
 Lets now create two empty files in the deepest folder within our test folder (`secondLevelFolder`).
 There are many ways to create a file in Unix/Linux, but one of the simplest is to use the `touch` command -- the main purpose of this command is to change the last edited date of an existing file to the current time, but, if you try to `touch` a file that doesn't exist, `touch` creates it for you:
 
-[source,bash]
+[source,shell]
 ----
 touch topLevelFolder/secondLevelFolder/file1.txt topLevelFolder/secondLevelFolder/file2.txt
 ----
@@ -70,7 +70,7 @@ touch topLevelFolder/secondLevelFolder/file1.txt topLevelFolder/secondLevelFolde
 You can use `ls -RF` to verify that these files have indeed been created (you can use the `-lh` flags along with the `-RF` flags to see that the files are indeed empty -- i.e.
 0 bytes in size).
 
-[source,bash]
+[source,shell]
 ----
 ls -RFlh
 ----
@@ -79,7 +79,7 @@ ls -RFlh
 
 Lets now create a second top-level folder, and copy the files to it:
 
-[source,bash]
+[source,shell]
 ----
 mkdir topLevelFolder2
 cp topLevelFolder/secondLevelFolder/file1.txt topLevelFolder2
@@ -93,7 +93,7 @@ The first argument must be a file, and the last a folder.
 The `cp` command is a cleverer than this though -- it can take any number of arguments greater than two, all arguments but the last one will be treated as sources, and the last one will be treated as the destination to copy all these sources to.
 So, we can re-write our two `cp` commands above as simply:
 
-[source,bash]
+[source,shell]
 ----
 cp topLevelFolder/secondLevelFolder/file1.txt topLevelFolder/secondLevelFolder/file2.txt topLevelFolder2
 ----
@@ -102,7 +102,7 @@ cp topLevelFolder/secondLevelFolder/file1.txt topLevelFolder/secondLevelFolder/f
 
 We can be even more efficient though -- we can use the shell's wild card completion functionality to simplify things even further:
 
-[source,bash]
+[source,shell]
 ----
 cp topLevelFolder/secondLevelFolder/*.txt topLevelFolder2
 ----
@@ -117,7 +117,7 @@ The flag should precede the argument list.
 
 Lets now create yet another empty folder and copy the folder `secondLevelFolder`, and all it's contents, into the new folder:
 
-[source,bash]
+[source,shell]
 ----
 mkdir topLevelFolder3
 cp -R topLevelFolder/secondLevelFolder topLevelFolder3
@@ -131,7 +131,7 @@ The `mv` (move) command works in a similar way to `cp`, but, it removes the sour
 The `mv` command can move folders without needing to specify any flags.
 As an example, lets create yet another folder, and move our original `secondLevelFolder` and its contents to it:
 
-[source,bash]
+[source,shell]
 ----
 mkdir topLevelFolder4
 mv topLevelFolder/secondLevelFolder topLevelFolder4
@@ -143,7 +143,7 @@ Users of DOS may remember that in DOS the commands to copy and move were simply 
 Unix/Linux does not have a separate rename command, instead, you rename a file or folder by moving it from its old name to its new name.
 As an example, lets rename our first folder (`topLevelFolder`) to `topLevelFolder0`:
 
-[source,bash]
+[source,shell]
 ----
 mv topLevelFolder topLevelFolder0
 ----
@@ -165,7 +165,7 @@ A great additional safety net when using `rm` either in recursive mode or with s
 
 Lets end by going back up one level, and then deleting our digital play pen recursively:
 
-[source,bash]
+[source,shell]
 ----
 cd ..
 rm -ri TtT6n

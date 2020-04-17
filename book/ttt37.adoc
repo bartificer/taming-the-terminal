@@ -78,7 +78,7 @@ Instead, all your interaction with your SSH Agent will be via the command `ssh-a
 Firstly, you can check that you actually have a running SSH Agent associated with your login using the `-l` flag (for list).
 If you do have a running SSH Agent you'll either see a list of loaded identities, or, a message like the following:
 
-[source,bash]
+[source,shell]
 ----
 $ ssh-add -l
 The agent has no identities.
@@ -87,7 +87,7 @@ $
 
 If there's no SSH Agent running you'll get an error message something like:
 
-[source,bash]
+[source,shell]
 ----
 $ ssh-add -l
 Could not open a connection to your authentication agent.
@@ -99,14 +99,14 @@ $
 
 You can load your default identity (generally `~/.ssh/id_rsa`) into your SSH agent with the command:
 
-[source,bash]
+[source,shell]
 ----
 ssh-add
 ----
 
 And, you can add a specific identity with the `-a` flag, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 ssh-add -a ~/some_ssh_identity_file
 ----
@@ -115,7 +115,7 @@ Note that you will be asked to enter the passphrase for each identity as you loa
 
 Once you have one or more identities loaded into your SSH Agent you should see them when you run `ssh-add` with the `-l` flag:
 
-[source,bash]
+[source,shell]
 ----
 $ ssh-add -l
 2048 SHA256:UNP5g9KBBOfqi2RYrtY2aGILNbcvp2pe23+38Ignvsc /Users/bart/.ssh/id_rsa (RSA)
@@ -128,7 +128,7 @@ $
 Counter-intuitively, you also use the `ssh-add` command to remove identities from your SSH Agent.
 You can remove just your default identity by passing only the `-d` flag:
 
-[source,bash]
+[source,shell]
 ----
 $ ssh-add -d
 Identity removed: /Users/bart/.ssh/id_rsa (bart@localhost)
@@ -137,14 +137,14 @@ $
 
 You can remove other identities by passing the path to the file representing the identity in question as an argument after the `-d` flag, e.g.:
 
-[source,bash]
+[source,shell]
 ----
 ssh-add -d ~/some_ssh_identity_file
 ----
 
 You can also remove all identities at once with the `-D` flag:
 
-[source,bash]
+[source,shell]
 ----
 $ ssh-add -D
 All identities removed.
@@ -184,7 +184,7 @@ The integration isn't gone though, it's just dormant by default.
 If you only want the integration between your Keychain and your SSH Agent every now and then, Apple provide a quick and easy way to load all SSH identities for which there are passphrase in your keychain into your SSH Agent -- simply call `ssh-add` with the `-A` flag.
 I keep the passphrase for just one SSH key in my keychain (the one for my default key), so when I load all identities from my keychain, this is what I see:
 
-[source,bash]
+[source,shell]
 ----
 $ ssh-add -A
 Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
@@ -194,7 +194,7 @@ $
 How is this different to `ssh-add` with no arguments?
 Let's see -- I'll empty the SSH Agent, and re-add the same identity without using the Keychain integration:
 
-[source,bash]
+[source,shell,linenums]
 ----
 $ ssh-add -D
 All identities removed.
@@ -214,7 +214,7 @@ I'm happy to tell you that these people were mistaken, and that you shouldn't fo
 You'll be happy to learn that Apple have provided an official, documented, mechanism for enabling the integration between your keychain and your SSH Agent.
 What the internet mavens offering their poor advice had failed to do was RTFM (Read The _Fine_ Manual):
 
-[source,bash]
+[source,shell]
 ----
 man ssh_config
 ----
@@ -229,7 +229,7 @@ The two valid values for this option are `yes` and `no`.
 
 So, to restore the old pre-macOS behaviour, edit your `~/.ssh/config` file so it contains the following (the first line is just a comment and has no effect on the OS's actual behaviour):
 
-[source,bash]
+[source,shell]
 ----
 # enable integration between Keychain and SSH Agent
 UseKeychain yes

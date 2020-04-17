@@ -298,7 +298,7 @@ This is the most intuitive representation of a netmask, and for our example netw
 This is the most commonly used representation, and is used in the System Preferences app on OS X and the Windows Control Panel.
 * Netmasks can also be written in hexadecimal, every group of four bits gets converted to a symbol between `0` and `f` in the following way:
 +
-[source,bash]
+[source,shell,linenums]
 ----
   0000 = 0
   0001 = 1
@@ -330,7 +330,7 @@ The correct way to write down a subnet definition is as follows: `IP_ADDRESS/NET
 
 This means that our example subnet above can be written in all the following ways:
 
-[source,bash]
+[source,shell]
 ----
 192.168.0.0/255.255.255.248
 192.168.0.0/29
@@ -390,7 +390,7 @@ image::./assets/ttt25/3d970446-33cb-4cc8-8358-5040cb13b8d0.png[OS X Network Sett
 
 Or, you can access them via the command line with the following two commands:
 
-[source,bash]
+[source,shell]
 ----
 ifconfig -a
 netstat -rn
@@ -398,7 +398,7 @@ netstat -rn
 
 Both of these commands are VERY talkative, and while all the needed info is in there somewhere, we can use the power of `egrep` to filter those outputs down to just what we want:
 
-[source,bash]
+[source,shell]
 ----
 ifconfig -a | egrep '\binet\b' | egrep -v '127[.]'
 netstat -rn | egrep '^default'
@@ -407,7 +407,7 @@ netstat -rn | egrep '^default'
 With these filtered versions of the commands, we can clearly see the three pieces of information we are looking for.
 Below is my output, with the desired information highlighted in bold:
 
-[source,bash]
+[source,shell,linenums]
 ----
 bart-iMac2013:~ bart$ ifconfig -a | egrep '\binet\b' | egrep -v '127[.]'
 	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
