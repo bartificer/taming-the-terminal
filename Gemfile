@@ -11,5 +11,6 @@ gem 'asciidoctor-pdf', '~> 1.5.0.beta.8'
 
 gem 'coderay'
 gem 'pygments.rb'
+gem 'rouge'
 gem 'thread_safe'
 gem 'epubcheck'
