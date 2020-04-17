@@ -7,8 +7,8 @@ Bart Busschots
 :lang: en-US
 :source-highlighter: rouge
 :rouge-linenums-mode: inline
-:toc:
-:toclevels: 1
+:toc: left
+:toclevels: 0
 :pagenums:
 :copyright: CC-BY-SA 3.0
 :front-cover-image: assets/cover.jpg
