@@ -61,6 +61,10 @@ include::ttt21.adoc[]
 
 include::ttt22.adoc[]
 
+include::ttt23.adoc[]
+
+include::ttt24.adoc[]
+
 include::ttt25.adoc[]
 
 include::ttt26.adoc[]
