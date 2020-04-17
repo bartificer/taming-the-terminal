@@ -7,13 +7,13 @@ namespace :book do
 
       version_string = ENV['TRAVIS_TAG'] || `git describe --tags`.chomp
       if version_string.empty?
-        version_string = '0'
+        version_string = '1.0'
       end
       date_string = Time.now.strftime("%Y-%m-%d")
       params =
         "--attribute revnumber='#{version_string}' \
         --attribute revdate='#{date_string}'       \
-        --destination-dir 'output'                 \
+        --destination-dir='output'                 \
         "
       puts "Generating contributors list"
       `git shortlog -s | grep -v -E "(Helma)" | cut -f 2- | column -c 120 > #{book_dir}/contributors.txt`
