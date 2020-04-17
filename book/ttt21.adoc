@@ -4,6 +4,7 @@
 This is the third and final instalment on searching.
 In the <<ttt19,first instalment>> we learned how to search for text within files and streams using `egrep`.
 In <<ttt20,the second>> we learned to search for files based on all sorts of criteria with the `find` command.
+
 In this final instalment we'll start by looking at one last feature of `find`, its a ability to execute commands on the files it finds.
 Then we'll end by looking at an OS X-only alternative to `find` that makes use of the Spotlight search index to really speed up searches.
 

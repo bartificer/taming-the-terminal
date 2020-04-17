@@ -3,8 +3,13 @@
 
 
 In <<ttt3,the previous segment>> we discussed the concept of a file system in detail.
-We described how filesystems contain folders which contain files or folders, and we described the different ways in which Windows and Linux/Unix/OS X combine all the filesystems on our computers into a single name-space, within which every file has a unique '`path`' (`F:\myFolder\myFile.txt` -v- `/Volumes/myThumbDrive/myFolder/myFile.txt`).
-In this instalment we'll look at how to navigate around the Unix/Linux/OS X filesystem in a Bash command shell.
+We described how filesystems contain folders which contain files or folders, and we
+described the different ways in which Windows and Linux/Unix/OS X combine all the
+filesystems on our computers into a single name-space, within which every file has a
+unique '`path`' (`F:\myFolder\myFile.txt` -v- `/Volumes/myThumbDrive/myFolder/myFile.txt`).
+
+In this instalment we'll look at how to navigate around the Unix/Linux/OS X filesystem in
+a Bash command shell.
 
 == Matching Postcast Episode 4
 

@@ -5,6 +5,7 @@ This instalment is the start of a series of instalments relating to searching fr
 Searching is all about patterns, and that means getting to grips with Regular Expressions (also called RegExps, RegExes or REs for short).
 Regular Expressions are languages for representing patterns, and are used throughout IT, not just on the command line.
 While this series focuses on the Terminal, an understanding of regular expressions will be helpful in many other places, from programming languages to GUI apps like programming editors, search utilities or file re-namers.
+
 It's going to take us two instalments to properly describe regular expressions, but when we're done we'll have gained a very useful skill.
 
 == Matching Postcast Episode 17

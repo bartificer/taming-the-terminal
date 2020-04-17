@@ -3,6 +3,7 @@
 
 So far in this series we've focused mostly on the file system, looking at the details of file systems, how to navigate them, and at file permissions and metadata.
 We're almost ready to move on and start looking at how processes work in Unix/Linux/OS X, but we have a few more file-related commands to look at before we do.
+
 In this instalment we'll be looking at how to manipulate the file system, in other words, how to create files and folders, how to copy them, how to move them, how to rename them, and finally how to delete them.
 
 == Matching Postcast Episode 7

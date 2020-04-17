@@ -5,6 +5,7 @@ This instalment is the first in what will probably be quite a long mini-series o
 Before we can look at the terminal commands that allow us to interact with the network, we need to gain an understanding of how computer networking works.
 This is a complex topic, ad there's a lot to take in.
 The individual pieces don't make sense without keeping the big-picture in mind, and yet the big picture doesn't gel together until you start to understand the detail.
+
 Bearing that in mind, this instalment starts the series with a big-picture overview.
 We'll flesh this overview out over the instalments that follow, adding in the detail that will hopefully make the whole thing click for you.
 Ultimately, it's actually a very elegant design, but that elegance may not be immediately obvious!

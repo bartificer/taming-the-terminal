@@ -5,6 +5,8 @@ In the previous two instalments (<<ttt17,17>> & <<ttt18,18>>) of this series we 
 We used the `egrep` command to test our regular expressions, but we didn't discus the command itself in detail.
 Now that we understand regular expressions, it's time to take a closer look at both `egrep`, and it's older brother `grep`, both commands for filtering and searching text.
 
++++&nbsp;+++
+
 == Matching Postcast Episode 19
 
 Listen Along: Taming the Terminal Podcast Episode 19
