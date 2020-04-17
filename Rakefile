@@ -10,9 +10,11 @@ namespace :book do
         version_string = '1.0'
       end
       date_string = Time.now.strftime("%Y-%m-%d")
+      compile_time = Time.now.strftime("%Y-%m-%d %k-%M-%S")
       params =
         "--attribute revnumber='#{version_string}' \
         --attribute revdate='#{date_string}'       \
+        --attribute compile_time='#{compile_time}' \
         --destination-dir='output'                 \
         "
       puts "Generating contributors list"
