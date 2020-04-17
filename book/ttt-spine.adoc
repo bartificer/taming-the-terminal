@@ -5,7 +5,7 @@ Bart Busschots
 :docinfo:
 :doctitle: Taming the Terminal
 :lang: en-US
-:source-highlighter: pyments
+:source-highlighter: pygments
 :toc:
 :toclevels: 1
 :pagenums:
