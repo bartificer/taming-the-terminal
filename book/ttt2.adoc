@@ -46,7 +46,7 @@ image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.01.29.png[]
 
 On OS X, the prompt takes the following form:
 
-`**hostname**:**current_directory** **username**$`
+`hostname:current_directory username$`
 
 First you have the hostname of the computer on which the command shell is running (defined in `System Preferences → Sharing → Computer Name`).
 This might seem superfluous, but it becomes exceptionally useful once you start using ssh to log in to other computers via the Terminal.
@@ -63,13 +63,13 @@ image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.11.39.png[Default Bash Command
 
 As you can see, it contains the same information, but arranged a little differently:
 
-`[**username**@**hostname** **current_directory**]$`
+`[username@hostname current_directory]$`
 
 Finally, Debian-style Linux distributions like Ubuntu use a different default promote again, but also showing the same information:
 
 image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command Prompt on Ubuntu]
 
-`**username**@**hostname**:**current_directory**$`
+`username@hostname:current_directory$`
 
 _**Handy Tip:** if you find the text in the Terminal window to small to read, you can make it bigger or smaller with cmd+ or cmd-.
 This will affect just your current Terminal window.
@@ -87,8 +87,7 @@ Thankfully Linux and Unix agree almost entirely on the structure of their basic 
 
 Commands take the form of the command itself optionally followed by a list of _arguments_ separated by spaces i.e.:
 
-`**command argument_1 argument_2** ...
-**argument_n**`
+`command argument_1 argument_2 ... argument_n`
 
 Arguments are a mechanism for passing information to a command.
 Most commands need at least one argument to be able to perform their task, but some don't.

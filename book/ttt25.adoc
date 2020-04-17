@@ -19,7 +19,11 @@ This is the concept we'll be focusing on in this instalment.
 
 == Matching Postcast Episode 25
 
-Listen Along: Taming the Terminal Podcast Episodes 25a & 25b+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>++++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+Listen Along: Taming the Terminal Podcast Episodes 25a & 25b
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 
 You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
 
@@ -474,7 +478,7 @@ Yes -- continue to step 2, NO -- the two computers are NOT on the same subnet
 
 The following flow chart will walk you through the process:
 
-https://www.bartbusschots.ie/s/wp-content/uploads/2014/12/SubnetWorkflow.png[image:./assets/ttt25/SubnetWorkflow.png[Subnet Workflow\] + (click to enlarge)]
+https://www.bartbusschots.ie/s/wp-content/uploads/2014/12/SubnetWorkflow.png[image:./assets/ttt25/SubnetWorkflow.png[Subnet Workflow] + (click to enlarge)]
 
 Since most of our home networks use Class C netmasks, you'll probably only ever need a small section of the diagram.
 

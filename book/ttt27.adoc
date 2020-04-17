@@ -21,7 +21,11 @@ The Domain Name System (DNS) exists to bridge this gap, allowing domain names to
 
 == Matching Postcast Episode 27
 
-Listen Along: Taming the Terminal Podcast Episodes 27a & 27b+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>++++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 
 You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
 
@@ -60,7 +64,7 @@ If I wanted to add two aliases to my home router, I could add a line like:
 192.168.10.1 myrouter myrouter.localdomain
 ----
 
-I would now be able to access the web interface for my router at `+https://myrouter+` and `+https://myrouter.localdomain+`.
+I would now be able to access the web interface for my router at `https://myrouter` and `https://myrouter.localdomain`.
 
 It's also helpful to note that lines starting with a `#` are interpreted as comment lines, and ignored by the OS.
 If you're going to use the hosts file extensively, it's a good idea to comment your changes so you know why you did what you did when you look back at the file a few months or years hence!
@@ -174,7 +178,7 @@ Unless you own your own domain, you probably don't need to know about authoritat
 If you do own your own domain, you are probably administering it through an online control panel with your domain registrar or hosting provider.
 You should be able to access an interface that looks something like the one in the screenshot below (from Hover.com) where you can see all the DNS records set on your domain, edit them, and add new ones.
 
-https://www.bartbusschots.ie/s/wp-content/uploads/2015/01/Screen-Shot-2015-01-16-at-15.00.22.png[image:./assets/ttt27/Screen-Shot-2015-01-16-at-15.00.22-300x241.png[DNS Control Panel on Hover.com\] + Click to Enlarge]
+https://www.bartbusschots.ie/s/wp-content/uploads/2015/01/Screen-Shot-2015-01-16-at-15.00.22.png[image:./assets/ttt27/Screen-Shot-2015-01-16-at-15.00.22-300x241.png[DNS Control Panel on Hover.com] Click to Enlarge]
 
 What you can see in the screenshot above is that there are just three DNS records in the `xkpasswd.net` zone, two A records (one for `xkpasswd.net`, and one for `www.xkpasswd.net`), and an MX record.
 You'll notice that one of the A records and the MX record use the shortcut symbol `@` to represent '`this domain`'.

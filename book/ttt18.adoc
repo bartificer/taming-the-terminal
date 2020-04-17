@@ -7,7 +7,11 @@ In this instalment we'll learn more POSIX ERE syntax, and have a look at some ex
 
 == Matching Postcast Episode 18
 
-Listen Along: Taming the Terminal Podcast Episodes 18a & 18b+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>++++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+Listen Along: Taming the Terminal Podcast Episodes 18a & 18b
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
++++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 
 You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
 

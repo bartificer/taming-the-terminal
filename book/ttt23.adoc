@@ -186,7 +186,7 @@ On my server, a piece of software has to be running which speaks the HTTP protoc
 This process has to have asked the OS to '`listen`' on TCP port 80 (the standard HTTP port).
 That means that when any computer initiates a TCP connection to port 80 on my server, my server's OS will hand that connection to my web server process.
 
-Assuming I have everything properly configured on my end, you open your favourite browser, and type `+http://www.so-4pt.net/~bart/ttt23/+` into the address bar, and hit enter.
+Assuming I have everything properly configured on my end, you open your favourite browser, and type `http://www.so-4pt.net/~bart/ttt23/` into the address bar, and hit enter.
 
 Your browser speaks HTTP, so it starts by formulating a HTTP request which will look something like:
 

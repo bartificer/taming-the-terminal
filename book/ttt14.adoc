@@ -200,7 +200,7 @@ PS1='\d \t – \u@\H:\w\n\$ ';
 
 Personally I like to keep my prompts set to their default values -- it helps me recognise the OS I'm on at a glance.
 
-== Conclusions:
+== Conclusions
 
 Over the past few instalments we have looked at what the shell environment is, how we can manipulate shell and environment variables and aliases.
 We looked at two variables in particular, `PATH` and `PS1`.
