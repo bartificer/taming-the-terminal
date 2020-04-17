@@ -169,7 +169,7 @@ or (if you have a Mac configured in the default way)
 cd /Users/$LOGNAME/Desktop
 ----
 
-Way back in the <<<<ttt2, second instalment>> we discussed quoting strings in the shell, and we mentioned that there was a very important difference between using double and single quotes, and that it would become important later, well, this is where that difference becomes important.
+Way back in the <<ttt2, second instalment>> we discussed quoting strings in the shell, and we mentioned that there was a very important difference between using double and single quotes, and that it would become important later, well, this is where that difference becomes important.
 If you use the `$` operator within a string enclosed by double quotes the variable name will get replaced by the variable's value, if you use it within a string contained within single quotes it will not!
 
 This is why the following do work (this is an OS X-specific example):

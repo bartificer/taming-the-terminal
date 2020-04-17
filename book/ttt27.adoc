@@ -1,7 +1,7 @@
 [[ttt27]]
 = TTT Part 27 of n -- DNS
 
-In <<<<ttt23,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+In <<ttt23,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP
@@ -12,7 +12,7 @@ As a quick reminder, the most important points were:
 * The Application Layer -- where all the networked apps we use live
 * Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
-We have now looked in detail at <<<<ttt24,Layer 1>> and <<<<ttt25,Layer 2>>, and have looked at how <<<<ttt26,DHCP>> allows our computers to automatically configure their TCP/IP network stack.
+We have now looked in detail at <<ttt24,Layer 1>> and <<ttt25,Layer 2>>, and have looked at how <<ttt26,DHCP>> allows our computers to automatically configure their TCP/IP network stack.
 In this instalment we're going to look at a Layer 4 protocol that is essential to our use of the internet -- DNS.
 
 At layers 2 and 3 all addressing is by IP address, yet just about every networked app we use totally insulates us from that fact.

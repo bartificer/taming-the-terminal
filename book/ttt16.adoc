@@ -1,7 +1,7 @@
 [[ttt16]]
 = TTT Part 16 of n -- Crossing the Streams
 
-In <<<<ttt15,the previous instalment>> we introduced the concepts of streams, and looked at how every process has references to three streams as part of their environment -- `STDIN`, `STDOUT` & `STDERR`.
+In <<ttt15,the previous instalment>> we introduced the concepts of streams, and looked at how every process has references to three streams as part of their environment -- `STDIN`, `STDOUT` & `STDERR`.
 We went on to introduce the concept of operators that manipulate these streams, and we focused on the so-called '`pipe`' operator which connects `STDOUT` in one process to `STDIN` in another, allowing commands to be chained together to perform more complex tasks.
 We mentioned the existence of operators for connecting streams to files, and the possibility of streams being merged together, but didn't go into any detail.
 Well, that's what we'll be doing in this instalment.

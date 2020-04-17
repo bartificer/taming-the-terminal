@@ -1,7 +1,7 @@
 [[ttt24]]
 = TTT Part 24 of n -- Ethernet & ARP
 
-In <<<<ttt23,the previous instalment>> we took a big-picture look at how TCP/IP networking works.
+In <<ttt23,the previous instalment>> we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Networking is complicated!
