@@ -8,7 +8,7 @@ The good news is that while things have changed on the Mac, with a small amount 
 
 Quick Links
 
-* <<Revision_8211_SSH_Identities,1 Revision -- SSH Identities>>
+* <<Revision_SSH_Identities,1 Revision -- SSH Identities>>
 * <<SSH_Agents,2 SSH Agents>>
  ** <<It8217s_All_About_the_ssh-add_Command,2.1 It's All About the ssh-add Command>>
  ** <<Loading_Identities_into_an_SSH_Agent,2.2 Loading Identities into an SSH Agent>>
@@ -25,6 +25,7 @@ Listen Along: Taming the Terminal Podcast Episode 37
 
 You can also https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2017_05_26.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
+[#Revision_SSH_Identities]
 == Revision -- SSH Identities
 
 As a quick reminder -- SSH can authenticate users in many ways.
@@ -51,6 +52,7 @@ The ssh-keygen command will allow you to set a blank password on an identity, bu
 If you follow best practice and do indeed set a passphrase on your identity, SSH will prompt you for that passphrase when ever it needs the private key part of that identity.
 This gets very tedious very quickly, and that's where the SSH Agent comes in.
 
+[#SSH_Agents]
 == SSH Agents
 
 The SSH Agent's _raison d'être_ is to take the pain out of using passphrase-protected SSH identities.
@@ -67,6 +69,7 @@ If you're not a Mac user you'll need to do a little Googling to figure out what 
 Note that there are even SSH Agent implementations for Windows.
 You can use https://cygwin.com/[Cygwin] to run OpenSSH's SSH Agent, or, you can use `pageant.exe`, an SSH Agent from the people behind the venerable https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html[PuTTY SSH client].
 
+[#It8217s_All_About_the_ssh-add_Command]
 === It's All About the `ssh-add` Command
 
 On Linux/Unix systems (including Apple's OSes), the SSH Agent is provided by the command `ssh-agent`, but that's not the command you use to interact with your particular SSH Agent.
@@ -91,6 +94,7 @@ Could not open a connection to your authentication agent.
 $
 ----
 
+[#Loading_Identities_into_an_SSH_Agent]
 === Loading Identities into an SSH Agent
 
 You can load your default identity (generally `~/.ssh/id_rsa`) into your SSH agent with the command:
@@ -118,6 +122,7 @@ $ ssh-add -l
 $
 ----
 
+[#Removing_Identities_from_an_SSH_Agent]
 === Removing Identities from an SSH Agent
 
 Counter-intuitively, you also use the `ssh-add` command to remove identities from your SSH Agent.
@@ -146,6 +151,7 @@ All identities removed.
 $
 ----
 
+[#SSH_Agent_on_OS_X_038_macOS]
 == SSH Agent on OS X & macOS
 
 Since Mac OS X 10.5 Leopard, Apple have integrated SSH Agents into their OS.
@@ -162,6 +168,7 @@ If the needed passphrase was not found in the Keychain, the OS would pop up a GU
 
 From a user's point of view this meant that if you ticked the box to save the passphrase once, you'd never need to enter it ever again.
 
+[#Changes_in_macOS_Sierra]
 === Changes in macOS Sierra
 
 This behaviour was very convenient, but also completely non-standard.
@@ -246,6 +253,7 @@ This means that you may have to explicitly add your identity to your SSH Agent o
 
 You'll find more detailed information about the SSH Agent-related changes Apple made in macOS Sierra in https://developer.apple.com/library/content/technotes/tn2449/_index.html[Apple Technical Note TN2449].
 
+[#Final_Thoughts]
 == Final Thoughts
 
 Regardless of your OS, you can make use of an SSH Agent to avoid having to re-enter passwords for SSH identities over and over again.
