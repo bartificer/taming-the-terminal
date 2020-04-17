@@ -1,9 +1,10 @@
+[[ttt34]]
 = TTT Part 34 of n -- Introducing HTTP
 
-In <<ttt33.adoc#ttt33,the previous instalment>> we finished a five-part series on SSH.
+In <<<<ttt33,the previous instalment>> we finished a five-part series on SSH.
 Before moving on, lets take a moment to step back and look at the big-picture.
 The five SSH instalments are all part of the now long-running series on networking.
-We have been working our way through the networking stack since <<ttt23.adoc#ttt23,instalment 23>>.
+We have been working our way through the networking stack since <<<<ttt23,instalment 23>>.
 We started at the bottom of the stack, and have worked our way up.
 We are not exploring protocols in the Application Layer.
 

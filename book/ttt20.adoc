@@ -1,3 +1,4 @@
+[[ttt20]]
 = TTT Part 20 of n -- File Searches
 
 In the previous previous instalment we looked at using `egrep` to search for a particular piece of text in a stream or file.
@@ -24,7 +25,7 @@ find path criteria 1 [criteria 2 ...]
 
 The path is searched recursively (by default), so if you give a path of `~/Documents`, it will search your documents folder, and all folders within your documents folder.
 To search your entire computer, and all mounted drives, use a path of just `/`.
-To use the current folder as the base of your search use a path of `.` (which always means '`the current folder`' as we learned in <<ttt4.adoc#ttt4,instalment 4>>).
+To use the current folder as the base of your search use a path of `.` (which always means '`the current folder`' as we learned in <<<<ttt4,instalment 4>>).
 
 == Defining Search Criteria
 
@@ -51,7 +52,7 @@ find / -name 'php.ini'
 ----
 
 *NOTE* -- if you're going to search your whole computer (like we did above), you'll see a lot of '`permission denied`' errors.
-To avoid this, run the command with `sudo`, or, if you want to just ignore the errors, redirect `STDERR` to `/dev/null` with `2>/dev/null` like we learned in <<ttt16.adoc#ttt16,instalment 16>>.
+To avoid this, run the command with `sudo`, or, if you want to just ignore the errors, redirect `STDERR` to `/dev/null` with `2>/dev/null` like we learned in <<<<ttt16,instalment 16>>.
 
 Something else you very often want to do is find all files of a given extension in a given location.
 For example, the command below will list all text files in your home directory:
@@ -101,7 +102,7 @@ There are two very important caveats when using regular expressions with `find`.
 Firstly, unlike with `-name`, `-regex` and `-iregex` do not match against just the file name, they match against the entire file path.
 It's important that you remember this when constructing your patterns, or you'll get unexpected results, either false positives or false negatives.
 
-Secondly, by default `-regex` and `-iregex` use Basic POSIX Regular Expressions (BREs), rather than the newer Extended POSIX Regular Expressions (EREs) we learned about in instalments <<ttt17.adoc#ttt17,17>> and <<ttt18.adoc#ttt18,18>>.
+Secondly, by default `-regex` and `-iregex` use Basic POSIX Regular Expressions (BREs), rather than the newer Extended POSIX Regular Expressions (EREs) we learned about in instalments <<<<ttt17,17>> and <<<<ttt18,18>>.
 Don't worry, you can make find use EREs, you just need to add a `-E` flag to the start of the command (before the path).
 
 Given our knowledge of regular expressions, we could re-write our JPEG search as follows:

@@ -1,6 +1,7 @@
+[[ttt25]]
 = TTT Part 25 of n -- IP Subnets
 
-In <<ttt23.adoc#ttt23,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+In <<<<ttt23,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP
@@ -11,7 +12,7 @@ As a quick reminder, the most important points were:
 * The Application Layer -- where all the networked apps we use live
 * Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
-In <<ttt24.adoc#ttt24,the previous instalment>> we focused on the lowest of the four layers, the link layer, and looked at how ethernet and ARP work.
+In <<<<ttt24,the previous instalment>> we focused on the lowest of the four layers, the link layer, and looked at how ethernet and ARP work.
 In this instalment we'll move one layer up the stack and take a closer look at the IP protocol.
 A concept absolutely central to IP's operation is that of related groups of IP addresses known as IP Subnetworks or just subnets.
 This is the concept we'll be focusing on in this instalment.
@@ -62,7 +63,7 @@ The heavy-lifting in routing, figuring out a route through the maze of interconn
 However, each and every device that speaks IP needs to make some simple routing decisions.
 Fundamentally our computers have to answer one simple routing question _"`is the destination IP address for this packet on my local network, or is it on a different network?`"_.
 
-If your computer determines that the destination IP address is on the local network, then it looks up the MAC address for the destination IP using ARP (as described in <<ttt24.adoc#ttt24,the previous instalment>>), and sends the packet directly to its destination using ethernet.
+If your computer determines that the destination IP address is on the local network, then it looks up the MAC address for the destination IP using ARP (as described in <<<<ttt24,the previous instalment>>), and sends the packet directly to its destination using ethernet.
 
 On the other hand, if your computer determines that the destination IP is not on your local network, then it must send the packet to your router for processing.
 To do this your computer must know the IP address of your router, and, it must find your router's MAC address using ARP.

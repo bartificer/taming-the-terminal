@@ -1,3 +1,4 @@
+[[ttt22]]
 = TTT Part 22 of n -- Tips & Tricks
 
 This instalment is a little breather between the fairly heavy instalments on searching, and the upcoming set of instalments on networking.

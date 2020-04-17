@@ -3,7 +3,7 @@
 
 
 This is the second instalment of an on-going series.
-In <<ttt1.adoc#ttt1,the first instalment>> I tried to give you a sort of 40,000ft view of command shells -- some context, some history, a very general description of what command shells do, and a little bit on why they are still very useful in the modern GUI age.
+In <<ttt1,the first instalment>> I tried to give you a sort of 40,000ft view of command shells -- some context, some history, a very general description of what command shells do, and a little bit on why they are still very useful in the modern GUI age.
 The most important points to remember from last time are that command shells execute commands, that there are lots of different command shells on lots of different OSes, but that we will be focusing on https://en.wikipedia.org/wiki/Bash_(Unix_shell)[Bash] on Linux/Unix in general, and Bash on OS X in particular.
 The vast majority of topics I plan to discuss in these segments will be applicable on any system that runs Bash, but, the screen shots I use will be from OS X, and some of the cooler stuff will be OS X only.
 This segment, like all the others will be used as part of my bi-weekly Chit Chat Across The Pond (CCATP) segment with Allison Sheridan on https://www.podfeet.com/[the NosillaCast Mac Podcast].

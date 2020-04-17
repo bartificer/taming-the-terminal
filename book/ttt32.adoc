@@ -1,9 +1,10 @@
+[[ttt32]]
 = TTT Part 32 of n -- SSH Tunnelling
 
 This is the fourth SSH instalment.
-So far we've learned how to <<ttt29.adoc#ttt29,securely execute terminal commands on remote computers>>, how to <<ttt31.adoc#ttt31,securely copy files across the network using SSH>>, and how to <<ttt30.adoc#ttt30,add both security and convenience>> to both those operations with SSH key pairs.
+So far we've learned how to <<<<ttt29,securely execute terminal commands on remote computers>>, how to <<<<ttt31,securely copy files across the network using SSH>>, and how to <<<<ttt30,add both security and convenience>> to both those operations with SSH key pairs.
 
-As we saw in <<ttt31.adoc#ttt31,the previous instalment>>, SSH's ability to provide a secure connection between two computers can be used in many different ways.
+As we saw in <<<<ttt31,the previous instalment>>, SSH's ability to provide a secure connection between two computers can be used in many different ways.
 In this instalment we'll learn about three more ways to encapsulate other network traffic within an SSH connection, adding encryption to that traffic.
 
 Running commands and copying files are the kinds of things most people do, so the three SSH instalments to date have been quite generally applicable.

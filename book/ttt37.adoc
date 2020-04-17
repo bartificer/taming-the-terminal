@@ -1,6 +1,7 @@
+[[ttt37]]
 = TTT Part 37 of n -- SSH Agents
 
-Since we covered SSH in parts <<ttt29.adoc#ttt29,29>> & <<ttt30.adoc#ttt30,30>>, Apple have changed how their desktop OS deals with the passphrases protecting SSH identities (key pairs).
+Since we covered SSH in parts <<<<ttt29,29>> & <<<<ttt30,30>>, Apple have changed how their desktop OS deals with the passphrases protecting SSH identities (key pairs).
 This provides us a good opportunity to have a look at the SSH Agent in general, and, how things have changed on the Mac in particular.
 
 The good news is that while things have changed on the Mac, with a small amount of effort, you can get back all the convenience and security you had before.

@@ -1,6 +1,7 @@
+[[ttt13]]
 = TTT Part 13 of n -- PATH
 
-In <<ttt12.adoc#ttt12,the previous instalment>> we introduced the concept of the command shell environment, and we looked in detail at how shell and environment variables work.
+In <<<<ttt12,the previous instalment>> we introduced the concept of the command shell environment, and we looked in detail at how shell and environment variables work.
 In this instalment we'll focus on probably the single most important environment variable, `PATH`.
 We'll look at what it does, how it's initialised, and, in the process, we'll learn how to make persistent customisations to our shell environment.
 
@@ -13,7 +14,7 @@ Listen Along: Taming the Terminal Podcast Episode 13
 You can also http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 
 So far in this series I have been a little loose with the term _command_, I've avoided putting too fine a point on exactly what a terminal command is, but we'll remedy that today.
-If you remember right back to <<ttt2.adoc#ttt2,the second instalment>>, we said that when entering commands on the command line, the first word is the command, and the other words (separated by spaces) formed the arguments to that command.
+If you remember right back to <<<<ttt2,the second instalment>>, we said that when entering commands on the command line, the first word is the command, and the other words (separated by spaces) formed the arguments to that command.
 We spent a lot of time discussing the vagaries of quoting the arguments, but we didn't discus the command itself in any detail.
 
 In BASH, when you enter a command, that command can actually be one of two things, a builtin BASH command, or, an executable file which BASH will execute for you.

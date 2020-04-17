@@ -1,3 +1,4 @@
+[[ttt10]]
 = TTT Part 10 of n -- man
 
 Like with so many things in tech, it doesn't matter if you don't know everything, what matters is that you have the skills to quickly find the information you need when you needed it.
