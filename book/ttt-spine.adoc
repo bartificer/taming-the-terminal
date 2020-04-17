@@ -13,7 +13,7 @@ Bart Busschots
 :front-cover-image: assets/cover.jpg
 :icons: font
 
-ifdef::ebook-format[:leveloffset: -1]
+ifdef::ebook-format[:leveloffset: +1]
 
 include::ttt1.adoc[]
 
