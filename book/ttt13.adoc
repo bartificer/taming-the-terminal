@@ -25,6 +25,8 @@ endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 ****
 
+== Paths
+
 So far in this series I have been a little loose with the term _command_, I've avoided putting too fine a point on exactly what a terminal command is, but we'll remedy that today.
 If you remember right back to <<ttt2,the second instalment>>, we said that when entering commands on the command line, the first word is the command, and the other words (separated by spaces) formed the arguments to that command.
 We spent a lot of time discussing the vagaries of quoting the arguments, but we didn't discus the command itself in any detail.

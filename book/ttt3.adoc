@@ -26,6 +26,8 @@ endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 ****
 
+== File systems
+
 Physical storage media are nothing more than a massive array of virtual pigeon holes, each of which can hold a single 1 or 0.
 All your information is stored by grouping together a whole bunch of these pigeon holes and giving that grouping of 1s and 0s some kind of name.
 Humans simply could not deal with remembering that the essay they were working on is stored in sectors 4 to 1024 on cylinder 213 on the disk connected to the first SATA channel on the motherboard.

@@ -27,6 +27,8 @@ endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 ****
 
+== The basics
+
 In this first segment I just want to lay a very basic foundation.
 I plan to take things very slowly with this series, so I'm going to start the way I mean to continue.
 Lets start with some history and some wider context.
