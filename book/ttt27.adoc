@@ -126,8 +126,10 @@ That's not a bad analogy, but it's overly simplistic.
 A phone book contains only one type of record, phone numbers, but the DNS system contains records of many different types.
 The list below is not exhaustive, but covers the records you're most likely to encounter:
 
-[cols=2*]
+[cols="1,9",options="header"]
 |===
+| Type | Description
+
 | `A`
 | A DNS A record maps a domain name to an IPv4 IP address -- the most common kind of DNS record
 

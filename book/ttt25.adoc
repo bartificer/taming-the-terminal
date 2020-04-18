@@ -138,24 +138,18 @@ If the result is the same as your net address, the IP is local, if not, it's rem
 
 Firstly, lets define what we mean by an `AND` operation in a binary context:
 
+
+[width=50%,options='header']
 |===
 | A | B | A AND B
 
-| `0`
-| `0`
-| `0`
+| `0` | `0` | `0`
 
-| `0`
-| `1`
-| `0`
+| `0` | `1` | `0`
 
-| `1`
-| `0`
-| `0`
+| `1` | `0` | `0`
 
-| `1`
-| `1`
-| `1`
+| `1` | `1` | `1`
 |===
 
 This probably all sounds very abstract, so lets work through an example.
@@ -238,6 +232,7 @@ The first IP address is the network address, or net address, for the subnet, whi
 
 The table below shows the subnet `192.168.0.0/255.255.255.248`:
 
+[cols="~,~,~",options="header"]
 |===
 | IP in Binary | IP quads | Comment
 
@@ -288,24 +283,17 @@ To calculate broadcast addresses we need to learn about two more binary operator
 Inversion is as simply as it sounds, all ``1``s are turned to ``0``s, and all ``0``s to ``1``s.
 The OR operator is defined by the truth table below:
 
+[width=50%,options='header']
 |===
 | A | B | A OR B
 
-| `0`
-| `0`
-| `0`
+| `0` | `0` | `0`
 
-| `0`
-| `1`
-| `1`
+| `0` | `1` | `1`
 
-| `1`
-| `0`
-| `1`
+| `1` | `0` | `1`
 
-| `1`
-| `1`
-| `1`
+| `1` | `1` | `1`
 |===
 
 To calculate the broadcast address, first invert the netmask, then OR that inverted netmask with your IP address.
@@ -365,6 +353,7 @@ While it is entirely permissible to have a subnet of any size between 0 and 32 b
 There are three very common sizes, and, not coincidentally, they have the advantage that you can visually interpret them when written as dotted quads, so no need to revert to binary!
 These three common sizes are:
 
+[cols="2,1,2,2,2",options="header"]
 |===
 | Netmask dotted quad | bits | Hex | #IP addresses | Common Name
 
