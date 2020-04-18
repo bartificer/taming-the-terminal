@@ -12,7 +12,8 @@ In this instalment we're moving on from SSH to HTTP, the protocol that powers th
 
 Before we look at some HTTP-related terminal commands, we need a basic understanding of how HTTP works, so that's what this instalment is all about.
 
-== Matching Postcast Episode 34
+.Matching Postcast Episode 34
+****
 
 Listen Along: Taming the Terminal Podcast Episode 34
 
@@ -25,6 +26,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Introducing HTTP
 

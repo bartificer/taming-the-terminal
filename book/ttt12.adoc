@@ -11,7 +11,8 @@ The surroundings or conditions in which a person, animal, or plant lives or oper
 In this instalment we'll introduce a digital extension of this concept -- the digital conditions within which a process exists, and specifically, in which a BASH command shell exists.
 Although this might sound like a simple topic, there's actually a lot to cover, so we'll be spreading it out over a few instalments.
 
-== Matching Postcast Episode 12
+.Matching Postcast Episode 12
+****
 
 Listen Along: Taming the Terminal Podcast Episode 12
 
@@ -24,6 +25,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT12TheEnvironment/TTT_12_The_Environment.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == The Basic Environment
 

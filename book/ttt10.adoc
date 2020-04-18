@@ -14,7 +14,8 @@ Every built-in command will have an entry in the manual, and any software you in
 This is also true on OS X, where package mangers like http://www.macports.org[Mac Ports] will also bundle manual pages with the software they install, and even stand-alone `.pkg` installers for command line tools will usually also install manual entries.
 If you run it from the command line, the changes are very high that there will be a manual entry for it on Linux, Unix and OS X.
 
-== Matching Postcast Episode 10
+.Matching Postcast Episode 10
+****
 
 Listen Along: Taming the Terminal Podcast Episode 10
 
@@ -27,6 +28,7 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+****
 
 I'm getting tired of typing '`manual entry`', so lets introduce a little jargon.
 The command to read a manual entry is `man`, so command line aficionados will almost always refer to manual entries simply as _man pages_, so I'm going to do the same from here on.

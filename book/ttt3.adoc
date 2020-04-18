@@ -10,7 +10,8 @@ In the <<ttt1,first installment>> we started with the 40,000ft view, looking at 
 In the <<ttt2,second instalment>> we looked at OS X's Terminal.app, the anatomy of the Bash command prompt, and the anatomy of a Unix/Linux command.
 This time we'll be looking at the anatomy of file systems in general, and the Unix/Linux file system in particular, and how it differs from the Windows/DOS file system many of us grew up using.
 
-== Matching Postcast Episode 3
+.Matching Postcast Episode 3
+****
 
 Listen Along: Taming the Terminal Podcast Episode 3
 
@@ -23,6 +24,7 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+****
 
 Physical storage media are nothing more than a massive array of virtual pigeon holes, each of which can hold a single 1 or 0.
 All your information is stored by grouping together a whole bunch of these pigeon holes and giving that grouping of 1s and 0s some kind of name.

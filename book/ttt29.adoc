@@ -16,7 +16,8 @@ But I don't buy that, I prefer the alternative interpretation -- it simply makes
 
 Today we're just going to start with the basics, but in future instalments we'll move on to the more advanced features.
 
-== Matching Postcast Episode 29
+.Matching Postcast Episode 29
+****
 
 Listen Along: Taming the Terminal Podcast Episode 29
 
@@ -29,6 +30,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Introducing SSH
 

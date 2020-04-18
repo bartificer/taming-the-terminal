@@ -6,7 +6,8 @@ We're almost ready to move on and start looking at how processes work in Unix/Li
 
 In this instalment we'll be looking at how to manipulate the file system, in other words, how to create files and folders, how to copy them, how to move them, how to rename them, and finally how to delete them.
 
-== Matching Postcast Episode 7
+.Matching Postcast Episode 7
+****
 
 Listen Along: Taming the Terminal Podcast Episode 7
 
@@ -19,6 +20,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Creating Folders & Files
 

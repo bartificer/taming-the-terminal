@@ -10,7 +10,8 @@ Bearing that in mind, this instalment starts the series with a big-picture overv
 We'll flesh this overview out over the instalments that follow, adding in the detail that will hopefully make the whole thing click for you.
 Ultimately, it's actually a very elegant design, but that elegance may not be immediately obvious!
 
-== Matching Postcast Episode 23
+.Matching Postcast Episode 23
+****
 
 Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 
@@ -33,6 +34,7 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+****
 
 As complicated as computer networks are today, they've actually gotten a lot simpler than they used to be, for the simple reason that everyone has settled on a single protocol stack -- the so-called TCP/IP stack.
 Because TCP/IP is the clear winner, it's the only kind of networking we need to look at in this series.

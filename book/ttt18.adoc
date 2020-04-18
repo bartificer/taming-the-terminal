@@ -5,7 +5,8 @@ In <<ttt17,the previous instalment>> we introduced the concept of Regular Expres
 
 In this instalment we'll learn more POSIX ERE syntax, and have a look at some examples of REs in GUI apps.
 
-== Matching Postcast Episode 18
+.Matching Postcast Episode 18
+****
 
 Listen Along: Taming the Terminal Podcast Episodes 18a & 18b
 
@@ -28,6 +29,7 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+****
 
 == Inverted Character Clases
 

@@ -11,7 +11,8 @@ unique '`path`' (`F:\myFolder\myFile.txt` -v- `/Volumes/myThumbDrive/myFolder/my
 In this instalment we'll look at how to navigate around the Unix/Linux/OS X filesystem in
 a Bash command shell.
 
-== Matching Postcast Episode 4
+.Matching Postcast Episode 4
+****
 
 Listen Along: Taming the Terminal Podcast Episode 4
 
@@ -24,6 +25,7 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+****
 
 Two instalments ago we learned that, just like a Finder window, a command prompt is '`in`' a single folder/directory at any time.
 That folder is known as the _current working directory_, or the _present working directory_.

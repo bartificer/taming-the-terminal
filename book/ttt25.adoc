@@ -17,7 +17,8 @@ In this instalment we'll move one layer up the stack and take a closer look at t
 A concept absolutely central to IP's operation is that of related groups of IP addresses known as IP Subnetworks or just subnets.
 This is the concept we'll be focusing on in this instalment.
 
-== Matching Postcast Episode 25
+.Matching Postcast Episode 25
+****
 
 Listen Along: Taming the Terminal Podcast Episodes 25a & 25b
 
@@ -40,6 +41,7 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+****
 
 == IP Addresses
 

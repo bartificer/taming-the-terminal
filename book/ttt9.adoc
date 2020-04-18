@@ -14,7 +14,8 @@ ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
 
-== Matching Postcast Episode 9
+.Matching Postcast Episode 9
+****
 
 Listen Along: Taming the Terminal Podcast Episode 9
 
@@ -27,6 +28,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Starting Processes
 

@@ -8,7 +8,8 @@ The most important thing SSH provides is an encrypted connection between two com
 As we've seen, that encrypted connection can be used to securely issue terminal commands to a remote computer, but that same secured channel can also be used to secure other network connections between computers.
 In this instalment we'll look at three different ways of securely copying files between computers through an SSH connection, and in the next instalment we'll look at tunnelling just about any network connection through an SSH connection.
 
-== Matching Postcast Episode 31
+.Matching Postcast Episode 31
+****
 
 Listen Along: Taming the Terminal Podcast Episode 31
 
@@ -21,6 +22,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Examples Prep.
 

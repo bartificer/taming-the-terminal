@@ -8,7 +8,8 @@ So far, we've only been working with a single command at a time, but that change
 We'll be introducing the concept of streams, which can be used to connect commands and files together.
 
 
-== Matching Postcast Episode 15
+.Matching Postcast Episode 15
+****
 
 Listen Along: Taming the Terminal Podcast Episode 15
 
@@ -21,6 +22,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT15Plumbing/TTT_15_Plumbing.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Streams
 

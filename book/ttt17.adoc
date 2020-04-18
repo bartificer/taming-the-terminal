@@ -8,7 +8,8 @@ While this series focuses on the Terminal, an understanding of regular expressio
 
 It's going to take us two instalments to properly describe regular expressions, but when we're done we'll have gained a very useful skill.
 
-== Matching Postcast Episode 17
+.Matching Postcast Episode 17
+****
 
 Listen Along: Taming the Terminal Podcast Episode 17
 
@@ -21,6 +22,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT17RegularExpressions/TTT_17_Regular_Expressions.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == What Are Regular Expressions?
 

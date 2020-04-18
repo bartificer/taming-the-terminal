@@ -19,7 +19,8 @@ At layers 2 and 3 all addressing is by IP address, yet just about every networke
 Our computers think in terms of IP addresses, but we think in terms of domain names.
 The Domain Name System (DNS) exists to bridge this gap, allowing domain names to be converted to IP addresses, and IP addresses to domain names.
 
-== Matching Postcast Episode 27
+.Matching Postcast Episode 27
+****
 
 Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
 
@@ -42,6 +43,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+
+****
 
 == The Hosts File
 

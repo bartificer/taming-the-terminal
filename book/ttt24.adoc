@@ -16,7 +16,8 @@ As a quick reminder, the most important points were:
 In this instalment we'll take a quick look at the lowest of these four layers -- the Link Layer.
 Specifically, we'll look at MAC addresses, the difference between hubs, switches, and routers, and the ARP protocol.
 
-== Matching Postcast Episode 24
+.Matching Postcast Episode 24
+****
 
 Listen Along: Taming the Terminal Podcast Episode 24
 
@@ -29,6 +30,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Before we Start ...
 

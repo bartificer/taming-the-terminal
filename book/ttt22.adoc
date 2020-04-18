@@ -13,7 +13,8 @@ ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
 
-== Matching Postcast Episode 22
+.Matching Postcast Episode 22
+****
 
 Listen Along: Taming the Terminal Podcast Episode 22
 
@@ -26,6 +27,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT22TipsAndTricks/TTT_22_Tips_and_Tricks.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == BASH Tips & Tricks
 

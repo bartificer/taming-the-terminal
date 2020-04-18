@@ -1,7 +1,6 @@
 [[ttt2]]
 = TTT Part 2 of n -- Commands
 
-
 This is the second instalment of an on-going series.
 In <<ttt1,the first instalment>> I tried to give you a sort of 40,000ft view of command shells -- some context, some history, a very general description of what command shells do, and a little bit on why they are still very useful in the modern GUI age.
 The most important points to remember from last time are that command shells execute commands, that there are lots of different command shells on lots of different OSes, but that we will be focusing on https://en.wikipedia.org/wiki/Bash_(Unix_shell)[Bash] on Linux/Unix in general, and Bash on OS X in particular.
@@ -12,8 +11,8 @@ Last time I focused on the shell, and avoided getting in any way specific about 
 I thought it was very important to make as clear a distinction between command shells and commands as possible, so I split the two concepts into two separate segments.
 Having focused on command shells last time, this instalment will focus on the anatomy of a command, but will start with a quick intro to the Terminal app in OS X first.
 
-== Matching Postcast Episode 2
-
+.Matching Postcast Episode 2
+****
 Listen Along: Taming the Terminal Podcast Episode 2
 
 ifndef::backend-pdf[]
@@ -25,6 +24,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT02Commands/TTT_02_Commands.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+****
+
 
 == Introducing the Terminal Window
 

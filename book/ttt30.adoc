@@ -6,7 +6,8 @@ We also saw how SSH uses host keys to protect us from man-in-the-middle (MITM) a
 
 In this instalment we're going to look at how we can improve both SSH security and convenience with SSH keys.
 
-== Matching Postcast Episode 30
+.Matching Postcast Episode 30
+****
 
 Listen Along: Taming the Terminal Podcast Episode 30
 
@@ -19,6 +20,7 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+****
 
 SSH keys utilise asymmetric encryption, specifically public/private key cryptography.
 It's important to have a clear understanding of how this works before proceeding.

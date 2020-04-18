@@ -15,7 +15,8 @@ ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
 
-== Matching Postcast Episode 16
+.Matching Postcast Episode 16
+****
 
 Listen Along: Taming the Terminal Podcast Episode 16
 
@@ -28,6 +29,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT16CrossingTheStreams/TTT_16_Crossing_the_Streams.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Turning Files into Streams
 

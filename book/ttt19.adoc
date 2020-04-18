@@ -14,7 +14,8 @@ ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
 
-== Matching Postcast Episode 19
+.Matching Postcast Episode 19
+****
 
 Listen Along: Taming the Terminal Podcast Episode 19
 
@@ -27,6 +28,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearches/TTT_19_Text_Searches.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == To `grep` or to `egrep` -- that is the question!
 

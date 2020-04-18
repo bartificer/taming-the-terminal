@@ -7,7 +7,8 @@ In this instalment we'll look at three terminal commands which make use of the H
 We'll start by browsing from the terminal, and then move on to a pair of very similar commands for making HTTP requests from the terminal.
 These two commands can do many things, but we'll focus on two specific use-cases, downloading files, and viewing HTTP headers.
 
-== Matching Postcast Episode 35
+.Matching Postcast Episode 35
+****
 
 Listen Along: Taming the Terminal Podcast Episode 35
 
@@ -20,6 +21,8 @@ ifndef::backend-pdf[]
 also
 endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+
+****
 
 == Browsing the Web from the Terminal
 
