@@ -31,7 +31,7 @@ endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
 ****
 
-== Inverted Character Clases
+== Inverted Character Classes
 
 As we have already seen, character classes can be used to specify a list of allowed characters.
 We've seen that you can simply list the characters that are allowed one after the other, and, that you can use the `-` operator to specify a range of characters.
