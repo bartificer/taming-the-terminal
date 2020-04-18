@@ -21,11 +21,11 @@ namespace :book do
       `git shortlog -s | grep -v -E "(Helma)" | cut -f 2- | column -c 120 > #{book_dir}/contributors.txt`
 
       puts "Converting to HTML..."
-      `bundle exec asciidoctor #{params} #{book_dir}/ttt-spine.adoc`
+      `bundle exec asciidoctor #{params} #{book_dir}/ttt-spine.adoc --out-file=ttt.html`
       puts " -- HTML output at ttt.html"
 
       puts "Converting to EPub..."
-      `bundle exec asciidoctor-epub3 #{params} #{book_dir}/ttt-spine.adoc`
+      `bundle exec asciidoctor-epub3 #{params} #{book_dir}/ttt-epub-spine.adoc --out-file=ttt.epub`
       puts " -- Epub output at ttt.epub"
 
     #   puts "Converting to Mobi (kf8)..."
@@ -33,7 +33,7 @@ namespace :book do
     #   puts " -- Mobi output at ttt.mobi"
 
       puts "Converting to PDF... (this one takes a while)"
-      `bundle exec asciidoctor-pdf #{params} #{book_dir}/ttt-spine.adoc 2>/dev/null`
+      `bundle exec asciidoctor-pdf #{params} #{book_dir}/ttt-spine.adoc --out-file=ttt.pdf 2>/dev/null`
       puts " -- PDF output at ttt.pdf"
 
     end
