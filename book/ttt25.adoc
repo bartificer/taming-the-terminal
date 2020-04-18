@@ -112,10 +112,16 @@ This means that to define a subnet we need two pieces of information -- the firs
 The size of the subnet (the number of IP addresses it contains) is determined by where you choose to place the divider.
 The closer to the front of the 32bits the bigger the subnet, the closer to the back, the smaller.
 
+////
+The first time the backticks are rendered correctly, the others are not,
+that's why I converted them to passthrough code blocks
+see: https://github.com/asciidoctor/asciidoctor/issues/3624
+////
 Netmasks are represented using 32bit binary numbers.
 All the bits before the chosen divide are set to `1`, and all the bits after the divide are set to `0`.
-When written in binary, a netmask MUST be 32 bits long, and MUST consist of a series of ``1``s followed by a series of ``0``s.
-The chosen dividing line represented by the netmask is the point where the ``1``s change to ``0``s.
+When written in binary, a netmask MUST be 32 bits long, and MUST consist of a series of +++<code>1</code>+++s
+followed by a series of +++<code>0</code>+++s.
+The chosen dividing line represented by the netmask is the point where the +++<code>1</code>+++s change to +++<code>0</code>+++s.
 
 Because netmasks are 32bit numbers, just like IP addresses, we can represented them in the same way, as dotted quads.
 (There are other ways to represent them too though -- as we'll see later)
