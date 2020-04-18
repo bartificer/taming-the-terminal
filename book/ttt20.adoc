@@ -199,7 +199,7 @@ The following units are supported:
 Note that this command uses the old 1024-based sizes, not the 1,000 based http://en.wikipedia.org/wiki/International_System_of_Units[SI units] used by OS X and hard drive manufacturers (and scientists and engineers and anyone who understands what kilo and mega etc.
 actually mean).
 
-Also Like with `-ctime`, if you don't pre-fix the number with a symbol, only files EXACTLY the size specified will be returned.
+Also like with `-ctime`, if you don't pre-fix the number with a symbol, only files EXACTLY the size specified will be returned.
 
 For example, the following command shows all files in your downloads folder that are bigger than 200MiB in size:
 
