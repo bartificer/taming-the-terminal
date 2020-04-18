@@ -203,17 +203,11 @@ egrep '^[aeiou]...$' /usr/share/dict/words
 You can also use the minus sign within character classes to specify ranges of characters.
 Some commonly used ranges include:
 
-[cols=2*]
-|===
-| `[0-9]`
-| Any digit
 
-| `[a-z]`
-| Any lowercase letter
-
-| `[A-Z]`
-| Any uppercase letter
-|===
+[horizontal]
+`[0-9]`:: Any digit
+`[a-z]`:: Any lowercase letter
+`[A-Z]`:: Any uppercase letter
 
 You don't have to stick to those common ranges though, you can use sub-sets of them, and you can use multiple ranges within a single character class.
 

@@ -111,16 +111,16 @@ The above returns both `winning`, and `winnings`.
 The first three cardinality operators will usually give you what you need, but, sometimes you need to specify an arbitrary range of times a pattern may be repeated, in which case, you'll need the final cardinality operator, `{}`.
 This operator can be used in a number of ways:
 
-[cols=2*]
+[cols="1,2",width=75%]
 |===
-| `+{n}+`
-| _exactly `n` occurrences of_
+| `{n}`
+| exactly `n` occurrences of
 
 | `{n,m}`
-| _at least `n` and no more than `m` occurrences of_
+| at least `n` and no more than `m` occurrences of
 
 | `{n,}`
-| _at least `n` occurrences of_
+| at least `n` occurrences of
 |===
 
 Like the other three cardinality operators, this operator also only acts on the one character or group directly to its left.
@@ -150,13 +150,13 @@ egrep '^.{15,}$' /usr/share/dict/words
 
 We've now seen all the symbols that have a meaning within a POSIX ERE (except for one which we'll see in a moment), so, we know that all the following characters have a special meaning:
 
-[cols=2*]
+[cols="1,2"]
 |===
 | `^`
 | _Starts with_ (outside a character class), or _not any of_ (at the start of a character class)
 
 | `$`
-| _End with_
+| _Ends with_
 
 | `.`
 | _Any one character_
@@ -221,7 +221,7 @@ This is of course not always possible, but when it is it's worth doing IMO.
 
 As well as being used to escape special characters, the `\` operator can also be used to match some special characters or sets of characters, e.g.:
 
-[cols=2*]
+[cols="1,2"]
 |===
 | `\\`
 | matches a `\` character

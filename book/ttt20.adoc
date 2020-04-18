@@ -138,7 +138,7 @@ We can do just that with the `-ctime` flag (for changed time).
 
 By default `-ctime` works in units of days, however, we can explicitly specify the units of time we'd like to use by appending one of the following after the number:
 
-[cols=2*]
+[cols="1,4", width=75%]
 |===
 | `s`
 | seconds
@@ -175,7 +175,7 @@ The default units used by `-size` are utterly unintuitive -- 512k blocks!
 Thankfully, like `-ctime`, `-size` allows you to specify different units by appending a letter to the number.
 The following units are supported:
 
-[cols=2*]
+[cols="1,4", width=75%]
 |===
 | `c`
 | Characters (8-bit bytes)
@@ -223,7 +223,7 @@ In other words, I mean whether something is a regular file, a folder, a link, or
 The type of a file can be filtered using the `-type` flag followed by a valid file type abbreviation.
 The list below is not exhaustive, but it covers everything you're likely to need:
 
-[cols=2*]
+[cols="1,4", width=75%]
 |===
 | `f`
 | a regular file
