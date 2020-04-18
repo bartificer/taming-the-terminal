@@ -251,7 +251,7 @@ Start by logging out and then back in.
 At this point, you should have a running SSH Agent, but it should contain no identities.
 You can verify this with the `ssh-add -l` command.
 
-Next, SSH to a sever which you have configured to use an encrypted SSH identity.
+Next, SSH to a server which you have configured to use an encrypted SSH identity.
 The first thing you should notice is that you get logged in to the server without needing to enter your passphrase -- the `ssh` command tried to load your identity from disk, but found the private key to be encrypted, so it asked your SSH Agent if it had a cached copy of the private key, which it didn't, so it asked your keychain if it had the passphrase for the relevant identity, which it did, so it decrypted and cached the private key, and then passed it back to the `ssh` command, which logged you into the server.
 You can verify that the identity has been cached in your SSH Agent with the `ssh-add -l` command.
 
@@ -267,4 +267,4 @@ Regardless of your OS, you can make use of an SSH Agent to avoid having to re-en
 This is true on all OSes, even Windows.
 This is yet another reason to stop using password-less SSH identities -- with an SSH Agent, you can have both security and convenience!
 
-And, for all you Mac users like me who were cranky at the loss of the automated integration between the Keychain and the SSH Agent in macOS Sierra, you've not got a robust and supported fix.
+And, for all you Mac users like me who were cranky at the loss of the automated integration between the Keychain and the SSH Agent in macOS Sierra, you've now got a robust and supported fix.
