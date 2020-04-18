@@ -11,8 +11,8 @@ Bart Busschots
 :toclevels: 0
 :pagenums:
 :copyright: CC-BY-SA 3.0
-:front-cover-image: assets/cover.jpg
 :icons: font
+:front-cover-image: assets/cover3.png
 
 ifdef::ebook-format[:leveloffset: +1]
 
