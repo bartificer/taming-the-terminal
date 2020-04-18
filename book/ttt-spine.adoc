@@ -7,6 +7,7 @@ Bart Busschots
 :lang: en-US
 :source-highlighter: rouge
 :rouge-linenums-mode: inline
+:table-stripes: even
 :toc: left
 :toclevels: 0
 :pagenums:
