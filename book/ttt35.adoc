@@ -106,7 +106,7 @@ When using `curl` or `wget`, you can see exactly what is happening at the HTTP l
 As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `+http://www.podfeet.com/twitter+`.
 To see exactly what Allison's server is returning, we can use `wget` with the `--spider` and `-S` options:
 
-[source,shell,linenums]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ wget --spider -S http://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.

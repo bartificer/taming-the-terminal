@@ -403,7 +403,7 @@ bart-iMac2013:~ bart$
 
 You can request records other than A records by specifying the type of record you want after the domain name, e.g.:
 
-[source,shell,linenums]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ dig +short podfeet.com NS
 ns02.domaincontrol.com.
@@ -425,7 +425,7 @@ This can useful when trying to figure out whether or not a given DNS resolver is
 
 Below is an example of each use, first querying Google's free public resolver for the name server for `bartb.ie`, and then querying the authoritative server for `bartb.ie` for the A record for `www.bartb.ie` (I've left off the `+short` so you can see which servers were queried in the metadata at the bottom of the output):
 
-[source,shell,linenums]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ dig bartb.ie NS @8.8.8.8
 
@@ -474,7 +474,7 @@ bart-iMac2013:~ bart$
 Finally, the `+trace` command can be used to do a full top-down resolution of a given domain name in the same way that a resolver would if the result was not cached.
 To see what question is being asked at each stage of the trace, I like to add the `+question` option as well.
 
-[source,shell,linenums]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ dig +trace +question www.bartb.ie
 

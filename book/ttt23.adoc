@@ -404,7 +404,7 @@ Once we enter the above command in our second terminal window we should see some
 Click on this window and end the capture by hitting `ctrl+c`.
 You should now have something that looks like:
 
-[source,shell,linenums]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ sudo tcpdump -nn host 46.22.130.125
 Password:

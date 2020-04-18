@@ -137,7 +137,7 @@ The content of a packet is tabbed in, so each line starting at the left edge is 
 
 Below is a capture if the DHCP conversation between my laptop and my router, with the critical information highlighted in bold, and a blank line inserted between each packet for extra clarity:
 
-[source,shell,linenums]
+[source,shell]
 ----
 20:00:18.229408 60:c5:47:9b:e7:88 > ff:ff:ff:ff:ff:ff, ethertype IPv4 (0x0800), length 342: (tos 0x0, ttl 255, id 45669, offset 0, flags [none], proto UDP (17), length 328)
     0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 60:c5:47:9b:e7:88, length 300, xid 0x6e151923, secs 2, Flags [none]
