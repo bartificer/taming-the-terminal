@@ -82,10 +82,10 @@ On standard Unix/Linux systems this mask contains ten characters, though on OS X
 The first character specifies the '`type`' of the file:
 
 * `-` signifies a regular file
-* `d` signifies a directory (i.e.
-a folder)
+* `d` signifies a directory (i.e. a folder)
 * `l` signifies a symbolic link (more on these in a later instalment)
-* `b` `c` `d` and `p` are also valid file types, but they are used to represent things like block devices and sockets rather than '`normal`' files, and we'll be ignoring them in this series.
+* `b` `c` `d` and `p` are also valid file types, but they are used to represent
+* things like block devices and sockets rather than '`normal`' files, and we'll be ignoring them in this series.
 
 The remaining nine characters represent three sets of read, write, and execute permissions (`rwx`), specified in that order.
 If a permission is present then it is represented by an `r`, `w`, or `x`, and if it's not present, it's represented by a `-`.

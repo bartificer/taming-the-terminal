@@ -100,10 +100,10 @@ Once it leaves the SSH connection on the other side it continues the rest of its
 
 This can be used in two ways:
 
-. To map a port on the computer you are SSHing to to a port in your local computer.
+* To map a port on the computer you are SSHing to to a port in your local computer.
 When used in this way the traffic is encrypted for its entire journey.
 This is the most secure way to use port forwarding.
-. To map a port on third computer to a port on your local computer, with all traffic flowing through the computer you are SSHing to.
+* To map a port on third computer to a port on your local computer, with all traffic flowing through the computer you are SSHing to.
 In this scenario the traffic is encrypted between your computer and the computer you are SSHing to, but not for the remainder of the journey from the computer you are SSHing to onto the third computer.
 I would recommend against using port forwarding in this way if possible.
 
@@ -191,10 +191,10 @@ ssh -D 1080 user@computer
 
 === Example Use Cases
 
-. *Access local-only web servers on remote servers* -- if X11 forwarding is not a viable option for what ever reason, dynamic port forwarding can be used as an alternative to access local-only web interfaces like those for CUPS or webmin.
+* *Access local-only web servers on remote servers* -- if X11 forwarding is not a viable option for what ever reason, dynamic port forwarding can be used as an alternative to access local-only web interfaces like those for CUPS or webmin.
 Simply configure your locally running browser to use the SOCKS server provided by SSH, and then browser to the local URL (be sure the browser is not configured to bypass the proxy for local addresses).
-. *Securely browse the web in coffee shops/hotels* -- if you set up an SSH server in your home, you can use SSH dynamic port forwarding to route all your browser traffic through an SSH connection to your home, safely getting you through the hostile coffee shop or hotel network.
-. *Bypass geographic restrictions* -- some websites are only available from some countries.
+* *Securely browse the web in coffee shops/hotels* -- if you set up an SSH server in your home, you can use SSH dynamic port forwarding to route all your browser traffic through an SSH connection to your home, safely getting you through the hostile coffee shop or hotel network.
+* *Bypass geographic restrictions* -- some websites are only available from some countries.
 If you set up an SSH server in your home, you can use dynamic port forwarding to browse the web from anywhere and make it appear you are at home.
 This is a great way to keep up with your favourite sports ball matches while travelling.
 Assuming you have no moral objections to doing so, you could also rent a cheap virtual server in a country who's TV you like better than the TV in your own country, and use dynamic SSH port forwarding to watch streaming TV from that country from anywhere in the world.

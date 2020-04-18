@@ -6,10 +6,10 @@ As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP
 * We think of the stack of protocols as being broken into four layers:
-* The Link Layer -- lets computers that are on the same network send single packets of data to each other
-* The Internet Layer -- lets computers on different networks send single packets of data to each other
-* The Transport Layer -- lets computers send meaningful streams of data between each other
-* The Application Layer -- where all the networked apps we use live
+** The Link Layer -- lets computers that are on the same network send single packets of data to each other
+** The Internet Layer -- lets computers on different networks send single packets of data to each other
+** The Transport Layer -- lets computers send meaningful streams of data between each other
+** The Application Layer -- where all the networked apps we use live
 * Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
 Since that big-picture introduction we've looked at the first three layers in detail, and we've also looked at two layer-4 protocols that function as part of the network infrastructure -- DHCP for the automatic discovery of network settings, and DNS for mapping domain names to IP addresses.
