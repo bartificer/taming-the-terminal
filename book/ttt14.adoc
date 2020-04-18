@@ -5,6 +5,10 @@ In <<ttt13,the previous instalment>> we looked at how to make permanent changes 
 We made a permanent change to the `PATH` environment variable to demonstrate how it's done (by editing `~/.bash_profile` on a Mac, or `~/.bashrc` on Linux).
 In this instalment we'll look at two other kinds of environment changes you may wish to make by editing these files -- specifically, aliases, and custom prompts.
 
+////
+Fake second paragraph to fix bug
+see: https://github.com/asciidoctor/asciidoctor/issues/2860
+////
 ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]

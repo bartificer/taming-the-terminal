@@ -6,6 +6,11 @@ We went on to introduce the concept of operators that manipulate these streams, 
 We mentioned the existence of operators for connecting streams to files, and the possibility of streams being merged together, but didn't go into any detail.
 Well, that's what we'll be doing in this instalment.
 
+////
+Fake second paragraph to fix bug
+see: https://github.com/asciidoctor/asciidoctor/issues/2860
+////
+
 ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]

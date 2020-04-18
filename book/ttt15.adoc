@@ -1,13 +1,12 @@
 [[ttt15]]
 = TTT Part 15 of n -- '`Plumbing`'
 
-Right back in the very first instalment we described the Unix philosophy as being Lego-like, that is, having lots of simply commands that do one thing well, and then assembling them together to do something really powerful.
+Right back in the very first instalment we described the Unix philosophy as being Lego-like,
+that is, having lots of simply commands that do one thing well, and then assembling them together to do something really powerful.
+
 So far, we've only been working with a single command at a time, but that changes with this instalment.
 We'll be introducing the concept of streams, which can be used to connect commands and files together.
 
-ifndef::backend-epub3[]
-+++&nbsp;+++
-endif::[]
 
 == Matching Postcast Episode 15
 

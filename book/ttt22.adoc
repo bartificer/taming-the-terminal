@@ -4,6 +4,11 @@
 This instalment is a little breather between the fairly heavy instalments on searching, and the upcoming set of instalments on networking.
 We'll start with a look at some tips and tricks for getting the most out of BASH, and then transition to some tips and tricks for getting the most out of the OS X Terminal app.
 
+////
+Fake second paragraph to fix bug
+see: https://github.com/asciidoctor/asciidoctor/issues/2860
+////
+
 ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
