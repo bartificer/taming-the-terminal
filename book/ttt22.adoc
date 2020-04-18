@@ -68,7 +68,8 @@ cc-dsk-2ss:Desktop bart$
 
 The `!!` command lets you go back just a single command, you can go back further using the up arrow key (and the down arrow key if you go past the command you wanted by mistake).
 
-____
+[TIP]
+====
 *Aside:* by default BASH on OS X (and RHEL/CentOS Linux) saves every command you execute into its history, so if you run the same command four times in a row, you will have to hit the up arrow four times to get past it in the history.
 You can alter this behaviour by setting the environment variable `HISTCONTROL` to the value `ignoredups`.
 If you want to configure BASH in this way you'll want to set that environment variable automatically each time you open a new Terminal, so do do that you need to add the line below into `~/.bash_profile`:
@@ -79,7 +80,7 @@ export HISTCONTROL=ignoredups
 ----
 
 Ubuntu does this by default, and I find it a much nicer way of working, so much so that I add the above command to my `~/.bash_profile` on all my Macs.
-____
+====
 
 Scrolling through the BASH history is very useful, but sometimes you need to do a more powerful search of previously executed commands, this is where the reverse history search comes in.
 To enter into this search mode hit ctrl+r, your prompt is now replaced with:

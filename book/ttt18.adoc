@@ -349,9 +349,9 @@ Firstly, to the RE for domain names:
 
 Hopefully you can now read this RE as follows:
 
-____
+****
 A letter or digit followed by zero or more letters, digits, or dashes, optionally followed by as many instances of a dot followed by a letter or digits followed by zero or more letters, digits or dashes as desired.
-____
+****
 
 And finally, to the RE that I promised was a funny joke:
 
@@ -362,15 +362,15 @@ And finally, to the RE that I promised was a funny joke:
 
 You could read it as:
 
-____
+****
 two ``b``s or two characters that are not ``b``s
-____
+****
 
 Or, you could read it as:
 
-____
+****
 To be, or not to be
-____
+****
 
 Given that Shakespeare's 450th birthday was last month, it seemed appropriate to include this bit of nerd humour!
 

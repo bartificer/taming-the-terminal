@@ -75,19 +75,19 @@ But why is the list of file paths optional?
 What could the command possibly count if you don't point it at a file?
 The answer can be found further down in the man page:
 
-____
+****
 The `wc` utility displays the number of lines, words, and bytes contained in each input file, or standard input (if no file is specified) to the standard output.
-____
+****
 
 In other words, `wc` will read it's input from `STDIN` if no file is specified, and, no matter what the input source, it will write it's results to `STDOUT`.
 
 Now that you know about the three standard streams, you'll start to see them in man pages all over the place.
 E.g., you'll find the following in the man page for `ls`:
 
-____
+****
 By default, `ls` lists one entry per line to standard output;
 the exceptions are to terminals or when the `-C` or `-x` options are specified.
-____
+****
 
 Let's combine our knowledge of `ls`, `wc`, streams, and stream redirection to build a command to determine how many files or folders there are on our Desktop:
 
@@ -145,9 +145,9 @@ Previously we've used `head` to show us the first n lines of a file, but we can 
 The second problem can be overcome with the `base64` command, which converts binary data to text characters using the http://en.wikipedia.org/wiki/Base64[Base64 encoding algorithm].
 A quick look at the man page for `base64` shows that it can use streams as well as files:
 
-____
+****
 With no options, `base64` reads raw data from `stdin` and writes encoded data as a continuous block to `stdout`.
-____
+****
 
 putting it all this together we can assemble the following command:
 

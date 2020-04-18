@@ -76,9 +76,8 @@ If you scroll up you'll see that the very first piece of output when you ran the
 
 The number in square brackets is a counter for the number of background processes the current command shell is running, and the second number is the PID of the new background processes, in this case, FireFox's PID.
 
-[NOTE]
+[TIP]
 ====
-*Aside*:
 
 You can use a command prompt to quickly check your FireFox version number without even having to launch the FireFox GUI with:
 

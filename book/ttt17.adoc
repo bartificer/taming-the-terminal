@@ -31,17 +31,17 @@ In effect, what it means is that regular expressions provide a means for represe
 That means regular expressions can do a lot, they can find all currency amounts in a document (a currency symbol followed by either an integer or a decimal number), they can find percentages (an integer or decimal number followed by a percentage symbol), they can find temperatures (an integer or decimal number followed by a `C`, `F`, or `K`), and so on.
 That includes quite complex things like recognising URLs, which could be described something like:
 
-____
+****
 A valid URL consists of a protocol specifier followed by the colon symbol, then two forward slashes, then a domain name, then, optionally, a port number, then optionally a path starting with a /, then, optionally an anchor starting with a pound/hash symbol, and then finally an optional query string starting with a question mark symbol.
-____
+****
 
 That description is actually incomplete, because you would need to describe what some of those parts mean in more detail before you could write a regular expression for them, but that's no problem because those parts too can be described as a series of elements following each other.
 For example, you'd have to further break down the domain name part into something like:
 
-____
+****
 A domain name consists of one or more segments separated by a period symbol.
 Each segment can only contain letters, digits, and dashes, and must start with a letter or a digit.
-____
+****
 
 The key point is that if you can describe a pattern as a series of elements that follow one after the other, then you should be able to write a regular expression to represent that pattern.
 

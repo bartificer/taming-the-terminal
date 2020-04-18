@@ -23,9 +23,9 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreS
 SSH keys utilise asymmetric encryption, specifically public/private key cryptography.
 It's important to have a clear understanding of how this works before proceeding.
 
-____
-== Asymmetric Encryption and Public & Private Keys -- A Quick Summary
-
+[NOTE]
+.Asymmetric Encryption and Public & Private Keys -- A Quick Summary
+====
 A Encryption algorithm turns unencrypted plain text into encrypted cypher text using some kind of key.
 The simplest type of encryption uses the same key to encrypt and decrypt, and is known as symmetric encryption.
 
@@ -39,7 +39,7 @@ The public key can be safely published anywhere without impacting security.
 
 If we give someone our public key, and they encrypt something with it, only we can decrypt it, because only we have our private key.
 This fact can be used as the basis for an authentication system, because only the holder of the private key that matches a public key can decrypt a test message sent by someone with that public key.
-____
+====
 
 == SSH Key Authentication
 
@@ -61,7 +61,7 @@ To play along you'll need two computers, one to SSH from, and one to SSH to.
 
 === Generating an SSH Key-Pair
 
-_*Note:* This section assumes you are using a Linux-like operating system (Linux, Unix, Mac, or the Windows Subsystem for Linux on Windows 10) and have no yet generated an SSH key-pair for the account you will be SSHing from, if you have, please skip on to the next section._
+IMPORTANT: This section assumes you are using a Linux-like operating system (Linux, Unix, Mac, or the Windows Subsystem for Linux on Windows 10) and have no yet generated an SSH key-pair for the account you will be SSHing from, if you have, please skip on to the next section.
 
 _**Update -- February 2020:** I blogged https://www.bartbusschots.ie/s/2020/02/26/generating-ssh-keys-on-windows-with-puttygen/[Instructions for generating an SSH key-pair on Windows using PuTTYgen]._
 
@@ -105,12 +105,12 @@ And the public key with the command:
 cat ~/.ssh/id_rsa.pub
 ----
 
-____
-=== Aside -- Base64 Encoding
-
+[TIP]
+.Aside -- Base64 Encoding
+====
 If you are wondering what format the keys are stored in, it's the very commonly used http://en.wikipedia.org/wiki/Base64[base64 encoding].
 This is a very robust format that ignores characters like line breaks and spaces which could get introduced if a key were to be copied and pasted into an email or something like that.
-____
+====
 
 === Granting Access With an SSH Public Key
 

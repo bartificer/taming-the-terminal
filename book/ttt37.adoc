@@ -6,16 +6,17 @@ This provides us a good opportunity to have a look at the SSH Agent in general, 
 
 The good news is that while things have changed on the Mac, with a small amount of effort, you can get back all the convenience and security you had before.
 
-Quick Links
-
+.Quick Links
+****
 * <<Revision_SSH_Identities,1 Revision -- SSH Identities>>
 * <<SSH_Agents,2 SSH Agents>>
- ** <<It8217s_All_About_the_ssh-add_Command,2.1 It's All About the ssh-add Command>>
- ** <<Loading_Identities_into_an_SSH_Agent,2.2 Loading Identities into an SSH Agent>>
- ** <<Removing_Identities_from_an_SSH_Agent,2.3 Removing Identities from an SSH Agent>>
+** <<It8217s_All_About_the_ssh-add_Command,2.1 It's All About the ssh-add Command>>
+** <<Loading_Identities_into_an_SSH_Agent,2.2 Loading Identities into an SSH Agent>>
+** <<Removing_Identities_from_an_SSH_Agent,2.3 Removing Identities from an SSH Agent>>
 * <<SSH_Agent_on_OS_X_038_macOS,3 SSH Agent on OS X & macOS>>
- ** <<Changes_in_macOS_Sierra,3.1 Changes in macOS Sierra>>
+** <<Changes_in_macOS_Sierra,3.1 Changes in macOS Sierra>>
 * <<Final_Thoughts,4 Final Thoughts>>
+****
 
 == Matching Postcast Episode 37
 

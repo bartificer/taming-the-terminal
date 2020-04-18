@@ -296,7 +296,8 @@ It then wraps the packet in the appropriate layer 1 wrapper for connection it ch
 The next router along agains strips off the layer 1 wrapper, looks at the IP address, decides which way to router it, wraps it as appropriate, and send it on to the next router.
 This continues for as long as it takes for the packet to arrive at the router in the data centre where my web server lives (I'm in Ireland and so is my server, and for me it still takes 8 '`hops`' for the packet to get from my router to the router in the data centre hosting my server, for people further away it will be more).
 
-____
+[NOTE]
+====
 *Aside:* you can use the terminal command `traceroute` (`tracert` on Windows) to see what routers a packet follows from your computer to my server as follows:
 
 [source,shell,linenums]
@@ -326,7 +327,7 @@ subtracting those four IPs out, there are eight routers between my home router a
 Note that we'll be looking at `traceroute` in more detail in a future instalment.
 
 (If you're not running as an admin you may find that traceroute is not in your path.)
-____
+====
 
 The router in my data centre will get the packet, unwrap what ever layer 1 wrapper is around it, pass it up to it's IP firmware, and look at the destination IP.
 Because my data centre and server are correctly configured, the router's IP firmware will recognise that this packet is destined for a device on its local network, and know the MAC address of my server.
@@ -345,7 +346,8 @@ So, we followed the path of a single IP packet, how many IP packets were actuall
 The answer is 12 (see below).
 Only a sub-set of those 12 packets contained the actual data transmitted, the rest were IP packets sent by TCP in order to negotiate and un-negotiate the TCP connection, and to signal back and forth what packets had and had not been received safely.
 
-____
+[NOTE]
+====
 *Aside:* you can see the packets needed to fetch my website by opening two terminal windows and issuing two commands.
 
 In the first window, we'll use the `tcpdump` command to print out each packet that is sent from your computer to my server as follows:
@@ -435,7 +437,7 @@ You'll see that my server always uses port 80, but your computer will have chose
 Each time you repeat this process the port on my server will remain 80, but the high port on your computer will be different each time.
 
 We'll be looking at `tcpdump` in much more detail later in a future instalment.
-____
+====
 
 == Final Thoughts
 
