@@ -35,7 +35,7 @@ BASH provides a number of different ways to repeat commands you've executed in t
 The simplest command of all of these is `!!`.
 You can use this on it's own:
 
-[source,shel,linenums]
+[source,shell,linenums]
 ----
 cc-dsk-2ss:Desktop bart$ ls -l
 total 96
