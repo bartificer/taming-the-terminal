@@ -181,7 +181,9 @@ You could use the following terminal command to find a list of possible answers:
 egrep '^.e..f.$' /usr/share/dict/words
 ----
 
-Something to notice in the above command is that the specific pattern we are looking for is bounded by a `^` and a `$`, this is to ensure we don't get longer words that contain the pattern returned.
+Something to notice in the above command is that the specific pattern we are looking for is bounded by a
+`^` and a `$`,
+this is to ensure we don't get longer words that contain the pattern returned.
 If you run the command again but leave those symbols out you'll see that you get a lot of unwanted results (over 900 on OS X).
 
 The last thing we're going to look at in this instalment is character classes, these are used to match a single character against multiple options.
