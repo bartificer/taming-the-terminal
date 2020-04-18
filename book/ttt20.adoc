@@ -54,7 +54,7 @@ Note that these simple patterns are NOT regular expressions, they use the same s
 
 A lot of the time you really don't need the added power and complexity of regular expressions, because a lot of the time all you really want is the good old fashioned DOS pattern `*.extension`.
 
-*IMPORTANT* -- remember that `*` and `?` have meanings in BASH, so you need to escape them in some way to get reliable results.
+IMPORTANT: remember that `*` and `?` have meanings in BASH, so you need to escape them in some way to get reliable results.
 It's ugly and hard to read `\*` all over the place, so my suggestion is to get into the good habit of ALWAYS quoting your patterns when using `-name`.
 
 Let's start with a really simple example, you know the full name of the file you're looking for, but, you have no idea where it is.
@@ -66,7 +66,7 @@ You know you need to edit, say, `php.ini`, but you have no idea where their vers
 find / -name 'php.ini'
 ----
 
-*NOTE* -- if you're going to search your whole computer (like we did above), you'll see a lot of '`permission denied`' errors.
+NOTE: if you're going to search your whole computer (like we did above), you'll see a lot of '`permission denied`' errors.
 To avoid this, run the command with `sudo`, or, if you want to just ignore the errors, redirect `STDERR` to `/dev/null` with `2>/dev/null` like we learned in <<ttt16,instalment 16>>.
 
 Something else you very often want to do is find all files of a given extension in a given location.
