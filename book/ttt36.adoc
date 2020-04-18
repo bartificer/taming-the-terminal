@@ -1,7 +1,9 @@
 [[ttt36]]
 = TTT Part 36 of n -- screen & cron
 
-The previous 13 instalments in this series related to networking, but we're going to change tack completely for this instalment, and look at two un-reltaed, but very useful terminal commands -- `screen`, and `cron`.
+The previous 13 instalments in this series related to networking, but we're going
+to change tack completely for this instalment, and look at two un-related, but
+very useful terminal commands -- `screen`, and `cron`.
 
 `screen` is a utility that allows for the creation of persistent virtual terminal sessions that you can disconnect from without terminating, and reconnect and pick up where you left off at a later time.
 `screen` is particularly useful when used in conjunction with SSH.
@@ -28,14 +30,18 @@ https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_
 The `screen` command is included with OS X by default, but it is not included by default on all Linux distros.
 It is however usually available through the distor's standard package manager.
 
-Screen creates a virtual terminal that detaches itself from the shell that starts it, so it will continue to run, even when that shell ends because you closed the terminal window or logged out of the computer.
+Screen creates a virtual terminal that detaches itself from the shell that starts
+it, so it will continue to run, even when that shell ends because you closed the
+terminal window or logged out of the computer.
 This means that screen sessions keep running until they explicitly ended, or the computer is rebooted.
 The idea is that you can connect and disconnect as often as you like, allowing you to pick up right where you left off.
 
 There are many situations in which this is very useful.
 Below are just few examples:
 
-* When connecting to a server over SSH from a laptop that is regularly put to sleep -- if you do all your work on the remove server in a screen session, you can disconnect and reconnect without interrupting your work flow.
+* When connecting to a server over SSH from a laptop that is regularly put to
+sleep -- if you do all your work on the remove server in a screen session, you
+can disconnect and reconnect without interrupting your work flow.
 * When connecting to a server over SSH from a location with poor internet connectivity -- if you use screen, a network interruption will not terminate a running command.
 * When running commands that will take a long time to execute -- you can start the command in a screen session, disconnect, and check back on it a few hours, or even days, later.
 * When multiple real humans have to share a single login account on a computer.
