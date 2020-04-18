@@ -399,7 +399,7 @@ In order for a device to properly use an IP network it needs to have three setti
 
 You can see these three settings in the Networks system preference pane in OS X:
 
-image::./assets/ttt25/3d970446-33cb-4cc8-8358-5040cb13b8d0.png[OS X Network Settings,link=https://www.bartbusschots.ie/s/wp-content/uploads/2014/12/3d970446-33cb-4cc8-8358-5040cb13b8d0.png]
+image::./assets/ttt25/3d970446-33cb-4cc8-8358-5040cb13b8d0.png[OS X Network Settings]
 
 Or, you can access them via the command line with the following two commands:
 
@@ -455,7 +455,7 @@ You think they are all on the same network, because they are all in your home, a
 It's actually very easy to accidentally break up your network.
 Imagine you start with the basic network setup we described last week, you have one home router which connects you to the internet, and provides you with an ethernet switch and a wireless access point:
 
-image::./assets/ttt25/HomeRouter.png[Home Router,link=https://www.bartbusschots.ie/s/wp-content/uploads/2014/11/HomeRouter.png]
+image::./assets/ttt25/HomeRouter.png[Home Router]
 
 This is working quite well, but you have terrible wifi reception in the back bedroom, so you buy another wireless router, and plug it in.
 That device, like your home router, is probably three devices in one, a router, an ethernet switch, and a wireless access point, that means that depending on your configuration, you can end up with one big IP subnet in the house, or, with two separate IP subnets.
@@ -487,8 +487,8 @@ Yes -- continue to step 2, NO -- the two computers are NOT on the same subnet
 
 The following flow chart will walk you through the process:
 
-https://www.bartbusschots.ie/s/wp-content/uploads/2014/12/SubnetWorkflow.png[image:./assets/ttt25/SubnetWorkflow.png[Subnet Workflow]
-(click to enlarge)]
+image:./assets/ttt25/SubnetWorkflow.png[Subnet Workflow]
+https://www.bartbusschots.ie/s/wp-content/uploads/2014/12/SubnetWorkflow.png[A larger version can be found on the website]
 
 Since most of our home networks use Class C netmasks, you'll probably only ever need a small section of the diagram.
 
