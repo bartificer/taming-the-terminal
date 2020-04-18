@@ -104,10 +104,15 @@ Now, disconnect from the session (`ctrl+a+d`).
 
 You can see that the session has been named:
 
-`   $ screen -ls   There is a screen on:   6125.top (Detached)   1 Socket in /var/folders/0f/8m9p9bj556394xd50jl4g_340000gn/T/.screen.`
+[source,shell]
+----
+$ screen -ls
+There is a screen on:
+6125.top (Detached)
+1 Socket in /var/folders/0f/8m9p9bj556394xd50jl4g_340000gn/T/.screen.
 
-`$   `
-
+$
+----
 (The number before the name is the process ID for the session.)
 
 We can now re-connect to our named session with:
