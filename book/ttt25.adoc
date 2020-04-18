@@ -187,6 +187,7 @@ You can then paste IP B and IP C into the IP Test text box near the bottom of th
 If we write out all the IP addresses between `192.168.0.0` and `192.168.0.9`, as well as our netmask (`255.255.255.248`) the pattern will hopefully become clear.
 For extra clarity, I've also included the imaginary separator represented by the netmask by inserting a `|` character into the binary strings.
 
+[options="header"]
 |===
 | IP in Binary (With Imaginary Separator) | IP quads
 
@@ -495,7 +496,7 @@ Since most of our home networks use Class C netmasks, you'll probably only ever 
 With a little practice, determining whether or not two devices are on the same subnet will become second nature.
 Below is a quick little self-test to get some practice:
 
-
+[qanda]
 `192.168.0.1/255.255.255.0` & `192.168.0.1/255.255.0.0`::
 NOT same subnet -- this is in fact a misconfiguration, one of the two computers needs their netmask changed
 

@@ -31,7 +31,8 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT12TheEnvironm
 == The Basic Environment
 
 Although we've not used the word '`environment`' before, we have already discussed some elements that make up a process's environment.
-Specifically, we know that every process has a user ID associated with it (we say that every process _runs as_ a user), and we have come across the concept of the _present working directory_.
+Specifically, we know that every process has a user ID associated with it (we say
+that every process _runs as_ a user), and we have come across the concept of the _present working directory_.
 Both of these elements make up part of the basic environment that every process on your computer executes within, not just command shells.
 The third major pillar in the basic environment are environment variables.
 These are name-value pairs that can be accessed by running processes.
@@ -309,8 +310,8 @@ nano ~/Documents/ttt12script1.sh
 
 Add the following into the file and then save and exit:
 
+[source,shell]
 ----
-
 #!/bin/bash
 
 echo "TTT_VAR=$TTT_VAR"
