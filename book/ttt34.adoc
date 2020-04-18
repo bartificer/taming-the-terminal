@@ -269,27 +269,24 @@ My personal preference is to use Safari's developer tools, but so as to make thi
 To enable the developer tools we are interested in today, browse to the site you want to explore, e.g.
 http://www.bartb.ie/[www.bartb.ie], and click on `Tools` → `Web Developer` → `Network`.
 
-https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.33.50.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
-Click to Enlarge]
+image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
 
 This will open a new sub-window at the bottom of your FireFox window with a message telling you to re-load the page.
 
-https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.33.58.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.58.png[FireFox Dev Tools - Reload Page]
-Click to Enlarge]
+image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.58.png[FireFox Dev Tools - Reload Page]
 
 When you do, you'll see all the HTTP requests needed to load my home page scroll by, with a timeline next to the list.
 If you scroll up to the very top of the list you'll see the initial request, which received HTML markup in response from my server.
 All the other requests are follow-up requests for resources needed to render my home page, like JavaScript code files, CSS style sheets, and images.
 
-https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.34.54.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.34.54.png[FireFox Dev Tools - Timeline]
-Click to Enlarge]
+image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.34.54.png[FireFox Dev Tools - Timeline]
 
 You can click on any request to see more details.
 This will add a tab to the right with lots of tabs to explore, though the Headers tab is the one we are interested in.
 There is a button to show the raw headers.
 
-https://www.bartbusschots.ie/s/wp-content/uploads/2015/05/Screen-Shot-2015-05-09-at-17.51.48.png[image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.51.48.png[FireFox De Tools - Request Details]
-Click to Enlarge]
+image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.51.48.png[FireFox De Tools - Request Details]
+
 
 You'll notice a lot of `304` response codes.
 This is a sign of efficient use of caching.
