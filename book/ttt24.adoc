@@ -80,45 +80,43 @@ image::./assets/ttt24/1a178fa7-0a88-4f67-8273-e2ec2c0900fa.png[OS X Find MAC (2 
 
 While the the naming of network devices on Linux/Unix/OS X is confusing, there are some general rules that may help you figure out which device is which:
 
-[cols=2*]
-|===
-| lo0
-| This is the so-called _loop-back address_, it's a virtual network interface that can be used to communicate internally within a computer using the TCP/IP stack.
+lo0::
+This is the so-called _loop-back address_, it's a virtual network interface that can be used to communicate internally within a computer using the TCP/IP stack.
 `lo0` will usually have the IP address `127.0.0.1` and map to the hostname `localhost`.
 (this is also the genesis of the two popular nerd T-shirts _"`There's no place like 127.0.0.1`"_ and _"`127.0.0.1 sweet 127.0.0.1`"_)
 
-| gif0
-| This is an OS X-specific virtual network interface called the _Software Network Interface_.
+gif0::
+This is an OS X-specific virtual network interface called the _Software Network Interface_.
 It's used by the OS in some way, but is of no relevance to users, so it can be ignored.
 
-| stf0
-| This is another OS X-Specifig virtual network interface which is used by the OS to bridge IPV4 and IPV6 traffic -- again, this is not relevant to users, so it can be ignored.
+stf0::
+This is another OS X-Specifig virtual network interface which is used by the OS to bridge IPV4 and IPV6 traffic -- again, this is not relevant to users, so it can be ignored.
 
-| fw0, fw1 ...
-| OS X addresses firewire interfaces as `fw0` and up, this is because a FireWire connection between two computers can be used as a network connection between those computers.
+fw0, fw1 ...::
+OS X addresses firewire interfaces as `fw0` and up, this is because a FireWire connection between two computers can be used as a network connection between those computers.
 
-| en0, en1 ...
-| OS X addresses ethernet cards, be they wired or wireless, as `en0` and up.
+en0, en1 ...::
+OS X addresses ethernet cards, be they wired or wireless, as `en0` and up.
 
-| eth0, eth1 ...
-| Most Linux and Unix variants address ethernet cards, be they wired ore wireless, as `eth0` and up.
+eth0, eth1 ...::
+Most Linux and Unix variants address ethernet cards, be they wired ore wireless, as `eth0` and up.
 
-| em1, em2 ...
-| These names are used by the _Consistent Network Device Naming_ convention which aims to map the labels on the back of computers to the devices names within the OS.
+em1, em2 ...::
+These names are used by the _Consistent Network Device Naming_ convention which aims to map the labels on the back of computers to the devices names within the OS.
 At the moment you'll only see these on Dell servers running a RedHat variant (e.g.
 RHEL, CentOR and Fedora).
 I really hope this idea takes off and more manufacturers start implementing this!
 
-| br0, br1 ...
-or bridge0, bridge1 ...
-| These virtual network devices are known as _bridged networks_, and are often created by virtualisation software to allow VMs to access the network with their own dedicated MAC addresses.
+br0, br1 ... or bridge0, bridge1 ...::
+These virtual network devices are known as _bridged networks_, and are often created by virtualisation software to allow VMs to access the network with their own dedicated MAC addresses.
 
-| vmnetX
-| VMWare uses it's own convention for allowing virtual machines to access the network, it created virtual network devices with names consisting of `vmnet` followed by a number.
+vmnetX::
+VMWare uses it's own convention for allowing virtual machines to access the network, it created virtual network devices with names consisting of `vmnet` followed by a number.
 
-| p2p0, p2p1 ...
-| These virtual network devices are known as _point to point networks_, and are used by things like VPNs to send traffic through some kind of tunnel to server located somewhere else on the internet.
-|===
+p2p0, p2p1 ...::
+These virtual network devices are known as _point to point networks_, and are used by things like VPNs to send traffic through some kind of tunnel to server located somewhere else on the internet.
+
+
 
 Realistically, if you're running Linux or Unix the network interfaces you care about are probably the ones starting with `eth`, and for Mac users it's probably the ones starting with `en`.
 

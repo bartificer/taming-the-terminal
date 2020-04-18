@@ -185,51 +185,40 @@ All responses starting with a 4 are client errors (in a very loose sense), and f
 
 Some common HTTP response codes:
 
-`200 - OK`
-
+`200 - OK`::
 This is the response code you always hope to get, it means your request was successful
 
-`301 - Moved Permanently`
-
+`301 - Moved Permanently`::
 A permanent redirect, this redirect may be cached by clients
 
-`302 - Found`
-
+`302 - Found`::
 A temporary redirect, this redirect should not be cached by clients, it could change at any time
 
-`400 - Bad Request`
-
+`400 - Bad Request`::
 The HTTP request sent to the server was not valid.
 You're unlikely to ever see this in a browser, but if you muck around constructing your own requests on the terminal you might well see it when you get something wrong!
 
-`401 - Not Authorised`
-
+`401 - Not Authorised`::
 Tells the client to request a username and password from the user
 
-`403 - Forbidden`
-
+`403 - Forbidden`::
 The requested URL exists, but the client has been denied access, perhaps based on the user they have logged in as, the IP address they are accessing the site from, or the file-type of the URL they are attempting to access.
 
-`404 - Not Found`
-
+`404 - Not Found`::
 One of the most common errors you'll see -- your request was valid, the server understood it, but it has no content to return to you at that URL.
 
-`500 - Internal Server Error`
-
+`500 - Internal Server Error`::
 The web programmers's most hated error -- it just means the server encountered and error while trying to fulfil your request.
 
-`502 - Bad Gateway`
-
+`502 - Bad Gateway`::
 In the days of CDNs (Content Delivery Networks), these errors are becoming ever more common.
 It means that your browser has successfully contacted a front-end web server, probably at the CDN, but that the back-end server that actually contains the information you need is not responding to the front-end server.
 The front-end server is considered a gateway to the backend server, hence the name of the error.
 
-`503 - Service Unavailable`
-
+`503 - Service Unavailable`::
 The server is temporarily too busy to deal with you -- effectively a request to try again later.
 
-`504 - Gateway Timeout`
-
+`504 - Gateway Timeout`::
 This error is similar to a 502, and is also becoming ever more common with the rise of CDNs, it means the backend server is up, but is responding too slowly to the front-end server, and the front-end server is giving up.
 
 === MIME Types

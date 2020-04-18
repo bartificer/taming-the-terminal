@@ -504,52 +504,23 @@ Since most of our home networks use Class C netmasks, you'll probably only ever 
 With a little practice, determining whether or not two devices are on the same subnet will become second nature.
 Below is a quick little self-test to get some practice:
 
-* `192.168.0.1/255.255.255.0` & `192.168.0.1/255.255.0.0`
-+
-Answer
-+
-NOT same subnet -- this is in fact a misconfiguration, one of the two computers needs their netmask changed
-+
+
+`192.168.0.1/255.255.255.0` & `192.168.0.1/255.255.0.0`::
 NOT same subnet -- this is in fact a misconfiguration, one of the two computers needs their netmask changed
 
-* `192.168.0.23/255.255.255.0` & `192.168.1.24/255.255.255.0`
-+
-Answer
-+
-NOT same subnet -- the network addresses are different (`192.168.0.0` and `192.168.1.0`)
-+
+`192.168.0.23/255.255.255.0` & `192.168.1.24/255.255.255.0`::
 NOT same subnet -- the network addresses are different (`192.168.0.0` and `192.168.1.0`)
 
-* `192.168.5.214/255.255.0.0` & `196.168.45.169/255.255.0.0`
-+
-Answer
-+
-SAME subnet -- both are in the class B network with network address `192.168.0.0`
-+
+`192.168.5.214/255.255.0.0` & `196.168.45.169/255.255.0.0`::
 SAME subnet -- both are in the class B network with network address `192.168.0.0`
 
-* `10.0.0.5/24` & `10.0.0.124/24`
-+
-Answer
-+
-SAME subnet -- both are in the class C network with network address `10.0.0.0`
-+
+`10.0.0.5/24` & `10.0.0.124/24`::
 SAME subnet -- both are in the class C network with network address `10.0.0.0`
 
-* `10.10.10.54/0xffffff00` & `10.10.11.54/24`
-+
-Answer
-+
-NOT same subnet -- both are in class C networks, but one has a network address of `10.10.10.0` while the other has the network address `10.10.11.0`
-+
+`10.10.10.54/0xffffff00` & `10.10.11.54/24`::
 NOT same subnet -- both are in class C networks, but one has a network address of `10.10.10.0` while the other has the network address `10.10.11.0`
 
-* `10.245.6.11/16` & `10.245.7.11/0xffff0000`
-+
-Answer
-+
-SAME subnet -- both are in the class B network with network address `10.245.0.0`
-+
+`10.245.6.11/16` & `10.245.7.11/0xffff0000`::
 SAME subnet -- both are in the class B network with network address `10.245.0.0`
 
 == Conclusions
