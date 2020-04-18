@@ -25,6 +25,8 @@ endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT05FilePermissions/TTT_05_File_Permissions.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 ****
 
+== Files and permissions
+
 Lets start with some context.
 Just like every command shell has a present working directory, every process on a Linux/Unix system is also owned by a user, including shell processes.
 So, when you execute a command in a command shell that process has a file system location associated with it, and a username.

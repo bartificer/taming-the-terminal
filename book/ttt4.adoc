@@ -27,6 +27,8 @@ endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
 ****
 
+== Navigating around
+
 Two instalments ago we learned that, just like a Finder window, a command prompt is '`in`' a single folder/directory at any time.
 That folder is known as the _current working directory_, or the _present working directory_.
 Although the default Bash command prompt on OS X will show us the name of our current folder, it doesn't show us the full path.
