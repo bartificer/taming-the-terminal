@@ -72,7 +72,7 @@ The naming conventions for the network interfaces vary massively between differe
 Things are always confusing, but if you have a VPN installed they get even more confusing because VPNs are implemented using virtual network interfaces.
 On the whole, the simplest way to figure out which MAC address matches which device is to use your OS's control panel GUI.
 On OS X that means the `Network` System Preference pane.
-To see which MAC address matches which interface, select a network interface in the left side bar, then click `+Advanced...+` and navigate to the `Hardware` tab:
+To see which MAC address matches which interface, select a network interface in the left side bar, then click `Advanced...` and navigate to the `Hardware` tab:
 
 image::./assets/ttt24/fcedfaa3-f075-4d2a-87fe-48c813c25b9d.png[OS X - Find MAC (1 of 2)]
 

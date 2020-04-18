@@ -144,13 +144,13 @@ When you're first learning about a command the DESCRIPTION section is probably t
 Although it's short it's very dense with information.
 However, to be able to extract the meaning form this short section you need to understand the meaning of the formatting:
 
-`+**BOLD TEXT**+` -- any text in bold should be entered verbatim
+*`BOLD TEXT`* -- any text in bold should be entered verbatim
 
-`UNDERLINED/ITALIC` -- any text that is either in italics or underlined (depending on your version of man, usually underlines in modern OSes) needs to be replaced with a real value as described by the text.
+[.underline]#`UNDERLINED/ITALIC`# -- any text that is either in italics or underlined (depending on your version of man, usually underlines in modern OSes) needs to be replaced with a real value as described by the text.
 E.g.
 `file` should be replaced with the path to an actual file.
 
-`+...+` -- anything followed by an ellipsis (three dots) can be optionally repeated
+`...` -- anything followed by an ellipsis (three dots) can be optionally repeated
 
 `[]` -- anything contained within square brackets is optional
 
