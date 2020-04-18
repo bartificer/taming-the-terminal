@@ -363,7 +363,7 @@ And finally, to the RE that I promised was a funny joke:
 You could read it as:
 
 ****
-two ``b``s or two characters that are not ``b``s
+two 'b's or two characters that are not 'b's
 ****
 
 Or, you could read it as:
