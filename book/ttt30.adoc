@@ -1,10 +1,10 @@
 [[ttt30]]
 = TTT Part 30 of n -- SSHing More Securely
 
-In <<ttt29,the previous instalment>> we saw how we can use SSH to execute a single command on a remote computer, or, to get a command shell on a remote computer.
+In <<ttt29,the previous instalment>>, we saw how we can use SSH to execute a single command on a remote computer, or, to get a command shell on a remote computer.
 We also saw how SSH uses host keys to protect us from man-in-the-middle (MITM) attacks.
 
-In this instalment we're going to look at how we can improve both SSH security and convenience with SSH keys.
+In this instalment, we're going to look at how we can improve both SSH security and convenience with SSH keys.
 
 .Matching Postcast Episode 30
 ****
@@ -28,11 +28,11 @@ It's important to have a clear understanding of how this works before proceeding
 [NOTE]
 .Asymmetric Encryption and Public & Private Keys -- A Quick Summary
 ====
-A Encryption algorithm turns unencrypted plain text into encrypted cypher text using some kind of key.
-The simplest type of encryption uses the same key to encrypt and decrypt, and is known as symmetric encryption.
+An Encryption algorithm turns unencrypted plain text into encrypted cypher text using some kind of key.
+The simplest type of encryption uses the same key to encrypt and decrypt and is known as symmetric encryption.
 
-With asymmetric encryption there is not one key, but two, a so-called key-pair.
-What ever is encrypted with one key can only be decrypted with the other.
+With asymmetric encryption, there is not one key, but two, a so-called key-pair.
+Whatever is encrypted with one key can only be decrypted with the other.
 Either key can encrypt, but you can only decrypt with the one you didn't use to encrypt.
 
 For public/private key cryptography we arbitrarily designate one of the keys in the key pair as the private key, and the other as the public key.
@@ -40,7 +40,7 @@ We then make sure the private key is NEVER shared.
 The public key can be safely published anywhere without impacting security.
 
 If we give someone our public key, and they encrypt something with it, only we can decrypt it, because only we have our private key.
-This fact can be used as the basis for an authentication system, because only the holder of the private key that matches a public key can decrypt a test message sent by someone with that public key.
+This fact can be used as the basis for an authentication system because only the holder of the private key that matches a public key can decrypt a test message sent by someone with that public key.
 ====
 
 == SSH Key Authentication
@@ -48,7 +48,7 @@ This fact can be used as the basis for an authentication system, because only th
 The SSH protocol has support for multiple different types of authentication.
 By default, one of the authentication mechanisms used by SSH is password authentication.
 SSH will allow you to connect to a given account on a computer if you know the password for that user on that computer.
-By default SSH will also try to use an SSH key-pair for authentication instead of a password, and in fact, it will try to use a key-pair before it tries to use a password.
+By default, SSH will also try to use an SSH key-pair for authentication instead of a password, and in fact, it will try to use a key-pair before it tries to use a password.
 
 To use SSH key authentication you need to do the following:
 
@@ -63,11 +63,11 @@ To play along you'll need two computers, one to SSH from, and one to SSH to.
 
 === Generating an SSH Key-Pair
 
-IMPORTANT: This section assumes you are using a Linux-like operating system (Linux, Unix, Mac, or the Windows Subsystem for Linux on Windows 10) and have no yet generated an SSH key-pair for the account you will be SSHing from, if you have, please skip on to the next section.
+IMPORTANT: This section assumes you are using a Linux-like operating system (Linux, Unix, Mac, or the Windows Subsystem for Linux on Windows 10) and have not yet generated an SSH key-pair for the account you will be SSHing from, if you have, please skip on to the next section.
 
 _**Update -- February 2020:** I blogged https://www.bartbusschots.ie/s/2020/02/26/generating-ssh-keys-on-windows-with-puttygen/[Instructions for generating an SSH key-pair on Windows using PuTTYgen]._
 
-The process stars on the computer you will be SSHing from.
+The process starts on the computer you will be SSHing from.
 You need to open a terminal as the user who will be SSHing to the remote computer, and in that terminal type the command:
 
 [source,shell]
@@ -84,13 +84,13 @@ If you already have a set of keys and don't want to replace them, you can use th
 
 When you run the `ssh-keygen` command you will be asked to enter a password.
 This is the password that will secure the private key.
-This is a very important safety measure, because it means that if your private key is lost or stolen, it cannot be used unless the attacker also knows the matching password.
+This is a very important safety measure because it means that if your private key is lost or stolen, it cannot be used unless the attacker also knows the matching password.
 The `ssh-keygen` command will accept a blank password, but this is to be strongly discouraged because it leaves your private key unprotected.
 
 It should also be noted that if you forget the password protecting your private key, you won't be able to use that key-pair any more, and you'll need to generate a fresh key-pair!
 
-Once you enter a password `ssh-keygen` will generate a public and private key, tell you where it has saved them, tell you the key's fingerprint (a big long hexadecimal string separated with ``:``s), and it will show you the key's random art image.
-This is representation of the key as a little ASCII art graphic.
+Once you enter a password `ssh-keygen` will generate a public and private key, tell you where it has saved them, tell you the key's fingerprint (a big long hexadecimal string separated with `:`s), and it will show you the key's random art image.
+This is a representation of the key as a little ASCII art graphic.
 This is much more memorable to humans than the fingerprint, show us two different pictures and we'll spot the difference in seconds, show us two different strings of hex and we'll find it very hard to spot subtle differences!
 
 To get a sense of how difficult an SSH key is to brute-force attack, you can have a look at the private key you just generated with the command:
@@ -117,21 +117,21 @@ This is a very robust format that ignores characters like line breaks and spaces
 === Granting Access With an SSH Public Key
 
 The next step in the process is to share your public key with the person administering the computer you will be SSHing to.
-You can do this by attaching the public key to an email, or simply copying and pasting it's content into an email.
+You can do this by attaching the public key to an email, or simply copying and pasting its content into an email.
 If we know the password of the remote account we will be connecting to, we can also copy the key over ourselves, but more on that later.
 
 To grant a remote user access to a given account a computer administrator needs to add the remote user's public key to a special file in the home directory of the local user the remote user will be connecting as.
-That special file is `~/.ssh/authorised_keys` (or, if the key is only to be used over the SSH2 protocol, `~/.ssh/authorized_keys2`).
+That special file is `~/.ssh/authorised_keys` (or if the key is only to be used over the SSH2 protocol, `~/.ssh/authorized_keys2`).
 
 The `~/.ssh/authorized_keys` file should contain one public key per line.
 You can grant access to as many users as you like by adding as many public keys are you like.
 
 SSH is an absolute stickler about the permissions on the `authorized_keys` file, including the permissions on the folder that contains it, i.e.
 `~/.ssh/`.
-No one other than the owner of the account (and root) should have write permissions to either the containing folder, or the file itself.
-Because public keys are not sensitive information, SSH does not care of other users can read what is effectively public information, but the ability to write to that file would allow any other user on the system to grant themselves access to that account by adding their own public key to the list.
+No one other than the owner of the account (and root) should have write permissions to either the containing folder or the file itself.
+Because public keys are not sensitive information, SSH does not care if other users can read what is effectively public information, but the ability to write to that file would allow any other user on the system to grant themselves access to that account by adding their own public key to the list.
 To prevent this from happening, SSH will not accept a key if it's contained in a file that is writeable by anyone but the owner of the account.
-An example of working permissions on an account with the username `bart` is show below:
+An example of working permissions on an account with the username `bart` is shown below:
 
 [source,shell,linenums]
 ----
@@ -149,7 +149,7 @@ I have highlighted the command, and the two important sets of permissions in bol
 
 ==== Simplifying the Process with `ssh-copy-id`
 
-It takes time and effort to manually copy across your public key, and to make sure all the file permissions are correct.
+It takes time and effort to manually copy across your public key and to make sure all the file permissions are correct.
 Assuming you know the password to log in to the remote computer, you can automate the process with the `ssh-copy-id` utility.
 
 This utility comes as standard on all the Linux distributions I have used, but annoyingly, OS X's version of SSH does not come with `ssh-copy-id`.
@@ -166,7 +166,7 @@ curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/mast
 
 The above command has to be run from an admin account, and it uses `sudo` for the install, so you will be prompted for your password.
 
-What ever OS you are on, once you have `ssh-copy-id` installed, copying over your public key becomes as easy as running the command below (replacing `user` and `computer` as appropriate):
+Whatever OS you are on, once you have `ssh-copy-id` installed, copying over your public key becomes as easy as running the command below (replacing `user` and `computer` as appropriate):
 
 [source,shell]
 ----
@@ -193,7 +193,7 @@ The good news is that Mac users have it best in this regard.
 
 The version of SSH that ships with OS X has support for OS X's secure keychain.
 This is a secure vault OS X uses to store the passwords you save in all sorts of apps, including Mail.app and Safari.
-This means that on OS X, when you use SSH key authentication, a popup window will appear asking for the password for your private key, and that pop window has a checkbox to allow the password be saved in your keychain.
+This means that on OS X, when you use SSH key authentication, a popup window will appear asking for the password for your private key, and that pop window has a checkbox to allow the password to be saved in your keychain.
 Once you do this you will never have to enter that password again, you will now be able to SSH without entering a password in a secure manner.
 
 Users of other OSes are not completely out of luck, but the solutions available are less convenient.
@@ -205,16 +205,16 @@ So, whether you are using OS X's key chain, or `ssh-agent`, you can now securely
 == Advantages to Key-based Authentication
 
 * *Convenience* -- with OS X's key chain or `ssh-agent` securely storing the password for your private key, you can safely use SSH without having to enter a password.
-* *Security* -- once you have key-based authentication in place, you can either set a really long and secure password on the remote account, or even disable password-based logons completely (we don't cover how to do that in this series).
+* *Security* -- once you have key-based authentication in place, you can either set a really long and secure password on the remote account or even disable password-based logins completely (we don't cover how to do that in this series).
 SSH keys are much more difficult to brute force than even the most complex of passwords.
-* *A Form of 2-Factor Auth* -- in order to log in as you, an attacker needs to have your private key, and needs to know the password for your private key.
-_Some argue that this is only 1.5 factor auth because unlike a physical dongle, you have no real way of knowing if someone has stolen a copy of your private key -- since it is digital, a copy can be taken without depriving you of your copy, and hence alerting you to its loss._
+* *A Form of 2-Factor Auth* -- in order to log in as you, an attacker needs to have your private key and needs to know the password for your private key.
+_Some argue that this is only 1.5-factor auth because unlike a physical dongle, you have no real way of knowing if someone has stolen a copy of your private key -- since it is digital, a copy can be taken without depriving you of your copy, and hence alerting you to its loss._
 
 One place where key-based auth really comes into its own is with shared accounts.
 
 Imagine you are working on a website together with some volunteers from a club you are a member of.
 The server hosting your site allows logins over SSH.
-All those working on the project need to be abel to log into the web server to edit the site.
+All those working on the project need to be able to log into the webserver to edit the site.
 Being a club, there is going to be a natural churn of members, so people will continually join and leave the project, and it's possible that some of the leavers will not be leaving on good terms.
 How do you handle this situation?
 
@@ -224,21 +224,21 @@ Then, each time a new member starts, you let them in on the secret.
 So far so good.
 Then, someone leaves the project.
 You now have to either accept the fact that someone no longer working on the project still knows the shared secret, and hence can still log in and perhaps sabotage the site, or, you need to change the password and tell only the remaining people the new password.
-That scheme is workable, but cumbersome.
+That scheme is workable but cumbersome.
 
-A better solution would be to give no one the password to the account at all, and use SSH keys instead.
+A better solution would be to give no one the password to the account at all and use SSH keys instead.
 On joining the project, each participant provides their SSH public key, and those keys are added to the `~/.ssh/authorized_keys` file.
 As people come and go, simply add and remove their public keys.
 When someone leaves, no one else has to change anything, and there is no shared secret.
 
 Managing a long `authorized_keys` file does not have to be difficult for two reasons.
-Firstly, `ssh-keygen` adds the username and hostname of the person who's key it is to the end of all public keys, so just reading the key could well tell you all you need to know to identify which key belongs to whom.
+Firstly, `ssh-keygen` adds the username and hostname of the person whose key it is to the end of all public keys, so just reading the key could well tell you all you need to know to identify which key belongs to whom.
 If that information is not sufficient, you can add comment lines to the file by staring those lines with the `#` symbol.
 
 == Conclusions
 
-Usually we have to choose between convenience and security, but with SSH keys we get to have our proverbial cake and eat it.
-By putting in a little work up front, we get a more convenient and more secure SSH experience.
+Usually, we have to choose between convenience and security, but with SSH keys we get to have our proverbial cake and eat it.
+By putting in a little work upfront, we get a more convenient and more secure SSH experience.
 
 So far we have only looked at using SSH to execute terminal commands remotely, either one command at a time, or through an interactive command shell running on the remote computer.
 But, SSH's encrypted connection can be used to secure much more than just a command shell.
