@@ -2,10 +2,10 @@
 = TTT Part 21 of n -- More Searching
 
 This is the third and final instalment on searching.
-In the <<ttt19,first instalment>> we learned how to search for text within files and streams using `egrep`.
+In the <<ttt19,first instalment>>, we learned how to search for text within files and streams using `egrep`.
 In <<ttt20,the second>> we learned to search for files based on all sorts of criteria with the `find` command.
 
-In this final instalment we'll start by looking at one last feature of `find`, its a ability to execute commands on the files it finds.
+In this final instalment, we'll start by looking at one last feature of `find`, its ability to execute commands on the files it finds.
 Then we'll end by looking at an OS X-only alternative to `find` that makes use of the Spotlight search index to really speed up searches.
 
 .Matching Postcast Episode 21
@@ -33,7 +33,7 @@ Definitely think twice before using `find`'`s execute feature to delete files!
 
 To execute commands on the results of find you need to use the `-exec` flag in conjunction with the `{}` flag and either the `';'` or `'+'` flags.
 The reason there are two end flags is that there are two modes in which `find` can execute commands.
-It can either execute the same command once on each file that was found, or, it can execute the given command once only with all the found files as arguments.
+It can either execute the same command once on each file that was found or, it can execute the given command once only with all the found files as arguments.
 
 === Executing a Command on Each File/Folder Found
 
@@ -47,8 +47,8 @@ find search_path conditions -exec command args_or_flags {} ';'
 The `-exec` flag means we are about to start specifying a command to execute, and everything up to the `';'` will be a part of that command.
 `{}` is the point in the command where the found file should be inserted.
 
-This sounds quite complicated, but hopefully a practical example will help.
-A real-world problem you may encounter is that you need to make all perl scripts in a given set of nested folders executable.
+This sounds quite complicated, but hopefully, a practical example will help.
+A real-world problem you may encounter is that you need to make all Perl scripts in a given set of nested folders executable.
 As we learned in <<ttt06,instalment 6>>, we can make a file executable with the command:
 
 [source,shell]
@@ -56,14 +56,14 @@ As we learned in <<ttt06,instalment 6>>, we can make a file executable with the 
 chmod 755 path_to_file
 ----
 
-Perl scripts have the extension `.pl`, so using what we learned in the previous instalment we can find all perl scripts in a given path with the command:
+Perl scripts have the extension `.pl`, so using what we learned in the previous instalment we can find all Perl scripts in a given path with the command:
 
 [source,shell]
 ----
 find search_path -name '*.pl'
 ----
 
-If we assume all our perl files will be in a folder called `scripts` in our Documents folder, we can put all this together to find and chown all perl files in a single command like so:
+If we assume all our Perl files will be in a folder called `scripts` in our Documents folder, we can put all this together to find and chown all Perl files in a single command like so:
 
 [source,shell]
 ----
@@ -83,7 +83,7 @@ Like before, `{}` indicates where the found files and folders should be included
 
 Again, a practical example might be helpful.
 Let's say you're doing up a report on just how much work went into a coding project.
-You want to know how many lines of code you wrote, and you know that all your code is in perl scripts and perl modules, i.e.
+You want to know how many lines of code you wrote, and you know that all your code is in Perl scripts and Perl modules, i.e.
 you know all relevant files have `.pl` and `.pm` file extensions.
 
 We know from last time that we can find all relevant files with the command:
@@ -93,14 +93,14 @@ We know from last time that we can find all relevant files with the command:
 find search_path -name '*.pl' -or -name '*.pm'
 ----
 
-We also know from <<ttt15,instalment 15>> that we can use the `wc` command with the `-l` flag to count the number of lines in a one or more files:
+We also know from <<ttt15,instalment 15>> that we can use the `wc` command with the `-l` flag to count the number of lines in  one or more files:
 
 [source,shell]
 ----
 wc -l file 1..n
 ----
 
-Assuming our code is still in a folder called `scripts` in the Documents folder, the command to find the total number of lines in all the perl files would be:
+Assuming our code is still in a folder called `scripts` in the Documents folder, the command to find the total number of lines in all the Perl files would be:
 
 [source,shell]
 ----
@@ -109,7 +109,7 @@ find ~/Documents/scripts '(' -name '*.pl' -or -name '*.pm' ')' -exec wc -l {} '+
 
 Note that we have to group the two conditions in bracket operators so the scope of the `-or` is clear.
 
-If you installed the XKPasswd 2 perl module via the quick install instructions at https://github.com/bbusschots/xkpasswd.pm[], you can use the example below to see how many lines of code and documentation went into that project:
+If you installed the XKPasswd 2 Perl module via the quick install instructions at https://github.com/bbusschots/xkpasswd.pm[], you can use the example below to see how many lines of code and documentation went into that project:
 
 [source,shell]
 ----
@@ -123,7 +123,7 @@ One final example that might depress you -- the command below tells you how much
 find ~/Downloads -size +500M -exec du -ch {} '+'
 ----
 
-If you are VERY careful you can `use find` -exec to do things like clean up cache folders by deleting anything older than an given amount of time, and other cool and powerful things.
+If you are VERY careful you can `use find` -exec to do things like clean up cache folders by deleting anything older than a given amount of time, and other cool and powerful things.
 But -- ALWAYS be careful when using -exec to invoke a command that alters or destroys files or folders.
 My approach is to run the command without the `-exec` first, to be sure ONLY the files and folders you expected to be found are being returned.
 
@@ -138,16 +138,16 @@ find / -iname '*base*' -exec chown -R us {} ';'
 
 == OS X Only -- Spotlight from the Terminal
 
-On OSX the operating system indexes the files on your computer so you can quickly search them with spotlight.
-Rather than having to search through all the files, spotlight just searches the index, which makes it much faster than `find` when searching through big chunks of the file system.
+On OSX the operating system indexes the files on your computer so you can quickly search them with Spotlight.
+Rather than having to search through all the files, Spotlight just searches the index, which makes it much faster than `find` when searching through big chunks of the file system.
 
-Apple have very kindly exposed the power of spotlight to the command-line with the very useful `mdfind` command.
+Apple has very kindly exposed the power of Spotlight to the command-line with the very useful `mdfind` command.
 
-If you can type it into the spotlight text box in the top-left of a Finder window and get back a list of files, you can pass the same query to `mdfind`, and it will find the same results.
-Note that I said spotlight in the Finder, and not in the menubar -- that was not by accident.
-`mdfind` is only for finding files, not for all the other fancy stuff you can do with spotlight in the menu bar like the calculator function or the ability to get dictionary definitions.
-Another important caveat is that it `mdfind` can only find files in folders indexed by spotlight.
-If you add a drive or a folder to spotlight's ignore list, `mdfind` can never find files on those drives or folders.
+If you can type it into the Spotlight text box in the top-left of a Finder window and get back a list of files, you can pass the same query to `mdfind`, and it will find the same results.
+Note that I said Spotlight in the Finder, and not in the menubar -- that was not by accident.
+`mdfind` is only for finding files, not for all the other fancy stuff you can do with Spotlight in the menu bar like the calculator function or the ability to get dictionary definitions.
+Another important caveat is that  `mdfind` can only find files in folders indexed by Spotlight.
+If you add a drive or a folder to Spotlight's ignore list, `mdfind` can never find files on those drives or folders.
 
 The `mdfind` command is very easy to use:
 
@@ -177,7 +177,7 @@ To find every PDF you have edited today you could use:
 mdfind 'date:today kind:pdf'
 ----
 
-I haven't been able to find a definitive list of all possible spotlight search commands, but googling for '`spotlight syntax`' will lead to useful articles like http://osxdaily.com/2010/01/06/improve-your-spotlight-searches-with-search-operators/[this one].
+I haven't been able to find a definitive list of all possible Spotlight search commands, but googling for '`spotlight syntax`' will lead to useful articles like http://osxdaily.com/2010/01/06/improve-your-spotlight-searches-with-search-operators/[this one].
 
 mdfind supports a number of arguments, and it can also search based on deep metadata, but I'm going to leave most of that as an exercise for the user -- you can get the full documentation through the manual:
 
@@ -188,7 +188,7 @@ man mdfind
 
 However, there are two flags I do want to draw attention to.
 
-By default `mdfind` will search the entire spotlight index, but you can ask it to only return results contained within a given folder using the `-onlyin` flag, for example, to find all PDFs in your Documents folder you could use:
+By default `mdfind` will search the entire Spotlight index, but you can ask it to only return results contained within a given folder using the `-onlyin` flag, for example, to find all PDFs in your Documents folder you could use:
 
 [source,shell]
 ----
@@ -197,7 +197,7 @@ mdfind -onlyin ~/Documents 'kind:pdf'
 
 Note that the search is always recursive, even when using the `-onlyin` flag.
 
-The other flag I want to mention is `-count`, if this flag is set the number of matching files will be returned rather than the files themselves.
+The other flag I want to mention is `-count`. If this flag is set the number of matching files will be returned rather than the files themselves.
 So, to see how many music files you have in your Music folder you could use:
 
 [source,shell]
