@@ -4,7 +4,7 @@ Bart Busschots
 :doctype: book
 :docinfo:
 :doctitle: Taming the Terminal
-:lang: en-US
+:lang: en_gb
 :source-highlighter: rouge
 :rouge-linenums-mode: inline
 :rouge-style: manni

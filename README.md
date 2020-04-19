@@ -80,6 +80,7 @@ For now:
 * `colophon.adoc` holds some boilerplate text. It needs to be update to proper information
 * `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it.
 
+Note: language is British English! 
 
 ## Bugfixes and workaround
 
