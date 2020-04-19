@@ -43,7 +43,7 @@ find path criteria 1 [criteria 2 ...]
 
 The path is searched recursively (by default), so if you give a path of `~/Documents`, it will search your documents folder, and all folders within your documents folder.
 To search your entire computer, and all mounted drives, use a path of just `/`.
-To use the current folder as the base of your search use a path of `.` (which always means '`the current folder`' as we learned in <<ttt4,instalment 4>>).
+To use the current folder as the base of your search use a path of `.` (which always means '`the current folder`' as we learned in <<ttt04,instalment 4>>).
 
 == Defining Search Criteria
 
