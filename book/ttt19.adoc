@@ -1,8 +1,8 @@
 [[ttt19]]
 = TTT Part 19 of n -- Text Searches
 
-In the previous two instalments (<<ttt17,17>> & <<ttt18,18>>) of this series we learned how to represent patters with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).
-We used the `egrep` command to test our regular expressions, but we didn't discus the command itself in detail.
+In the previous two instalments (<<ttt17,17>> & <<ttt18,18>>) of this series, we learned how to represent patterns with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).
+We used the `egrep` command to test our regular expressions, but we didn't discuss the command itself in detail.
 Now that we understand regular expressions, it's time to take a closer look at both `egrep`, and it's older brother `grep`, both commands for filtering and searching text.
 
 ////
@@ -33,33 +33,33 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearche
 
 == To `grep` or to `egrep` -- that is the question!
 
-The `grep` command goes back a very long way, and has been the staple text-searching command on POSIX operating systems like Unix and Linux for decades.
+The `grep` command goes back a very long way and has been the staple text-searching command on POSIX operating systems like Unix and Linux for decades.
 To this day it's used millions of times each day for simple text searches.
 But, it has a shortcoming -- it's stuck in the past when it comes to regular expressions -- `grep` pre-dates the invention of POSIX ERE!
 `egrep` is identical to `grep` except that it interprets patterns passed to it as POSIX EREs.
 
 If you can, it's probably best to get into the habit of always using `egrep`, and never using `grep`, but for those of us who've been around the block a few times, this could be asking for too much (old habits die hard!).
 What I usually do is use `grep` when I don't need regular expressions, and `egrep` when I do.
-However, in this series I'm going to follow my own advice, and only use `egrep`.
+However, in this series, I'm going to follow my own advice and only use `egrep`.
 
 == `egrep` Basics
 
 For `egrep`, lines of text are atomic.
 In other words, egrep searches or filters text one line at a time, checking the entire line against the given pattern, and considering the whole line to match the pattern or not.
 
-There are two basic ways in which `egrep` can be used -- it can filter what ever is sent to via standard in (`STDIN` -- see <<ttt15,part 15>>) against a given pattern, or, it can search for lines matching a given pattern in one or more files.
+There are two basic ways in which `egrep` can be used -- it can filter whatever is sent to via standard in (`STDIN` -- see <<ttt15,part 15>>) against a given pattern, or, it can search for lines matching a given pattern in one or more files.
 
 == Filtering `STDIN`
 
-Let's start with the first use-case, using using `egrep` to filter `STDIN`.
-When `egrep` is used in this mode it passes every line of text sent to `STDIN` that matches the given pattern to standard out (`STDOUT`), and ignores all others.
+Let's start with the first use-case, using `egrep` to filter `STDIN`.
+When `egrep` is used in this mode it passes every line of text sent to `STDIN` that matches the given pattern to standard out (`STDOUT`) and ignores all others.
 If you send 5,000 lines of text to `egrep` via `STDIN`, and only 5 of those lines match the specified pattern, then only 5 lines will be passed to `STDOUT` (which is the screen unless the output is redirected elsewhere).
 
-When content is redirected to `egrep`'`s `STDIN` `egrep` only needs one argument -- the pattern to filter on.
+When content is redirected to `egrep`'s `STDIN` `egrep` only needs one argument -- the pattern to filter on.
 
-On Unix/Linux/OS X computers configured to act as servers there will be a lot of log files being written to continuously, and sysadmins will very often need to filter those logs while troubleshooting an issue, or tweaking the server's configuration.
-In my day-job as a Linux sysadmin I do this all the time.
-Regardless of the log file to be filtered, the approach is the same, use `tail -f` to stream the log file in question to `tail`'`s `STDOUT` in real-time, then redirect that stream to `egrep`'`s `STDIN` with the pipe operator.
+On Unix/Linux/OS X computers configured to act as servers, there will be a lot of log files being written to continuously, and sysadmins will very often need to filter those logs while troubleshooting an issue, or tweaking the server's configuration.
+In my day-job as a Linux sysadmin, I do this all the time.
+Regardless of the log file to be filtered, the approach is the same, use `tail -f` to stream the log file in question to `tail`'s `STDOUT` in real-time, then redirect that stream to `egrep`'s `STDIN` with the pipe operator.
 
 For example, on a Linux server running a BIND DNS server process, DNS log entries are mixed with other entries in the central system messages log (`/var/log/messages`).
 When debugging a problem with the DNS server, you don't want to be distracted by all the other messages flowing into that log file.
@@ -79,7 +79,7 @@ We're going to use a command we'll come back to in much more detail in future in
 As its name suggests, `tcpdump` prints the details of every TCP packet that enters or leaves your computer to `STDOUT`.
 Every time your computer interacts with the network, `tcpdump` will generate output -- in our modern connected world, that means `tcpdump` generates a LOT of output!
 
-Firstly, let's run `tcpdump` without filtering it's output to see see just how much network traffic there is on our computers:
+Firstly, let's run `tcpdump` without filtering its output to see just how much network traffic there is on our computers:
 
 [source,shell]
 ----
@@ -183,7 +183,7 @@ This gives you some idea of just how many resources from disparate sources get p
 
 Let's move on now to using `egrep` to search the contents of one or more files for a given pattern.
 
-When using `egrep` to search file(s), it requires a minimum of two arguments, first the pattern to be search for, and secondly at least one file to search.
+When using `egrep` to search file(s), it requires a minimum of two arguments, first the pattern to be searched for, and secondly at least one file to search.
 If you want to search multiple files, you can keep adding more file paths as arguments.
 
 In this mode, `egrep` will filter the lines in the file in the same way it did when filtering a stream, but if you ask it to filter more than one file it will pre-pend any output with the name of the file the matching line came from.
@@ -246,14 +246,14 @@ If you're not sure of the capitalisation of the text you're looking for, use `eg
 
 If you want to see the line numbers within the files for all the matches found by `egrep` you can use the `-n` flag.
 
-And finally, the biggie, you can use the `-r` flag to recursively search ever single file in a given directory.
+And finally, the biggie, you can use the `-r` flag to recursively search every single file in a given directory.
 Be careful with this one -- if you ask `egrep` to search too much, it will take a very long time indeed to finish!
 
 == Final Thoughts
 
-In this instalment we've seen how `egerp` can be used to filter a stream or to search one or more files for lines of text matching a specified pattern.
+In this instalment, we've seen how `egrep` can be used to filter a stream or to search one or more files for lines of text matching a specified pattern.
 This is very useful, and something sysadmins do a lot in the real world.
 In the next instalment we'll be moving on to a different, but equally important, type of search -- file searches.
 We'll use the aptly-named `find` command to find files that meet one or more criteria.
-find supports a huge variety of different search criteria, including simple things like like the name of the file, and more advanced things like the amount of time elapsed since the file was last edited.
+find supports a huge variety of different search criteria, including simple things like the name of the file, and more advanced things like the amount of time elapsed since the file was last edited.
 All these criteria can be combined to create powerful searches that will show all MS Office files in your Documents folder that were edited within the last week and are bigger than 1MB in size.
