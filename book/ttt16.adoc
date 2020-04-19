@@ -37,7 +37,7 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT16CrossingThe
 So far we've been redirecting the output of one command to the input of another, but we can also use files as the source of our streams using the `<` operator.
 The operator works by connecting the content of the file to the right of the operator to `STDIN` in the command to the left of the operator.
 
-As an example, lets use the `wc` command we learned about in the previous instalment to count the number of lines in the standard Unix/Linux hosts file again, but this time, we'll use the `<` operator:
+As an example, let's use the `wc` command we learned about in the previous instalment to count the number of lines in the standard Unix/Linux hosts file again, but this time, we'll use the `<` operator:
 
 [source,shell]
 ----
@@ -87,7 +87,7 @@ The second of the file output operators is `>>`.
 This operates in a very similar way to `>`, directing the output of the command to its left to the file specified to its right, but with one very important difference -- if a file already exists at the specified path it will not be replaced, instead, the new output will be appended to the end of the file.
 This makes the `>>` operator much safer, but, it means you cannot easily see which content in the file came from the latest execution of the command.
 
-As a practical example, lets re-visit our command for generating random characters from the previous instalment, but this time, rather than outputting the random characters to the terminal, we'll send them to a file:
+As a practical example, let's re-visit our command for generating random characters from the previous instalment, but this time, rather than outputting the random characters to the terminal, we'll send them to a file:
 
 [source,shell]
 ----
@@ -112,7 +112,7 @@ head -c $N /dev/random | base64 | head -c $N > random.txt
 wc -c random.txt
 ----
 
-Now lets change things up and generate 8 random characters at a time, but append them to a file with the `>>` operator:
+Now let's change things up and generate 8 random characters at a time, but append them to a file with the `>>` operator:
 
 [source,shell]
 ----
@@ -224,12 +224,12 @@ to merge two streams together.
 The most common reason to do this is to gather all output, regular and error, into a single stream for writing to a file.
 The way this is usually done is to divert `STDERR` to `STDOUT` and then redirect `STDOUT` to a file.
 
-In order to construct a meaningful example, lets preview a command we're going to be returning to in great detail in a future instalment, the `find` command.
+In order to construct a meaningful example, let's preview a command we're going to be returning to in great detail in a future instalment, the `find` command.
 This command often writes to both `STDOUT` and `STDERR` during normal operation.
 
 As its name suggests, the `find` command can be used to search for files that meet a certain criteria.
 If you run the command as a regular user and ask it to search your entire hard drive, or a system folder, it will run into a lot of permission errors interspersed with the regular output as the OS prevents it from searching some protected system folders.
-As a simple example, lets use find to search for `.pkg` files in the system library folder:
+As a simple example, let's use find to search for `.pkg` files in the system library folder:
 
 [source,shell]
 ----

@@ -286,7 +286,7 @@ To make our examples more generic, replace the `^` and `$` dollar operators at t
 
 == Putting it All Together
 
-Given everything we now know, lets re-visit the example we ended with in the previous instalment, our big un-ginaly RE for matching MAC addresses:
+Given everything we now know, let's re-visit the example we ended with in the previous instalment, our big un-ginaly RE for matching MAC addresses:
 
 [source,shell]
 ----

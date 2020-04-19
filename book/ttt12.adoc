@@ -232,7 +232,7 @@ We can even get a little more creative:
 echo "I am logged in as the user $LOGNAME with the home directory $HOME"
 ----
 
-Now that we can use variables, lets look at how we create them and alter their values.
+Now that we can use variables, let's look at how we create them and alter their values.
 You create variables simply by assigning them a value, and you alter their value by assigning them a new vale.
 The `=` operator assigns a value to a variable.
 In our examples we won't use a variable set by the system, but we'll create our own one called `MY_FIRST_VAR`.
@@ -244,21 +244,21 @@ Before we start, we can verify that our variable does not exist yet:
 echo $MY_FIRST_VAR
 ----
 
-Now lets create our variable by giving it a value:
+Now let's create our variable by giving it a value:
 
 [source,shell]
 ----
 MY_FIRST_VAR='Hello World!'
 ----
 
-Now lets verify that we did indeed initialise our new variable with the value we specified:
+Now let's verify that we did indeed initialise our new variable with the value we specified:
 
 [source,shell]
 ----
 echo $MY_FIRST_VAR
 ----
 
-Now lets get a little more creating and change the value stored in our variable using values stored in two variables inherited from the environment:
+Now let's get a little more creating and change the value stored in our variable using values stored in two variables inherited from the environment:
 
 [source,shell]
 ----
@@ -301,7 +301,7 @@ The most common way to create a sub-shell is by executing a shell script.
 A shell script is simply a text file that contains a list of shell commands.
 While we won't be looking at shell scripting in detail until much later in this series, we'll use some very simple shell scripts here to illustrate how child processes inherit their parent's environment.
 
-Lets start by creating a very simple shell script that will print the value of an environment variable:
+Let's start by creating a very simple shell script that will print the value of an environment variable:
 
 [source,shell]
 ----
@@ -354,7 +354,7 @@ And if we run our script again, we can see that it still does not print out the 
 ~/Documents/ttt12script1.sh
 ----
 
-Now lets push our variable to the environment and run our script again:
+Now let's push our variable to the environment and run our script again:
 
 [source,shell]
 ----
@@ -362,7 +362,7 @@ export TTT_VAR
 ~/Documents/ttt12script1.sh
 ----
 
-To prove that the sub-shell is working on a copy of the environment variable, lets copy our first script and create a new script that alters the value of the variable:
+To prove that the sub-shell is working on a copy of the environment variable, let's copy our first script and create a new script that alters the value of the variable:
 
 [source,shell]
 ----

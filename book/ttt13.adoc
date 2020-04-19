@@ -51,7 +51,7 @@ bart-imac2013:~ bart$
 The obvious question is, how does BASH find the executable files to run?
 This is where `PATH` comes in.
 
-Before we continue, lets print out the current value of `PATH` with the `echo` command and `$` operator we learned about in the previous instalment:
+Before we continue, let's print out the current value of `PATH` with the `echo` command and `$` operator we learned about in the previous instalment:
 
 [source,shell]
 ----
@@ -127,7 +127,7 @@ which pwd
 
 What makes these commands special is that BASH does not use `PATH` to figure out where they are, it maps to them directly, so, even if you delete your `PATH`, the builtins will continue to work.
 
-In fact, lets do just that (in a safe way that won't do any harm to your computer)!
+In fact, let's do just that (in a safe way that won't do any harm to your computer)!
 
 [source,shell]
 ----
@@ -161,10 +161,10 @@ We can still run the executables by using their full paths, e.g.:
 /usr/bin/nano testFile.txt
 ----
 
-Before we continue, lets restore our `PATH` to its normal value by closing this command shell and opening a new one.
+Before we continue, let's restore our `PATH` to its normal value by closing this command shell and opening a new one.
 
 When you get to the stage of writing your own scripts (or downloading other people's scripts), you'll probably want your scripts to run without needing to give the full paths to the scripts each time.
-As an example lets create a new folder in our home directory and create a simple script within it:
+As an example let's create a new folder in our home directory and create a simple script within it:
 
 [source,shell]
 ----
@@ -192,7 +192,7 @@ chmod 755 ~/myScripts/whereAmI
 ~/myScripts/whereAmI
 ----
 
-At the moment we have to enter the full path to `whereAmI` each time we want to use it, lets remedy that by adding our new `myScripts` folder to the end of our `PATH`:
+At the moment we have to enter the full path to `whereAmI` each time we want to use it, let's remedy that by adding our new `myScripts` folder to the end of our `PATH`:
 
 [source,shell]
 ----
@@ -313,7 +313,7 @@ cat /etc/paths.d/*
 If we wanted to add our new scripts folder to the default path for all users on the system we could edit `/etc/paths`, or add a new file with the path or our scripts folder in `/etc/paths.d`, but don't do that!
 These system-level paths should only be used for system-level things, as we'll see shortly, there is a better way to make user-specific customisations.
 
-For completeness, lets have a look at `/etc/bashrc`.
+For completeness, let's have a look at `/etc/bashrc`.
 
 [source,shell,linenums]
 ----
@@ -375,7 +375,7 @@ The system level configuration files are only the first half of BASH's startup p
 For reasons we won't go into now, if you're a Linux user the user-level file to create/edit is `~/.bashrc`, while Mac users should create/edit `~/.bash_profile` (if you really care about why there is a difference you can have a read of http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html[this short article]).
 
 So, any customisations we wish to make to BASH on our Macs should be made in `~/.bash_profile`.
-Lets go ahead and set a custom `PATH` that includes the folder we created earlier:
+Let's go ahead and set a custom `PATH` that includes the folder we created earlier:
 
 [source,shell]
 ----

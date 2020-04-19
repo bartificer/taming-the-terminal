@@ -30,7 +30,7 @@ endif::[]
 http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
-I'm getting tired of typing '`manual entry`', so lets introduce a little jargon.
+I'm getting tired of typing '`manual entry`', so let's introduce a little jargon.
 The command to read a manual entry is `man`, so command-line aficionados will almost always refer to manual entries simply as _man pages_, so I'm going to do the same from here on.
 
 In theory the authors of man pages are free to write in any style the wish, and to organise their pages into any structure they see fit.
@@ -40,11 +40,11 @@ Sadly there is no shortcut -- the only way to get good at reading man pages, is 
 
 == Navigation
 
-Lets start with the practicalities of opening, closing, and navigating a man page before we look at the structure and formatting.
+Let's start with the practicalities of opening, closing, and navigating a man page before we look at the structure and formatting.
 
 To open a man page simply use the `man` command with a single argument, the name of the command or config file you would like to read the entry for.
 
-As an example, lets call up the documentation for the `ls` command:
+As an example, let's call up the documentation for the `ls` command:
 
 [source,shell]
 ----
@@ -55,7 +55,7 @@ You'll immediately notice that you've lost your command prompt, and are viewing 
 The most important thing to learn is how to exit out of the man page and get back to your command prompt.
 To get out, simply hit the q key (for quit)!
 
-OK, now that we know to get back out, lets re-open the man page for `ls` and have a look around.
+OK, now that we know to get back out, let's re-open the man page for `ls` and have a look around.
 
 You can navigate up and down in a man page with the up and down arrow keys.
 You can also scroll down a single line by hitting enter, or a whole page at once with the spacebar.
@@ -67,7 +67,7 @@ To get to the next result hit the `n` key (and to get to the previous result, `s
 
 == Structure
 
-Now that we can navigate around, lets have a closer look at the structure of a man page.
+Now that we can navigate around, let's have a closer look at the structure of a man page.
 The first thing to note is that each man page is divided into sections, which are labeled in all capitals, and their content is indented by one tab.
 Sections can contain sub-sections who's content is indented by two tabs, and so on.
 
@@ -164,7 +164,7 @@ The most important thing is not to be afraid of man pages.
 At first they will seem archaic and confusing, but you'll soon get used to their style, and you might even come to like it!
 There is no substitute for practice though -- the only way to learn to read man pages is to read man pages!
 
-Finally, lets end on a really bad nerd joke!
+Finally, let's end on a really bad nerd joke!
 
 ====
 Q: How do you know woman are more complicated than men?

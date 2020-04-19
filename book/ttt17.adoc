@@ -87,7 +87,7 @@ Just like there is no one programming language, there is no one language for reg
 So, that leads to an obvious question, which type of RE should we learn?
 Because this series is all about the Terminal, the answer is actually very easy, there's really only one choice that makes sense, but, it happens to be a choice that conveniently gives us a very solid base to build from for other uses of REs.
 
-Lets start with some context.
+Let's start with some context.
 Firstly, when it comes to regular expressions you can't ignore my favourite scripting language, Perl.
 Perl was developed for the purpose of processing text, which means pattern matching is at the very core of it's DNA.
 The official backronym for Perl is _the Practical Extracting and Reporting Language_, and the joke backronym is _the Pathologically Eclectic Rubbish Lister_, either way, Perl is all about extracting information from textual data, so it's all about pattern matching.
@@ -142,7 +142,7 @@ Similarly, the RE to represent the character `t` followed by the character `h` i
 th
 ----
 
-Lets start with a simple example -- finding all words that contain a double `e` in the words file.
+Let's start with a simple example -- finding all words that contain a double `e` in the words file.
 Remember, the `egrep` command prints any line from the input file that matches the specified pattern, so, to find all words with a double `e` you could use the following command:
 
 [source,shell]
@@ -150,7 +150,7 @@ Remember, the `egrep` command prints any line from the input file that matches t
 egrep 'ee' /usr/share/dict/words
 ----
 
-Lets take things up a notch, and include line boundaries in our pattern.
+Let's take things up a notch, and include line boundaries in our pattern.
 The special character `^` represents _start of line_ when used at the start of a regular expression (it can have other meanings when used elsewhere as we'll see later).
 Its opposite number is the special character `$`, which represents _end of line_.
 
@@ -176,7 +176,7 @@ My advice would be to get into the habit of always single-quoting regular expres
 Something else that's very important is the ability to specify a so-called wild-card character.
 We can do that using the period character, which you should read in an RE as _any one character_.
 
-As an example, lets say you're stuck on a thorny crossword puzzle, and you need a word that fits into _something e something something f something_.
+As an example, let's say you're stuck on a thorny crossword puzzle, and you need a word that fits into _something e something something f something_.
 You could use the following terminal command to find a list of possible answers:
 
 [source,shell]
@@ -198,7 +198,7 @@ Character classes are enclosed inside square brackets, so, you should read the c
 [abcdef]
 ----
 
-As an example, lets search for all four letter words starting with a vowel:
+As an example, let's search for all four letter words starting with a vowel:
 
 [source,shell]
 ----

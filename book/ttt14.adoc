@@ -39,7 +39,7 @@ When used as a command, the alias gets expanded to a longer string by BASH befor
 Aliases can contain arguments as well as commands.
 Aliases can be used to create short mnemonics for long complex commands, or to add default arguments to existing commands.
 
-Lets start with an example of the first kind.
+Let's start with an example of the first kind.
 The command `ls -l` often results in very long output, so it would be nice to be able to automatically run this output through a pager so we can see it one page at a time instead of having to scroll back up to find the start of the output.
 As we'll learn in the next instalment, you can do this using the `|` (pronounced '`pipe`') operator.
 To run the output of `ls -l` through `less` the command is:
@@ -49,7 +49,7 @@ To run the output of `ls -l` through `less` the command is:
 ls -l | less
 ----
 
-Lets create a short alias for this command, `ll`:
+Let's create a short alias for this command, `ll`:
 
 [source,shell]
 ----
@@ -68,7 +68,7 @@ alias ll=ls\ -l\ \|\ less
 ----
 
 Another common use of aliases is to add default arguments to existing commands.
-Lets look at two common examples of this.
+Let's look at two common examples of this.
 
 By default, the `ls` command does not clearly distinguish the types of the items it lists.
 `ls -F` makes things quite a bit clearer by adding a trailing `/` to all folders in the listing, and `-G` makes things even clearer still by using colours to distinguish different types of files (remember that on Linux it's `--color` rather than `-G`).
@@ -184,7 +184,7 @@ the last part of the print working directory (`$HOME` abbreviated to `~`)
 * `\$` -- if running as root a `#` symbol, otherwise, a `$` symbol
 * `\n` -- a new line (yes, your prompt can span multiple lines if you like)
 
-As an example, lets create a very descriptive BASH prompt:
+As an example, let's create a very descriptive BASH prompt:
 
 [source,shell]
 ----

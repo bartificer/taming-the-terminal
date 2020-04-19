@@ -6,9 +6,9 @@ As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP
 * We think of the stack of protocols as being broken into four layers:
-** The Link Layer -- lets computers that are on the same network send single packets of data to each other
-** The Internet Layer -- Lets computers on different networks send single packets of data to each other
-** The Transport Layer -- lets computers send meaningful streams of data between each other
+** The Link Layer -- let's computers that are on the same network send single packets of data to each other
+** The Internet Layer -- Let's computers on different networks send single packets of data to each other
+** The Transport Layer -- let's computers send meaningful streams of data between each other
 ** The Application Layer -- where all the networked apps we use live
 * Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
@@ -138,7 +138,7 @@ In other words, when you take your own IP address and AND it with your netmask y
 You then take the destination IP address and AND it with your netmask, and compare the result to your net address.
 If the result is the same as your net address, the IP is local, if not, it's remote and needs to be routed.
 
-Firstly, lets define what we mean by an `AND` operation in a binary context:
+Firstly, let's define what we mean by an `AND` operation in a binary context:
 
 
 [width=50%,options='header']
@@ -154,7 +154,7 @@ Firstly, lets define what we mean by an `AND` operation in a binary context:
 | `1` | `1` | `1`
 |===
 
-This probably all sounds very abstract, so lets work through an example.
+This probably all sounds very abstract, so let's work through an example.
 We are computer A, and the two computers we want to communicate with are Computers B and C.
 Subnet masks are not published, they are an internal OS setting, so we do not know the recipients`' netmasks, only our own.
 So, this is what we know:

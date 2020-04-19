@@ -49,10 +49,10 @@ Should that process produce any text output, it will still show in our Terminal 
 
 Backgrounding a process is actually very easy to do, just add an `&` to the end of the command, and it will start in the background!
 
-Lets illustrate this with a quick example.
+Let's illustrate this with a quick example.
 For this to work you'll need to be on OS X, have FireFox installed, and have it not be running when we start.
 
-First, lets start FireFox from the Terminal as a regular foreground process:
+First, let's start FireFox from the Terminal as a regular foreground process:
 
 [source,shell]
 ----
@@ -65,7 +65,7 @@ You can hammer the enter key all you want, but you're not getting that command p
 Go ahead and do that through the GUI as normal.
 Notice how the moment FireFox quits you get your command promote back.
 
-Now, lets start FireFox as a background process:
+Now, let's start FireFox as a background process:
 
 [source%number_lines%highlight_lines,bash]
 ----
@@ -142,7 +142,7 @@ Similarly, if I was using a computer that didn't have Smultron installed I could
 open my_perl_file.pl -a /Applications/TextEdit.app/
 ----
 
-That's all we really need to know about starting processes, so lets move on to ending them.
+That's all we really need to know about starting processes, so let's move on to ending them.
 
 == Ending Processes
 
@@ -178,14 +178,14 @@ You should see FireFox exit, and the next time you hit enter on your Terminal yo
 Finding PIDs can be a bit of a pain, so you'll be happy to know that you don't have to!
 There is another command for ending processes that uses process names rather than PIDs, it's the even more scary-sounding `killall` command.
 
-For what seems like the millionth time today, lets start FireFox and background it:
+For what seems like the millionth time today, let's start FireFox and background it:
 
 [source,shell]
 ----
 /Applications/Firefox.app/Contents/MacOS/firefox-bin &
 ----
 
-Rather than looking up it's PID, lets now exit it with the `killall` command:
+Rather than looking up it's PID, let's now exit it with the `killall` command:
 
 [source,shell]
 ----

@@ -89,7 +89,7 @@ Now it's time to open up the Terminal and get stuck in with some real-world comm
 
 == Some Terminal Commands
 
-Lets start with the most basic process-related command, `ps`, which lists running processes.
+Let's start with the most basic process-related command, `ps`, which lists running processes.
 Note that `ps` is one of the few basic terminal commands that behaves differently on Linux and Unix.
 
 On a Mac, if you run the `ps` command without arguments, all that will be listed are the terminal-based processes owned by the user running the shell.
@@ -99,7 +99,7 @@ The columns you'll see listed are PID (process ID), TTY (ignore this for now, it
 
 Most of the time, the output of `ps` without arguments is of little to no interest, you need to use one or more arguments to get anything useful form `ps`.
 
-Lets start by listing all the processes owned by a given user, regardless of whether or not they are terminal-based processes:
+Let's start by listing all the processes owned by a given user, regardless of whether or not they are terminal-based processes:
 
 [source,shell]
 ----

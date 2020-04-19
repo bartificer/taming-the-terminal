@@ -111,7 +111,7 @@ If you want to specify a remote file path as source or destination, simply prefi
 
 Because the scp command uses SSH to connect to remote computers, it can use SSH key-pairs, so if you have them configured as described in the previous instalment, you can copy files between computers without needing to enter a password.
 
-As a first example, lets copy the remote file `/tmp/ttt31/scp_remote.txt` to the local folder `/tmp/ttt31/fromRemote`:
+As a first example, let's copy the remote file `/tmp/ttt31/scp_remote.txt` to the local folder `/tmp/ttt31/fromRemote`:
 
 [source,shell]
 ----
@@ -157,7 +157,7 @@ ssh $SSH_USER@$SSH_COMP 'ls /tmp/ttt31/fromLocal'
 We're not going to describe all the optional flags `scp` supports, you can read about those in `scp`'`s man page.
 However, I do want to mention that like `cp`, `scp` allows entire folders to be transferred using the `-r` flag (for recursive).
 
-As an example, lets copy the entire remote folder `/tmp/ttt31/scp_folder` to the local folder `/tmp/ttt31/fromRemote/`.
+As an example, let's copy the entire remote folder `/tmp/ttt31/scp_folder` to the local folder `/tmp/ttt31/fromRemote/`.
 
 [source,shell]
 ----
@@ -205,7 +205,7 @@ If you add the trailing `/`, then the contents of the source folder will be copi
 I always use the trailing `/`, because I find that behaviour the most intuitive.
 If you add the trailing `/` to the source, then `rsync` will make both the source and destination be the same.
 
-So far, we have seen how `rsync` can synchronise two folders on the same computer, now lets add SSH into the mix.
+So far, we have seen how `rsync` can synchronise two folders on the same computer, now let's add SSH into the mix.
 Historically, `rsync` used its own custom networking protocol, but that protocol is not secure.
 Modern versions of `rsync` can use an external program to create the network connection across which it will transfer files.
 This is done with the `-e` flag (for external program).
@@ -220,14 +220,14 @@ OS X comes with `rsync` installed by default, as do many Linux distros.
 However, on some Linux distros, particularly the more minimalist ones, you may need to install `rsync` using the distro's package manager.
 This is true if you do a minimal install of CentOS for example.
 
-As an example, lets use `rsync` to backup the contents of the remote folder `/tmp/ttt31/rsync_folder` to the local folder `/tmp/ttt31/fromRemote/rsync_backup`.
+As an example, let's use `rsync` to backup the contents of the remote folder `/tmp/ttt31/rsync_folder` to the local folder `/tmp/ttt31/fromRemote/rsync_backup`.
 Using `rsync` to pull a backup from a remote computer is a very common use-case.
 For example, every night at 4am my Linux file server at home reaches out to the web server that hosts all my websites to do a full backup of my sites using `rsync` over SSH.
 
 Running an `rsync` backup for the first time can be nerve-wracking, are you sure the right files will be copied/deleted etc.?
 The `-n` flag is here to save your nerves!
 When you issue an `rsync` command with the `-n` flag (I remember it as `n` for _not really_), `rsync` will print the changes it would make, but not actually do anything -- think if it as a dry run.
-Lets start by running our example backup as a dry run, just to be sure we have everything correct.
+Let's start by running our example backup as a dry run, just to be sure we have everything correct.
 
 [source,shell]
 ----
@@ -254,7 +254,7 @@ ls /tmp/ttt31/fromRemote/rsync_backup
 Because we have not changed the remote files, if you re-run the command, nothing will be transferred.
 Try it!
 
-Lets give `rsync` some work to do by creating a third remote file:
+Let's give `rsync` some work to do by creating a third remote file:
 
 [source,shell]
 ----

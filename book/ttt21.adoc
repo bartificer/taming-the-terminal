@@ -82,7 +82,7 @@ find search_path conditions -exec command args_or_flags {} '+'
 Like before, `{}` indicates where the found files and folders should be included in the command, and the `'+'` on the end indicates the end of the command, and that the command should be run once with all the results as arguments.
 
 Again, a practical example might be helpful.
-Lets say you're doing up a report on just how much work went into a coding project.
+Let's say you're doing up a report on just how much work went into a coding project.
 You want to know how many lines of code you wrote, and you know that all your code is in perl scripts and perl modules, i.e.
 you know all relevant files have `.pl` and `.pm` file extensions.
 

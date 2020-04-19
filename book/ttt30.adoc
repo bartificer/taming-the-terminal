@@ -58,7 +58,7 @@ To use SSH key authentication you need to do the following:
 
 Once those steps have been completed you will be able to log in to the remote computer without having to know the password of the user you will be connecting as.
 
-Lets look at these steps in detail now.
+Let's look at these steps in detail now.
 To play along you'll need two computers, one to SSH from, and one to SSH to.
 
 === Generating an SSH Key-Pair
@@ -218,7 +218,7 @@ All those working on the project need to be abel to log into the web server to e
 Being a club, there is going to be a natural churn of members, so people will continually join and leave the project, and it's possible that some of the leavers will not be leaving on good terms.
 How do you handle this situation?
 
-First, lets look at the simplest and perhaps most obvious solution -- a shared password.
+First, let's look at the simplest and perhaps most obvious solution -- a shared password.
 You set a password on the account, and share that password with the group.
 Then, each time a new member starts, you let them in on the secret.
 So far so good.

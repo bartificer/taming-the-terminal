@@ -2,7 +2,7 @@
 = TTT Part 34 of n -- Introducing HTTP
 
 In <<ttt33,the previous instalment>> we finished a five-part series on SSH.
-Before moving on, lets take a moment to step back and look at the big-picture.
+Before moving on, let's take a moment to step back and look at the big-picture.
 The five SSH instalments are all part of the now long-running series on networking.
 We have been working our way through the networking stack since <<ttt23,instalment 23>>.
 We started at the bottom of the stack, and have worked our way up.
@@ -265,7 +265,7 @@ Some other common web MIME Types include:
 
 == Exploring HTTP With Your Browser
 
-Before moving on to the HTTP-related terminal commands, lets look at some of the debugging tools contained within our browsers.
+Before moving on to the HTTP-related terminal commands, let's look at some of the debugging tools contained within our browsers.
 All modern browsers have developer tools, and they all do similar things, but the UI is different in each.
 My personal preference is to use Safari's developer tools, but so as to make this section accessible to as many people as possible, we'll use the cross-platform FireFox browser.
 

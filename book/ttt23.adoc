@@ -192,7 +192,7 @@ Some applications make use of both -- for example, when you log on to Skype you'
 From the our point of view as a user trying to communicate across our home network or the internet, the process always starts at the application layer.
 We are sending an email, or we are viewing a web page, or we are downloading a file, or we are playing a game, or we are chatting with friends, or what ever.
 
-As a worked example, lets look at what happens when you use your web browser to try visit `+http://www.so-4pt.net/~bart/ttt23/+`.
+As a worked example, let's look at what happens when you use your web browser to try visit `+http://www.so-4pt.net/~bart/ttt23/+`.
 
 Before you can visit that URL, I have to have put some digital ducks in a row on my end.
 Firstly, I have to have arranged for a DNS server to advertise to the world that my web server has the IP address `46.22.130.125`, and, I have to have the server with that IP address configured to act as a web server.
@@ -218,7 +218,7 @@ User-Agent:      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10) AppleWebKit/600.1
 It then has to figure out, based on the URL your typed, what IP address it should strike up a TCP conversation with!
 
 To do that it asks your OS to do a DNS lookup in it's behalf.
-For simplicity, lets assume your OS had the answer in it's cache, so it just gives the browser the answer that `www.so-4pt.net` maps to the IP address to `46.22.130.125`.
+For simplicity, let's assume your OS had the answer in it's cache, so it just gives the browser the answer that `www.so-4pt.net` maps to the IP address to `46.22.130.125`.
 We'll be looking at the DNS protocol in much more detail in a future instalment!
 
 Your browser then asks your OS to open a TCP connection to port 80 on 46.22.130.125 on its behalf.

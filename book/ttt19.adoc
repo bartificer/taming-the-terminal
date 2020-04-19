@@ -51,7 +51,7 @@ There are two basic ways in which `egrep` can be used -- it can filter what ever
 
 == Filtering `STDIN`
 
-Lets start with the first use-case, using using `egrep` to filter `STDIN`.
+Let's start with the first use-case, using using `egrep` to filter `STDIN`.
 When `egrep` is used in this mode it passes every line of text sent to `STDIN` that matches the given pattern to standard out (`STDOUT`), and ignores all others.
 If you send 5,000 lines of text to `egrep` via `STDIN`, and only 5 of those lines match the specified pattern, then only 5 lines will be passed to `STDOUT` (which is the screen unless the output is redirected elsewhere).
 
@@ -90,7 +90,7 @@ sudo tcpdump -i any -nn
 
 It probably won't be long until you start seeing packets fly by, but if it's a bit sluggish, try checking your email or visiting a web page and the packets will soon start to fly!
 
-Now, lets say we want to watch what DNS queries our computer is making.
+Now, let's say we want to watch what DNS queries our computer is making.
 Given that DNS queries are over port 53, and that your router is almost certainly your DNS server, we know that all DNS queries will be sent to your router on port 53.
 Before we construct the pattern to pass to `egrep`, we need to find the IP address of our router.
 We can do this by filtering the output from another command that we'll be looking at in much more detail later, `netstat`.
@@ -181,7 +181,7 @@ This gives you some idea of just how many resources from disparate sources get p
 
 == Searching Files
 
-Lets move on now to using `egrep` to search the contents of one or more files for a given pattern.
+Let's move on now to using `egrep` to search the contents of one or more files for a given pattern.
 
 When using `egrep` to search file(s), it requires a minimum of two arguments, first the pattern to be search for, and secondly at least one file to search.
 If you want to search multiple files, you can keep adding more file paths as arguments.

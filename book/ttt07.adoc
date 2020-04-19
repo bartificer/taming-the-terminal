@@ -69,7 +69,7 @@ When using `ls -R` the contents of each folder is separated by a blank line, and
 In other words, we are expecting to see just a single entry in the first segment, a folder called `topLevelFolder`, then we expect to see a blank line followed by the name of the next folder to be listed, which will be the aforementioned `topLevelFolder`, followed by the listing of its contents, which is also just one folder, this time called `secondLevelFolder`.
 This will then be followed by a header and listing of the contents of `secondLevelFolder`, which is currently empty.
 
-Lets now create two empty files in the deepest folder within our test folder (`secondLevelFolder`).
+Let's now create two empty files in the deepest folder within our test folder (`secondLevelFolder`).
 There are many ways to create a file in Unix/Linux, but one of the simplest is to use the `touch` command -- the main purpose of this command is to change the last edited date of an existing file to the current time, but, if you try to `touch` a file that doesn't exist, `touch` creates it for you:
 
 [source,shell]
@@ -87,7 +87,7 @@ ls -RFlh
 
 == Copying Files/Folders
 
-Lets now create a second top-level folder, and copy the files to it:
+Let's now create a second top-level folder, and copy the files to it:
 
 [source,shell]
 ----

@@ -267,7 +267,7 @@ To search only the specified folder and no deeper use `-maxdepth 1`.
 
 Note that limiting the depth can really speed up searches of large folders if you know what you want is not deep down in the hierarchy.
 For example, if you have a lot of documents in your documents folder it can take ages to search it, but, if you are only interested in finding stuff at the top level you can really speed things up.
-Lets say we are the kind of person who makes lots of temp folders at the top level of their Documents folder (guilty as charged), and you want to find them all so you can do a bit of house keeping, you could search your entire Documents folder with:
+Let's say we are the kind of person who makes lots of temp folders at the top level of their Documents folder (guilty as charged), and you want to find them all so you can do a bit of house keeping, you could search your entire Documents folder with:
 
 [source,shell]
 ----

@@ -135,7 +135,7 @@ You can roughly divide the command-line text editors into two categories, the qu
 The simpler editors are much easier to learn, but much less powerful.
 If you spend a lot of time on the command-line, learning at least one of the power editors is worth the effort IMO.
 
-Anyway, lets start simple.
+Anyway, let's start simple.
 There are two common quick and simple command-line text editors, `pico` and `nano`, and the chances are very high that no matter what modern Linux or Unix OS you are using, one of these two will be available.
 (OS X comes with `nano`, but like with `more`, it pretends to have `pico` too, until you run `pico --version` when it fesses up to really being nano)
 
@@ -143,7 +143,7 @@ Once opened `pico` and `nano` are virtually indistinguishable anyway, so which y
 If you want to edit an existing file, you invoke `nano` (or `pico`) with the path to the file you want to edit.
 If you want to create a new file, you invoke `nano` with the path you'd like the new file to be created at.
 
-Lets play it safe and start a new file for our experimentations:
+Let's play it safe and start a new file for our experimentations:
 
 [source,shell]
 ----
@@ -154,7 +154,7 @@ nano ~/Documents/nanoTest.txt
 
 Once in `nano` you'll see a cursor where you can start to type, and along the bottom a list of possible commands with their key combinations next to them (remember, `^` is short-hand for the control key).
 
-Lets keep this simple and just type the utterly clicheéd sentence:
+Let's keep this simple and just type the utterly clicheéd sentence:
 
 [source,shell]
 ----
@@ -193,7 +193,7 @@ Specifically, `vi` is always in either _insert mode_ OR _command mode_.
 In insert mode everything you type is entered into the file where the cursor is, and in command mode, nothing you type is entered into the file, and everything you type is interpreted as a command by `vi`.
 This confuses the heck out of people, and it takes some getting used to!
 
-You invoke `vi` in the same way you would `nano`, so for our example lets do the following:
+You invoke `vi` in the same way you would `nano`, so for our example let's do the following:
 
 [source,shell]
 ----
@@ -205,11 +205,11 @@ vi ~/Documents/viTest.txt
 When the file opens we are in command mode.
 If we were editing a pre-existing file instead of creating a new one, we would be able to move the cursor around, but anything we type would be treated as a command by `vi`, not as input for the file.
 
-Lets start by switching from command mode into insert mode.
+Let's start by switching from command mode into insert mode.
 To do this, hit the `i` key (i for insert).
 Notice that at the bottom of the screen it now says INSERT in all caps -- you'll always see this when you are in insert mode.
 
-Lets be boring and insert the same text as before:
+Let's be boring and insert the same text as before:
 
 [source,shell]
 ----
@@ -230,8 +230,8 @@ You can combine those commands into one, so to save an exit you would use the co
 If you start hammering away on the keyboard in command mode, erroneously assuming you are in insert mode, it's inevitable that you'll accidentally invoke a command you REALLY didn't want to invoke.
 This is why the most important `vi` command to know after `:wq` is `:q!`, which is exit without saving (if you try `:q` without the `!` when there are unsaved changes `vi` won't let you exit).
 
-So far this all sounds needlessly complex, so lets step things up a gear, and start to make real use of `vi`'`s command mode.
-Let's start by copying a line of text, or, in `vi`-speak, lets _yank_ a line of text.
+So far this all sounds needlessly complex, so let's step things up a gear, and start to make real use of `vi`'`s command mode.
+Let's start by copying a line of text, or, in `vi`-speak, let's _yank_ a line of text.
 
 While in command mode command mode (hit escape to make double-sure), move the cursor (with the arrow keys) so it's somewhere on the line that says '`Hello World!`', then type `yy`.
 You have now yanked the current line.
@@ -242,7 +242,7 @@ You can keep hammering on the `p` key as often as you like to keep adding more c
 One of the things I like most about `vi` is that you can enter a number before many of the commands to repeat them that many times.
 To put our yanked line 500 times the command is `500p`.
 
-Lets say our aspirations have expanded, we'd like to greet the entire universes, not just the world!
+Let's say our aspirations have expanded, we'd like to greet the entire universes, not just the world!
 We could make over 500 edits, or, we could ask `vi` to do a global find and replace for us with the command:
 
 [source,shell]
