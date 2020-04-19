@@ -78,7 +78,7 @@ This means that executable files in the present working directory are not search
 This is different to Windows/DOS where `.` is included in the standard path.
 Not including `.` in the path is a security feature, it stops malicious versions of common commands dropped into folders being inadvertently executed.
 
-You can of course still run executable files in the present working directory on Unix/Linux, but you need to be explicit about it by pre-fixing the command with `./`, e.g.:
+You can of course still run executable files in the present working directory on Unix/Linux, but you need to be explicit about it by prefixing the command with `./`, e.g.:
 
 [source,shell]
 ----

@@ -107,7 +107,7 @@ scp source_file_1 [source_file_2 ...] destination
 
 You can specify one or more source files, and a destination to copy them to.
 The big difference is that with scp, both the source and destination can be on another computer.
-If you want to specify a remote file path as source or destination, simply pre-fix the path with `user@computer:`.
+If you want to specify a remote file path as source or destination, simply prefix the path with `user@computer:`.
 
 Because the scp command uses SSH to connect to remote computers, it can use SSH key-pairs, so if you have them configured as described in the previous instalment, you can copy files between computers without needing to enter a password.
 
@@ -211,7 +211,7 @@ Modern versions of `rsync` can use an external program to create the network con
 This is done with the `-e` flag (for external program).
 To transfer files over SSH, we need to use `-e ssh`.
 
-Like `scp`, `rsync` allows either the source or destination (or both) to be specified as being remote by pre-fixing the path with `user@computer:`.
+Like `scp`, `rsync` allows either the source or destination (or both) to be specified as being remote by prefixing the path with `user@computer:`.
 
 Like with `scp`, `rsync` over SSH can use SSH key-pairs to allow password-less synchronisation of folders across the network.
 

@@ -331,7 +331,7 @@ This is the most commonly used representation, and is used in the System Prefere
   1111 = f
 ----
 +
-In computer science hexadecimal numbers are signified by pre-fixing them with `0x`, so our example netmask can be written as `0xfffffff8`.
+In computer science hexadecimal numbers are signified by prefixing them with `0x`, so our example netmask can be written as `0xfffffff8`.
 This is by far the least human-friendly representation, but it is the one BSD Unix, and OS X, use in the output from the `ifconfig` command.
 
 * A netmask can also be represented in bits, that is to say, the number of the 32 possible bits that are set to 1.

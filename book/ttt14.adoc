@@ -165,7 +165,7 @@ On the RedHat and CentOS variants of Linus the default is `[\u@\h \W]\$`, which 
 [bart@www ~]$
 ----
 
-From the above you should be able to deduce that any letter in the code pre-fixed with a `\` is replaced with a value.
+From the above you should be able to deduce that any letter in the code prefixed with a `\` is replaced with a value.
 Below is a list of some of the variables at your disposal:
 
 * `\h` -- your computer's host name (e.g.

@@ -122,7 +122,7 @@ However, regardless of how the data is sent, it is always encoded in the same wa
 Each form element on a page has a name, and a value.
 The data is encoded as a sequence of `name=value` pairs, separated with `&` symbols.
 Neither names nor values can contain special characters, so any such characters in the data must be encoded using URL escape sequences.
-These are two-digit hexidecimal codes pre-fixed with the `%` symbol.
+These are two-digit hexidecimal codes prefixed with the `%` symbol.
 You'll find a http://www.w3schools.com/tags/ref_urlencode.asp[full list of URL escape codes here], but as an example, a space character is encode as `%20`.
 
 == HTTP Responses
