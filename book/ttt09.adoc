@@ -1,7 +1,7 @@
-[[ttt9]]
+[[ttt09]]
 = TTT Part 9 of n -- Controlling Processes
 
-In the <<ttt8,previous instalment>> we looked how Unix-like operating systems like Linux and Mac OS X represent processes.
+In the <<ttt08,previous instalment>> we looked how Unix-like operating systems like Linux and Mac OS X represent processes.
 We then went on to look at the commands for listing running processes, and filtering and sorting them in various ways.
 This time we'll move on to controlling processes, specifically, starting and stopping them.
 

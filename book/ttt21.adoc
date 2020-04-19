@@ -49,7 +49,7 @@ The `-exec` flag means we are about to start specifying a command to execute, an
 
 This sounds quite complicated, but hopefully a practical example will help.
 A real-world problem you may encounter is that you need to make all perl scripts in a given set of nested folders executable.
-As we learned in <<ttt6,instalment 6>>, we can make a file executable with the command:
+As we learned in <<ttt06,instalment 6>>, we can make a file executable with the command:
 
 [source,shell]
 ----

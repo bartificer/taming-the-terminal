@@ -1,8 +1,8 @@
-[[ttt4]]
+[[ttt04]]
 = TTT Part 4 of n -- Navigation
 
 
-In <<ttt3,the previous segment>> we discussed the concept of a file system in detail.
+In <<ttt03,the previous segment>>, we discussed the concept of a file system in detail.
 We described how filesystems contain folders which contain files or folders, and we
 described the different ways in which Windows and Linux/Unix/OS X combine all the
 filesystems on our computers into a single name-space, within which every file has a
