@@ -1,14 +1,14 @@
 [[ttt34]]
 = TTT Part 34 of n -- Introducing HTTP
 
-In <<ttt33,the previous instalment>> we finished a five-part series on SSH.
+In <<ttt33,the previous instalment>>, we finished a five-part series on SSH.
 Before moving on, let's take a moment to step back and look at the big-picture.
 The five SSH instalments are all part of the now long-running series on networking.
 We have been working our way through the networking stack since <<ttt23,instalment 23>>.
 We started at the bottom of the stack, and have worked our way up.
 We are not exploring protocols in the Application Layer.
 
-In this instalment we're moving on from SSH to HTTP, the protocol that powers the world wide web.
+In this instalment, we're moving on from SSH to HTTP, the protocol that powers the world wide web.
 
 Before we look at some HTTP-related terminal commands, we need a basic understanding of how HTTP works, so that's what this instalment is all about.
 
@@ -32,18 +32,18 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34Introducing
 == Introducing HTTP
 
 HTTP, the Hyper Text Transfer Protocol, is an application layer protocol that sits on top of TCP.
-By default HTTP servers listen on TCP port 80.
-HTTP is a request-response protocol, where the clients (usually web browsers) formulate an HTTP request and send it to an HTTP server, which then interprets it and formulates a HTTP response, which the client then processes.
+By default, HTTP servers listen on TCP port 80.
+HTTP is a request-response protocol, where the clients (usually web browsers) formulate an HTTP request and send it to an HTTP server, which then interprets it and formulates an HTTP response, which the client then processes.
 The HTTP protocol is plain-text and human-readable.
 
-The HTTP protocol is most closely associated with web browsers, which use it to fetch web pages, but its used by other apps too.
+The HTTP protocol is most closely associated with web browsers, which use it to fetch web pages, but it's used by other apps too.
 Another common example is pod-catchers, which use HTTP to fetch the RSS feeds that define podcasts, as well as the media files those feeds link to.
 Many modern phone & tablet apps also use HTTP to communicate with the so-called cloud that powers them.
-HTTP is on of the real work-horses of the modern internet.
+HTTP is one of the real work-horses of the modern internet.
 
 == HTTP Requests
 
-A HTTP request consists of between one and three sections.
+An HTTP request consists of between one and three sections.
 It always starts with a request line.
 This request line can be followed by zero or more request header lines, and finally, a data section may follow, separated from the headers by an empty line.
 The data section, should it be present, contains data entered into web forms, including file uploads.
@@ -76,7 +76,7 @@ We won't look at all the headers, but I do want to draw attention to a few notab
 
 The `Host` header is what makes it possible for multiple web sites to be served from a single IP address.
 The receiving web server will have many different domains configured, and this header will tell it which content is being requested.
-The `User-Agent` header identifies the browser to the server, and makes it possible to gather browser and OS usage stats.
+The `User-Agent` header identifies the browser to the server and makes it possible to gather browser and OS usage stats.
 Notice how you can tell from the above header that I was using FireFox 37 on OS X 10.10.
 
 Notice that any cookies my browser has stored for the domain `podfeet.com` have been added to the request via the `Cookie` header.
@@ -108,29 +108,29 @@ I can see it in the URL of the search results.
 I can then copy and paste that URL into an email to share that search with someone else.
 
 `POST` requests should be used when there is a lot of data to send, or when the data is sensitive.
-`POST` requests should be used for all request that change the internal state of a web app, e.g.
+`POST` requests should be used for all request that changes the internal state of a web app, e.g.
 to send an email in a webmail interface, add a post on a social media site, or change a password.
-`POST` requests add the form data after the headers, so it is not logged, and has no restrictions on the length of the data.
+`POST` requests add the form data after the headers, so it is not logged and has no restrictions on the length of the data.
 `POST` requests cannot be bookmarked or shared.
 
 === Encoding Form Data
 
-Whenever we submit a web form, the data we have entered is submitted to the server as part f a HTTP request.
+Whenever we submit a web form, the data we have entered is submitted to the server as part of an HTTP request.
 If the submit button is configured to use `GET`, then the data is appended to the URL, like a Google search, and if the submit button is configured to use `POST`, the data is added to the end of the HTTP request, after the request headers, separated from them by a blank line.
 However, regardless of how the data is sent, it is always encoded in the same way.
 
-Each form element on a page has a name, and a value.
+Each form element on a page has a name and a value.
 The data is encoded as a sequence of `name=value` pairs, separated with `&` symbols.
 Neither names nor values can contain special characters, so any such characters in the data must be encoded using URL escape sequences.
-These are two-digit hexidecimal codes prefixed with the `%` symbol.
-You'll find a http://www.w3schools.com/tags/ref_urlencode.asp[full list of URL escape codes here], but as an example, a space character is encode as `%20`.
+These are two-digit hexadecimal codes prefixed with the `%` symbol.
+You'll find a http://www.w3schools.com/tags/ref_urlencode.asp[full list of URL escape codes here], but as an example, a space character is encoded as `%20`.
 
 == HTTP Responses
 
-When a web server receives a HTTP request, it interprets it, and tries to fetch the data requested, and return it.
-It may well fail, but what ever the result of attempting to fulfil the request, the server will formulate a HTTP response to communicate the outcome of the request to the client.
+When a web server receives an HTTP request, it interprets it, and tries to fetch the data requested, and return it.
+It may well fail, but whatever the result of attempting to fulfil the request, the server will formulate an HTTP response to communicate the outcome of the request to the client.
 
-Similar to the request, a HTTP response has three parts, a status line, zero or more response header lines, and a final optional data segment, separated from the headers by a blank line.
+Similar to the request, an HTTP response has three parts, a status line, zero or more response header lines, and a final optional data segment, separated from the headers by a blank line.
 
 Below is a truncated version of the HTTP response from Allison's web server to a request for http://www.podfeet.com/blog/:
 
@@ -162,21 +162,21 @@ You could receive a successful response, a response instructing the client to re
 a redirect), a request for authentication (a username and password popup), or an error message.
 
 After the HTTP response line comes a list of HTTP header lines, again, we won't go into them all, but I do want to draw your attention to a few important ones.
-Firstly, the `Server` header makes it possible to gather statistics on the web servers in use on the internet -- notice that Allison's site is powered by an Apache web server.
+Firstly, the `Server` header makes it possible to gather statistics on the web servers in use on the internet -- notice that Allison's site is powered by an Apache webserver.
 The single most important response header is `Content-Type`, which tells the client what type of data it will receive after the blank line, and optionally, how it's encoded.
 In this case, the data section contains HTML markup encoded using UTF-8.
-Also notice that the server is requesting the client set a new cookie using the `Set-Cookie` header, and that the `Cache-Control` header is telling the client, in many different ways, that it absolutely positively should not cache a copy of this page.
+Also notice that the server is requesting the client set a new cookie using the `Set-Cookie` header and that the `Cache-Control` header is telling the client, in many different ways, that it absolutely positively should not cache a copy of this page.
 The actual HTML markup for Allison's home page is hundreds of lines long, I have only shown the first six lines.
 
 It's important to note that rendering a single web page generally involves many HTTP requests, often to multiple servers.
 The first response will usually be the HTML markup for the web page in question, but that HTML will almost certainly contain links to other resources need to render the page, like style sheets, images, JavaScript files, etc..
 As an example, rendering Allison's home page requires 107 HTTP requests!
 That's on the high side because Allison has a lot of videos embedded in her home page, and quite a few widgets embedded in her sidebars.
-However, on the modern web it's not unusual to need this many requests to render a single page.
+However, on the modern web, it's not unusual to need this many requests to render a single page.
 
 === HTTP Response Codes
 
-There are many supported HTTP response codes (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html[click here for a full list]), and we're not going to go into them all, but I do want to explain the way they are grouped, and highlight some common ones you're likely to come across.
+There are many supported HTTP response codes (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html[click here for a full list]), and we're not going to go into them all, but I do want to explain the way they are grouped and highlight some common ones you're likely to come across.
 
 HTTP response codes are three-digit numbers starting with 1, 2, 3, 4, or 5.
 They are grouped into related groups by their first digit.
@@ -205,13 +205,13 @@ You're unlikely to ever see this in a browser, but if you muck around constructi
 Tells the client to request a username and password from the user
 
 `403 - Forbidden`::
-The requested URL exists, but the client has been denied access, perhaps based on the user they have logged in as, the IP address they are accessing the site from, or the file-type of the URL they are attempting to access.
+The requested URL exists, but the client has been denied access, perhaps based on the user they have logged in as the IP address they are accessing the site from, or the file-type of the URL they are attempting to access.
 
 `404 - Not Found`::
 One of the most common errors you'll see -- your request was valid, the server understood it, but it has no content to return to you at that URL.
 
 `500 - Internal Server Error`::
-The web programmers's most hated error -- it just means the server encountered and error while trying to fulfil your request.
+The web programmers' most hated error -- it just means the server encountered an error while trying to fulfil your request.
 
 `502 - Bad Gateway`::
 In the days of CDNs (Content Delivery Networks), these errors are becoming ever more common.
@@ -222,12 +222,12 @@ The front-end server is considered a gateway to the backend server, hence the na
 The server is temporarily too busy to deal with you -- effectively a request to try again later.
 
 `504 - Gateway Timeout`::
-This error is similar to a 502, and is also becoming ever more common with the rise of CDNs, it means the backend server is up, but is responding too slowly to the front-end server, and the front-end server is giving up.
+This error is similar to a 502 and is also becoming ever more common with the rise of CDNs, it means the backend server is up but is responding too slowly to the front-end server, and the front-end server is giving up.
 
 === MIME Types
 
 HTTP uses the `Content-Type` header to specify the type of data being returned.
-The value of that header must be a so-called MIME Type, or _internet media type_.
+The value of that header must be a so-called MIME Type or _internet media type_.
 MIME Types have their origins in the common suite of email protocols, and were later adopted for use on the world wide web -- after all, why re-invent the wheel!?
 
 There are MIME types for just about everything, and they consist of two parts, a general type, and then a more specific identifier.
@@ -296,14 +296,14 @@ This is a sign of efficient use of caching.
 If you click on one of these requests and look at the raw headers, you'll see that the request headers included a header called `If-Modified-Since`, which specifies a date.
 That tells the server that the browser has a cached copy of this URL that was retrieved at the specified date.
 The server can use this date to check if the content of the URL has changed since then.
-If the data is unchanged, the server can respond with a `304` status code rather than a fresh copy of the data, this tells the client that the data has not changed, so it's OK to use cached version.
+If the data is unchanged, the server can respond with a `304` status code rather than a fresh copy of the data, this tells the client that the data has not changed, so it's OK to use the cached version.
 This kind of caching of static content like images saves a lot of bandwidth.
 
 == Conclusions
 
-Hopefully you now have a basic understanding of what your browser is doing when you visit a webpage.
+Hopefully, you now have a basic understanding of what your browser is doing when you visit a webpage.
 Do bear in mind though that we have ignored some of the subtle detail of the process so as not to add unnecessary confusion.
 While this description will be sufficient to understand the terminal commands that interact with web servers, it would not be sufficient to pass an exam on the subject!
 
 Now that we understand the fundamentals of how HTTP works, we are ready to look at some related terminal commands.
-In the next instalment we'll learn about three such terminal commands, `lynx`, `wget`, and `curl`.
+In the next instalment, we'll learn about three such terminal commands, `lynx`, `wget` and `curl`.
