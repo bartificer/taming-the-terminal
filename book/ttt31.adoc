@@ -328,7 +328,7 @@ If you know the remote folder you want to copy files from, you can also specify 
 sftp user@computer:remote_path
 ----
 
-When ever any command puts me into another shell, the first thing I want to know is how to get out!
+Whenever any command puts me into another shell, the first thing I want to know is how to get out!
 With SFTP you have two choices, the traditional FTP command `bye`, or the more memorable command `exit`.
 
 Within a BASH shell you are used to the concept of a present working directory, but in an (S)FTP shell that concept is extended to two present working directories, a present local working directory, and a present remote working directory.

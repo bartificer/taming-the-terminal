@@ -61,7 +61,7 @@ To protect your private key, SSH identity files support passphrase-based encrypt
 The actual values stored in the files can be the result of encrypting the private key with a passphrase.
 The ssh-keygen command will allow you to set a blank password on an identity, but it very much encourages you not to do that, and to set a good secure passphrase.
 
-If you follow best practice and do indeed set a passphrase on your identity, SSH will prompt you for that passphrase when ever it needs the private key part of that identity.
+If you follow best practice and do indeed set a passphrase on your identity, SSH will prompt you for that passphrase whenever it needs the private key part of that identity.
 This gets very tedious very quickly, and that's where the SSH Agent comes in.
 
 [#SSH_Agents]

@@ -207,7 +207,7 @@ cd \$HOME/Library/Application\ Support
 
 Sometimes when we type the `$` symbol we mean the `$` operator, and sometimes we just mean the character `$`.
 If we mean the character, we have to inhibit the operator either by escaping it, or by using single quotes around the string containing it.
-When ever you find yourself typing the `$` character, pause and think which you mean before hitting enter, and be sure you have it escaped or not as appropriate.
+Whenever you find yourself typing the `$` character, pause and think which you mean before hitting enter, and be sure you have it escaped or not as appropriate.
 
 While we can list the values stored in all variables with `set`, it's also helpful to know how to show the value stored in a single variable.
 The easiest way to do this is to make use of the initially useless-seeming command `echo`.

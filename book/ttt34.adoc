@@ -115,7 +115,7 @@ to send an email in a webmail interface, add a post on a social media site, or c
 
 === Encoding Form Data
 
-When ever we submit a web form, the data we have entered is submitted to the server as part f a HTTP request.
+Whenever we submit a web form, the data we have entered is submitted to the server as part f a HTTP request.
 If the submit button is configured to use `GET`, then the data is appended to the URL, like a Google search, and if the submit button is configured to use `POST`, the data is added to the end of the HTTP request, after the request headers, separated from them by a blank line.
 However, regardless of how the data is sent, it is always encoded in the same way.
 

@@ -186,7 +186,7 @@ Ethernet can only move a packet from one MAC address to another, and IP moves pa
 
 The Address Resolution Protocol, or ARP, is an ethernet protocol that maps IP addresses to MAC addresses.
 It's a supremely simplistic protocol.
-When ever a computer needs to figure out what MAC address matches a given IP address, it sends an ARP request to the broadcast MAC address (`ff:ff:ff:ff:ff:ff`), and what ever computer has the the requested IP answers back to the MAC address asking the question with an ARP reply saying that their MAC address matches the requested IP.
+Whenever a computer needs to figure out what MAC address matches a given IP address, it sends an ARP request to the broadcast MAC address (`ff:ff:ff:ff:ff:ff`), and what ever computer has the the requested IP answers back to the MAC address asking the question with an ARP reply saying that their MAC address matches the requested IP.
 
 The command you've had running in the background since the start of this instalment has been listening for ARP packets, and printing every one your computer sees.
 You should see output something like:

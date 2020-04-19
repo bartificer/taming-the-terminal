@@ -91,7 +91,7 @@ We'll be ignoring DHCP relay agents for the remainder of this discussion.
 == How DHCP Works
 
 DHCP is a simple request-response protocol.
-DHCP relies heavily on UDP broadcast packets, but when ever possible it uses regular UDP packets because they cause less congestion on a network.
+DHCP relies heavily on UDP broadcast packets, but whenever possible it uses regular UDP packets because they cause less congestion on a network.
 
 When a computer configured to use DHCP is first connected to a network a four-part conversation should follow, at the end of which the computer should have a fully configured TCP/IP stack.
 Assuming everything goes to plan, the following should be the sequence of events:
