@@ -3,7 +3,7 @@
 
 This instalment is the start of a series of instalments relating to searching from the command-line.
 Searching is all about patterns, and that means getting to grips with Regular Expressions (also called RegExps, RegExes or REs for short).
-Regular Expressions are languages for representing patterns, and are used throughout IT, not just on the command-line.
+Regular Expressions are languages for representing patterns and are used throughout IT, not just on the command-line.
 While this series focuses on the Terminal, an understanding of regular expressions will be helpful in many other places, from programming languages to GUI apps like programming editors, search utilities or file re-namers.
 
 It's going to take us two instalments to properly describe regular expressions, but when we're done we'll have gained a very useful skill.
@@ -28,7 +28,7 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT17RegularExpr
 == What Are Regular Expressions?
 
 If you want to get scientific about it, regular expressions are languages for describing regular grammars, which are the simplest type of grammar in the http://en.wikipedia.org/wiki/Chomsky_hierarchy[Chomsky Hierarchy].
-You could easily dedicate an entire university level course to explaining the meaning and importance of that last sentence, and in fact, if you take a degree in Computer Science, you will!
+You could easily dedicate an entire university-level course to explaining the meaning and importance of that last sentence, and in fact, if you take a degree in Computer Science, you will!
 However, that's not much use to us for the purpose of this series.
 In effect, what it means is that regular expressions provide a means for representing patterns that can be described as a series of elements following one after the other.
 That means regular expressions can do a lot, they can find all currency amounts in a document (a currency symbol followed by either an integer or a decimal number), they can find percentages (an integer or decimal number followed by a percentage symbol), they can find temperatures (an integer or decimal number followed by a `C`, `F`, or `K`), and so on.
@@ -38,7 +38,7 @@ That includes quite complex things like recognising URLs, which could be describ
 A valid URL consists of a protocol specifier followed by the colon symbol, then two forward slashes, then a domain name, then, optionally, a port number, then optionally a path starting with a /, then, optionally an anchor starting with a pound/hash symbol, and then finally an optional query string starting with a question mark symbol.
 ****
 
-That description is actually incomplete, because you would need to describe what some of those parts mean in more detail before you could write a regular expression for them, but that's no problem because those parts too can be described as a series of elements following each other.
+That description is actually incomplete because you would need to describe what some of those parts mean in more detail before you could write a regular expression for them, but that's no problem because those parts too can be described as a series of elements following each other.
 For example, you'd have to further break down the domain name part into something like:
 
 ****
@@ -48,10 +48,10 @@ Each segment can only contain letters, digits, and dashes, and must start with a
 
 The key point is that if you can describe a pattern as a series of elements that follow one after the other, then you should be able to write a regular expression to represent that pattern.
 
-So, regular expressions are without doubt powerful, but, they are not all-powerful -- there are entire classes of problems regular expressions are powerless to help with.
+So, regular expressions are without a doubt powerful, but, they are not all-powerful -- there are entire classes of problems regular expressions are powerless to help with.
 In fact, to get scientific again for a moment, there are three entire grammar classes in the Chomsky Hierarchy that REs are powerless to help with.
 In practical terms that means that REs can't help when some kind of memory is needed to know what has gone before, or when the elements in the pattern can be arbitrarily ordered and/or nested.
-For example, it would be impossible to write a regular expression to test if an arbitrary piece of text contained a matched set of arbitrarily nested brackets, because, to know if a given closing bracket is or it not valid, you need to know how many opening brackets have proceeded it.
+For example, it would be impossible to write a regular expression to test if an arbitrary piece of text contained a matched set of arbitrarily nested brackets, because, to know if a given closing bracket is or is not valid, you need to know how many opening brackets have proceeded it.
 Also, REs can't be used to validate something like XML (or HTML for that matter), because tags can come in any order, and be validly nested in all sorts of different ways.
 
 Not understanding the limits of REs leads to a lot of frustration, and a lot of very unreliable code.
@@ -62,7 +62,7 @@ The fact that many programmers don't understand the limitations of regular expre
 == Don't Be Intimidated!
 
 Regular expressions can look very intimidating, but, once you know the language they are written in, they are actually very simplistic things.
-Think of it like a mathematical equation, until you know what all the symbols mean, it's a big pile of intimidating gobbledegook, but, once you understand the meanings of the symbols, you can work your way through an equation logically.
+Think of it as a mathematical equation, until you know what all the symbols mean, it's a big pile of intimidating gobbledegook, but, once you understand the meanings of the symbols, you can work your way through an equation logically.
 
 The following apparent gibberish is a regular expression describing the domain name pattern described above:
 
@@ -102,7 +102,7 @@ Why POSIX ERE?
 In fact, more fundamentally, what is POSIX?
 
 POSIX stands for _Portable Operating System Interface_, and it's the reason that the things we learn in this series are so surprisingly portable.
-POSIX is the standard that unites most of the flavours of Unix and Linux, and gives us a common foundation to work off.
+POSIX is the standard that unites most of the flavours of Unix and Linux and gives us a common foundation to work off.
 Not all our *nix operating systems are POSIX certified, but they are all, to a very very high degree, POSIX compliant.
 OS X is actually POSIX certified, but Linux is not, it just implements pretty much the entire POSIX standard.
 POSIX covers many things, from how file systems should be presented, to a core set of terminal commands that are the same across all POSIX OSes, to a large set of programming APIs that can be used to create apps that run on all POSIX systems, to a portable regular expression syntax.
@@ -117,12 +117,12 @@ However, it's important to know that BRE exists, because you'll see both BRE and
 
 == Getting Practical
 
-The only way to really learn regular expressions is through practical examples, so, for this instalment and the next we'll be using the `egrep` command to search the standard Unix words file for words that match a given pattern.
+The only way to really learn regular expressions is through practical examples, so, for this instalment and the next, we'll be using the `egrep` command to search the standard Unix words file for words that match a given pattern.
 We'll be looking at the `egrep` command in more detail later in the series, but for now, all we need to know is that `egrep` can be used with two arguments, the first, a regular expression in POSIX ERE format, and the second the path to a file to search.
 `egrep` will print each line that contains text that matches the given pattern, it will not print just the text that matches the pattern, it will print the entire line that contains the match.
 
 The standard Unix words file is a text file containing a list of valid English words, one word per line.
-On OS X and Ubuntu Linux the file is located at `/usr/share/dict/words`, though on some Unix/Linux variants you'll find it at `/usr/dict/words` instead.
+On OS X and Ubuntu Linux, the file is located at `/usr/share/dict/words`, though on some Unix/Linux variants you'll find it at `/usr/dict/words` instead.
 
 == Getting Started with POSIX ERE
 
@@ -170,7 +170,7 @@ egrep 'ing$' /usr/share/dict/words
 
 _*Note:* you may have noticed that I've been single-quoting the pattern in all the examples.
 This is often not necessary, because many patterns don't contain BASH special characters, but, some do, including the one above, which contains the dollar symbol.
-If the string had not been single quoted, we would have had to escape the dollar symbol which would be very messy.
+If the string had not been single-quoted, we would have had to escape the dollar symbol which would be very messy.
 My advice would be to get into the habit of always single-quoting regular expressions, it'll save you a lot of frustration over time!_
 
 Something else that's very important is the ability to specify a so-called wild-card character.
@@ -198,7 +198,7 @@ Character classes are enclosed inside square brackets, so, you should read the c
 [abcdef]
 ----
 
-As an example, let's search for all four letter words starting with a vowel:
+As an example, let's search for all four-letter words starting with a vowel:
 
 [source,shell]
 ----
@@ -214,7 +214,7 @@ Some commonly used ranges include:
 `[a-z]`:: Any lowercase letter
 `[A-Z]`:: Any uppercase letter
 
-You don't have to stick to those common ranges though, you can use sub-sets of them, and you can use multiple ranges within a single character class.
+You don't have to stick to those common ranges though, you can use subsets of them, and you can use multiple ranges within a single character class.
 
 As an example, the regular expression below matches valid MAC addresses in OS X (and Linux) format.
 On POSIX OSes like OS X and Linux, MAC addresses are represented as a series of six two-character lower-case hexadecimal numbers separated by colon symbols, so, they could be matched with the following regular expression:
@@ -224,5 +224,5 @@ On POSIX OSes like OS X and Linux, MAC addresses are represented as a series of 
 [0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]:[0-9a-f][0-9a-f]
 ----
 
-The above RE will work, but it's quite un-wieldy and full of repetition, you might imagine there'd be a simpler, more efficient way of representing this pattern, and you'd be right!
-I'll stop here and leave the following as a teaser for the next instalment, the above un-gainly 102 character RE can be reduced to just 29 characters using two important new concepts, cardinality and grouping.
+The above RE will work, but it's quite unwieldy and full of repetition, you might imagine there'd be a simpler, more efficient way of representing this pattern, and you'd be right!
+I'll stop here and leave the following as a teaser for the next instalment, the above ungainly 102-character RE can be reduced to just 29 characters using two important new concepts, cardinality and grouping.
