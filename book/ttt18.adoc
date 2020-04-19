@@ -22,13 +22,13 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (1)]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[Download the MP3 (2)]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 ****
 
 == Inverted Character Classes

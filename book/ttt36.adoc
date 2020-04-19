@@ -24,7 +24,7 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

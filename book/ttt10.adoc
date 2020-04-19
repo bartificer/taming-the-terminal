@@ -27,7 +27,7 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 I'm getting tired of typing '`manual entry`', so lets introduce a little jargon.

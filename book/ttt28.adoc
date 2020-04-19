@@ -29,7 +29,7 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 When troubleshooting network problems, the basic advice is to start at the bottom of the stack and work your way up until you find the problem.

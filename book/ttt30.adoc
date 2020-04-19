@@ -19,7 +19,7 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 SSH keys utilise asymmetric encryption, specifically public/private key cryptography.
