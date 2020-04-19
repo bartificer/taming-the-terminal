@@ -6,8 +6,8 @@ This is the third instalment of an on-going series.
 These blog posts are only part of the series, they are actually the side-show, being effectively just my show notes for discussions with Allison Sheridan on my bi-weekly Chit Chat Across the Pond segment on her show, http://www.podfeet.com/[the NosillaCast Mac Podcast].
 This instalment will be featured in NosillaCast episode 418 (scheduled for release late on Sunday the 12th of May 2013).
 
-In the <<ttt1,first installment>> we started with the 40,000ft view, looking at what command shells are, and why they're still relevant in today's GUI-dominated world.
-In the <<ttt2,second instalment>> we looked at OS X's Terminal.app, the anatomy of the Bash command prompt, and the anatomy of a Unix/Linux command.
+In the <<ttt01,first instalment>>, we started with the 40,000ft view, looking at what command shells are, and why they're still relevant in today's GUI-dominated world.
+In the <<ttt02,second instalment>> we looked at OS X's Terminal.app, the anatomy of the Bash command prompt, and the anatomy of a Unix/Linux command.
 This time we'll be looking at the anatomy of file systems in general, and the Unix/Linux file system in particular, and how it differs from the Windows/DOS file system many of us grew up using.
 
 .Matching Postcast Episode 3
@@ -23,7 +23,7 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == File systems
@@ -34,32 +34,32 @@ Humans simply could not deal with remembering that the essay they were working o
 We need some kind of abstraction to bring order to the chaos and to allow us to organise our data in a human-friendly way.
 
 A good analogy would be a pre-computer office where the unit of storage was a single sheet of paper.
-Without some sort of logical system for organising all this paper no one would ever be able to find anything, hence, in the real world we developed '`systems`' for '`filing`' paper.
+Without some sort of logical system for organising all this paper, no one would ever be able to find anything, hence, in the real world, we developed '`systems`' for '`filing`' paper.
 Or, to put it another way, we invented physical filesystems, based around different ways of grouping and naming the pieces of paper.
 If a single document contained so much information that it ran over multiple pages, those piece of paper were physically attached to each other using a tie, a paperclip, or a staple.
 To be able to recognise a given document at a glance, documents were given titles.
 Related documents were then put together into holders that, for some reason were generally green, and those holders were then placed into cabinets with rails designed to hold the green holders in an organised way.
 I.e.
 we had filing cabinets containing folders which contained files.
-The exact organisation of the files and folders were up to the individual clerks who managed the data, and were dependant on the kind of data being stored.
+The exact organisation of the files and folders were up to the individual clerks who managed the data and were dependant on the kind of data being stored.
 Doctors tend to store files alphabetically by surname, while libraries love the http://en.wikipedia.org/wiki/Dewey_Decimal_Classification[Dewey Decimal] system.
 
 When it comes to computers, the job of bringing order to the chaos falls to our operating systems.
-We call the many different schemes that have been devised to provide that order filesystems.
+We call the many different schemes that have been devised to provide that order, filesystems.
 Some filesystems are media dependent, while others are operating system dependent.
 E.g.
 the http://en.wikipedia.org/wiki/Joliet_(file_system)[Joliet file system] is used on CDs and DVDs regardless of OS, while http://en.wikipedia.org/wiki/File_Allocation_Table[FAT] and http://en.wikipedia.org/wiki/NTFS[NTFS] are Windows filesystems, http://en.wikipedia.org/wiki/Extended_file_system[EXT] is a family of Linux file systems, and http://en.wikipedia.org/wiki/HFS%2B[HFS+] is a Mac file system.
 
-There are an infinite number of possible ways computer scientists could have chosen to bring order to the chaos of bits on our various media, but, as is often the case, a single real-world analogy was settled on by just about all operating system authors.
+There is an infinite number of possible ways computer scientists could have chosen to bring order to the chaos of bits on our various media, but, as is often the case, a single real-world analogy was settled on by just about all operating system authors.
 Whether you use Linux, Windows, or OS X, you live in a world of filesystems that contain folders (AKA directories) that contain files and folders.
-Each folder and file in this recursive hierarchical structure has a name, so it allows us humans to keep our digital documents organised in a way that we can get our heads around.
+Each folder and file in this recursive hierarchical structure has a name, so it allows us, humans, to keep our digital documents organised in a way that we can get our heads around.
 Although all our modern filesystems have their own little quirks under the hood, they all share the same simple architecture, your data goes in files which go in folders which can go in other folders which eventually go into file systems.
 
 You can have lots of files with the same name in this kind of file system, but, you can never have two items with the same name in the same folder.
 This means that each file and folder can be uniquely identified by listing all the folders you pass to get from the so-called '`root`' of the filesystem as far as the file or folder you are describing.
 This is what we call the full path to a file or folder.
-On all modern consumer operating systems we write file paths as a list of folder and file names separated by some character, called the '`path separator`'.
 Where operating systems diverge is in their choice of separator, and in the rules they impose on file and folder names.
+On all modern consumer operating systems, we write file paths as a list of folder and file names separated by some character, called the '`path separator`'.
 DOS and Windows use `\` (the backslash) as the path separator, on classic MacOS it was `:` (old OS X apps that use Carbon instead of Cocoa still use `:` when showing file paths, iTunes did this up until the recent version 11!), and on Linux/Unix(including OS X), `/` (the forward-slash) is used.
 
 A single floppy disk and a single CD or DVD contain a single file system to hold all the data on a given disk, but that's not true for hard drives, thumb drives, or networks.
@@ -75,11 +75,11 @@ Or, put another way, even if two files have identical paths on two filesystems m
 There are lots of different ways you could combine multiple filesystems into a single unified namespace, and this is where the DOS/Windows designers parted ways with the Unix/Linux folks.
 Microsoft combines multiple file systems together in a very different way to Unix/Linux/OS X.
 
-Lets start by looking at the approach Microsoft chose to.
+Let's start by looking at the approach Microsoft chose to.
 In DOS, and later Windows, each filesystem is presented to the user as a separate island of data named with a single letter, referred to as a _drive letter_.
-THis approaches has an obvious limitation, you can only have 26 file systems in use at any one time!
+This approach has an obvious limitation, you can only have 26 file systems in use at any one time!
 For historical reasons, `A:\` and `B:\` were reserved for floppy drives, so, the first partition on the hard drive connected to the first IDE/SATA bus on the motherboard is given the drive letter `C:\`, the second one `D:\` and so on.
-When ever you plug in a USB thumb drive or a memory card from a camera it gets '`mounted`' on the next free drive letter.
+Whenever you plug in a USB thumb drive or a memory card from a camera it gets '`mounted`' on the next free drive letter.
 Network shares also get mounted to drive letters.
 
 Just like files and folders, filesystems themselves have names too, often referred to as _Volume Names_.
@@ -90,24 +90,24 @@ The trunk of the tree is the base of the file system, each branch is a folder, a
 Branches '`contain`' branches and leaves, just like folders contain folders and files.
 If you bring that analogy to Microsoft's way of handling filesystems, then the global namespace is not a single tree, but a small copse of between 1 and 26 trees, each a separate entity, and each named with a single letter.
 
-If we continue this analogy, Linux/Unix doesn't plant a little copse of separate trees DOS/Windows does, instead they construct one massive franken-tree by grafting smaller trees onto the branches of a single all-containing master tree.
-When Linux/Unix boots, one filesystem is considered to be the main filesystem, and used as the master file system into which other file systems get inserted as folders.
+If we continue this analogy, Linux/Unix doesn't plant a little copse of separate trees DOS/Windows does, instead, they construct one massive franken-tree by grafting smaller trees onto the branches of a single all-containing master tree.
+When Linux/Unix boots, one filesystem is considered to be the main filesystem and used as the master file system into which other file systems get inserted as folders.
 In OS X parlance, we call the partition containing this master file system the _System Disk_.
 Because the system disk becomes the root of the entire filesystem it is gets assigned the shortest possible file path, `/`.
 
 If your system disk's file system contained just two folders, `folder_1` and `folder_2`, they would get the file paths `/folder_1/` and `/folder_2/` in Linux/Unix/OS X.
 The Unix/Linux command `mount` can then be used to '`graft`' filesystems into the master filesystem using any empty folder as the so-called `mount point`.
 
-On Linux systems it's common practice to keep home folders on a separate partition, and to then mount that separate partition's file system as `/home/`.
-This means that the main filesystem has an empty folder in it called `home`, and that as the computer boots, the OS mounts a specified partition's file system into that folder.
+On Linux systems, it's common practice to keep home folders on a separate partition, and to then mount that separate partition's file system as `/home/`.
+This means that the main filesystem has an empty folder in it called `home` and that as the computer boots, the OS mounts a specified partition's file system into that folder.
 A folder at the root of the that partition's file system called just `allison` would then become `/home/allison/`.
 
 On regular Linux/Unix distributions the file `/etc/fstab` (file system table) tells the OS what filesystems to mount to what mount points.
-A basic version of this file will be created by the installer, but in the past, when ever you added a new disk to a Linux/Unix system you had to manually edit this file.
+A basic version of this file will be created by the installer, but in the past, whenever you added a new disk to a Linux/Unix system you had to manually edit this file.
 Thankfully, we now have something called `automount` to automatically mount any readable filesystems to a pre-defined location on the filesystem when they are connected.
 
 The exact details will change from OS to OS, but on Ubuntu, the folder `/media/` is used to hold mount points for any file system you connect to the computer.
-Unlike Windows, most Linux/Unix systems make use of filesystems`' volume names, and use them to give the mount points sensible names, rather than random letters.
+Unlike Windows, most Linux/Unix systems make use of filesystems`' volume names and use them to give the mount points sensible names, rather than random letters.
 If I connect a USB drive containing a single partition with a filesystem with the volume name `Allison_Pen_Drive`, Ubuntu will automatically mount the filesystem on that thumb drive when you plug it in, using the mount point `/media/Allison_Pen_Drive/`.
 If that pen drive contained a single folder called `myFolder` containing a single file called `myFile.txt`, then `myFile.txt` would be added to the filesystem as `/media/Allison_Pen_Driver/myFolder/MyFile.txt`.
 
@@ -120,11 +120,11 @@ The OS X installer does not allow you to split OS X over multiple partitions, ev
 Going back to our imaginary thumb drive called `Allison_Pen_Drive` (which Ubuntu would mount as `/media/Allison_Pen_Drive/`), OS X will mount that as `/Volumes/Allison_Pen_Drive/` when you plug it in.
 If you had a second partition, or a second internal drive, called, say, `Fatso` (a little in-joke for Allison), OS X would mount that as /`Volumes/Fatso/`.
 Likewise, if you double-clicked on a DMG file you downloaded from the net, say with the Adium installer, OS X would mount that as something like `/Volumes/Adium/` until you eject the DMG.
-The '`disks`' listed in the Finder side bar in the section headed `Devices` are just links to the contents of `/Volumes/`.
+The '`disks`' listed in the Finder sidebar in the section headed `Devices` are just links to the contents of `/Volumes/`.
 You can see this for yourself by opening a Finder Window and either hitting the key-combo `cmd+shift+g`, or navigating to `+Go→Go To Folder ...+` in the menubar to bring up the `Go To Folder` text box, and then typing the path `/Volumes` and hitting return.
 
 OS X's greatly simplified handling of mount points definitely makes OS X less confusing, but, the simplicity comes at a price.
-If you DO want to do more complicated things like have your home folders on a separate partition, you are stepping outside of what Apple consider the norm, and into a world of pain.
+If you DO want to do more complicated things like having your home folders on a separate partition, you are stepping outside of what Apple considers the norm, and into a world of pain.
 On Linux/Unix separating out home folders is trivial, on OS X it's a mine-field!
 
-We'll leave it here for now, next time we'll learn how to navigate around a Unix/Linux/OS X filesystem.
+We'll leave it here, for now, next time we'll learn how to navigate around a Unix/Linux/OS X filesystem.
