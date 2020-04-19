@@ -1,10 +1,10 @@
 [[ttt20]]
 = TTT Part 20 of n -- File Searches
 
-In the previous previous instalment we looked at using `egrep` to search for a particular piece of text in a stream or file.
+In the <<tt19,previous instalment>>, we looked at using `egrep` to search for a particular piece of text in a stream or file.
 `egrep` is often a great tool for finding a file you are looking for, but only if the file is a plain text file, and only if you are searching for that file based on its content.
 What if you want to search for files based on other criteria, like the last time the file was edited, or the name of the file, or the size of the file, or the type of the file etc.?
-For that you need a different command, for that you need `find`.
+For that, you need a different command, for that you need `find`.
 
 ////
 Fake second paragraph to fix bug
@@ -41,13 +41,13 @@ Regardless of the criteria you wish to use, the basic form of the `find` command
 find path criteria 1 [criteria 2 ...]
 ----
 
-The path is searched recursively (by default), so if you give a path of `~/Documents`, it will search your documents folder, and all folders within your documents folder.
+The path is searched recursively (by default), so if you give a path of `~/Documents`, it will search your documents folder and all folders within your documents folder.
 To search your entire computer, and all mounted drives, use a path of just `/`.
 To use the current folder as the base of your search use a path of `.` (which always means '`the current folder`' as we learned in <<ttt04,instalment 4>>).
 
 == Defining Search Criteria
 
-To see a full list of all possible search criteria, you can of course read the manual entry for find with the command `man find`, but we'll look at some of the more common criteria you'll be most likely to need here.
+To see a full list of all possible search criteria, you can, of course, read the manual entry for find with the command `man find`, but we'll look at some of the more common criteria you'll be most likely to need here.
 
 === Search by File Name
 
@@ -87,7 +87,7 @@ You can get more creative by looking for all text files with names starting with
 find ~ -name 'b*.txt'
 ----
 
-Or all text files with a four letter name with `a` as the second letter:
+Or all text files with a four-letter name with `a` as the second letter:
 
 [source,shell]
 ----
@@ -202,7 +202,7 @@ The following units are supported:
 Note that this command uses the old 1024-based sizes, not the 1,000 based http://en.wikipedia.org/wiki/International_System_of_Units[SI units] used by OS X and hard drive manufacturers (and scientists and engineers and anyone who understands what kilo and mega etc.
 actually mean).
 
-Also like with `-ctime`, if you don't prefix the number with a symbol, only files EXACTLY the size specified will be returned.
+Also, like with `-ctime`, if you don't prefix the number with a symbol, only files EXACTLY the size specified will be returned.
 
 For example, the following command shows all files in your downloads folder that are bigger than 200MiB in size:
 
@@ -248,8 +248,8 @@ find ~/Documents -type d -iname '*temp*'
 
 === Inverting Search Parameters
 
-In most situations it's easiest to express what it is you want to search for, but sometimes it's easier to specify what you don't want.
-In situations like this it can be very useful to be able to invert the effect of a single search parameter.
+In most situations, it's easiest to express what it is you want to search for, but sometimes it's easier to specify what you don't want.
+In situations like this, it can be very useful to be able to invert the effect of a single search parameter.
 You can do this with the `-not` flag.
 
 For example, you may have a folder where you keep your music, and it should only contain MP3 files and folders.
@@ -267,7 +267,7 @@ To search only the specified folder and no deeper use `-maxdepth 1`.
 
 Note that limiting the depth can really speed up searches of large folders if you know what you want is not deep down in the hierarchy.
 For example, if you have a lot of documents in your documents folder it can take ages to search it, but, if you are only interested in finding stuff at the top level you can really speed things up.
-Let's say we are the kind of person who makes lots of temp folders at the top level of their Documents folder (guilty as charged), and you want to find them all so you can do a bit of house keeping, you could search your entire Documents folder with:
+Let's say we are the kind of person who makes lots of temp folders at the top level of their Documents folder (guilty as charged), and you want to find them all so you can do a bit of housekeeping, you could search your entire Documents folder with:
 
 [source,shell]
 ----
@@ -275,7 +275,7 @@ find ~/Documents -type d -iname '*temp*'
 ----
 
 When I do this it takes literally minutes to return because I have over a TB of files in my Documents folder.
-I can get that down to fractions of a seconds by telling `find` that I'm only interested in the top level stuff with:
+I can get that down to fractions of a second by telling `find` that I'm only interested in the top-level stuff with:
 
 [source,shell]
 ----
@@ -301,11 +301,11 @@ Is actually interpreted as:
 find ~/Music/MyMP3s -type f -and -not -iname '*.mp3' -and -not -name '.*'
 ----
 
-We can even take things a step further and add sub-expressions using `(` and `)` to start and end each sub expression (they can even be nested).
+We can even take things a step further and add sub-expressions using `(` and `)` to start and end each subexpression (they can even be nested).
 Note that `(` and `)` have meaning in BASH, so they need to be either escaped or quoted.
 Since I find escaping makes everything hard to read and understand, I recommend always quoting these operators.
 
-As a final example, the following command will find large powerpoint presentations in your Documents folder, i.e.
+As a final example, the following command will find large PowerPoint presentations in your Documents folder, i.e.
 all files bigger than 100MiB in size that end in `.ppt` or `.pptx`.
 
 [source,shell]
@@ -315,10 +315,10 @@ find ~/Documents -size +100M '(' -iname '*.ppt' -or -iname '*.pptx' ')'
 
 == Conclusions
 
-In this instalment we've seen that we can use the `find` command to search for files based on all sorts of criteria, and that we can combine those criteria using boolean algebra to generate very powerful search queries.
-In the next instalment we'll discover that you can use the `find` command not only to search for files, but to apply an action to every file it finds.
+In this instalment, we've seen that we can use the `find` command to search for files based on all sorts of criteria and that we can combine those criteria using boolean algebra to generate very powerful search queries.
+In the next instalment, we'll discover that you can use the `find` command not only to search for files but to apply an action to every file it finds.
 
 The `find` command is common to all POSIX operating systems, so it works on Linux, Unix, and OS X.
 OS X maintains an index of your files allowing quick searching in the Finder and via Spotlight.
 Because this index is kept up to date by the OS, it makes searching with Spotlight much quicker than searching with `find`.
-In the next instalment we'll also discover that OS X ships with a terminal command that allows you to use the power of Spotlight from the command-line!
+In the next instalment, we'll also discover that OS X ships with a terminal command that allows you to use the power of Spotlight from the command-line!
