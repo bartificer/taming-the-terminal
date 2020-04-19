@@ -8,7 +8,7 @@ described the different ways in which Windows and Linux/Unix/OS X combine all th
 filesystems on our computers into a single name-space, within which every file has a
 unique '`path`' (`F:\myFolder\myFile.txt` -v- `/Volumes/myThumbDrive/myFolder/myFile.txt`).
 
-In this instalment we'll look at how to navigate around the Unix/Linux/OS X filesystem in
+In this instalment, we'll look at how to navigate around the Unix/Linux/OS X filesystem in
 a Bash command shell.
 
 .Matching Postcast Episode 4
@@ -24,13 +24,13 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == Navigating around
 
 Two instalments ago we learned that, just like a Finder window, a command prompt is '`in`' a single folder/directory at any time.
-That folder is known as the _current working directory_, or the _present working directory_.
+That folder is known as the _current working directory_ or the _present working directory_.
 Although the default Bash command prompt on OS X will show us the name of our current folder, it doesn't show us the full path.
 To see the full path of the folder you are currently in, you need the `pwd` (present working directory) command.
 This is a very simple command that doesn't need any arguments.
@@ -39,7 +39,7 @@ When you open an OS X Terminal, by default your current working directory will b
 
 image::./assets/ttt4/Screen-Shot-2013-05-11-at-18.52.30.png[pwd Command Example]
 
-Knowing where you are is one thing, the next thing you might want to do is look around to see what's around you, and for that you'll need the `ls` (list) command.
+Knowing where you are is one thing, the next thing you might want to do is look around to see what's around you, and for that, you'll need the `ls` (list) command.
 
 If you run the command without any arguments you'll see a listing of all the visible files and folders in the current directory.
 On OS X, this default view is annoying in two ways.
@@ -47,9 +47,9 @@ Firstly, you'll see your files and folders spread out over multiple columns, so 
 Secondly, on OS X (though not on most Linux distros), you won't be able to tell what is a file and what is a folder at a glance, you'll just see names, which is really dumb (even DOS does a better job by default!).
 
 You can force `ls` to display the contents of a folder in a single column in two ways.
-You can either use the `-l` flag to request a long-form listing, showing lots of metadata along with each file name, or, you can use the `-1` flag to specify that you just want the names, but in a single column.
+You can either use the `-l` flag to request a long-form listing, showing lots of metadata along with each file name, or, you can use the `-1` flag to specify that you just want the names but in a single column.
 For now, most of the metadata shown in the long-form listing is just confusing garbage, so you are probably better off using `-1`.
-If you do want to use the long form listing, I suggest adding the `-h` flag to convert the file size column to human-readable file sizes like 100K, 5M, and 64G.
+If you do want to use the long-form listing, I suggest adding the `-h` flag to convert the file size column to human-readable file sizes like 100K, 5M, and 64G.
 I've trained myself to always use `ls -lh` and never to use just `ls -l`.
 
 You have two options for making it easy to distinguish files from folders in the output from `ls` on OS X.
@@ -72,8 +72,8 @@ ls -1G /Library
 
 Now that we can see where we are with `pwd`, and look around us with `ls`, the next obvious step is moving around the filesystem, but, we need to take a small detour before we're ready to talk about that.
 
-In the last instalment we talked about file paths like the imaginary file on Allison's thumb drive with the path `/Volumes/Allison_Pen_Drive/myFolder/myFile.txt`.
-That type of path is called an _absolute path_, and is one of two types of path you can use as arguments to Linux/Unix commands.
+In the last instalment, we talked about file paths like the imaginary file on Allison's thumb drive with the path `/Volumes/Allison_Pen_Drive/myFolder/myFile.txt`.
+That type of path is called an _absolute path_ and is one of two types of path you can use as arguments to Linux/Unix commands.
 
 Absolute paths (AKA full paths) are like full addresses, or phone numbers starting with the `+` symbol, they describe the location of a file without reference to anything but the root of the filesystem.
 They will work no matter what your present working directory is.
@@ -83,14 +83,14 @@ This is where relative paths come in, relative paths don't describe where a file
 If you are stopped for directions and someone wants to know where the nearest gas station is, you don't give them the full address, you give them directions relative to where they are at that moment.
 Similarly, if you want to phone someone in the same street you don't dial `+` then the country code then the area code then their number, you just dial the number because, like your command shell is in a current working directory, your telephone is in an area code.
 
-With phone numbers you can tell whether something is a relative or an absolute phone number by whether or not it starts with a `+`.
+With phone numbers, you can tell whether something is a relative or an absolute phone number by whether or not it starts with a `+`.
 With Unix/Linux paths the magic character is `/`.
 Any path that starts with a `/` will be interpreted as an absolute path by the OS, and conversely, any path that does not begin with a `/` will be interpreted as a relative path.
 
-If you are in your home folder, you can describe the relative path to your iTunes library file as `Music/iTunes/iTunes\ Library.xml` (note the back-slash to escape the space in the path).
+If you are in your home folder, you can describe the relative path to your iTunes library file as `Music/iTunes/iTunes\ Library.xml` (note the backslash to escape the space in the path).
 That means that your home folder contains a folder called `Music`, which contains a folder called `iTunes`, which contains a file called `iTunes Library.xml`.
 
-Describing relative paths to items deeper in to the file system hierarchy from you is easy, but what if you need to go the other way, not to folders contained in your current folder, but instead to the folders that contain your current folder?
+Describing relative paths to items deeper in the file system hierarchy from you is easy, but what if you need to go the other way, not to folders contained in your current folder, but instead to the folders that contain your current folder?
 Have another look at the output of `ls -aG1` in any folder.
 What are the top two entries?
 I don't have to know what folder you are in to know the answer, the first entry will be a folder called `.`, and the second entry will be a folder called `..`.
@@ -106,7 +106,7 @@ it allows you to specify relative paths that move back towards `/` from where yo
 
 In OS X, home directories are stored in a folder called `/Users`.
 As well as one folder for each user (named for the user), `/Users` also contains a folder called `Shared` which is accessible by every user to facilitate easy local file sharing.
-Regardless of your username, the relative path from your home folder to `/Users/Shared` is always `../Shared` (unless you moved your your home folder to a non-standard location of course).
+Regardless of your username, the relative path from your home folder to `/Users/Shared` is always `../Shared` (unless you moved your home folder to a non-standard location of course).
 `..` means go back one level, then move forward to Shared.
 You can go back as many levels as you want until you hit `/` (where `..` is hard-linked to itself), e.g.
 the relative path from your home folder to `/` is `../../`.
@@ -117,21 +117,21 @@ No matter where on the filesystem you are, `~/Music/iTunes/iTunes\ Library.xml` 
 But, the `~` character does a little more than that, it can take you to ANY user's home folder simply by putting their username after the `~`.
 Imagine Allison & Steve share a computer.
 Allison's username is `allison`, and Steve's is `steve`.
-Allison and Steve can each access their own iTunes libraries at `~/Music/iTunes/iTunes\ Library.xml`, but, Allison can also access Steve's at `~steve/Music/iTunes/iTunes\ Library.xml`, and likewise, Steve can access Allison's at `~allison/Music/iTunes/iTunes\ Library.xml` (all assuming the file permissions we are ignoring for now are set appropriately of course).
+Allison and Steve can each access their own iTunes libraries at `~/Music/iTunes/iTunes\ Library.xml`, but, Allison can also access Steve's at `~steve/Music/iTunes/iTunes\ Library.xml`, and likewise, Steve can access Allison's at `~allison/Music/iTunes/iTunes\ Library.xml` (all assuming the file permissions we are ignoring for now, are set appropriately of course).
 
 So -- now that we understand that we can have absolute or relative paths, we are finally ready to start navigating the file system by changing our current directory.
 The command to do this is `cd` (change directory).
 
 Firstly, if you ever get lost and you want to get straight back to your home directory, just run the `cd` command with no arguments and it will take you home!
 
-Generally though we want to use the `cd` command to navigate to a particular folder, to do that, simply use either the absolute or relative path to the folder you want to navigate to as the only argument to the `cd` command, and assuming the path you entered is free of typos, off you'll go!
+Generally, though we want to use the `cd` command to navigate to a particular folder, to do that, simply use either the absolute or relative path to the folder you want to navigate to as the only argument to the `cd` command, and assuming the path you entered is free of typos, off you'll go!
 
-Finally for this instalment, I just want to mention one other nice trick the cd command has up it's sleeve, it has a (very short) memory.
+Finally, for this instalment, I just want to mention one other nice trick the cd command has up its sleeve, it has a (very short) memory.
 If you type `cd -` you will go back to where ever you were before you last used `cd`.
 
-As an example, lets say you spent ages navigating a very complex file system and are now 20 folders deep.
+As an example, let's say you spent ages navigating a very complex file system and are now 20 folders deep.
 You've forgotten how you got there, but you've finally found that obscure system file you need to edit to make some app do some non-standard thing.
-Then, you make a boo boo, and you accidentally type just `cd` on it's own, all of a sudden, you are back in your home folder.
+Then, you make a boo boo, and you accidentally type just `cd` on its own, all of a sudden, you are back in your home folder.
 Don't panic, you won't have to find that complicated path again, just type `cd -` and you'll be right back where you were before your rubber-fingered the `cd` command!
 
 That's where we'll leave things for this instalment.
@@ -140,5 +140,5 @@ We now understand the structure of our file systems and how to navigate around t
 For any Windows users out there, the DOS equivalents are as follows:
 
 * instead of `pwd`, use `cd` with no arguments
-* instead of `ls` use `dir` (thought it has way less cool options)
+* instead of `ls`, use `dir` (though it has way less cool options)
 * `cd` is `cd`, though again, it has way less cool options

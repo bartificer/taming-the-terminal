@@ -132,7 +132,7 @@ Flags are usually used to specify optional extra information, with information t
 Flags are arguments (or pairs of arguments) that start with the `-` symbol.
 
 The simplest kinds of flags are those that don't take a value, they are specified using a single argument consisting of a `-` sign followed by a single letter.
-For example, the `ls` (list directory) command can accept the flag `-l` (long form listing) as an argument.
+For example, the `ls` (list directory) command can accept the flag `-l` (long-form listing) as an argument.
 e.g.
 
 [source,shell]
