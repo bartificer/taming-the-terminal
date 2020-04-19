@@ -1,12 +1,12 @@
 [[ttt31]]
 = TTT Part 31 of n -- SSH File Transfers
 
-In <<ttt29,Part 29 of n>> we learned how to use SSH to execute commands on a remote computer.
-In <<ttt30,the previous instalment>> we learned how to add security and convenience to SSH connections using SSH key-pairs.
+In <<ttt29,Part 29 of n>>, we learned how to use SSH to execute commands on a remote computer.
+In <<ttt30,the previous instalment>>, we learned how to add security and convenience to SSH connections using SSH key-pairs.
 
 The most important thing SSH provides is an encrypted connection between two computers.
 As we've seen, that encrypted connection can be used to securely issue terminal commands to a remote computer, but that same secured channel can also be used to secure other network connections between computers.
-In this instalment we'll look at three different ways of securely copying files between computers through an SSH connection, and in the next instalment we'll look at tunnelling just about any network connection through an SSH connection.
+In this instalment, we'll look at three different ways of securely copying files between computers through an SSH connection, and in the next instalment, we'll look at tunnelling just about any network connection through an SSH connection.
 
 .Matching Postcast Episode 31
 ****
@@ -27,8 +27,8 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT31SSHFileTran
 
 == Examples Prep.
 
-Before we get stuck in, just a reminder that in order to play along with the examples, you'll need two computers with SSH installed, one you can SSH from, and one you can SSH to.
-Throughout the examples, I'll refer to the computer you are SSHing from as the local computer, and the one you are SSHing to as the remote computer.
+Before we get sucked in, just a reminder that in order to play along with the examples, you'll need two computers with SSH installed, one you can SSH from, and one you can SSH to.
+Throughout the examples, I'll refer to the computer you are SSHing from as the local computer and the one you are SSHing to as the remote computer.
 
 It should also be noted that if you have not set up SSH keys as described in the previous instalment, you'll be entering your password a lot as you work through these examples!
 
@@ -85,7 +85,7 @@ ssh $SSH_USER@$SSH_COMP 'ls -R /tmp/ttt31/'
 
 === Tidying Up
 
-If you want to start over at any stage, or to clean up after yourself when finished, the following commands will remove the local and remote dummy files:
+If you want to start over at any stage or to clean up after yourself when finished, the following commands will remove the local and remote dummy files:
 
 [source,shell]
 ----
@@ -171,9 +171,9 @@ You can verify that the folder, and its contents, were downloaded with the comma
 ls -R /tmp/ttt31/fromRemote
 ----
 
-== `rsync` Over SSH
+== `rsync` over SSH
 
-The `rsync` command allows one folder, and all it's nested content, to be intelligently synchronised with another.
+The `rsync` command allows one folder, and all its nested content, to be intelligently synchronised with another.
 `rsync` will only copy files that are different between the source and the destination, so it's a very powerful and efficient backup tool.
 So powerful in fact, that many GUI backup tools are little more than GUIs for the `rsync` command.
 
@@ -192,7 +192,7 @@ rsync -av --delete source_folder destination_folder
 ----
 
 The `-a` flag puts `rsync` into _archive mode_, which is a synonym for _backup mode_.
-In this mode file permissions are preserved, and symlinks are copied as links, not replaced with the files they point to.
+In this mode, file permissions are preserved, and symlinks are copied as links, not replaced with the files they point to.
 
 The `-v` flag puts `rsync` into _verbose mode_, which means it will print out each file it copies or deletes.
 
@@ -220,13 +220,13 @@ OS X comes with `rsync` installed by default, as do many Linux distros.
 However, on some Linux distros, particularly the more minimalist ones, you may need to install `rsync` using the distro's package manager.
 This is true if you do a minimal install of CentOS for example.
 
-As an example, let's use `rsync` to backup the contents of the remote folder `/tmp/ttt31/rsync_folder` to the local folder `/tmp/ttt31/fromRemote/rsync_backup`.
+As an example, let's use `rsync` to back up the contents of the remote folder `/tmp/ttt31/rsync_folder` to the local folder `/tmp/ttt31/fromRemote/rsync_backup`.
 Using `rsync` to pull a backup from a remote computer is a very common use-case.
-For example, every night at 4am my Linux file server at home reaches out to the web server that hosts all my websites to do a full backup of my sites using `rsync` over SSH.
+For example, every night at 4 am my Linux file server at home reaches out to the web server that hosts all my websites to do a full backup of my sites using `rsync` over SSH.
 
 Running an `rsync` backup for the first time can be nerve-wracking, are you sure the right files will be copied/deleted etc.?
 The `-n` flag is here to save your nerves!
-When you issue an `rsync` command with the `-n` flag (I remember it as `n` for _not really_), `rsync` will print the changes it would make, but not actually do anything -- think if it as a dry run.
+When you issue an `rsync` command with the `-n` flag (I remember it as `n` for _not really_), `rsync` will print the changes it would make, but not actually do anything -- think of it as a dry run.
 Let's start by running our example backup as a dry run, just to be sure we have everything correct.
 
 [source,shell]
@@ -236,7 +236,7 @@ rsync -avn --delete -e ssh $SSH_USER@$SSH_COMP:/tmp/ttt31/rsync_folder/ /tmp/ttt
 
 Note that because we want to backup the content of the folder `rsync_folder`, rather than the folder itself, a trailing `/` has been included in the source specification.
 
-You'll see from the output that a folder to hold the backup named `rsync_backup` would be created, and that two files would be downloaded to that folder.
+You'll see from the output that a folder to hold the backup named `rsync_backup` would be created and that two files would be downloaded to that folder.
 This is as expected, so we can now run the command for real by removing the `-n` flag:
 
 [source,shell]
@@ -304,7 +304,7 @@ Good GUI SFTP apps like Transmit will use SSH keys automatically, but some SFTP 
 
 Transmit is the SFTP client I use each and every day, and I love it, but, they didn't make it at all obvious that they have SSH key support.
 Users could be forgiven for not connecting the small key icon next to the password field with SSH key-pairs.
-If you hover over that icon you'll see that Transmit uses keys in the default location automatically, and that if you want to use a key in a different location, you need to click on the key icon to specify the path to the key file you'd like to use.
+If you hover over that icon you'll see that Transmit uses keys in the default location automatically and that if you want to use a key in a different location, you need to click on the key icon to specify the path to the key file you'd like to use.
 
 image::./assets/ttt31/Screen-Shot-2015-04-04-at-14.53.39.png[Transmit SSH Key Support]
 
@@ -339,14 +339,14 @@ You can change both of these paths at any time using the `lcd` (local change dir
 
 You can also list the contents of both present working directories with the commands `lls` (local file listing), and `ls` (remote file listing).
 
-Finally, there are the all important commands for uploading and downloading files.
-To download a file from the remote present working directory, to the local present working directory, you use the `get` command, which takes one or more arguments, the names of the files to download.
+Finally, there are the all-important commands for uploading and downloading files.
+To download a file from the remote present working directory to the local present working directory, you use the `get` command, which takes one or more arguments, the names of the files to download.
 Similarly, to upload a file from the local present working directory to the remote present working directory, you use the `put` command, which also takes file names as arguments.
 
 == Conclusions
 
 We have now seen three different commands for securely copping files between computers via an SSH connection.
-All three of these commands have different strengths and weaknesses, and are the best-fit solution for different scenarios.
+All three of these commands have different strengths and weaknesses and are the best-fit solution for different scenarios.
 For example, backing up files that don't change very often with `scp` would be very wasteful on bandwidth, and using an SFTP shell is a total waste of time if you know both source and destination paths, but, if you need to explore a remote filesystem to find a file to download, SFTP is the best fit.
 
 There are a lot of similarities between the three commands.
@@ -354,7 +354,7 @@ All three of them can make use of SSH key-pairs, and all three of them use the s
 `user@computer:path`.
 
 So far we have learned to use SSH to execute terminal commands on remote computers and to securely transfer files between computers.
-In the next instalment we'll learn about three more SSH features, one that allow us to use SSH teleport GUIs between computers, and two to use SSH's secure connection to protect any arbitrary insecure network connection.
+In the next instalment, we'll learn about three more SSH features, one that allows us to use SSH teleport GUIs between computers, and two to use SSH's secure connection to protect any arbitrary insecure network connection.
 
 == P.S.
 
