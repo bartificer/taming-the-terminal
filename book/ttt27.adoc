@@ -1,19 +1,19 @@
 [[ttt27]]
 = TTT Part 27 of n -- DNS
 
-In <<ttt23,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP
 * We think of the stack of protocols as being broken into four layers:
 ** The Link Layer -- lets computers that are on the same network send single packets of data to each other
-** The Internet Layer -- Lets computers on different networks send single packets of data to each other
+** The Internet Layer -- lets computers on different networks send single packets of data to each other
 ** The Transport Layer -- lets computers send meaningful streams of data between each other
 ** The Application Layer -- where all the networked apps we use live
 * Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
 We have now looked in detail at <<ttt24,Layer 1>> and <<ttt25,Layer 2>>, and have looked at how <<ttt26,DHCP>> allows our computers to automatically configure their TCP/IP network stack.
-In this instalment we're going to look at a Layer 4 protocol that is essential to our use of the internet -- DNS.
+In this instalment, we're going to look at a Layer 4 protocol that is essential to our use of the internet -- DNS.
 
 At layers 2 and 3 all addressing is by IP address, yet just about every networked app we use totally insulates us from that fact.
 Our computers think in terms of IP addresses, but we think in terms of domain names.
@@ -48,11 +48,11 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27
 
 == The Hosts File
 
-In the early days of the internet the conversion between human readable host names for computers, and IP addresses was stored within each computer in a single file -- `/etc/hosts`.
+In the early days of the internet the conversion between human-readable hostnames for computers, and IP addresses was stored within each computer in a single file -- `/etc/hosts`.
 This meant that names were not in any way authoritative.
-I could give what ever name I wanted to an IP address and save that mapping into my `/etc/hosts` file, and you could give the same IP address a completely different name and save that mapping in your `/etc/hosts` file.
+I could give whatever name I wanted to an IP address and save that mapping into my `/etc/hosts` file, and you could give the same IP address a completely different name and save that mapping in your `/etc/hosts` file.
 
-Organisations could choose to centrally manage `/etc/hosts` file by keeping an authoritative copy on a file server and having a script copy that file to every computer within the organisation overnight, but it really was up to each organisation to decide how they would manage host name to IP address mappings.
+Organisations could choose to centrally manage `/etc/hosts` file by keeping an authoritative copy on a file server and having a script copy that file to every computer within the organisation overnight, but it really was up to each organisation to decide how they would manage hostname to IP address mappings.
 
 While DNS superseded the hosts file, it did not replace it.
 The hosts file still exists in Linux, Unix, OS X, and even Windows!
@@ -95,15 +95,15 @@ sudo pico /etc/hosts
 == The Domain Name System
 
 The DNS spec was released in 1983, and the first Unix DNS server was written in 1984.
-Although the spec has been added to in the intervening years, the fundamental design remains un-changed.
+Although the spec has been added to in the intervening years, the fundamental design remains unchanged.
 
 === The DNS Philosophy
 
 Before DNS computers had simple hostnames, but DNS took things to the next level by introducing the concept of a hierarchy of names.
 In DNS speak a group of related names are known as a zone, but most people refer to them as domains.
 
-The hierarchy of domain names is anchored at the top by the so-called root zone, which has the one-letter name `.` (almost universally omitted when domain namess are written).
-Below the root you will find the so-called TLDs or _Top Level Domains_ like `.com`, `.net`, `.org`, and so on.
+The hierarchy of domain names is anchored at the top by the so-called root zone, which has the one-letter name `.` (almost universally omitted when domain names are written).
+Below the root, you will find the so-called TLDs or _Top Level Domains_ like `.com`, `.net`, `.org`, and so on.
 As well as generic TLDs like those examples, there are also country-specific TLDs, like `.ie` for Ireland, `.be` for Belgium, `.fr` for France, and so forth.
 Some countries have also chosen to break their TLDs up into multiple sub-TLDs, a practice that seems particularly common among former British colonies!
 E.g.
@@ -111,10 +111,10 @@ in Australia commercial sites are `.com.au` while educational sites are `.edu.au
 A particularly cryptic one is `.ac.uk`, which is the TLD for UK educational institutions (the `ac` stands for _Academic Community_).
 
 Institutions and the general public can buy the rights to use domain names one level down from TLDs.
-Allison Sheridan for example has the rights to `podfeet.com`, and I have the rights to `bartb.ie`.
+Allison Sheridan, for example, has the rights to `podfeet.com`, and I have the rights to `bartb.ie`.
 Once you own a domain you can then break it down any way you like, adding as many or as few subdomains as desired.
 `www.podfeet.com` is a subdomain of `podfeet.com` which is a subdomain of the generic TLD `.com` which is a subdomain of the root (`.`).
-Technically, `www.podfeet.com` should be written as `www.podfeet.com.`, but as a species we've decided that the DNS root zone should be implied rather than explicitly added to domain names, and we've written our software with that implicit assumption.
+Technically, `www.podfeet.com` should be written as `www.podfeet.com.`, but as a species, we've decided that the DNS root zone should be implied rather than explicitly added to domain names, and we've written our software with that implicit assumption.
 You are entirely free to add the final dot back in though, it is part of the spec after all!
 
 The best way to think of DNS names is as a tree, as illustrated in the diagram below.
@@ -152,7 +152,7 @@ If you out-source your email service to a third party but don't want to give peo
 | DNS PTR records are used by the reverse-DNS system to map a domain name to an IP address (think of them as the inverse of A records).
 
 | `NS`
-| DNS NS records map a domain name to the domain name of the a server that is authoritative for that domain (domains usually have 2 or 3 NS records)
+| DNS NS records map a domain name to the domain name of the server that is authoritative for that domain (domains usually have 2 or 3 NS records)
 
 | `TXT`
 | DNS TXT records, or text records, are used to map a domain name to an arbitrary piece of text.
@@ -161,7 +161,7 @@ Certificate authorities and cloud service providers often force people applying 
 
 | `SRV`
 | DNS SRV records, or service records, are used to map service to a given domain name, port number, and protocol.
-Microsoft Windows licensing and Microsoft Active Directory make extensive use of SRV records for service auto discovery.
+Microsoft Windows licensing and Microsoft Active Directory make extensive use of SRV records for service auto-discovery.
 E.g., a DNS SRV record is used by Windows desktop computers in large organisations with centrally managed multi-user licenses to figure out what server they should contact to license themselves.
 |===
 
@@ -171,15 +171,15 @@ But, as this series is targeted at home users, we're only really interested in A
 
 == DNS Servers
 
-An important subtlty in the operation of DNS is that there are two very distinct types of DNS servers that fulfil to entirely different roles.
-Hence, talking about a _DNS Sever_ without any more specificity is meaningless, and only likely to lead to confusion.
-To save everyone's sanity you should never use the term _DNS Server_, instead, always refer to either _Authoritative DNS Servers_, or _DNS Resolvers_.
+An important subtlety in the operation of DNS is that there are two very distinct types of DNS servers that fulfil two entirely different roles.
+Hence, talking about a _DNS Server_ without any more specificity is meaningless, and only likely to lead to confusion.
+To save everyone's sanity you should never use the term _DNS Server_, instead, always refer to either _Authoritative DNS Servers_ or _DNS Resolvers_.
 
 === Authoritative DNS Servers
 
 Authoritative DNS servers are responsible for hosting the DNS records for a domain.
 Each domain has to be served by at least one authoritative server, and almost all domains have two or more authoritative servers.
-Large organisations like corporations and Universities often run their own authoritative servers, but the general public generally pay a domain registrar to provide authoritative DNS servers for their domains.
+Large organisations like corporations and Universities often run their own authoritative servers, but the general public generally pays a domain registrar to provide authoritative DNS servers for their domains.
 E.g.
 I pay Register365 to host the DNS zone for `bartb.ie` on their cluster of authoritative DNS servers, and Allison pays Hover to host the DNS zone for `podfeet.com` on their cluster of authoritative DNS servers.
 
@@ -213,7 +213,7 @@ When you look at the Name Server setting in the Network System Preference Pane, 
 image::./assets/ttt27/f106e4d1-f8fe-4f75-9a19-67f355fa73fa.png[Name Server Setting]
 
 On most Linux and Unix OSes, DNS resolution is controlled using the configuration file `/etc/resolv.conf`.
-This file is present in OS X, but is used as a way for the OS to expose the settings to scripts and command-line utilities rather than as a way of controlling DNS configuration.
+This file is present in OS X but is used as a way for the OS to expose the settings to scripts and command-line utilities rather than as a way of controlling DNS configuration.
 The file on OS X is in the identical format to the ones on Linus and Unix.
 You can have a look at this file with the command:
 
@@ -228,7 +228,7 @@ A true DNS resolver works its way from the DNS root servers out to the requested
 For example, for a DNS resolver to convert `www.bartb.ie` to an IP address it must follow the following steps:
 
 . Query one of the root DNS servers for the A record for `www.bartb.ie.` (the list of DNS root servers is hardcoded into the resolver's configuration)
-. The root DNS sever will respond that it doesn't know the answer to that query, but that it does know the authoritative name servers responsible for the `.ie.` zone.
+. The root DNS server will respond that it doesn't know the answer to that query, but that it does know the authoritative name servers responsible for the `.ie.` zone.
 In other words, the first query returns a list of NS records for the `.ie` domain.
 . The resolver then asks one of the authoritative DNS servers for `.ie` if it has an A record for `www.bartb.ie.`
 . The `.ie` authoritative server responds that it doesn't, but that it does know the authoritative servers for the `bart.ie.` zone.
@@ -242,10 +242,10 @@ Stub resolvers don't do the hard work of resolution themselves, instead, they fo
 Our operating systems contain stub resolvers and our home routers contain stub resolvers.
 Our ISPs provide true resolvers, as do some third-party organisations like Google and OpenDNS.
 
-If we imagine the typical home network, what happens when you type an address into the URL bar of your browser is that your browser ask you OS for the IP address that matches the URL you just entered.
-Your OS passes that request on to it's internal stub resolver.
+If we imagine the typical home network, what happens when you type an address into the URL bar of your browser is that your browser asks your OS for the IP address that matches the URL you just entered.
+Your OS passes that request on to its internal stub resolver.
 The stub resolver in your OS passes the query on to the name server DHCP told it to use (almost certainly your home router).
-Your home router also contains a stub resolver, so it in turn passes the request on to the name server it was configured to use by the DHCP packet it received from your ISP.
+Your home router also contains a stub resolver, so it, in turn, passes the request on to the name server it was configured to use by the DHCP packet it received from your ISP.
 Finally, your ISP's resolver does the actual resolving and replies to your router with the answer which replies to the stub resolver in your OS which replies to your browser.
 
 When you take into account the redirections by the stub resolvers as well as the actual resolution, you find that six separate DNS requests were needed to convert `www.bartb.ie` to `46.22.130.125`:
@@ -265,7 +265,7 @@ To make DNS practical, caching is built into the protocol's design.
 DNS caching is not an afterthought, it was designed in from the start.
 
 Every response to a DNS query by an authoritative server contains a piece of metadata called a TTL.
-This stands for _Time to Live_, and is expressed as a number of seconds.
+This stands for _Time to Live_ and is expressed as a number of seconds.
 The TTL tells resolvers how long the result may be cached for.
 
 All DNS resolvers, including stub resolvers, can cache results.
@@ -286,7 +286,7 @@ They only become visible when all the caches between the user and the authoritat
 
 DNS is a layer 4 protocol that sits on top of UDP.
 Each query consists of a single packet, as does each reply.
-This use of single packets makes DNS very efficient, but it limits the amount of data that can be contained in a reply, and, it means that requests and replies can get silently dropped, because UDP does not guarantee delivery of every packet.
+This use of single packets makes DNS very efficient, but it limits the amount of data that can be contained in a reply, and, it means that requests and replies can get silently dropped because UDP does not guarantee delivery of every packet.
 Because of this DNS resolvers sometimes have to re-try their requests after a certain timeout value.
 
 Authoritative servers and DNS resolvers listen on UDP port 53.
@@ -302,7 +302,7 @@ nslookup domain.name
 
 This command is still present in most Unix and Linux variants, including OS X, but is marked as deprecated on some modern distributions.
 
-POSIX users, including Mac users, should probably get out of the habit of using `nslookup`, and start relying on the `host` command for simple queries, and the `dig` command for complex queries instead.
+POSIX users, including Mac users, should probably get out of the habit of using `nslookup` and start relying on the `host` command for simple queries, and the `dig` command for complex queries instead.
 
 The `host` command is superbly simple, it accepts one argument, the domain name to resolve, and prints out the corresponding IP address.
 If the domain has an MX record that value is printed out too, and if the answer had to be arrived at by following one or more CNAME aliases those intermediate steps are printed out as well.
@@ -340,7 +340,7 @@ dig [options] domain.name [record_type] [@server]
 
 If you don't specify a record type, an A record is assumed, and if you don't specify a server, the OS's specified resolver is used.
 
-If you don't specify any options you will see quite verbose output, showing both the DNS query sent, and the reply, if any.
+If you don't specify any options you will see quite verbose output, showing both the DNS query sent and the reply, if any.
 This can be quite confusing, which is why I suggest using the simpler `host` command for basic queries.
 E.g.
 the following shows the output when trying to resolve `www.bartb.ie` which exists, and `wwww.bartb.ie` which does not.
@@ -392,10 +392,10 @@ bart-iMac2013:~ bart$
 What you will notice is that in the first output there is some metadata followed by a number of distinct sections, and finally some more metadata.
 
 You can tell the second query failed for two reasons.
-Firstly, in the metadata at the top the output the status of the query shown as `NXDOMAIN` (non-existent domain) rather than `NOERROR`.
+Firstly, in the metadata at the top of the output, the status of the query is shown as `NXDOMAIN` (non-existent domain) rather than `NOERROR`.
 Secondly, there is no `ANSWER` section in the output.
 
-Sometimes this detailed output is very useful, but often times it just gets in the way.
+Sometimes this detailed output is very useful, but oftentimes it just gets in the way.
 You can suppress the extra information by using the `+short` option:
 
 [source,shell,linenums]
@@ -424,8 +424,8 @@ bart-iMac2013:~ bart$ dig +short podfeet.com TXT
 bart-iMac2013:~ bart$
 ----
 
-You can also use dig to interrogate an authoritative server directly, or to use a resolver other than the one configured in the OS by adding a final argument starting with an `@` symbol.
-The argument can be either the domain name for the server your want to query, or the IP address of the server.
+You can also use dig to interrogate an authoritative server directly or to use a resolver other than the one configured in the OS by adding a final argument starting with an `@` symbol.
+The argument can be either the domain name for the server your want to query or the IP address of the server.
 This can useful when trying to figure out whether or not a given DNS resolver is functioning, or, when testing changes made to authoritative servers without having to wait for all the caches to expire.
 
 Below is an example of each use, first querying Google's free public resolver for the name server for `bartb.ie`, and then querying the authoritative server for `bartb.ie` for the A record for `www.bartb.ie` (I've left off the `+short` so you can see which servers were queried in the metadata at the bottom of the output):
@@ -533,7 +533,7 @@ Once `dig` knows the root name servers, it starts the actual resolution of `www.
 The root server doesn't respond with a direct answer to the question, but with a list of eight authoritative name servers for the `.ie` zone.
 
 `dig` then asks one of the `.ie` name servers (`77.72.72.44`) if it has an A record for www.bartb.ie.
-It also doesn't answer the question, but responds with a list of three authoritative name servers for the `bartb.ie` zone.
+It also doesn't answer the question but responds with a list of three authoritative name servers for the `bartb.ie` zone.
 
 Finally, `dig` asks one of the authoritative servers for `bartb.ie` (`85.233.160.79`) if it has an A record for `www.bartb.ie`.
 This server does know the answer, so it replies with that A record, specifying that `www.bartb.ie` is at `46.22.130.125`.
@@ -542,7 +542,7 @@ This server does know the answer, so it replies with that A record, specifying t
 
 As with so many of the older protocols we've discussed in this series, DNS was created at a time when security simply wasn't a consideration.
 
-The source of the weakness is two-fold, firstly, DNS packets are not encrypted, and there is no tamper detection included in the protocol, so its trivially easy for any attackers who gets themselves into a man-in-the-middle position to re-write DNS responses to silently redirect people to malicious servers.
+The source of the weakness is two-fold, firstly, DNS packets are not encrypted, and there is no tamper detection included in the protocol, so it's trivially easy for any attackers who get themselves into a man-in-the-middle position to rewrite DNS responses to silently redirect people to malicious servers.
 If you were in a coffee shop and one of your fellow caffeine aficionados had absurd the lack of security in the ARP protocol to become a man-in-the-middle, they could alter the IP address your computer thinks any site, say paypal.com as an example, maps to.
 If they then set up their own server at the incorrect IP and make it look like PayPal's site, they could easily trick people into revealing their usernames and passwords.
 
@@ -552,25 +552,25 @@ This fake response can contain any length of TTL, so attackers can have their ma
 This is known as DNS Cache Poisoning.
 
 Cache poisoning is not as easy as it used to be because the source ports for DNS queries are now randomised.
-This means that a remote attacker needs to correctly guess the random port number for their fake packet to have any change of being accepted.
+This means that a remote attacker needs to correctly guess the random port number for their fake packet to have any chance of being accepted.
 Attackers can get around this by sending LOTS of false responses with different random port numbers, but the protection is not perfect.
 An attacker with enough determination and bandwidth can still poison a DNS cache.
-Also note that Man-in-the-middle (MITM) attackers see both the request and response packets, so they don't need to guess the port number, they can simply alter the valid response packet to say what they want it to say, so port randomisation provides no protection from MITM attacks.
+Also, note that Man-in-the-middle (MITM) attackers see both the request and response packets, so they don't need to guess the port number, they can simply alter the valid response packet to say what they want it to say, so port randomisation provides no protection from MITM attacks.
 
 The good news though is that there is a solution in the making.
 An extension to DNS called http://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions[DNSSEC] provides a solution by cryptographically signing DNS responses.
-This does not prevent an attacker from altering the response, or sending fake responses, but it does make it possible for the recipient to know the response is fake, and ignore it.
+This does not prevent an attacker from altering the response or sending fake responses, but it does make it possible for the recipient to know the response is fake, and ignore it.
 
 DNSSEC is quite slow to be rolled out, but it is starting to happen now.
 
 == Conclusions
 
-W've seen how DNS converts human-readable domain names into computer-readable IP addresses.
-It is vital that our computers have access to a working DNS Resolver, because if they don't, the internet will be unusable.
+We've seen how DNS converts human-readable domain names into computer-readable IP addresses.
+It is vital that our computers have access to a working DNS Resolver because if they don't, the internet will be unusable.
 
-From previous instalments we already know that for a computer to function properly on a TCP/IP network it must have three settings properly configured, an IP address, a netmask, and a default gateway.
+From previous instalments, we already know that for a computer to function properly on a TCP/IP network it must have three settings properly configured, an IP address, a netmask, and a default gateway.
 We can now add a fourth required setting, a DNS resolver, or name server.
 
-In the next instalment we'll focus on tools for trouble-shooting network problems.
-We'll have seen many of the commands before, but we're look at them in more detail, and in context.
+In the next instalment, we'll focus on tools for troubleshooting network problems.
+We'll have seen many of the commands before, but we're looking at them in more detail and in context.
 The aim of the next instalment will be to build up a troubleshooting strategy that starts at the bottom of the network stack and works up through it methodically to locate the problem, allowing your to focus your efforts in the right place, and avoid wasting your time debugging things that are actually working just fine.
