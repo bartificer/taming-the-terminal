@@ -25,7 +25,7 @@ namespace :book do
       puts " -- HTML output at ttt.html"
 
       puts "Converting to EPub..."
-      `bundle exec asciidoctor-epub3 #{params} #{book_dir}/ttt-epub-spine.adoc --out-file=ttt.epub`
+      `bundle exec asciidoctor-epub3 #{params} -a pygments-style=manni #{book_dir}/ttt-epub-spine.adoc --out-file=ttt.epub`
       puts " -- Epub output at ttt.epub"
 
     #   puts "Converting to Mobi (kf8)..."

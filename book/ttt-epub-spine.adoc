@@ -8,6 +8,7 @@ Bart Busschots
 :source-highlighter: pygments
 :rouge-linenums-mode: inline
 :pygments-linenums-mode: inline
+:pygments-css: class
 :table-stripes: even
 :toc: left
 :toclevels: 0

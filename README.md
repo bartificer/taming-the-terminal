@@ -108,5 +108,13 @@ Somehow there is a bug in `asciidoctor` that causes backticks to be passed throu
 
 ### Color coding in ePub
 
-Rouge is used as source code highlighter in PDF and HTML, but it doesn't work in ePub. Only Pygments supports ePub, but this has no good support for shell scripts. Somehow the color coding in Books actually looks to be just black & white.
+Rouge is used as source code highlighter in PDF and HTML, but it doesn't work in ePub. Only Pygments is supported in ePub, but this has no good support for shell scripts. Somehow the color coding in Books actually looks to be just black & white.
+
+**UPDATE**: it looks like the attribute for the styling in the spine is not honored. It should be added as an attribute on the commandline like
+
+```
+-a pygments-style=manni
+```
+
+src: https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document
 
