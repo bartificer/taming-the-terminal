@@ -1,9 +1,9 @@
 [[ttt18]]
 = TTT Part 18 of n -- More REs
 
-In <<ttt17,the previous instalment>> we introduced the concept of Regular Expressions, and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Per Compatible Regular Expression (PCRE) language.
+In <<ttt17,the previous instalment>>, we introduced the concept of Regular Expressions and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Per Compatible Regular Expression (PCRE) language.
 
-In this instalment we'll learn more POSIX ERE syntax, and have a look at some examples of REs in GUI apps.
+In this instalment, we'll learn more POSIX ERE syntax, and have a look at some examples of REs in GUI apps.
 
 .Matching Postcast Episode 18
 ****
@@ -38,14 +38,14 @@ We've seen that you can simply list the characters that are allowed one after th
 Something else you can do with a character class is invert it, in other words, have it match every character *except* the ones you list.
 To do this, you must start the character class with the `^` symbol.
 
-For example, the following command will find all five letter words that don't start with a vowel:
+For example, the following command will find all five-letter words that don't start with a vowel:
 
 [source,shell]
 ----
 egrep '^[^aeiou]....$' /usr/share/dict/words
 ----
 
-Notice that the meaning of the `^` symbol chagnes depending on where it is used, outside character classes it means _start of line_, and inside character classes it means _not any of the following_.
+Notice that the meaning of the `^` symbol changes depending on where it is used, outside character classes it means _start of line_, and inside character classes, it means _not any of the following_.
 
 == This Or That
 
@@ -75,8 +75,8 @@ egrep '^(th|ab).....$' /usr/share/dict/words
 
 == Cardinalities
 
-Many patterns contain some form of repetition, hence, regular expression languages generally contain a number of operators for expressing different ways in which a pattern, or a part of a pattern can be repeated.
-There are four POSIX ERE operators that allow you to specify differing amounts of repetition.
+Many patterns contain some form of repetition, hence, regular expression languages generally contain a number of operators for expressing different ways in which a pattern, or a part of a pattern, can be repeated.
+There are four POSIX ERE operators that allow you to specify different amounts of repetition.
 
 The first and most common is the `*` operator which you should read as _zero or more occurrences of_.
 The operator applies to just the single character or group directly to it's left.
@@ -182,7 +182,7 @@ We've now seen all the symbols that have a meaning within a POSIX ERE (except fo
 | _One or more occurrences of_
 
 | `?`
-| _Zero or one occurrences of_
+| _Zero or one occurrence of_
 
 | `{}`
 | The cardinality operator
@@ -208,7 +208,7 @@ Similarly, an RE to find all optionally decimal dollar amounts could be written 
 \$[0-9]+(\.[0-9]+)?
 ----
 
-However, we could write this in a more clear way by using the fact that very few characters have a special meaning within character classes, and hence don't need to be escaped if they are used in that context:
+However, we could write this more clearly by using the fact that very few characters have a special meaning within character classes, and hence don't need to be escaped if they are used in that context:
 
 [source,shell]
 ----
@@ -286,7 +286,7 @@ To make our examples more generic, replace the `^` and `$` dollar operators at t
 
 == Putting it All Together
 
-Given everything we now know, let's re-visit the example we ended with in the previous instalment, our big un-ginaly RE for matching MAC addresses:
+Given everything we now know, let's revisit the example we ended with in the previous instalment, our big ungainly RE for matching MAC addresses:
 
 [source,shell]
 ----
@@ -307,7 +307,7 @@ The above will do everything our original RE did, but, actually, it's not as goo
 \b[0-9a-f]{2}(:[0-9a-f]{2}){5}\b
 ----
 
-To really get practical, it's time to stop using the standard unix words file, and start using more complex input.
+To really get practical, it's time to stop using the standard Unix words file, and start using more complex input.
 Specifically, we're going to use the `ifconfig` command which prints the details for all the network devices on a computer.
 We'll be looking at this command in much more detail later in the series, but for now, we'll just be using the command with no arguments.
 To see what it is we'll be pattern-matching against, run the command on its own first:
@@ -317,7 +317,7 @@ To see what it is we'll be pattern-matching against, run the command on its own 
 ifconfig
 ----
 
-So far we have been using the `egrep` command in it's two-argument form, but, it can also be used with only one argument, the pattern to be tested, if the input is passed via `STDIN`.
+So far we have been using the `egrep` command in its two-argument form, but, it can also be used with only one argument, the pattern to be tested, if the input is passed via `STDIN`.
 We'll be using stream redirection to pipe the output of `ifconfig` to `egrep`.
 
 Let's use our new MAC address RE to find all the MAC addresses our computer has:
@@ -349,7 +349,7 @@ Firstly, to the RE for domain names:
 [a-zA-Z0-9][-a-zA-Z0-9]*([.][a-zA-Z0-9][-a-zA-Z0-9]*)*
 ----
 
-Hopefully you can now read this RE as follows:
+Hopefully, you can now read this RE as follows:
 
 ****
 A letter or digit followed by zero or more letters, digits, or dashes, optionally followed by as many instances of a dot followed by a letter or digits followed by zero or more letters, digits or dashes as desired.
