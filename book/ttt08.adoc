@@ -103,7 +103,7 @@ Let's start by listing all the processes owned by a given user, regardless of wh
 
 [source,shell]
 ----
-ps -u <strong>[username]</strong>
+ps -u [username]
 ----
 
 e.g.
