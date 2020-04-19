@@ -118,3 +118,12 @@ Rouge is used as source code highlighter in PDF and HTML, but it doesn't work in
 
 src: https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document
 
+
+### Highlights in source code
+
+It is not possible to highlight specific parts of the source code, so all references to e.g. <strong> must be removed from the snippet or it will show up verbatim in the output file.
+
+### Keyboard shortcuts
+
+Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to keyboard shortcuts to the HTML5 keyboard counterparts. 
+Note, the commandkey (CMD) can be used as `{commendkey}`.

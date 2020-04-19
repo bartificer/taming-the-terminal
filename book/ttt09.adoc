@@ -148,7 +148,15 @@ That's all we really need to know about starting processes, so let's move on to 
 
 The command to quit a process is `kill`, which sounds very draconian indeed.
 Despite how scary it sounds, you don't have to be overly afraid of it, because if used without flags, all it does is politely ask the process if it would please quit.
-In other words, it's the command-line equivalent of `cmd+q`, or selecting _Quit_ form an app's menu.
+In other words, it's the command-line equivalent of
+ifndef::backend-pdf[]
+ kbd:[{commandkey} + Q]
+endif::[]
+ifdef::backend-pdf[]
+ kbd:[Cmd + Q]
+endif::[]
+,
+or selecting _Quit_ form an app's menu.
 
 The `kill` command needs at least one argument, the PID if the process you'd like to end.
 This is where the `ps` and `top` commands we learned about last time come in very handy (or indeed the Activity Monitor app of you are on a Mac).
