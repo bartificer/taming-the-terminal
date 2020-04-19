@@ -128,3 +128,5 @@ It is not possible to highlight specific parts of the source code, so all refere
 Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to keyboard shortcuts to the HTML5 keyboard counterparts. 
 Note, the commandkey (CMD) can be used as `{commandkey}`.
 For the shortcuts to show up properly in the VScode previewer, eacht document needs an `:experimental:` option in the header.
+
+Rather than `Ctrl` write `Control`, because that's what it says on the key cap.
