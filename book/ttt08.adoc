@@ -1,12 +1,12 @@
 [[ttt08]]
 = TTT Part 8 of n -- Processes
 
-For various reasons there's been a bit of a gap between the previous instalment and this one.
+For various reasons, there's been a bit of a gap between the previous instalment and this one.
 A big part of the reason is that I'd been putting off a lot of topics I wanted to talk about on Chit Chat Across the Pond until there was a logical break in this Terminal series.
-Having finished with the file system at the end of the part 7, I had my logical break point.
+Having finished with the file system at the end of part 7, I had my logical breakpoint.
 Now it's time to get stuck back in though, and start a whole new topic -- processes.
 
-We'll start with a little history for context, then have a look at the model OS X uses to represent processes, and finish by looking at some commands for listing the currently running processes on your system.
+We'll start with a little history for context, then have a look at the model OS X uses to represent processes and finish by looking at some commands for listing the currently running processes on your system.
 
 .Matching Postcast Episode 8
 ****
@@ -28,7 +28,7 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT08Processes_2
 == A Little History for Context
 
 We now live in a world where multitasking is a normal and expected part of our computing experiences, be that on our servers, desktops, laptops, tablets, or phones.
-Multitasking is not something that comes natural to our computers though.
+Multitasking is not something that comes naturally to our computers though.
 Until relatively recently, our home computers had a single CPU, that could execute only a single task at a time.
 Or, in computer-science-speak, our computers could only execute a single simultaneous thread of execution.
 In the days of DOS that was true of the hardware as well as the software.
@@ -40,13 +40,13 @@ Windows ran on the same single-CPU hardware as DOS, so how could it do many thin
 Well, it didn't, it just looked it did.
 Even back in the early 90s, our computers were doing millions of calculations per second, so the way Windows 3.1 did multitasking was through a software abstraction.
 Every task that wanted to use the CPU was represented in software as a "`process`".
-This representation could store the entire CPU-state of the the thread of execution, allowing Windows to play and pause it at will.
-A few thousand times a second, Windows would uses hardware interrupts to wrest control of the CPU from the running process, take a snap-shot of its state, save it, then load the last saved state of the next process in the queue, and let it run for a bit.
-If you had 10 processes, and a 1 MHz CPU, then each process got about 100,000 CPU cycles to work with per second, enough to give you the impression that all your programs were all running at the same time.
+This representation could store the entire CPU-state of the thread of execution, allowing Windows to play and pause it at will.
+A few thousand times a second, Windows would use hardware interrupts to wrest control of the CPU from the running process, take a snap-shot of its state, save it, then load the last saved state of the next process in the queue, and let it run for a bit.
+If you had 10 processes and a 1 MHz CPU, then each process got about 100,000 CPU cycles to work with per second, enough to give you the impression that all your programs were all running at the same time.
 
 Our modern hardware can do more than one thing at once, even on many of our phones.
-Firstly, modern CPUs are _hyper threaded_, that means that they support more than one thread of execution at the same time on a single CPU (more than 1 does not mean 100s, it usually means two).
-Secondly, many of our CPUS now have multiple _cores_ on the same piece of silicon.
+Firstly, modern CPUs are _hyperthreaded_, that means that they support more than one thread of execution at the same time on a single CPU (more than 1 does not mean 100s, it usually means two).
+Secondly, many of our CPUs now have multiple _cores_ on the same piece of silicon.
 This means that they are effectively two, or even four, CPUs in one, and each one of those cores can be hyper-threaded too!
 Finally, many of our computers now support multiple CPUs, so if you have four quad-core multi-threaded CPUs (like the much-loved octo-macs), you have the ability to execute 4x4x2, i.e., 32 threads, at the same time.
 Mind you, your average Mac has many fewer than that, a dual-core hyper-threaded CPU is common, giving you '`just`' four actually simultaneous threads of execution.
@@ -54,20 +54,20 @@ Mind you, your average Mac has many fewer than that, a dual-core hyper-threaded 
 Clearly, being able to run just 4 processes at the same time is just not enough, hence, even our modern computers, use the same software trick as Windows 3.1 to appear to run many tens or even hundreds of processes at the same time.
 
 There is literally an entire university semester of material in designing strategies for efficiently dividing up available CPU-time between processes.
-All we'll say on the topic for now is that the OS gets to arbitrate which processes gets how much time, and that that arbitration is a lot more involved than a simple queuing system.
+All we'll say on the topic for now, is that the OS gets to arbitrate which process gets how much time, and that that arbitration is a lot more involved than a simple queuing system.
 The OS can associate priorities with processes, and it can use those priorities to give some processes preferential access over others.
 
 We should also clarify that there is not a one-to-one mapping between processes and applications.
-Each app does have at least one process associated with it, but once an app is running it can _fork_ or _spawn_ as many _child process_ as it wants/needs.
-You could imagine a word processing app having one process to deal with the UI, and another separate process for doing spell checking simultaneously in the background.
+Each app does have at least one process associated with it, but once an app is running it can _fork_ or _spawn_ as many _child processes_ as it wants/needs.
+You could imagine a word processing app having one process to deal with the UI and another separate process for doing spell checking simultaneously in the background.
 
 We should also note that on modern operating systems there are two broad classes of processes, those used by the OS to provide system services (often referred to as _system processes_), and those instigated by users to do tasks for them (often called _user processes_).
-There are no fundamental difference between these two groups of processes though, it's just a taxonomy thing really.
+There is no fundamental difference between these two groups of processes though, it's just a taxonomy thing really.
 If you boot up your Mac and leave it at the login screen, there will already be tens of system processes running.
 Exactly how many will vary from user to user depending on how many or few services are enabled.
 
 Finally, we should note that not all running processes are represented in the UI we see in front of us.
-When we launch an app there is a clear mapping between the process we started and one or more windows on our screen, or icons in our menubar, but there are many processes that don't have any windows, don't show up in the dock, and don't have an icon in the menubar.
+When we launch an app there is a clear mapping between the process we started and one or more windows on our screen or icons in our menubar, but there are many processes that don't have any windows, don't show up in the dock, and don't have an icon in the menubar.
 These '`hidden`' processes are often referred to as _background processes_.
 
 == Unix/Linux/OS X Processes
@@ -75,7 +75,7 @@ These '`hidden`' processes are often referred to as _background processes_.
 Each running process on a Unix/Linux/OS X computer has an associated _process ID_ or PID.
 This is simply an integer number that the OS uses to identify the process.
 The very first process (the OS kernel), gets the PID 0, and every process that starts after that gets the next free PID.
-On Linux systems the process with the PID 1 is usually `init`, which is the process Linux uses to manage system services, so the Kernel will start `init` which then starts all the other system processes.
+On Linux systems, the process with the PID 1 is usually `init`, which is the process Linux uses to manage system services, so the Kernel will start `init` which then starts all the other system processes.
 OS X uses the same idea, but instead of using `init`, it uses something called `launchd` (the launch daemon) to manage system processes.
 If your system has been running for a long time it's normal to see PIDs with 5 digits or more.
 
@@ -83,21 +83,21 @@ As well as having a PID, each Linux/Unix/OS X process (except for the kernel), a
 This gives us the concept of a hierarchy of processes, with the kernel at the top of the pyramid.
 
 As well as a PID and PPID, each process also runs as a particular user.
-Whether a give file can or can't be accessed by a given process is determined by the user the process is running as, and the permissions set on the file.
+Whether a given file can or can't be accessed by a given process is determined by the user the process is running as, and the permissions set on the file.
 
 Now it's time to open up the Terminal and get stuck in with some real-world commands.
 
 == Some Terminal Commands
 
 Let's start with the most basic process-related command, `ps`, which lists running processes.
-Note that `ps` is one of the few basic terminal commands that behaves differently on Linux and Unix.
+Note that `ps` is one of the few basic terminal commands that behave differently on Linux and Unix.
 
 On a Mac, if you run the `ps` command without arguments, all that will be listed are the terminal-based processes owned by the user running the shell.
 In all likelihood, all you'll see is just a single `bash` process, which is your current shell (if you have multiple Terminal windows/tabs open you'll probably see a `bash` processes for each one).
 
 The columns you'll see listed are PID (process ID), TTY (ignore this for now, it's not really relevant on modern computers), TIME (how much CPU time the process is currently using), and CMD, the running command (including arguments if any).
 
-Most of the time, the output of `ps` without arguments is of little to no interest, you need to use one or more arguments to get anything useful form `ps`.
+Most of the time, the output of `ps` without arguments is of little to no interest, you need to use one or more arguments to get anything useful from `ps`.
 
 Let's start by listing all the processes owned by a given user, regardless of whether or not they are terminal-based processes:
 
@@ -117,8 +117,8 @@ If you're a big multitasker like me, you may be surprised by just how many proce
 If you use Chrome as your browser you may also notice that it uses a separate process for each open tab.
 
 Something else you're likely to want to do is to see all current processes, regardless of who they belong to.
-On Linux we would do that with the `-e` (for everyone) flag, while on Unix we would do that with the `-A` (for ALL) flag.
-OS X conveniently supports both, so just use which ever one your find easiest to remember.
+On Linux, we would do that with the `-e` (for everyone) flag, while on Unix we would do that with the `-A` (for ALL) flag.
+OS X conveniently supports both, so just use whichever one you find easiest to remember.
 
 [source,shell]
 ----
@@ -132,7 +132,7 @@ or
 ps -A
 ----
 
-At this stage you'll be seeing a very long list, but for each entry all you're seeing is the standard four headers.
+At this stage, you'll be seeing a very long list, but for each entry, all you're seeing is the standard four headers.
 You're viewing the list of all processes for all users, but there is no column to tell you which process belongs to which user!
 For this list to be useful you need to ask `ps` to give you more information about each process.
 
@@ -184,7 +184,7 @@ ps -er -o user,pid,%cpu,%mem,command
 ps -em -o user,pid,%cpu,%mem,command
 ----
 
-The `ps` command is a good way to get an instantaneous snapshot of the processes running on your system, but usually, what you really want is a real-time sorted list of processes, and for that we have the top command:
+The `ps` command is a good way to get an instantaneous snapshot of the processes running on your system, but usually, what you really want is a real-time sorted list of processes, and for that, we have the top command:
 
 [source,shell]
 ----
@@ -192,7 +192,7 @@ top
 ----
 
 You'll now see real-time statistics on memory and CPU usage as well as a list of your top processes.
-On most Linux distributions the default sorting for `top` is by CPU usage, which is actually very useful, but Apple didn't think like that, instead Apple chose a default sort order of descending PID, i.e.
+On most Linux distributions the default sorting for `top` is by CPU usage, which is actually very useful, but Apple didn't think like that, instead, Apple chose a default sort order of descending PID, i.e.
 the most recently started processes.
 
 You can either re-sort after starting `top` by hitting `o` and then typing something like `-cpu` (for descending CPU sorting), or `-vsize` (for descending memory usage), and hitting enter.
@@ -224,14 +224,14 @@ Aside: you can find out how many effective CPUs you have with the command:
 `sysctl hw.ncpu | awk '{print $2}'`.
 ====
 
-It's OK for the 1 minute average to cross the number of CPUs you have occasionally, but if the 15 minute average crosses the number of CPUs you have when you're not doing something unusually stressful like transcoding video, then your computer is probably in need of an upgrade.
+It's OK for the 1-minute average to cross the number of CPUs you have occasionally, but if the 15-minute average crosses the number of CPUs you have when you're not doing something unusually stressful like transcoding video, then your computer is probably in need of an upgrade.
 
 Clearly, `ps` and `top` can give you a lot of information about the processes that are running on your system, but they are both quite clunky because to get the most out of them you have to use a lot of flags.
 On OS X, a much better choice is to use the built-in `Activity Monitor` app (`Applications→Utilities→Activity Monitor`).
-This will show you all the same information, but in a nice easy-to-use GUI.
-You can choose which processes you see with a drop down at the top right of the window, and you can sort on any column by clicking on it's header.
+This will show you all the same information but in a nice easy-to-use GUI.
+You can choose which processes you see with a drop-down at the top right of the window, and you can sort on any column by clicking on its header.
 
-To visually see the hierarchy of processes, you can choose `All Processes, Hierarchically` from the drop down.
+To visually see the hierarchy of processes, you can choose `All Processes, Hierarchically` from the drop-down.
 Bear in mind though that this view is not good for sorting or filtering.
 If you're trying to figure out which apps are using the most CPU or RAM, it's best to stick with the `All Processes` option.
 
