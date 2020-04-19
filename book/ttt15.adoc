@@ -1,8 +1,8 @@
 [[ttt15]]
 = TTT Part 15 of n -- 'Plumbing'
 
-Right back in the very first instalment we described the Unix philosophy as being Lego-like,
-that is, having lots of simply commands that do one thing well, and then assembling them together to do something really powerful.
+Right back in the very <<ttt01,first instalment>>, we described the Unix philosophy as being Lego-like,
+that is, having lots of simple commands that do one thing well, and then assembling them together to do something really powerful.
 
 So far, we've only been working with a single command at a time, but that changes with this instalment.
 We'll be introducing the concept of streams, which can be used to connect commands and files together.
@@ -33,20 +33,20 @@ Quite simply, a stream is a sequential flow of data -- everything that goes in o
 In a Unix/Linux environment there are three standard streams:
 
 * *`STDOUT` (Standard Out):* when working on the command-line this stream is usually connected to the terminal -- anything written to that stream is printed in the terminal window.
-Within applications this stream is usually connected to a log file.
+Within applications, this stream is usually connected to a log file.
 * *`STDERR` (Standard Error):* this is another output stream, but one reserved for error messages.
 When working on the command-line this stream is usually also connected to the terminal in the same way that `STDOUT` is.
-Within Applications this stream is usually connected to a log file, though often a different log file to `STDOUT`.
+Within applications, this stream is usually connected to a log file, though often a different log file to `STDOUT`.
 * *`STDIN` (Standard In):* this stream is used for input rather than output.
 When working at the command-line it is usually connected to the keyboard.
-Within Applications this stream could be attached to anything really.
+Within applications, this stream could be attached to anything really.
 E.g.
 within a web server it is connected to the HTTP request data sent to the server by the browser.
 
 Many Unix/Linux commands can take their input from `STDIN`, and just about every command will write it's output to `STDOUT` and/or `STDERR`.
 This allows commands to be strung together by the simple act of redirecting these streams -- if you redirect the output of one command to the input of another, you have chained them together!
 
-Remember that every process has it's own environment, and therefore, it's own version of the three standard streams.
+Remember that every process has its own environment, and therefore, it's own version of the three standard streams.
 The redirection operators alter the copies of these three variables within individual processes, so, from the command's point of view, it always reads from `STDIN`, and always writes to `STDOUT` and/or `STDERR`, but where those streams flow to is determined by their environment.
 
 == Stream Redirection
@@ -82,7 +82,7 @@ The answer can be found further down in the man page:
 The `wc` utility displays the number of lines, words, and bytes contained in each input file, or standard input (if no file is specified) to the standard output.
 ****
 
-In other words, `wc` will read it's input from `STDIN` if no file is specified, and, no matter what the input source, it will write it's results to `STDOUT`.
+In other words, `wc` will read its input from `STDIN` if no file is specified, and, no matter what the input source, it will write it's results to `STDOUT`.
 
 Now that you know about the three standard streams, you'll start to see them in man pages all over the place.
 E.g., you'll find the following in the man page for `ls`:
@@ -128,7 +128,7 @@ These files are generally connected directly to some piece of hardware in your s
 
 There are a few safe special files that I want to mention though:
 
-* *`/dev/null`*: this is effectively a black hole -- you use this file to redirect output into oblivion.
+* *`/dev/null`*: this is effectively a black hole -- you use this file to redirect the output into oblivion.
 (more on this in the next instalment)
 * *`/dev/random` or `/dev/urandom`*: both of these streams output random data 8 bytes at a time.
 The difference between the two is that `/dev/random` does not care how much entropy the OS has built up (i.e.
@@ -159,7 +159,7 @@ putting it all this together we can assemble the following command:
 head -c 10 /dev/random | base64
 ----
 
-This is nearly perfect, but, you'll notice that the output always end with `==`, this is the Base64 code for '`end of input`'.
+This is nearly perfect, but, you'll notice that the output always ends with `==`, this is the Base64 code for '`end of input`'.
 We can chop that off by piping our output through `head` one more time to return only the first 10 characters:
 
 [source,shell]
@@ -168,7 +168,7 @@ head -c 10 /dev/random | base64 | head -c 10
 ----
 
 This will print only the 10 random characters, and nothing more.
-Since this command does not print a new-line character, it leaves the text stuck to the front of your prompt which is messy.
+Since this command does not print a newline character, it leaves the text stuck to the front of your prompt which is messy.
 To get around this you can run `echo` with no arguments straight after the above command:
 
 [source,shell]
@@ -188,7 +188,7 @@ N=10; head -c $N /dev/random | base64 | head -c $N; echo
 
 == Conclusions
 
-In this instalment we have introduced the concept of streams, particularly the three standard streams provided by the environment, `STDOUT`, `STDERR`, and `STDIN`.
-We've seen that these streams can be redirected using a set of operators, and that this redirection provides a mechanism for chaining commands together to form more complex and powerful commands.
+In this instalment, we have introduced the concept of streams, particularly the three standard streams provided by the environment, `STDOUT`, `STDERR`, and `STDIN`.
+We've seen that these streams can be redirected using a set of operators and that this redirection provides a mechanism for chaining commands together to form more complex and powerful commands.
 We've been introduced to the concept of using files as input and output, but have not looked at that in detail yet.
 We've also not yet looked at merging streams together, or independently redirecting `STDOUT` and `STDERR` to separate destinations -- this is what's on the agenda for the next instalment.
