@@ -1,7 +1,7 @@
 [[ttt16]]
 = TTT Part 16 of n -- Crossing the Streams
 
-In <<ttt15,the previous instalment>> we introduced the concepts of streams, and looked at how every process has references to three streams as part of their environment -- `STDIN`, `STDOUT` & `STDERR`.
+In <<ttt15,the previous instalment>>, we introduced the concepts of streams and looked at how every process has references to three streams as part of their environment -- `STDIN`, `STDOUT` & `STDERR`.
 We went on to introduce the concept of operators that manipulate these streams, and we focused on the so-called '`pipe`' operator which connects `STDOUT` in one process to `STDIN` in another, allowing commands to be chained together to perform more complex tasks.
 We mentioned the existence of operators for connecting streams to files, and the possibility of streams being merged together, but didn't go into any detail.
 Well, that's what we'll be doing in this instalment.
@@ -44,7 +44,7 @@ As an example, let's use the `wc` command we learned about in the previous insta
 wc -l < /etc/hosts
 ----
 
-Because the `wc` command can take its input either from `STDIN`, or from one or more files passed as arguments, the above command achieves the same things as the command we saw in the previous instalment:
+Because the `wc` command can take its input either from `STDIN` or from one or more files passed as arguments, the above command achieves the same things as the command we saw in the previous instalment:
 
 [source,shell]
 ----
@@ -63,8 +63,8 @@ head -3 < /etc/hosts
 
 It's easier to just pass paths as arguments through, hence the `<` operator is probably the least-used of the stream redirection operators.
 However, just because it's the least-used, doesn't mean it's never needed!
-There are some commands that will only accept input via `STDIN`, and for such commands it's vital to have an understanding of the `<` operator in your command-line toolkit.
-In my professional life the one example I meet regularly is the `mysql` command, which does not take a file path as an argument (Note that MySQL is not installed by default on OS X).
+There are some commands that will only accept input via `STDIN`, and for such commands, it's vital to have an understanding of the `<` operator in your command-line toolkit.
+In my professional life, the one example I meet regularly is the `mysql` command, which does not take a file path as an argument (Note that MySQL is not installed by default on OS X).
 To load an SQL file into a MySQL database from the command-line you have to do something like:
 
 [source,shell]
@@ -87,7 +87,7 @@ The second of the file output operators is `>>`.
 This operates in a very similar way to `>`, directing the output of the command to its left to the file specified to its right, but with one very important difference -- if a file already exists at the specified path it will not be replaced, instead, the new output will be appended to the end of the file.
 This makes the `>>` operator much safer, but, it means you cannot easily see which content in the file came from the latest execution of the command.
 
-As a practical example, let's re-visit our command for generating random characters from the previous instalment, but this time, rather than outputting the random characters to the terminal, we'll send them to a file:
+As a practical example, let's revisit our command for generating random characters from the previous instalment, but this time, rather than outputting the random characters to the terminal, we'll send them to a file:
 
 [source,shell]
 ----
@@ -102,7 +102,7 @@ We can verify that we have generated 256 random characters by using the `wc` com
 wc -c random.txt
 ----
 
-If we re-run the command we can verify that the file still only contains 256 characters, because the original version of the file was simply replaced by a new version because we used the `>` operator:
+If we re-run the command we can verify that the file still only contains 256 characters because the original version of the file was simply replaced by a new version because we used the `>` operator:
 
 [source,shell,linenums]
 ----
@@ -144,11 +144,11 @@ This is true for our use of all four of the operators we've met so far (`|`, `<`
 However, there is often a need to control other streams, particularly `STDERR`.
 
 Unfortunately, we now have no choice but to take a look at some rather deep Unix/Linux internals.
-We've already learned that each process has a reference to three streams within it's environment which we've been calling by their Englishy names `STDIN`, `STDOUT` & `STDERR`.
+We've already learned that each process has a reference to three streams within its environment which we've been calling by their Englishy names `STDIN`, `STDOUT` & `STDERR`.
 We now need to remove this abstraction.
 What the process's environment actually contains is something called a "`File Descriptor Table`", which contains a numbered table of streams.
-Three of these streams are created by default, and always present, but processes can add as many more streams as they wishes.
-Within the file descriptor table all streams are referenced by number, rather than with nice Englishy names, and the numbers start counting from zero.
+Three of these streams are created by default, and always present, but processes can add as many more streams as they wish.
+Within the file descriptor table, all streams are referenced by number, rather than with nice Englishy names, and the numbers start counting from zero.
 To make use of the file descriptor table, we need to know the following mappings:
 
 |===
@@ -219,7 +219,7 @@ ls -l ~/DesktopDONKEY 2> error.txt | wc -l > fileCount.txt
 
 == Crossing the Streams
 
-Unlike in the Ghost Busters universe, in the Unix/Linux universe it's often desirable to cross the streams -- i.e.
+Unlike in the Ghost Busters universe, in the Unix/Linux universe, it's often desirable to cross the streams -- i.e.
 to merge two streams together.
 The most common reason to do this is to gather all output, regular and error, into a single stream for writing to a file.
 The way this is usually done is to divert `STDERR` to `STDOUT` and then redirect `STDOUT` to a file.
@@ -227,8 +227,8 @@ The way this is usually done is to divert `STDERR` to `STDOUT` and then redirect
 In order to construct a meaningful example, let's preview a command we're going to be returning to in great detail in a future instalment, the `find` command.
 This command often writes to both `STDOUT` and `STDERR` during normal operation.
 
-As its name suggests, the `find` command can be used to search for files that meet a certain criteria.
-If you run the command as a regular user and ask it to search your entire hard drive, or a system folder, it will run into a lot of permission errors interspersed with the regular output as the OS prevents it from searching some protected system folders.
+As its name suggests, the `find` command can be used to search for files that meet certain criteria.
+If you run the command as a regular user and ask it to search your entire hard drive or a system folder, it will run into a lot of permission errors interspersed with the regular output as the OS prevents it from searching some protected system folders.
 As a simple example, let's use find to search for `.pkg` files in the system library folder:
 
 [source,shell]
@@ -238,7 +238,7 @@ find /Library -name *.pkg
 
 Almost straight away you'll see a mix of permission errors and files with the `.pkg` extension.
 The key point is that there is a mix of errors and results.
-If we try capture all the output with the command below we'll see that the error messages are not sent to the file, instead, they are sent to our screen (as expected):
+If we try to capture all the output with the command below we'll see that the error messages are not sent to the file, instead, they are sent to our screen (as expected):
 
 [source,shell]
 ----
