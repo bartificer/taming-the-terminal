@@ -1,22 +1,22 @@
 [[ttt26]]
 = TTT Part 26 of n -- DHCP
 
-In <<ttt23,part 23 of n>> we took a big-picture look at how TCP/IP networking works.
+In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP
 * We think of the stack of protocols as being broken into four layers:
-** The Link Layer -- let's computers that are on the same network send single packets of data to each other
-** The Internet Layer -- Let's computers on different networks send single packets of data to each other
-** The Transport Layer -- let's computers send meaningful streams of data between each other
+** The Link Layer -- lets computers that are on the same network send single packets of data to each other
+** The Internet Layer -- lets computers on different networks send single packets of data to each other
+** The Transport Layer -- lets computers send meaningful streams of data between each other
 ** The Application Layer -- where all the networked apps we use live
 * Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
-In <<ttt25,the previous instalment>> we looked at how IP subnet works.
+In <<ttt25,the previous instalment>>, we looked at how IP subnet works.
 The key takeaway was that a computer needs a minimum of three settings correctly configured to be able to participate in an IP network: an IP address, a subnet mask, and a default gateway (the IP address of the router providing access outside the subnet).
 We also looked at how to read those three settings from your Mac using the GUI and the Terminal.
-Finally, we noted that historically, those settings had to manually configured, but that today, almost all computers acquire those settings automatically.
-In this instalment we'll look at the protocol that makes that possible, the Dynamic Host Configuration Protocol, or DHCP.
+Finally, we noted that historically, those settings had to be manually configured, but that today, almost all computers acquire those settings automatically.
+In this instalment, we'll look at the protocol that makes that possible, the Dynamic Host Configuration Protocol, or DHCP.
 
 .Matching Postcast Episode 26
 ****
@@ -37,10 +37,10 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT26DHCP/TTT_26
 
 == The Problem to be Solved
 
-If we re-wind the clock to the days before laptops (let alone tablets and smartphones), the only computers connecting to networks were stationary devices.
+If we rewind the clock to the days before laptops (let alone tablets and smartphones), the only computers connecting to networks were stationary devices.
 A network admin would connect the computer to the network, configure the three vital settings, and that would be the computer set up on the network, probably for its entire life.
 
-Even at this early stage there was some friction with this process.
+Even at this early stage, there was some friction with this process.
 Manually configured network settings make seamless network changes impossible.
 Once the network is changed in some way, a network engineer has to re-visit each computer one by one to update the settings.
 
@@ -57,11 +57,11 @@ This also meant that organisations with multiple subnets needed multiple RARP se
 RARP was a short-lived experiment, being superseded with the release of http://en.wikipedia.org/wiki/Bootstrap_Protocol[BOOTP] (the Bootstrap Protocol) in 1985.
 BOOTP was a significant step forward, introducing the concept of a relay agent that could forward BOOTP requests from multiple subnets to a single centralised BOOTP server.
 BOOTP was still very much a product of its time though -- it was designed around the concept of allocating IPs to computers permanently.
-BOOTP has no way to re-claim addresses, so it's useless in environments were lots of computer come and go all the time.
+BOOTP has no way to reclaim addresses, so it's useless in environments were lots of computers come and go all the time.
 
 In 1993 BOOTP was extended to create the protocol we use today, http://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol[DHCP] (the Dynamic Host Configuration Protocol).
 DHCP is built around the concept of computers temporarily _leasing_ an IP address.
-As computers come and go, IP addresses are leased to those computers for a set amount of time, and then re-claimed for later re-use.
+As computers come and go, IP addresses are leased to those computers for a set amount of time, and then reclaimed for later reuse.
 
 == The Chicken & the Egg
 
@@ -83,8 +83,8 @@ We already know that these devices contain a router component, an ethernet switc
 Another one of the components contained within the little boxes we refer to as home routers is a DHCP server.
 This means that on our home networks we have a DHCP server directly connected to our ethernet network.
 
-On larger networks like those you'd find in corporations or educational institutions you won't find home routers powering the network.
-Instead, what you'll find is that the managed switches and routers used by these organisations contain DHCP relay agents, which relay DHCP requests from all the different subnets on the network to a single central cluster of DHCP servers (usually with redundancy built in incase a server crashes).
+On larger networks, like those you'd find in corporations or educational institutions you won't find home routers powering the network.
+Instead, what you'll find is that the managed switches and routers used by these organisations contain DHCP relay agents, which relay DHCP requests from all the different subnets on the network to a single central cluster of DHCP servers (usually with redundancy built-in in case a server crashes).
 This more complex environment is outside of the scope of this series.
 We'll be ignoring DHCP relay agents for the remainder of this discussion.
 
@@ -105,7 +105,7 @@ What does that sequence of four packets really mean?
 
 The initial DHCP DISCOVER is the client broadcasting its request for configuration settings to the entire network in the hope that a DHCP server will respond to it.
 That request contains a minimum of the MAC address of the requesting computer, a list of configuration settings it would like a value for, and a so-called _magic cookie_.
-The DISCOVER packet can also contain extra information like the client's hostname, and the length of lease the client would like.
+The DISCOVER packet can also contain extra information like the client's hostname, and the length of the lease the client would like.
 
 The DHCP server will hear the broadcast and, assuming it's configured to do so, respond by broadcasting a DHCP OFFER.
 The DHCP OFFER will contain the magic cookie, an IP, subnet, and gateway for the client's use, a lease time, and values for as many of the requested settings as possible.
@@ -119,7 +119,7 @@ The ACK contains the same information as the original OFFER.
 Once that four-way transaction is complete, the DHCP server marks the IP as being in use for the duration of the lease, and the client uses the supplied details to configure its IP stack.
 
 The so-called _magic cookie_ is just a random value generated by the client that is used to tie the different DHCP packets together.
-On a busy network there could be many DISCOVERs, OFFERs, REQUESTs, and ACKs broadcast every second, so without the magic cookie it would be impossible to tell which response is meant for which client.
+On a busy network, there could be many DISCOVERs, OFFERs, REQUESTs, and ACKs broadcast every second, so without the magic cookie, it would be impossible to tell which response is meant for which client.
 
 When the lease comes to an end, the whole process does not have to be repeated.
 The client can simply send a new DHCP REQUEST, asking for the lease on its current IP to be extended.
@@ -217,11 +217,11 @@ The final type of DHCP packet is the one you need to be wary of -- the DHCP NACK
 
 As the name may suggest to you, NACK stands for NOT ACK, in other words, it's a negative response to a DHCP REQUEST.
 It's perfectly normal for a small percentage of the DHCP packets on a network to be NACKs, they can be produced in innocent ways.
-However, on a healthy network you should see far fewer NACKs than ACKS.
+However, on a healthy network, you should see far fewer NACKs than ACKS.
 
 When a client's lease is coming to an end it sends a DHCP REQUEST to ask that its lease be extended.
 If for any reason the server does not want to extend the lease, it will respond with a DHCP NACK.
-On receiving this NACK the client simply starts from zero again, and sends a DHCP DISCOVER, at which point it will receive an OFFER of a different IP, which it can then REQUEST, and which the sever should then ACK.
+On receiving this NACK the client simply starts from zero again and sends a DHCP DISCOVER, at which point it will receive an OFFER of a different IP, which it can then REQUEST, and which the server should then ACK.
 This means that the pattern REQUEST, NACK, DISCOVER, OFFER, REQUEST, ACK is entirely innocent, and nothing to worry about.
 
 DHCP NACKs can also be generated when an address that's supposed to be managed by DHCP is hard-coded onto a device somewhere on the network.
@@ -236,7 +236,7 @@ When you need to start worrying is when you see the same client get NACKed over 
 There are two common problems that can lead to excessive NACKs.
 
 Firstly, if a network contains two DHCP servers (or more), they can end up fighting with each other.
-One can NACK every offer made by the other, and vica-versa.
+One can NACK every offer made by the other, and vice-versa.
 It's possible for two duelling DHCP servers to make it impossible for anyone on the network to get an IP via DHCP.
 This is something I've witnessed a few times during my day job.
 This can be done accidentally, or maliciously.
@@ -246,13 +246,13 @@ These so-called _static leases_ allow you to have all the advantages of manually
 Many home routers allow you to configure these kinds of static leases.
 Where things can go wrong is when there is a static lease defined for a given MAC address, and some other device on the network has been manually configured to use that IP address.
 The DHCP server will offer the same IP over and over again, and each time the client responds with a DHCP REQUEST it will receive a NACK because the IP is responding to PINGs.
-In this situation the DHCP client will fail to connect to the network until the usurper is removed from the network.
+In this situation, the DHCP client will fail to connect to the network until the usurper is removed from the network.
 
 == The `ipconfig` Command (OS X Only)
 
 We've already encountered the `ifconfig` command which is common to all POSIX OSes, but OS X also contains a separate command which provides command-line access to many of the functions exposed in the Network System Preference Pane.
 I'm referring to the confusingly named `ipconfig`.
-The reason I say this is a confusing name is that it's very similar to `ifconfig`, and identical to a completely different Windows command.
+The reason I say this is a confusing name is that it's very similar to `ifconfig` and identical to a completely different Windows command.
 
 `ipconfig` can be used to turn a network interface off as follows (replacing `enX` with the actual interface you want to disable):
 
@@ -318,7 +318,7 @@ man ipconfig
 == The Security Elephant in the Room (Again)
 
 As we saw with ARP previously, there is no security built into the DHCP protocol.
-DHCP clients will blindly implement what ever settings a DHCP server hands them.
+DHCP clients will blindly implement whatever settings a DHCP server hands them.
 This is usually fine, because most of the time, the only DHCP server on your network is one that is there to help, but not always.
 A DHCP server process is small and simple.
 Any computer can act as a DHCP server.
@@ -331,10 +331,10 @@ Network administrators can also protect their users by monitoring the source add
 
 == Conclusions
 
-The two critical pieces of information to take away from this instalment are that DHCP is used to automatically configure the IP stack on our computers, and that a healthy DHCP transaction takes the following form: DISCOVER, OFFER, REQUEST, ACK.
+The two critical pieces of information to take away from this instalment are that DHCP is used to automatically configure the IP stack on our computers and that a healthy DHCP transaction takes the following form: DISCOVER, OFFER, REQUEST, ACK.
 
-In the previous two instalments we learned how ethernet and IP provide the basic networking functionality our computers need to communicate.
-In this instalment we've seen how our home routers use the DHCP protocol to automatically configure the IP settings on our devices.
-In the next instalment we'll learn how DNS allows us humans to ignore IP addresses while surfing the web, sending emails, playing games, and so much more.
+In the previous two instalments, we learned how ethernet and IP provide the basic networking functionality our computers need to communicate.
+In this instalment, we've seen how our home routers use the DHCP protocol to automatically configure the IP settings on our devices.
+In the next instalment, we'll learn how DNS allows us, humans, to ignore IP addresses while surfing the web, sending emails, playing games, and so much more.
 
-Once we've added an understanding of DNS to our mental toolkit, we'll be ready to apply everything we have learned in instalments 23 through 27 together in a single instalment dedicated to terminal commands for network trouble-shooting.
+Once we've added an understanding of DNS to our mental toolkit, we'll be ready to apply everything we have learned in instalments 23 through 27 together in a single instalment dedicated to terminal commands for network troubleshooting.
