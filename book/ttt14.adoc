@@ -1,7 +1,7 @@
 [[ttt14]]
 = TTT Part 14 of n -- Aliases & Prompts
 
-In <<ttt13,the previous instalment>> we looked at how to make permanent changes to our environment.
+In <<ttt13,the previous instalment>>, we looked at how to make permanent changes to our environment.
 We made a permanent change to the `PATH` environment variable to demonstrate how it's done
 (by editing `~/.bash_profile` on a Mac,
 or `~/.bashrc` on Linux).
@@ -37,7 +37,7 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT14AliasesAndP
 Aliases are basically command shortcuts.
 When used as a command, the alias gets expanded to a longer string by BASH before execution.
 Aliases can contain arguments as well as commands.
-Aliases can be used to create short mnemonics for long complex commands, or to add default arguments to existing commands.
+Aliases can be used to create short mnemonics for long complex commands or to add default arguments to existing commands.
 
 Let's start with an example of the first kind.
 The command `ls -l` often results in very long output, so it would be nice to be able to automatically run this output through a pager so we can see it one page at a time instead of having to scroll back up to find the start of the output.
@@ -60,7 +60,7 @@ As you can see, you create an alias using the `alias` command.
 The bit before the `=` is the shortcut, and the bit after the `=` is what it will expand into.
 If the expansion contains spaces or other special characters then either the entire replacement needs to be quoted, or each special character needs to be escaped.
 The vast majority of aliases you create will contain spaces and/or at least one special character, so it's best to get into the habit of always quoting your aliases.
-In the above example both the spaces and the `|` would need to be escaped, so the un-quoted version of the above alias would be the following difficult to read mess:
+In the above example, both the spaces and the `|` would need to be escaped, so the un-quoted version of the above alias would be the following difficult to read mess:
 
 [source,shell]
 ----
@@ -79,7 +79,7 @@ To have `ls` always show trailing slashes and use colours we can alias `ls` to `
 alias ls='ls -FG'
 ----
 
-Secondly, we can use aliases to make commands that might unintentionally remove or override files behave in safer manner by automatically adding the `-i` flag to `rm`, `cp` & `mv`:
+Secondly, we can use aliases to make commands that might unintentionally remove or override files behave in a safer manner by automatically adding the `-i` flag to `rm`, `cp` & `mv`:
 
 [source,shell]
 ----
@@ -113,7 +113,7 @@ to remove our `ll` alias, run:
 unalias ll
 ----
 
-Aliases are part of the BASH environment, and are not persistent.
+Aliases are part of the BASH environment and are not persistent.
 If you create an alias and then close your command shell it will be gone.
 To make aliases permanent we need to add them into our BASH startup scripts.
 As we learned in the previous instalment, for Mac users that means adding our aliases to `~/.bash_profile`, while Linux users should add their aliases to `~/.bashrc`.
@@ -141,7 +141,7 @@ alias rm='rm -i' cp='cp -i' mv='mv -i'
 
 As we discussed right back in the first instalment, the format of your command prompt varies from system to system.
 This variation is not just between command shells, but also within command shells, because many allow customisations to the format of the prompt.
-BASH is one of the command shells that supports command prompt customisation.
+BASH is one of the command shells that support command prompt customisation.
 
 In BASH, the format of the prompt is defined in the shell variable `PS1`.
 You can see the current format used with the command:
@@ -165,10 +165,10 @@ On the RedHat and CentOS variants of Linus the default is `[\u@\h \W]\$`, which 
 [bart@www ~]$
 ----
 
-From the above you should be able to deduce that any letter in the code prefixed with a `\` is replaced with a value.
+From the above, you should be able to deduce that any letter in the code prefixed with a `\` is replaced with a value.
 Below is a list of some of the variables at your disposal:
 
-* `\h` -- your computer's host name (e.g.
+* `\h` -- your computer's hostname (e.g.
 `bart-imac2013`)
 * `\H` -- your computer's FQDN, or fully qualified domain name (e.g.
 `bart-imac2013.localdomain`)
@@ -217,13 +217,13 @@ alias rm='rm -i' cp='cp -i' mv='mv -i'
 PS1='\d \t – \u@\H:\w\n\$ ';
 ----
 
-Personally I like to keep my prompts set to their default values -- it helps me recognise the OS I'm on at a glance.
+Personally, I like to keep my prompts set to their default values -- it helps me recognise the OS I'm on at a glance.
 
 == Conclusions
 
-Over the past few instalments we have looked at what the shell environment is, how we can manipulate shell and environment variables and aliases.
+Over the past few instalments, we have looked at what the shell environment is, how we can manipulate shell and environment variables and aliases.
 We looked at two variables in particular, `PATH` and `PS1`.
 We also discussed BASH aliases, and how to make permanent changes to your BASH environment, allowing you to customise your PATH and prompt and define aliases.
 
 This is where we'll leave the concept of the environment for now.
-In the next instalment we'll move on to look at what I joking call '`plumbing`' -- how commands can be chained together, and how files and be used for input to and output from commands.
+In the next instalment, we'll move on to look at what I joking call '`plumbing`' -- how commands can be chained together, and how files and be used for input to and output from commands.
