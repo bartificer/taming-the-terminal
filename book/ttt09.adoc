@@ -1,8 +1,8 @@
 [[ttt09]]
 = TTT Part 9 of n -- Controlling Processes
 
-In the <<ttt08,previous instalment>> we looked how Unix-like operating systems like Linux and Mac OS X represent processes.
-We then went on to look at the commands for listing running processes, and filtering and sorting them in various ways.
+In the <<ttt08,previous instalment>>, we looked at how Unix-like operating systems like Linux and Mac OS X represent processes.
+We then went on to look at the commands for listing running processes and filtering and sorting them in various ways.
 This time we'll move on to controlling processes, specifically, starting and stopping them.
 
 ////
@@ -35,11 +35,11 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09Controlling
 
 Whether or not you think of it in that way, you're always starting processes.
 Each time you launch an app, you've started a process.
-Also, each time you issue a command on the Terminal, you're starting a processes.
+Also, each time you issue a command on the Terminal, you're starting a process.
 
-So far, each time we've started a processes from the command shell, it's been a so-called _foreground process_.
-We enter the command, this starts a new process, and that new processes gets control of our terminal until it finishes, at which time we get returned to the command shell.
-When we run very simple commands like `ps`, or `ls`, the processes take just milliseconds to run, so we don't really notice that we lose our prompt for a moment while the new processes takes charge, does it's thing, and then hands control back.
+So far, each time we've started a process from the command shell, it's been a so-called _foreground process_.
+We enter the command, this starts a new process, and that new process gets control of our terminal until it finishes, at which time we get returned to the command shell.
+When we run very simple commands like `ps` or `ls`, the processes take just milliseconds to run, so we don't really notice that we lose our prompt for a moment while the new process takes charge, does its thing, and then hands control back.
 
 However, sometimes you want to start a process from the command shell, and not have it take control of your Terminal.
 A good example might be using a command shell to start a GUI app.
@@ -59,11 +59,11 @@ First, let's start FireFox from the Terminal as a regular foreground process:
 /Applications/Firefox.app/Contents/MacOS/firefox-bin
 ----
 
-You'll see that the FireFox GUI launches as normal, and that it outputs some information on what it's doing to the Terminal.
+You'll see that the FireFox GUI launches as normal and that it outputs some information on what it's doing to the Terminal.
 You'll also notice that you have lost your command prompt.
 You can hammer the enter key all you want, but you're not getting that command prompt back until the FireFox process exists and hands control back to your command shell.
 Go ahead and do that through the GUI as normal.
-Notice how the moment FireFox quits you get your command promote back.
+Notice how the moment FireFox quits you get your command prompt back.
 
 Now, let's start FireFox as a background process:
 
@@ -102,7 +102,7 @@ On Unix and Linux it's normal to launch GUI apps from the command-line by backgr
 However, the Mac has another, better, way of opening things from the command-line that other versions of Linux and Unix don't have, the `open` command.
 
 The best way to think of `open` is as the command-line equivalent of double-clicking something in the Finder.
-when pass `open` one or more files as arguments it will open those files using the default app for their file type, and as an added bonus, it will automatically background and apps it starts, so you don't even have to remember the `&`!
+When you pass `open` one or more files as arguments it will open those files using the default app for their file type, and as an added bonus, it will automatically background and apps it starts, so you don't even have to remember the `&`!
 Note that if you pass `open` a folder rather than a file it will open the folder in a new Finder window.
 
 A very handy trick is to use `open` to get a Finder window showing the contents of your command shell's present working directory as follows:
@@ -155,8 +155,7 @@ endif::[]
 ifdef::backend-pdf[]
  kbd:[Cmd + Q]
 endif::[]
-,
-or selecting _Quit_ form an app's menu.
+ or selecting _Quit_ from an app's menu.
 
 The `kill` command needs at least one argument, the PID if the process you'd like to end.
 This is where the `ps` and `top` commands we learned about last time come in very handy (or indeed the Activity Monitor app of you are on a Mac).
@@ -171,7 +170,7 @@ We'll start by opening FireFox and backgrounding it with:
 ----
 
 Before we can quit FireFox with the `kill` command we need to know its PID.
-We can either scroll up and read it from the first line of output, or, we can use the `ps` command to get it.
+We can either scroll up and read it from the first line of output or, we can use the `ps` command to get it.
 Since we started FireFox from the terminal, it will show up when we use `ps` without any arguments at all.
 
 Once you have the PID you can quit FireFox with (replacing `[the_PID]` with the actual PID of course):
@@ -204,23 +203,23 @@ Note that you need to be careful with `killall` because, as its name suggests, i
 
 == Dealing with Stubborn Processes
 
-Up until now we've been polite, and we've used `kill` and `killall` to ask processes to please quit themselves.
+Up until now, we've been polite, and we've used `kill` and `killall` to ask processes to please quit themselves.
 When an app crashes or hangs, that won't get you very far.
 If the app is so messed up it can't deal with mouse input anymore, it's also not going to respond when `kill` or `killall` politely ask it to stop.
 
 When this happens, it's time to bring out the big guns!
-Both `kill` and `killall` take an optional argument `-KILL`, which tells `kill`/`killall` to instruct the OS to terminal the process, rather than asking the process to terminate itself.
-ONLY DO THIS AS A LAST RESORT, YOU CAN LOSE UNSAVED DATA THIS WAY!
+Both `kill` and `killall` take an optional argument `-KILL`, which tells `kill`/`killall` to instruct the OS to terminate the process, rather than asking the process to terminate itself.
+**ONLY DO THIS AS A LAST RESORT, YOU CAN LOSE UNSAVED DATA THIS WAY!**
 
 Note that on older Unix systems `killall` didn't exist at all, and `kill` only took numeric arguments.
 The old numeric equivalent of `-KILL` is `-9`, and both `kill` and `killall` on OS X (and Linux) will accept this old-fashioned flag as well as the more modern `-KILL`.
 
-Before we finish I want to reiterate how importan it is to always try `kill` and `killall` without the `-KILL` option first.
-Think if it this way, it's basic good manners to ask the process the please leave before you call the bouncers over to eject it!
+Before we finish I want to reiterate how important it is to always try `kill` and `killall` without the `-KILL` option first.
+Think of it this way, it's basic good manners to ask the process the please leave before you call the bouncers over to eject it!
 
 == Next Time ...
 
 We'll be re-visiting processes again later in the series, but we're done with them for now.
 
-In the next instalment we'll be taking at look at the built-in manual that comes with every Unix/Linux OS, including Mac OS X.
+In the next instalment, we'll be taking a look at the built-in manual that comes with every Unix/Linux OS, including Mac OS X.
 You don't need a book to tell you what flags or arguments a command expects, or what exactly they mean, you can find it all out right from the command shell, even if it takes a little practice to learn to interpret the information.
