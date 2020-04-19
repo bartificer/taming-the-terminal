@@ -321,4 +321,4 @@ In the next instalment we'll discover that you can use the `find` command not on
 The `find` command is common to all POSIX operating systems, so it works on Linux, Unix, and OS X.
 OS X maintains an index of your files allowing quick searching in the Finder and via Spotlight.
 Because this index is kept up to date by the OS, it makes searching with Spotlight much quicker than searching with `find`.
-In the next instalment we'll also discover that OS X ships with a terminal command that allows you to use the power of Spotlight from the command line!
+In the next instalment we'll also discover that OS X ships with a terminal command that allows you to use the power of Spotlight from the command-line!

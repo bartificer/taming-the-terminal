@@ -76,7 +76,7 @@ Specify the username to use when connecting to the host.
 
 `Port`::
 Specify the port to use when connecting to the host.
-This option is equivalent to the `-p` command line option.
+This option is equivalent to the `-p` command-line option.
 
 `HostName`::
 Specify the real hostname or IP to use when connecting to the computer name.
@@ -84,20 +84,20 @@ Specify the real hostname or IP to use when connecting to the computer name.
 `ForwardX11`::
 Specify whether or not X11 forwarding should be enabled.
 This option can only accept the values `yes`, and `no`.
-Setting the value of this option to `yes` is equivalent to including the `-X` command line flag.
+Setting the value of this option to `yes` is equivalent to including the `-X` command-line flag.
 
 `ForwardX11Trusted`::
 This option can only accept the values `yes`, and `no`.
-Setting the value of this option to `yes` is equivalent to including the `-Y` command line flag.
+Setting the value of this option to `yes` is equivalent to including the `-Y` command-line flag.
 
 `LocalForward`::
 Specify a local port to forward to a remote port when connecting to the host.
 This option takes two arguments (separated by a space), the local port number to forward, and the destination host and port number in the form `host:port`.
-This option is equivalent to the `-L` command line option.
+This option is equivalent to the `-L` command-line option.
 
 `DynamicForward`::
 Set up dynamic port forwarding (a SOCKS Proxy).
-The value must be a port number, and this option is equivalent to `-D` command line option.
+The value must be a port number, and this option is equivalent to `-D` command-line option.
 
 
 SSH config files are very often used to specify that all SSH-based connections to a given computer should go to a given non-standard port.

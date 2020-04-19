@@ -123,7 +123,7 @@ For each port to be forwarded, an instance of the `-L` flag should be used in th
 
 Many websites are powered by https://www.mysql.com[MySQL] databases.
 It's common when working on a website to need access to the MySQL server powering your site from your local computer.
-You can do this using the MySQL command line tools, or, using a MySQL GUI.
+You can do this using the MySQL command-line tools, or, using a MySQL GUI.
 The problem is that the MySQL protocol is insecure (at least by default, it is possible to configure it to use SSL, but that's not straight forward).
 Your username, password, and all the queries you issue and the server's responses are all sent across the network un-encrypted.
 Because this is so dangerous, it's common to limit MySQL to using the `localhost` IP address (`127.0.0.1`), or to firewall off access so that only computers within a secured network segment can access the server.

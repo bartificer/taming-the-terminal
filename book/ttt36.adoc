@@ -200,7 +200,7 @@ The way it works is that every minute, every cron job who's five-part time speci
 Lines in the crontab starting with `#` are comment lines, that is to say, `cron` ignores them.
 Blank lines are also ignored.
 
-As well as lines starting with time specifiers, and comment lines, a crontab can also contain a number of special command lines.
+As well as lines starting with time specifiers, and comment lines, a crontab can also contain a number of special command-lines.
 We'll see some of these later in this instalment.
 
 === Specifying When
@@ -267,7 +267,7 @@ Firstly, OS X uses the open source MTA (Mail Transfer Agent) http://www.postfix.
 In the past many ISPs provided an SMTP server for their customers to use, so if your ISP does, this is at least a plausible option.
 This is not for the faint-hearted though -- you'll need to take the time to familiarise yourself with Postfix, and to learn what the different settings in the config file do.
 
-Your second option is to use the built-in command line mail client in OS X to read your unix inbox directly.
+Your second option is to use the built-in command-line mail client in OS X to read your unix inbox directly.
 The command is `mail`, and there is a man page explaining how it works.
 This works, but it's quite clunky.
 

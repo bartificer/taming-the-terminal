@@ -401,5 +401,5 @@ Thanks to NosillaCast listener Caleb Fong for recommending a great online RE tes
 
 == Next Time ...
 
-We've now learned enough about REs to move on to looking at command line tools for searching for text in files, and files in the filesystem.
+We've now learned enough about REs to move on to looking at command-line tools for searching for text in files, and files in the filesystem.
 This is what we'll be moving on to next in this series.

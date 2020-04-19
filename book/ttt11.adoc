@@ -3,10 +3,10 @@
 :icons: font
 
 In the next instalment we'll be moving on to look at the so-called _Environment_ within a command shell, but before we do that we need to lay some ground work.
-Specifically, we need to learn how to read and edit text files from the command line.
+Specifically, we need to learn how to read and edit text files from the command-line.
 
-In this instalment we'll start with the most common commands for reading files, and then move on to look at the simplest of the command line editors.
-For those interested in learning a little more I'll also give a very quick overview of one of the more powerful command line editors, but feel free to skip over that section if you like, future instalments won't assume that knowledge.
+In this instalment we'll start with the most common commands for reading files, and then move on to look at the simplest of the command-line editors.
+For those interested in learning a little more I'll also give a very quick overview of one of the more powerful command-line editors, but feel free to skip over that section if you like, future instalments won't assume that knowledge.
 
 .Matching Postcast Episode 11
 ****
@@ -86,7 +86,7 @@ This file is 235,886 long on OS X, and `less` has no problems searching or navig
 less /usr/share/dict/words
 ----
 
-While `less` is without doubt the best pager on modern Unix/Linux systems, and while it should be your command of choice for reading most text files, there is another pair of text-file-related commands every command line user should know -- `head` and `tail`.
+While `less` is without doubt the best pager on modern Unix/Linux systems, and while it should be your command of choice for reading most text files, there is another pair of text-file-related commands every command-line user should know -- `head` and `tail`.
 
 The `head` and `tail` commands really come into their own when it comes to dealing with log files.
 The `head` command will show you the first 10 lines of a file, and the `tail` command the last 10.
@@ -131,12 +131,12 @@ tail -f /var/log/appstore.log
 
 == Editing Files -- The Easy Way
 
-You can roughly divide the command line text editors into two categories, the quick and simple editors, and the power editors.
+You can roughly divide the command-line text editors into two categories, the quick and simple editors, and the power editors.
 The simpler editors are much easier to learn, but much less powerful.
-If you spend a lot of time on the command line, learning at least one of the power editors is worth the effort IMO.
+If you spend a lot of time on the command-line, learning at least one of the power editors is worth the effort IMO.
 
 Anyway, lets start simple.
-There are two common quick and simple command line text editors, `pico` and `nano`, and the chances are very high that no matter what modern Linux or Unix OS you are using, one of these two will be available.
+There are two common quick and simple command-line text editors, `pico` and `nano`, and the chances are very high that no matter what modern Linux or Unix OS you are using, one of these two will be available.
 (OS X comes with `nano`, but like with `more`, it pretends to have `pico` too, until you run `pico --version` when it fesses up to really being nano)
 
 Once opened `pico` and `nano` are virtually indistinguishable anyway, so which you have really doesn't matter.
@@ -171,7 +171,7 @@ However, if you're interested, I'm also going to give a very brief and very supe
 
 == A Quick Taste of Advanced Editing with vi -- OPTIONAL
 
-There are two leviathans in the command line text editing world, and both have been around since the 1970s.
+There are two leviathans in the command-line text editing world, and both have been around since the 1970s.
 In nerd circles your choice of text editor is about as polarising as the Republican and Democratic political parties in the US.
 You almost never meet someone who excels at both of them, and every Unix nerd has their favourite of the two.
 The two editors I'm talking about are http://en.wikipedia.org/wiki/Emacs[Emacs] and http://en.wikipedia.org/wiki/Vi[vi].
@@ -274,7 +274,7 @@ However, IMO once you understand the modal nature of `vi`, all you really need i
 
 == Final Thoughts
 
-It's very important to be able to read the content of text files from the command line, and also to be able to do at least basic edits from there.
-Everyone command line user needs to at least remember `less` and `tail -f`.
-Every command line user also needs to familiarise themselves with `pico`/`nano` at the very least.
-If you spend a lot of time on the command line I think it's definitely worth investing the time to learn `vi` or `emacs`.
+It's very important to be able to read the content of text files from the command-line, and also to be able to do at least basic edits from there.
+Everyone command-line user needs to at least remember `less` and `tail -f`.
+Every command-line user also needs to familiarise themselves with `pico`/`nano` at the very least.
+If you spend a lot of time on the command-line I think it's definitely worth investing the time to learn `vi` or `emacs`.

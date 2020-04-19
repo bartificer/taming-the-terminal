@@ -58,7 +58,7 @@ Before we continue, lets print out the current value of `PATH` with the `echo` c
 echo $PATH
 ----
 
-You should see a value that looks something like the following (though yours may well be shorter, mine is extra long because I use http://www.macports.org[MacPorts] to install Linux command line tools onto my Mac):
+You should see a value that looks something like the following (though yours may well be shorter, mine is extra long because I use http://www.macports.org[MacPorts] to install Linux command-line tools onto my Mac):
 
 [source,shell]
 ----

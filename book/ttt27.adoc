@@ -213,7 +213,7 @@ When you look at the Name Server setting in the Network System Preference Pane, 
 image::./assets/ttt27/f106e4d1-f8fe-4f75-9a19-67f355fa73fa.png[Name Server Setting]
 
 On most Linux and Unix OSes, DNS resolution is controlled using the configuration file `/etc/resolv.conf`.
-This file is present in OS X, but is used as a way for the OS to expose the settings to scripts and command line utilities rather than as a way of controlling DNS configuration.
+This file is present in OS X, but is used as a way for the OS to expose the settings to scripts and command-line utilities rather than as a way of controlling DNS configuration.
 The file on OS X is in the identical format to the ones on Linus and Unix.
 You can have a look at this file with the command:
 

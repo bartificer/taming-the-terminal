@@ -250,7 +250,7 @@ In this situation the DHCP client will fail to connect to the network until the 
 
 == The `ipconfig` Command (OS X Only)
 
-We've already encountered the `ifconfig` command which is common to all POSIX OSes, but OS X also contains a separate command which provides command line access to many of the functions exposed in the Network System Preference Pane.
+We've already encountered the `ifconfig` command which is common to all POSIX OSes, but OS X also contains a separate command which provides command-line access to many of the functions exposed in the Network System Preference Pane.
 I'm referring to the confusingly named `ipconfig`.
 The reason I say this is a confusing name is that it's very similar to `ifconfig`, and identical to a completely different Windows command.
 

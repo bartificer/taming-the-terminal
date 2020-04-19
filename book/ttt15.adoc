@@ -32,13 +32,13 @@ Quite simply, a stream is a sequential flow of data -- everything that goes in o
 
 In a Unix/Linux environment there are three standard streams:
 
-* *`STDOUT` (Standard Out):* when working on the command line this stream is usually connected to the terminal -- anything written to that stream is printed in the terminal window.
+* *`STDOUT` (Standard Out):* when working on the command-line this stream is usually connected to the terminal -- anything written to that stream is printed in the terminal window.
 Within applications this stream is usually connected to a log file.
 * *`STDERR` (Standard Error):* this is another output stream, but one reserved for error messages.
-When working on the command line this stream is usually also connected to the terminal in the same way that `STDOUT` is.
+When working on the command-line this stream is usually also connected to the terminal in the same way that `STDOUT` is.
 Within Applications this stream is usually connected to a log file, though often a different log file to `STDOUT`.
 * *`STDIN` (Standard In):* this stream is used for input rather than output.
-When working at the command line it is usually connected to the keyboard.
+When working at the command-line it is usually connected to the keyboard.
 Within Applications this stream could be attached to anything really.
 E.g.
 within a web server it is connected to the HTTP request data sent to the server by the browser.
@@ -179,7 +179,7 @@ head -c 10 /dev/random | base64 | head -c 10; echo
 Note we are NOT piping the output to `echo`, the symbol used is `;`, which is the command separator, it denotes the end of the previous command and the start of the next one, allowing multiple separate commands to be written on one line.
 The commands will be executed in order, one after the other.
 
-Finally, because we need to use the same number of characters in both `head` commands, we could use command line variables to make this command more generic and to make it easier to customise the number of characters:
+Finally, because we need to use the same number of characters in both `head` commands, we could use command-line variables to make this command more generic and to make it easier to customise the number of characters:
 
 [source,shell]
 ----
