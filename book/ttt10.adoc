@@ -1,5 +1,6 @@
 [[ttt10]]
 = TTT Part 10 of n -- man
+:experimental:
 
 Like with so many things in tech, it doesn't matter if you don't know everything, what matters is that you have the skills to quickly find the information you need when you needed it.
 Programmers don't memorise entire APIs, they simply learn how to search them, and how to interpret the results of their searches.
@@ -33,8 +34,8 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_
 I'm getting tired of typing '`manual entry`', so let's introduce a little jargon.
 The command to read a manual entry is `man`, so command-line aficionados will almost always refer to manual entries simply as _man pages_, so I'm going to do the same from here on.
 
-In theory the authors of man pages are free to write in any style the wish, and to organise their pages into any structure they see fit.
-Thankfully, a very strong convention has established itself, so just about every man page in existence is written in the same style, and organised in approximately the same way.
+In theory, the authors of man pages are free to write in any style they wish and to organise their pages into any structure they see fit.
+Thankfully, a very strong convention has established itself, so just about every man page in existence is written in the same style and organised in approximately the same way.
 Initially, you'll find the style odd, and perhaps even off-putting, but you'll soon get used to it.
 Sadly there is no shortcut -- the only way to get good at reading man pages, is to read man pages!
 
@@ -53,22 +54,22 @@ man ls
 
 You'll immediately notice that you've lost your command prompt, and are viewing a text document in your terminal window.
 The most important thing to learn is how to exit out of the man page and get back to your command prompt.
-To get out, simply hit the q key (for quit)!
+To get out, simply hit the kbd:[q] key (for quit)!
 
 OK, now that we know to get back out, let's re-open the man page for `ls` and have a look around.
 
 You can navigate up and down in a man page with the up and down arrow keys.
 You can also scroll down a single line by hitting enter, or a whole page at once with the spacebar.
-To scroll up a whole page at once hit `b` (for back).
-You can also go back half a page with the `u` key (for up).
+To scroll up a whole page at once hit kbd:[b] (for back).
+You can also go back half a page with the kbd:[u] key (for up).
 
 You can search in a document by typing `/` followed by your search pattern, and then hitting enter.
-To get to the next result hit the `n` key (and to get to the previous result, `shift+n`).
+To get to the next result hit the kbd:[n] key (and to get to the previous result, kbd:[Shift+n]).
 
 == Structure
 
 Now that we can navigate around, let's have a closer look at the structure of a man page.
-The first thing to note is that each man page is divided into sections, which are labeled in all capitals, and their content is indented by one tab.
+The first thing to note is that each man page is divided into sections, which are labelled in all capitals, and their content is indented by one tab.
 Sections can contain sub-sections who's content is indented by two tabs, and so on.
 
 Just about every man page you'll ever see will have the following three sections:
@@ -82,10 +83,10 @@ This section uses a somewhat cryptic notation to describe the structure of the a
 
 *DESCRIPTION* -- this is where the main body of the documentation will be contained.
 The description is usually the longest section by far, and often contains sub-sections.
-This is where you expect to find a list of all the options a command accepts, and a description of what they do.
+This is where you expect to find a list of all the options a command accepts and a description of what they do.
 
-Just to reiterate, there is no formal strutter every man page has to follow, but there are conventions, so most man pages will contain at least some of the sections listed below, in addition to the three above.
-Man page may contain custom sections though, so the list below is not exhaustive.
+Just to reiterate, there is no formal structure every man page has to follow, but there are conventions, so most man pages will contain at least some of the sections listed below, in addition to the three above.
+A man page may contain custom sections though, so the list below is not exhaustive.
 
 *OVERVIEW* -- very long man pages sometimes contain a one-paragraph summary of what the command does between the SYNOPSIS and DESCRIPTION sections.
 
@@ -96,7 +97,7 @@ If present, this is usually a very helpful section, and often worth jumping stra
 
 *TIPS* -- some man pages use this section to offer some useful advice to users.
 
-*SEE ALSO* -- this section is used to list related man pages, often describing related commands, or associated configuration files.
+*SEE ALSO* -- this section is used to list related man pages, often describing related commands or associated configuration files.
 
 *FILES* -- if a command's function is affected by one or more configuration files, the default file system locations for these files are often listed in this section.
 E.g.
@@ -124,13 +125,13 @@ If it's present it contains information that's usually only useful when writing 
 *ENVIRONMENT* -- we haven't discussed the command-line environment yet in this series, although it is next on the list.
 For now, you can ignore this section.
 
-*COMPATIBILITY* -- this section will only be present if the command has potential compatibility problems, perhaps it doesn't quite comply to a standard or something like that.
+*COMPATIBILITY* -- this section will only be present if the command has potential compatibility problems, perhaps it doesn't quite comply with a standard or something like that.
 
 *LEGACY DESCRIPTION* -- some commands have changed their behaviour over time.
 This section is where the old behaviours will be documented.
 This is really only useful when working with old scripts which might still be assuming the command's old behaviour.
 
-*BUGS* -- if there are known problems with the command, or known conditions which cause unusual or undesirable behaviour, they may be listed in this section.
+*BUGS* -- if there are known problems with the command or known conditions which cause unusual or undesirable behaviour, they may be listed in this section.
 
 *HISTORY* -- this can be a fun section, and is usually very short, and details the origins of the command.
 E.g.
@@ -161,7 +162,7 @@ E.g.
 == Final Thoughts
 
 The most important thing is not to be afraid of man pages.
-At first they will seem archaic and confusing, but you'll soon get used to their style, and you might even come to like it!
+At first, they will seem archaic and confusing, but you'll soon get used to their style, and you might even come to like it!
 There is no substitute for practice though -- the only way to learn to read man pages is to read man pages!
 
 Finally, let's end on a really bad nerd joke!
