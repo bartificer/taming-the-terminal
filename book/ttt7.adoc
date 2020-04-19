@@ -19,7 +19,7 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -50,7 +50,7 @@ mkdir -p TtT6n/topLevelFolder/secondLevelFolder
 
 Since the `TtT6n` folder already existed the command will have no effect on it, however, within that folder it will first create a folder called `topLevelFolder`, and then within that folder it will create a folder called `secondLevelFolder`.
 
-At this stage lets move into the TtT6n folder from where we'll execute the remainder of our examples:
+At this stage let's move into the TtT6n folder from where we'll execute the remainder of our examples:
 
 [source,shell]
 ----
@@ -64,7 +64,7 @@ We can now use the `-R` (for recursive) flag for `ls` to verify that the `mkdir 
 ls -RF
 ----
 
-When using `ls -R` the contents of each folder is separated by a blank line, and for folders deeper down than the current folder each listing is pre-fixed with the relative path to the folder about to be listed followed by a `:`.
+When using `ls -R` the contents of each folder is separated by a blank line, and for folders deeper down than the current folder each listing is prefixed with the relative path to the folder about to be listed followed by a `:`.
 
 In other words, we are expecting to see just a single entry in the first segment, a folder called `topLevelFolder`, then we expect to see a blank line followed by the name of the next folder to be listed, which will be the aforementioned `topLevelFolder`, followed by the listing of it's contents, which is also just one folder, this time called `secondLevelFolder`.
 This will then be followed by a header and listing of the contents of `secondLevelFolder`, which is currently empty.
@@ -165,9 +165,9 @@ We can use a simple `ls` command to verify that the folder has indeed been renam
 Finally, I want to briefly mention the `rm` (remove) command, which can be used to delete files and/or folders.
 The `rm` command simply takes the list of files to be nuked as arguments.
 Unlike deleting files in the Finder, the `rm` command doesn't have any kind of safety net -- it does not use the recycle bin, if you mess it up, you'd better hope you have a recent backup because your files are GONE!
-This is why I advise people to avoid using deleting files/folders from the command line unless you absolutely have to, or, are very comfortable on the Terminal.
+This is why I advise people to avoid using deleting files/folders from the command-line unless you absolutely have to, or, are very comfortable on the Terminal.
 It's much safer to delete things in the Finder.
-When ever you do use the `rm` command, ALWAYS check over your command before hitting enter!
+Whenever you do use the `rm` command, ALWAYS check over your command before hitting enter!
 To adapt the older carpentry adage that you should _always measure twice and cut once_, my advice when using `rm` is to _think twice and execute once_.
 
 By default the `rm` command will only allow you to delete regular files, but if you add the `-r` flag it will delete folders and their contents too.

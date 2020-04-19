@@ -27,7 +27,7 @@ You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -98,8 +98,8 @@ Also, when you launch FireFox from a command shell you can pass it flags and arg
 ====
 
 
-On Unix and Linux it's normal to launch GUI apps from the command line by backgrounding them, and as you can see, it works on the Mac too.
-However, the Mac has another, better, way of opening things from the command line that other versions of Linux and Unix don't have, the `open` command.
+On Unix and Linux it's normal to launch GUI apps from the command-line by backgrounding them, and as you can see, it works on the Mac too.
+However, the Mac has another, better, way of opening things from the command-line that other versions of Linux and Unix don't have, the `open` command.
 
 The best way to think of `open` is as the command-line equivalent of double-clicking something in the Finder.
 when pass `open` one or more files as arguments it will open those files using the default app for their file type, and as an added bonus, it will automatically background and apps it starts, so you don't even have to remember the `&`!
