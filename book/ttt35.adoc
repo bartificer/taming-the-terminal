@@ -1,8 +1,9 @@
 [[ttt35]]
 = TTT Part 35 of n -- HTTP Commands
+:experimental:
 
 The previous instalment we introduced the HTTP protocol.
-In this instalment we'll look at three terminal commands which make use of the HTTP protocol.
+In this instalment, we'll look at three terminal commands which make use of the HTTP protocol.
 
 We'll start by browsing from the terminal, and then move on to a pair of very similar commands for making HTTP requests from the terminal.
 These two commands can do many things, but we'll focus on two specific use-cases, downloading files, and viewing HTTP headers.
@@ -49,22 +50,27 @@ Once you have `lynx` installed, you can open any web page in your browser by pas
 lynx http://www.podfeet.com
 ----
 
-As `lynx` loads the page, you'll see it tell you what it's doing, and it may ask your permission to accept some cookies.
-Once the page is loaded, you can move down a whole screen of text at a time with the space bar, up a whole screen with the `b` key, and hop from link to link within the page with the up and down arrow keys.
-To follow a link, hit the right arrow key, to go back to the previous page, hit the left arrow key.
-You can go to a different URL by pressing the `g` key, and you can quit the app with the `q` key.
 
-You can also search within a page with the `/` key.
+As `lynx` loads the page, you'll see it tell you what it's doing, and it may ask your permission to accept some cookies.
+Once the page is loaded, you can move down a whole screen of text at a time with the space bar, up a whole screen with the kbd:[b] key, and hop from link to link within the page with the up
+and down
+arrow keys.
+To follow a link, hit the right
+arrow key, to go back to the previous page, hit the left
+arrow key.
+You can go to a different URL by pressing the kbd:[g] key, and you can quit the app with the kbd:[q] key.
+
+You can also search within a page with the kbd:[/] key.
 Hitting `/` will allow you to enter a search string.
-When you want to submit the search, hit `enter`.
+When you want to submit the search, hit kbd:[Enter].
 If a match is found, you will be taken to it.
-You can move to the next match with the `n` key, and back to the previous match with `shift+n`.
+You can move to the next match with the kbd:[n] key, and back to the previous match with kbd:[Shift+n].
 
 == Viewing HTTP Headers & Downloading Files
 
 `wget` and `curl` are a pair of terminal commands that can be used to make HTTP connections, and view the results.
 Both commands can do almost all the same things, but they each do them in a slightly different way.
-Just about every version of Linux and Unix will comes with one or both of these commands installed.
+Just about every version of Linux and Unix will come with one or both of these commands installed.
 OS X comes with `curl`, while `wget` seems to be more common on Linux.
 Most Linux distributions will allow you to install both of these commands, and you can install `wget` on OS X using MacPorts:
 
@@ -77,7 +83,7 @@ sudo port install wget
 
 Both `curl` and `wget` can be used to download a file from the internet, but `wget` makes it a little easier.
 
-The URL to download a zip file containing the latest version of `Crypt::HSXKPasswd` from GitHub is `+https://github.com/bbusschots/xkpasswd.pm/archive/master.zip+`.
+The URL to download a zip file containing the latest version of `Crypt::HSXKPasswd` from GitHub is `https://github.com/bbusschots/xkpasswd.pm/archive/master.zip`.
 The two commands below can be used to download that file to the present working directory:
 
 [source,shell]
@@ -86,7 +92,7 @@ wget https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
 curl -O https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
 ----
 
-By default `wget` downloads URLs, while `curl`'`s default is to print their contents to `STDOUT`.
+By default, `wget` downloads URLs, while `curl`'s default is to print their contents to `STDOUT`.
 The `-O` option tells `curl` to output to a file rather than `STDOUT`.
 Both of the commands above will save the file locally with the name at the end of the URL.
 While that is a sensible default, it's not always what you want.
@@ -102,11 +108,11 @@ curl https://github.com/bbusschots/xkpasswd.pm/archive/master.zip > HSXKPasswd.z
 
 === Viewing HTTP Headers
 
-When developing websites, or when configuring redirects, it can be very helpful to see exactly what is being returned by the web server.
+When developing websites, or when configuring redirects, it can be very helpful to see exactly what is being returned by the webserver.
 Web browsers have a tendency to cache things, which can make broken sites appear functional, and functional sites appear broken.
 When using `curl` or `wget`, you can see exactly what is happening at the HTTP level.
 
-As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `+http://www.podfeet.com/twitter+`.
+As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `http://www.podfeet.com/twitter`.
 To see exactly what Allison's server is returning, we can use `wget` with the `--spider` and `-S` options:
 
 [source,shell]
@@ -162,10 +168,10 @@ bart-iMac2013:~ bart$
 
 The `--spider` option tells `wget` not to download the actual contents of the URL, and the `-S` flag tells `wget` to show the server headers.
 By default, `wget` will follow up to 20 redirects, so there is much more output here than we really need.
-The information we need is there, and I have highlighted it in bold, but it would be easier to get to if `wget` didn't follow the redirect and then ask Twitter's server for it's headers too.
+The information we need is there, and I have highlighted it, but it would be easier to get to if `wget` didn't follow the redirect and then ask Twitter's server for its headers too.
 Since we only need the first set of headers, we need to tell `wget` not to follow any redirects at all, and we can do that with the `--max-redirect` flag:
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='7,10']
 ----
 bart-iMac2013:~ bart$ wget --spider -S --max-redirect 0 http://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
@@ -173,10 +179,10 @@ Spider mode enabled. Check if remote file exists.
 Resolving www.podfeet.com (www.podfeet.com)... 173.254.94.93
 Connecting to www.podfeet.com (www.podfeet.com)|173.254.94.93|:80... connected.
 HTTP request sent, awaiting response...
-  HTTP/1.1 301 Moved Permanently
+  HTTP/1.1 301 Moved Permanently # <.>
   Date: Sat, 04 Jul 2015 16:38:45 GMT
   Server: Apache
-  Location: https://twitter.com/podfeet
+  Location: https://twitter.com/podfeet # <.>
   Keep-Alive: timeout=10, max=500
   Connection: Keep-Alive
   Content-Type: text/html; charset=iso-8859-1
@@ -184,11 +190,13 @@ Location: https://twitter.com/podfeet [following]
 0 redirections exceeded.
 bart-iMac2013:~ bart$
 ----
+<.> and
+<.> highlighted
 
 The information we need is now much easier to find.
-We can see that Allison's server is returning a permanent redirect (HTTP response code 301) which is redirecting browsers to `+https://twitter.com/podfeet+`.
+We can see that Allison's server is returning a permanent redirect (HTTP response code 301) which is redirecting browsers to `https://twitter.com/podfeet`.
 
-We can of course do the same with `curl`:
+We can, of course, do the same with `curl`:
 
 [source,shell,linenums]
 ----
@@ -202,7 +210,7 @@ Content-Type: text/html; charset=iso-8859-1
 bart-iMac2013:~ bart$
 ----
 
-The `-I` flag tells `curl` to only fetch the headers, and not the contents of the URL.
+The `-I` flag tells `curl` to only fetch the headers and not the contents of the URL.
 When fetching headers, `curl` does not follow redirects by default, so there is no need to suppress that behaviour.
 
 Often, you only care about the response headers, so the output of `curl -I` is perfect, but, when you do want to see the request headers too, you can add the `-v` flag to put `curl` into verbose mode:
@@ -240,7 +248,7 @@ bart-iMac2013:~ bart$
 This is just a taster of what `curl` and `wget` can do.
 For more details see their relevant `man` pages.
 
-I like to have both `curl` and `wget` installed on all my computers because I find `wget` easier to use for downloading files, and `curl` easier to use for viewing HTTP headers.
+I like to have both `curl` and `wget` installed on all my computers because I find `wget` easier to use for downloading files and `curl` easier to use for viewing HTTP headers.
 
 == Conclusions
 
@@ -248,4 +256,4 @@ Armed with `lynx`, `curl`, and `wget`, you can use the terminal to browse we web
 When working on websites, you may find you can save a lot of time and energy by using these terminal commands to see exactly what your web server is returning.
 
 This instalment concludes our look at the HTTP protocol.
-In the next instalment we'll move on to look at two commands that allow you to see what your computer is doing on the network in great detail.
+In the next instalment, we'll move on to look at two commands that allow you to see what your computer is doing on the network in great detail.

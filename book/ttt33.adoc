@@ -4,7 +4,7 @@
 This is the final SSH instalment.
 So far we've learned how to <<ttt29,securely execute terminal commands on remote computers>>, how to <<ttt31,securely copy files across the network using SSH>>, how to <<ttt30,add both security and convenience>> to both those operations with SSH key pairs, and how to <<ttt32,tunnel just about anything through SSH>>.
 
-In this final instalment we'll look two approaches for creating SSH bookmarks, SSH config files, and SSH GUIs.
+In this final instalment, we'll look at two approaches for creating SSH bookmarks, SSH config files, and SSH GUIs.
 
 .Matching Postcast Episode 33
 ****
@@ -27,16 +27,16 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT33SSHBookmark
 
 Each time you issue an SSH command, SSH checks for the presence of a system-wide config file at `/etc/ssh/ssh_config`, and a user-specific config file at `~/.ssh/config`.
 If either or both of these files exist, they'll be checked for a host definition matching the computer name specified in the command.
-If both files exist, and contain conflicting information, the user-level file takes precedence.
+If both files exist and contain conflicting information, the user-level file takes precedence.
 If the contents of either file conflicts with flags passed to the SSH command, the flags passed to the command will take precedence.
 
-Config files can be used to set things like the port number, username, and even the hostname/ip address for a given computer name.
+Config files can be used to set things like the port number, username, and even the hostname/IP address for a given computer name.
 
 The syntax for SSH config files is very simple.
 A file contains one or more host sections, and host sections contain one or more options.
 You start a new host section by starting a line with the word `Host` followed by a space and the computer name you want the section to apply to.
 You add the options for that host on the lines below, one option per line.
-For readability, the options for each host are usually indented with 2 or 4 spaces, or a tab.
+For readability, the options for each host are usually indented with 2 or 4 spaces or a tab.
 You can add comment lines by starting them with the `#` symbol.
 Option lines can be added in three forms:
 
@@ -115,7 +115,7 @@ Host my-rsync-server.com
 Even if you never find yourself in a situation where you must use an SSH config file, you might still find it worth the effort to set one up.
 You can use them to create what are effectively SSH bookmarks.
 
-As an exmaple, let's say we regularly have to connect to the server `this-is-a-really-long-name.com` on port 2222 with the username `rhododendron`.
+As an example, let's say we regularly have to connect to the server `this-is-a-really-long-name.com` on port 2222 with the username `rhododendron`.
 You could type the following each time you wanted to connect:
 
 [source,shell]
@@ -146,7 +146,7 @@ Finally, you can use wild cards when specifying a `Host` declaration.
 `*` is interpreted at as '`zero or more of any character`', and `?` is interpreted as '`exactly 1 character`'.
 
 This can be very useful if, for example, you have the same username on all servers for a given company (perhaps the one you work for).
-You could set SSH to use that username on all servers in the organisations domain with an entry like:
+You could set SSH to use that username on all servers in the organisation's domain with an entry like:
 
 [source,shell]
 ----
@@ -156,12 +156,12 @@ Host *.my-company.com
 
 == SSH GUIs
 
-What ever OS you happen to be using, you'll have many SSH GUI clients to choose from.
-In general they all provide the same basic functionality -- they allow you to save SSH connection details so you can quickly and easily connect to the computers you regularly connect to.
+Whatever OS you happen to be using, you'll have many SSH GUI clients to choose from.
+In general, they all provide the same basic functionality -- they allow you to save SSH connection details so you can quickly and easily connect to the computers you regularly connect to.
 In effect, most of the GUIs are just graphical alternatives to SSH config files.
 
 Rather than spend an eternity making an exhaustive list of all the SSH GUIs out there, I thought I'd simply recommend the ones I have found the most useful.
-Below are the three SSH GUIs I use reguarlly.
+Below are the three SSH GUIs I use regularly.
 
 === JellyfiSSH (OS X Only)
 
@@ -170,8 +170,8 @@ It provides a small window containing your SSH bookmarks, and optionally a menub
 You use the app to open your saved SSH connections in new Terminal windows.
 
 You can organise your bookmarks into categories, and you can set all sorts of settings for each bookmark.
-The app supports all the obvious stuff like host name, username, and port number, but you can also set up the more advanced stuff like X11 forwarding and port forwarding, and you can customise the Terminal settings for each bookmark.
-This means that you can do clever things like create a custom background image for each bookmark, or, set the background colour depending on the server's role.
+The app supports all the obvious stuff like hostname, username, and port number, but you can also set up the more advanced stuff like X11 forwarding and port forwarding, and you can customise the Terminal settings for each bookmark.
+This means that you can do clever things like creating a custom background image for each bookmark, or, set the background colour depending on the server's role.
 I like to use red backgrounds for live servers for example, and green backgrounds for test servers.
 
 The more energy you put into creating your bookmarks, the more use you'll get out of the app.
@@ -183,25 +183,25 @@ My background images have the name of the server in big writing in the centre of
 IMO the best SSH client for iOS is without doubt Prompt 2 from Panic.
 It's a universal app, and costs just €4.99 https://itunes.apple.com/ie/app/prompt-2/id917437289?mt=8[in the iOS App Store].
 
-The standard iOS keyboard is not very SSH-friedly, but with Prompt 2 that's not a problem -- the app's UI provides quick and easy access to things like the control and tab keys, as well as special characters you'll need often like `|`.
+The standard iOS keyboard is not very SSH-friendly, but with Prompt 2 that's not a problem -- the app's UI provides quick and easy access to things like the control and tab keys, as well as special characters you'll need often like `|`.
 
 === PuTTY (Windows)
 
 I prefer to avoid using Windows desktops when possible, but when I have no choice but to use them, I use PuTTY for all my SSH needs.
-The app is as old as the hills, and has a website straight from the 1980s, but it works like a charm and is very popular.
+The app is as old as the hills and has a website straight from the 1980s, but it works like a charm and is very popular.
 The app is small, efficient, and easy to use, and it's also free and open source.
 PuTTY is a single stand-alone `.exe` file, so you don't even have to install it, and you can run it straight from a thumb drive.
 
 As well as just `putty.exe`, the SSH GUI, the same project also provides SCP (`pscp.exe`), SFTP (`psftp.exe`), and SSH Agent (`pagent.exe`) commands for Windows.
 
-You can get all these Windows utilites from the http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html[PuTTY download page].
+You can get all these Windows utilities from the http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html[PuTTY download page].
 
 There are also versions of PuTTY for Unix and Linux.
 
 == Conclusions
 
-With SSH keys for secure password-less authentication, and either SSH config files or an SSH GUI app to bookmark the computers you connect to regularly, you should be able to have a nice easy SSH experience.
+With SSH keys for secure password-less authentication and either SSH config files or an SSH GUI app to bookmark the computers you connect to regularly, you should be able to have a nice easy SSH experience.
 You can now easily execute remote commands, and transfer files across the network securely.
 
 Within the context of the larger networking section within this series, SSH is just one of the Application Layer protocols we'll be looking at.
-In the next instalment we'll move on to look at terminal commands for interacting with HTTP(S), the protocol that powers the world wide web.
+In the next instalment, we'll move on to look at terminal commands for interacting with HTTP(S), the protocol that powers the world wide web.

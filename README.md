@@ -80,6 +80,7 @@ For now:
 * `colophon.adoc` holds some boilerplate text. It needs to be update to proper information
 * `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it.
 
+Note: language is British English! 
 
 ## Bugfixes and workaround
 
@@ -129,4 +130,16 @@ Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to ke
 Note, the commandkey (CMD) can be used as `{commandkey}`.
 For the shortcuts to show up properly in the VScode previewer, eacht document needs an `:experimental:` option in the header.
 
-Rather than `Ctrl` write `Control`, because that's what it says on the key cap.
+<s>Rather than `Ctrl` write `Control`, because that's what it says on the key cap.</s>
+I changed my mind, Ctrl is much more common than 'control'.
+
+NB. with
+
+```
+&#8594; &rarr;  →      Right arrow
+&#8592; &larr;  ←      Left arrow
+&#8593; &uarr;  ↑      Up arrow
+&#8595; &darr;  ↓      Down arrow
+```
+
+it's possible to create kbd:[&larr;] arrow keys. However, ePub doesn't support the second column definitions, PDF doesn't support the unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
