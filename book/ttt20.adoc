@@ -1,7 +1,7 @@
 [[ttt20]]
 = TTT Part 20 of n -- File Searches
 
-In the <<tt19,previous instalment>>, we looked at using `egrep` to search for a particular piece of text in a stream or file.
+In the <<ttt19,previous instalment>>, we looked at using `egrep` to search for a particular piece of text in a stream or file.
 `egrep` is often a great tool for finding a file you are looking for, but only if the file is a plain text file, and only if you are searching for that file based on its content.
 What if you want to search for files based on other criteria, like the last time the file was edited, or the name of the file, or the size of the file, or the type of the file etc.?
 For that, you need a different command, for that you need `find`.
