@@ -81,7 +81,7 @@ Does it just let you enter a single command and then run it?
 Or is there more to it?
 Unsurprisingly, there's a lot more to it!
 The shell does its own pre-processing before issuing a command for you, so a lot of things that we think of as being part of how a command works are actually features provided by the command shell.
-The best example is the almost ubiquitous `\*` symbol.
+The best example is the almost ubiquitous `*` symbol.
 When you issue a command like `chmod 755 *.php`, the actual command is not given `*.php` as a single argument that it must then interpret. No, the `*` is interpreted and processed by the shell before being passed on to the `chmod` command.
 It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `*.php` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
 
