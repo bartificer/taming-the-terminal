@@ -51,7 +51,7 @@ Notice that the meaning of the `^` symbol changes depending on where it is used,
 
 When we're describing patterns in English, we'll often find ourselves using the word _or_, so it's not surprising that there is a POSIX ERE operator to allow us to search for one pattern, or another (or another, or another ...).
 The pipe symbol (`|`) means _or_ in POSIX ERE.
-This symbol has a different meaning in BASH (it's one of the stream redirection operators), so it's vital you quote any RE containing the `|` symbol.
+This symbol has a different meaning in Bash (it's one of the stream redirection operators), so it's vital you quote any RE containing the `|` symbol.
 
 As an example, the following command will search the standard Unix words file for all five-letter words starting in `th` or ending in `ing`:
 

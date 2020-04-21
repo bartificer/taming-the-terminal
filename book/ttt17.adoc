@@ -169,7 +169,7 @@ egrep 'ing$' /usr/share/dict/words
 ----
 
 _*Note:* you may have noticed that I've been single-quoting the pattern in all the examples.
-This is often not necessary, because many patterns don't contain BASH special characters, but, some do, including the one above, which contains the dollar symbol.
+This is often not necessary, because many patterns don't contain Bash special characters, but, some do, including the one above, which contains the dollar symbol.
 If the string had not been single-quoted, we would have had to escape the dollar symbol which would be very messy.
 My advice would be to get into the habit of always single-quoting regular expressions, it'll save you a lot of frustration over time!_
 
