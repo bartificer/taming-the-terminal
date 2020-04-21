@@ -1,5 +1,4 @@
-Taming the Terminal
-===================
+= Taming the Terminal
 Bart Busschots
 :doctype: book
 :docinfo:
