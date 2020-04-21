@@ -69,12 +69,12 @@ image::./assets/ttt1/Screen-Shot-2013-04-13-at-15.29.39.png[Select Advanced Opti
 
 image::./assets/ttt1/Screen-Shot-2013-04-13-at-15.30.07.png[Select Login Shell]
 
-The default shell on OS X is the Bourne Again Shell (bash), so that's the shell we'll be using for the remainder of this series.
-If you've not altered the defaults, then whenever you open a Terminal window on OS X, what you're presented with is a bash command shell.
+The default shell on OS X is the Bourne Again Shell (Bash), so that's the shell we'll be using for the remainder of this series.
+If you've not altered the defaults, then whenever you open a Terminal window on OS X, what you're presented with is a Bash command shell.
 Bash is an updated and improved version of the older Bourne Shell (sh), which was the default shell in Unix for many years.
 The original Bourne Shell dates all the way back to 1977 and is called after it's creator, http://en.wikipedia.org/wiki/Stephen_Richard_Bourne[Stephen Bourne].
 The Bourne Again Shell is a '`newer`' update to the Bourne Shell dating back to 1989, the name being a nerdy religious joke by its author, http://en.wikipedia.org/wiki/Brian_Fox_(computer_programmer)[Brian Fox].
-The Bourne Again Shell was not the last in the line of shells tracing their origins to the Bourne Shell, there is also zsh which dates back to 1990, but despite being a more powerful shell, it hasn't taken off like bash has.
+The Bourne Again Shell was not the last in the line of shells tracing their origins to the Bourne Shell, there is also zsh which dates back to 1990, but despite being a more powerful shell, it hasn't taken off like Bash has.
 
 So, what does a shell do?
 Does it just let you enter a single command and then run it?
@@ -86,7 +86,7 @@ When you issue a command like `chmod 755 *.php`, the actual command is not given
 It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `*.php` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
 
 As well as providing wildcard substitution (the * thing), almost all shells also provide '`plumbing`' for routing command inputs and outputs between commands and files, the definition of variables to allow sequences of commands to be generalised in a more reusable way, simple programming constructs to enable conditional actions, looping, and the grouping of sequences of commands into named functions, and the execution of a sequence of commands inside a file (scripting), and much more.
-Different shells also provide their own custom features to help make life at the command prompt easier for users. My favourite is tab-completion which is the single best thing bash has to offer over sh IMO.
+Different shells also provide their own custom features to help make life at the command prompt easier for users. My favourite is tab-completion which is the single best thing Bash has to offer over sh IMO.
 OS X also brings some unique features to the table, with superb integration between the GUI and the command shell through features like drag-and-drop support in Terminal.app and shell scripting support in Automator.app.
 Of all the OSes I've used, OS X is the one that makes it the easiest to integrate command-line programs into the GUI.
 
