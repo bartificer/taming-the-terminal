@@ -9,7 +9,7 @@ The first definition of the word in the OS X dictionary is:
 The surroundings or conditions in which a person, animal, or plant lives or operates
 ====
 
-In this instalment, we'll introduce a digital extension of this concept -- the digital conditions within which a process exists, and specifically, in which a BASH command shell exists.
+In this instalment, we'll introduce a digital extension of this concept -- the digital conditions within which a process exists, and specifically, in which a Bash command shell exists.
 Although this might sound like a simple topic, there's actually a lot to cover, so we'll be spreading it out over a few instalments.
 
 .Matching Postcast Episode 12
@@ -46,13 +46,13 @@ When a child process changes its present working directory, that has no effect o
 While all processes have access to a basic environment, command shells extend this basic foundation to provide a much richer environment for their users.
 Until now very little that we have looked at has been shell-specific, but that changes with this instalment.
 Each command shell gets to create its own environment and to define its own mechanisms for interacting with it.
-What works in BASH will not necessarily work in KSH or ZSH etc..
+What works in Bash will not necessarily work in KSH or ZSH etc..
 In this series we'll only be dealing with the default command shell on most modern Unix and Linux OSes (including OS X), BASH.
-Note that BASH is an extended version of SH, so what works in SH works in BASH, and much, though not all, of what works in BASH also works in SH.
+Note that Bash is an extended version of SH, so what works in SH works in BASH, and much, though not all, of what works in Bash also works in SH.
 
 == Environment Variables
 
-In this instalment, we'll be focusing on Environment Variables, and specifically, how BASH interacts with them.
+In this instalment, we'll be focusing on Environment Variables, and specifically, how Bash interacts with them.
 
 The command to list the names and values of all currently set environment variables is simply `env` (or `printenv` on some systems).
 E.g.:
@@ -89,7 +89,7 @@ Some of these variables are purely informational, while others are used to affec
 == Environment Variables & Bash Shell Variables
 
 BASH, like every other process, has access to all the variables set within its environment.
-However, BASH extends the concept and of variables into shell variables, of which the environment variables are just a subset.
+However, Bash extends the concept and of variables into shell variables, of which the environment variables are just a subset.
 Bash shell variables can be local to the shell, or can exist within the shell and the environment.
 We already know that `env` lets us see all the environment variables which exist in our shell but there is another command to let us see all the variables in our shell both those in the environment, and the local ones, and that command is `set`.
 To see all the shell variables that exist, call `set` with no arguments.
@@ -159,7 +159,7 @@ bart-imac2013:~ bart$
 ----
 
 If you compare the output of `env` and `set` you'll see that every environment variable is a shell variable, but, there are many more shell variables that there are environment variables.
-Remember, when a child process is created *only* the environment variables get copied into the child process's environment, even if the child process is another BASH process.
+Remember, when a child process is created *only* the environment variables get copied into the child process's environment, even if the child process is another Bash process.
 Shell variables are local to a single command shell, hence they are often called local variables.
 
 Shell variables can be used when invoking shell commands.
@@ -297,7 +297,7 @@ As mentioned, when one process starts another, the child process inherits a copy
 If a child makes a change to an environment variable, that change is not seen by the parent.
 We can illustrate this easily using so-called sub-shells.
 
-When one BASH process started another BASH process that child process is called a sub-shell.
+When one Bash process started another Bash process that child process is called a sub-shell.
 The most common way to create a sub-shell is by executing a shell script.
 A shell script is simply a text file that contains a list of shell commands.
 While we won't be looking at shell scripting in detail until much later in this series, we'll use some very simple shell scripts here to illustrate how child processes inherit their parent's environment.
@@ -320,8 +320,8 @@ echo "TTT_VAR=$TTT_VAR"
 
 [NOTE]
 ====
-*Aside:* The first line of this script is the so-called "`shebang line`", and it tells BASH what interpreter it should use to run the file.
-If we were writing a Perl script instead of a BASH script we would start our file with the line:
+*Aside:* The first line of this script is the so-called "`shebang line`", and it tells Bash what interpreter it should use to run the file.
+If we were writing a Perl script instead of a Bash script we would start our file with the line:
 
 `#!/usr/bin/perl`
 ====
@@ -436,10 +436,10 @@ bart-imac2013:~ bart$
 ----
 
 What the `source` command does is to run each command in the shell script within the current shell's environment, hence, all changes made within the script are made within the shell that executes the script.
-As we'll see in a future instalment, the `source` command plays a pivotal role in the initialisation of every BASH shell.
+As we'll see in a future instalment, the `source` command plays a pivotal role in the initialisation of every Bash shell.
 
 === Conclusions
 
 In this introductory instalment, we focused mainly on how processes inherit their environment, and on the concept of shell and environment variables, in particular how they are inherited, and how they can be accessed and altered.
 In the next instalment, we'll start by focusing on one of the most important environment variables of all -- `PATH`.
-We'll also go on to look at how a new BASH shell assembles its environment, and how to make permanent customisations to that environment, including things like customising your shell prompt and creating command shortcuts called _aliases_.
+We'll also go on to look at how a new Bash shell assembles its environment, and how to make permanent customisations to that environment, including things like customising your shell prompt and creating command shortcuts called _aliases_.

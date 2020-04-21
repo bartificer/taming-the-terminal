@@ -35,7 +35,7 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT14AliasesAndP
 == Aliases
 
 Aliases are basically command shortcuts.
-When used as a command, the alias gets expanded to a longer string by BASH before execution.
+When used as a command, the alias gets expanded to a longer string by Bash before execution.
 Aliases can contain arguments as well as commands.
 Aliases can be used to create short mnemonics for long complex commands or to add default arguments to existing commands.
 
@@ -113,9 +113,9 @@ to remove our `ll` alias, run:
 unalias ll
 ----
 
-Aliases are part of the BASH environment and are not persistent.
+Aliases are part of the Bash environment and are not persistent.
 If you create an alias and then close your command shell it will be gone.
-To make aliases permanent we need to add them into our BASH startup scripts.
+To make aliases permanent we need to add them into our Bash startup scripts.
 As we learned in the previous instalment, for Mac users that means adding our aliases to `~/.bash_profile`, while Linux users should add their aliases to `~/.bashrc`.
 
 If we include the examples from the previous instalment an updated `~/.bash_profile` file to include the `ll` alias would look something like:
@@ -137,11 +137,11 @@ alias ls='ls -FG'
 alias rm='rm -i' cp='cp -i' mv='mv -i'
 ----
 
-== Customising the BASH Prompt
+== Customising the BashPrompt
 
 As we discussed right back in the first instalment, the format of your command prompt varies from system to system.
 This variation is not just between command shells, but also within command shells, because many allow customisations to the format of the prompt.
-BASH is one of the command shells that support command prompt customisation.
+Bash is one of the command shells that support command prompt customisation.
 
 In BASH, the format of the prompt is defined in the shell variable `PS1`.
 You can see the current format used with the command:
@@ -184,7 +184,7 @@ the last part of the print working directory (`$HOME` abbreviated to `~`)
 * `\$` -- if running as root a `#` symbol, otherwise, a `$` symbol
 * `\n` -- a new line (yes, your prompt can span multiple lines if you like)
 
-As an example, let's create a very descriptive BASH prompt:
+As an example, let's create a very descriptive Bash prompt:
 
 [source,shell]
 ----
@@ -223,7 +223,7 @@ Personally, I like to keep my prompts set to their default values -- it helps me
 
 Over the past few instalments, we have looked at what the shell environment is, how we can manipulate shell and environment variables and aliases.
 We looked at two variables in particular, `PATH` and `PS1`.
-We also discussed BASH aliases, and how to make permanent changes to your BASH environment, allowing you to customise your PATH and prompt and define aliases.
+We also discussed Bash aliases, and how to make permanent changes to your Bash environment, allowing you to customise your PATH and prompt and define aliases.
 
 This is where we'll leave the concept of the environment for now.
 In the next instalment, we'll move on to look at what I joking call '`plumbing`' -- how commands can be chained together, and how files and be used for input to and output from commands.

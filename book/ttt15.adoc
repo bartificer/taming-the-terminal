@@ -51,7 +51,7 @@ The redirection operators alter the copies of these three variables within indiv
 
 == Stream Redirection
 
-BASH provides a number of stream redirection operators:
+Bash provides a number of stream redirection operators:
 
 * *`|` (the '`pipe`' operator)* -- this operator connects `STDOUT` in the environment of the command to it's left to `STDIN` in the environment of the command to it's right.
 * *`>` and >>* -- these operators connect `STDOUT` in the environment of the command to their left a file at the path specified to their right

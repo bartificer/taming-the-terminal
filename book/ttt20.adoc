@@ -130,7 +130,7 @@ Given our knowledge of regular expressions, we could re-write our JPEG search as
 find -E ~ -iregex '.*[.]jpe?g'
 ----
 
-Again, like with `egrep` in the previous instalment, notice that we are quoting the RE to stop BASH wrongly interpreting any of the special characters we may need like `*` and `?` in the above example.
+Again, like with `egrep` in the previous instalment, notice that we are quoting the RE to stop Bash wrongly interpreting any of the special characters we may need like `*` and `?` in the above example.
 Also notice the position of the `-E` flag, and that we don't need to use `^` or `$` because the ENTIRE path has to match for the result to validate.
 This also means that without the `.*` at the start of the pattern no files will be returned.
 
