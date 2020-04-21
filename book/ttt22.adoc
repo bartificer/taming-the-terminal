@@ -31,7 +31,7 @@ http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT22TipsAndTric
 
 ****
 
-== BashTips & Tricks
+== Bash Tips & Tricks
 
 === Repeating Previous Commands
 
