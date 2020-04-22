@@ -85,9 +85,9 @@ Does it just let you enter a single command and then run it?
 Or is there more to it?
 Unsurprisingly, there's a lot more to it!
 The shell does its own pre-processing before issuing a command for you, so a lot of things that we think of as being part of how a command works are actually features provided by the command shell.
-The best example is the almost ubiquitous `*` symbol.
-When you issue a command like `chmod 755 *.php`, the actual command is not given `*.php` as a single argument that it must then interpret. No, the `*` is interpreted and processed by the shell before being passed on to the `chmod` command.
-It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `*.php` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
+The best example is the almost ubiquitous `+*+` symbol.
+When you issue a command like `+chmod 755 *.php+`, the actual command is not given `+*.php+` as a single argument that it must then interpret. No, the `+*+` is interpreted and processed by the shell before being passed on to the `chmod` command.
+It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `+*.php+` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
 
 As well as providing wildcard substitution (the * thing), almost all shells also provide '`plumbing`' for routing command inputs and outputs between commands and files, the definition of variables to allow sequences of commands to be generalised in a more reusable way, simple programming constructs to enable conditional actions, looping, and the grouping of sequences of commands into named functions, and the execution of a sequence of commands inside a file (scripting), and much more.
 Different shells also provide their own custom features to help make life at the command prompt easier for users. My favourite is tab-completion which is the single best thing Bash has to offer over sh IMO.
