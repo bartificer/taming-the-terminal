@@ -2,11 +2,11 @@
 = TTT Part 2 of n -- Commands
 
 This is the second instalment of an on-going series.
-In <<ttt01,the first instalment>>, I tried to give you a sort of 40,000ft view of command shells -- some context, some history, a very general description of what command shells do, and a little bit on why they are still very useful in the modern GUI age.
+In <<ttt01,the first instalment>>, I tried to give you a sort of 40,000 foot view of command shells -- some context, some history, a very general description of what command shells do, and a little bit on why they are still very useful in the modern GUI age.
 The most important points to remember from last time are that command shells execute commands, that there are lots of different command shells on lots of different OSes, but that we will be focusing on https://en.wikipedia.org/wiki/Bash_(Unix_shell)[Bash] on Linux/Unix in general, and Bash on OS X in particular.
 The vast majority of topics I plan to discuss in these segments will be applicable on any system that runs Bash, but, the screenshots I use will be from OS X, and some of the cooler stuff will be OS X only.
 This segment, like all the others, will be used as part of my bi-weekly
-Chit Chat Across The Pond (CCATP) segment with Allison Sheridan on https://www.podfeet.com/[the NosillaCast Mac Podcast].
+Chit Chat Across The Pond (CCATP) audio podcast segment with Allison Sheridan on http://podfeet.com/ttt-podcast[podfeet.com/...]
 
 Last time I focused on the shell and avoided getting in any way specific about the actual commands that we will be executing within the Bash shell.
 I thought it was very important to make as clear a distinction between command shells and commands as possible, so I split the two concepts into two separate segments.
@@ -73,7 +73,7 @@ As you can see, it contains the same information, but arranged a little differen
 
 `[username@hostname current_directory]$`
 
-Finally, Debian-style Linux distributions like Ubuntu use a different default promote again, but also showing the same information:
+Finally, Debian-style Linux distributions like Ubuntu use a different default prompt again, but also showing the same information:
 
 image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command Prompt on Ubuntu]
 
@@ -81,8 +81,8 @@ image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command
 
 _**Handy Tip:** if you find the text in the Terminal window to small to read, you can make it bigger or smaller with cmd+ or cmd-.
 This will affect just your current Terminal window.
-You can permanently change the default by editing the default profile in `+Terminal → Preferences ...
-→ Settings+`_
+You can permanently change the default by editing the default profile in `+Terminal → Preferences 
+→ Profiles+`_.
 
 == The Anatomy of a Command
 

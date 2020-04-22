@@ -2,7 +2,7 @@
 = TTT Part 1 of n -- Command Shells
 
 
-I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond segment on the http://www.podfeet.com[NosillaCast Mac Podcast] (to be released Sunday evening PST), I'm going to try start what will hopefully be an on-going series of short unintimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app. (_Note: this entire series was later moved to a standalone podcast called Taming the Terminal at http://podfeet.com/ttt-podcast[podfeet.com]._)
+I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond audio  podcast segment on the http://www.podfeet.com[NosillaCast Mac Podcast] (to be released Sunday evening PST), I'm going to try start what will hopefully be an on-going series of short unintimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app. (_Note: this entire series was later moved to a standalone podcast called Taming the Terminal at http://podfeet.com/ttt-podcast[podfeet.com/...]._)
 I'm on with Allison every second week, and I'll have other topics to talk about, so the most frequent the instalments in this series could be would be biweekly, but I think they'll turn out to be closer to monthly on average.
 While the focus will be on OS X, the majority of the content will be equally applicable to any other Unix or Linux operating system.
 
