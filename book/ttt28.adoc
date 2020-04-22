@@ -23,14 +23,14 @@ In short -- how to get from a vague complaint like "`the internet is broken`" to
 Listen Along: Taming the Terminal Podcast Episode 28
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 When troubleshooting network problems, the basic advice is to start at the bottom of the stack and work your way up until you find the problem.
@@ -165,7 +165,7 @@ For a computer to have IP connectivity is needs three settings.
 It needs to know its IP address, it needs to know its Netmask, and it needs to know the IP address of the router it should use to communicate beyond the local network.
 This last setting is referred to by a number of different names, including _default gateway_, _default route_, and just _router_.
 A network is incorrectly configured if the IP address for the default gateway is outside the subnet defined by the combination of the IP address and netmask.
-If you're not sure if the gateway address is contained within the defined subnet, you may find an online IP subnet calculator like http://subnetcalc.it[subnetcalc.it] helpful.
+If you're not sure if the gateway address is contained within the defined subnet, you may find an online IP subnet calculator like https://subnetcalc.it[subnetcalc.it] helpful.
 
 If an IP address has been configured for an interface there will be a line starting with `inet` in that interface's description in the output from `ifconfig`.
 This line will give you the IP address and netmask.

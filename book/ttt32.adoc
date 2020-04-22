@@ -21,14 +21,14 @@ That makes this an unusual instalment, but I hope you will still find it worthwh
 Listen Along: Taming the Terminal Podcast Episode 32
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -41,9 +41,9 @@ That's the problem X11 forwarding solves.
 
 === Description
 
-Linux and Unix OSes use a technology called http://en.wikipedia.org/wiki/X_Window_System[The X Window System] (more commonly known as X11) to render the GUI.
+Linux and Unix OSes use a technology called https://en.wikipedia.org/wiki/X_Window_System[The X Window System] (more commonly known as X11) to render the GUI.
 OS X is different, Apple chose to use their own Quartz technology rather than X11.
-But, there is an officially sanctioned version of X11 for OS X called http://xquartz.macosforge.org/landing/[XQuartz], which allows X11 GUIs to be displayed on OS X.
+But, there is an officially sanctioned version of X11 for OS X called https://xquartz.macosforge.org/landing/[XQuartz], which allows X11 GUIs to be displayed on OS X.
 With XQuartz installed, X11 apps can run in a regular OS X window.
 
 What X11 Forwarding allows you to do is have an app running on the remote computer but with the GUI rendered on your local computer.
@@ -82,7 +82,7 @@ X11 forwarding makes it possible to do this on remote Linux servers.
 * *Accessing web interfaces that are restricted to local access Only* -- if you have a web interface that allows something sensitive to be configured, it's good security practice to limit access to it to `localhost` only.
 This means it can only be accessed by a browser running on the computer itself.
 If you don't have physical access that gets awkward unless you have X11 forwarding which will allow you to run a browser on the remote computer, but with the GUI forwarded to your local computer.
-Two common examples of this are the CUPS (Common Unix Printing System) printer sharing configuration interface (you'll find it at `+http://localhost:631+` if it's configured), and the http://www.webmin.com[webmin] server management interface.
+Two common examples of this are the CUPS (Common Unix Printing System) printer sharing configuration interface (you'll find it at `+https://localhost:631+` if it's configured), and the https://www.webmin.com[webmin] server management interface.
 
 == SSH Port Forwarding
 
@@ -142,7 +142,7 @@ As long as that SSH connection is left open, port 3306 on your computer (the sta
 You now instruct your favourite MySQL client to connect to port 3306 on your local computer, and SSH then securely forwards that connection to the remote server for you, allowing you safe and secure access to MySQL.
 
 This is such a common use case that many modern MySQL QUI clients allow you to configure this kind of port forwarding from within the GUI, removing the need to remember the terminal command.
-An example of a beautiful free MySQL GUI with SSH port forwarding support is http://www.sequelpro.com[Sequel Pro] (OS X Only).
+An example of a beautiful free MySQL GUI with SSH port forwarding support is https://www.sequelpro.com[Sequel Pro] (OS X Only).
 I use SSH port forwarding with Sequel Pro each and every day!
 
 == Dynamic SSH Port Forwarding (SSH+SOCKS)
@@ -154,7 +154,7 @@ This means it can only be used when all that information is known in advance and
 
 This limitation makes it effectively impossible to route applications that make many network connections to many destinations, like a web browser, through regular SSH port forwarding.
 
-Dynamic Port Forwarding makes it possible for any app that can use the standard http://en.wikipedia.org/wiki/SOCKS[SOCKS protocol] to route traffic through an SSH connection, that includes apps like web browsers, chat clients, and email clients.
+Dynamic Port Forwarding makes it possible for any app that can use the standard https://en.wikipedia.org/wiki/SOCKS[SOCKS protocol] to route traffic through an SSH connection, that includes apps like web browsers, chat clients, and email clients.
 
 === Description
 

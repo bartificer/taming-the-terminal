@@ -17,14 +17,14 @@ a Bash command shell.
 Listen Along: Taming the Terminal Podcast Episode 4
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == Navigating around

@@ -21,14 +21,14 @@ endif::[]
 Listen Along: Taming the Terminal Podcast Episode 20
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT20FileSearches/TTT_20_File_Searches.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT20FileSearches/TTT_20_File_Searches.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT20FileSearches/TTT_20_File_Searches.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT20FileSearches/TTT_20_File_Searches.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -199,7 +199,7 @@ The following units are supported:
 | PiB = 1024TiB (notice the case -- must be upper!)
 |===
 
-Note that this command uses the old 1024-based sizes, not the 1,000 based http://en.wikipedia.org/wiki/International_System_of_Units[SI units] used by OS X and hard drive manufacturers (and scientists and engineers and anyone who understands what kilo and mega etc.
+Note that this command uses the old 1024-based sizes, not the 1,000 based https://en.wikipedia.org/wiki/International_System_of_Units[SI units] used by OS X and hard drive manufacturers (and scientists and engineers and anyone who understands what kilo and mega etc.
 actually mean).
 
 Also, like with `-ctime`, if you don't prefix the number with a symbol, only files EXACTLY the size specified will be returned.

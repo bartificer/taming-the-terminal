@@ -14,14 +14,14 @@ Then we'll end by looking at an OS X-only alternative to `find` that makes use o
 Listen Along: Taming the Terminal Podcast Episode 21
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -134,7 +134,7 @@ Finally -- the nerd joke I think I promised during the last instalment:
 find / -iname '*base*' -exec chown -R us {} ';'
 ----
 
-(If you don't get it, http://en.wikipedia.org/wiki/All_your_base_are_belong_to_us[this might help].)
+(If you don't get it, https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us[this might help].)
 
 == OS X Only -- Spotlight from the Terminal
 
@@ -177,7 +177,7 @@ To find every PDF you have edited today you could use:
 mdfind 'date:today kind:pdf'
 ----
 
-I haven't been able to find a definitive list of all possible Spotlight search commands, but googling for '`spotlight syntax`' will lead to useful articles like http://osxdaily.com/2010/01/06/improve-your-spotlight-searches-with-search-operators/[this one].
+I haven't been able to find a definitive list of all possible Spotlight search commands, but googling for '`spotlight syntax`' will lead to useful articles like https://osxdaily.com/2010/01/06/improve-your-spotlight-searches-with-search-operators/[this one].
 
 mdfind supports a number of arguments, and it can also search based on deep metadata, but I'm going to leave most of that as an exercise for the user -- you can get the full documentation through the manual:
 

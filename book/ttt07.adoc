@@ -12,14 +12,14 @@ In this instalment, we'll be looking at how to manipulate the file system, in ot
 Listen Along: Taming the Terminal Podcast Episode 7
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT07ManagingFiles/TTT_07_Managing_Files.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

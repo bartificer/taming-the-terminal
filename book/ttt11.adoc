@@ -15,14 +15,14 @@ For those interested in learning a little more I'll also give a very quick overv
 Listen Along: Taming the Terminal Podcast Episode 11
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -175,7 +175,7 @@ However, if you're interested, I'm also going to give a very brief and very supe
 There are two leviathans in the command-line text editing world, and both have been around since the 1970s.
 In nerd circles, your choice of text editor is about as polarising as the Republican and Democratic political parties in the US.
 You almost never meet someone who excels at both of them, and every Unix nerd has their favourite of the two.
-The two editors I'm talking about are http://en.wikipedia.org/wiki/Emacs[Emacs] and http://en.wikipedia.org/wiki/Vi[vi].
+The two editors I'm talking about are https://en.wikipedia.org/wiki/Emacs[Emacs] and https://en.wikipedia.org/wiki/Vi[vi].
 
 As it happens I'm a `vi` guy, so it's `vi` that I'm going to give a quick overview of.
 
@@ -271,7 +271,7 @@ Similarly, `O` opens a new line before the line with the cursor on it.
 This is just the tip of the `vi`-iceberg, it can do much much more.
 There are literally books written about it.
 However, IMO once you understand the modal nature of `vi`, all you really need is a good cheat-sheet to help you find the commands you need until they become second nature.
-(I have a printout of the first diagram on http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html[this page] hanging on my wall at work).
+(I have a printout of the first diagram on https://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html[this page] hanging on my wall at work).
 
 == Final Thoughts
 

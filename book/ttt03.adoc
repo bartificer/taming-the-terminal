@@ -3,7 +3,7 @@
 
 
 This is the third instalment of an on-going series.
-These blog posts are only part of the series, they are actually the side-show, being effectively just my show notes for discussions with Allison Sheridan on my bi-weekly Chit Chat Across the Pond audio podcast on http://podfeet.com/ttt-podcast[podfeet.com/...].
+These blog posts are only part of the series, they are actually the side-show, being effectively just my show notes for discussions with Allison Sheridan on my bi-weekly Chit Chat Across the Pond audio podcast on https://podfeet.com/ttt-podcast[podfeet.com/...].
 This instalment will be featured in NosillaCast episode 418 (scheduled for release late on Sunday the 12th of May 2013).
 
 In the <<ttt01,first instalment>>, we started with the 40,000ft view, looking at what command shells are, and why they're still relevant in today's GUI-dominated world.
@@ -16,14 +16,14 @@ This time we'll be looking at the anatomy of file systems in general, and the Un
 Listen Along: Taming the Terminal Podcast Episode 3
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == File systems
@@ -42,13 +42,13 @@ Related documents were then put together into holders that, for some reason were
 I.e.
 we had filing cabinets containing folders which contained files.
 The exact organisation of the files and folders were up to the individual clerks who managed the data and were dependant on the kind of data being stored.
-Doctors tend to store files alphabetically by surname, while libraries love the http://en.wikipedia.org/wiki/Dewey_Decimal_Classification[Dewey Decimal] system.
+Doctors tend to store files alphabetically by surname, while libraries love the https://en.wikipedia.org/wiki/Dewey_Decimal_Classification[Dewey Decimal] system.
 
 When it comes to computers, the job of bringing order to the chaos falls to our operating systems.
 We call the many different schemes that have been devised to provide that order, filesystems.
 Some filesystems are media dependent, while others are operating system dependent.
 E.g.
-the http://en.wikipedia.org/wiki/Joliet_(file_system)[Joliet file system] is used on CDs and DVDs regardless of OS, while http://en.wikipedia.org/wiki/File_Allocation_Table[FAT] and http://en.wikipedia.org/wiki/NTFS[NTFS] are Windows filesystems, http://en.wikipedia.org/wiki/Extended_file_system[EXT] is a family of Linux file systems, and http://en.wikipedia.org/wiki/HFS%2B[HFS+] is a Mac file system.
+the https://en.wikipedia.org/wiki/Joliet_(file_system)[Joliet file system] is used on CDs and DVDs regardless of OS, while https://en.wikipedia.org/wiki/File_Allocation_Table[FAT] and https://en.wikipedia.org/wiki/NTFS[NTFS] are Windows filesystems, https://en.wikipedia.org/wiki/Extended_file_system[EXT] is a family of Linux file systems, and https://en.wikipedia.org/wiki/HFS%2B[HFS+] is a Mac file system.
 
 There is an infinite number of possible ways computer scientists could have chosen to bring order to the chaos of bits on our various media, but, as is often the case, a single real-world analogy was settled on by just about all operating system authors.
 Whether you use Linux, Windows, or OS X, you live in a world of filesystems that contain folders (AKA directories) that contain files and folders.

@@ -16,14 +16,14 @@ We'll only be looking at how to read these attributes though, not how to alter t
 Listen Along: Taming the Terminal Podcast Episode 6
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 As a reminder, last time we learned that every file and folder in a Unix/Linux file system has three pieces of metadata associated with it that control the standard Unix file permissions that apply to that file or folder -- files have an owner (a user), a group, and a Unix File Permission Mask associated with them, and all three of these pieces of information can be displayed with `ls -l`.
@@ -157,7 +157,7 @@ As you might expect, this means that the group everyone is denied permission to 
 Everyone includes me, so while the Unix file permissions (`rwxr-xr-x`) give me full control over my home folder, the ACL stops me deleting it.
 The same is true of the standard folders within my account like `Documents`, `Downloads`, `Library`, `Movies`, `Music`, etc..
 
-If you're interested in learning to add ACLs to files or folders, you might find this link helpful: http://www.techrepublic.com/blog/mac/introduction-to-os-x-access-control-lists-acls/1048[www.techrepublic.com/blog/mac/...]
+If you're interested in learning to add ACLs to files or folders, you might find this link helpful: https://www.techrepublic.com/blog/mac/introduction-to-os-x-access-control-lists-acls/1048[www.techrepublic.com/blog/mac/...]
 
 == Reading OS X Extended File Attributes
 
@@ -227,7 +227,7 @@ You can see that OS X has added three extended attributes to the file, `com.appl
 
 All three of these attributes are base 64 encoded HEX.
 The HEX representation of the data looks meaningless to us humans of course, but OS X understands what it all means, and the `xattr` command is nice enough to display the ASCII next to the HEX for us.
-In the case of the download date, it's encoded in such a way that even the ASCII representation of the data is of no use to us, but we can read the URL from the second extended attribute, and we can see that Safari didn't just save the URL of the file (`+http://www.bartbusschots.ie/downloads/xkpasswd-v0.2.1.zip+`), but also the URL of the page we were on when we clicked to download the file (`+http://www.bartbusschots.ie/blog/?page_id=2137+`).
+In the case of the download date, it's encoded in such a way that even the ASCII representation of the data is of no use to us, but we can read the URL from the second extended attribute, and we can see that Safari didn't just save the URL of the file (`+https://www.bartbusschots.ie/downloads/xkpasswd-v0.2.1.zip+`), but also the URL of the page we were on when we clicked to download the file (`+https://www.bartbusschots.ie/blog/?page_id=2137+`).
 Finally, the quarantine information is mostly meaningless to humans, except that we can clearly see that the file was downloaded by Safari.
 
 The `xattr` command can also be used to add, edit, or remove extended attributes from a file, but we won't be going into that here.

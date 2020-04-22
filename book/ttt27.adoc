@@ -25,24 +25,24 @@ The Domain Name System (DNS) exists to bridge this gap, allowing domain names to
 Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
-
-You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 
 ****
 
@@ -558,7 +558,7 @@ An attacker with enough determination and bandwidth can still poison a DNS cache
 Also, note that Man-in-the-middle (MITM) attackers see both the request and response packets, so they don't need to guess the port number, they can simply alter the valid response packet to say what they want it to say, so port randomisation provides no protection from MITM attacks.
 
 The good news though is that there is a solution in the making.
-An extension to DNS called http://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions[DNSSEC] provides a solution by cryptographically signing DNS responses.
+An extension to DNS called https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions[DNSSEC] provides a solution by cryptographically signing DNS responses.
 This does not prevent an attacker from altering the response or sending fake responses, but it does make it possible for the recipient to know the response is fake, and ignore it.
 
 DNSSEC is quite slow to be rolled out, but it is starting to happen now.

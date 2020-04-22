@@ -23,24 +23,24 @@ This is the concept we'll be focusing on in this instalment.
 Listen Along: Taming the Terminal Podcast Episodes 25a & 25b
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
-
-You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+
+You can
+ifndef::backend-pdf[]
+also
+endif::[]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 ****
 
 == IP Addresses
@@ -176,8 +176,8 @@ This is known in computer science as a _bitwise AND_ operation.
 
 What we see here is that A and B are in the same subnet, but C is not.
 
-You can play around with this, and see all the binary calculations using my free IP Subnet calculator at http://subnetcalc.it[www.subnetcalc.it].
-You can use http://subnetcalc.it/?ip=192.168.0.3&mask=255.255.255.248&sc=y[this link] to load the IP and Netmask into the interface automatically and save yourself some copying and pasting.
+You can play around with this, and see all the binary calculations using my free IP Subnet calculator at https://subnetcalc.it[www.subnetcalc.it].
+You can use https://subnetcalc.it/?ip=192.168.0.3&mask=255.255.255.248&sc=y[this link] to load the IP and Netmask into the interface automatically and save yourself some copying and pasting.
 You can then paste IP B and IP C into the IP Test text box near the bottom of the page to see why one is local and the other is not.
 
 If we write out all the IP addresses between `192.168.0.0` and `192.168.0.9`, as well as our netmask (`255.255.255.248`) the pattern will hopefully become clear.
@@ -426,7 +426,7 @@ default            192.168.10.1       UGSc           55        0     en0
 bart-iMac2013:~ bart$
 ----
 
-If you copy and paste the IP and netmask values from the above commands into the calculator at http://subnetcalc.it/[www.subnetcalc.it] you can see the structure of your subnet.
+If you copy and paste the IP and netmask values from the above commands into the calculator at https://subnetcalc.it/[www.subnetcalc.it] you can see the structure of your subnet.
 
 == Routable -v- Un-Routable Protocols -- A Home Networking Pitfall
 

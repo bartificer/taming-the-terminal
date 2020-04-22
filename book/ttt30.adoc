@@ -12,14 +12,14 @@ In this instalment, we're going to look at how we can improve both SSH security 
 Listen Along: Taming the Terminal Podcast Episode 30
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 SSH keys utilise asymmetric encryption, specifically public/private key cryptography.
@@ -110,7 +110,7 @@ cat ~/.ssh/id_rsa.pub
 [TIP]
 .Aside -- Base64 Encoding
 ====
-If you are wondering what format the keys are stored in, it's the very commonly used http://en.wikipedia.org/wiki/Base64[base64 encoding].
+If you are wondering what format the keys are stored in, it's the very commonly used https://en.wikipedia.org/wiki/Base64[base64 encoding].
 This is a very robust format that ignores characters like line breaks and spaces which could get introduced if a key were to be copied and pasted into an email or something like that.
 ====
 

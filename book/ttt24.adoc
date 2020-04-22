@@ -22,14 +22,14 @@ Specifically, we'll look at MAC addresses, the difference between hubs, switches
 Listen Along: Taming the Terminal Podcast Episode 24
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
 ifndef::backend-pdf[]
 also
 endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -179,7 +179,7 @@ The protocol that sits on top of ethernet is the IP Protocol.
 The IP protocol moves a packet from one IP address to another, and it does so by repeatedly dropping the packet down to the link layer below to move the packet one _hop_ at a time from a directly connected device to another directly connected device until it arrives at its destination.
 As a quick reminder, see the diagram below from the previous instalment:
 
-image::./assets/wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=http://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
+image::./assets/wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
 
 Within our LAN, the layer 1 protocol IP uses to move a packet from one device on our LAN to another device on our LAN is ethernet.
 Ethernet can only move a packet from one MAC address to another, and IP moves packets from one IP address to another, so how does the IP protocol figure out what MAC address matches to what IP address so it knows where to ask ethernet to send the packet?
@@ -249,7 +249,7 @@ This is why the ethernet port in a hotel room is just as dangerous as public wif
 To intercept other people's network traffic, an attacker simply has to send out false ARP replies and erroneously advertise their MAC address as matching their victim's IP address.
 The attacker can then read the packets before passing them on to the correct MAC address.
 Users will not lose connectivity because the packets all get where they are supposed to eventually but, the attacker can read and alter every packet.
-This technique is known as http://en.wikipedia.org/wiki/ARP_spoofing[ARP Spoofing] or ARP Poison Routing (APR) and is staggeringly easy to execute.
+This technique is known as https://en.wikipedia.org/wiki/ARP_spoofing[ARP Spoofing] or ARP Poison Routing (APR) and is staggeringly easy to execute.
 
 ARP is just the first example we have met of the Internet's total lack of built-in security.
 It illustrates the point that the designers of the IP stack simply never imagined there would be malicious actors on their networks.
