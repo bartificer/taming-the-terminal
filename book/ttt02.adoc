@@ -93,7 +93,7 @@ Regardless of whether you use Bash on OS X, or zsh on OS X, you will have to ent
 Similarly, if you use Bash on Linux, you will have to enter Linux commands.
 Thankfully Linux and Unix agree almost entirely on the structure of their basic commands, so with a very few (and very annoying) exceptions, you can use the same basic commands on any Linux or Unix distribution (remember that at its heart OS X is Free BSD Unix).
 
-Commands take the form of the command itself optionally followed by a list of _arguments_ separated by spaces i.e.:
+Commands take the form of the command itself optionally followed by a list of _arguments_ separated by spaces, e.g.:
 
 `command argument_1 argument_2 ... argument_n`
 

@@ -3,7 +3,7 @@
 
 
 This is the third instalment of an on-going series.
-These blog posts are only part of the series, they are actually the side-show, being effectively just my show notes for discussions with Allison Sheridan on my bi-weekly Chit Chat Across the Pond segment on her show, http://www.podfeet.com/[the NosillaCast Mac Podcast].
+These blog posts are only part of the series, they are actually the side-show, being effectively just my show notes for discussions with Allison Sheridan on my bi-weekly Chit Chat Across the Pond audio podcast on http://podfeet.com/ttt-podcast[podfeet.com/...].
 This instalment will be featured in NosillaCast episode 418 (scheduled for release late on Sunday the 12th of May 2013).
 
 In the <<ttt01,first instalment>>, we started with the 40,000ft view, looking at what command shells are, and why they're still relevant in today's GUI-dominated world.
@@ -52,7 +52,7 @@ the http://en.wikipedia.org/wiki/Joliet_(file_system)[Joliet file system] is use
 
 There is an infinite number of possible ways computer scientists could have chosen to bring order to the chaos of bits on our various media, but, as is often the case, a single real-world analogy was settled on by just about all operating system authors.
 Whether you use Linux, Windows, or OS X, you live in a world of filesystems that contain folders (AKA directories) that contain files and folders.
-Each folder and file in this recursive hierarchical structure has a name, so it allows us, humans, to keep our digital documents organised in a way that we can get our heads around.
+Each folder and file in this recursive hierarchical structure has a name, so it allows us humans, to keep our digital documents organised in a way that we can get our heads around.
 Although all our modern filesystems have their own little quirks under the hood, they all share the same simple architecture, your data goes in files which go in folders which can go in other folders which eventually go into file systems.
 
 You can have lots of files with the same name in this kind of file system, but, you can never have two items with the same name in the same folder.
@@ -75,7 +75,7 @@ Or, put another way, even if two files have identical paths on two filesystems m
 There are lots of different ways you could combine multiple filesystems into a single unified namespace, and this is where the DOS/Windows designers parted ways with the Unix/Linux folks.
 Microsoft combines multiple file systems together in a very different way to Unix/Linux/OS X.
 
-Let's start by looking at the approach Microsoft chose to.
+Let's start by looking at the approach Microsoft chose.
 In DOS, and later Windows, each filesystem is presented to the user as a separate island of data named with a single letter, referred to as a _drive letter_.
 This approach has an obvious limitation, you can only have 26 file systems in use at any one time!
 For historical reasons, `A:\` and `B:\` were reserved for floppy drives, so, the first partition on the hard drive connected to the first IDE/SATA bus on the motherboard is given the drive letter `C:\`, the second one `D:\` and so on.
@@ -90,7 +90,7 @@ The trunk of the tree is the base of the file system, each branch is a folder, a
 Branches '`contain`' branches and leaves, just like folders contain folders and files.
 If you bring that analogy to Microsoft's way of handling filesystems, then the global namespace is not a single tree, but a small copse of between 1 and 26 trees, each a separate entity, and each named with a single letter.
 
-If we continue this analogy, Linux/Unix doesn't plant a little copse of separate trees DOS/Windows does, instead, they construct one massive franken-tree by grafting smaller trees onto the branches of a single all-containing master tree.
+If we continue this analogy, Linux/Unix doesn't plant a little copse of separate trees like DOS/Windows, instead, they construct one massive Franken-tree by grafting smaller trees onto the branches of a single all-containing master tree.
 When Linux/Unix boots, one filesystem is considered to be the main filesystem and used as the master file system into which other file systems get inserted as folders.
 In OS X parlance, we call the partition containing this master file system the _System Disk_.
 Because the system disk becomes the root of the entire filesystem it is gets assigned the shortest possible file path, `/`.
@@ -104,7 +104,7 @@ A folder at the root of the that partition's file system called just `allison` w
 
 On regular Linux/Unix distributions the file `/etc/fstab` (file system table) tells the OS what filesystems to mount to what mount points.
 A basic version of this file will be created by the installer, but in the past, whenever you added a new disk to a Linux/Unix system you had to manually edit this file.
-Thankfully, we now have something called `automount` to automatically mount any readable filesystems to a pre-defined location on the filesystem when they are connected.
+Thankfully, we now have something called `automount` to automatically mount any readable filesystems to a predefined location on the filesystem when they are connected.
 
 The exact details will change from OS to OS, but on Ubuntu, the folder `/media/` is used to hold mount points for any file system you connect to the computer.
 Unlike Windows, most Linux/Unix systems make use of filesystems`' volume names and use them to give the mount points sensible names, rather than random letters.
@@ -115,10 +115,10 @@ Having the ability to mount any filesystem as any folder within a single master 
 This is very useful if you are a Linux/Unix sysadmin or power user, but it can really confuse regular users.
 Because of this, OS X took a simpler route.
 There is no `/etc/fstab` by default (though if you create one OS X will correctly execute it as it boots).
-The OS X installer does not allow you to split OS X over multiple partitions, everything belonging to the OS X system, including all the users home folders, are installed on a single partition, the system disk, and all other file systems, be they internal, external, network, or disk images, get automatically mounted in `/Volumes/` as folders named for the file systems`' volume labels.
+The OS X installer does not allow you to split OS X over multiple partitions. Everything belonging to the OS X system, including all the users home folders, are installed on a single partition, the system disk, and all other file systems, be they internal, external, network, or disk images, get automatically mounted in `/Volumes/` as folders named for the file systems`' volume labels.
 
 Going back to our imaginary thumb drive called `Allison_Pen_Drive` (which Ubuntu would mount as `/media/Allison_Pen_Drive/`), OS X will mount that as `/Volumes/Allison_Pen_Drive/` when you plug it in.
-If you had a second partition, or a second internal drive, called, say, `Fatso` (a little in-joke for Allison), OS X would mount that as /`Volumes/Fatso/`.
+If you had a second partition, or a second internal drive, called, say, `Fatso` (a little in-joke for Allison), OS X would mount that as `/Volumes/Fatso/`.
 Likewise, if you double-clicked on a DMG file you downloaded from the net, say with the Adium installer, OS X would mount that as something like `/Volumes/Adium/` until you eject the DMG.
 The '`disks`' listed in the Finder sidebar in the section headed `Devices` are just links to the contents of `/Volumes/`.
 You can see this for yourself by opening a Finder Window and either hitting the key-combo `cmd+shift+g`, or navigating to `+Go→Go To Folder ...+` in the menubar to bring up the `Go To Folder` text box, and then typing the path `/Volumes` and hitting return.
