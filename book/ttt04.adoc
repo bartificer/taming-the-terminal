@@ -57,7 +57,7 @@ You can either use the `-F` flag to append a `/` to the end of every folder's na
 The `-F` flag will work on Linux and Unix, but the `-G` flag is a BSD Unix thing and doesn't work on Linux.
 Linux users need to use the more logical `--color` instead.
 
-I said that `ls` shows you all the visible files in your current directory, what if you want to see all the files?
+I said that `ls` shows you all the _visible_ files in your current directory, what if you want to see all the files, including hidden files?
 Simple, just use the `-a` flag.
 
 Finally, before we move away from `ls` (for now), I should mention that you can use `ls` to show you the content of any folder, not just the content of your current folder.
