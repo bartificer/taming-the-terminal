@@ -25,10 +25,8 @@ ifndef::backend-pdf[]
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
 https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
 ****
 
 == The basics

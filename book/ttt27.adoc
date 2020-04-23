@@ -33,15 +33,11 @@ ifndef::backend-pdf[]
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
+ifndef::backend-pdf[also]
 https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
+ifndef::backend-pdf[also]
 https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 
 ****
