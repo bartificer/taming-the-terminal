@@ -2,11 +2,15 @@
 = TTT Part 1 of n -- Command Shells
 
 
-I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond audio  podcast segment on the http://www.podfeet.com[NosillaCast Mac Podcast] (to be released Sunday evening PST), I'm going to try start what will hopefully be an on-going series of short unintimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app. (_Note: this entire series was later moved to a standalone podcast called Taming the Terminal at http://podfeet.com/ttt-podcast[podfeet.com/...]._)
+I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond audio  podcast segment on the https://www.podfeet.com[NosillaCast Mac Podcast] (to be released Sunday evening PST), I'm going to try start what will hopefully be an on-going series of short unintimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app.
+
+_Note: this entire series was later moved to a standalone podcast called Taming the Terminal at https://podfeet.com/ttt-podcast[podfeet.com/...]._
+
+
 I'm on with Allison every second week, and I'll have other topics to talk about, so the most frequent the instalments in this series could be would be biweekly, but I think they'll turn out to be closer to monthly on average.
 While the focus will be on OS X, the majority of the content will be equally applicable to any other Unix or Linux operating system.
 
-In the http://www.podfeet.com/wordpress/2013/03/31/412-rslsteeper-autismate-audio-hijack-pro-mail-security/[last CCATP], we did a very detailed segment on email security, and despite the fact that with the benefit of hindsight I realise it was too much to do at once and should have been split into two segments, it received the strongest listener response of anything of any of my many contributions to the NosillaCast in the last 5 or more years.
+In the https://www.podfeet.com/wordpress/2013/03/31/412-rslsteeper-autismate-audio-hijack-pro-mail-security/[last CCATP], we did a very detailed segment on email security, and despite the fact that with the benefit of hindsight I realise it was too much to do at once and should have been split into two segments, it received the strongest listener response of anything of any of my many contributions to the NosillaCast in the last 5 or more years.
 I hope I'm right in interpreting that as evidence that there are a lot of NosillaCast listeners who want to get a little more technical, and get their hands dirty with some good old-fashioned nerdery!
 
 .Matching Postcast Episode 1
@@ -16,15 +20,13 @@ Listen Along: Taming the Terminal Podcast Episode 1
 
 ifndef::backend-pdf[]
 +++<audio controls='1'>+++
-+++<source src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3">+++
++++<source src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3">+++
 +++</source>+++ Your browser does not support HTML 5 audio+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
 ****
 
 == The basics
@@ -33,7 +35,7 @@ In this first segment, I just want to lay a very basic foundation.
 I plan to take things very slowly with this series, so I'm going to start the way I mean to continue.
 Let's start with some history and some wider context.
 
-Before the days of GUIs (Graphical User Interfaces), and even before the days of simple menu-driven non-graphical interfaces like the http://en.wikipedia.org/wiki/File:Wordperfect-5.1-dos.png[original Word Perfect on DOS], the way humans interacted with computers was through a "`command shell`".
+Before the days of GUIs (Graphical User Interfaces), and even before the days of simple menu-driven non-graphical interfaces like the https://en.wikipedia.org/wiki/File:Wordperfect-5.1-dos.png[original Word Perfect on DOS], the way humans interacted with computers was through a "`command shell`".
 Computers couldn't (and still can't) speak or interpret human languages properly, and humans find it very hard to speak in native computer languages like binary machine codes (though early programmers did actually have to do that). New languages were invented to help bridge the gap, and allow humans and computers to meet somewhere in the middle.
 
 The really big problem is that computers have absolutely no intelligence, so they can't deal with ambiguity at all.
@@ -55,13 +57,13 @@ BUT -- not everything.
 We all know that a picture says a thousand words, but when you are using a GUI it's the computer that is showing you a picture, all you get to do is make crude hand gestures at the computer, which I'd say is worth about a thousandth of a word -- so, a single shell command can easily be worth a thousand clicks.
 This is why all desktop OSes still have command shells built in -- not as their ONLY user interface like in times past, but as a window within the GUI environment that lets you communicate with the computer using the power of a command shell.
 
-Even Microsoft understands the power of the command shell. DOS may be dead, but the new http://en.wikipedia.org/wiki/Windows_PowerShell[Windows Power Shell] is giving Windows power users a new, more modern, and more powerful command shell than ever before.
+Even Microsoft understands the power of the command shell. DOS may be dead, but the new https://en.wikipedia.org/wiki/Windows_PowerShell[Windows Power Shell] is giving Windows power users a new, more modern, and more powerful command shell than ever before.
 Windows 8 may have removed the Start menu, but Powershell is still there!
 All Linux and Unix distros have command shells, and OS X gives you access to an array of different Command Shells through Terminal.app.
 
 Just like there is no one GUI interface, there is no one command shell.
 Also, just like most GUIs are at least somewhat similar to each other, they all use icons for example, most command shells are also quite similar, having a command prompt that accepts commands with arguments to supply input to the commands or alter their behaviour.
-OS X does not ship with one command shell, it ships with SIX (http://en.wikipedia.org/wiki/Bourne_shell[sh], http://en.wikipedia.org/wiki/Bash_(Unix_shell)[bash], http://en.wikipedia.org/wiki/Zsh[zsh], http://en.wikipedia.org/wiki/C_shell[csh], http://en.wikipedia.org/wiki/Tcsh[tcsh], and http://en.wikipedia.org/wiki/Korn_shell[ksh])!
+OS X does not ship with one command shell, it ships with SIX (https://en.wikipedia.org/wiki/Bourne_shell[sh], https://en.wikipedia.org/wiki/Bash_(Unix_shell)[bash], https://en.wikipedia.org/wiki/Zsh[zsh], https://en.wikipedia.org/wiki/C_shell[csh], https://en.wikipedia.org/wiki/Tcsh[tcsh], and https://en.wikipedia.org/wiki/Korn_shell[ksh])!
 
 You can see the list of available shells (and set your default shell) by opening `System Preferences`, going to the `Users & Groups` pref pane, unlocking it, then right-clicking on your username in the sidebar, and selecting `+Advanced Options ...+`:
 
@@ -72,8 +74,8 @@ image::./assets/ttt1/Screen-Shot-2013-04-13-at-15.30.07.png[Select Login Shell]
 The default shell on OS X is the Bourne Again Shell (Bash), so that's the shell we'll be using for the remainder of this series.
 If you've not altered the defaults, then whenever you open a Terminal window on OS X, what you're presented with is a Bash command shell.
 Bash is an updated and improved version of the older Bourne Shell (sh), which was the default shell in Unix for many years.
-The original Bourne Shell dates all the way back to 1977 and is called after it's creator, http://en.wikipedia.org/wiki/Stephen_Richard_Bourne[Stephen Bourne].
-The Bourne Again Shell is a '`newer`' update to the Bourne Shell dating back to 1989, the name being a nerdy religious joke by its author, http://en.wikipedia.org/wiki/Brian_Fox_(computer_programmer)[Brian Fox].
+The original Bourne Shell dates all the way back to 1977 and is called after it's creator, https://en.wikipedia.org/wiki/Stephen_Richard_Bourne[Stephen Bourne].
+The Bourne Again Shell is a '`newer`' update to the Bourne Shell dating back to 1989, the name being a nerdy religious joke by its author, https://en.wikipedia.org/wiki/Brian_Fox_(computer_programmer)[Brian Fox].
 The Bourne Again Shell was not the last in the line of shells tracing their origins to the Bourne Shell, there is also zsh which dates back to 1990, but despite being a more powerful shell, it hasn't taken off like Bash has.
 
 So, what does a shell do?
@@ -81,9 +83,9 @@ Does it just let you enter a single command and then run it?
 Or is there more to it?
 Unsurprisingly, there's a lot more to it!
 The shell does its own pre-processing before issuing a command for you, so a lot of things that we think of as being part of how a command works are actually features provided by the command shell.
-The best example is the almost ubiquitous `*` symbol.
-When you issue a command like `chmod 755 *.php`, the actual command is not given `*.php` as a single argument that it must then interpret. No, the `*` is interpreted and processed by the shell before being passed on to the `chmod` command.
-It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `*.php` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
+The best example is the almost ubiquitous `+*+` symbol.
+When you issue a command like `+chmod 755 *.php+`, the actual command is not given `+*.php+` as a single argument that it must then interpret. No, the `+*+` is interpreted and processed by the shell before being passed on to the `chmod` command.
+It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `+*.php+` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
 
 As well as providing wildcard substitution (the * thing), almost all shells also provide '`plumbing`' for routing command inputs and outputs between commands and files, the definition of variables to allow sequences of commands to be generalised in a more reusable way, simple programming constructs to enable conditional actions, looping, and the grouping of sequences of commands into named functions, and the execution of a sequence of commands inside a file (scripting), and much more.
 Different shells also provide their own custom features to help make life at the command prompt easier for users. My favourite is tab-completion which is the single best thing Bash has to offer over sh IMO.

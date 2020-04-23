@@ -14,14 +14,12 @@ We'll be introducing the concept of streams, which can be used to connect comman
 Listen Along: Taming the Terminal Podcast Episode 15
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT15Plumbing/TTT_15_Plumbing.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT15Plumbing/TTT_15_Plumbing.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT15Plumbing/TTT_15_Plumbing.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT15Plumbing/TTT_15_Plumbing.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -145,7 +143,7 @@ Also, `/dev/urandom` does not output text characters, it outputs binary data, an
 We can overcome the first of these limitations by using the `head` command we met in <<ttt11,part 11 of this series>>.
 Previously we've used `head` to show us the first n lines of a file, but we can use the `-c` flag to request a specific number of characters rather than lines.
 
-The second problem can be overcome with the `base64` command, which converts binary data to text characters using the http://en.wikipedia.org/wiki/Base64[Base64 encoding algorithm].
+The second problem can be overcome with the `base64` command, which converts binary data to text characters using the https://en.wikipedia.org/wiki/Base64[Base64 encoding algorithm].
 A quick look at the man page for `base64` shows that it can use streams as well as files:
 
 ****

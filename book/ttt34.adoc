@@ -18,14 +18,12 @@ Before we look at some HTTP-related terminal commands, we need a basic understan
 Listen Along: Taming the Terminal Podcast Episode 34
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -53,7 +51,7 @@ The HTTP request line specifies the HTTP method to use, the path to request from
 The HTTP request headers are specified one per line, as name-value pairs, with the name separated from the value by a `:` character.
 The headers are used by the client to pass information to the server which it can use in generating its response.
 
-The following is an actual HTTP request for http://www.podfeet.com/blog/[www.podfeet.com/blog/] as emitted by FireFox:
+The following is an actual HTTP request for https://www.podfeet.com/blog/[www.podfeet.com/blog/] as emitted by FireFox:
 
 [source,shell]
 ----
@@ -123,7 +121,7 @@ Each form element on a page has a name and a value.
 The data is encoded as a sequence of `name=value` pairs, separated with `&` symbols.
 Neither names nor values can contain special characters, so any such characters in the data must be encoded using URL escape sequences.
 These are two-digit hexadecimal codes prefixed with the `%` symbol.
-You'll find a http://www.w3schools.com/tags/ref_urlencode.asp[full list of URL escape codes here], but as an example, a space character is encoded as `%20`.
+You'll find a https://www.w3schools.com/tags/ref_urlencode.asp[full list of URL escape codes here], but as an example, a space character is encoded as `%20`.
 
 == HTTP Responses
 
@@ -132,14 +130,14 @@ It may well fail, but whatever the result of attempting to fulfil the request, t
 
 Similar to the request, an HTTP response has three parts, a status line, zero or more response header lines, and a final optional data segment, separated from the headers by a blank line.
 
-Below is a truncated version of the HTTP response from Allison's web server to a request for http://www.podfeet.com/blog/:
+Below is a truncated version of the HTTP response from Allison's web server to a request for https://www.podfeet.com/blog/:
 
 [source,shell]
 ----
 HTTP/1.1 200 OK
 Date: Sat, 09 May 2015 15:52:42 GMT
 Server: Apache
-X-Pingback: http://www.podfeet.com/blog/xmlrpc.php
+X-Pingback: https://www.podfeet.com/blog/xmlrpc.php
 Expires: Thu, 19 Nov 1981 08:52:00 GMT
 Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
 Pragma: no-cache
@@ -148,7 +146,7 @@ Vary: Accept-Encoding
 Transfer-Encoding: chunked
 Content-Type: text/html; charset=UTF-8
 
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http//www.w3.org/1999/xhtml' lang='en-US'>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
@@ -176,7 +174,7 @@ However, on the modern web, it's not unusual to need this many requests to rende
 
 === HTTP Response Codes
 
-There are many supported HTTP response codes (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html[click here for a full list]), and we're not going to go into them all, but I do want to explain the way they are grouped and highlight some common ones you're likely to come across.
+There are many supported HTTP response codes (https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html[click here for a full list]), and we're not going to go into them all, but I do want to explain the way they are grouped and highlight some common ones you're likely to come across.
 
 HTTP response codes are three-digit numbers starting with 1, 2, 3, 4, or 5.
 They are grouped into related groups by their first digit.
@@ -270,7 +268,7 @@ All modern browsers have developer tools, and they all do similar things, but th
 My personal preference is to use Safari's developer tools, but so as to make this section accessible to as many people as possible, we'll use the cross-platform FireFox browser.
 
 To enable the developer tools we are interested in today, browse to the site you want to explore, e.g.
-http://www.bartb.ie/[www.bartb.ie], and click on `Tools` → `Web Developer` → `Network`.
+https://www.bartb.ie/[www.bartb.ie], and click on `Tools` → `Web Developer` → `Network`.
 
 image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
 

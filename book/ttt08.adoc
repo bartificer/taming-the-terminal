@@ -14,14 +14,12 @@ We'll start with a little history for context, then have a look at the model OS 
 Listen Along: Taming the Terminal Podcast Episode 8
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT08Processes_201509/TTT_08_Processes.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT08Processes_201509/TTT_08_Processes.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT08Processes_201509/TTT_08_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT08Processes_201509/TTT_08_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

@@ -21,14 +21,12 @@ endif::[]
 Listen Along: Taming the Terminal Podcast Episode 9
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -125,10 +123,10 @@ As well as opening things with the default app for their type, `open` can also o
 The `-a` flag allows you to specify the app the item should be opened with.
 
 I do a lot of Perl programming, and I have two apps installed that I regularly use to edit Perl code.
-I have OS X configured to open `.pl` and `.pm` files with http://www.activestate.com/komodo-edit[Komodo Edit] by default.
+I have OS X configured to open `.pl` and `.pm` files with https://www.activestate.com/komodo-edit[Komodo Edit] by default.
 Komodo Edit is a nice free Perl IDE, and I do all my big programming jobs in it.
 However, being a big IDE, it's a bit of a hog -- it takes so long to open that it has a splash screen!
-So, when I just want to make a quick edit, I prefer to use the light-weight http://www.peterborgapps.com/smultron/[Smultron] editor instead.
+So, when I just want to make a quick edit, I prefer to use the light-weight https://www.peterborgapps.com/smultron/[Smultron] editor instead.
 I can use `open` with the `-a` flag to specify that I want my Perl file opened with Smultron using a command something like:
 
 [source,shell]

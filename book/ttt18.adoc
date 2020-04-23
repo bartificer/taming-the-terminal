@@ -11,24 +11,20 @@ In this instalment, we'll learn more POSIX ERE syntax, and have a look at some e
 Listen Along: Taming the Terminal Podcast Episodes 18a & 18b
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
-
-You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+
+You can
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 ****
 
 == Inverted Character Classes
@@ -376,20 +372,20 @@ To be, or not to be
 
 Given that Shakespeare's 450th birthday was last month, it seemed appropriate to include this bit of nerd humour!
 
-We've now covered most of the POSIX ERE spec, and probably more than most people will ever need to know, but if you'd like to learn more I can recommend http://www.boost.org/doc/libs/1_44_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html[this tutorial].
+We've now covered most of the POSIX ERE spec, and probably more than most people will ever need to know, but if you'd like to learn more I can recommend https://www.boost.org/doc/libs/1_44_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html[this tutorial].
 
 == Some Examples of REs in GUI Applications
 
 Regular expressions make sense when you want to search for things, so, it's not surprising that you mostly find them in apps where searching is important.
 
 You'll very often find REs in advanced text editors (not in basic editors like TextEdit.app).
-Two examples are included below, the _Advanced Find and Replace_ window in http://www.peterborgapps.com/smultron/[Smultron 6], and the _Find_ dialogue in the http://www.activestate.com/komodo-edit/downloads[Komodo Edit 8] cross-platform IDE (the two editors I do all my programming in):
+Two examples are included below, the _Advanced Find and Replace_ window in https://www.peterborgapps.com/smultron/[Smultron 6], and the _Find_ dialogue in the https://www.activestate.com/komodo-edit/downloads[Komodo Edit 8] cross-platform IDE (the two editors I do all my programming in):
 
 image::./assets/ttt18/Screen-Shot-2014-05-10-at-17.49.36.png[Smultron 6 Advanced Find and Replace]
 
 image::./assets/ttt18/Screen-Shot-2014-05-10-at-17.55.51.png[The Komodo Edit Find Window]
 
-Another place you'll often find regular expressions is in apps for renaming files, for example, http://manytricks.com/namemangler/[Name Mangler 3] or the bulk-renaming tool within http://cocoatech.com/pathfinder/[Path Finder]:
+Another place you'll often find regular expressions is in apps for renaming files, for example, https://manytricks.com/namemangler/[Name Mangler 3] or the bulk-renaming tool within https://cocoatech.com/pathfinder/[Path Finder]:
 
 image::./assets/ttt18/Screen-Shot-2014-05-10-at-18.14.12.png[Name Mangler]
 

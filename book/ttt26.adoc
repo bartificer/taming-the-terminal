@@ -24,14 +24,12 @@ In this instalment, we'll look at the protocol that makes that possible, the Dyn
 Listen Along: Taming the Terminal Podcast Episode 26
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT26DHCP/TTT_26_DHCP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT26DHCP/TTT_26_DHCP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT26DHCP/TTT_26_DHCP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT26DHCP/TTT_26_DHCP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -51,15 +49,15 @@ Obviously, manually configured network settings are just not practical in the mo
 
 The solution was to develop a protocol that would allow computers to automatically discover their own settings.
 
-The first attempt at developing such a protocol was http://en.wikipedia.org/wiki/Reverse_Address_Resolution_Protocol[RARP] (the Reverse ARP Protocol), which was published in 1984.
+The first attempt at developing such a protocol was https://en.wikipedia.org/wiki/Reverse_Address_Resolution_Protocol[RARP] (the Reverse ARP Protocol), which was published in 1984.
 RARP was a link-layer protocol (layer 1 in the TCP/IP model), which meant that the RARP server had to be on the same ethernet network as the clients.
 This also meant that organisations with multiple subnets needed multiple RARP servers.
-RARP was a short-lived experiment, being superseded with the release of http://en.wikipedia.org/wiki/Bootstrap_Protocol[BOOTP] (the Bootstrap Protocol) in 1985.
+RARP was a short-lived experiment, being superseded with the release of https://en.wikipedia.org/wiki/Bootstrap_Protocol[BOOTP] (the Bootstrap Protocol) in 1985.
 BOOTP was a significant step forward, introducing the concept of a relay agent that could forward BOOTP requests from multiple subnets to a single centralised BOOTP server.
 BOOTP was still very much a product of its time though -- it was designed around the concept of allocating IPs to computers permanently.
 BOOTP has no way to reclaim addresses, so it's useless in environments were lots of computers come and go all the time.
 
-In 1993 BOOTP was extended to create the protocol we use today, http://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol[DHCP] (the Dynamic Host Configuration Protocol).
+In 1993 BOOTP was extended to create the protocol we use today, https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol[DHCP] (the Dynamic Host Configuration Protocol).
 DHCP is built around the concept of computers temporarily _leasing_ an IP address.
 As computers come and go, IP addresses are leased to those computers for a set amount of time, and then reclaimed for later reuse.
 

@@ -12,14 +12,12 @@ In this final instalment, we'll look at two approaches for creating SSH bookmark
 Listen Along: Taming the Terminal Podcast Episode 33
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -194,7 +192,7 @@ PuTTY is a single stand-alone `.exe` file, so you don't even have to install it,
 
 As well as just `putty.exe`, the SSH GUI, the same project also provides SCP (`pscp.exe`), SFTP (`psftp.exe`), and SSH Agent (`pagent.exe`) commands for Windows.
 
-You can get all these Windows utilities from the http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html[PuTTY download page].
+You can get all these Windows utilities from the https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html[PuTTY download page].
 
 There are also versions of PuTTY for Unix and Linux.
 

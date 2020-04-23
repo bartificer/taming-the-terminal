@@ -7,11 +7,11 @@ Those two protocols, DHCP & DNS exist in the top layer but are different to most
 The email and web protocols may site within the same network layer, but they still rely on DNS to function.
 
 For the remainder of the networking section in this series we're moving away from infrastructure-like protocols, and focusing on the user-facing Application Layer protocols.
-The first of these we'll be looking at is the http://en.wikipedia.org/wiki/Secure_Shell[Secure Shell] or SSH.
+The first of these we'll be looking at is the https://en.wikipedia.org/wiki/Secure_Shell[Secure Shell] or SSH.
 This protocol is one of the absolute work-horses of the internet, and a vital tool for all Linux, Unix, and OS X sysadmins.
 
 At it's simplest level SSH allows you to execute commands on a remote computer, but because it was designed around the concept of a secure tunnel between two systems, SSH has expanded to allow all kinds of advanced features.
-The least-generous description of this could be that SSH has become a kind of sysadmins http://www.urbandictionary.com/define.php?term=fridgeoven[fridgeoven].
+The least-generous description of this could be that SSH has become a kind of sysadmins https://www.urbandictionary.com/define.php?term=fridgeoven[fridgeoven].
 But I don't buy that, I prefer the alternative interpretation -- it simply makes sense not to reinvent the wheel, and to allow as much information as possible to flow throw the secure connection SSH provides between the two end-points.
 
 Today we're just going to start with the basics, but in future instalments, we'll move on to the more advanced features.
@@ -22,14 +22,12 @@ Today we're just going to start with the basics, but in future instalments, we'l
 Listen Along: Taming the Terminal Podcast Episode 29
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -42,7 +40,7 @@ The computer initiating the connection is referred to as the client, and the com
 SSH operates over TCP, and while SSH servers can listen on any TCP port, by default SSH servers listen on port 22.
 As its name suggests, security is integral to the Secure Shell, and all SSH traffic is encrypted by default.
 
-SSH is often described as the secure replacement for the older insecure http://en.wikipedia.org/wiki/Telnet[Telnet] protocol.
+SSH is often described as the secure replacement for the older insecure https://en.wikipedia.org/wiki/Telnet[Telnet] protocol.
 It's certainly true that SSH provides a secure replacement for Telnet, but it's much more than that, providing additional features Telnet never did.
 
 The first version of SSH dates back to 1995, which sounds old in IT terms, but bear in mind that Telnet dates back to 1968!

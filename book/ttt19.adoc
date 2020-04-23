@@ -20,14 +20,12 @@ endif::[]
 Listen Along: Taming the Terminal Podcast Episode 19
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearches/TTT_19_Text_Searches.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearches/TTT_19_Text_Searches.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearches/TTT_19_Text_Searches.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT19TextSearches/TTT_19_Text_Searches.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -136,7 +134,7 @@ sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
 ----
 
 When you execute your command, visit a few web pages, and watch as DNS queries are sent from your computer to your router.
-When I visit http://www.whitehouse.gov[www.whitehouse.gov] I get the following output:
+When I visit https://www.whitehouse.gov[www.whitehouse.gov] I get the following output:
 
 [source,shell,linenums]
 ----

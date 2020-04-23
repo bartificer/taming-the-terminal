@@ -14,14 +14,12 @@ These two commands can do many things, but we'll focus on two specific use-cases
 Listen Along: Taming the Terminal Podcast Episode 35
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 
@@ -47,7 +45,7 @@ Once you have `lynx` installed, you can open any web page in your browser by pas
 
 [source,shell]
 ----
-lynx http://www.podfeet.com
+lynx https://www.podfeet.com
 ----
 
 
@@ -112,14 +110,14 @@ When developing websites, or when configuring redirects, it can be very helpful 
 Web browsers have a tendency to cache things, which can make broken sites appear functional, and functional sites appear broken.
 When using `curl` or `wget`, you can see exactly what is happening at the HTTP level.
 
-As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `http://www.podfeet.com/twitter`.
+As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `https://www.podfeet.com/twitter`.
 To see exactly what Allison's server is returning, we can use `wget` with the `--spider` and `-S` options:
 
 [source,shell]
 ----
-bart-iMac2013:~ bart$ wget --spider -S http://www.podfeet.com/twitter
+bart-iMac2013:~ bart$ wget --spider -S https://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
---2015-07-04 17:36:12--  http://www.podfeet.com/twitter
+--2015-07-04 17:36:12--  https://www.podfeet.com/twitter
 Resolving www.podfeet.com (www.podfeet.com)... 173.254.94.93
 Connecting to www.podfeet.com (www.podfeet.com)|173.254.94.93|:80... connected.
 HTTP request sent, awaiting response...
@@ -173,9 +171,9 @@ Since we only need the first set of headers, we need to tell `wget` not to follo
 
 [source,shell,linenums,highlight='7,10']
 ----
-bart-iMac2013:~ bart$ wget --spider -S --max-redirect 0 http://www.podfeet.com/twitter
+bart-iMac2013:~ bart$ wget --spider -S --max-redirect 0 https://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
---2015-07-04 17:38:45--  http://www.podfeet.com/twitter
+--2015-07-04 17:38:45--  https://www.podfeet.com/twitter
 Resolving www.podfeet.com (www.podfeet.com)... 173.254.94.93
 Connecting to www.podfeet.com (www.podfeet.com)|173.254.94.93|:80... connected.
 HTTP request sent, awaiting response...
@@ -200,7 +198,7 @@ We can, of course, do the same with `curl`:
 
 [source,shell,linenums]
 ----
-bart-iMac2013:~ bart$ curl -I http://www.podfeet.com/twitter
+bart-iMac2013:~ bart$ curl -I https://www.podfeet.com/twitter
 HTTP/1.1 301 Moved Permanently
 Date: Sat, 04 Jul 2015 16:43:49 GMT
 Server: Apache
@@ -217,7 +215,7 @@ Often, you only care about the response headers, so the output of `curl -I` is p
 
 [source,shell,linenums]
 ----
-bart-iMac2013:~ bart$ curl -vI http://www.podfeet.com/twitter
+bart-iMac2013:~ bart$ curl -vI https://www.podfeet.com/twitter
 * Hostname was NOT found in DNS cache
 *   Trying 173.254.94.93...
 * Connected to www.podfeet.com (173.254.94.93) port 80 (#0)

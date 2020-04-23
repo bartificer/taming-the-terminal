@@ -16,36 +16,32 @@ Ultimately, it's actually a very elegant design, but that elegance may not be im
 Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
++++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
-
-You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
-ifndef::backend-pdf[]
-also
-endif::[]
-http://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+
+You can
+ifndef::backend-pdf[also]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 ****
 
 As complicated as computer networks are today, they've actually gotten a lot simpler than they used to be, for the simple reason that everyone has settled on a single protocol stack -- the so-called TCP/IP stack.
 Because TCP/IP is the clear winner, it's the only kind of networking we need to look at in this series.
 Had we been doing this 20 years ago, things would have been very different, with different companies each using their own suites of networking protocols.
 E.g.
-Apple used http://en.wikipedia.org/wiki/AppleTalk[AppleTalk], DEC used http://en.wikipedia.org/wiki/DECnet[DECnet], and Microsoft used http://en.wikipedia.org/wiki/NetBIOS[NetBIOS/NetBEUI].
+Apple used https://en.wikipedia.org/wiki/AppleTalk[AppleTalk], DEC used https://en.wikipedia.org/wiki/DECnet[DECnet], and Microsoft used https://en.wikipedia.org/wiki/NetBIOS[NetBIOS/NetBEUI].
 
 == The TCP/IP Network Model
 
 The internet, and our home and work networks, are all TCP/IP networks.
-What we now call TCP/IP started life as http://en.wikipedia.org/wiki/ARPANET[ARPANET], a project run by the US Advanced Research Projects Agency, or ARPA (today this same institution is called http://en.wikipedia.org/wiki/DARPA[DARPA], the _D_ standing for _Defence_).
+What we now call TCP/IP started life as https://en.wikipedia.org/wiki/ARPANET[ARPANET], a project run by the US Advanced Research Projects Agency, or ARPA (today this same institution is called https://en.wikipedia.org/wiki/DARPA[DARPA], the _D_ standing for _Defence_).
 For home users, the internet is a 1990s phenomenon, but DARPANET became operational way back in 1969.
 
 The age of TCP/IP is a mixed blessing.
@@ -192,7 +188,7 @@ Some applications make use of both -- for example, when you log on to Skype you'
 From our point of view as a user trying to communicate across our home network or the internet, the process always starts at the application layer.
 We are sending an email, or we are viewing a web page, or we are downloading a file, or we are playing a game, or we are chatting with friends, or whatever.
 
-As a worked example, let's look at what happens when you use your web browser to try to visit `+http://www.so-4pt.net/~bart/ttt23/+`.
+As a worked example, let's look at what happens when you use your web browser to try to visit `+https://www.so-4pt.net/~bart/ttt23/+`.
 
 Before you can visit that URL, I have to have put some digital ducks in a row on my end.
 Firstly, I have to have arranged for a DNS server to advertise to the world that my webserver has the IP address `46.22.130.125`, and, I have to have the server with that IP address configured to act as a webserver.
@@ -201,7 +197,7 @@ On my server, a piece of software has to be running which speaks the HTTP protoc
 This process has to have asked the OS to '`listen`' on TCP port 80 (the standard HTTP port).
 That means that when any computer initiates a TCP connection to port 80 on my server, my server's OS will hand that connection to my webserver process.
 
-Assuming I have everything properly configured on my end, you open your favourite browser, and type `http://www.so-4pt.net/~bart/ttt23/` into the address bar, and hit enter.
+Assuming I have everything properly configured on my end, you open your favourite browser, and type `https://www.so-4pt.net/~bart/ttt23/` into the address bar, and hit enter.
 
 Your browser speaks HTTP, so it starts by formulating an HTTP request which will look something like:
 
@@ -342,7 +338,7 @@ The key point is how the layers interact.
 As we saw initially, logically the browser and the server talked HTTP to each other, but physically, the packet started in the application layer and moved down the layers to the link layer, then up and down between the link and internet layers many times as it moved across the before finally being handed all the way up the layers back to the application layer when it arrived at my server.
 The diagram below illustrates this idea:
 
-image::./assets/wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=http://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
+image::./assets/wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
 
 So, we followed the path of a single IP packet, how many IP packets were actually needed for this very simple HTTP transaction?
 The answer is 12 (see below).
@@ -365,7 +361,7 @@ In the other terminal window we will use the `curl` command to fetch the website
 
 [source,html,linenums]
 ----
-bart-iMac2013:~ bart$ curl -v http://www.so-4pt.net/~bart/ttt23/
+bart-iMac2013:~ bart$ curl -v https://www.so-4pt.net/~bart/ttt23/
 * Hostname was NOT found in DNS cache
 *   Trying 46.22.130.125...
 * Connected to www.so-4pt.net (46.22.130.125) port 80 (#0)
