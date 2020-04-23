@@ -27,7 +27,7 @@ https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT05FilePermis
 
 Let's start with some context.
 Just like every command shell has a present working directory, every process on a Linux/Unix system is also owned by a user, including shell processes.
-So, when you execute a command in a command shell that process has a file system location associated with it and a username.
+So, when you execute a command in a command shell, that process has a file system location associated with it and a username.
 By default your shell will be running as the user you logged into your computer as, though you can become a different user if and when you need to (more on that in future instalments).
 You can see which user you are running as with the very intuitive command:
 
@@ -45,7 +45,7 @@ You can see what groups you belong to with the command:
 groups
 ----
 
-(you can see the groups any username belongs to by adding the username as an argument)
+(You can even see the groups any username belongs to by adding the username as an argument.)
 
 On older versions of OS X creating your own custom groups was hard.
 Thankfully Apple has addressed this shortcoming in more recent versions of the OS, and you can now create and manage your own custom groups in the `Users & Groups` preference pane (click the `+` button and choose `group` as the user type, then use the radio buttons to add or remove people from the group).
@@ -53,7 +53,7 @@ Thankfully Apple has addressed this shortcoming in more recent versions of the O
 Unix/Linux file systems like EXT and HFS+ store metadata about each file and folder as part of that file or folder's entry in the file system.
 Some of that metadata is purely informational, things like the date the file was created, and the date it was last modified, but that metadata also includes ownership information and a so-called _Unix File Permission Mask_.
 
-There are two pieces of ownership information stored about every file and folder, a UID, and a GID.
+There are two pieces of ownership information stored about every file and folder: a UID, and a GID.
 What this means is that every file and folder belongs to one user and one group.
 
 In the standard Linux/Unix file permissions model there are only three permissions that can be granted on a file or folder:
@@ -63,9 +63,9 @@ If set on a folder it means the contents of the files and folders contained in w
 If you are trying to access a file, and read permission is blocked at even one point along the absolute path to the file, access will be denied.
 * *Write (`w`):* if set on a file it means the contents can be altered, or the file deleted.
 If set on a folder it means new files or folders can be created within the folder.
-* *Execute (`x`):* f set on a file it means the file can be run.
+* *Execute (`x`):* if set on a file it means the file can be run.
 The OS will refuse to run any file, be it a script or a binary executable, if the user does not have execute permission.
-When set on a folder execute permission controls whether or not the user has the right to list the contents of a directory.
+When set on a folder, execute permission controls whether or not the user has the right to list the contents of a directory.
 
 All permutations of these three permissions are possible on any file, even if some of them are counter-intuitive and rarely needed.
 
@@ -82,8 +82,7 @@ The first character specifies the '`type`' of the file:
 * `-` signifies a regular file
 * `d` signifies a directory (i.e. a folder)
 * `l` signifies a symbolic link (more on these in a later instalment)
-* `b` `c` `d` and `p` are also valid file types, but they are used to represent
-* things like block devices and sockets rather than '`normal`' files, and we'll be ignoring them in this series.
+* `b` `c` `d` and `p` are also valid file types, but they are used to represent things like block devices and sockets rather than '`normal`' files, and we'll be ignoring them in this series.
 
 The remaining nine characters represent three sets of read, write, and execute permissions (`rwx`), specified in that order.
 If a permission is present then it is represented by an `r`, `w`, or `x`, and if it's not present, it's represented by a `-`.
@@ -93,7 +92,7 @@ The first group of three permission characters are the permissions granted to th
 To figure out what permissions you have on a file you need to know the following things:
 
 . your username
-. what groups do you belong to
+. what groups you belong to
 . what user the file or folder belongs to
 . what group the file or folder belongs to
 . the file or folder's permission mask
