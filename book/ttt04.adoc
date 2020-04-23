@@ -133,10 +133,10 @@ Then, you make a boo boo, and you accidentally type just `cd` on its own, all of
 Don't panic, you won't have to find that complicated path again, just type `cd -` and you'll be right back where you were before your rubber-fingered the `cd` command!
 
 That's where we'll leave things for this instalment.
-We now understand the structure of our file systems and how to navigate around them, next time we'll dive head-long into these file permissions we've been ignoring for the last two instalments.
+We now understand the structure of our file systems and how to navigate around them. Next time we'll dive head-long into these file permissions we've been ignoring for the last two instalments.
 
 For any Windows users out there, the DOS equivalents are as follows:
 
 * instead of `pwd`, use `cd` with no arguments
 * instead of `ls`, use `dir` (though it has way less cool options)
-* `cd` is `cd`, though again, it has way less cool options
+* `cd` is `cd`, though again, it has way fewer cool options
