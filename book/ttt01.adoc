@@ -24,6 +24,10 @@ ifndef::backend-pdf[]
 +++</source>+++ Your browser does not support HTML 5 audio+++</audio>+++
 endif::[]
 
+Scan the QRcode to listen on a different device
+
+image::./assets/qrcodes/TTT_01.png[QRcode, align='left']
+
 You can
 https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ifndef::backend-pdf[also]

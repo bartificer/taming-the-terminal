@@ -17,6 +17,10 @@ ifndef::backend-pdf[]
 +++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
 endif::[]
 
+Scan the QRcode to listen on a different device
+
+image::./assets/qrcodes/TTT_31.png[QRcode, align='left']
+
 You can
 ifndef::backend-pdf[also]
 https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3?autoplay=0&loop=0&controls=1[download the MP3]
