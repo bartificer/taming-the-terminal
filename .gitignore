@@ -13,3 +13,4 @@ book/ttt-spine-legacy.adoc
 Rakefile-test
 scripts/bashex.py
 scripts/pygments_init.rb
+node_modules
