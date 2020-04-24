@@ -3,10 +3,10 @@
 
 In <<ttt05,the previous instalment>> of this series, we had a look at how standard Unix File Permissions worked.
 We looked at how to understand the permissions on existing files and folders, but not at how to change them.
-We also mentioned that the standard Unix file permissions are now only a sub-set of the file permissions on OS X and Linux (OS X also supports file ACLs, and Linux has SELinux as an optional extra layer of security).
+We also mentioned that the standard Unix file permissions are now only a subset of the file permissions on OS X and Linux (OS X also supports file ACLs, and Linux has SELinux as an optional extra layer of security).
 
 In this instalment, we'll start by biting the bullet and dive into how to alter standard Unix File permissions.
-This could well turn out to be the most difficult segment in this entire series, regardless of how big n gets, but it is very important, so if you have trouble with it, please don't give up.
+This could well turn out to be the most difficult segment in this entire series, regardless of how big 'n' gets, but it is very important, so if you have trouble with it, please don't give up.
 After we do all that hard work we'll end with a simpler topic, reading OS X file ACLs, and OS X extended file attributes.
 We'll only be looking at how to read these attributes though, not how to alter them.
 
@@ -24,7 +24,7 @@ ifndef::backend-pdf[also]
 https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
-As a reminder, last time we learned that every file and folder in a Unix/Linux file system has three pieces of metadata associated with it that control the standard Unix file permissions that apply to that file or folder -- files have an owner (a user), a group, and a Unix File Permission Mask associated with them, and all three of these pieces of information can be displayed with `ls -l`.
+As a reminder, last time we learned that every file and folder in a Unix/Linux file system has three pieces of metadata associated with it that control the standard Unix file permissions that apply to that file or folder. Files have an owner (a user), a group, and a Unix File Permission Mask associated with them, and all three of these pieces of information can be displayed with `ls -l`.
 We'll be altering each of these three pieces of metadata in this instalment.
 
 == Altering Unix File Permissions -- Setting the File Ownership
@@ -46,7 +46,7 @@ The `chown` command is very picky about the placement of the flag though, it MUS
 chown -R bart myFolder
 ----
 
-Similarly, the command to change the group that a file belongs to is `chgrp` (change group), it behaves in the same way as `chown`, and also supports the `-R` flag to recursively change the group.
+Similarly, the command to change the group that a file belongs to is `chgrp` (change group). It behaves in the same way as `chown`, and also supports the `-R` flag to recursively change the group.
 E.g.:
 
 [source,shell]
@@ -54,7 +54,7 @@ E.g.:
 chgrp -R staff myFolder
 ----
 
-Finally, if you want to change both user and group ownership of files or folders at the same time the `chown` command provides a handy shortcut -- instead of passing just a username as the first argument, you can pass a username and group name pair separated by a :, so the previous two examples can be rolled into the one example below:
+Finally, if you want to change both user and group ownership of files or folders at the same time, the `chown` command provides a handy shortcut. Instead of passing just a username as the first argument, you can pass a username and group name pair separated by a :, so the previous two examples can be rolled into the one example below:
 
 [source,shell]
 ----
@@ -64,7 +64,7 @@ chown -R bart:staff myFolder
 == Altering Unix File Permissions -- Setting the Permission Mask
 
 The command to alter the permission mask, or file mode, is `chmod` (change mode).
-In many ways it's similar to the `chown` and `chgrp` commands, it takes the same basic form, and supports the `-R` flag, however, the formatting of the first argument -- the permission you want to set -- can be very confusing.
+In many ways it's similar to the `chown` and `chgrp` commands. It takes the same basic form, and supports the `-R` flag, however, the formatting of the first argument -- the permission you want to set -- can be very confusing.
 
 The command actually supports two entirely different approaches to setting the permissions.
 I find both of them equally obtuse, and my advice to people is to pick one and stick with it.
@@ -83,7 +83,7 @@ image::./assets/ttt6/Basic_Unix_File_Permission_Masks.png[Unix File Permissions 
 
 Rather than trying to memorise the table itself, you should try to learn the process for creating it instead.
 The lighter coloured cells in the centre of the table are the important ones to be able to re-create on demand.
-They are not random, they are a standard binary to decimal conversion table, and you should notice that the three columns have a distinct pattern -- the right-most column alternates from `0` to `1` as you go down, the column second from the right has two ``0``s, then two ``1``s, then two ``0``s etc, and finally the third column from the right has four ``0``s, then four ``1``s.
+They are not random, they are a standard binary to decimal conversion table, and you should notice that the three columns have a distinct pattern. The right-most column alternates from `0` to `1` as you go down, the column second from the right has two ``0``s, then two ``1``s, then two ``0``s etc, and finally the third column from the right has four ``0``s, then four ``1``s.
 If you wanted to convert a 4 digit binary number to decimal you would add a fourth column that has 8 ``0``s then ``1``s, if you wanted to convert a 5-bit binary number you'd add yet another column where it's eight ``0``s then eight ``1``s, and so on -- each column you go to the left doubles the number of ``0``s and ``1``s before repeating.
 
 If you can reproduce this table on demand you'll have learned two things -- how to do Unix file permissions, and how to convert any arbitrary binary number to decimal (though there are better ways if the binary number has many digits).
@@ -95,7 +95,7 @@ Even if you don't want to learn how to create the table, you'll probably still b
 * `6` = read and write
 * `7` = full access
 
-If you run a website, for example, regular files like images or HTML pages and images should have permissions `644` (`+rw-r--r--+`: you get read and write, everyone gets read), and executable files and folders should have 755 (`rwxr-xr-x`: you get full permission, everyone can list the folder contents and read the files within).
+If you run a website, for example, regular files like images or HTML pages and images should have permissions `644` (`+rw-r--r--+`: you get read and write, everyone gets read). Executable files and folders should have 755 (`rwxr-xr-x`: you get full permission, everyone can list the folder contents and read the files within).
 
 Let's end with a few examples.
 If you want to alter a file you own so that you have read, write and execute permission, but no one else can access the file in any way you would use the command:
@@ -119,7 +119,7 @@ Do please keep at it though, this is very important stuff.
 == Reading OS X File ACLs
 
 We said last time that on OS X, a `+` at the end of a file permission mask signifies that the file has ACLs (access control lists) associated with it.
-These ACLS allow more granular permissions to be applied to files on top of the standard Unix File Permissions.
+These ACLs allow more granular permissions to be applied to files on top of the standard Unix File Permissions.
 If either the ACLs OR the standard Unix permissions deny you the access you are requesting, OS X will block you.
 
 You can read the ACLs associated with files by adding the `-le` flags to the `ls` command.
@@ -164,15 +164,15 @@ OS X allows arbitrary extra metadata to be added to any file.
 This metadata can be used by applications or the OS when interacting with the file.
 
 For example, when you give a file a colour label, that label is stored in an extended attribute.
-If you give a file or folder a custom Finder icon, that gets stored in an extended attribute (this is how DropBox, the app that is, makes your DropBox folder look different even though it's a regular folder.
+If you give a file or folder a custom Finder icon, that gets stored in an extended attribute (this is how DropBox.app makes your DropBox folder look different even though it's a regular folder.)
 Similarly, spotlight comments are stored in an extended attribute, and third-party tagging apps also use extended attributes to store the tags you associate with a given file (presumably OS X Mavericks will adopt the same approach for the new standard file tagging system it will introduce to OS X).
 
 Extended attributes take the form of name-value-pairs.
 The name, or key, is usually quite long to prevent collisions between applications, and, like plist files, is usually named in reverse-DNS order.
-E.g., all extended attributes set by Apple have names that start with `com.apple`, which is the reverser of Apple's domain name, `apple.com`.
-So, if I were to write an OS X app that used extended file attributes, the correct thing for me to do would be for me to prefix all my extended attribute names with `ie.bartb`, and if Allison were to do the same she should prefix hers with `com.nosillacast`.
+E.g., all extended attributes set by Apple have names that start with `com.apple`, which is the reverse of Apple's domain name, `apple.com`.
+So, if I were to write an OS X app that used extended file attributes, the correct thing for me to do would be for me to prefix all my extended attribute names with `ie.bartb`, and if Allison were to do the same she should prefix hers with `com.podfeet`.
 (Note that this is a great way to avoid name-space collisions since every domain only has one owner.
-This approach is used in many places, including Java package naming).
+This approach is used in many places, including Java package naming.)
 The values associated with the keys are stored as strings, with complex data and binary data stored as 64bit encoded (i.e.
 HEX) strings.
 This means the contents of many extended attributes is not easily human-readable.
@@ -190,7 +190,7 @@ xattr -l [file list]
 
 The nice thing about the `-l` flag is that if the value stored in an extended attribute looks like it's a base 64 encoded HEX string it automatically does a conversion to ASCII for you and displays the ASCII value next to the HEX value.
 
-Apple uses extended attributes to track where files have been downloaded from, by what app, and if they are executable, whether or not you have dismissed the warning you get the first time you run a downloaded file.
+Apple uses extended attributes to track where files have been downloaded from, by what app, and if they are executable, and whether or not you have dismissed the warning you get the first time you run a downloaded file.
 Because of this, every file in your `Downloads` folder will contain extended attributes, so `~/Downloads` is a great place to experiment with `xattr`.
 
 As an example, I downloaded the latest version of the XKpasswd library from my website (`xkpasswd-v0.2.1.zip`).
