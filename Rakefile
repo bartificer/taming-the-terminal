@@ -18,12 +18,12 @@ namespace :book do
         --destination-dir='output'                 \
         "
       puts "Generating contributors list"
-      `git shortlog -s | grep -v -E "(Helma)" | cut -f 2- | column -c 120 > #{book_dir}/contributors.txt`
 
       # use this for testing purposes
       # puts "Converting to HTML...legacy"
       # `bundle exec asciidoctor #{params} #{book_dir}/ttt-spine-legacy.adoc --out-file=ttt-legacy.html`
       # puts " -- HTML output at ttt-legacy.html"
+      `git shortlog -es  | cut -f 2-  > #{book_dir}/contributors.txt`
 
       puts "Converting to HTML..."
       `bundle exec asciidoctor #{params} #{book_dir}/ttt-spine.adoc --out-file=ttt.html`

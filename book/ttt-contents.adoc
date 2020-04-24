@@ -2,6 +2,8 @@ ifdef::ebook-format[:leveloffset: +1]
 
 include::colophon.adoc[]
 
+include::contributors.adoc[]
+
 include::ttt01.adoc[]
 
 include::ttt02.adoc[]

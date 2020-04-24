@@ -1,0 +1,4 @@
+[contributors]
+= Contributors
+
+include::contributors.txt[]
