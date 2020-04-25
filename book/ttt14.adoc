@@ -1,5 +1,6 @@
 [[ttt14]]
 = TTT Part 14 of n -- Aliases & Prompts
+include::variables.adoc[]
 
 In <<ttt13,the previous instalment>>, we looked at how to make permanent changes to our environment.
 We made a permanent change to the `PATH` environment variable to demonstrate how it's done
@@ -20,8 +21,10 @@ endif::[]
 
 Listen Along: Taming the Terminal Podcast Episode 14
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT14AliasesAndPrompts/TTT_14_Aliases_and_Prompts.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT14AliasesAndPrompts/TTT_14_Aliases_and_Prompts.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -30,7 +33,7 @@ image::./assets/qrcodes/TTT_14.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT14AliasesAndPrompts/TTT_14_Aliases_and_Prompts.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT14AliasesAndPrompts/TTT_14_Aliases_and_Prompts.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

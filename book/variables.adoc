@@ -1,0 +1,6 @@
+// switch to experimental so we can show keyboard buttons
+:experimental:
+// Define unicode for Apple Command key.
+:commandkey: &#8984;
+// Some urls
+:url-mp3: https://media.blubrry.com/tamingtheterminal/archive.org/download

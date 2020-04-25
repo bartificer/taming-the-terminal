@@ -1,6 +1,6 @@
 [[ttt09]]
 = TTT Part 9 of n -- Controlling Processes
-:experimental:
+include::variables.adoc[]
 
 In the <<ttt08,previous instalment>>, we looked at how Unix-like operating systems like Linux and Mac OS X represent processes.
 We then went on to look at the commands for listing running processes and filtering and sorting them in various ways.
@@ -20,8 +20,10 @@ endif::[]
 
 Listen Along: Taming the Terminal Podcast Episode 9
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -30,7 +32,7 @@ image::./assets/qrcodes/TTT_09.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

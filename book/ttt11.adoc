@@ -1,7 +1,7 @@
 [[ttt11]]
 = TTT Part 11 of n -- Text Files
-:icons: font
-:experimental:
+include::variables.adoc[]
+
 
 In the next instalment we'll be moving on to look at the so-called _Environment_ within a command shell, but before we do that we need to lay some groundwork.
 Specifically, we need to learn how to read and edit text files from the command-line.
@@ -14,8 +14,10 @@ For those interested in learning a little more I'll also give a very quick overv
 
 Listen Along: Taming the Terminal Podcast Episode 11
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT11TextFiles/TTT_11_Text_Files.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -24,7 +26,7 @@ image::./assets/qrcodes/TTT_11.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT11TextFiles/TTT_11_Text_Files.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT11TextFiles/TTT_11_Text_Files.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

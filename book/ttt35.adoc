@@ -1,6 +1,7 @@
 [[ttt35]]
 = TTT Part 35 of n -- HTTP Commands
-:experimental:
+include::variables.adoc[]
+
 
 The previous instalment we introduced the HTTP protocol.
 In this instalment, we'll look at three terminal commands which make use of the HTTP protocol.
@@ -13,8 +14,10 @@ These two commands can do many things, but we'll focus on two specific use-cases
 
 Listen Along: Taming the Terminal Podcast Episode 35
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -23,7 +26,7 @@ image::./assets/qrcodes/TTT_35.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

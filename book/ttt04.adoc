@@ -1,5 +1,6 @@
 [[ttt04]]
 = TTT Part 4 of n -- Navigation
+include::variables.adoc[]
 
 
 In <<ttt03,the previous segment>>, we discussed the concept of a file system in detail.
@@ -16,8 +17,10 @@ a Bash command shell.
 
 Listen Along: Taming the Terminal Podcast Episode 4
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT04Navigation/TTT_04_Navigation.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -26,7 +29,7 @@ image::./assets/qrcodes/TTT_04.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT04Navigation/TTT_04_Navigation.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == Navigating around

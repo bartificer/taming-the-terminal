@@ -1,5 +1,6 @@
 [[ttt23]]
 = TTT Part 23 of n -- Networking Intro
+include::variables.adoc[]
 
 This instalment is the first in what will probably be quite a long mini-series on computer networking.
 Before we can look at the terminal commands that allow us to interact with the network, we need to gain an understanding of how computer networking works.
@@ -15,12 +16,13 @@ Ultimately, it's actually a very elegant design, but that elegance may not be im
 
 Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
-endif::[]
 
-ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
+
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -31,11 +33,11 @@ image::./assets/qrcodes/TTT_23b.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 ****
 
 As complicated as computer networks are today, they've actually gotten a lot simpler than they used to be, for the simple reason that everyone has settled on a single protocol stack -- the so-called TCP/IP stack.

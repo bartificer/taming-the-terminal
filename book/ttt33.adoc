@@ -1,5 +1,6 @@
 [[ttt33]]
 = TTT Part 33 of n -- SSH 'Bookmarks'
+include::variables.adoc[]
 
 This is the final SSH instalment.
 So far we've learned how to <<ttt29,securely execute terminal commands on remote computers>>, how to <<ttt31,securely copy files across the network using SSH>>, how to <<ttt30,add both security and convenience>> to both those operations with SSH key pairs, and how to <<ttt32,tunnel just about anything through SSH>>.
@@ -11,8 +12,10 @@ In this final instalment, we'll look at two approaches for creating SSH bookmark
 
 Listen Along: Taming the Terminal Podcast Episode 33
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -21,7 +24,7 @@ image::./assets/qrcodes/TTT_33.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT33SSHBookmarks/TTT_33_SSH_Bookmarks.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

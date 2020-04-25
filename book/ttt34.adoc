@@ -1,5 +1,6 @@
 [[ttt34]]
 = TTT Part 34 of n -- Introducing HTTP
+include::variables.adoc[]
 
 In <<ttt33,the previous instalment>>, we finished a five-part series on SSH.
 Before moving on, let's take a moment to step back and look at the big-picture.
@@ -17,8 +18,10 @@ Before we look at some HTTP-related terminal commands, we need a basic understan
 
 Listen Along: Taming the Terminal Podcast Episode 34
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -27,7 +30,7 @@ image::./assets/qrcodes/TTT_34.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

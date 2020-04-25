@@ -1,5 +1,6 @@
 [[ttt16]]
 = TTT Part 16 of n -- Crossing the Streams
+include::variables.adoc[]
 
 In <<ttt15,the previous instalment>>, we introduced the concepts of streams and looked at how every process has references to three streams as part of their environment -- `STDIN`, `STDOUT` & `STDERR`.
 We went on to introduce the concept of operators that manipulate these streams, and we focused on the so-called '`pipe`' operator which connects `STDOUT` in one process to `STDIN` in another, allowing commands to be chained together to perform more complex tasks.
@@ -20,8 +21,10 @@ endif::[]
 
 Listen Along: Taming the Terminal Podcast Episode 16
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT16CrossingTheStreams/TTT_16_Crossing_the_Streams.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT16CrossingTheStreams/TTT_16_Crossing_the_Streams.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -30,7 +33,7 @@ image::./assets/qrcodes/TTT_16.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT16CrossingTheStreams/TTT_16_Crossing_the_Streams.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT16CrossingTheStreams/TTT_16_Crossing_the_Streams.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

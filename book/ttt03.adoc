@@ -1,5 +1,6 @@
 [[ttt03]]
 = TTT Part 3 of n -- File Systems
+include::variables.adoc[]
 
 
 This is the third instalment of an on-going series.
@@ -15,8 +16,10 @@ This time we'll be looking at the anatomy of file systems in general, and the Un
 
 Listen Along: Taming the Terminal Podcast Episode 3
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT03FileSystems/TTT_03_File_Systems.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -25,7 +28,7 @@ image::./assets/qrcodes/TTT_03.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT03FileSystems/TTT_03_File_Systems.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == File systems

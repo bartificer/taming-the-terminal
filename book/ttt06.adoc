@@ -1,5 +1,6 @@
 [[ttt06]]
 = TTT Part 6 of n -- More File Permissions
+include::variables.adoc[]
 
 In <<ttt05,the previous instalment>> of this series, we had a look at how standard Unix File Permissions worked.
 We looked at how to understand the permissions on existing files and folders, but not at how to change them.
@@ -15,8 +16,10 @@ We'll only be looking at how to read these attributes though, not how to alter t
 
 Listen Along: Taming the Terminal Podcast Episode 6
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -25,8 +28,9 @@ image::./assets/qrcodes/TTT_06.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
+
 
 As a reminder, last time we learned that every file and folder in a Unix/Linux file system has three pieces of metadata associated with it that control the standard Unix file permissions that apply to that file or folder. Files have an owner (a user), a group, and a Unix File Permission Mask associated with them, and all three of these pieces of information can be displayed with `ls -l`.
 We'll be altering each of these three pieces of metadata in this instalment.

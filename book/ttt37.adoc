@@ -1,5 +1,6 @@
 [[ttt37]]
 = TTT Part 37 of n -- SSH Agents
+include::variables.adoc[]
 
 Since we covered SSH in parts <<ttt29,29>> & <<ttt30,30>>, Apple has changed how their desktop OS deals with the passphrases protecting SSH identities (key pairs).
 This provides us with a good opportunity to have a look at the SSH Agent in general, and, how things have changed on the Mac in particular.
@@ -27,7 +28,7 @@ The good news is that while things have changed on the Mac, with a small amount 
 Listen Along: Taming the Terminal Podcast Episode 37
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2017_05_26.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+pass:m,a[<audio controls='1' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2017_05_26.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device

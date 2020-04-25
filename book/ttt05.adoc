@@ -1,5 +1,6 @@
 [[ttt05]]
 = TTT Part 5 of n -- File Permissions
+include::variables.adoc[]
 
 In this instalment, it's time to make a start on one of the most important Unix/Linux concepts, file permissions.
 This can get quite confusing, but it's impossible to overstate the importance of understanding how to read and set permissions on files and folders.
@@ -14,8 +15,10 @@ In future instalments, we'll take a brief look at the extra file information and
 
 Listen Along: Taming the Terminal Podcast Episode 5
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT05FilePermissions/TTT_05_File_Permissions.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT05FilePermissions/TTT_05_File_Permissions.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -24,7 +27,7 @@ image::./assets/qrcodes/TTT_05.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT05FilePermissions/TTT_05_File_Permissions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT05FilePermissions/TTT_05_File_Permissions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == Files and permissions

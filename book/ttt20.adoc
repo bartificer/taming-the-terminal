@@ -1,5 +1,6 @@
 [[ttt20]]
 = TTT Part 20 of n -- File Searches
+include::variables.adoc[]
 
 In the <<ttt19,previous instalment>>, we looked at using `egrep` to search for a particular piece of text in a stream or file.
 `egrep` is often a great tool for finding a file you are looking for, but only if the file is a plain text file, and only if you are searching for that file based on its content.
@@ -20,8 +21,10 @@ endif::[]
 
 Listen Along: Taming the Terminal Podcast Episode 20
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT20FileSearches/TTT_20_File_Searches.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT20FileSearches/TTT_20_File_Searches.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -30,7 +33,7 @@ image::./assets/qrcodes/TTT_20.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT20FileSearches/TTT_20_File_Searches.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT20FileSearches/TTT_20_File_Searches.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

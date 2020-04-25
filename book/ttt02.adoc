@@ -1,6 +1,9 @@
 [[ttt02]]
 = TTT Part 2 of n -- Commands
 
+include::variables.adoc[]
+
+
 This is the second instalment of an on-going series.
 In <<ttt01,the first instalment>>, I tried to give you a sort of 40,000 foot view of command shells -- some context, some history, a very general description of what command shells do, and a little bit on why they are still very useful in the modern GUI age.
 The most important points to remember from last time are that command shells execute commands, that there are lots of different command shells on lots of different OSes, but that we will be focusing on https://en.wikipedia.org/wiki/Bash_(Unix_shell)[Bash] on Linux/Unix in general, and Bash on OS X in particular.
@@ -16,8 +19,10 @@ Having focused on command shells last time, this instalment will focus on the an
 ****
 Listen Along: Taming the Terminal Podcast Episode 2
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT02Commands/TTT_02_Commands.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT02Commands/TTT_02_Commands.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -26,7 +31,7 @@ image::./assets/qrcodes/TTT_02.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT02Commands/TTT_02_Commands.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT02Commands/TTT_02_Commands.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 

@@ -1,6 +1,7 @@
 [[ttt12]]
 = TTT Part 12 of n -- the Environment
-:experimental:
+include::variables.adoc[]
+
 
 Given the times we live in, the word '`environment`' probably invokes images of polar bears and melting ice, but the Al Gore definition of the word '`environment`' is a relatively recent narrow definition of a much broader word.
 The first definition of the word in the OS X dictionary is:
@@ -17,8 +18,10 @@ Although this might sound like a simple topic, there's actually a lot to cover, 
 
 Listen Along: Taming the Terminal Podcast Episode 12
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT12TheEnvironment/TTT_12_The_Environment.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT12TheEnvironment/TTT_12_The_Environment.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -27,7 +30,7 @@ image::./assets/qrcodes/TTT_12.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT12TheEnvironment/TTT_12_The_Environment.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT12TheEnvironment/TTT_12_The_Environment.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

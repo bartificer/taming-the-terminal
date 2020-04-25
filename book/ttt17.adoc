@@ -1,5 +1,6 @@
 [[ttt17]]
 = TTT Part 17 of n -- Regular Expressions
+include::variables.adoc[]
 
 This instalment is the start of a series of instalments relating to searching from the command-line.
 Searching is all about patterns, and that means getting to grips with Regular Expressions (also called RegExps, RegExes or REs for short).
@@ -13,8 +14,10 @@ It's going to take us two instalments to properly describe regular expressions, 
 
 Listen Along: Taming the Terminal Podcast Episode 17
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT17RegularExpressions/TTT_17_Regular_Expressions.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT17RegularExpressions/TTT_17_Regular_Expressions.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -23,7 +26,7 @@ image::./assets/qrcodes/TTT_17.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT17RegularExpressions/TTT_17_Regular_Expressions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT17RegularExpressions/TTT_17_Regular_Expressions.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

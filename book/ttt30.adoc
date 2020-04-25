@@ -1,5 +1,6 @@
 [[ttt30]]
 = TTT Part 30 of n -- SSHing More Securely
+include::variables.adoc[]
 
 In <<ttt29,the previous instalment>>, we saw how we can use SSH to execute a single command on a remote computer, or, to get a command shell on a remote computer.
 We also saw how SSH uses host keys to protect us from man-in-the-middle (MITM) attacks.
@@ -11,8 +12,10 @@ In this instalment, we're going to look at how we can improve both SSH security 
 
 Listen Along: Taming the Terminal Podcast Episode 30
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -21,7 +24,7 @@ image::./assets/qrcodes/TTT_30.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 SSH keys utilise asymmetric encryption, specifically public/private key cryptography.

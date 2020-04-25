@@ -1,6 +1,7 @@
 [[ttt10]]
 = TTT Part 10 of n -- man
-:experimental:
+include::variables.adoc[]
+
 
 Like with so many things in tech, it doesn't matter if you don't know everything, what matters is that you have the skills to quickly find the information you need when you needed it.
 Programmers don't memorise entire APIs, they simply learn how to search them, and how to interpret the results of their searches.
@@ -20,8 +21,10 @@ If you run it from the command-line, the changes are very high that there will b
 
 Listen Along: Taming the Terminal Podcast Episode 10
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT10Man/TTT_10_man.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -30,7 +33,7 @@ image::./assets/qrcodes/TTT_10.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT10Man/TTT_10_man.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 I'm getting tired of typing '`manual entry`', so let's introduce a little jargon.

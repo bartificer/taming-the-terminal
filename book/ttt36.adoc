@@ -1,6 +1,7 @@
 [[ttt36]]
 = TTT Part 36 of n -- screen & cron
-:experimental:
+include::variables.adoc[]
+
 
 The previous 13 instalments in this series related to networking, but we're going
 to change tack completely for this instalment, and look at two unrelated, but
@@ -18,7 +19,7 @@ It's extremely flexible and very useful for things like scheduling backups to ru
 Listen Along: Taming the Terminal Podcast Episode 36
 
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+pass:m,a[<audio controls='1' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2016_11_19.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device

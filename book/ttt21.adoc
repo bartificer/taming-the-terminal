@@ -1,5 +1,6 @@
 [[ttt21]]
 = TTT Part 21 of n -- More Searching
+include::variables.adoc[]
 
 This is the third and final instalment on searching.
 In the <<ttt19,first instalment>>, we learned how to search for text within files and streams using `egrep`.
@@ -13,8 +14,10 @@ Then we'll end by looking at an OS X-only alternative to `find` that makes use o
 
 Listen Along: Taming the Terminal Podcast Episode 21
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT21MoreSearching/TTT_21_More_Searching.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -23,7 +26,7 @@ image::./assets/qrcodes/TTT_21.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT21MoreSearching/TTT_21_More_Searching.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT21MoreSearching/TTT_21_More_Searching.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

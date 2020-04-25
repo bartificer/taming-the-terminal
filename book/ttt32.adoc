@@ -1,5 +1,6 @@
 [[ttt32]]
 = TTT Part 32 of n -- SSH Tunnelling
+include::variables.adoc[]
 
 This is the fourth SSH instalment.
 So far we've learned how to <<ttt29,securely execute terminal commands on remote computers>>, how to <<ttt31,securely copy files across the network using SSH>>, and how to <<ttt30,add both security and convenience>> to both those operations with SSH key pairs.
@@ -20,8 +21,10 @@ That makes this an unusual instalment, but I hope you will still find it worthwh
 
 Listen Along: Taming the Terminal Podcast Episode 32
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -30,7 +33,7 @@ image::./assets/qrcodes/TTT_32.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

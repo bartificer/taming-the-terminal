@@ -1,5 +1,6 @@
 [[ttt08]]
 = TTT Part 8 of n -- Processes
+include::variables.adoc[]
 
 For various reasons, there's been a bit of a gap between the previous instalment and this one.
 A big part of the reason is that I'd been putting off a lot of topics I wanted to talk about on Chit Chat Across the Pond until there was a logical break in this Terminal series.
@@ -13,8 +14,10 @@ We'll start with a little history for context, then have a look at the model OS 
 
 Listen Along: Taming the Terminal Podcast Episode 8
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT08Processes_201509/TTT_08_Processes.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT08Processes_201509/TTT_08_Processes.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -23,7 +26,7 @@ image::./assets/qrcodes/TTT_08.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT08Processes_201509/TTT_08_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT08Processes_201509/TTT_08_Processes.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

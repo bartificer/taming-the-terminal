@@ -1,5 +1,6 @@
 [[ttt27]]
 = TTT Part 27 of n -- DNS
+include::variables.adoc[]
 
 In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
@@ -24,27 +25,35 @@ The Domain Name System (DNS) exists to bridge this gap, allowing domain names to
 
 Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
-endif::[]
 
-ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
+
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_27a.png[QRcode, align='left']
+======
+[.left]
+image::./assets/qrcodes/TTT_27a.png[QRcode MP3 (1)]
 
-image::./assets/qrcodes/TTT_27b.png[QRcode, align='left']
+image::./assets/qrcodes/TTT_27b.png[QRcode MP3 (2)]
+======
+
+[.clearfix]
+
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 
 ****
 

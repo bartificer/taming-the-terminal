@@ -1,5 +1,6 @@
 [[ttt29]]
 = TTT Part 29 of n -- Intro to SSH
+include::variables.adoc[]
 
 In the previous six instalments, we looked in detail at how TCP/IP networks tick.
 In these instalments we worked our way up from the bottom of the four-layer TCP/IP network model to the top, finishing off with a look at two protocols in the Application Layer at the top of the stack.
@@ -21,8 +22,10 @@ Today we're just going to start with the basics, but in future instalments, we'l
 
 Listen Along: Taming the Terminal Podcast Episode 29
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -31,7 +34,7 @@ image::./assets/qrcodes/TTT_29.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

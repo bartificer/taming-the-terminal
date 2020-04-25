@@ -1,6 +1,6 @@
 [[ttt01]]
 = TTT Part 1 of n -- Command Shells
-
+include::variables.adoc[]
 
 I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond audio  podcast segment on the https://www.podfeet.com[NosillaCast Mac Podcast] (to be released Sunday evening PST), I'm going to try start what will hopefully be an on-going series of short unintimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app.
 
@@ -18,10 +18,13 @@ I hope I'm right in interpreting that as evidence that there are a lot of Nosill
 
 Listen Along: Taming the Terminal Podcast Episode 1
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1'>+++
-+++<source src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3">+++
-+++</source>+++ Your browser does not support HTML 5 audio+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3">Your browser does not support HTML 5 audio</audio>]
+
+//  audio::{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3[]
+
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -29,8 +32,8 @@ Scan the QRcode to listen on a different device
 image::./assets/qrcodes/TTT_01.png[QRcode, align='left']
 
 You can
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ifndef::backend-pdf[also]
+{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == The basics

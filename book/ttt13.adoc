@@ -1,5 +1,6 @@
 [[ttt13]]
 = TTT Part 13 of n -- PATH
+include::variables.adoc[]
 
 In <<ttt12,the previous instalment>>, we introduced the concept of the command shell environment, and we looked in detail at how shell and environment variables work.
 In this instalment, we'll focus on probably the single most important environment variable, `PATH`.
@@ -14,8 +15,10 @@ endif::[]
 
 Listen Along: Taming the Terminal Podcast Episode 13
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT13PATH/TTT_13_PATH.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -24,7 +27,7 @@ image::./assets/qrcodes/TTT_13.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT13PATH/TTT_13_PATH.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT13PATH/TTT_13_PATH.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 ****
 
 == Paths

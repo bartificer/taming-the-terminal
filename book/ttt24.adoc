@@ -1,5 +1,6 @@
 [[ttt24]]
 = TTT Part 24 of n -- Ethernet & ARP
+include::variables.adoc[]
 
 In <<ttt23,the previous instalment>>, we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
@@ -21,8 +22,10 @@ Specifically, we'll look at MAC addresses, the difference between hubs, switches
 
 Listen Along: Taming the Terminal Podcast Episode 24
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -31,7 +34,7 @@ image::./assets/qrcodes/TTT_24.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT24EthernetAndARP/TTT_24_Ethernet_and_ARP.mp3?autoplay=0&loop=0&controls=1[download the MP3]
 
 ****
 

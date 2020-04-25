@@ -1,5 +1,6 @@
 [[ttt18]]
 = TTT Part 18 of n -- More REs
+include::variables.adoc[]
 
 In <<ttt17,the previous instalment>>, we introduced the concept of Regular Expressions and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Per Compatible Regular Expression (PCRE) language.
 
@@ -10,12 +11,13 @@ In this instalment, we'll learn more POSIX ERE syntax, and have a look at some e
 
 Listen Along: Taming the Terminal Podcast Episodes 18a & 18b
 
+// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
-endif::[]
 
-ifndef::backend-pdf[]
-+++<audio controls='1' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]
+
+
+pass:m,a[<audio controls='1' src="{url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -28,11 +30,11 @@ image::./assets/qrcodes/TTT_18b.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+{url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
 
 You can
 ifndef::backend-pdf[also]
-https://media.blubrry.com/tamingtheterminal/archive.org/download/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+{url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
 ****
 
 == Inverted Character Classes
