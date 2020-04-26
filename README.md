@@ -125,7 +125,7 @@ Source: [Prepare an asciidoc document](https://asciidoctor.org/docs/asciidoctor-
 
 ### Highlights in source code
 
-It is not possible to highlight specific parts of the source code, so all references to e.g. <strong> must be removed from the snippet or it will show up verbatim in the output file.
+It is not possible to highlight specific parts of the source code, so all references to e.g. `<strong>` must be removed from the snippet or it will show up verbatim in the output file.
 
 ### Keyboard shortcuts
 
