@@ -1,4 +1,3 @@
-![Greet Everyone](https://github.com/hepabolu/ttt/workflows/Greet%20Everyone/badge.svg)
 ![Vale Linting](https://github.com/hepabolu/ttt/workflows/Linting/badge.svg)
 
 # Creating the TTT publications
