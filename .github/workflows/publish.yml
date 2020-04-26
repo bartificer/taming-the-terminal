@@ -1,10 +1,12 @@
-name: Publishing
+name: Publish
+
 on:
-  schedule:
-    - cron: '14 2 * * *'
+  - push
+  - schedule:
+      - cron: '0 0 * * *'
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Ruby
