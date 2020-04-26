@@ -6,9 +6,10 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     afm (0.2.2)
     asciidoctor (2.0.10)
-    asciidoctor-epub3 (1.5.0.alpha.15)
+    asciidoctor-epub3 (1.5.0.alpha.16)
       asciidoctor (>= 1.5.6, < 3.0.0)
       gepub (~> 1.0.0)
+      mime-types (~> 3.0)
     asciidoctor-pdf (1.5.3)
       asciidoctor (>= 1.5.3, < 3.0.0)
       concurrent-ruby (~> 1.1.0)
@@ -32,6 +33,9 @@ GEM
       rubyzip (> 1.1.1, < 2.3)
     hashery (2.1.2)
     json (2.3.0)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2020.0425)
     mini_portile2 (2.4.0)
     multi_json (1.14.1)
     nokogiri (1.10.9)
@@ -75,8 +79,8 @@ PLATFORMS
 
 DEPENDENCIES
   asciidoctor (~> 2.0)
-  asciidoctor-epub3 (~> 1.5.0.alpha.15)
-  asciidoctor-pdf (~> 1.5.0.beta.8)
+  asciidoctor-epub3 (~> 1.5.0.alpha.16)
+  asciidoctor-pdf (~> 1.5.3)
   awesome_print
   coderay
   epubcheck
