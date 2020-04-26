@@ -8,6 +8,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+
       - name: Run bundle install
         run: |
           gem install bundler
