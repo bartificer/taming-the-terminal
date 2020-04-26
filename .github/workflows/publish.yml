@@ -1,7 +1,7 @@
 name: Publishing
 on:
   schedule:
-    - cron: '10 0 * * *'
+    - cron: '10 2 * * *'
 
 jobs:
   publish:
@@ -21,10 +21,10 @@ jobs:
         run: bundle exec rake
 
       - name: Upload binaries to release
-            uses: svenstaro/upload-release-action@v1-release
-            with:
-              repo_token: ${{ secrets.GITHUB_TOKEN }}
-              file: output/ttt.*
-              tag: v0.1
-              overwrite: true
-              file_glob: true
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: output/ttt.*
+          tag: v0.1
+          overwrite: true
+          file_glob: true
