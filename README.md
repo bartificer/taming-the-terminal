@@ -1,4 +1,5 @@
 ![Greet Everyone](https://github.com/hepabolu/ttt/workflows/Greet%20Everyone/badge.svg)
+![Vale Linting](https://github.com/hepabolu/ttt/workflows/Linting/badge.svg)
 
 # Creating the TTT publications
 
@@ -25,7 +26,7 @@ To get there you need:
 
 Ruby is default part of macOS but every 'gem install <some package>' will lead to an attempt to update the system framework. Not a good idea.
 
-Follow the instructions at: https://gorails.com/setup/osx/10.15-catalina
+Follow the instructions at: [GoRails.com](https://gorails.com/setup/osx/10.15-catalina)
 
 just the part 'Installing Ruby'
 
@@ -39,13 +40,13 @@ git clone https://github.com/hepabolu/ttt.git
 
 ### Install necessary Ruby gems
 
-switch to the root directory of the git repo you just cloned and run
+switch to the root directory of the git repository you just cloned and run
 
 ```
 gem install
 ```
 
-This installs all Ruby gems in Gemfile
+This installs all Ruby gems in the `Gemfile`.
 
 ### Build the files
 
@@ -86,13 +87,13 @@ For now:
 
 Note: language is British English!
 
-## Bugfixes and workaround
+## Bug fixes and workaround
 
-This section contains some notes on bugfixes and workarounds that have been applied to get it working
+This section contains some notes on bug fixes and workarounds that have been applied to get it working
 
 ### Fake second paragraph
 
-See: [https://github.com/asciidoctor/asciidoctor/issues/2860](https://github.com/asciidoctor/asciidoctor/issues/2860)
+See: [Asciidoctor git repository](https://github.com/asciidoctor/asciidoctor/issues/2860)
 Worked around by adding a second paragraph either by separating the last (few) sentence(s) or by adding an invisible second paragraph consisting of a single space.
 
 ```
@@ -121,7 +122,7 @@ Somehow there is a bug in `asciidoctor` that causes backticks to be passed throu
 -a pygments-style=manni
 ```
 
-src: [https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document](https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document)
+Source: [Prepare an asciidoc document](https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document)
 
 ### Highlights in source code
 
@@ -130,7 +131,7 @@ It is not possible to highlight specific parts of the source code, so all refere
 ### Keyboard shortcuts
 
 Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to keyboard shortcuts to the HTML5 keyboard counterparts.
-Note, the commandkey (CMD) can be used as `{commandkey}`.
+Note, the command key (CMD) can be used as `{commandkey}`.
 <s>For the shortcuts to show up properly in the VScode previewer, each document needs an `:experimental:` option in the header.</s>
 I added a document with variables to each document so this is automatically taken care of.
 
@@ -146,4 +147,4 @@ NB. with
 &#8595; &darr;  ↓      Down arrow
 ```
 
-it's possible to create kbd:[&larr;] arrow keys. However, ePub doesn't support the second column definitions, PDF doesn't support the Unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
+it's possible to create `kbd:[&larr;]` arrow keys. However, ePub doesn't support the second column definitions, PDF doesn't support the Unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
