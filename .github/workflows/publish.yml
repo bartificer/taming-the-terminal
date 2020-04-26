@@ -1,0 +1,30 @@
+name: Publishing
+on:
+  schedule:
+    - cron: '10 0 * * *'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+
+      - name: Run bundle install
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Publish the book
+        run: bundle exec rake
+
+      - name: Upload binaries to release
+            uses: svenstaro/upload-release-action@v1-release
+            with:
+              repo_token: ${{ secrets.GITHUB_TOKEN }}
+              file: output/ttt.*
+              tag: v0.1
+              overwrite: true
+              file_glob: true
