@@ -1,0 +1,20 @@
+name: Linting
+on: [push]
+
+jobs:
+  prose:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Vale
+      uses: errata-ai/vale-action@v1.0.4
+      with:
+        styles: |
+          https://github.com/errata-ai/write-good/releases/latest/download/write-good.zip
+          https://github.com/errata-ai/proselint/releases/latest/download/proselint.zip
+      with:
+        config: https://raw.githubusercontent.com/errata-ai/vale/master/.vale.ini
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
