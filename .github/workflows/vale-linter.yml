@@ -15,8 +15,7 @@ jobs:
 
       - name: Run bundle install
         run: |
-          gem install bundler
-          bundle install
+          gem install asciidoctor
 
       - name: Vale
         uses: errata-ai/vale-action@v1.0.4
