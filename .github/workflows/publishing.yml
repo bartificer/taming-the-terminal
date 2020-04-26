@@ -15,13 +15,13 @@ jobs:
         with:
           ruby-version: '2.7'
 
+      - name: Checkout
+        uses: actions/checkout@master
+
       - name: Run bundle install
         run: |
           gem install bundler
           bundle install
-
-      - name: Checkout
-        uses: actions/checkout@master
 
       - name: Publish the book
         run: bundle exec rake
