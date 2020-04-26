@@ -1,3 +1,5 @@
+![Greet Everyone](https://github.com/hepabolu/ttt/workflows/Greet%20Everyone/badge.svg)
+
 # Creating the TTT publications
 
 ## How it works
