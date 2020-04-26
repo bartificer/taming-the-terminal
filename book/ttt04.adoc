@@ -12,7 +12,7 @@ unique '`path`' (`F:\myFolder\myFile.txt` -v- `/Volumes/myThumbDrive/myFolder/my
 In this instalment, we'll look at how to navigate around the Unix/Linux/OS X filesystem in
 a Bash command shell.
 
-.Matching Postcast Episode 4
+.Matching Podcast Episode 4
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 4

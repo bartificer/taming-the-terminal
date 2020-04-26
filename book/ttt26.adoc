@@ -19,7 +19,7 @@ We also looked at how to read those three settings from your Mac using the GUI a
 Finally, we noted that historically, those settings had to be manually configured, but that today, almost all computers acquire those settings automatically.
 In this instalment, we'll look at the protocol that makes that possible, the Dynamic Host Configuration Protocol, or DHCP.
 
-.Matching Postcast Episode 26
+.Matching Podcast Episode 26
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 26

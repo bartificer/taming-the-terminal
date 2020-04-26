@@ -11,7 +11,7 @@ This could well turn out to be the most difficult segment in this entire series,
 After we do all that hard work we'll end with a simpler topic, reading OS X file ACLs, and OS X extended file attributes.
 We'll only be looking at how to read these attributes though, not how to alter them.
 
-.Matching Postcast Episode 6
+.Matching Podcast Episode 6
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 6

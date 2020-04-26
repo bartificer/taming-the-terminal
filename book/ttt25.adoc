@@ -18,7 +18,7 @@ In this instalment, we'll move one layer up the stack and take a closer look at 
 A concept absolutely central to IP's operation is that of related groups of IP addresses known as IP Subnetworks or just subnets.
 This is the concept we'll be focusing on in this instalment.
 
-.Matching Postcast Episode 25
+.Matching Podcast Episode 25
 ****
 
 Listen Along: Taming the Terminal Podcast Episodes 25a & 25b

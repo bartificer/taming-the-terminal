@@ -9,7 +9,7 @@ Now it's time to get stuck back in though, and start a whole new topic -- proces
 
 We'll start with a little history for context, then have a look at the model OS X uses to represent processes and finish by looking at some commands for listing the currently running processes on your system.
 
-.Matching Postcast Episode 8
+.Matching Podcast Episode 8
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 8

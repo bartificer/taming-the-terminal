@@ -13,7 +13,7 @@ While the focus will be on OS X, the majority of the content will be equally app
 In the https://www.podfeet.com/wordpress/2013/03/31/412-rslsteeper-autismate-audio-hijack-pro-mail-security/[last CCATP], we did a very detailed segment on email security, and despite the fact that with the benefit of hindsight I realise it was too much to do at once and should have been split into two segments, it received the strongest listener response of anything of any of my many contributions to the NosillaCast in the last 5 or more years.
 I hope I'm right in interpreting that as evidence that there are a lot of NosillaCast listeners who want to get a little more technical, and get their hands dirty with some good old-fashioned nerdery!
 
-.Matching Postcast Episode 1
+.Matching Podcast Episode 1
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 1

@@ -16,7 +16,7 @@ ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
 
-.Matching Postcast Episode 16
+.Matching Podcast Episode 16
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 16

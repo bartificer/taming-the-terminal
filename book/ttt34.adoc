@@ -13,7 +13,7 @@ In this instalment, we're moving on from SSH to HTTP, the protocol that powers t
 
 Before we look at some HTTP-related terminal commands, we need a basic understanding of how HTTP works, so that's what this instalment is all about.
 
-.Matching Postcast Episode 34
+.Matching Podcast Episode 34
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 34

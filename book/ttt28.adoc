@@ -17,7 +17,7 @@ Since that big-picture introduction we've looked at the first three layers in de
 Later in the series, we will move on to look at some more layer 4 protocols, but before we do I want to consolidate what we've learned so far into a strategy for debugging network problems.
 In short -- how to get from a vague complaint like "`the internet is broken`" to a specific problem that can be addressed.
 
-.Matching Postcast Episode 28
+.Matching Podcast Episode 28
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 28

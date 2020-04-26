@@ -9,7 +9,7 @@ In <<ttt20,the second>> we learned to search for files based on all sorts of cri
 In this final instalment, we'll start by looking at one last feature of `find`, its ability to execute commands on the files it finds.
 Then we'll end by looking at an OS X-only alternative to `find` that makes use of the Spotlight search index to really speed up searches.
 
-.Matching Postcast Episode 21
+.Matching Podcast Episode 21
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 21

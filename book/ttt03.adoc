@@ -11,7 +11,7 @@ In the <<ttt01,first instalment>>, we started with the 40,000ft view, looking at
 In the <<ttt02,second instalment>> we looked at OS X's Terminal.app, the anatomy of the Bash command prompt, and the anatomy of a Unix/Linux command.
 This time we'll be looking at the anatomy of file systems in general, and the Unix/Linux file system in particular, and how it differs from the Windows/DOS file system many of us grew up using.
 
-.Matching Postcast Episode 3
+.Matching Podcast Episode 3
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 3

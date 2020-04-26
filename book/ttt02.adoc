@@ -15,7 +15,7 @@ Last time I focused on the shell and avoided getting in any way specific about t
 I thought it was very important to make as clear a distinction between command shells and commands as possible, so I split the two concepts into two separate segments.
 Having focused on command shells last time, this instalment will focus on the anatomy of a command but will start with a quick intro to the Terminal app in OS X first.
 
-.Matching Postcast Episode 2
+.Matching Podcast Episode 2
 ****
 Listen Along: Taming the Terminal Podcast Episode 2
 

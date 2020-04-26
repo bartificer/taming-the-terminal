@@ -16,7 +16,7 @@ Every built-in command will have an entry in the manual, and any software you in
 This is also true on OS X, where package mangers like https://www.macports.org[Mac Ports] will also bundle manual pages with the software they install, and even stand-alone `.pkg` installers for command-line tools will usually also install manual entries.
 If you run it from the command-line, the changes are very high that there will be a manual entry for it on Linux, Unix and OS X.
 
-.Matching Postcast Episode 10
+.Matching Podcast Episode 10
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 10

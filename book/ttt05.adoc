@@ -10,7 +10,7 @@ Linux and Unix (and hence OS X) all share a common file permissions system, but 
 In this first instalment, we're only going to look at the common core, so everything in this instalment applies equally to Linux, Unix, and OS X.
 In future instalments, we'll take a brief look at the extra file information and permissions OS X associates with files, but we won't be looking at the Linux side of things, where more granular permissions are provided through kernel extensions like SELinux.
 
-.Matching Postcast Episode 5
+.Matching Podcast Episode 5
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 5

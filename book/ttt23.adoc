@@ -11,7 +11,7 @@ Bearing that in mind, this instalment starts the series with a big-picture overv
 We'll flesh this overview out over the instalments that follow, adding in the detail that will hopefully make the whole thing click for you.
 Ultimately, it's actually a very elegant design, but that elegance may not be immediately obvious!
 
-.Matching Postcast Episode 23
+.Matching Podcast Episode 23
 ****
 
 Listen Along: Taming the Terminal Podcast Episodes 23a & 23b

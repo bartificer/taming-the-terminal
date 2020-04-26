@@ -7,7 +7,7 @@ We also saw how SSH uses host keys to protect us from man-in-the-middle (MITM) a
 
 In this instalment, we're going to look at how we can improve both SSH security and convenience with SSH keys.
 
-.Matching Postcast Episode 30
+.Matching Podcast Episode 30
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 30

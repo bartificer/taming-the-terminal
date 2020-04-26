@@ -16,7 +16,7 @@ However, even if you don't need these features today, I would argue that it's go
 There will be illustrations of the uses for these technologies, but not commands you type into your terminal to play along at home.
 That makes this an unusual instalment, but I hope you will still find it worthwhile.
 
-.Matching Postcast Episode 32
+.Matching Podcast Episode 32
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 32

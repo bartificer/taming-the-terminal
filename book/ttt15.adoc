@@ -9,7 +9,7 @@ So far, we've only been working with a single command at a time, but that change
 We'll be introducing the concept of streams, which can be used to connect commands and files together.
 
 
-.Matching Postcast Episode 15
+.Matching Podcast Episode 15
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 15

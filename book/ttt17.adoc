@@ -9,7 +9,7 @@ While this series focuses on the Terminal, an understanding of regular expressio
 
 It's going to take us two instalments to properly describe regular expressions, but when we're done we'll have gained a very useful skill.
 
-.Matching Postcast Episode 17
+.Matching Podcast Episode 17
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 17

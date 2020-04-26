@@ -17,7 +17,7 @@ As a quick reminder, the most important points were:
 In this instalment, we'll take a quick look at the lowest of these four layers -- the Link Layer.
 Specifically, we'll look at MAC addresses, the difference between hubs, switches, and routers, and the ARP protocol.
 
-.Matching Postcast Episode 24
+.Matching Podcast Episode 24
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 24

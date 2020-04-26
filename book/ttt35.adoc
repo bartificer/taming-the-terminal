@@ -9,7 +9,7 @@ In this instalment, we'll look at three terminal commands which make use of the 
 We'll start by browsing from the terminal, and then move on to a pair of very similar commands for making HTTP requests from the terminal.
 These two commands can do many things, but we'll focus on two specific use-cases, downloading files, and viewing HTTP headers.
 
-.Matching Postcast Episode 35
+.Matching Podcast Episode 35
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 35

@@ -13,7 +13,7 @@ The surroundings or conditions in which a person, animal, or plant lives or oper
 In this instalment, we'll introduce a digital extension of this concept -- the digital conditions within which a process exists, and specifically, in which a Bash command shell exists.
 Although this might sound like a simple topic, there's actually a lot to cover, so we'll be spreading it out over a few instalments.
 
-.Matching Postcast Episode 12
+.Matching Podcast Episode 12
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 12

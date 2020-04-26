@@ -7,7 +7,7 @@ So far we've learned how to <<ttt29,securely execute terminal commands on remote
 
 In this final instalment, we'll look at two approaches for creating SSH bookmarks, SSH config files, and SSH GUIs.
 
-.Matching Postcast Episode 33
+.Matching Podcast Episode 33
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 33
