@@ -1,0 +1,6 @@
+extends: spelling
+aff: /usr/share/hunspell/en_GB.aff
+dic: /usr/share/hunspell/en_GB.dic
+message: "Did you really mean '%s'?"
+level: error
+ignore: ../vocab.txt
