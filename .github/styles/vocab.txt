@@ -3,6 +3,8 @@ asciidoctor
 autoplay
 bbusschots
 bundler
+Capitan
+config
 cron
 crontab
 ethernet
@@ -11,10 +13,14 @@ hostname
 kbd
 loopback
 netmask
+netmasks
 Podcast
 podfeet
+rsync
 subnet
 traceroute
 unencrypted
+webmin
 webserver
-Capitan
+subnets
+wifi
