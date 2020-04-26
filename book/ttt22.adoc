@@ -117,7 +117,7 @@ kbd:[Ctrl+a] will jump the cursor to the start of the command.
 If you drop a file or folder onto the Terminal its path will be typed into the Terminal.
 This includes proxy icons at the top of document windows, the folder proxy icons at the top of Finder windows, and the folder proxy icon at the top of other Terminal windows.
 
-image::./assets/ttt22/exampletxt.png[Drag and Drop Exampls]
+image::./assets/ttt22/exampletxt.png[Drag and Drop Examples]
 
 === Opening Files & Folders From the Terminal
 
