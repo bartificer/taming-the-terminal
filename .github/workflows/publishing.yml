@@ -2,9 +2,9 @@ name: Publish
 on:
   push:
     branches:
-    - master
+      - master
   schedule:
-  - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 
 jobs:
   build:
@@ -19,6 +19,9 @@ jobs:
         run: |
           gem install bundler
           bundle install
+
+      - name: Checkout
+        uses: actions/checkout@master
 
       - name: Publish the book
         run: bundle exec rake
