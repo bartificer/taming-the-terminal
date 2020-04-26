@@ -9,14 +9,15 @@ Once you've set up all the necessary tools, you can simply build all three versi
 `bundle exec rake book:build`
 
 To get there you need:
-* Ruby as a separate install (because you don't want to mess up your System folder)
-* various gems
-* bundler
-* rake
-* asciidoctor
-* asciidoctor-epub3
-* asciidoctor-pdf
-* clone the GitHub repository
+
+- Ruby as a separate install (because you don't want to mess up your System folder)
+- various gems
+- bundler
+- rake
+- asciidoctor
+- asciidoctor-epub3
+- asciidoctor-pdf
+- clone the GitHub repository
 
 ## Prepare your environment
 
@@ -30,7 +31,7 @@ just the part 'Installing Ruby'
 
 ### Clone the git repository
 
-Clone the repository 
+Clone the repository
 
 ```
 git clone https://github.com/hepabolu/ttt.git
@@ -71,18 +72,19 @@ and no other errors, there should be a PDF, an HTML file and an ePub file in the
 
 **Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`
 
-
 ## Book setup
-Every episode is put in its own file in `book`. All images are in 
+
+Every episode is put in its own file in `book`. All images are in
 `book/assets/ttt<nr of episode>`.
 
 `ttt-spine.adoc`, `ttt-epub-spine.adoc` and `ttt-contents.adoc` hold the general information to pull the content together in one output file.
 
 For now:
-* `colophon.adoc` holds some boilerplate text. It needs to be update to proper information
-* `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it.
 
-Note: language is British English! 
+- `colophon.adoc` holds some boilerplate text. It needs to be update to proper information
+- `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it.
+
+Note: language is British English!
 
 ## Bugfixes and workaround
 
@@ -90,14 +92,14 @@ This section contains some notes on bugfixes and workarounds that have been appl
 
 ### Fake second paragraph
 
-https://github.com/asciidoctor/asciidoctor/issues/2860
-Worked around by adding a secord paragraph either by separating the last (few) sentence(s) or by adding an invisible second paragraph consisting of a single space.
+See: [https://github.com/asciidoctor/asciidoctor/issues/2860](https://github.com/asciidoctor/asciidoctor/issues/2860)
+Worked around by adding a second paragraph either by separating the last (few) sentence(s) or by adding an invisible second paragraph consisting of a single space.
 
 ```
 +++&nbsp;+++
 ```
 
-Books doesn't like this, so I had to surround it with ifdefs:
+Books doesn't like this, so I had to surround it with `ifdef`s:
 
 ```
 ifndef::backend-epub3[]
@@ -107,20 +109,19 @@ endif::[]
 
 ### Backticks problems
 
-Somehow there is a bug in `asciidoctor` that causes backticks to be passed through rather than marking the conversion to monospace.
+Somehow there is a bug in `asciidoctor` that causes backticks to be passed through rather than marking the conversion to `monospace`.
 
 ### Color coding in ePub
 
-Rouge is used as source code highlighter in PDF and HTML, but it doesn't work in ePub. Only Pygments is supported in ePub, but this has no good support for shell scripts. Somehow the color coding in Books actually looks to be just black & white.
+`Rouge` is used as source code highlighter in PDF and HTML, but it doesn't work in ePub. Only `Pygments` is supported in ePub, but this has no good support for shell scripts. Somehow the color coding in Books actually looks to be just black & white.
 
-**UPDATE**: it looks like the attribute for the styling in the spine is not honored. It should be added as an attribute on the commandline like
+**UPDATE**: it looks like the attribute for the styling in the spine is not honored. It should be added as an attribute on the command-line like
 
 ```
 -a pygments-style=manni
 ```
 
-src: https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document
-
+src: [https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document](https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document)
 
 ### Highlights in source code
 
@@ -128,12 +129,13 @@ It is not possible to highlight specific parts of the source code, so all refere
 
 ### Keyboard shortcuts
 
-Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to keyboard shortcuts to the HTML5 keyboard counterparts. 
+Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to keyboard shortcuts to the HTML5 keyboard counterparts.
 Note, the commandkey (CMD) can be used as `{commandkey}`.
-For the shortcuts to show up properly in the VScode previewer, eacht document needs an `:experimental:` option in the header.
+<s>For the shortcuts to show up properly in the VScode previewer, each document needs an `:experimental:` option in the header.</s>
+I added a document with variables to each document so this is automatically taken care of.
 
 <s>Rather than `Ctrl` write `Control`, because that's what it says on the key cap.</s>
-I changed my mind, Ctrl is much more common than 'control'.
+I changed my mind, `Ctrl` is much more common than 'control'.
 
 NB. with
 
@@ -144,4 +146,4 @@ NB. with
 &#8595; &darr;  ↓      Down arrow
 ```
 
-it's possible to create kbd:[&larr;] arrow keys. However, ePub doesn't support the second column definitions, PDF doesn't support the unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
+it's possible to create kbd:[&larr;] arrow keys. However, ePub doesn't support the second column definitions, PDF doesn't support the Unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
