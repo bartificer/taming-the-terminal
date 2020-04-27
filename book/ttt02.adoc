@@ -27,7 +27,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_02.png[QRcode, align='left']
+image::qrcodes/TTT_02.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -40,7 +40,7 @@ ifndef::backend-pdf[also]
 You'll find Terminal.app in `/Applications/Utilities`.
 Unless you've changed some of the default settings (or are using a very old version of OS X), you will now see a white window that is running the bash command shell that looks something like this:
 
-image::./assets/ttt2/Screen-Shot-2013-04-26-at-20.47.07.png[An OS X Terminal Window]
+image::ttt2/Screen-Shot-2013-04-26-at-20.47.07.png[An OS X Terminal Window]
 
 Let's start at the very top of the window with its title bar.
 At the left of the title is a proxy icon representing the _current directory_ for the current Bash command shell and beside it the name of that folder.
@@ -51,13 +51,13 @@ The current process is followed by another dash, and then the dimensions of the 
 Within the window itself you will likely see a line of output telling you when you last logged in, and from where (if it was on this computer it will say ttys followed by some number, if it was from another computer, it will give the computer's hostname).
 This will be followed on the next line by the so-called _command prompt_, and then the input cursor.
 
-image::./assets/ttt2/Screenshot_26_04_2013_20_28.png[The Anatomy of a Terminal Window]
+image::ttt2/Screenshot_26_04_2013_20_28.png[The Anatomy of a Terminal Window]
 
 Let's have a closer look at the command prompt.
 As with almost everything in Linux/Unix, the prompt is entirely customisable, so although Bash is the default shell on lots of different operating systems, the default prompt on each of those systems can be different.
 Let's first look at the default Bash command prompt on OS X:
 
-image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.01.29.png[]
+image::ttt2/Screen-Shot-2013-04-26-at-21.01.29.png[]
 
 On OS X, the prompt takes the following form:
 
@@ -74,7 +74,7 @@ Again, this might not seem very useful at first, but there are many reasons you 
 
 As an example of how the default shells differ on different operating systems, below is an example from a RedHat-style Linux distribution (CentOS in this case):
 
-image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.11.39.png[Default Bash Command Prompt on CentOS]
+image::ttt2/Screen-Shot-2013-04-26-at-21.11.39.png[Default Bash Command Prompt on CentOS]
 
 As you can see, it contains the same information, but arranged a little differently:
 
@@ -82,7 +82,7 @@ As you can see, it contains the same information, but arranged a little differen
 
 Finally, Debian-style Linux distributions like Ubuntu use a different default prompt again, but also showing the same information:
 
-image::./assets/ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command Prompt on Ubuntu]
+image::ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command Prompt on Ubuntu]
 
 `username@hostname:current_directory$`
 

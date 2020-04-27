@@ -22,7 +22,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_11.png[QRcode, align='left']
+image::qrcodes/TTT_11.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]

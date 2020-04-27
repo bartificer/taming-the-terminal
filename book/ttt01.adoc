@@ -29,7 +29,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_01.png[QRcode, align='left']
+image::qrcodes/TTT_01.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -74,9 +74,9 @@ OS X does not ship with one command shell, it ships with SIX (https://en.wikiped
 
 You can see the list of available shells (and set your default shell) by opening `System Preferences`, going to the `Users & Groups` pref pane, unlocking it, then right-clicking on your username in the sidebar, and selecting `+Advanced Options ...+`:
 
-image::./assets/ttt1/Screen-Shot-2013-04-13-at-15.29.39.png[Select Advanced Options ...]
+image::ttt1/Screen-Shot-2013-04-13-at-15.29.39.png[Select Advanced Options ...]
 
-image::./assets/ttt1/Screen-Shot-2013-04-13-at-15.30.07.png[Select Login Shell]
+image::ttt1/Screen-Shot-2013-04-13-at-15.30.07.png[Select Login Shell]
 
 The default shell on OS X is the Bourne Again Shell (Bash), so that's the shell we'll be using for the remainder of this series.
 If you've not altered the defaults, then whenever you open a Terminal window on OS X, what you're presented with is a Bash command shell.

@@ -30,7 +30,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_24.png[QRcode, align='left']
+image::qrcodes/TTT_24.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -82,9 +82,9 @@ On the whole, the simplest way to figure out which MAC address matches which dev
 On OS X that means the `Network` System Preference pane.
 To see which MAC address matches which interface, select a network interface in the left sidebar, then click `Advanced...` and navigate to the `Hardware` tab:
 
-image::./assets/ttt24/fcedfaa3-f075-4d2a-87fe-48c813c25b9d.png[OS X - Find MAC (1 of 2)]
+image::ttt24/fcedfaa3-f075-4d2a-87fe-48c813c25b9d.png[OS X - Find MAC (1 of 2)]
 
-image::./assets/ttt24/1a178fa7-0a88-4f67-8273-e2ec2c0900fa.png[OS X Find MAC (2 of 2)]
+image::ttt24/1a178fa7-0a88-4f67-8273-e2ec2c0900fa.png[OS X Find MAC (2 of 2)]
 
 While the naming of network devices on Linux/Unix/OS X is confusing, there are some general rules that may help you figure out which device is which:
 
@@ -176,7 +176,7 @@ Layer 2 is not needed to get a single packet from a phone on your wifi to a desk
 Confusingly, while this single packet will pass through a device you *call* a router, it will *not* be routed -- it will go nowhere near the router inside your home router, it will stay on the switch and the wireless access points inside your home router.
 The diagram below illustrates the typical setup:
 
-image::./assets/ttt24/HomeRouter.png[Home Router]
+image::ttt24/HomeRouter.png[Home Router]
 
 == The Address Resolution Protocol (ARP)
 
@@ -184,7 +184,7 @@ The protocol that sits on top of ethernet is the IP Protocol.
 The IP protocol moves a packet from one IP address to another, and it does so by repeatedly dropping the packet down to the link layer below to move the packet one _hop_ at a time from a directly connected device to another directly connected device until it arrives at its destination.
 As a quick reminder, see the diagram below from the previous instalment:
 
-image::./assets/wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
+image::wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
 
 Within our LAN, the layer 1 protocol IP uses to move a packet from one device on our LAN to another device on our LAN is ethernet.
 Ethernet can only move a packet from one MAC address to another, and IP moves packets from one IP address to another, so how does the IP protocol figure out what MAC address matches to what IP address so it knows where to ask ethernet to send the packet?

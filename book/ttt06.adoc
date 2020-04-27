@@ -24,7 +24,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_06.png[QRcode, align='left']
+image::qrcodes/TTT_06.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -87,7 +87,7 @@ This sounds hard, but with a little practice, it'll soon become second-nature.
 
 The key to reading off the permissions is this table:
 
-image::./assets/ttt6/Basic_Unix_File_Permission_Masks.png[Unix File Permissions Conversion Table]
+image::ttt6/Basic_Unix_File_Permission_Masks.png[Unix File Permissions Conversion Table]
 
 Rather than trying to memorise the table itself, you should try to learn the process for creating it instead.
 The lighter coloured cells in the centre of the table are the important ones to be able to re-create on demand.

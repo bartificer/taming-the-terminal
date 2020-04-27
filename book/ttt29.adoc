@@ -30,7 +30,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_29.png[QRcode, align='left']
+image::qrcodes/TTT_29.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -65,7 +65,7 @@ This means that a Mac can always act as an SSH client, but can only act as an SS
 To enable the SSH service on a Mac, open the Sharing preference pane and enable the '`Remote Login`' option.
 This interface will allow you to limit SSH access to just some of the user accounts on your Mac, or to allow all users to connect to your Mac over SSH.
 
-image::./assets/ttt29/d411bff4-5d3d-452f-932b-d1176196f32e.png[OS X Enable SSH Service]
+image::ttt29/d411bff4-5d3d-452f-932b-d1176196f32e.png[OS X Enable SSH Service]
 
 Linux machines usually have SSH installed and enabled by default.
 Instructions for installation and activation vary from one Linux distribution to the next, so I'll have to leave it as an exercise for the reader to find instructions for specific Linux distros as needed.

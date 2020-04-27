@@ -22,9 +22,9 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_18a.png[QRcode, align='left']
+image::qrcodes/TTT_18a.png[QRcode, align='left']
 
-image::./assets/qrcodes/TTT_18b.png[QRcode, align='left']
+image::qrcodes/TTT_18b.png[QRcode, align='left']
 
 
 
@@ -391,15 +391,15 @@ Regular expressions make sense when you want to search for things, so, it's not 
 You'll very often find REs in advanced text editors (not in basic editors like TextEdit.app).
 Two examples are included below, the _Advanced Find and Replace_ window in https://www.peterborgapps.com/smultron/[Smultron 6], and the _Find_ dialogue in the https://www.activestate.com/komodo-edit/downloads[Komodo Edit 8] cross-platform IDE (the two editors I do all my programming in):
 
-image::./assets/ttt18/Screen-Shot-2014-05-10-at-17.49.36.png[Smultron 6 Advanced Find and Replace]
+image::ttt18/Screen-Shot-2014-05-10-at-17.49.36.png[Smultron 6 Advanced Find and Replace]
 
-image::./assets/ttt18/Screen-Shot-2014-05-10-at-17.55.51.png[The Komodo Edit Find Window]
+image::ttt18/Screen-Shot-2014-05-10-at-17.55.51.png[The Komodo Edit Find Window]
 
 Another place you'll often find regular expressions is in apps for renaming files, for example, https://manytricks.com/namemangler/[Name Mangler 3] or the bulk-renaming tool within https://cocoatech.com/pathfinder/[Path Finder]:
 
-image::./assets/ttt18/Screen-Shot-2014-05-10-at-18.14.12.png[Name Mangler]
+image::ttt18/Screen-Shot-2014-05-10-at-18.14.12.png[Name Mangler]
 
-image::./assets/ttt18/Screen-Shot-2014-05-10-at-18.17.19.png[Screen Shot 2014-05-10 at 18.17.19]
+image::ttt18/Screen-Shot-2014-05-10-at-18.17.19.png[Screen Shot 2014-05-10 at 18.17.19]
 
 == Update (19 Oct 2015) -- A Nice Web Tool
 

@@ -39,9 +39,9 @@ Scan the QRcode to listen on a different device
 
 ======
 [.left]
-image::./assets/qrcodes/TTT_27a.png[QRcode MP3 (1)]
+image::qrcodes/TTT_27a.png[QRcode MP3 (1)]
 
-image::./assets/qrcodes/TTT_27b.png[QRcode MP3 (2)]
+image::qrcodes/TTT_27b.png[QRcode MP3 (2)]
 ======
 
 [.clearfix]
@@ -131,7 +131,7 @@ You are entirely free to add the final dot back in though, it is part of the spe
 The best way to think of DNS names is as a tree, as illustrated in the diagram below.
 But, rather than reading the tree from root to leaf, we always read it backwards, from leaf to root.
 
-image::./assets/ttt27/DNSHierarchy.png[DNS Hierarchy]
+image::ttt27/DNSHierarchy.png[DNS Hierarchy]
 
 === DNS Records
 
@@ -206,7 +206,7 @@ Unless you own your own domain, you probably don't need to know about authoritat
 If you do own your own domain, you are probably administering it through an online control panel with your domain registrar or hosting provider.
 You should be able to access an interface that looks something like the one in the screenshot below (from Hover.com) where you can see all the DNS records set on your domain, edit them, and add new ones.
 
-image:./assets/ttt27/Screen-Shot-2015-01-16-at-15.00.22.png[DNS Control Panel on Hover.com]
+image::ttt27/Screen-Shot-2015-01-16-at-15.00.22.png[DNS Control Panel on Hover.com]
 
 What you can see in the screenshot above is that there are just three DNS records in the `xkpasswd.net` zone, two A records (one for `xkpasswd.net`, and one for `www.xkpasswd.net`), and an MX record.
 You'll notice that one of the A records and the MX record use the shortcut symbol `@` to represent '`this domain`'.
@@ -221,7 +221,7 @@ DNS resolvers query the authoritative DNS servers to perform these lookup.
 When DHCP pushes a _name server_ setting to your computer, it is specifying which DNS Resolver your computer should use.
 When you look at the Name Server setting in the Network System Preference Pane, you will see what DNS Resolver your computer is configured to use.
 
-image::./assets/ttt27/f106e4d1-f8fe-4f75-9a19-67f355fa73fa.png[Name Server Setting]
+image::ttt27/f106e4d1-f8fe-4f75-9a19-67f355fa73fa.png[Name Server Setting]
 
 On most Linux and Unix OSes, DNS resolution is controlled using the configuration file `/etc/resolv.conf`.
 This file is present in OS X but is used as a way for the OS to expose the settings to scripts and command-line utilities rather than as a way of controlling DNS configuration.

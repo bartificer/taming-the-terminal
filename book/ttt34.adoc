@@ -26,7 +26,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_34.png[QRcode, align='left']
+image::qrcodes/TTT_34.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -277,23 +277,23 @@ My personal preference is to use Safari's developer tools, but so as to make thi
 To enable the developer tools we are interested in today, browse to the site you want to explore, e.g.
 https://www.bartb.ie/[www.bartb.ie], and click on `Tools` → `Web Developer` → `Network`.
 
-image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
+image::ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
 
 This will open a new sub-window at the bottom of your FireFox window with a message telling you to re-load the page.
 
-image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.33.58.png[FireFox Dev Tools - Reload Page]
+image::ttt34/Screen-Shot-2015-05-09-at-17.33.58.png[FireFox Dev Tools - Reload Page]
 
 When you do, you'll see all the HTTP requests needed to load my home page scroll by, with a timeline next to the list.
 If you scroll up to the very top of the list you'll see the initial request, which received HTML markup in response from my server.
 All the other requests are follow-up requests for resources needed to render my home page, like JavaScript code files, CSS style sheets, and images.
 
-image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.34.54.png[FireFox Dev Tools - Timeline]
+image::ttt34/Screen-Shot-2015-05-09-at-17.34.54.png[FireFox Dev Tools - Timeline]
 
 You can click on any request to see more details.
 This will add a tab to the right with lots of tabs to explore, though the Headers tab is the one we are interested in.
 There is a button to show the raw headers.
 
-image:./assets/ttt34/Screen-Shot-2015-05-09-at-17.51.48.png[FireFox De Tools - Request Details]
+image::ttt34/Screen-Shot-2015-05-09-at-17.51.48.png[FireFox De Tools - Request Details]
 
 
 You'll notice a lot of `304` response codes.

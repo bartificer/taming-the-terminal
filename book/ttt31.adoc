@@ -22,7 +22,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_31.png[QRcode, align='left']
+image::qrcodes/TTT_31.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -311,7 +311,7 @@ Transmit is the SFTP client I use each and every day, and I love it, but, they d
 Users could be forgiven for not connecting the small key icon next to the password field with SSH key-pairs.
 If you hover over that icon you'll see that Transmit uses keys in the default location automatically and that if you want to use a key in a different location, you need to click on the key icon to specify the path to the key file you'd like to use.
 
-image::./assets/ttt31/Screen-Shot-2015-04-04-at-14.53.39.png[Transmit SSH Key Support]
+image::ttt31/Screen-Shot-2015-04-04-at-14.53.39.png[Transmit SSH Key Support]
 
 While the FTP shell is not difficult to use, I don't think it is worth spending too much time on it in this series.
 Personally, I never use it because I find that `scp` and `rsync` allow me to achieve my goals more easily.

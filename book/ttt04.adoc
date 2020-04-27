@@ -25,7 +25,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::./assets/qrcodes/TTT_04.png[QRcode, align='left']
+image::qrcodes/TTT_04.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
@@ -42,7 +42,7 @@ This is a very simple command that doesn't need any arguments.
 
 When you open an OS X Terminal, by default your current working directory will be your home directory, so, if you open a Terminal now and type just `pwd` you'll see something like:
 
-image::./assets/ttt4/Screen-Shot-2013-05-11-at-18.52.30.png[pwd Command Example]
+image::ttt4/Screen-Shot-2013-05-11-at-18.52.30.png[pwd Command Example]
 
 Knowing where you are is one thing, the next thing you might want to do is look around to see what's around you, and for that, you'll need the `ls` (list) command.
 
