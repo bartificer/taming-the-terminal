@@ -5,7 +5,7 @@ include::variables.adoc[]
 So far in this series we've focused mostly on the file system, looking at the details of file systems, how to navigate them, and at file permissions and metadata.
 We're almost ready to move on and start looking at how processes work in Unix/Linux/OS X, but we have a few more file-related commands to look at before we do.
 
-In this instalment, we'll be looking at how to manipulate the file system, in other words, how to create files and folders, how to copy them, how to move them, how to rename them, and finally how to delete them.
+In this instalment, we'll be looking at how to manipulate the file system. In other words, how to create files and folders, how to copy them, how to move them, how to rename them, and finally how to delete them.
 
 .Matching Podcast Episode 7
 ****
@@ -62,7 +62,7 @@ At this stage let's move into the TtT6n folder from where we'll execute the rema
 cd TtT6n
 ----
 
-We can now use the `-R` (for recursive) flag for `ls` to verify that the `mkdir -p` command did what we expect it to (I like to use the `-F` flag we met before with `-R` so that folder names have a trailing `/` appended):
+We can now use the `-R` (for recursive) flag for `ls` to verify that the `mkdir -p` command did what we expect it to. I like to use the `-F` flag we met before with `-R` so that folder names have a trailing `/` appended:
 
 [source,shell]
 ----
@@ -75,7 +75,7 @@ In other words, we are expecting to see just a single entry in the first segment
 This will then be followed by a header and listing of the contents of `secondLevelFolder`, which is currently empty.
 
 Let's now create two empty files in the deepest folder within our test folder (`secondLevelFolder`).
-There are many ways to create a file in Unix/Linux, but one of the simplest is to use the `touch` command -- the main purpose of this command is to change the last edited date of an existing file to the current time, but, if you try to `touch` a file that doesn't exist, `touch` creates it for you:
+There are many ways to create a file in Unix/Linux, but one of the simplest is to use the `touch` command. The main purpose of this command is to change the last edited date of an existing file to the current time, but if you try to `touch` a file that doesn't exist, `touch` creates it for you:
 
 [source,shell]
 ----
@@ -105,7 +105,7 @@ As you can see, the command to copy a file is `cp`.
 Here we have used `cp` in its simplest form, with just two arguments, the first being what to copy, the second being where to copy it to.
 The first argument must be a file and the last a folder.
 
-The `cp` command is a cleverer than this though -- it can take any number of arguments greater than two, all arguments but the last one will be treated as sources, and the last one will be treated as the destination to copy all these sources to.
+The `cp` command is a cleverer than this though -- it can take any number of arguments greater than two. All arguments but the last one will be treated as sources, and the last one will be treated as the destination to copy all these sources to.
 So, we can re-write our two `cp` commands above as simply:
 
 [source,shell]
