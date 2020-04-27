@@ -154,7 +154,7 @@ However, to be able to extract the meaning from this short section you need to u
 
 *`BOLD TEXT`* -- any text in bold should be entered verbatim
 
-[.underline]#`UNDERLINED`#/`_ITALIC_` -- any text that is either in italics or underlined (depending on your version of man, usually underline in modern OSes) needs to be replaced with a real value as described by the text.
+[.underline]#`UNDERLINED`# /`_ITALIC_` -- any text that is either in italics or underlined (depending on your version of man, usually underline in modern OSes) needs to be replaced with a real value as described by the text.
 E.g.
 [.underline]`file` should be replaced with the path to an actual file.
 
