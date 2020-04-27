@@ -170,7 +170,7 @@ We can use a simple `ls` command to verify that the folder has indeed been renam
 Finally, I want to briefly mention the `rm` (remove) command, which can be used to delete files and/or folders.
 The `rm` command simply takes the list of files to be nuked as arguments.
 Unlike deleting files in the Finder, the `rm` command doesn't have any kind of safety net -- it does not use the recycle bin. If you mess it up, you'd better hope you have a recent backup because your files are GONE!
-This is why I advise people to avoid using deleting files/folders from the command-line unless you absolutely have to, or, are very comfortable on the Terminal.
+This is why I advise people to avoid using deleting files/folders from the command line unless you absolutely have to, or, are very comfortable on the Terminal.
 It's much safer to delete things in the Finder.
 Whenever you do use the `rm` command, ALWAYS check over your command before hitting enter!
 To adapt the older carpentry adage that you should _always measure twice and cut once_, my advice when using `rm` is to _think twice and execute once_.

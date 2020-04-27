@@ -14,7 +14,7 @@ Tools that make use of configuration files will often add a separate document to
 
 Every built-in command will have an entry in the manual, and any software you install via the standard package management tools for your distribution will almost certainly bundle the related manual entries as part of the package.
 This is also true on OS X, where package mangers like https://www.macports.org[Mac Ports] will also bundle manual pages with the software they install, and even stand-alone `.pkg` installers for command-line tools will usually also install manual entries.
-If you run it from the command-line, the changes are very high that there will be a manual entry for it on Linux, Unix and OS X.
+If you run it from the command line, the changes are very high that there will be a manual entry for it on Linux, Unix and OS X.
 
 .Matching Podcast Episode 10
 ****

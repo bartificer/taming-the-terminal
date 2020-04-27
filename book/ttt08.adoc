@@ -202,7 +202,7 @@ the most recently started processes.
 
 You can either re-sort after starting `top` by hitting `o` and then typing something like `-cpu` (for descending CPU sorting), or `-vsize` (for descending memory usage), and hitting enter.
 
-Or, you can pass the same arguments when starting `top` from the command-line:
+Or, you can pass the same arguments when starting `top` from the command line:
 
 [source,shell]
 ----

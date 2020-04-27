@@ -173,7 +173,7 @@ Note that this will not work for hidden files.
 
 == Final Thoughts
 
-Hopefully, you'll find at least some of these tips and tricks useful, and find yourself being a little more efficient on the command-line.
+Hopefully, you'll find at least some of these tips and tricks useful, and find yourself being a little more efficient on the command line.
 
 In the next instalment, we'll make a start on what will be a quite long series on networking.
 We'll start by laying a theoretical foundation, and then get stuck in with a selection of network-related terminal commands.

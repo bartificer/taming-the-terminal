@@ -146,7 +146,7 @@ find / -iname '*base*' -exec chown -R us {} ';'
 On OSX the operating system indexes the files on your computer so you can quickly search them with Spotlight.
 Rather than having to search through all the files, Spotlight just searches the index, which makes it much faster than `find` when searching through big chunks of the file system.
 
-Apple has very kindly exposed the power of Spotlight to the command-line with the very useful `mdfind` command.
+Apple has very kindly exposed the power of Spotlight to the command line with the very useful `mdfind` command.
 
 If you can type it into the Spotlight text box in the top-left of a Finder window and get back a list of files, you can pass the same query to `mdfind`, and it will find the same results.
 Note that I said Spotlight in the Finder, and not in the menubar -- that was not by accident.

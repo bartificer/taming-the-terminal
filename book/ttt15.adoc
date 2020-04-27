@@ -37,13 +37,13 @@ Quite simply, a stream is a sequential flow of data -- everything that goes in o
 
 In a Unix/Linux environment there are three standard streams:
 
-* *`STDOUT` (Standard Out):* when working on the command-line this stream is usually connected to the terminal -- anything written to that stream is printed in the terminal window.
+* *`STDOUT` (Standard Out):* when working on the command line this stream is usually connected to the terminal -- anything written to that stream is printed in the terminal window.
 Within applications, this stream is usually connected to a log file.
 * *`STDERR` (Standard Error):* this is another output stream, but one reserved for error messages.
-When working on the command-line this stream is usually also connected to the terminal in the same way that `STDOUT` is.
+When working at the command line, this stream is usually also connected to the terminal in the same way that `STDOUT` is.
 Within applications, this stream is usually connected to a log file, though often a different log file to `STDOUT`.
 * *`STDIN` (Standard In):* this stream is used for input rather than output.
-When working at the command-line it is usually connected to the keyboard.
+When working at the command line, it is usually connected to the keyboard.
 Within applications, this stream could be attached to anything really.
 E.g.
 within a web server it is connected to the HTTP request data sent to the server by the browser.

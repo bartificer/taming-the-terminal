@@ -2,9 +2,9 @@
 = TTT Part 17 of n -- Regular Expressions
 include::variables.adoc[]
 
-This instalment is the start of a series of instalments relating to searching from the command-line.
+This instalment is the start of a series of instalments relating to searching from the command line.
 Searching is all about patterns, and that means getting to grips with Regular Expressions (also called RegExps, RegExes or REs for short).
-Regular Expressions are languages for representing patterns and are used throughout IT, not just on the command-line.
+Regular Expressions are languages for representing patterns and are used throughout IT, not just on the command line.
 While this series focuses on the Terminal, an understanding of regular expressions will be helpful in many other places, from programming languages to GUI apps like programming editors, search utilities or file re-namers.
 
 It's going to take us two instalments to properly describe regular expressions, but when we're done we'll have gained a very useful skill.
@@ -117,7 +117,7 @@ The reason there are two is that POSIX is literally decades old, and regular exp
 When it comes to the simple stuff, BRE and ERE are the same, but, when it comes to more complex stuff, specifically cardinalities and grouping, they are not compatible.
 For these advanced features, BRE is not PCRE compatible, but ERE is, making it the best kind of RE for those exploring the terminal.
 
-For all the examples in this series, we are going to use ERE, and we are only going to use command-line tools that understand ERE.
+For all the examples in this series, we are going to use ERE, and we are only going to use command line tools that understand ERE.
 However, it's important to know that BRE exists, because you'll see both BRE and ERE mentioned in many man pages, and, some terminal commands default to BRE for legacy reasons, but can accept ERE if a certain flag is passed.
 
 == Getting Practical

@@ -402,7 +402,7 @@ You can see these three settings in the Networks system preference pane in OS X:
 
 image::ttt25/3d970446-33cb-4cc8-8358-5040cb13b8d0.png[OS X Network Settings]
 
-Or, you can access them via the command-line with the following two commands:
+Or, you can access them via the command line with the following two commands:
 
 [source,shell]
 ----

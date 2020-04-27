@@ -70,7 +70,7 @@ It's easier to just pass paths as arguments through, hence the `<` operator is p
 However, just because it's the least-used, doesn't mean it's never needed!
 There are some commands that will only accept input via `STDIN`, and for such commands, it's vital to have an understanding of the `<` operator in your command-line toolkit.
 In my professional life, the one example I meet regularly is the `mysql` command, which does not take a file path as an argument (Note that MySQL is not installed by default on OS X).
-To load an SQL file into a MySQL database from the command-line you have to do something like:
+To load an SQL file into a MySQL database from the command line you have to do something like:
 
 [source,shell]
 ----
@@ -281,10 +281,10 @@ cat findCombinedOutput.txt
 
 *IMPORTANT:* notice the counter-intuitive ordering of the above command, although the redirect happens first, it MUST be specified at the end of the command or it will not work.
 
-There is much much more than can be done with streams, but, this is all most people are likely to need in their day-to-day life on the command-line, so we'll stop here before we confuse everyone too much 🙂
+There is much much more than can be done with streams, but, this is all most people are likely to need in their day-to-day life on the command line, so we'll stop here before we confuse everyone too much 🙂
 
 == Conclusions
 
 We have now seen how streams, and a process's file descriptor table, can be manipulated using the stream redirection commands to chain commands together and funnel input and output to and from files in a very flexible way.
 This ability to manipulate streams opens up a whole new world to us, allowing us to build up complex commands from simple commands.
-This ability to chain commands is a pre-requisite for our next topic -- searching at the command-line.
+This ability to chain commands is a pre-requisite for our next topic -- searching at the command line.

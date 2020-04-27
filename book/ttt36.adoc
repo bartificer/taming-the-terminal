@@ -204,7 +204,7 @@ The way it works is that every minute, every cron job who's five-part time speci
 Lines in the crontab starting with `#` are comment lines, that is to say, `cron` ignores them.
 Blank lines are also ignored.
 
-As well as lines starting with time specifiers, and comment lines, a crontab can also contain a number of special command-lines.
+As well as lines starting with time specifiers, and comment lines, a crontab can also contain a number of special command lines.
 We'll see some of these later in this instalment.
 
 === Specifying When
