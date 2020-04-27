@@ -2,9 +2,9 @@
 = TTT Part 9 of n -- Controlling Processes
 include::variables.adoc[]
 
-In the <<ttt08,previous instalment>>, we looked at how Unix-like operating systems like Linux and Mac OS X represent processes.
+In the <<ttt08,previous instalment>>, we looked at how Unix-like operating systems such as Linux and Mac OS X represent processes.
 We then went on to look at the commands for listing running processes and filtering and sorting them in various ways.
-This time we'll move on to controlling processes, specifically, starting and stopping them.
+This time we'll move on to controlling processes, specifically starting and stopping them.
 
 ////
 Fake second paragraph to fix bug
@@ -38,7 +38,7 @@ ifndef::backend-pdf[also]
 
 == Starting Processes
 
-Whether or not you think of it in that way, you're always starting processes.
+Whether or not you think of it in this way, you're always starting processes.
 Each time you launch an app, you've started a process.
 Also, each time you issue a command on the Terminal, you're starting a process.
 
@@ -103,11 +103,11 @@ Also, when you launch FireFox from a command shell you can pass it flags and arg
 ====
 
 
-On Unix and Linux it's normal to launch GUI apps from the command-line by backgrounding them, and as you can see, it works on the Mac too.
-However, the Mac has another, better, way of opening things from the command-line that other versions of Linux and Unix don't have, the `open` command.
+On Unix and Linux it's normal to launch GUI apps from the command line by backgrounding them, and as you can see, it works on the Mac too.
+However, the Mac has another, better, way of opening things from the command line that other versions of Linux and Unix don't have: the `open` command.
 
 The best way to think of `open` is as the command-line equivalent of double-clicking something in the Finder.
-When you pass `open` one or more files as arguments it will open those files using the default app for their file type, and as an added bonus, it will automatically background and apps it starts, so you don't even have to remember the `&`!
+When you pass `open` one or more files as arguments it will open those files using the default app for their file type. As an added bonus, it will automatically background any apps it starts, so you don't even have to remember the `&`!
 Note that if you pass `open` a folder rather than a file it will open the folder in a new Finder window.
 
 A very handy trick is to use `open` to get a Finder window showing the contents of your command shell's present working directory as follows:
@@ -162,9 +162,9 @@ ifdef::backend-pdf[]
 endif::[]
  or selecting _Quit_ from an app's menu.
 
-The `kill` command needs at least one argument, the PID if the process you'd like to end.
-This is where the `ps` and `top` commands we learned about last time come in very handy (or indeed the Activity Monitor app of you are on a Mac).
-Note that you can use kill to end as many processes at once as you like, just keep adding more PIDs as arguments.
+The `kill` command needs at least one argument: the PID of the process you'd like to end.
+This is where the `ps` and `top` commands we learned about last time come in very handy (or indeed the Activity Monitor app if you are on a Mac).
+Note that you can use kill to end as many processes at once as you like; just keep adding more PIDs as arguments.
 
 Let's work through another example, using FireFox again.
 We'll start by opening FireFox and backgrounding it with:
@@ -220,11 +220,11 @@ Note that on older Unix systems `killall` didn't exist at all, and `kill` only t
 The old numeric equivalent of `-KILL` is `-9`, and both `kill` and `killall` on OS X (and Linux) will accept this old-fashioned flag as well as the more modern `-KILL`.
 
 Before we finish I want to reiterate how important it is to always try `kill` and `killall` without the `-KILL` option first.
-Think of it this way, it's basic good manners to ask the process the please leave before you call the bouncers over to eject it!
+Think of it this way, it's basic good manners to ask the process to please leave before you call the bouncers over to eject it!
 
 == Next Time ...
 
-We'll be re-visiting processes again later in the series, but we're done with them for now.
+We'll be revisiting processes again later in the series, but we're done with them for now.
 
 In the next instalment, we'll be taking a look at the built-in manual that comes with every Unix/Linux OS, including Mac OS X.
 You don't need a book to tell you what flags or arguments a command expects, or what exactly they mean, you can find it all out right from the command shell, even if it takes a little practice to learn to interpret the information.
