@@ -185,7 +185,7 @@ My background images have the name of the server in big writing in the centre of
 
 === Prompt 2 (iOS Only)
 
-IMO the best SSH client for iOS is without doubt Prompt 2 from Panic.
+In my opinion the best SSH client for iOS is without doubt Prompt 2 from Panic.
 It's a universal app, and costs just €4.99 https://itunes.apple.com/ie/app/prompt-2/id917437289?mt=8[in the iOS App Store].
 
 The standard iOS keyboard is not very SSH-friendly, but with Prompt 2 that's not a problem -- the app's UI provides quick and easy access to things like the control and tab keys, as well as special characters you'll need often like `|`.

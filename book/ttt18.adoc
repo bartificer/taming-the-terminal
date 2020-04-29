@@ -223,7 +223,7 @@ However, we could write this more clearly by using the fact that very few charac
 ----
 
 As a general rule, this kind of notation is easier to read than using the escape character, so, it's generally accepted best practice to use character classes where possible to avoid having to escape symbols.
-This is of course not always possible, but when it is it's worth doing IMO.
+This is of course not always possible, but when it is it's worth doing in my opinion.
 
 == Escape Sequences
 

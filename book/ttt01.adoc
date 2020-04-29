@@ -95,7 +95,7 @@ When you issue a command like `+chmod 755 *.php+`, the actual command is not giv
 It's the shell that goes and looks for all the files in the current folder that end in `.php`, and replaces the `+*.php+` bit of the command with a list of all the actual files that end in `.php`, and passes that list on to the `chmod` command.
 
 As well as providing wildcard substitution (the * thing), almost all shells also provide '`plumbing`' for routing command inputs and outputs between commands and files, the definition of variables to allow sequences of commands to be generalised in a more reusable way, simple programming constructs to enable conditional actions, looping, and the grouping of sequences of commands into named functions, and the execution of a sequence of commands inside a file (scripting), and much more.
-Different shells also provide their own custom features to help make life at the command prompt easier for users. My favourite is tab-completion which is the single best thing Bash has to offer over sh IMO.
+Different shells also provide their own custom features to help make life at the command prompt easier for users. My favourite is tab-completion which is the single best thing Bash has to offer over sh in my opinion.
 OS X also brings some unique features to the table, with superb integration between the GUI and the command shell through features like drag-and-drop support in Terminal.app and shell scripting support in Automator.app.
 Of all the OSes I've used, OS X is the one that makes it the easiest to integrate command-line programs into the GUI.
 
