@@ -126,12 +126,12 @@ To enter this real-time mode invoke `tail` with the `-f` flag.
 Remember that the only way out of a `tail -f` is with kbd:[Ctrl+c].
 
 You could run the command below to get a live view of the system log, but it's hard to force log entries to appear there.
-On OS X, a nice example to use is the App Store log file.
-If you run the command below in a Terminal window and then open up the App Store app and start navigating around or checking for updates you should see entries appear in the log file in real-time:
+On OS X, a nice example to use is the WiFi log file.
+If you run the command below in a Terminal window and then switch networks, you should see entries appear in the log file in real-time:
 
 [source,shell]
 ----
-tail -f /var/log/appstore.log
+tail -f /var/log/wifi.log
 ----
 
 == Editing Files -- The Easy Way
