@@ -7,7 +7,7 @@ Given the times we live in, the word '`environment`' probably invokes images of 
 The first definition of the word in the OS X dictionary is:
 
 ====
-The surroundings or conditions in which a person, animal, or plant lives or operates
+The surroundings or conditions in which a person, animal, or plant lives or operates.
 ====
 
 In this instalment, we'll introduce a digital extension of this concept -- the digital conditions within which a process exists, and specifically, in which a Bash command shell exists.
@@ -44,16 +44,16 @@ The third major pillar in the basic environment is environment variables.
 These are name-value pairs that can be accessed by running processes.
 
 When one process starts another process, the child process inherits a *copy* of the parent process's environment.
-The child process runs as the same users the parent process was running as, it starts with the same present working directory, and it gets a copy of all the environment variables that existed in the parent's environment at the moment the child was spawned.
+The child process runs as the same user the parent process was running as, it starts with the same present working directory, and it gets a copy of all the environment variables that existed in the parent's environment at the moment the child was spawned.
 The important thing to note is that child processes do not share a single environment with their parents, they get a duplicate that they are then free to alter without affecting the parent process's environment.
 When a child process changes its present working directory, that has no effect on the parent process's present working directory, and similarly, when a child process changes the value stored in a given environment variable, that has no effect on the value stored in the same environment variable within the parent process's environment.
 
 While all processes have access to a basic environment, command shells extend this basic foundation to provide a much richer environment for their users.
 Until now very little that we have looked at has been shell-specific, but that changes with this instalment.
 Each command shell gets to create its own environment and to define its own mechanisms for interacting with it.
-What works in Bash will not necessarily work in KSH or ZSH etc..
-In this series we'll only be dealing with the default command shell on most modern Unix and Linux OSes (including OS X), BASH.
-Note that Bash is an extended version of SH, so what works in SH works in BASH, and much, though not all, of what works in Bash also works in SH.
+What works in Bash will not necessarily work in Ksh, Zsh, etc.
+In this series we'll only be dealing with the default command shell on most modern Unix and Linux OSes (including OS X): Bash.
+Note that Bash is an extended version of SH, so what works in SH works in Bash, and much, though not all, of what works in Bash also works in SH.
 
 == Environment Variables
 
@@ -93,10 +93,10 @@ Some of these variables are purely informational, while others are used to affec
 
 == Environment Variables & Bash Shell Variables
 
-BASH, like every other process, has access to all the variables set within its environment.
+Bash, like every other process, has access to all the variables set within its environment.
 However, Bash extends the concept and of variables into shell variables, of which the environment variables are just a subset.
 Bash shell variables can be local to the shell, or can exist within the shell and the environment.
-We already know that `env` lets us see all the environment variables which exist in our shell but there is another command to let us see all the variables in our shell both those in the environment, and the local ones, and that command is `set`.
+We already know that `env` lets us see all the environment variables which exist in our shell but there is another command to let us see all the variables in our shell, both those in the environment and the local ones, and that command is `set`.
 To see all the shell variables that exist, call `set` with no arguments.
 E.g.
 
@@ -163,7 +163,7 @@ update_terminal_cwd ()
 bart-imac2013:~ bart$
 ----
 
-If you compare the output of `env` and `set` you'll see that every environment variable is a shell variable, but, there are many more shell variables that there are environment variables.
+If you compare the output of `env` and `set` you'll see that every environment variable is a shell variable, but, there are many more shell variables than there are environment variables.
 Remember, when a child process is created *only* the environment variables get copied into the child process's environment, even if the child process is another Bash process.
 Shell variables are local to a single command shell, hence they are often called local variables.
 
@@ -185,7 +185,7 @@ or (if you have a Mac configured in the default way)
 cd /Users/$LOGNAME/Desktop
 ----
 
-Way back in the <<ttt02, second instalment>> we discussed quoting strings in the shell, and we mentioned that there was a very important difference between using double and single quotes and that it would become important later, well, this is where that difference becomes important.
+Way back in the <<ttt02, second instalment>> we discussed quoting strings in the shell, and we mentioned that there was a very important difference between using double and single quotes and that it would become important later. Well, this is where that difference becomes important.
 If you use the `$` operator within a string enclosed by double quotes the variable name will get replaced by the variable's value, if you use it within a string contained within single quotes it will not!
 
 This is why the following do work (this is an OS X-specific example):
@@ -221,7 +221,7 @@ All echo does is print out the argument you pass to it, so, a simple example wou
 
 [source,shell]
 ----
-echo 'Hellow World!'
+echo 'Hello World!'
 ----
 
 This seems pretty dull, but, when you combine `echo` with the `$` operator it becomes much more useful:
@@ -239,7 +239,7 @@ echo "I am logged in as the user $LOGNAME with the home directory $HOME"
 ----
 
 Now that we can use variables, let's look at how we create them and alter their values.
-You create variables simply by assigning them a value, and you alter their value by assigning them a new vale.
+You create variables simply by assigning them a value, and you alter their value by assigning them a new value.
 The `=` operator assigns a value to a variable.
 In our examples, we won't use a variable set by the system, but we'll create our own one called `MY_FIRST_VAR`.
 
@@ -264,7 +264,7 @@ Now let's verify that we did indeed initialise our new variable with the value w
 echo $MY_FIRST_VAR
 ----
 
-Now let's get a little more creating and change the value stored in our variable using values stored in two variables inherited from the environment:
+Now let's get a little more creative and change the value stored in our variable using values stored in two variables inherited from the environment:
 
 [source,shell]
 ----
@@ -280,7 +280,7 @@ At this stage our new variable exists only as a local shell variable, it is not 
 env
 ----
 
-The `export` command can be used to 'promote' a variable into the Environment.
+The `export` command can be used to 'promote' a variable into the environment.
 Simply call the command with the name of the variable to be promoted as an argument, e.g.
 to push our variable to the environment use:
 
@@ -296,14 +296,14 @@ We can now verify that we really have pushed our new variable to the environment
 env
 ----
 
-=== Environment Variables and sub-shells -- OPTIONAL
+=== Environment Variables and subshells -- OPTIONAL
 
 As mentioned, when one process starts another, the child process inherits a copy of the parent's environment.
 If a child makes a change to an environment variable, that change is not seen by the parent.
-We can illustrate this easily using so-called sub-shells.
+We can illustrate this easily using what are called subshells.
 
-When one Bash process started another Bash process that child process is called a sub-shell.
-The most common way to create a sub-shell is by executing a shell script.
+When one Bash process starts another Bash process, that child process is called a subshell.
+The most common way to create a subshell is by executing a shell script.
 A shell script is simply a text file that contains a list of shell commands.
 While we won't be looking at shell scripting in detail until much later in this series, we'll use some very simple shell scripts here to illustrate how child processes inherit their parent's environment.
 
@@ -325,7 +325,7 @@ echo "TTT_VAR=$TTT_VAR"
 
 [NOTE]
 ====
-*Aside:* The first line of this script is the so-called "`shebang line`", and it tells Bash what interpreter it should use to run the file.
+*Aside:* The first line of this script is called the "`shebang line`", and it tells Bash what interpreter it should use to run the file.
 If we were writing a Perl script instead of a Bash script we would start our file with the line:
 
 `#!/usr/bin/perl`
@@ -339,11 +339,18 @@ Before we can run our new script we need to make it executable:
 chmod 755 ~/Documents/ttt12script1.sh
 ----
 
-The environment variable `TTT_VAR` does not exist yet, so running our shell script now will show that:
+The environment variable `TTT_VAR` does not exist yet, so running our shell script:
 
 [source,shell]
 ----
 ~/Documents/ttt12script1.sh
+----
+
+will return:
+
+[source,shell]
+----
+TTT_VAR=
 ----
 
 We can now give our variable a value:
@@ -357,7 +364,7 @@ And if we run our script again, we can see that it still does not print out the 
 
 [source,shell]
 ----
-~/Documents/ttt12script1.sh
+TTT_VAR=
 ----
 
 Now let's push our variable to the environment and run our script again:
@@ -366,9 +373,10 @@ Now let's push our variable to the environment and run our script again:
 ----
 export TTT_VAR
 ~/Documents/ttt12script1.sh
+TTT_VAR=Hello World!
 ----
 
-To prove that the sub-shell is working on a copy of the environment variable, let's copy our first script and create a new script that alters the value of the variable:
+To prove that the subshell is working on a copy of the environment variable, let's copy our first script and create a new script that alters the value of the variable:
 
 [source,shell]
 ----
@@ -412,7 +420,7 @@ Hello World!
 bart-imac2013:~ bart$
 ----
 
-As you can see, the sub-shell inherited the value of the environment variable `TTT_VAR`, but changing it in the sub-shell had no effect on the value seen in the parent shell, even though it was exported to the child shell's environment.
+As you can see, the subshell inherited the value of the environment variable `TTT_VAR`, but changing it in the subshell had no effect on the value seen in the parent shell, even though it was exported to the child shell's environment.
 
 You might expect that this means that you can't use scripts to build or alter your environment, but, actually, you can.
 You just can't do it by accident, you must be explicit about it and use the `source` command.
