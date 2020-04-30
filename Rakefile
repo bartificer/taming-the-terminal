@@ -24,6 +24,9 @@ namespace :book do
       `bundle exec asciidoctor #{params} #{book_dir}/ttt-spine.adoc --out-file=ttt.html`
       puts " -- HTML output at ttt.html"
 
+      puts "Sync the assets"
+      `rsync -r --delete book/assets/* output/assets/`
+
       puts "Converting to EPub..."
       `bundle exec asciidoctor-epub3 #{params} -a pygments-style=manni #{book_dir}/ttt-epub-spine.adoc --out-file=ttt.epub`
       puts " -- Epub output at ttt.epub"
@@ -36,7 +39,6 @@ namespace :book do
       `bundle exec asciidoctor-pdf #{params} #{book_dir}/ttt-spine.adoc --out-file=ttt.pdf 2>/dev/null`
       puts " -- PDF output at ttt.pdf"
 
-      `rsync -r --delete book/assets/* output/assets/`
     end
   end
 end
