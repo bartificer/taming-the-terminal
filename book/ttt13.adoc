@@ -36,11 +36,11 @@ So far in this series I have been a little loose with the term _command_, I've a
 If you remember right back to <<ttt02,the second instalment>>, we said that when entering commands on the command line, the first word is the command, and the other words (separated by spaces) formed the arguments to that command.
 We spent a lot of time discussing the vagaries of quoting the arguments, but we didn't discuss the command itself in any detail.
 
-In BASH, when you enter a command, that command can actually be one of two things, a builtin Bash command, or, an executable file which Bash will execute for you.
+In Bash, when you enter a command, that command can actually be one of two things, a builtin Bash command, or, an executable file which Bash will execute for you.
 You can see the list of builtin commands on BSD-style Unixes (including OS X) with `man builtin`.
 On Linux, you need to navigate to the `SHELL BUILTIN COMMANDS` section of the VERY long Bash man page for the same information.
 
-When you enter a command in Bash the first thing it does is figure out whether or not the command is a builtin.
+When you enter a command in Bash, the first thing it does is figure out whether or not the command is a builtin.
 If it is a builtin then Bash just does whatever it is you asked.
 Where things get interesting is when you enter a command that is not a builtin.
 What Bash does then is interpret the command as a request to run an executable file with that name.
@@ -105,7 +105,7 @@ which bash
 ====
 *Aside:* the location of common commands on the file system may seem random at first, but there is a logic to it.
 
-Firstly, command regular users can run are usually in folders ending in `bin` (short for binary), while commands which require root/admin privileges are usually in folders ending in `sbin`.
+Firstly, commands regular users can run are usually in folders ending in `bin` (short for binary), while commands which require root/admin privileges are usually in folders ending in `sbin`.
 
 Secondly, there is a hierarchy of importance:
 
@@ -122,7 +122,7 @@ MacPorts installs all its binaries in `+/opt/local/...+`, so when I install http
 
 
 
-Something people often find confusing is that many of the builtin commands are actually executable files, as can be demonstrated with which (which is itself a builtin):
+Something people often find confusing is that many of the builtin commands are actually executable files, as can be demonstrated with `which` (which is itself a builtin):
 
 [source,shell]
 ----
@@ -162,7 +162,7 @@ We can still run the executables by using their full paths, e.g.:
 [source,shell]
 ----
 /bin/ls -alh
-/usr/bin/which nano
+/usr/bin/which /usr/bin/nano
 /usr/bin/nano testFile.txt
 ----
 
@@ -186,7 +186,7 @@ Enter the following content into the file `whereAmI` and save:
 print "Hi $ENV{USER}, you are currently in $ENV{PWD}\n";
 ----
 
-NOTE: *Aside:* in the last instalment we used a Bash shell script for our example, this time, for some variety, I'm using a Perl script, the language used has no bearing on how all this works.
+NOTE: *Aside:* in the last instalment we used a Bash shell script for our example, this time, for some variety, I'm using a Perl script. The language used has no bearing on how all this works.
 
 
 Then make the script executable, and test it:
@@ -197,14 +197,14 @@ chmod 755 ~/myScripts/whereAmI
 ~/myScripts/whereAmI
 ----
 
-At the moment we have to enter the full path to `whereAmI` each time we want to use it, let's remedy that by adding our new `myScripts` folder to the end of our `PATH`:
+At the moment we have to enter the full path to `whereAmI` each time we want to use it. Let's remedy that by adding our new `myScripts` folder to the end of our `PATH`:
 
 [source,shell]
 ----
 export PATH="$PATH:$HOME/myScripts"
 ----
 
-*Note that we have to include the current value of `PATH` in the new value we set for `PATH` or we would be _replacing_ the `PATH` rather than adding to it.* This is a very common pit-fall, and the effect would be that all non-builtin commands apart from those in the one new folder would break.
+*Note that we have to include the current value of `PATH` in the new value we set for `PATH` or we would be _replacing_ the `PATH` rather than adding to it.* This is a very common pitfall, and the effect would be that all non-builtin commands apart from those in the one new folder would break.
 Note also that we used `$HOME` instead of `~` because you can't use `~` in `PATH`.
 
 Verify that `PATH` has been updated:
@@ -313,7 +313,7 @@ cat /etc/paths
 cat /etc/paths.d/*
 ----
 
-(On a default OS X install the last command will fail because there are no files present in /etc/paths.d by default)
+(On a default OS X install the last command will fail because there are no files present in `/etc/paths.d` by default)
 
 If we wanted to add our new scripts folder to the default path for all users on the system we could edit `/etc/paths`, or add a new file with the path or our scripts folder in `/etc/paths.d`, but don't do that!
 These system-level paths should only be used for system-level things, as we'll see shortly, there is a better way to make user-specific customisations.
@@ -345,7 +345,7 @@ if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
 fi
 ----
 
-What's going on here is mostly OS X-specific customisations to BASH.
+What's going on here is mostly OS X-specific customisations to Bash.
 The Ubuntu equivalent to this file is `/etc/bash.bashrc`, and just like with `/etc/profile`, the contents of the file is completely different to what you get on OS X.
 
 There is really only one line in this file that I want to draw your attention to, and then, only as a preview of the next instalment.
@@ -358,7 +358,7 @@ PS1='\h:\W \u\$ '
 
 It looks like gobbledegook, but, it's actually the line that sets the format of the command prompt.
 `\h` is the hostname, `\W` is the current folder, and `\u` the current user.
-You should recognise that as the format of the command prompt in you OS X Terminal windows.
+You should recognise that as the format of the command prompt in your OS X Terminal windows.
 We'll look at this in more detail next time.
 
 So far there are two files doing the customisation of Bash for us, `/etc/profile` and `/etc/bashrc`.
@@ -375,9 +375,9 @@ bart-imac2013:~ bart$
 It's with good reason that you don't have editing rights to these files -- you could do serious damage to your system if you make a mistake in these files.
 Unless you really know what you are doing, never edit either of them!
 
-The system-level configuration files are only the first half of BASH's startup procedure. When a new Bash process has finished running those files, it moves on to a new phase where it checks the user's home directory for certain specially named files.
+The system-level configuration files are only the first half of Bash's startup procedure. When a new Bash process has finished running those files, it moves on to a new phase where it checks the user's home directory for certain specially-named files.
 
-For reasons we won't go into now, if you're a Linux user the user-level file to create/edit is `~/.bashrc`, while Mac users should create/edit `~/.bash_profile` (if you really care about why there is a difference you can have a read of https://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html[this short article]).
+For reasons we won't go into now, if you're a Linux user the user-level file to create/edit is `~/.bashrc`, while Mac users should create/edit `~/.bash_profile`. (If you really care about why there is a difference, you can have a read of http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html[this short article]).
 
 So, any customisations we wish to make to Bash on our Macs should be made in `~/.bash_profile`.
 Let's go ahead and set a custom `PATH` that includes the folder we created earlier:
