@@ -36,6 +36,7 @@ namespace :book do
       `bundle exec asciidoctor-pdf #{params} #{book_dir}/ttt-spine.adoc --out-file=ttt.pdf 2>/dev/null`
       puts " -- PDF output at ttt.pdf"
 
+      `rsync -r --delete book/assets/* output/assets/`
     end
   end
 end
