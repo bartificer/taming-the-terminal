@@ -152,7 +152,6 @@ But we can't do things like:
 [source,shell]
 ----
 ls -alh
-which nano
 nano testFile.txt
 ----
 
@@ -162,7 +161,6 @@ We can still run the executables by using their full paths, e.g.:
 [source,shell]
 ----
 /bin/ls -alh
-/usr/bin/which /usr/bin/nano
 /usr/bin/nano testFile.txt
 ----
 
