@@ -25,7 +25,7 @@ Listen Along: Taming the Terminal Podcast Episode 28
 // audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
 
-pass:m,a[<audio controls='1' src="{url-mp3}/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3">Your browser does not support HTML 5 audio</audio>]
+pass:m,a[<audio controls='controls' src="{url-mp3}/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -34,7 +34,7 @@ image::qrcodes/TTT_28.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3[download the MP3]
 ****
 
 When troubleshooting network problems, the basic advice is to start at the bottom of the stack and work your way up until you find the problem.

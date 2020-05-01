@@ -19,10 +19,10 @@ Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 // audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
 
-pass:m,a[<audio controls='1' src="{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
+pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
 
 
-pass:m,a[<audio controls='1' src="{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
+pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -33,11 +33,11 @@ image::qrcodes/TTT_23b.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (1)]
+{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[download the MP3 (1)]
 
 You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3?autoplay=0&loop=0&controls=1[download the MP3 (2)]
+{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[download the MP3 (2)]
 ****
 
 As complicated as computer networks are today, they've actually gotten a lot simpler than they used to be, for the simple reason that everyone has settled on a single protocol stack -- the so-called TCP/IP stack.

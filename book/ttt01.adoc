@@ -19,11 +19,10 @@ I hope I'm right in interpreting that as evidence that there are a lot of Nosill
 Listen Along: Taming the Terminal Podcast Episode 1
 
 // audiocontrols & qrcode in epub and html, qrcode in pdf
+
 ifndef::backend-pdf[]
 
-pass:m,a[<audio controls='1' src="{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3">Your browser does not support HTML 5 audio</audio>]
-
-//  audio::{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3[]
+pass:m,a[<audio controls='controls' src="{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3">Your browser does not support HTML 5 audio</audio>]
 
 endif::[]
 
@@ -33,7 +32,7 @@ image::qrcodes/TTT_01.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3[download the MP3]
 ****
 
 == The basics

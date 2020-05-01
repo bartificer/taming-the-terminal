@@ -23,7 +23,7 @@ Listen Along: Taming the Terminal Podcast Episode 19
 // audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
 ifndef::backend-pdf[]
 
-pass:m,a[<audio controls='1' src="{url-mp3}/TTT19TextSearches/TTT_19_Text_Searches.mp3">Your browser does not support HTML 5 audio</audio>]
+pass:m,a[<audio controls='controls' src="{url-mp3}/TTT19TextSearches/TTT_19_Text_Searches.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -32,7 +32,7 @@ image::qrcodes/TTT_19.png[QRcode, align='left']
 
 You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT19TextSearches/TTT_19_Text_Searches.mp3?autoplay=0&loop=0&controls=1[download the MP3]
+{url-mp3}/TTT19TextSearches/TTT_19_Text_Searches.mp3[download the MP3]
 
 ****
 
