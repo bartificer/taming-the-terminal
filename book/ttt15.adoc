@@ -59,7 +59,7 @@ The redirection operators alter the copies of these three variables within indiv
 Bash provides a number of stream redirection operators:
 
 * *`|` (the '`pipe`' operator)* -- this operator connects `STDOUT` in the environment of the command to it's left to `STDIN` in the environment of the command to it's right.
-* *`>` and >>* -- these operators connect `STDOUT` in the environment of the command to their left a file at the path specified to their right
+* *`>` and `>>`* -- these operators connect `STDOUT` in the environment of the command to their left a file at the path specified to their right
 * *`<`* -- this operator connects the contents of the file at the path specified to it's right to `STDIN` in the environment of the command to it's left
 
 The `|` operator is probably the most used of the three, as it allows straight-forward command chaining.
@@ -87,7 +87,7 @@ The answer can be found further down in the man page:
 The `wc` utility displays the number of lines, words, and bytes contained in each input file, or standard input (if no file is specified) to the standard output.
 ****
 
-In other words, `wc` will read its input from `STDIN` if no file is specified, and, no matter what the input source, it will write it's results to `STDOUT`.
+In other words, `wc` will read its input from `STDIN` if no file is specified, and, no matter what the input source, it will write its results to `STDOUT`.
 
 Now that you know about the three standard streams, you'll start to see them in man pages all over the place.
 E.g., you'll find the following in the man page for `ls`:
@@ -129,17 +129,17 @@ ls -l /dev/null
 ----
 
 There are many such files in `/dev/` on a Unix/Linux machine, but it is a VERY bad idea to write to or read from any you don't understand.
-These files are generally connected directly to some piece of hardware in your system, including low-level access to your hard drives, so you could destroy important data very easily (thankfully you need to be root to write to the hard drive connected '`files`').
+These files are generally connected directly to some piece of hardware in your system, including low-level access to your hard drives, so you could destroy important data very easily. (Thankfully you need to be root to write to the hard drive connected '`files`').
 
 There are a few safe special files that I want to mention though:
 
 * *`/dev/null`*: this is effectively a black hole -- you use this file to redirect the output into oblivion.
-(more on this in the next instalment)
+(More on this in the next instalment.)
 * *`/dev/random` or `/dev/urandom`*: both of these streams output random data 8 bytes at a time.
 The difference between the two is that `/dev/random` does not care how much entropy the OS has built up (i.e.
 how good the randomness is), it will output what it has, while `/dev/urandom` will pause output when the level of entropy gets too low, and only resume when the entropy pool has built up again.
 In other words, `/dev/random` promises speed, but not quality, while `/dev/urandom` promises quality but not speed.
-* *`/dev/zero`: this stream outputs a constant flow of zeros.*
+* `/dev/zero`: this stream outputs a constant flow of zeros.
 
 As an example, let's use `/dev/urandom` to generate 10 random characters.
 
