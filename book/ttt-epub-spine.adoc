@@ -13,7 +13,7 @@ Bart Busschots
 :toc: left
 :toclevels: 0
 :pagenums:
-:copyright: CC-BY-SA 3.0
+:copyright: CC-BY-NC-ND 4.0
 :icons: font
 :front-cover-image: assets/cover3.png
 // Define unicode for Apple Command key.

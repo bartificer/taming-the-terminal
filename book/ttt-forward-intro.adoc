@@ -1,19 +1,46 @@
-# Date started
+[[forward]]
+# Forward
 
-# Ongoing - expect updates e.g. zsh is the bomb now
+This section is added to avoid all kinds of warnings when generating the output.
 
-# Contributors
+## Date started
+
+somewhere in 2013
+
+## Ongoing - expect updates e.g. zsh is the bomb now
+
+[[contributors]]
+## Contributors
 obv Bart and me but also Steve for the podcast logo, suggesting we make it a standalone show, and doing all of the editing to make it so
 Helma for making the book a reality
 
-# Creative Commons license
+For true programmer's nerdery, the contributors according to git:
+
+----
+include::contributors.txt[]
+----
+
+[[license]]
+## Creative Commons license
+
+This work is licensed under a http://creativecommons.org/licenses/by-nc-nd/4.0/[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License, rel='license'].
+
+:imagesdir:
+
+[link=http://creativecommons.org/licenses/by-nc-nd/4.0/, rel='license']
+image::https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png[Creative Commons License]
 
 
-# zsh warning - Maybe in an Intro vs. a Forward?
+[[zsh]]
+## zsh warning - Maybe in an Intro vs. a Forward?
 
 Since Catalina, the default shell is no longer Bash, but zsh. If you want to follow along with the tutorial, switch to a Bash shell by entering the following command:
 
+[source,shell]
+----
 bash --login
+----
+
 You will see a warning:
 
 
