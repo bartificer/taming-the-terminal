@@ -404,7 +404,7 @@ export PATH="$PATH:$HOME/myScripts"
 [NOTE]
 ====
 *Aside:* Note that any line in a shell script starting with a `#` is a comment, so it is ignored by the computer and there purely for your information.
-Also, note that the echo lines are there only as a helpful hint in case you make a mistake and break your `PATH`.
+Also, note that the `echo` lines are there only as a helpful hint in case you make a mistake and break your `PATH`.
 The command simply renames `~/.bash_profile` to `~/bash_profile.disabled`, hence disabling it, and, because the new name does not start with a `.`, making it visible in the Finder should you want to delete or edit it easily.
 You can test any changes you make to try to fix whatever problem you were having by editing the file and then running:
 
