@@ -41,7 +41,7 @@ However, in this series, I'm going to follow my own advice and only use `egrep`.
 == `egrep` Basics
 
 For `egrep`, lines of text are atomic.
-In other words, egrep searches or filters text one line at a time, checking the entire line against the given pattern, and considering the whole line to match the pattern or not.
+In other words, `egrep` searches or filters text one line at a time, checking the entire line against the given pattern, and considering the whole line to match the pattern or not.
 
 There are two basic ways in which `egrep` can be used -- it can filter whatever is sent to via standard in (`STDIN` -- see <<ttt15,part 15>>) against a given pattern, or, it can search for lines matching a given pattern in one or more files.
 
