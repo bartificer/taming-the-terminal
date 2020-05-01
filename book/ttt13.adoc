@@ -6,10 +6,6 @@ In <<ttt12,the previous instalment>>, we introduced the concept of the command s
 In this instalment, we'll focus on probably the single most important environment variable, `PATH`.
 We'll look at what it does, how it's initialised, and, in the process, we'll learn how to make persistent customisations to our shell environment.
 
-ifndef::backend-epub3[]
-+++&nbsp;+++
-endif::[]
-
 .Matching Podcast Episode 13
 ****
 

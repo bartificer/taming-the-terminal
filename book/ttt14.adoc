@@ -8,13 +8,6 @@ We made a permanent change to the `PATH` environment variable to demonstrate how
 or `~/.bashrc` on Linux).
 In this instalment we'll look at two other kinds of environment changes you may wish to make by editing these files -- specifically, aliases, and custom prompts.
 
-////
-Fake second paragraph to fix bug
-see: https://github.com/asciidoctor/asciidoctor/issues/2860
-////
-ifndef::backend-epub3[]
-+++&nbsp;+++
-endif::[]
 
 .Matching Podcast Episode 14
 ****
