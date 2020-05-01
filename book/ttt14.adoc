@@ -231,4 +231,4 @@ We looked at two variables in particular, `PATH` and `PS1`.
 We also discussed Bash aliases, and how to make permanent changes to your Bash environment, allowing you to customise your PATH and prompt and define aliases.
 
 This is where we'll leave the concept of the environment for now.
-In the next instalment, we'll move on to look at what I joking call '`plumbing`' -- how commands can be chained together, and how files and be used for input to and output from commands.
+In the next instalment, we'll move on to look at what I jokingly call '`plumbing`' -- how commands can be chained together, and how files can be used for input to and output from commands.
