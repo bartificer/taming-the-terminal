@@ -208,11 +208,13 @@ You should be able to access an interface that looks something like the one in t
 
 image::ttt27/Screen-Shot-2015-01-16-at-15.00.22.png[DNS Control Panel on Hover.com]
 
+pass:[<!-- vale Vale.Repetition = NO -->]
+
 What you can see in the screenshot above is that there are just three DNS records in the `xkpasswd.net` zone, two A records (one for `xkpasswd.net`, and one for `www.xkpasswd.net`), and an MX record.
 You'll notice that one of the A records and the MX record use the shortcut symbol `@` to represent '`this domain`'.
 In other words, in this example, where ever you see `@`, replace it with `xkpasswd.net`.
-pass:[<!-- vale Vale.Repetition = NO -->]
 The `@` symbol is used in this way in many DNS control panels, and indeed many many DNS configuration files.
+
 pass:[<!-- vale Vale.Repetition = YES -->]
 
 === DNS Resolvers
