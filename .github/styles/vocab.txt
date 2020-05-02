@@ -1,7 +1,9 @@
 Adium
+adoc
 asciidoc
 asciidoctor
 autoplay
+backgrounded
 backgrounding
 bart
 bbusschots
@@ -10,16 +12,18 @@ Bonjour
 boolean
 breakpoint
 bundler
+Caleb Fong
 Capitan
 chown
 cmd
+commandkey
 config
 cron
 crontab
 csh
 datagram
 datagrams
-Dev
+Dev Tools
 distros
 Englishy
 ethernet
@@ -34,13 +38,16 @@ internetwork
 kbd
 Komodo
 ksh
+lego
 loopback
 lossy
 Magick
+malarky
 mdfind
 menubar
 multitasker
 namespace
+nerdery
 netmask
 netmasks
 plist
@@ -49,18 +56,22 @@ podfeet
 Powershell
 prepending
 pwd
+revdate
+revnumber
 rsync
 scp
-shubshells
 Smultron
 spacebar
 subnet
 subnets
 subshell
+subshells
 syslog
 tcpdump
 tcsh
+teleports
 traceroute
+transcoding
 unencrypted
 unintimidating
 webmail
@@ -70,4 +81,3 @@ wifi
 wrapup
 www
 zsh
-lego

@@ -108,7 +108,9 @@ In fact, more fundamentally, what is POSIX?
 
 POSIX stands for _Portable Operating System Interface_, and it's the reason that the things we learn in this series are so surprisingly portable.
 POSIX is the standard that unites most of the flavours of Unix and Linux and gives us a common foundation to work off.
+pass:[<!-- vale Vale.Repetition = NO -->]
 Not all our *nix operating systems are POSIX certified, but they are all, to a very very high degree, POSIX compliant.
+pass:[<!-- vale Vale.Repetition = YES -->]
 OS X is actually POSIX certified, but Linux is not, it just implements pretty much the entire POSIX standard.
 POSIX covers many things, from how file systems should be presented, to a core set of terminal commands that are the same across all POSIX OSes, to a large set of programming APIs that can be used to create apps that run on all POSIX systems, to a portable regular expression syntax.
 
@@ -181,7 +183,9 @@ My advice would be to get into the habit of always single-quoting regular expres
 Something else that's very important is the ability to specify a so-called wild-card character.
 We can do that using the period character, which you should read in an RE as _any one character_.
 
+pass:[<!-- vale Vale.Repetition = NO -->]
 As an example, let's say you're stuck on a thorny crossword puzzle, and you need a word that fits into _something e something something f something_.
+pass:[<!-- vale Vale.Repetition = YES -->]
 You could use the following terminal command to find a list of possible answers:
 
 [source,shell]
