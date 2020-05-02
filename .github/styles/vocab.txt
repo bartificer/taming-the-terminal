@@ -5,6 +5,7 @@ asciidoctor
 autoplay
 backgrounded
 backgrounding
+backronym
 bart
 bbusschots
 bitwise
@@ -14,6 +15,7 @@ breakpoint
 bundler
 Caleb Fong
 Capitan
+cardinalities
 chown
 cmd
 commandkey

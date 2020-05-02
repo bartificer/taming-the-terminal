@@ -106,13 +106,15 @@ The fact that POSIX ERE is a subset of PCRE means that everything we learn will 
 Why POSIX ERE?
 In fact, more fundamentally, what is POSIX?
 
+pass:[<!-- vale Vale.Repetition = NO -->]
+
 POSIX stands for _Portable Operating System Interface_, and it's the reason that the things we learn in this series are so surprisingly portable.
 POSIX is the standard that unites most of the flavours of Unix and Linux and gives us a common foundation to work off.
-pass:[<!-- vale Vale.Repetition = NO -->]
 Not all our *nix operating systems are POSIX certified, but they are all, to a very very high degree, POSIX compliant.
-pass:[<!-- vale Vale.Repetition = YES -->]
 OS X is actually POSIX certified, but Linux is not, it just implements pretty much the entire POSIX standard.
 POSIX covers many things, from how file systems should be presented, to a core set of terminal commands that are the same across all POSIX OSes, to a large set of programming APIs that can be used to create apps that run on all POSIX systems, to a portable regular expression syntax.
+
+pass:[<!-- vale Vale.Repetition = YES -->]
 
 Actually, POSIX specifies two regular expression languages, POSIX Basic Regular Expressions (BRE), and POSIX Extended Regular Expressions (ERE).
 The reason there are two is that POSIX is literally decades old, and regular expressions have come a long way since the BRE syntax was defined.
@@ -133,7 +135,11 @@ On OS X and Ubuntu Linux, the file is located at `/usr/share/dict/words`, though
 
 == Getting Started with POSIX ERE
 
+pass:[<!-- vale Vale.Repetition = NO -->]
+
 In this instalment we're going to start with the simpler parts of the ERE language, and, in fact, everything we learn today will be valid ERE, BRE, and PCRE, so it will apply very very widely indeed.
+
+pass:[<!-- vale Vale.Repetition = YES -->]
 
 Ordinary characters represent themselves in a pattern, so the POSIX ERE to represent the letter `a` is simply:
 
@@ -183,9 +189,7 @@ My advice would be to get into the habit of always single-quoting regular expres
 Something else that's very important is the ability to specify a so-called wild-card character.
 We can do that using the period character, which you should read in an RE as _any one character_.
 
-pass:[<!-- vale Vale.Repetition = NO -->]
-As an example, let's say you're stuck on a thorny crossword puzzle, and you need a word that fits into _something e something something f something_.
-pass:[<!-- vale Vale.Repetition = YES -->]
+As an example, let's say you're stuck on a thorny crossword puzzle, and you need a word that fits into `_something e something something f something_`.
 You could use the following terminal command to find a list of possible answers:
 
 [source,shell]

@@ -273,11 +273,13 @@ You can also enter insert mode on a new blank line after the line containing the
 Similarly, `O` opens a new line before the line with the cursor on it.
 
 pass:[<!-- vale Vale.Repetition = NO -->]
+
 This is just the tip of the `vi`-iceberg, it can do much much more.
-pass:[<!-- vale Vale.Repetition = YES -->]
 There are literally books written about it.
 However, in my opinion once you understand the modal nature of `vi`, all you really need is a good cheat sheet to help you find the commands you need until they become second nature.
 (I have a printout of the first diagram on http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html[this page] hanging on my wall at work).
+
+pass:[<!-- vale Vale.Repetition = YES -->]
 
 == Final Thoughts
 
