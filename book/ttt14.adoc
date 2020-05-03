@@ -85,7 +85,7 @@ alias rm='rm -i' cp='cp -i' mv='mv -i'
 ----
 
 Note that you can use the `alias` command to add multiple aliases at once.
-If you set these aliases then rm, cp, and mv will ask for your permission before deleting or overriding a file.
+If you set these aliases then `rm`, `cp`, and `mv` will ask for your permission before deleting or overriding a file.
 If you're manipulating many files at once this will get tedious, so remember that even if you do this, you can over-ride the `-i` by adding a `-f` (for force) to the commands.
 This means you have to be explicit about deleting or overriding files, instead of the commands implicitly assuming you are happy to have the files destroyed.
 

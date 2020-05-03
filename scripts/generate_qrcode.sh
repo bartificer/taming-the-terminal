@@ -1,7 +1,7 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo ${DIR}
+# echo ${DIR}
 
 _qrcode="${DIR}/../node_modules/qrcode/bin/qrcode"
 

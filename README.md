@@ -2,6 +2,8 @@
 
 # Creating the TTT publications
 
+This repository contains all the content of the Taming the Terminal tutorial as well as the scripts that are needed to build the output.
+
 ## How it works
 
 Once you've set up all the necessary tools, you can simply build all three versions using the command
@@ -106,6 +108,8 @@ ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
 ```
+
+**Update 2020-05-01**: Since the audio section was converted to a sidebar, that counts as a second paragraph, so all the fake second paragraphs are deleted.
 
 ### Backticks problems
 

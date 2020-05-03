@@ -373,6 +373,12 @@ Now let's push our variable to the environment and run our script again:
 ----
 export TTT_VAR
 ~/Documents/ttt12script1.sh
+----
+
+will now return
+
+[source,shell]
+----
 TTT_VAR=Hello World!
 ----
 
