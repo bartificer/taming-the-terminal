@@ -4,8 +4,8 @@ include::variables.adoc[]
 
 This instalment is the start of a series of instalments relating to searching from the command line.
 Searching is all about patterns, and that means getting to grips with Regular Expressions (also called RegExps, RegExes or REs for short).
-Regular Expressions are languages for representing patterns and are used throughout IT, not just on the command line.
-While this series focuses on the Terminal, an understanding of regular expressions will be helpful in many other places, from programming languages to GUI apps like programming editors, search utilities or file re-namers.
+Regular Expressions are languages for representing patterns and are used throughout Information Technology, not just on the command line.
+While this series focuses on the Terminal, an understanding of regular expressions will be helpful in many other places, from programming languages to GUI apps like programming editors, search utilities or file renamers.
 
 It's going to take us two instalments to properly describe regular expressions, but when we're done we'll have gained a very useful skill.
 
@@ -36,7 +36,7 @@ If you want to get scientific about it, regular expressions are languages for de
 You could easily dedicate an entire university-level course to explaining the meaning and importance of that last sentence, and in fact, if you take a degree in Computer Science, you will!
 However, that's not much use to us for the purpose of this series.
 In effect, what it means is that regular expressions provide a means for representing patterns that can be described as a series of elements following one after the other.
-That means regular expressions can do a lot, they can find all currency amounts in a document (a currency symbol followed by either an integer or a decimal number), they can find percentages (an integer or decimal number followed by a percentage symbol), they can find temperatures (an integer or decimal number followed by a `C`, `F`, or `K`), and so on.
+That means regular expressions can do a lot. They can find all currency amounts in a document (a currency symbol followed by either an integer or a decimal number), they can find percentages (an integer or decimal number followed by a percentage symbol), they can find temperatures (an integer or decimal number followed by a `C`, `F`, or `K`), and so on.
 That includes quite complex things like recognising URLs, which could be described something like:
 
 ****
@@ -79,7 +79,7 @@ The following apparent gibberish is a regular expression describing the domain n
 For now, that looks horrific, but, when we've finished this instalment and the one after, I promise it'll make sense!
 
 Also, I promise the following is a really funny joke -- when you get it, you'll know you get REs!
-(I have this one a T-shirt, and it works as a great nerd-test)
+(I have this one a T-shirt, and it works as a great nerd ––test.)
 
 [source,shell]
 ----
@@ -95,9 +95,9 @@ Because this series is all about the Terminal, the answer is actually very easy,
 Let's start with some context.
 Firstly, when it comes to regular expressions you can't ignore my favourite scripting language, Perl.
 Perl was developed for the purpose of processing text, which means pattern matching is at the very core of it's DNA.
-The official backronym for Perl is _the Practical Extracting and Reporting Language_, and the joke backronym is _the Pathologically Eclectic Rubbish Lister_, either way, Perl is all about extracting information from textual data, so it's all about pattern matching.
+The official backronym for Perl is _the Practical Extracting and Reporting Language_, and the joke backronym is _the Pathologically Eclectic Rubbish Lister_. Either way, Perl is all about extracting information from textual data, so it's all about pattern matching.
 
-Because Perl has pattern matching so deeply embedded within it's being, it should come as no surprise that the gold-standard for regular expressions are so-called _Perl-Style Regular Expressions_, which you'll often find referenced in man pages and other documentation as PCRE, which stands for _Perl Compatible Regular Expression_.
+Because Perl has pattern matching so deeply embedded within it's being, it should come as no surprise that the gold standard for regular expressions are so-called _Perl-Style Regular Expressions_, which you'll often find referenced in man pages and other documentation as PCRE, which stands for _Perl Compatible Regular Expression_.
 What we're going to learn is not exactly PCRE, but, a sub-set of PCRE called POSIX ERE.
 The fact that POSIX ERE is a subset of PCRE means that everything we learn will be useful to us in any application that uses PCRE, which means we can transfer what we learn here to a LOT of other contexts, including the two common web programming languages PHP and JavaScript (which both use PCRE for their regular expression implementations).
 
@@ -109,7 +109,7 @@ In fact, more fundamentally, what is POSIX?
 pass:[<!-- vale Vale.Repetition = NO -->]
 
 POSIX stands for _Portable Operating System Interface_, and it's the reason that the things we learn in this series are so surprisingly portable.
-POSIX is the standard that unites most of the flavours of Unix and Linux and gives us a common foundation to work off.
+POSIX is the standard that unites most of the flavours of Unix and Linux and gives us a common foundation to work off of.
 Not all our *nix operating systems are POSIX certified, but they are all, to a very very high degree, POSIX compliant.
 OS X is actually POSIX certified, but Linux is not, it just implements pretty much the entire POSIX standard.
 POSIX covers many things, from how file systems should be presented, to a core set of terminal commands that are the same across all POSIX OSes, to a large set of programming APIs that can be used to create apps that run on all POSIX systems, to a portable regular expression syntax.
@@ -128,7 +128,7 @@ However, it's important to know that BRE exists, because you'll see both BRE and
 
 The only way to really learn regular expressions is through practical examples, so, for this instalment and the next, we'll be using the `egrep` command to search the standard Unix words file for words that match a given pattern.
 We'll be looking at the `egrep` command in more detail later in the series, but for now, all we need to know is that `egrep` can be used with two arguments, the first, a regular expression in POSIX ERE format, and the second the path to a file to search.
-`egrep` will print each line that contains text that matches the given pattern, it will not print just the text that matches the pattern, it will print the entire line that contains the match.
+`egrep` will print each line that contains text that matches the given pattern. It will not print just the text that matches the pattern, it will print the entire line that contains the match.
 
 The standard Unix words file is a text file containing a list of valid English words, one word per line.
 On OS X and Ubuntu Linux, the file is located at `/usr/share/dict/words`, though on some Unix/Linux variants you'll find it at `/usr/dict/words` instead.
@@ -186,7 +186,7 @@ This is often not necessary, because many patterns don't contain Bash special ch
 If the string had not been single-quoted, we would have had to escape the dollar symbol which would be very messy.
 My advice would be to get into the habit of always single-quoting regular expressions, it'll save you a lot of frustration over time!_
 
-Something else that's very important is the ability to specify a so-called wild-card character.
+Something else that's very important is the ability to specify a wild-card character.
 We can do that using the period character, which you should read in an RE as _any one character_.
 
 As an example, let's say you're stuck on a thorny crossword puzzle, and you need a word that fits into `_something e something something f something_`.
@@ -203,7 +203,7 @@ this is to ensure we don't get longer words that contain the pattern returned.
 If you run the command again but leave those symbols out you'll see that you get a lot of unwanted results (over 900 on OS X).
 
 The last thing we're going to look at in this instalment is character classes, these are used to match a single character against multiple options.
-You can think of everything inside a character class as being a big list of _or_s.
+You can think of everything inside a character class as being a big list of "ors".
 Character classes are enclosed inside square brackets, so, you should read the character class below as _a or b or c or d or e or f_:
 
 [source,shell]
