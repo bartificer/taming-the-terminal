@@ -94,7 +94,7 @@ How that's achieved is irrelevant to that protocol.
 
 Ethernet doesn't have the game all to itself within Layer 1.
 Sure, it gives us what we call wired and wireless networks, but there are other ways to get data from one end of a physical connection to another.
-For example, there is a protocol called FiberChannel that can send data through fiberoptic cables, ISDN & ADSL can get data over a phone line, and there are more protocols for getting data through TV cables than you can shake a proverbial stick at!
+For example, there is a protocol called FiberChannel that can send data through fiber optic cables, ISDN & ADSL can get data over a phone line, and there are more protocols for getting data through TV cables than you can shake a proverbial stick at!
 
 The key point is that no matter what protocols are used in layer 1, the protocols used in the layers above don't care at all about the practicalities, all that matters is the contracts between protocols.
 
@@ -126,7 +126,7 @@ Our home routers all speak IP, but they also have to speak one or more layer 1 p
 Because all our home networks are ethernet networks, our routers all speak ethernet, but it's the other protocols the routers speak that divide them into groups.
 ADSL modems speak ADSL and ethernet, ISDN routers speak ISDN and ethernet, cable modems speak at least one of the zoo of cable modem protocols, and ethernet.
 As a packet moves from router to router is moves up and down the stack, from IP to ethernet to get from your computer to your router, then back up to IP so the router can figure out what to do with the packet, if it's for the internet then it goes down to, say, ADSL, then it arrives at your ISP's router where it again gets handed up the stack to the IP.
-IP then decides which direction to send it in next, then it uses a layer 1 protocol to send that packet to the next router, perhaps by fiberoptic cable, perhaps by satellite link, it doesn't matter, it will arrive at the other end, get brought up the stack to IP, and then the next router will send it along the next layer 1 link.
+IP then decides which direction to send it in next, then it uses a layer 1 protocol to send that packet to the next router, perhaps by fiber optic cable, perhaps by satellite link, it doesn't matter, it will arrive at the other end, get brought up the stack to IP, and then the next router will send it along the next layer 1 link.
 The key point is that the same IP packet can be sent over lots of different layer 1 protocols as it moves across an internet from its source IP address to its destination IP address.
 
 Finally, it should be noted that the IP protocol is a complex beast, and while it's mostly used to send packets of data, known as datagrams, from one IP address to another, it can do more.

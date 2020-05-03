@@ -189,8 +189,12 @@ My advice would be to get into the habit of always single-quoting regular expres
 Something else that's very important is the ability to specify a wild-card character.
 We can do that using the period character, which you should read in an RE as _any one character_.
 
+pass:[<!-- vale Vale.Repetition = NO -->]
+
 As an example, let's say you're stuck on a thorny crossword puzzle, and you need a word that fits into `_something e something something f something_`.
 You could use the following terminal command to find a list of possible answers:
+
+pass:[<!-- vale Vale.Repetition = YES -->]
 
 [source,shell]
 ----

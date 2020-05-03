@@ -12,7 +12,7 @@ Version {revnumber} - {revdate}
 Compiled: {compile_time}
 
 This book is designed by Dagger Flush, Denver, Colorado.
-The types are handset Chinchilla and Dust, designed by Leeloo.
-Leeloo designed the typefaces to soften the bluntness of documentation.
+The types are handset Chinchilla and Dust, designed by Mickey.
+Mickey designed the typefaces to soften the bluntness of documentation.
 Created in Asciidoctor and macOS.
 The printing and binding is by Ceres Lithographing, Inc., Ceres, Milky Way.

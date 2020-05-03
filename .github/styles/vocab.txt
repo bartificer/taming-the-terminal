@@ -12,8 +12,8 @@ bitwise
 Bonjour
 boolean
 breakpoint
+builtins
 bundler
-Caleb Fong
 Capitan
 cardinalities
 chown
@@ -23,14 +23,18 @@ config
 cron
 crontab
 csh
+customisable
 datagram
 datagrams
-Dev Tools
+Dev
 distros
 Englishy
 ethernet
+experimentations
 firewire
+Fong
 Gemfile
+Ghostbusters
 hardcoded
 Helma
 hostname
@@ -59,6 +63,7 @@ podfeet
 Powershell
 prepending
 pwd
+redirections
 renamers
 revdate
 revnumber
@@ -66,6 +71,7 @@ rsync
 scp
 Smultron
 spacebar
+subexpression
 subnet
 subnets
 subshell
@@ -78,6 +84,8 @@ traceroute
 transcoding
 unencrypted
 unintimidating
+unintuitive
+untrusted
 webmail
 webmin
 webserver
