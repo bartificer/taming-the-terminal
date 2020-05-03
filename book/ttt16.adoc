@@ -75,7 +75,7 @@ There are two operators which perform this task, and the difference between them
 
 The first of these operators is `>`.
 This operator directs the output from the command to its left to a *NEW* file at the path specified to its right.
-If a file already exists at the specified path it will be *REPLACED*.
+If a file already exists at the specified path, it will be *REPLACED*.
 This means that after the command finishes the file will only contain the output from that one command execution.
 Because of this overwriting behaviour, always use the `>` operator with great care!
 
@@ -215,7 +215,7 @@ ls -l ~/DesktopDONKEY 2> error.txt | wc -l > fileCount.txt
 
 == Crossing the Streams
 
-Unlike in the Ghost Busters universe, in the Unix/Linux universe, it's often desirable to cross the streams -- i.e.
+Unlike in the Ghostbusters universe, in the Unix/Linux universe, it's often desirable to cross the streams -- i.e.
 to merge two streams together.
 The most common reason to do this is to gather all output, regular and error, into a single stream for writing to a file.
 The way this is usually done is to divert `STDERR` to `STDOUT` and then redirect `STDOUT` to a file.
