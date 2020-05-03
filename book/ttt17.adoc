@@ -79,7 +79,7 @@ The following apparent gibberish is a regular expression describing the domain n
 For now, that looks horrific, but, when we've finished this instalment and the one after, I promise it'll make sense!
 
 Also, I promise the following is a really funny joke -- when you get it, you'll know you get REs!
-(I have this one a T-shirt, and it works as a great nerd ––test.)
+(I have this on a T-shirt, and it works as a great nerd ––test.)
 
 [source,shell]
 ----
