@@ -52,12 +52,14 @@ namespace
 nerdery
 netmask
 netmasks
+ors
 plist
 Podcast
 podfeet
 Powershell
 prepending
 pwd
+renamers
 revdate
 revnumber
 rsync
