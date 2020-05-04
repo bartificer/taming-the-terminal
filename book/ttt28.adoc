@@ -81,8 +81,7 @@ Any other network interfaces you see are either non-traditional interfaces like 
 When it comes to basic network troubleshooting it's the `en` devices that we are interested in.
 
 Once you know the names of your network devices you can see more information for any given device bypassing the device name as an argument.
-E.g.
-the following is the description of my `en0` interface:
+E.g. the following is the description of my `en0` interface:
 
 [source,shell,linenums]
 ----
