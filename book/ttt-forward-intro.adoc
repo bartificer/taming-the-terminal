@@ -1,5 +1,6 @@
 [[forward]]
 # Forward
+include::variables.adoc[]
 
 This section is added to avoid all kinds of warnings when generating the output.
 
@@ -25,10 +26,8 @@ include::contributors.txt[]
 
 This work is licensed under a http://creativecommons.org/licenses/by-nc-nd/4.0/[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License, rel='license'].
 
-:imagesdir:
-
 [link=http://creativecommons.org/licenses/by-nc-nd/4.0/, rel='license']
-image::https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png[Creative Commons License]
+image::creativecommons.org_by-nc-nd_4.0_88x31.png[Creative Commons License]
 
 
 [[zsh]]
