@@ -1,11 +1,6 @@
-<<<<<<< HEAD:book/ttt-foreward.adoc
-[[forward]]
-# Foreward
-=======
 [[foreword]]
 # Foreword
 include::variables.adoc[]
->>>>>>> 66ebe5973ba5c4bc3c663043eb19586df6fec31a:book/ttt-foreword.adoc
 
 This section is added to avoid all kinds of warnings when generating the output.
 
