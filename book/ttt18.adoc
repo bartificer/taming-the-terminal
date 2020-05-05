@@ -12,29 +12,32 @@ In this instalment, we'll learn more POSIX ERE syntax, and have a look at some e
 Listen Along: Taming the Terminal Podcast Episodes 18a & 18b
 
 // audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+
+[%header,cols=2*,frame=none,grid=none]
+|===
+| Episode 18a
+| Episode 18b
+
 ifndef::backend-pdf[]
 
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]
-
-
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]
+| pass:m,a[<audio controls='controls' src="{url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]
+| pass:m,a[<audio controls='controls' src="{url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
-Scan the QRcode to listen on a different device
+2+| Scan the QRcode to listen on a different device
 
-image::qrcodes/TTT_18a.png[QRcode, align='left']
+a|image::qrcodes/TTT_18a.png[QRcode 18a]
+a|image::qrcodes/TTT_18b.png[QRcode 18b]
 
-image::qrcodes/TTT_18b.png[QRcode, align='left']
-
-
-
-You can
+| You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3[download the MP3 (1)]
-
-You can
+{url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3[download the MP3 (a)]
+| You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3[download the MP3 (2)]
+{url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3[download the MP3 (b)]
+
+|===
+
 ****
 
 == Inverted Character Classes

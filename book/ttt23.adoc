@@ -17,27 +17,31 @@ Ultimately, it's actually a very elegant design, but that elegance may not be im
 Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 
 // audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+[%header,cols=2*,frame=none,grid=none]
+|===
+| Episode 23a
+| Episode 23b
+
 ifndef::backend-pdf[]
 
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
-
-
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
+|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
+|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
-Scan the QRcode to listen on a different device
+2+|Scan the QRcode to listen on a different device
 
-image::qrcodes/TTT_23a.png[QRcode, align='left']
+a|image::qrcodes/TTT_23a.png[QRcode 23a]
+a|image::qrcodes/TTT_23b.png[QRcode 23b]
 
-image::qrcodes/TTT_23b.png[QRcode, align='left']
-
-You can
+|You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[download the MP3 (1)]
+{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[download the MP3 (a)]
 
-You can
+|You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[download the MP3 (2)]
+{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[download the MP3 (b)]
+|===
+
 ****
 
 As complicated as computer networks are today, they've actually gotten a lot simpler than they used to be, for the simple reason that everyone has settled on a single protocol stack -- the so-called TCP/IP stack.

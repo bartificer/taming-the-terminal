@@ -26,34 +26,29 @@ The Domain Name System (DNS) exists to bridge this gap, allowing domain names to
 Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
 
 // audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+[%header,cols=2*,frame=none,grid=none]
+|===
+| Episode 27a
+| Episode 27b
+
 ifndef::backend-pdf[]
 
-
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
-
-
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
+|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
+|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
-Scan the QRcode to listen on a different device
+2+|Scan the QRcode to listen on a different device
 
-======
-[.left]
-image::qrcodes/TTT_27a.png[QRcode MP3 (1)]
+a|image::qrcodes/TTT_27a.png[QRcode 27a]
+a|image::qrcodes/TTT_27b.png[QRcode 27b]
 
-image::qrcodes/TTT_27b.png[QRcode MP3 (2)]
-======
-
-[.clearfix]
-
-
-You can
+|You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3[download the MP3 (1)]
-
-You can
+{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3[download the MP3 (a)]
+|You can
 ifndef::backend-pdf[also]
-{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3[download the MP3 (2)]
+{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3[download the MP3 (b)]
+|===
 
 ****
 
