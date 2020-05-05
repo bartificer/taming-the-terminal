@@ -14,3 +14,4 @@ Rakefile-test
 scripts/bashex.py
 scripts/pygments_init.rb
 node_modules
+todo.tasks
