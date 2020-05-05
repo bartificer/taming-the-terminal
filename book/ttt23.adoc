@@ -403,11 +403,11 @@ bart-iMac2013:~ bart$ curl -v https://www.so-4pt.net/~bart/ttt23/
 bart-iMac2013:~ bart$
 ----
 
-Note that every line starting with a `*` is debug information telling us what `curl` is doing, the lines starting with a > at the top of the output are the HTTP request, and the lines starting with < in the middle of the output are the HTTP response header.
+Note that every line starting with a `*` is debug information telling us what `curl` is doing, the lines starting with a `>` at the top of the output are the HTTP request, and the lines starting with `<` in the middle of the output are the HTTP response header.
 The remaining lines are the data part of the response, which in this case is the HTML code for the page.
 
 Once we enter the above command in our second terminal window we should see some lines whizz by in our first terminal window.
-Click on this window and end the capture by hitting `ctrl+c`.
+Click on this window and end the capture by hitting kbd:[Ctrl+c].
 You should now have something that looks like:
 
 [source,shell]

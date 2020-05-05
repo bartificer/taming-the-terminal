@@ -195,7 +195,7 @@ bart-iMac2013:~ bart$
 ----
 
 The information we need is now much easier to find.
-We can see that Allison's server is returning a permanent redirect (HTTP response code 301) which is redirecting browsers to `https://twitter.com/podfeet`.
+We can see that Allison`'s server is returning a permanent redirect (HTTP response code 301) which is redirecting browsers to https://twitter.com/podfeet[].
 
 We can, of course, do the same with `curl`:
 
