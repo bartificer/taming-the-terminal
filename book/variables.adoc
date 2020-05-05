@@ -6,5 +6,7 @@
 :imagesdir: assets
 :url-mp3: https://media.blubrry.com/tamingtheterminal/archive.org/download
 
-// forcing a commit
-:dummyvar:
+// custom styles
+:stylesdir: theme
+:stylesheet: bartificer.css
+:linkcss:
