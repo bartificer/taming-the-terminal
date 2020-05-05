@@ -1,0 +1,17 @@
+.link {
+    color: #428BCA;
+}
+
+.literal {
+    color: #B12146;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #00408d;
+    font-family: "Ubuntu Mono", mono;
+}

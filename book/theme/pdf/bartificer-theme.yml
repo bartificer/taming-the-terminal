@@ -1,4 +1,10 @@
-extends: base
+extends: default
 base:
-  font-color: #212529
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+header:
+  font-color: #00408d;
+  font-family: "Ubuntu Mono", mono;
+link:
+  font-color: #007bff;
+literal:
+  font-color: #e83e8c;
