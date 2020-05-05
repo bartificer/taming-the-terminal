@@ -40,12 +40,8 @@ endif::[]
 a|image::qrcodes/TTT_25a.png[QRcode 25a]
 a|image::qrcodes/TTT_25b.png[QRcode 25b]
 
-|You can
-ifndef::backend-pdf[also]
-{url-mp3}/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3[download the MP3 (a)]
-|You can
-ifndef::backend-pdf[also]
-{url-mp3}/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3[download the MP3 (b)]
+|You can also {url-mp3}/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3[download the MP3 (a)]
+|You can also {url-mp3}/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3[download the MP3 (b)]
 |===
 
 ****

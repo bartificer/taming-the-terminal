@@ -36,8 +36,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_37.png[QRcode, align='left']
 
-You can
-ifndef::backend-pdf[also]
+You can also
 https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-37-ssh-agents_202004/TTT_37_SSH_Agents.mp3[download the MP3]
 ****
 

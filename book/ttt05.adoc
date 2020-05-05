@@ -25,9 +25,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_05.png[QRcode, align='left']
 
-You can
-ifndef::backend-pdf[also]
-{url-mp3}/TTT05FilePermissions/TTT_05_File_Permissions.mp3[download the MP3]
+You can also {url-mp3}/TTT05FilePermissions/TTT_05_File_Permissions.mp3[download the MP3]
 ****
 
 == Files and permissions

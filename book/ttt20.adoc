@@ -22,9 +22,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_20.png[QRcode, align='left']
 
-You can
-ifndef::backend-pdf[also]
-{url-mp3}/TTT20FileSearches/TTT_20_File_Searches.mp3[download the MP3]
+You can also {url-mp3}/TTT20FileSearches/TTT_20_File_Searches.mp3[download the MP3]
 
 ****
 

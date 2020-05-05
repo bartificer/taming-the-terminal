@@ -27,8 +27,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_36.png[QRcode, align='left']
 
-You can
-ifndef::backend-pdf[also]
+You can also
 https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-36-screen-and-cron_202004/TTT_36_screen_and_cron.mp3[download the MP3]
 
 ****

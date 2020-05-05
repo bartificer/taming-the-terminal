@@ -24,9 +24,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_17.png[QRcode, align='left']
 
-You can
-ifndef::backend-pdf[also]
-{url-mp3}/TTT17RegularExpressions/TTT_17_Regular_Expressions.mp3[download the MP3]
+You can also {url-mp3}/TTT17RegularExpressions/TTT_17_Regular_Expressions.mp3[download the MP3]
 
 ****
 
