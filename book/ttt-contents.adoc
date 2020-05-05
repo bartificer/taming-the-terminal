@@ -2,7 +2,9 @@ ifdef::ebook-format[:leveloffset: +1]
 
 include::colophon.adoc[]
 
-include::ttt-forward-intro.adoc[]
+include::ttt-foreword.adoc[]
+
+include::ttt-preface.adoc[]
 
 include::ttt01.adoc[]
 
