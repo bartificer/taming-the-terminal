@@ -1,5 +1,5 @@
 [[forward]]
-# Forward
+# Foreward
 
 This section is added to avoid all kinds of warnings when generating the output.
 
