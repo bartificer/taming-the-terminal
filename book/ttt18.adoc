@@ -95,7 +95,7 @@ egrep '^th.*ing$' /usr/share/dict/words
 ----
 
 The next operator we'll look at is the `+` operator, which you should read as _one or more occurrences of_.
-Like the `*`, this operator also only operates on the single character or group directly to its left.
+Like the `\*`, this operator also only operates on the single character or group directly to its left.
 If we repeat the above example but with a `+` rather than a `*`, then we are searching for all words starting in `th` and ending in `ing` with at least one letter between the `th` and the `ing`.
 In other words, the same results as before, but without the word `thing`, which has zero letters between the `th` and the `ing`:
 

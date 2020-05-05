@@ -53,8 +53,8 @@ Note that these simple patterns are NOT regular expressions, they use the same s
 
 A lot of the time you really don't need the added power and complexity of regular expressions, because a lot of the time all you really want is the good old fashioned DOS pattern `*.extension`.
 
-IMPORTANT: remember that `*` and `?` have meanings in BASH, so you need to escape them in some way to get reliable results.
-It's ugly and hard to read `\*` all over the place, so my suggestion is to get into the good habit of ALWAYS quoting your patterns when using `-name`.
+IMPORTANT: remember that `\*` and `?` have meanings in BASH, so you need to escape them in some way to get reliable results.
+It's ugly and hard to read `*` all over the place, so my suggestion is to get into the good habit of ALWAYS quoting your patterns when using `-name`.
 
 Let's start with a really simple example, you know the full name of the file you're looking for, but, you have no idea where it is.
 This is something you often come across when someone asks you to take a look at their server.
@@ -126,7 +126,7 @@ Given our knowledge of regular expressions, we could re-write our JPEG search as
 find -E ~ -iregex '.*[.]jpe?g'
 ----
 
-Again, like with `egrep` in the previous instalment, notice that we are quoting the RE to stop Bash wrongly interpreting any of the special characters we may need like `*` and `?` in the above example.
+Again, like with `egrep` in the previous instalment, notice that we are quoting the RE to stop Bash wrongly interpreting any of the special characters we may need like `\*` and `?` in the above example.
 Also notice the position of the `-E` flag, and that we don't need to use `^` or `$` because the ENTIRE path has to match for the result to validate.
 This also means that without the `.*` at the start of the pattern no files will be returned.
 
