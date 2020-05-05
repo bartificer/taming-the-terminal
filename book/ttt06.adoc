@@ -80,7 +80,7 @@ This approach is based on treating the three permissions, read, write, and execu
 So, the permissions `rwx` would be represented by the binary number `111`, the permissions `r-x` by `101`, and `r--` by `100`.
 Since there are three sets of `rwx` permissions (user, group, everyone), a full Unix file permission mask is defined by three three-digit binary numbers.
 
-Unfortunately, the `chmod` command doesn't take the binary numbers in binary form, it expects you to convert them to decimal first, and pass it the three sets of permissions as three digits.
+Unfortunately, the `chmod` command doesn't take the binary numbers in binary form, it expects you to convert them to decimal footnote:[Actually, it's octal, but for simplicity we will call it decimal.] first, and pass it the three sets of permissions as three digits.
 This sounds hard, but with a little practice, it'll soon become second-nature.
 
 The key to reading off the permissions is this table:
