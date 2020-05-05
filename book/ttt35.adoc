@@ -118,7 +118,7 @@ When using `curl` or `wget`, you can see exactly what is happening at the HTTP l
 As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `https://www.podfeet.com/twitter`.
 To see exactly what Allison's server is returning, we can use `wget` with the `--spider` and `-S` options:
 
-[source,shell]
+[source,shell,highlight='7,10']
 ----
 bart-iMac2013:~ bart$ wget --spider -S https://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
@@ -182,10 +182,10 @@ Spider mode enabled. Check if remote file exists.
 Resolving www.podfeet.com (www.podfeet.com)... 173.254.94.93
 Connecting to www.podfeet.com (www.podfeet.com)|173.254.94.93|:80... connected.
 HTTP request sent, awaiting response...
-  HTTP/1.1 301 Moved Permanently # <.>
+  HTTP/1.1 301 Moved Permanently
   Date: Sat, 04 Jul 2015 16:38:45 GMT
   Server: Apache
-  Location: https://twitter.com/podfeet # <.>
+  Location: https://twitter.com/podfeet
   Keep-Alive: timeout=10, max=500
   Connection: Keep-Alive
   Content-Type: text/html; charset=iso-8859-1
@@ -193,15 +193,13 @@ Location: https://twitter.com/podfeet [following]
 0 redirections exceeded.
 bart-iMac2013:~ bart$
 ----
-<.> and
-<.> highlighted
 
 The information we need is now much easier to find.
 We can see that Allison's server is returning a permanent redirect (HTTP response code 301) which is redirecting browsers to `https://twitter.com/podfeet`.
 
 We can, of course, do the same with `curl`:
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='2,5']
 ----
 bart-iMac2013:~ bart$ curl -I https://www.podfeet.com/twitter
 HTTP/1.1 301 Moved Permanently

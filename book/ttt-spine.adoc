@@ -1,7 +1,7 @@
 = Taming the Terminal
 Bart Busschots
 :doctype: book
-:docinfo:
+:docinfo: shared
 :doctitle: Taming the Terminal
 :lang: en_gb
 :source-highlighter: rouge

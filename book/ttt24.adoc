@@ -194,7 +194,7 @@ Whenever a computer needs to figure out what MAC address matches a given IP addr
 The command you've had running in the background since the start of this instalment has been listening for ARP packets and printing every one your computer sees.
 You should see output something like:
 
-[source,shell,linenums]
+[source,shell]
 ----
 bart-iMac2013:~ bart$ sudo tcpdump -nneq arp
 Password:
@@ -230,7 +230,7 @@ While we're on the subject of efficiency, computers don't send an ARP request ea
 You can see the MAC to IP mappings currently cached by your OS with the command `arp -an`.
 You'll get output something like:
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='1']
 ----
 bart-iMac2013:~ bart$ arp -an
 ? (192.168.10.1) at 0:13:3b:e:3f:30 on en0 ifscope [ethernet]

@@ -33,7 +33,7 @@ Bash provides a number of different ways to repeat commands you've executed in t
 The simplest command of all of these is `!!`.
 You can use this on it's own:
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='1,5']
 ----
 cc-dsk-2ss:Desktop bart$ ls -l
 total 96
@@ -53,7 +53,7 @@ You don't have to use !!
 on its own, you can use it to represent your previous command as part of a new, larger command.
 For example, you may want to try a command to be sure it does what you think, and then, when you know it does, pipe the output to a file, or to another command:
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='1,4']
 ----
 cc-dsk-2ss:Desktop bart$ find ~/Downloads -iname '*.iso'
 /Users/bart/Downloads/CentOS-6.5-x86_64-bin-DVD1.iso

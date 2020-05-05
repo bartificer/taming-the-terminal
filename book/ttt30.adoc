@@ -136,7 +136,7 @@ Because public keys are not sensitive information, SSH does not care if other us
 To prevent this from happening, SSH will not accept a key if it's contained in a file that is writeable by anyone but the owner of the account.
 An example of working permissions on an account with the username `bart` is shown below:
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='1,3,5']
 ----
 [bart@www ~]$ ls -al ~/.ssh
 total 20
@@ -148,7 +148,7 @@ drwxr-xr-x 16 bart bart 4096 Mar 15 14:32 ..
 ----
 
 Remember that in a list of the contents of the folder `~/.ssh`, the permissions on that folder itself are the permissions on the special file `.`.
-I have highlighted the command, and the two important sets of permissions in bold.
+I have highlighted the command, and the two important sets of permissions highlighted.
 
 ==== Simplifying the Process with `ssh-copy-id`
 

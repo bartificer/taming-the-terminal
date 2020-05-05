@@ -314,7 +314,7 @@ The `host` command is superbly simple, it accepts one argument, the domain name 
 If the domain has an MX record that value is printed out too, and if the answer had to be arrived at by following one or more CNAME aliases those intermediate steps are printed out as well.
 E.g.
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='1,3']
 ----
 bart-iMac2013:~ bart$ host www.bartb.ie
 www.bartb.ie has address 46.22.130.125
@@ -352,7 +352,7 @@ E.g.
 the following shows the output when trying to resolve `www.bartb.ie` which exists, and `wwww.bartb.ie` which does not.
 There is so much output that at first glance you might think both queries had succeeded.
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='1,20']
 ----
 bart-iMac2013:~ bart$ dig www.bartb.ie
 
@@ -393,6 +393,7 @@ bartb.ie.		1799	IN	SOA	ns0.reg365.net. support.reg365.net. 2013011301 28800 3600
 ;; MSG SIZE  rcvd: 89
 
 bart-iMac2013:~ bart$
+
 ----
 
 What you will notice is that in the first output there is some metadata followed by a number of distinct sections, and finally some more metadata.
@@ -404,7 +405,7 @@ Secondly, there is no `ANSWER` section in the output.
 Sometimes this detailed output is very useful, but oftentimes it just gets in the way.
 You can suppress the extra information by using the `+short` option:
 
-[source,shell,linenums]
+[source,shell,linenums,highlight='1,3']
 ----
 bart-iMac2013:~ bart$ dig +short www.bartb.ie
 46.22.130.125
@@ -414,7 +415,7 @@ bart-iMac2013:~ bart$
 
 You can request records other than A records by specifying the type of record you want after the domain name, e.g.:
 
-[source,shell]
+[source,shell,linenums,highlight='1,4,10']
 ----
 bart-iMac2013:~ bart$ dig +short podfeet.com NS
 ns02.domaincontrol.com.
@@ -436,7 +437,7 @@ This can useful when trying to figure out whether or not a given DNS resolver is
 
 Below is an example of each use, first querying Google's free public resolver for the name server for `bartb.ie`, and then querying the authoritative server for `bartb.ie` for the A record for `www.bartb.ie` (I've left off the `+short` so you can see which servers were queried in the metadata at the bottom of the output):
 
-[source,shell]
+[source,shell,linenums,highlight='1,18,22,38']
 ----
 bart-iMac2013:~ bart$ dig bartb.ie NS @8.8.8.8
 
@@ -485,7 +486,7 @@ bart-iMac2013:~ bart$
 Finally, the `+trace` command can be used to do a full top-down resolution of a given domain name in the same way that a resolver would if the result was not cached.
 To see what question is being asked at each stage of the trace, I like to add the `+question` option as well.
 
-[source,shell]
+[source,shell,highlight='1']
 ----
 bart-iMac2013:~ bart$ dig +trace +question www.bartb.ie
 
