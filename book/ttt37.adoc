@@ -76,7 +76,7 @@ SSH Agent processes are generally not shared between users, in fact, they're gen
 When I log into my Mac, a new SSH Agent is automatically started, and that specific SSH Agent is only accessible by apps or commands that I start within that login session.
 SSH Agents don't store anything permanently -- they forget everything as soon as they stop running, and logging out will kill the SSH Agent associated with a specific login session.
 
-The core SSH libraries are aware of SSH Agents and can communicate with them, so the caching they provide is available to all the SSH-related terminal commands like `ssh`, `scp`, `sftp`, as well as to any GUI apps that make use of the appropriate SSH APIs, for example, both Transmit and SequelPro have SSH Agent support.
+The core SSH libraries are aware of SSH Agents and can communicate with them, so the caching they provide is available to all the SSH-related terminal commands like `ssh`, `scp`, `sftp`, as well as to any GUI apps footnote:[Here`'s a link to the SSH Client myself and Allison recommended during the recording of the matching podcast for this blog post: https://itunes.apple.com/us/app/ssh-shell/id981765152?mt=12] that make use of the appropriate SSH APIs, for example, both Transmit and SequelPro have SSH Agent support.
 
 The exact mechanisms for configuring an SSH Agent to automatically start and stop on login and logout varies from OS to OS, but many desktop Unix/Linux flavours start SSH Agents by default.
 Apple has done so on the Mac since Mac OS X 10.5 Leopard.
