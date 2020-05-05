@@ -27,6 +27,7 @@ The good news is that while things have changed on the Mac, with a small amount 
 
 Listen Along: Taming the Terminal Podcast Episode 37
 
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 pass:m,a[<audio controls='controls' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-37-ssh-agents_202004/TTT_37_SSH_Agents.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

@@ -12,7 +12,7 @@ In this instalment, we'll be looking at how to manipulate the file system. In ot
 
 Listen Along: Taming the Terminal Podcast Episode 7
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT07ManagingFiles/TTT_07_Managing_Files.mp3">Your browser does not support HTML 5 audio</audio>]

@@ -15,7 +15,7 @@ In future instalments, we'll take a brief look at the extra file information and
 
 Listen Along: Taming the Terminal Podcast Episode 5
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT05FilePermissions/TTT_05_File_Permissions.mp3">Your browser does not support HTML 5 audio</audio>]

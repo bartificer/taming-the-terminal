@@ -16,7 +16,7 @@ We'll only be looking at how to read these attributes though, not how to alter t
 
 Listen Along: Taming the Terminal Podcast Episode 6
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3">Your browser does not support HTML 5 audio</audio>]

@@ -12,7 +12,7 @@ This time we'll move on to controlling processes, specifically starting and stop
 
 Listen Along: Taming the Terminal Podcast Episode 9
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3">Your browser does not support HTML 5 audio</audio>]

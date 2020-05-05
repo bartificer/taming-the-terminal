@@ -21,7 +21,7 @@ That makes this an unusual instalment, but I hope you will still find it worthwh
 
 Listen Along: Taming the Terminal Podcast Episode 32
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3">Your browser does not support HTML 5 audio</audio>]

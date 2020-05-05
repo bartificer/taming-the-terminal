@@ -14,7 +14,7 @@ Then we'll end by looking at an OS X-only alternative to `find` that makes use o
 
 Listen Along: Taming the Terminal Podcast Episode 21
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT21MoreSearching/TTT_21_More_Searching.mp3">Your browser does not support HTML 5 audio</audio>]

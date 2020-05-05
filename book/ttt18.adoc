@@ -11,7 +11,7 @@ In this instalment, we'll learn more POSIX ERE syntax, and have a look at some e
 
 Listen Along: Taming the Terminal Podcast Episodes 18a & 18b
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 
 [%header,cols=2*,frame=none,grid=none]
 |===

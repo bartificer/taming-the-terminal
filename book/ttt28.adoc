@@ -22,7 +22,7 @@ In short -- how to get from a vague complaint like "`the internet is broken`" to
 
 Listen Along: Taming the Terminal Podcast Episode 28
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3">Your browser does not support HTML 5 audio</audio>]

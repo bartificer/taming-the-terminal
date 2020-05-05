@@ -16,7 +16,7 @@ Ultimately, it's actually a very elegant design, but that elegance may not be im
 
 Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 [%header,cols=2*,frame=none,grid=none]
 |===
 | Episode 23a

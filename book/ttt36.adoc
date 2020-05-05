@@ -18,6 +18,7 @@ It's extremely flexible and very useful for things like scheduling backups to ru
 
 Listen Along: Taming the Terminal Podcast Episode 36
 
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 pass:m,a[<audio controls='controls' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-36-screen-and-cron_202004/TTT_36_screen_and_cron.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

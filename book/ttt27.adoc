@@ -25,7 +25,7 @@ The Domain Name System (DNS) exists to bridge this gap, allowing domain names to
 
 Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 [%header,cols=2*,frame=none,grid=none]
 |===
 | Episode 27a

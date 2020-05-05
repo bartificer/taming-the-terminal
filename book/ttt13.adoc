@@ -11,7 +11,7 @@ We'll look at what it does, how it's initialised, and, in the process, we'll lea
 
 Listen Along: Taming the Terminal Podcast Episode 13
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT13PATH/TTT_13_PATH.mp3">Your browser does not support HTML 5 audio</audio>]

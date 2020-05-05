@@ -14,7 +14,7 @@ In this instalment, we'll look at three different ways of securely copying files
 
 Listen Along: Taming the Terminal Podcast Episode 31
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3">Your browser does not support HTML 5 audio</audio>]

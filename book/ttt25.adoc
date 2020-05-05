@@ -23,7 +23,7 @@ This is the concept we'll be focusing on in this instalment.
 
 Listen Along: Taming the Terminal Podcast Episodes 25a & 25b
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 [%header,cols=2*,frame=none,grid=none]
 |===
 | Episode 25a

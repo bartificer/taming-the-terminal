@@ -11,7 +11,7 @@ Now that we understand regular expressions, it's time to take a closer look at b
 
 Listen Along: Taming the Terminal Podcast Episode 19
 
-// audiocontrols in html, audiocontrols & qrcode in epub, qrcode in pdf
+// no audiocontrols in pdf
 ifndef::backend-pdf[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT19TextSearches/TTT_19_Text_Searches.mp3">Your browser does not support HTML 5 audio</audio>]
