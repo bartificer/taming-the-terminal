@@ -1,3 +1,7 @@
+[[preface]]
+# Preface
+
+
 ## Ongoing - expect updates e.g. zsh is the bomb now
 
 [[zsh]]
@@ -12,7 +16,9 @@ bash --login
 
 You will see a warning:
 
-
+[source,shell]
+----
 The default interactive shell is now zsh.
 To update your account to use zsh, please run `chsh -s /bin/zsh`.
 For more details, please visit https://support.apple.com/kb/HT208050.
+----
