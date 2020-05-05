@@ -1,0 +1,18 @@
+## Ongoing - expect updates e.g. zsh is the bomb now
+
+[[zsh]]
+## zsh warning - Maybe in an Intro vs. a Forward?
+
+Since Catalina, the default shell is no longer Bash, but zsh. If you want to follow along with the tutorial, switch to a Bash shell by entering the following command:
+
+[source,shell]
+----
+bash --login
+----
+
+You will see a warning:
+
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
