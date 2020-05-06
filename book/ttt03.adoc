@@ -63,7 +63,7 @@ This means that each file and folder can be uniquely identified by listing all t
 This is what we call the full path to a file or folder.
 Where operating systems diverge is in their choice of separator, and in the rules they impose on file and folder names.
 On all modern consumer operating systems, we write file paths as a list of folder and file names separated by some character, called the '`path separator`'.
-DOS and Windows use `\` (the backslash) as the path separator, on classic MacOS it was `:` (old OS X apps that use Carbon instead of Cocoa still use `:` when showing file paths, iTunes did this up until the recent version 11!), and on Linux/Unix(including OS X), `/` (the forward-slash) is used.
+DOS and Windows use `\` (the backslash) as the path separator, on classic MacOS it was `:` (old OS X apps that use Carbon instead of Cocoa still use `:` when showing file paths, iTunes did this up until the recent version 11!), and on Linux/Unix (including OS X), `/` (the forward-slash) is used.
 
 A single floppy disk and a single CD or DVD contain a single file system to hold all the data on a given disk, but that's not true for hard drives, thumb drives, or networks.
 When formatting our hard drives or thumb drives we can choose to sub-divide a single physical device into multiple so-called partitions, each of which will then contain a single filesystem.
