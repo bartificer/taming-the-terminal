@@ -62,7 +62,7 @@ Notice how the moment FireFox quits you get your command prompt back.
 
 Now, let's start FireFox as a background process:
 
-[source%number_lines%highlight_lines,bash]
+[source,linenums,shell]
 ----
 /Applications/Firefox.app/Contents/MacOS/firefox-bin &
 ----
