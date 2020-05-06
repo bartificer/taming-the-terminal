@@ -5,10 +5,3 @@
 // Some urls
 :imagesdir: assets
 :url-mp3: https://media.blubrry.com/tamingtheterminal/archive.org/download
-
-// custom styles
-ifdef::backend-html5[]
-:stylesdir: theme
-:stylesheet: bartificer.css
-:linkcss:
-endif[]
