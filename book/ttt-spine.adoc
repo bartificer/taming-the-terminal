@@ -6,7 +6,7 @@ Bart Busschots
 :lang: en_gb
 :source-highlighter: rouge
 :rouge-linenums-mode: inline
-:rouge-style: manni
+:rouge-style: github
 :pygments-linenums-mode: inline
 :pygments-style: manni
 :experimental:
