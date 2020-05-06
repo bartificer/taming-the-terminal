@@ -1,5 +1,5 @@
 [[ttt26]]
-= TTT Part 26 of n -- DHCP
+= TTT Part 26of 1 {longdash} DHCP
 include::variables.adoc[]
 
 In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.

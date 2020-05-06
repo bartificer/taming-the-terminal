@@ -1,8 +1,8 @@
 [[ttt18]]
-= TTT Part 18 of n -- More REs
+= TTT Part 18of 1 {longdash} More REs
 include::variables.adoc[]
 
-In <<ttt17,the previous instalment>>, we introduced the concept of Regular Expressions and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Per Compatible Regular Expression (PCRE) language.
+In <<ttt17,the previous instalment>>, we introduced the concept of Regular Expressions and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Perl Compatible Regular Expression (PCRE) language.
 
 In this instalment, we'll learn more POSIX ERE syntax, and have a look at some examples of REs in GUI apps.
 
@@ -84,7 +84,7 @@ Many patterns contain some form of repetition, hence, regular expression languag
 There are four POSIX ERE operators that allow you to specify different amounts of repetition.
 
 The first and most common is the `*` operator which you should read as _zero or more occurrences of_.
-The operator applies to just the single character or group directly to it's left.
+The operator applies to just the single character or group directly to its left.
 
 For example, the command below will find all words of any length starting with `th` and ending with `ing`, including the word `thing` which has no letters between the `th` and the `ing`:
 
@@ -222,7 +222,7 @@ However, we could write this more clearly by using the fact that very few charac
 ----
 
 As a general rule, this kind of notation is easier to read than using the escape character, so, it's generally accepted best practice to use character classes where possible to avoid having to escape symbols.
-This is of course not always possible, but when it is it's worth doing in my opinion.
+This is of course not always possible, but when it is, it's worth doing in my opinion.
 
 == Escape Sequences
 

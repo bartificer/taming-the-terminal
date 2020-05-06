@@ -1,5 +1,5 @@
 [[ttt02]]
-= TTT Part 2 of n -- Commands
+= TTT Part 2of 1 {longdash} Commands
 
 include::variables.adoc[]
 

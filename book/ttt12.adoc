@@ -1,5 +1,5 @@
 [[ttt12]]
-= TTT Part 12 of n -- the Environment
+= TTT Part 12of 1 {longdash} the Environment
 include::variables.adoc[]
 
 

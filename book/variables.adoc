@@ -2,6 +2,8 @@
 :experimental:
 // Define unicode for Apple Command key.
 :commandkey: &#8984;
+// Define longdash
+:longdash: &#8212;
 // Some urls
 :imagesdir: assets
 :url-mp3: https://media.blubrry.com/tamingtheterminal/archive.org/download

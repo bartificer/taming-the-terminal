@@ -1,5 +1,5 @@
 [[ttt19]]
-= TTT Part 19 of n -- Text Searches
+= TTT Part 19of 1 {longdash} Text Searches
 include::variables.adoc[]
 
 In the previous two instalments (<<ttt17,17>> & <<ttt18,18>>) of this series, we learned how to represent patterns with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).
@@ -49,11 +49,11 @@ Let's start with the first use-case, using `egrep` to filter `STDIN`.
 When `egrep` is used in this mode it passes every line of text sent to `STDIN` that matches the given pattern to standard out (`STDOUT`) and ignores all others.
 If you send 5,000 lines of text to `egrep` via `STDIN`, and only 5 of those lines match the specified pattern, then only 5 lines will be passed to `STDOUT` (which is the screen unless the output is redirected elsewhere).
 
-When content is redirected to `egrep`'s `STDIN` `egrep` only needs one argument -- the pattern to filter on.
+When content is redirected to `egrep\'s` `STDIN`, `egrep` only needs one argument -- the pattern to filter on.
 
 On Unix/Linux/OS X computers configured to act as servers, there will be a lot of log files being written to continuously, and sysadmins will very often need to filter those logs while troubleshooting an issue, or tweaking the server's configuration.
 In my day-job as a Linux sysadmin, I do this all the time.
-Regardless of the log file to be filtered, the approach is the same, use `tail -f` to stream the log file in question to `tail`'s `STDOUT` in real-time, then redirect that stream to `egrep`'s `STDIN` with the pipe operator.
+Regardless of the log file to be filtered, the approach is the same, use `tail -f` to stream the log file in question to `tail\'s` `STDOUT` in real-time, then redirect that stream to `egrep\'s` `STDIN` with the pipe operator.
 
 For example, on a Linux server running a BIND DNS server process, DNS log entries are mixed with other entries in the central system messages log (`/var/log/messages`).
 When debugging a problem with the DNS server, you don't want to be distracted by all the other messages flowing into that log file.
@@ -68,7 +68,7 @@ The log files on our personal computers are much quieter places, so PC users wil
 However, that doesn't mean PC terminal users won't find themselves wanting to use `egrep` to filter `STDIN`.
 
 You can use `egrep` to filter the output from any command using the pipe operator.
-To generate a meaningful example we need a command that we will generate a lot of formatted output at will.
+To generate a meaningful example we need a command that will generate a lot of formatted output at will.
 We're going to use a command we'll come back to in much more detail in future instalments, `tcpdump`.
 As its name suggests, `tcpdump` prints the details of every TCP packet that enters or leaves your computer to `STDOUT`.
 Every time your computer interacts with the network, `tcpdump` will generate output -- in our modern connected world, that means `tcpdump` generates a LOT of output!
@@ -180,7 +180,7 @@ Let's move on now to using `egrep` to search the contents of one or more files f
 When using `egrep` to search file(s), it requires a minimum of two arguments, first the pattern to be searched for, and secondly at least one file to search.
 If you want to search multiple files, you can keep adding more file paths as arguments.
 
-In this mode, `egrep` will filter the lines in the file in the same way it did when filtering a stream, but if you ask it to filter more than one file it will pre-pend any output with the name of the file the matching line came from.
+In this mode, `egrep` will filter the lines in the file in the same way it did when filtering a stream, but if you ask it to filter more than one file it will prepend any output with the name of the file the matching line came from.
 This is a very useful feature.
 
 The vast majority of the examples we used in the previous two instalments used `egrep` to search the Unix words file.
@@ -215,7 +215,7 @@ The following command does just that:
 egrep '^nameserver' /etc/resolv.conf
 ----
 
-So far we have only searched one file at a time, but you can point `egrep` at as many files as you like, either explicitly, or by using shell wild-card expansion.
+So far we have only searched one file at a time, but you can point `egrep` at as many files as you like, either explicitly, or by using shell wild card expansion.
 For example, the command below looks for lines containing `apple.com` in all the log files in the folder `/var/log`:
 
 [source,shell]
@@ -249,5 +249,5 @@ In this instalment, we've seen how `egrep` can be used to filter a stream or to 
 This is very useful, and something sysadmins do a lot in the real world.
 In the next instalment we'll be moving on to a different, but equally important, type of search -- file searches.
 We'll use the aptly-named `find` command to find files that meet one or more criteria.
-find supports a huge variety of different search criteria, including simple things like the name of the file, and more advanced things like the amount of time elapsed since the file was last edited.
+`find` supports a huge variety of different search criteria, including simple things like the name of the file, and more advanced things like the amount of time elapsed since the file was last edited.
 All these criteria can be combined to create powerful searches that will show all MS Office files in your Documents folder that were edited within the last week and are bigger than 1MB in size.

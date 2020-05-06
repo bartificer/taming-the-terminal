@@ -1,5 +1,5 @@
 [[ttt34]]
-= TTT Part 34 of n -- Introducing HTTP
+= TTT Part 34of 1 {longdash} Introducing HTTP
 include::variables.adoc[]
 
 In <<ttt33,the previous instalment>>, we finished a five-part series on SSH.

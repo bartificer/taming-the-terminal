@@ -1,5 +1,5 @@
 [[ttt36]]
-= TTT Part 36 of n -- screen & cron
+= TTT Part 36of 1 {longdash} screen & cron
 include::variables.adoc[]
 
 

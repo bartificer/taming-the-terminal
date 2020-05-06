@@ -1,5 +1,5 @@
 [[ttt15]]
-= TTT Part 15 of n -- 'Plumbing'
+= TTT Part 15of 1 {longdash} 'Plumbing'
 include::variables.adoc[]
 
 Right back in the very <<ttt01,first instalment>>, we described the Unix philosophy as being Lego-like,
