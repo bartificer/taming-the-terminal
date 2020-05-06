@@ -1,5 +1,5 @@
 [[ttt32]]
-= TTT Part 32of 1 {longdash} SSH Tunnelling
+= TTT Part 32 of n {longdash} SSH Tunnelling
 include::variables.adoc[]
 
 This is the fourth SSH instalment.

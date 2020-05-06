@@ -1,5 +1,5 @@
 [[ttt18]]
-= TTT Part 18of 1 {longdash} More REs
+= TTT Part 18 of n {longdash} More REs
 include::variables.adoc[]
 
 In <<ttt17,the previous instalment>>, we introduced the concept of Regular Expressions and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Perl Compatible Regular Expression (PCRE) language.

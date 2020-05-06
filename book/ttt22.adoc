@@ -1,5 +1,5 @@
 [[ttt22]]
-= TTT Part 22of 1 {longdash} Tips & Tricks
+= TTT Part 22 of n {longdash} Tips & Tricks
 include::variables.adoc[]
 
 

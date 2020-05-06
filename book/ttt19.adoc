@@ -1,5 +1,5 @@
 [[ttt19]]
-= TTT Part 19of 1 {longdash} Text Searches
+= TTT Part 19 of n {longdash} Text Searches
 include::variables.adoc[]
 
 In the previous two instalments (<<ttt17,17>> & <<ttt18,18>>) of this series, we learned how to represent patterns with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).

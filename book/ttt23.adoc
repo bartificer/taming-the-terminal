@@ -1,5 +1,5 @@
 [[ttt23]]
-= TTT Part 23of 1 {longdash} Networking Intro
+= TTT Part 23 of n {longdash} Networking Intro
 include::variables.adoc[]
 
 This instalment is the first in what will probably be quite a long mini-series on computer networking.

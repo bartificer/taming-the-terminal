@@ -1,5 +1,5 @@
 [[ttt37]]
-= TTT Part 37of 1 {longdash} SSH Agents
+= TTT Part 37 of n {longdash} SSH Agents
 include::variables.adoc[]
 
 Since we covered SSH in parts <<ttt29,29>> & <<ttt30,30>>, Apple has changed how their desktop OS deals with the passphrases protecting SSH identities (key pairs).

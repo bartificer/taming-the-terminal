@@ -1,5 +1,5 @@
 [[ttt29]]
-= TTT Part 29of 1 {longdash} Intro to SSH
+= TTT Part 29 of n {longdash} Intro to SSH
 include::variables.adoc[]
 
 In the previous six instalments, we looked in detail at how TCP/IP networks tick.

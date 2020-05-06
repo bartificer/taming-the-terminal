@@ -1,5 +1,5 @@
 [[ttt30]]
-= TTT Part 30of 1 {longdash} SSHing More Securely
+= TTT Part 30 of n {longdash} SSHing More Securely
 include::variables.adoc[]
 
 In <<ttt29,the previous instalment>>, we saw how we can use SSH to execute a single command on a remote computer, or, to get a command shell on a remote computer.

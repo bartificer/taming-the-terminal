@@ -1,5 +1,5 @@
 [[ttt17]]
-= TTT Part 17of 1 {longdash} Regular Expressions
+= TTT Part 17 of n {longdash} Regular Expressions
 include::variables.adoc[]
 
 This instalment is the start of a series of instalments relating to searching from the command line.

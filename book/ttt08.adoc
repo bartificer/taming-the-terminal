@@ -1,5 +1,5 @@
 [[ttt08]]
-= TTT Part 8of 1 {longdash} Processes
+= TTT Part 8 of n {longdash} Processes
 include::variables.adoc[]
 
 For various reasons, there's been a bit of a gap between the previous instalment and this one.
