@@ -23,6 +23,8 @@ namespace :book do
       # HTML specific parameters
       htmlparams =
       "                                            \
+      --attribute stylesdir='theme'                \
+      --attribute stylesheet='bartificer.css'      \
       --out-file='ttt.html'                        \
       "
 
@@ -35,7 +37,11 @@ namespace :book do
       # PDF specific parameters
       pdfparams =
         "                                          \
+        -a pdf-theme='bartificer'                  \
+        -a pdf-themesdir='#{book_dir}/theme/pdf'   \
+        -a pdf-fontsdir='#{book_dir}/theme/fonts,GEM_FONTS_DIR'  \
         --out-file='ttt.pdf'                       \
+        --trace \
         "
 
       puts "Generating contributors list"
@@ -57,7 +63,8 @@ namespace :book do
     #   puts " -- Mobi output at ttt.mobi"
 
       puts "Converting to PDF... (this one takes a while)"
-      `bundle exec asciidoctor-pdf #{params} #{pdfparams} #{book_dir}/ttt-spine.adoc 2>/dev/null`
+      `bundle exec asciidoctor-pdf #{params} #{pdfparams} #{book_dir}/ttt-spine.adoc`
+      # 2>/dev/null`
       puts " -- PDF output at ttt.pdf"
 
     end
