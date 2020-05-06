@@ -20,5 +20,4 @@ Bart Busschots
 // Define unicode for Apple Command key.
 :commandkey: &#8984;
 
-
 include::ttt-contents.adoc[]
