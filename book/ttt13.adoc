@@ -1,5 +1,5 @@
 [[ttt13]]
-= TTT Part 13 of n -- PATH
+= TTT Part 13of 1 {longdash} PATH
 include::variables.adoc[]
 
 In <<ttt12,the previous instalment>>, we introduced the concept of the command shell environment, and we looked in detail at how shell and environment variables work.

@@ -1,5 +1,5 @@
 [[ttt04]]
-= TTT Part 4 of n -- Navigation
+= TTT Part 4of 1 {longdash} Navigation
 include::variables.adoc[]
 
 

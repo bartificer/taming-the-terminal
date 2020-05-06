@@ -1,5 +1,5 @@
 [[ttt21]]
-= TTT Part 21 of n -- More Searching
+= TTT Part 21of 1 {longdash} More Searching
 include::variables.adoc[]
 
 This is the third and final instalment on searching.

@@ -1,5 +1,5 @@
 [[ttt25]]
-= TTT Part 25 of n -- IP Subnets
+= TTT Part 25of 1 {longdash} IP Subnets
 include::variables.adoc[]
 
 In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.

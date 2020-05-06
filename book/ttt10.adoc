@@ -1,5 +1,5 @@
 [[ttt10]]
-= TTT Part 10 of n -- man
+= TTT Part 10of 1 {longdash} man
 include::variables.adoc[]
 
 

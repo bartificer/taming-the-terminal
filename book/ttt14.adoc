@@ -1,5 +1,5 @@
 [[ttt14]]
-= TTT Part 14 of n -- Aliases & Prompts
+= TTT Part 14of 1 {longdash} Aliases & Prompts
 include::variables.adoc[]
 
 In <<ttt13,the previous instalment>>, we looked at how to make permanent changes to our environment.

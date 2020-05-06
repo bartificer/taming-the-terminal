@@ -1,5 +1,5 @@
 [[ttt20]]
-= TTT Part 20 of n -- File Searches
+= TTT Part 20of 1 {longdash} File Searches
 include::variables.adoc[]
 
 In the <<ttt19,previous instalment>>, we looked at using `egrep` to search for a particular piece of text in a stream or file.
