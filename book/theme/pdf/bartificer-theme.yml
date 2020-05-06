@@ -7,22 +7,42 @@ font:
       italic: ubuntumono-italic.ttf
       bold: ubuntumono-bold.ttf
       bold_italic: ubuntumono-bold_italic.ttf
+    Roboto:
+      normal: roboto-normal.ttf
+      italic: roboto-italic.ttf
+      bold: roboto-bold.ttf
+      bold_italic: roboto-bold_italic.ttf
+    Noto Serif:
+      normal: GEM_FONTS_DIR/notoserif-regular-subset.ttf
+      bold: GEM_FONTS_DIR/notoserif-bold-subset.ttf
+      italic: GEM_FONTS_DIR/notoserif-italic-subset.ttf
+      bold_italic: GEM_FONTS_DIR/notoserif-bold_italic-subset.ttf
     M+ 1mn:
       normal: GEM_FONTS_DIR/mplus1mn-regular-subset.ttf
       bold: GEM_FONTS_DIR/mplus1mn-bold-subset.ttf
       italic: GEM_FONTS_DIR/mplus1mn-italic-subset.ttf
       bold_italic: GEM_FONTS_DIR/mplus1mn-bold_italic-subset.ttf
+bartificer:
+  accent-color: #00408d
+  base-color: #333333
+  link-color: #002FA7
+  base-font: Roboto
+  heading-font: UbuntuMono
 page:
   layout: portrait
 base:
-  font-color: #333333
-  font-family: Times-Roman
-  line-height-length: 17
-vertical-spacing: $base-line-height-length
+  font-color: $bartificer-base-color
+  # font-family: $bartificer-base-font
+  # font_size: 14
+  # line_height_length: 20
+  # font-size: 16
+  # line-height-length: 17
+  # line-height: $base-font-size * 1.5
+# vertical-spacing: $base-line-height-length
 heading:
-  font-color: #00408d
-  font-family: UbuntuMono
-link:
-  font-color: #002FA7
-outline-list:
-  indent: $base-font-size * 1.5
+  font-color: $bartificer-accent-color
+  font-family: $bartificer-heading-font
+# link:
+#   font-color: $bartificer-link-color
+# outline-list:
+#   indent: $base-font-size * 1.5
