@@ -1,5 +1,5 @@
 [[ttt28]]
-= TTT Part 28of 1 {longdash} Network Troubleshooting
+= TTT Part 28 of n {longdash} Network Troubleshooting
 include::variables.adoc[]
 
 In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.

@@ -1,5 +1,5 @@
 [[ttt16]]
-= TTT Part 16of 1 {longdash} Crossing the Streams
+= TTT Part 16 of n {longdash} Crossing the Streams
 include::variables.adoc[]
 
 In <<ttt15,the previous instalment>>, we introduced the concepts of streams and looked at how every process has references to three streams as part of their environment -- `STDIN`, `STDOUT` & `STDERR`.

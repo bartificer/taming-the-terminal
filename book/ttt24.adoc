@@ -1,5 +1,5 @@
 [[ttt24]]
-= TTT Part 24of 1 {longdash} Ethernet & ARP
+= TTT Part 24 of n {longdash} Ethernet & ARP
 include::variables.adoc[]
 
 In <<ttt23,the previous instalment>>, we took a big-picture look at how TCP/IP networking works.

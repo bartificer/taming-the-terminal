@@ -1,5 +1,5 @@
 [[ttt33]]
-= TTT Part 33of 1 {longdash} SSH 'Bookmarks'
+= TTT Part 33 of n {longdash} SSH 'Bookmarks'
 include::variables.adoc[]
 
 This is the final SSH instalment.

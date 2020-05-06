@@ -1,5 +1,5 @@
 [[ttt27]]
-= TTT Part 27of 1 {longdash} DNS
+= TTT Part 27 of n {longdash} DNS
 include::variables.adoc[]
 
 In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.

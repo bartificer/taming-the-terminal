@@ -1,5 +1,5 @@
 [[ttt05]]
-= TTT Part 5of 1 {longdash} File Permissions
+= TTT Part 5 of n {longdash} File Permissions
 include::variables.adoc[]
 
 In this instalment, it's time to make a start on one of the most important Unix/Linux concepts, file permissions.

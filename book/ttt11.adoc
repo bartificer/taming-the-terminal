@@ -1,5 +1,5 @@
 [[ttt11]]
-= TTT Part 11of 1 {longdash} Text Files
+= TTT Part 11 of n {longdash} Text Files
 include::variables.adoc[]
 
 

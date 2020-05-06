@@ -1,5 +1,5 @@
 [[ttt35]]
-= TTT Part 35of 1 {longdash} HTTP Commands
+= TTT Part 35 of n {longdash} HTTP Commands
 include::variables.adoc[]
 
 

@@ -1,5 +1,5 @@
 [[ttt06]]
-= TTT Part 6of 1 {longdash} More File Permissions
+= TTT Part 6 of n {longdash} More File Permissions
 include::variables.adoc[]
 
 In <<ttt05,the previous instalment>> of this series, we had a look at how standard Unix File Permissions worked.

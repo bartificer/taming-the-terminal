@@ -1,5 +1,5 @@
 [[ttt31]]
-= TTT Part 31of 1 {longdash} SSH File Transfers
+= TTT Part 31 of n {longdash} SSH File Transfers
 include::variables.adoc[]
 
 In <<ttt29,Part 29 of n>>, we learned how to use SSH to execute commands on a remote computer.

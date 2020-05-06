@@ -1,5 +1,5 @@
 [[ttt03]]
-= TTT Part 3of 1 {longdash} File Systems
+= TTT Part 3 of n {longdash} File Systems
 include::variables.adoc[]
 
 
