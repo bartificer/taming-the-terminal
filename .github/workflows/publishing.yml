@@ -3,8 +3,6 @@ on:
   push:
     branch:
       - master
-    tags:
-      - '*'
   schedule:
     - cron: '0 0 * * *'
 
