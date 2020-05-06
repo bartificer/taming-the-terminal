@@ -7,6 +7,11 @@ font:
       italic: ubuntumono-italic.ttf
       bold: ubuntumono-bold.ttf
       bold_italic: ubuntumono-bold_italic.ttf
+    M+ 1mn:
+      normal: GEM_FONTS_DIR/mplus1mn-regular-subset.ttf
+      bold: GEM_FONTS_DIR/mplus1mn-bold-subset.ttf
+      italic: GEM_FONTS_DIR/mplus1mn-italic-subset.ttf
+      bold_italic: GEM_FONTS_DIR/mplus1mn-bold_italic-subset.ttf
 page:
   layout: portrait
 base:
