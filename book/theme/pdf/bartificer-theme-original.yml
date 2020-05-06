@@ -1,0 +1,10 @@
+extends: default
+base:
+  font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+heading:
+  font-color: #00408d
+  font-family: "Ubuntu Mono", mono
+link:
+  font-color: #007bff;
+literal:
+  font-color: #e83e8c;
