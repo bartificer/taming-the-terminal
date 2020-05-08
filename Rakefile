@@ -28,7 +28,9 @@ namespace :book do
 
       # ePub specific parameters
       epubparams =
-      "--attribute pygments-style='manni'          \
+      "                                            \
+      --attribute pygments-style='manni'           \
+      --attribute pygments-linenums-mode='inline'  \
       --out-file='ttt.epub'                        \
       "
 
@@ -57,7 +59,8 @@ namespace :book do
     #   puts " -- Mobi output at ttt.mobi"
 
       puts "Converting to PDF... (this one takes a while)"
-      `bundle exec asciidoctor-pdf #{params} #{pdfparams} #{book_dir}/ttt-spine.adoc 2>/dev/null`
+      `bundle exec asciidoctor-pdf #{params} #{pdfparams} #{book_dir}/ttt-spine.adoc`
+      # 2>/dev/null`
       puts " -- PDF output at ttt.pdf"
 
     end
