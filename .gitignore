@@ -2,16 +2,7 @@ sourcefiles
 convert2
 book/output
 .ruby-version
-book-original
-testbook
 contributors.txt
 output
-book/test-legacy.adoc
-book/test-new.adoc
-book/testpage.adoc
-book/ttt-spine-legacy.adoc
-Rakefile-test
-scripts/bashex.py
-scripts/pygments_init.rb
 node_modules
-todo.tasks
+archive/*
