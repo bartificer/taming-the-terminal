@@ -4,9 +4,11 @@ Bart Busschots
 :docinfo:
 :doctitle: Taming the Terminal
 :lang: en_gb
-:source-highlighter: pygments
+:source-highlighter: rouge
 :rouge-linenums-mode: inline
+:rouge-style: github
 :pygments-linenums-mode: inline
+:pygments-style: manni
 :pygments-css: class
 :experimental:
 :table-stripes: even

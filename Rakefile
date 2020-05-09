@@ -30,7 +30,9 @@ namespace :book do
 
       # ePub specific parameters
       epubparams =
-      "--attribute pygments-style='manni'          \
+      "                                            \
+      --attribute pygments-style='manni'           \
+      --attribute pygments-linenums-mode='inline'  \
       --out-file='ttt.epub'                        \
       "
 
