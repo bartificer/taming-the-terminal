@@ -56,7 +56,7 @@ It's ugly and hard to read `*` all over the place, so my suggestion is to get in
 
 Let's start with a really simple example, you know the full name of the file you're looking for, but, you have no idea where it is.
 This is something you often come across when someone asks you to take a look at their server.
-You know you need to edit, say, `php.ini`, but you have no idea where their version of PHP is installed (this is very common when using web server packages for OS X like MAMP or XAMPP), the command below will find all files called `php.ini` anywhere in your computer:
+You know you need to edit, say, `php.ini`, but you have no idea where their version of PHP is installed (this is very common when using web server packages for OS X like MAMP or XAMPP). The command below will find all files called `php.ini` anywhere in your computer:
 
 [source,shell]
 ----
@@ -115,7 +115,7 @@ Firstly, unlike with `-name`, `-regex` and `-iregex` do not match against just t
 It's important that you remember this when constructing your patterns, or you'll get unexpected results, either false positives or false negatives.
 
 Secondly, by default `-regex` and `-iregex` use Basic POSIX Regular Expressions (BREs), rather than the newer Extended POSIX Regular Expressions (EREs) we learned about in instalments <<ttt17,17>> and <<ttt18,18>>.
-Don't worry, you can make find use EREs, you just need to add a `-E` flag to the start of the command (before the path).
+Don't worry, you can make `find` use EREs, you just need to add a `-E` flag to the start of the command (before the path).
 
 Given our knowledge of regular expressions, we could re-write our JPEG search as follows:
 
