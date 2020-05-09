@@ -295,7 +295,7 @@ Is actually interpreted as:
 find ~/Music/MyMP3s -type f -and -not -iname '*.mp3' -and -not -name '.*'
 ----
 
-We can even take things a step further and add sub-expressions using `(` and `)` to start and end each subexpression (they can even be nested).
+We can even take things a step further and add subexpressions using `(` and `)` to start and end each subexpression (they can even be nested).
 Note that `(` and `)` have meaning in BASH, so they need to be either escaped or quoted.
 Since I find escaping makes everything hard to read and understand, I recommend always quoting these operators.
 
