@@ -79,7 +79,7 @@ namespace :book do
       `rsync -r --delete book/assets/* output/assets/`
 
       puts "\nConverting to EPub..."
-      `bundle exec asciidoctor-epub3 #{buildParams(epubParams)} #{book_dir}/ttt-epub-spine.adoc`
+      `bundle exec asciidoctor-epub3 #{buildParams(epubParams)} #{book_dir}/ttt-spine.adoc`
       puts " -- Epub output at #{epubParams['destination-dir']}/#{epubParams['out-file']}"
 
       # puts "Validating ePub"
