@@ -1,4 +1,4 @@
-extends: default
+extends: default-with-fallback-font
 font:
   merge: true
   catalog:
@@ -12,6 +12,11 @@ font:
       italic: roboto-italic.ttf
       bold: roboto-bold.ttf
       bold_italic: roboto-bold_italic.ttf
+    Noto Sans:
+      normal: notosans-normal.ttf
+      italic: notosans-italic.ttf
+      bold: notosans-bold.ttf
+      bold_italic: notosans-bold_italic.ttf
     Noto Serif:
       normal: GEM_FONTS_DIR/notoserif-regular-subset.ttf
       bold: GEM_FONTS_DIR/notoserif-bold-subset.ttf
@@ -22,27 +27,26 @@ font:
       bold: GEM_FONTS_DIR/mplus1mn-bold-subset.ttf
       italic: GEM_FONTS_DIR/mplus1mn-italic-subset.ttf
       bold_italic: GEM_FONTS_DIR/mplus1mn-bold_italic-subset.ttf
+  fallbacks: GEM_FONTS_DIR/mplus1p-regular-fallback.ttf
 bartificer:
   accent-color: #00408d
   base-color: #333333
   link-color: #002FA7
-  base-font: Roboto
+  base-font: Noto Sans
   heading-font: UbuntuMono
+  literal-color: #e83e8c;
 page:
   layout: portrait
+  margin: [2cm, 2cm, 2cm, 2cm]
+  # margin_inner and margin_outer keys are used for recto/verso print margins when media=prepress
+  margin_inner: 2.0cm
+  margin_outer: 1.5cm
+  size: A4
 base:
   font-color: $bartificer-base-color
-  # font-family: $bartificer-base-font
-  # font_size: 14
-  # line_height_length: 20
-  # font-size: 16
-  # line-height-length: 17
-  # line-height: $base-font-size * 1.5
-# vertical-spacing: $base-line-height-length
+  font-family: $bartificer-base-font
 heading:
   font-color: $bartificer-accent-color
   font-family: $bartificer-heading-font
 # link:
 #   font-color: $bartificer-link-color
-# outline-list:
-#   indent: $base-font-size * 1.5

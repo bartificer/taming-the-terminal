@@ -1,0 +1,8 @@
+extends: bartificer
+page:
+  layout: portrait
+  margin: [1in, 1in, 1in, 1in]
+  # margin_inner and margin_outer keys are used for recto/verso print margins when media=prepress
+  margin_inner: 1in
+  margin_outer: 0.75in
+  size: letter
