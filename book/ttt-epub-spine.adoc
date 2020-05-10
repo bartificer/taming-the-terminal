@@ -3,7 +3,7 @@ Bart Busschots
 :doctype: book
 :docinfo:
 :doctitle: Taming the Terminal
-:lang: en_gb
+:lang: en-GB
 :source-highlighter: rouge
 :rouge-linenums-mode: inline
 :rouge-style: github

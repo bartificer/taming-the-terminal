@@ -3,7 +3,7 @@ Bart Busschots
 :doctype: book
 :docinfo: shared
 :doctitle: Taming the Terminal
-:lang: en_gb
+:lang: en-GB
 :copyright: CC-BY-NC-ND 4.0
 :front-cover-image: assets/cover3.png
 :pagenums:
