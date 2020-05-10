@@ -33,7 +33,7 @@ You can also {url-mp3}/TTT06MoreFilePermissions/TTT_06_More_File_Permissions.mp3
 As a reminder, last time we learned that every file and folder in a Unix/Linux file system has three pieces of metadata associated with it that control the standard Unix file permissions that apply to that file or folder. Files have an owner (a user), a group, and a Unix File Permission Mask associated with them, and all three of these pieces of information can be displayed with `ls -l`.
 We'll be altering each of these three pieces of metadata in this instalment.
 
-== Altering Unix File Permissions -- Setting the File Ownership
+== Altering Unix File Permissions {longdash} Setting the File Ownership
 
 The command to change the user that owns one or more files or folders is `chown` (change owner).
 The command takes a minimum of two arguments, the username to change the ownership to, and one or more files or folders to modify.
