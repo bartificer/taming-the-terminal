@@ -7,11 +7,6 @@ font:
       italic: ubuntumono-italic.ttf
       bold: ubuntumono-bold.ttf
       bold_italic: ubuntumono-bold_italic.ttf
-    Roboto:
-      normal: roboto-normal.ttf
-      italic: roboto-italic.ttf
-      bold: roboto-bold.ttf
-      bold_italic: roboto-bold_italic.ttf
     Noto Sans:
       normal: notosans-normal.ttf
       italic: notosans-italic.ttf
