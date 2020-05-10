@@ -1,4 +1,4 @@
-ifdef::ebook-format[:leveloffset: +1]
+ifndef::backend-html[:leveloffset: +1]
 
 include::colophon.adoc[]
 

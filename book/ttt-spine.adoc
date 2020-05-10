@@ -12,11 +12,12 @@ Bart Busschots
 :experimental:
 :table-stripes: even
 :toc: left
-:toclevels: 0
 :pagenums:
 :copyright: CC-BY-NC-ND 4.0
 :icons: font
 :front-cover-image: assets/cover3.png
+ifndef::backend-pdf[:toclevels: 0]
+ifdef::backend-pdf[:toclevels: 1]
 // Define unicode for Apple Command key.
 :commandkey: &#8984;
 
