@@ -28,7 +28,7 @@ You can also {url-mp3}/TTT20FileSearches/TTT_20_File_Searches.mp3[download the M
 
 == The Basics of the `find` Command
 
-Regardless of the criteria you wish to use, the basic form of the `find` command is always the same, you first need to tell it where to look, then you tell it what criteria to use when searching:
+Regardless of the criteria you wish to use, the basic form of the indexterm2:[`find`] command is always the same, you first need to tell it where to look, then you tell it what criteria to use when searching:
 
 [source,shell]
 ----
