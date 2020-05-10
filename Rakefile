@@ -37,8 +37,9 @@ namespace :book do
       # ePub specific parameters
       epubParams = paramsHash.merge({
         'attribute' => paramsAttr.merge({
-        'pygments-style' => 'manni',
-        'pygments-linenums-mode' => 'inline'
+          # 'ebook-validate' => '',
+          'pygments-style' => 'manni',
+          'pygments-linenums-mode' => 'inline'
         }),
         'out-file' => 'ttt.epub'
       })
@@ -80,6 +81,9 @@ namespace :book do
       puts "\nConverting to EPub..."
       `bundle exec asciidoctor-epub3 #{buildParams(epubParams)} #{book_dir}/ttt-epub-spine.adoc`
       puts " -- Epub output at #{epubParams['destination-dir']}/#{epubParams['out-file']}"
+
+      # puts "Validating ePub"
+      # `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']}`
 
     #   puts "Converting to Mobi (kf8)..."
     #   `bundle exec asciidoctor-epub3 #{params} -a ebook-format=kf8 #{book_dir}/ttt-spine.adoc`
