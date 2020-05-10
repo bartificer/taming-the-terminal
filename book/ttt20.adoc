@@ -193,19 +193,19 @@ The following units are supported:
 | PiB = 1024TiB (notice the case -- must be upper!)
 |===
 
-Note that this command uses the old 1024-based sizes, not the 1,000 based https://en.wikipedia.org/wiki/International_System_of_Units[SI units] used by OS X and hard drive manufacturers (and scientists and engineers and anyone who understands what kilo and mega etc.
+Note that this command uses the old 1024-based sizes, not the 1,000 based https://en.wikipedia.org/wiki/International_System_of_Units[SI units] used by OS X and hard drive manufacturers (and scientists and engineers and anyone who understands what kilo and mega, etc.
 actually mean).
 
 Also, like with `-ctime`, if you don't prefix the number with a symbol, only files EXACTLY the size specified will be returned.
 
-For example, the following command shows all files in your downloads folder that are bigger than 200MiB in size:
+For example, the following command shows all files in your Downloads folder that are bigger than 200MiB in size:
 
 [source,shell]
 ----
 find ~/Downloads -size +200M
 ----
 
-Similarly, the following command shows all files in your documents folder smaller than 1MiB in size:
+Similarly, the following command shows all files in your Downloads folder smaller than 1MiB in size:
 
 [source,shell]
 ----
@@ -295,7 +295,7 @@ Is actually interpreted as:
 find ~/Music/MyMP3s -type f -and -not -iname '*.mp3' -and -not -name '.*'
 ----
 
-We can even take things a step further and add sub-expressions using `(` and `)` to start and end each subexpression (they can even be nested).
+We can even take things a step further and add subexpressions using `(` and `)` to start and end each subexpression (they can even be nested).
 Note that `(` and `)` have meaning in BASH, so they need to be either escaped or quoted.
 Since I find escaping makes everything hard to read and understand, I recommend always quoting these operators.
 
