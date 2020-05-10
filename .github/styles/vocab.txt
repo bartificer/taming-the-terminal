@@ -76,6 +76,7 @@ scp
 Smultron
 spacebar
 subexpression
+subexpressions
 subnet
 subnets
 subnetworks
