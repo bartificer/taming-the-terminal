@@ -270,11 +270,11 @@ cat findCombinedOutput.txt
 
 *IMPORTANT:* notice the counter-intuitive ordering of the above command, although the redirect happens first, it MUST be specified at the end of the command or it will not work.
 
-ifdef::backend-html[pass:[<!-- vale Vale.Repetition = NO -->]]
+pass:[<!-- vale Vale.Repetition = NO -->]
 
 There is much much more than can be done with streams, but, this is all most people are likely to need in their day-to-day life on the command line, so we'll stop here before we confuse everyone too much 🙂
 
-ifdef::backend-html[pass:[<!-- vale Vale.Repetition = YES -->]]
+pass:[<!-- vale Vale.Repetition = YES -->]
 
 == Conclusions
 

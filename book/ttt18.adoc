@@ -346,12 +346,12 @@ We can use `ifconfig` and `egrep` again to find all the IP addresses our compute
 ifconfig | egrep '\b\d{1,3}([.]\d{1,3}){3}\b'
 ----
 
-ifdef::backend-html[pass:[<!-- vale Vale.Repetition = NO -->]]
+pass:[<!-- vale Vale.Repetition = NO -->]
 
 So, let's go right back to the examples we used at the very very start of all this.
 Firstly, to the RE for domain names:
 
-ifdef::backend-html[pass:[<!-- vale Vale.Repetition = YES -->]]
+pass:[<!-- vale Vale.Repetition = YES -->]
 
 [source,shell]
 ----
