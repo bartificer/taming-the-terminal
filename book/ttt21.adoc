@@ -3,8 +3,8 @@
 include::variables.adoc[]
 
 This is the third and final instalment on searching.
-In the <<ttt19,first instalment>>, we learned how to search for text within files and streams using `egrep`.
-In <<ttt20,the second>> we learned to search for files based on all sorts of criteria with the `find` command.
+In the <<ttt19,first instalment>> on `find`, we learned how to search for text within files and streams using `egrep`.
+In <<ttt20,the second>>, we learned to search for files based on all sorts of criteria with the `find` command.
 
 In this final instalment, we'll start by looking at one last feature of `find`, its ability to execute commands on the files it finds.
 Then we'll end by looking at an OS X-only alternative to `find` that makes use of the Spotlight search index to really speed up searches.
@@ -32,9 +32,9 @@ You can also {url-mp3}/TTT21MoreSearching/TTT_21_More_Searching.mp3[download the
 
 The final trick `find` has up its sleeves is that it can be used to execute a given command on all the files it finds.
 Depending on the command you choose to execute, this could be VERY dangerous indeed, so tread carefully!
-Definitely think twice before using `find`'`s execute feature to delete files!
+Definitely think twice before using the execute feature in `find`å to delete files!
 
-To execute commands on the results of find you need to use the `-exec` flag in conjunction with the `{}` flag and either the `';'` or `'+'` flags.
+To execute commands on the results of `find` you need to use the `-exec` flag in conjunction with the `{}` flag and either the `';'` or `'+'` flags.
 The reason there are two end flags is that there are two modes in which `find` can execute commands.
 It can either execute the same command once on each file that was found or, it can execute the given command once only with all the found files as arguments.
 
@@ -66,7 +66,7 @@ Perl scripts have the extension `.pl`, so using what we learned in the previous 
 find search_path -name '*.pl'
 ----
 
-If we assume all our Perl files will be in a folder called `scripts` in our Documents folder, we can put all this together to find and chown all Perl files in a single command like so:
+If we assume all our Perl files will be in a folder called `scripts` in our Documents folder, we can put all this together to find and `chmod` all Perl files in a single command like so:
 
 [source,shell]
 ----
@@ -75,7 +75,7 @@ find ~/Documents/scripts -name '*.pl' -exec chmod 755 {} ';'
 
 === Executing A Command Once with All Files/Folders Found as Arguments
 
-Sometimes we may want to run a command once with all the found files and/or folders as arguments, you can do that with the following construct:
+Sometimes we may want to run a command once with all the found files and/or folders as arguments. You can do that with the following construct:
 
 [source,shell]
 ----
@@ -126,7 +126,7 @@ One final example that might depress you -- the command below tells you how much
 find ~/Downloads -size +500M -exec du -ch {} '+'
 ----
 
-If you are VERY careful you can `use find` -exec to do things like clean up cache folders by deleting anything older than a given amount of time, and other cool and powerful things.
+If you are VERY careful you can use `find -exec` to do things like clean up cache folders by deleting anything older than a given amount of time, and other cool and powerful things.
 But -- ALWAYS be careful when using -exec to invoke a command that alters or destroys files or folders.
 My approach is to run the command without the `-exec` first, to be sure ONLY the files and folders you expected to be found are being returned.
 
