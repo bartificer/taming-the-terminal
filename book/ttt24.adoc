@@ -49,7 +49,7 @@ sudo tcpdump -nneq arp
 
 As we discussed in the previous instalment, the bottom of the four layers in the TCP/IP model is the _Link Layer_.
 Its function is to move a single packet of data from one device connected to a network to another device connected to the same network.
-Within our homes, we use Ethernet to provide our layer 1 connectivity.
+Within our homes, we use Ethernet to provide our Layer 1 connectivity.
 We use two different implementations of Ethernet -- we use Ethernet over copper wire (usually called Ethernet cables), and we use Ethernet over radio waves, commonly known as WiFi.
 
 The Ethernet protocol addresses hosts on the network by their Media Access Control address, or MAC address.
@@ -163,13 +163,13 @@ Because switches intelligently repeat Ethernet packets, they are much more effic
 Thankfully, switches are ubiquitous today, and it's almost impossible to find a hub.
 
 There is a third kind of network device that we should also mention in this conversation -- the _router_.
-A router is a device that has a layer 1 connection to two or more different networks.
-It uses the layer 2 IP protocol to intelligently move packets between those networks.
+A router is a device that has a Layer 1 connection to two or more different networks.
+It uses the Layer 2 IP protocol to intelligently move packets between those networks.
 
 Our home routers cause a lot of confusion because they are actually hybrid devices happen to contain a router.
 The best way to think of a home router is as a box containing two or three component devices -- a router to pass packets between your home network and the internet, an Ethernet switch that forms the heart of your home network, and, optionally, a wireless access point, which is the wifi-equivalent of an Ethernet hub.
 Importantly, if it's present, the wireless access point is connected to the Ethernet switch, ensuring that a single Ethernet network exists on both the copper and the airwaves.
-This means that an Ethernet packet can be sent from a wired network card to a wireless network card in a single layer 1 hop -- i.e.
+This means that an Ethernet packet can be sent from a wired network card to a wireless network card in a single Layer 1 hop -- i.e.
 Layer 2 is not needed to get a single packet from a phone on your wifi to a desktop computer on your wired Ethernet.
 Confusingly, while this single packet will pass through a device you *call* a router, it will *not* be routed -- it will go nowhere near the router inside your home router, it will stay on the switch and the wireless access points inside your home router.
 The diagram below illustrates the typical setup:
@@ -184,7 +184,7 @@ As a quick reminder, see the diagram below from the previous instalment:
 
 image::wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
 
-Within our LAN, the layer 1 protocol IP uses to move a packet from one device on our LAN to another device on our LAN is Ethernet.
+Within our LAN, the Layer 1 protocol IP uses to move a packet from one device on our LAN to another device on our LAN is Ethernet.
 Ethernet can only move a packet from one MAC address to another, and IP moves packets from one IP address to another, so how does the IP protocol figure out what MAC address matches to what IP address so it knows where to ask Ethernet to send the packet?
 
 The Address Resolution Protocol, or ARP, is an Ethernet protocol that maps IP addresses to MAC addresses.
@@ -261,6 +261,6 @@ If it didn't have such detrimental effects on all our security, the naive innoce
 == Conclusions
 
 This is the last we'll see of Layer 1 in this series.
-In the next instalment, we'll be moving up the stack layer 2 and the IP protocol -- the real work-horse of the internet.
+In the next instalment, we'll be moving up the stack Layer 2 and the IP protocol -- the real work-horse of the internet.
 In particular, we'll be tackling one of the single most confusing, and most critical, networking concepts -- that of the IP subnet.
 It's impossible to effectively design or troubleshoot home networks without understanding subnets, and yet they are a mystery to so many.

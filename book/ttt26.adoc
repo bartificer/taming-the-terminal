@@ -55,7 +55,7 @@ Obviously, manually configured network settings are just not practical in the mo
 The solution was to develop a protocol that would allow computers to automatically discover their own settings.
 
 The first attempt at developing such a protocol was https://en.wikipedia.org/wiki/Reverse_Address_Resolution_Protocol[RARP] (the Reverse ARP Protocol), which was published in 1984.
-RARP was a link-layer protocol (layer 1 in the TCP/IP model), which meant that the RARP server had to be on the same Ethernet network as the clients.
+RARP was a link-layer protocol (Layer 1 in the TCP/IP model), which meant that the RARP server had to be on the same Ethernet network as the clients.
 This also meant that organisations with multiple subnets needed multiple RARP servers.
 RARP was a short-lived experiment, being superseded with the release of https://en.wikipedia.org/wiki/Bootstrap_Protocol[BOOTP] (the Bootstrap Protocol) in 1985.
 BOOTP was a significant step forward, introducing the concept of a relay agent that could forward BOOTP requests from multiple subnets to a single centralised BOOTP server.
@@ -68,7 +68,7 @@ As computers come and go, IP addresses are leased to those computers for a set a
 
 == The Chicken & the Egg
 
-As perverse as it sounds, DHCP is an Application Layer protocol (layer 4 in the TCP/IP model) that's used to configure a computer's IP settings (layer 2 in the TCP/IP model).
+As perverse as it sounds, DHCP is an Application Layer protocol (Layer 4 in the TCP/IP model) that's used to configure a computer's IP settings (Layer 2 in the TCP/IP model).
 DHCP uses UDP, which in turn uses IP.
 How can a protocol that relies on the IP protocol be used to configure the computer's IP settings?
 

@@ -290,7 +290,7 @@ They only become visible when all the caches between the user and the authoritat
 
 == The DNS Protocol
 
-DNS is a layer 4 protocol that sits on top of UDP.
+DNS is a Layer 4 protocol that sits on top of UDP.
 Each query consists of a single packet, as does each reply.
 This use of single packets makes DNS very efficient, but it limits the amount of data that can be contained in a reply, and, it means that requests and replies can get silently dropped because UDP does not guarantee delivery of every packet.
 Because of this DNS resolvers sometimes have to re-try their requests after a certain timeout value.
