@@ -11,7 +11,7 @@ As a quick reminder, the most important points were:
 ** The Internet Layer -- lets computers on different networks send single packets of data to each other
 ** The Transport Layer -- lets computers send meaningful streams of data between each other
 ** The Application Layer -- where all the networked apps we use live
-* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, Ethernet to Ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
 Since that big-picture introduction we've looked at the first three layers in detail, and we've also looked at two layer-4 protocols that function as part of the network infrastructure -- DHCP for the automatic discovery of network settings, and DNS for mapping domain names to IP addresses.
 Later in the series, we will move on to look at some more layer 4 protocols, but before we do I want to consolidate what we've learned so far into a strategy for debugging network problems.
@@ -90,7 +90,7 @@ en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
 	inet6 fe80::6a5b:35ff:fe97:f184%en0 prefixlen 64 scopeid 0x4
 	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
 	nd6 options=1<PERFORMNUD>
-	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-ethernet>)
+	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-Ethernet>)
 	status: active
 bart-iMac2013:~ bart$
 ----
@@ -110,7 +110,7 @@ You can get more information by adding the `-v` flag (for verbose).
 
 Putting it all together, the command to run when verifying that there is basic network connectivity is `ifconfig -uv`.
 
-The following sample output shows one active ethernet network connection, *en0*, and one inactive wifi connection (en1).
+The following sample output shows one active Ethernet network connection, *en0*, and one inactive wifi connection (en1).
 The important parts of the output have been highlighted for clarity:
 
 [source,shell,highlight='1,20,21,30,31']
@@ -133,7 +133,7 @@ en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500 index 4
 	inet6 fe80::6a5b:35ff:fe97:f184%en0 prefixlen 64 scopeid 0x4
 	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
 	nd6 options=1<PERFORMNUD>
-	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-ethernet>)
+	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-Ethernet>)
 	status: active
 	type: Ethernet
 	link quality: 100 (good)
@@ -157,7 +157,7 @@ If all is well, there should be two network interfaces active, the loopback inte
 === Possible Problems/Solutions
 
 * No interface is active -- turn one on in the Networks System Preference Pane
-* If using ethernet, the cable could be bad, or the router/switch it is plugged into could be bad -- check for a link light on the router/switch
+* If using Ethernet, the cable could be bad, or the router/switch it is plugged into could be bad -- check for a link light on the router/switch
 * The network card could be broken (unlikely)
 
 == Step 2 -- Check Basic IP Configuration
@@ -183,7 +183,7 @@ en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500 index 4
 	inet6 fe80::6a5b:35ff:fe97:f184%en0 prefixlen 64 scopeid 0x4
 	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
 	nd6 options=1<PERFORMNUD>
-	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-ethernet>)
+	media: autoselect (1000baseT <full-duplex,flow-control,energy-efficient-Ethernet>)
 	status: active
 	type: Ethernet
 	link quality: 100 (good)
@@ -379,7 +379,7 @@ If the home router provided by my ISP were to be down I would expect the trace t
 
 * If there is not even connectivity as far as the default gateway then either the network settings are wrong, or there is a hardware problem with the LAN
 * If there is packet loss when pinging the default gateway, then either there is congestion on the LAN, or there is a hardware problem -- perhaps a faulty switch/router or perhaps a faulty network card.
-If using ethernet it could also be a damaged ethernet cable, and if using wifi it could be low signal strength, congestion of the channel because too many of your neighbours are using the same channel or RF interference of some kind.
+If using Ethernet it could also be a damaged Ethernet cable, and if using wifi it could be low signal strength, congestion of the channel because too many of your neighbours are using the same channel or RF interference of some kind.
 * If the ping to the public IP does not respond at all then either the server you are pinging is down, or, more likely, your connection to the internet is down.
 `traceroute` may help you prove it really is your ISP that is the problem before you spend an eternity on hold with them!
 

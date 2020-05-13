@@ -11,7 +11,7 @@ As a quick reminder, the most important points were:
 ** The Internet Layer -- lets computers on different networks send single packets of data to each other
 ** The Transport Layer -- lets computers send meaningful streams of data between each other
 ** The Application Layer -- where all the networked apps we use live
-* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, Ethernet to Ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
 In <<ttt25,the previous instalment>>, we looked at how IP subnet works.
 The key takeaway was that a computer needs a minimum of three settings correctly configured to be able to participate in an IP network: an IP address, a subnet mask, and a default gateway (the IP address of the router providing access outside the subnet).
@@ -55,7 +55,7 @@ Obviously, manually configured network settings are just not practical in the mo
 The solution was to develop a protocol that would allow computers to automatically discover their own settings.
 
 The first attempt at developing such a protocol was https://en.wikipedia.org/wiki/Reverse_Address_Resolution_Protocol[RARP] (the Reverse ARP Protocol), which was published in 1984.
-RARP was a link-layer protocol (layer 1 in the TCP/IP model), which meant that the RARP server had to be on the same ethernet network as the clients.
+RARP was a link-layer protocol (layer 1 in the TCP/IP model), which meant that the RARP server had to be on the same Ethernet network as the clients.
 This also meant that organisations with multiple subnets needed multiple RARP servers.
 RARP was a short-lived experiment, being superseded with the release of https://en.wikipedia.org/wiki/Bootstrap_Protocol[BOOTP] (the Bootstrap Protocol) in 1985.
 BOOTP was a significant step forward, introducing the concept of a relay agent that could forward BOOTP requests from multiple subnets to a single centralised BOOTP server.
@@ -74,17 +74,17 @@ How can a protocol that relies on the IP protocol be used to configure the compu
 
 The reason DHCP can work is that even an un-configured IP stack can send and receive so-called _broadcast packets_.
 ARP maps the IP address `255.255.255.255` to the MAC address `FF:FF:FF:FF:FF:FF`.
-As we learned in <<ttt24,Instalment 24>>, `FF:FF:FF:FF:FF:FF` is a special MAC address that's used to send a packet to every device on an ethernet network.
+As we learned in <<ttt24,Instalment 24>>, `FF:FF:FF:FF:FF:FF` is a special MAC address that's used to send a packet to every device on an Ethernet network.
 Devices with an un-configured IP stack can send and receive IP (and hence UDP) packets with a source address of `0.0.0.0` and a destination address of `255.255.255.255`.
 The DHCP protocol makes liberal use of these broadcast packets.
 
 == Prerequisites
 
-For DHCP to work on a given ethernet network that network must contain one of two things -- a DHCP server, or a DHCP relay agent.
+For DHCP to work on a given Ethernet network that network must contain one of two things -- a DHCP server, or a DHCP relay agent.
 We've already mentioned that so-called home routers are not actually routers, but boxes containing many components.
-We already know that these devices contain a router component, an ethernet switch component, and a wireless access point component, but they actually contain more components than that.
+We already know that these devices contain a router component, an Ethernet switch component, and a wireless access point component, but they actually contain more components than that.
 Another one of the components contained within the little boxes we refer to as home routers is a DHCP server.
-This means that on our home networks we have a DHCP server directly connected to our ethernet network.
+This means that on our home networks we have a DHCP server directly connected to our Ethernet network.
 
 On larger networks, like those you'd find in corporations or educational institutions you won't find home routers powering the network.
 Instead, what you'll find is that the managed switches and routers used by these organisations contain DHCP relay agents, which relay DHCP requests from all the different subnets on the network to a single central cluster of DHCP servers (usually with redundancy built-in in case a server crashes).
@@ -336,7 +336,7 @@ Network administrators can also protect their users by monitoring the source add
 
 The two critical pieces of information to take away from this instalment are that DHCP is used to automatically configure the IP stack on our computers and that a healthy DHCP transaction takes the following form: DISCOVER, OFFER, REQUEST, ACK.
 
-In the previous two instalments, we learned how ethernet and IP provide the basic networking functionality our computers need to communicate.
+In the previous two instalments, we learned how Ethernet and IP provide the basic networking functionality our computers need to communicate.
 In this instalment, we've seen how our home routers use the DHCP protocol to automatically configure the IP settings on our devices.
 In the next instalment, we'll learn how DNS allows us, humans, to ignore IP addresses while surfing the web, sending emails, playing games, and so much more.
 

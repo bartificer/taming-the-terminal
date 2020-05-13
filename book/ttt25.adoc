@@ -11,9 +11,9 @@ As a quick reminder, the most important points were:
 ** The Internet Layer -- lets computers on different networks send single packets of data to each other
 ** The Transport Layer -- lets computers send meaningful streams of data between each other
 ** The Application Layer -- where all the networked apps we use live
-* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, Ethernet to Ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
-In <<ttt24,the previous instalment>>, we focused on the lowest of the four layers, the link layer, and looked at how ethernet and ARP work.
+In <<ttt24,the previous instalment>>, we focused on the lowest of the four layers, the link layer, and looked at how Ethernet and ARP work.
 In this instalment, we'll move one layer up the stack and take a closer look at the IP protocol.
 A concept absolutely central to IP's operation is that of related groups of IP addresses known as IP Subnetworks or just subnets.
 This is the concept we'll be focusing on in this instalment.
@@ -78,17 +78,17 @@ Additionally, there are two other special ranges of IPs you may encounter:
 
 == Routing Packets
 
-Unlike ethernet, the IP protocol can send packets across different networks.
+Unlike Ethernet, the IP protocol can send packets across different networks.
 The act of moving a packet through different networks from source to destination is known as _routing_.
 The heavy-lifting in routing, figuring out a route through the maze of interconnected networks that make up the internet, is done by routers, and is beyond the scope of this series.
 However, each and every device that speaks IP needs to make some simple routing decisions.
 Fundamentally our computers have to answer one simple routing question _"`is the destination IP address for this packet on my local network, or is it on a different network?`"_.
 
-If your computer determines that the destination IP address is on the local network, then it looks up the MAC address for the destination IP using ARP (as described in <<ttt24,the previous instalment>>) and sends the packet directly to its destination using ethernet.
+If your computer determines that the destination IP address is on the local network, then it looks up the MAC address for the destination IP using ARP (as described in <<ttt24,the previous instalment>>) and sends the packet directly to its destination using Ethernet.
 
 On the other hand, if your computer determines that the destination IP is not on your local network, then it must send the packet to your router for processing.
 To do this your computer must know the IP address of your router, and, it must find your router's MAC address using ARP.
-Once your computer has that information it sends the packet to your router using ethernet.
+Once your computer has that information it sends the packet to your router using Ethernet.
 Your router then sends the packet on to your ISP's router which will send it on its way across the internet.
 
 At this stage, we know that for your computer to work on an IP network it must have an IP address, and it must know the IP address of the router it should use to send remote packets on their way.
@@ -99,9 +99,9 @@ The key to answering that question is IP subnets.
 
 When we say that a device must figure out whether or not a packet's destination IP is local or not, what we really mean is that it must determine whether or not the destination IP is in the same subnet.
 
-A subnet is a collection of similar IP addresses that share a single ethernet network.
-In other words, every device on a subnet must be able to send ethernet packets to every other device on the same subnet.
-There is not a one-to-one mapping between ethernet networks and IP subnets though, so while a subnet can't be spread over multiple ethernet networks, one ethernet network can host multiple IP subnets.
+A subnet is a collection of similar IP addresses that share a single Ethernet network.
+In other words, every device on a subnet must be able to send Ethernet packets to every other device on the same subnet.
+There is not a one-to-one mapping between Ethernet networks and IP subnets though, so while a subnet can't be spread over multiple Ethernet networks, one Ethernet network can host multiple IP subnets.
 Having said that, in reality, the mapping usually is one-to-one, especially within our homes.
 
 Note that when people talk about a _Local Area Network_ or LAN, they are often referring to an IP subnet.
@@ -453,12 +453,12 @@ Imagine you have half of your devices on one subnet, and half on another -- thos
 You think they are all on the same network because they are all in your home, and all eventually connect back to your internet router, so you have no idea why something that should just work is just refusing to work!
 
 It's actually very easy to accidentally break up your network.
-Imagine you start with the basic network setup we described last week, you have one home router which connects you to the internet, and provides you with an ethernet switch and a wireless access point:
+Imagine you start with the basic network setup we described last week, you have one home router which connects you to the internet, and provides you with an Ethernet switch and a wireless access point:
 
 image::ttt25/HomeRouter.png[Home Router]
 
 This is working quite well, but you have terrible wifi reception in the back bedroom, so you buy another wireless router, and plug it in.
-That device, like your home router, is probably three devices in one, a router, an ethernet switch, and a wireless access point, that means that depending on your configuration, you can end up with one big IP subnet in the house, or, with two separate IP subnets.
+That device, like your home router, is probably three devices in one, a router, an Ethernet switch, and a wireless access point, that means that depending on your configuration, you can end up with one big IP subnet in the house, or, with two separate IP subnets.
 The diagrams below show two possible configurations with two home routers -- one with a single IP Subnet, the other with two separate subnets.
 
 === Good -- A Single Subnet
