@@ -143,7 +143,7 @@ open ~/.bash_profile -a /System/Applications/TextEdit.app/
 ----
 
 Because using a text editor is a common thing to want to do, `open` supports a shortcut especially for opening files in TextEdit.
-Rather than using `-a /Applications/TextEdit.app/`, you can just use `-e` instead, so we could re-write the previous command as:
+Rather than using `-a System/Applications/TextEdit.app/`, you can just use `-e` instead, so we could re-write the previous command as:
 
 [source,shell]
 ----
