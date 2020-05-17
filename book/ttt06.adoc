@@ -135,7 +135,7 @@ Each ACL associated with a file is numbered, and the numbering starts from 0.
 The ACLs read as quite Englishy, so you should be able to figure out what they mean just by looking at them.
 As an example, let's have a look at the extended permissions on OS X home directories:
 
-[source,shell,linenums]
+[source,console?prompt=bart$,linenums]
 ----
 bart-imac:~ bart$ ls -le /Users
 total 0
@@ -202,7 +202,7 @@ Because of this, every file in your `Downloads` folder will contain extended att
 As an example, I downloaded the latest version of the XKpasswd library from my website (`xkpasswd-v0.2.1.zip`).
 I can now use `xattr` to see all the extended attributes OS X added to that file like so:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-imac:~ bart$ xattr -l ~/Downloads/xkpasswd-v0.2.1.zip
 com.apple.metadata:kMDItemDownloadedDate:

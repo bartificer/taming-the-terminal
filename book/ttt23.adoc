@@ -306,7 +306,7 @@ This continues for as long as it takes for the packet to arrive at the router in
 ====
 *Aside:* you can use the terminal command `traceroute` (`tracert` on Windows) to see what routers a packet follows from your computer to my server as follows:
 
-[source,shell,linenums,highlight='1']
+[source,console?prompt=bart$,linenums,highlight='1']
 ----
 bart-iMac2013:~ bart$ traceroute -n 46.22.130.125
 traceroute to 46.22.130.125 (46.22.130.125), 64 hops max, 52 byte packets
@@ -367,7 +367,7 @@ This will print some metadata and then sit there and do nothing until matching p
 
 In the other terminal window we will use the `curl` command to fetch the website in question (and print out the HTTP request and response for good measure) using:
 
-[source,html,linenums,highlight='1']
+[source,console?prompt=bart$,linenums,highlight='1']
 ----
 bart-iMac2013:~ bart$ curl -v http://www.so-4pt.net/~bart/ttt23/
 * Hostname was NOT found in DNS cache
@@ -410,7 +410,7 @@ Once we enter the above command in our second terminal window we should see some
 Click on this window and end the capture by hitting kbd:[Ctrl+c].
 You should now have something that looks like:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-iMac2013:~ bart$ sudo tcpdump -nn host 46.22.130.125
 Password:

@@ -64,7 +64,7 @@ To see all your currently running sessions, use the command:
 
 If you have no running screen sessions, it will give you output something like:
 
-[source,shell]
+[source,console?prompt=$]
 ----
 $ screen -ls
 No Sockets found in /var/folders/0f/8m9p9bj556394xd50jl4g_340000gn/T/.screen.
@@ -117,7 +117,7 @@ Now, disconnect from the session (kbd:[Ctrl+a+d]).
 
 You can see that the session has been named:
 
-[source,shell]
+[source,console?prompt=$]
 ----
 $ screen -ls
 There is a screen on:
@@ -145,7 +145,7 @@ In the first window, start a named session with: `screen -S test`.
 In the second terminal window, try to attach to this session with just the `-r` flag: `screen -r test`.
 You will get an error something like:
 
-[source,shell]
+[source,console?prompt=$]
 ----
 $ screen -r test
 There is a screen on:
@@ -314,7 +314,7 @@ To see what the environment looks like from cron's point of view, add the follow
 
 When more than two minutes have passed, you should see a copy of the environment from the point of view of a cron job with the command:
 
-[source,shell,linenums]
+[source,console?prompt=$,linenums]
 ----
 $ cat /tmp/cronenv.txt
 SHELL=/bin/sh

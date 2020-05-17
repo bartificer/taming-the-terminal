@@ -175,7 +175,7 @@ Q: How do you know woman are more complicated than men?
 
 A: Because you can man man, but you can't man woman!
 
-[source,shell]
+[source,console?prompt=$]
 ----
 $ man woman
 No manual entry for woman

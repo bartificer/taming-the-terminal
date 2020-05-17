@@ -118,7 +118,7 @@ When using `curl` or `wget`, you can see exactly what is happening at the HTTP l
 As an example, let's look at the redirect Allison has on her site to redirect people to her Twitter account: `https://www.podfeet.com/twitter`.
 To see exactly what Allison's server is returning, we can use `wget` with the `--spider` and `-S` options:
 
-[source,shell,highlight='7,10']
+[source,console?prompt=bart$,highlight='7,10']
 ----
 bart-iMac2013:~ bart$ wget --spider -S https://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
@@ -174,7 +174,7 @@ By default, `wget` will follow up to 20 redirects, so there is much more output 
 The information we need is there, and I have highlighted it, but it would be easier to get to if `wget` didn't follow the redirect and then ask Twitter's server for its headers too.
 Since we only need the first set of headers, we need to tell `wget` not to follow any redirects at all, and we can do that with the `--max-redirect` flag:
 
-[source,shell,linenums,highlight='7,10']
+[source,console?prompt=bart$,linenums,highlight='7,10']
 ----
 bart-iMac2013:~ bart$ wget --spider -S --max-redirect 0 https://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
@@ -199,7 +199,7 @@ We can see that Allison`'s server is returning a permanent redirect (HTTP respon
 
 We can, of course, do the same with `curl`:
 
-[source,shell,linenums,highlight='2,5']
+[source,console?prompt=bart$,linenums,highlight='2,5']
 ----
 bart-iMac2013:~ bart$ curl -I https://www.podfeet.com/twitter
 HTTP/1.1 301 Moved Permanently
@@ -216,7 +216,7 @@ When fetching headers, `curl` does not follow redirects by default, so there is 
 
 Often, you only care about the response headers, so the output of `curl -I` is perfect, but, when you do want to see the request headers too, you can add the `-v` flag to put `curl` into verbose mode:
 
-[source,shell,linenums]
+[source,console?prompt=bart$,linenums]
 ----
 bart-iMac2013:~ bart$ curl -vI https://www.podfeet.com/twitter
 * Hostname was NOT found in DNS cache

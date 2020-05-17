@@ -420,7 +420,7 @@ netstat -rn | egrep '^default'
 With these filtered versions of the commands, we can clearly see the three pieces of information we are looking for.
 Below is my output, with the desired information highlighted:
 
-[source,shell,linenums,highlight='2,4']
+[source,console?prompt=bart$,linenums,highlight='2,4']
 ----
 bart-iMac2013:~ bart$ ifconfig -a | egrep '\binet\b' | egrep -v '127[.]'
 	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
