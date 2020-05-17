@@ -38,6 +38,7 @@ namespace :book do
       epubParams = paramsHash.merge({
         'attribute' => paramsAttr.merge({
           # 'ebook-validate' => '',
+          'epub3-stylesdir' => "'theme/epub'",
           'pygments-style' => 'manni',
           'pygments-linenums-mode' => 'inline'
         }),
