@@ -838,14 +838,12 @@ aside.sidebar {
     margin-top: 1em;
 }
 
-/*
 aside.sidebar {
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-  float: left;
-  margin-bottom: 1em;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-margin-top-collapse: separate;
+    margin-bottom: 1em;
 }
-*/
 
 figure.image {
     -webkit-column-break-inside: avoid;
