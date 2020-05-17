@@ -45,7 +45,7 @@ Later in the instalment, we're going to refer back to results of the following c
 sudo tcpdump -nneq arp
 ----
 
-== Ethernet -- A Quick Overview
+== Ethernet {longdash} A Quick Overview
 
 As we discussed in the previous instalment, the bottom of the four layers in the TCP/IP model is the _Link Layer_.
 Its function is to move a single packet of data from one device connected to a network to another device connected to the same network.
@@ -133,7 +133,7 @@ To see all MAC addresses associated with your computer, regardless of which netw
 ifconfig -a | egrep '^\s*ether'
 ----
 
-== Hubs, Switches & Routers -- What's the Difference?
+== Hubs, Switches & Routers {longdash} What's the Difference?
 
 Because Ethernet uses a shared medium, it's susceptible to congestion -- if two network cards try to transmit a packet at the same time they interfere with each other, and both messages become garbled.
 This is known as a _collision_.

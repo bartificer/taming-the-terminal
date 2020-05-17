@@ -132,7 +132,7 @@ If you run the command below in a Terminal window and then switch networks, you 
 tail -f /var/log/wifi.log
 ----
 
-== Editing Files -- The Easy Way
+== Editing Files {longdash} The Easy Way
 
 You can roughly divide the command-line text editors into two categories, the quick and simple editors, and the power editors.
 The simpler editors are much easier to learn but much less powerful.
@@ -172,7 +172,7 @@ Note that if you try to exit `nano` without writing out first, `nano` will offer
 At this stage, you actually have all the skills you're likely to truly need, so feel free to tune out at this point.
 However, if you're interested, I'm also going to give a very brief and very superficial overview of one of the two most popular modal editors.
 
-== A Quick Taste of Advanced Editing with vi -- OPTIONAL
+== A Quick Taste of Advanced Editing with vi {longdash} OPTIONAL
 
 There are two leviathans in the command-line text editing world, and both have been around since the 1970s.
 In nerd circles, your choice of text editor is about as polarising as the Republican and Democratic political parties in the US.

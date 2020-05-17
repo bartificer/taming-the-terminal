@@ -67,7 +67,7 @@ Finally, if you want to change both user and group ownership of files or folders
 chown -R bart:staff myFolder
 ----
 
-== Altering Unix File Permissions -- Setting the Permission Mask
+== Altering Unix File Permissions {longdash} Setting the Permission Mask
 
 The command to alter the permission mask, or file mode, is `chmod` (change mode).
 In many ways it's similar to the `chown` and `chgrp` commands. It takes the same basic form, and supports the `-R` flag, however, the formatting of the first argument -- the permission you want to set -- can be very confusing.

@@ -41,7 +41,7 @@ https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-37-ssh-agen
 ****
 
 [#Revision_SSH_Identities]
-== Revision -- SSH Identities
+== Revision {longdash} SSH Identities
 
 As a quick reminder -- SSH can authenticate users in many ways.
 The two most common are passwords, and so-called _SSH identities_ (sometimes referred to as _SSH keys_).

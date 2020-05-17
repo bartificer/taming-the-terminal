@@ -25,7 +25,7 @@ You can also {url-mp3}/TTT19TextSearches/TTT_19_Text_Searches.mp3[download the M
 
 ****
 
-== To `grep` or to `egrep` -- that is the question!
+== To `grep` or to `egrep` {longdash} that is the question!
 
 The `grep` command goes back a very long way and has been the staple text-searching command on POSIX operating systems like Unix and Linux for decades.
 To this day it's used millions of times each day for simple text searches.

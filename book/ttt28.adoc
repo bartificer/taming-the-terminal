@@ -51,7 +51,7 @@ You can break the process down into four loose steps:
 Let's now look at these steps in more detail, and at the terminal commands, we'll need for each.
 At the end of each section, we'll also describe what we should see if everything is working correctly at that level of the stack, and some things to consider if you find results that are not as expected.
 
-== Step 1 -- Check Basic Network Connectivity
+== Step 1 {longdash} Check Basic Network Connectivity
 
 Starting at the very bottom of the network stack we need to make sure there is at least one network interface up and connected before we continue.
 
@@ -160,7 +160,7 @@ If all is well, there should be two network interfaces active, the loopback inte
 * If using Ethernet, the cable could be bad, or the router/switch it is plugged into could be bad -- check for a link light on the router/switch
 * The network card could be broken (unlikely)
 
-== Step 2 -- Check Basic IP Configuration
+== Step 2 {longdash} Check Basic IP Configuration
 
 For a computer to have IP connectivity is needs three settings.
 It needs to know its IP address, it needs to know its Netmask, and it needs to know the IP address of the router it should use to communicate beyond the local network.
@@ -222,7 +222,7 @@ Make a note of these three settings for future reference.
 * DHCP has been disabled on the interface -- enable it using the Networks System Preference Pane
 * DHCP is not working on the network -- this will need to be addressed on the router
 
-== Step 3 -- Test IP Connectivity
+== Step 3 {longdash} Test IP Connectivity
 
 At this point, we can have some confidence that the settings on the computer itself are at least sane.
 It's now time to start probing the network the computer is connected to.
@@ -383,7 +383,7 @@ If using Ethernet it could also be a damaged Ethernet cable, and if using wifi i
 * If the ping to the public IP does not respond at all then either the server you are pinging is down, or, more likely, your connection to the internet is down.
 `traceroute` may help you prove it really is your ISP that is the problem before you spend an eternity on hold with them!
 
-== Step 4 -- Check Name Resolution
+== Step 4 {longdash} Check Name Resolution
 
 Almost everything we do online involves domain names rather than IP addresses, so if a computer has lost the ability to convert domain names to IP addresses it will appear to have lost it's internet connection even if it has full IP-level connectivity.
 

@@ -404,7 +404,7 @@ image::ttt18/Screen-Shot-2014-05-10-at-18.14.12.png[Name Mangler]
 
 image::ttt18/Screen-Shot-2014-05-10-at-18.17.19.png[Screen Shot 2014-05-10 at 18.17.19]
 
-== Update (19 Oct 2015) -- A Nice Web Tool
+== Update (19 Oct 2015) {longdash} A Nice Web Tool
 
 Thanks to NosillaCast listener Caleb Fong for recommending a great online RE testing tool which you can find at https://regex101.com[regex101.com]
 

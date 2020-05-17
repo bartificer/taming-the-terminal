@@ -122,7 +122,7 @@ For each port to be forwarded, an instance of the `-L` flag should be used in th
 -L[LOCAL_PORT]:[DESTINATION_HOST]:[DESTINATION_PORT]
 ----
 
-=== Example Use Case -- MySQL
+=== Example Use Case {longdash} MySQL
 
 Many websites are powered by https://www.mysql.com[MySQL] databases.
 It's common when working on a website to need access to the MySQL server powering your site from your local computer.
