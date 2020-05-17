@@ -56,13 +56,17 @@ Mind you, your average Mac has many fewer than that; a dual-core hyper-threaded 
 
 Clearly, being able to run just 4 processes at the same time is just not enough, hence, even our modern computers use the same software trick as Windows 3.1 to appear to run many tens or even hundreds of processes at the same time.
 
+ifndef::backend-pdf[]
 pass:[<!-- vale Vale.Repetition = NO -->]
+endif::[]
 
 There is literally an entire university semester of material in designing strategies for efficiently dividing up available CPU-time between processes.
 All we'll say on the topic for now, is that the OS gets to arbitrate which process gets how much time, and that that arbitration is a lot more involved than a simple queuing system.
 The OS can associate priorities with processes, and it can use those priorities to give some processes preferential access over others.
 
+ifndef::backend-pdf[]
 pass:[<!-- vale Vale.Repetition = YES -->]
+endif::[]
 
 We should also clarify that there is not a one-to-one mapping between processes and applications.
 Each app does have at least one process associated with it, but once an app is running it can _fork_ or _spawn_ as many _child processes_ as it wants/needs.
