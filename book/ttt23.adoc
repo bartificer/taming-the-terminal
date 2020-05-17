@@ -49,13 +49,13 @@ Apple used https://en.wikipedia.org/wiki/AppleTalk[AppleTalk], DEC used https://
 == The TCP/IP Network Model
 
 The internet, and our home and work networks, are all TCP/IP networks.
-What we now call TCP/IP started life as https://en.wikipedia.org/wiki/ARPANET[ARPANET], a project run by the US Advanced Research Projects Agency, or ARPA (today this same institution is called https://en.wikipedia.org/wiki/DARPA[DARPA], the _D_ standing for _Defence_).
+What we now call TCP/IP started life as https://en.wikipedia.org/wiki/ARPANET[ARPANET], a project run by the US Advanced Research Projects Agency, or ARPA (today this same institution is called https://en.wikipedia.org/wiki/DARPA[DARPA], the _D_ standing for _Defense_).
 For home users, the internet is a 1990s phenomenon, but DARPANET became operational way back in 1969.
 
 The age of TCP/IP is a mixed blessing.
 On the one hand, it's been around more than long enough to have most of the bugs shaken out of it.
 But, on the other hand, it was designed before anyone understood what it would become, so problems like security simply weren't considered in the design.
-Security has had to be retro-fitted afterwards, and that's not exactly been a smooth process!
+Security has had to be retrofitted afterwards, and that's not exactly been a smooth process!
 
 === Key Design Features
 
@@ -63,7 +63,7 @@ Security has had to be retro-fitted afterwards, and that's not exactly been a sm
 The techno-jargon for this is that TCP/IP networks are _packet switched networks_.
 * TCP/IP is a _best-effort_ protocol suite -- routers can drop packets if they need to.
 * TCP/IP is a strictly layered stack of protocols -- interactions are only possible between adjacent protocols.
-Ethernet talks to IP, IP talks to TCP, TCP talks to TLS, TLS talks to HTTP, and vice-versa, but HTTP can never skip over TLS, TCP & IP, and talk directly to ethernet.
+Ethernet talks to IP, IP talks to TCP, TCP talks to TLS, TLS talks to HTTP, and vice-versa, but HTTP can never skip over TLS, TCP & IP, and talk directly to Ethernet.
 * There are many more than four protocols in the stack, but they are grouped into four categories called network abstraction layers:
 . The *Link Layer*
 . The *Internet Layer*
@@ -83,24 +83,24 @@ This is particularly powerful at the link layer, where it allows the practicalit
 The link layer allows a single packet of data to be sent within a network.
 Assuming you have only one home network, then the link layer allows packets to get from any one device on your home to any other device on your home.
 
-Within our home networks, the ethernet protocol is used to transmit packets.
+Within our home networks, the Ethernet protocol is used to transmit packets.
 Ethernet uses MAC (Media Access Control) addresses to specify the source and destination for each packet.
-We actually use two different implementations of ethernet within our homes -- we use network cards that send ethernet packets other over twisted pairs of copper wire, officially called UTP Patch Cables, but almost universally (and technically incorrectly) known as _ethernet cables_.
-We also use network cards that use radio waves to transmit ethernet packets, and we call this WiFi.
+We actually use two different implementations of Ethernet within our homes -- we use network cards that send Ethernet packets other over twisted pairs of copper wire, officially called UTP Patch Cables, but almost universally (and technically incorrectly) known as _Ethernet cables_.
+We also use network cards that use radio waves to transmit Ethernet packets, and we call this WiFi.
 
-Because of the layering of network protocols, nothing higher up the stack needs to take any account what so ever of how the data got from one device to another.
-All the protocol above has to know is that ethernet can send a packet from one MAC address to another.
+Because of the layering of network protocols, nothing higher up the stack needs to take any account whatsoever of how the data got from one device to another.
+All the protocol above has to know is that Ethernet can send a packet from one MAC address to another.
 How that's achieved is irrelevant to that protocol.
 
 Ethernet doesn't have the game all to itself within Layer 1.
 Sure, it gives us what we call wired and wireless networks, but there are other ways to get data from one end of a physical connection to another.
 For example, there is a protocol called FiberChannel that can send data through fiber optic cables, ISDN & ADSL can get data over a phone line, and there are more protocols for getting data through TV cables than you can shake a proverbial stick at!
 
-The key point is that no matter what protocols are used in layer 1, the protocols used in the layers above don't care at all about the practicalities, all that matters is the contracts between protocols.
+The key point is that no matter what protocols are used in Layer 1, the protocols used in the layers above don't care at all about the practicalities, all that matters is the contracts between protocols.
 
 === 2 -- The Internet Layer
 
-The link layer can move a packet of data between any two devices within a single network, layer two takes things a step further, allowing for the movement of single a packet of data between any two devices located anywhere within a set of connected networks.
+The link layer can move a packet of data between any two devices within a single network. Layer two takes things a step further, allowing for the movement of a single a packet of data between any two devices located anywhere within a set of connected networks.
 
 Networks are connected to each other by routers.
 A router is a device with at least two network interfaces, one in each connected network.
@@ -116,42 +116,42 @@ This is why it's grammatically correct to capitalise _the Internet_ when you're 
 One of the most amazing things that the internet layer is responsible for is figuring out how packets can get from any one point on an internet to any other arbitrary point anywhere else on that internet, even when the shortest route between those two points often crosses tens of routers.
 This really complex task is known simply as '`routing`', and that it works at all really has to be one of the seven wonders of the digital world!
 
-There is only one layer two protocol in use on the Internet and our home networks, and that's the Internet Protocol, or simply the IP protocol.
+There is only one Layer 2 protocol in use on the Internet and our home networks, and that's the Internet Protocol, or simply the IP protocol.
 The IP protocol addresses devices with IP addresses.
 There are two IP addressing schemes in use today, IPv4, and IPv6.
 
 Within our routers is where we first begin to see the power of protocol stacking.
-Routers are layer 2 devices, but they have to use Layer 1 to move packets around.
-Our home routers all speak IP, but they also have to speak one or more layer 1 protocols.
-Because all our home networks are ethernet networks, our routers all speak ethernet, but it's the other protocols the routers speak that divide them into groups.
-ADSL modems speak ADSL and ethernet, ISDN routers speak ISDN and ethernet, cable modems speak at least one of the zoo of cable modem protocols, and ethernet.
-As a packet moves from router to router is moves up and down the stack, from IP to ethernet to get from your computer to your router, then back up to IP so the router can figure out what to do with the packet, if it's for the internet then it goes down to, say, ADSL, then it arrives at your ISP's router where it again gets handed up the stack to the IP.
-IP then decides which direction to send it in next, then it uses a layer 1 protocol to send that packet to the next router, perhaps by fiber optic cable, perhaps by satellite link, it doesn't matter, it will arrive at the other end, get brought up the stack to IP, and then the next router will send it along the next layer 1 link.
-The key point is that the same IP packet can be sent over lots of different layer 1 protocols as it moves across an internet from its source IP address to its destination IP address.
+Routers are Layer 2 devices, but they have to use Layer 1 to move packets around.
+Our home routers all speak IP, but they also have to speak one or more Layer 1 protocols.
+Because all our home networks are Ethernet networks, our routers all speak Ethernet, but it's the other protocols the routers speak that divide them into groups.
+ADSL modems speak ADSL and Ethernet, ISDN routers speak ISDN and Ethernet, cable modems speak at least one of the zoo of cable modem protocols, and Ethernet.
+As a packet moves from router to router, it moves up and down the stack from IP to Ethernet to get from your computer to your router, and then back up to IP so the router can figure out what to do with the packet. If it's for the internet, then it goes down to, say, ADSL, then it arrives at your ISP's router where it again gets handed up the stack to the IP.
+IP then decides which direction to send it in next, then it uses a Layer 1 protocol to send that packet to the next router, perhaps by fiber optic cable, perhaps by satellite link, it doesn't matter, it will arrive at the other end, get brought up the stack to IP, and then the next router will send it along the next Layer 1 link.
+The key point is that the same IP packet can be sent over lots of different Layer 1 protocols as it moves across an internet from its source IP address to its destination IP address.
 
 Finally, it should be noted that the IP protocol is a complex beast, and while it's mostly used to send packets of data, known as datagrams, from one IP address to another, it can do more.
-The key to this is that the IP protocol contains a bunch of sub-protocols.
+The key to this is that the IP protocol contains a bunch of subprotocols.
 For example, IGMP allows for so-called multi-cast traffic where a single packet gets delivered to many recipients instead of one.
-Another sub-protocol we'll be seeing again is ICMP, which is used for network troubleshooting.
+Another subprotocol we'll be seeing again is ICMP, which is used for network troubleshooting.
 
 === 3 -- The Transport Layer
 
 Layers one and two deal with single packets of data.
 We usually want to send or receive a lot more than a single packet, so we need to layer some protocols on top of IP to deal with that reality.
 
-Remember, each packet is treated as being entirely independent by layers one and two, and each packet is delivered on a _best effort_ basis, so if we send 100 packets, it's likely one or more of them will go missing, and it's also very likely that the ones that do arrive will arrive out of order.
+Remember, each packet is treated as being entirely independent by layers one and two, and each packet is delivered on a _best effort_ basis. So if we send 100 packets, it's likely one or more of them will go missing, and it's also very likely that the ones that do arrive will arrive out of order.
 Because the Internet is very heavily interconnected, unless your source and destination are directly connected by a single router, there are almost always many different possible paths through the Internet between any two IP addresses.
-ISPs will usually have many interconnections with other ISPs, and they will load-balance packets across these different interconnections.
-The algorithm could be as simple as "`send 10 packets this way, then five that way, then 20 that other way, repeat`".
+ISPs will usually have many interconnections with other ISPs, and they will load balance packets across these different interconnections.
+The algorithm could be as simple as "`send 10 packets this way, then 5 that way, then 20 that other way, repeat`".
 Even if our 100 packets all get to that router one after the other, they'll get separated into little groups spread over those three different routes.
 Then they'll meet another router which may separate the groups of packets into even smaller groups and so on.
 By the time the surviving packets all get to the destination IP address, they really could be in any order, and of course, every router along the way has the choice to drop a packet if it gets overloaded.
 
-Layer three protocols organise data flows into streams of related packets known as connections.
-Layer three also introduces the concept of port numbers.
-A layer three connection has a source IP address and port, and a destination IP address and port.
+Layer 3 protocols organise data flows into streams of related packets known as connections.
+Layer 3 also introduces the concept of port numbers.
+A Layer 3 connection has a source IP address and port, and a destination IP address and port.
 
-There are two layer three protocols in common use today, TCP, and UDP.
+There are two Layer 3 protocols in common use today, TCP, and UDP.
 
 UDP (User Datagram Protocol) is the simplest of the two protocols.
 UDP is still a _best-effort_ protocol, and there is still no concept of packets (known as datagrams) being related to one another.
@@ -167,9 +167,9 @@ So, when speed matters more than perfection, UDP is the right choice.
 This is why UDP is often used for streaming media, and for internet voice chat services like Skype.
 As well as speed, UDP also has the advantage of being simple, so it's CPU and RAM efficient, which is why it's also used for very high-volume protocols like DNS and syslog (more on DNS in future instalments).
 
-TCP (Transmission Control Protocol) takes things a step further and promises to transmit a stream of data from one IP address to another in such a way that all data that is sent arrives, and all data arrives in the order it was sent.
+TCP (Transmission Control Protocol) takes things a step further and promises to transmit a stream of data from one IP address to another in such a way that all data that is sent arrives, and all data arrives in the order in which it was sent.
 It does this using buffers.
-The sender holds a copy of all sent packets in a buffer in case they go missing and have to be re-sent, and the receiver uses a buffer to re-assemble the data back into the right order.
+The sender holds a copy of all sent packets in a buffer in case they go missing and have to be resent, and the receiver uses a buffer to reassemble the data back into the right order.
 Packets that come in are added to the buffer with gaps being left for their delayed friends.
 If a packet takes too long to arrive, it's assumed to be missing and the recipient asks the sender to re-send it.
 The recipient also sends acknowledgements of what it has received so far back to the sender, so that the sender can remove safely transmitted data from its buffer.
@@ -180,32 +180,32 @@ However, all these inefficiencies are a small price to pay for the promise that 
 
 === 4 -- The Application Layer
 
-The bottom three layers are in effect the infrastructure of the internet, the application layer is where the user-facing functionality starts.
-The vast majority of the protocols we interact with through the various apps we use are layer four protocols.
+The bottom three layers are in effect the infrastructure of the internet. The application layer is where the user-facing functionality starts.
+The vast majority of the protocols we interact with through the various apps we use are Layer 4 protocols.
 E.g.
-SMTP, IMAP & POP are the layer four protocols we use to send and receive email.
-HTTP, HTTPS, and to a lesser extent FTP, are the layer four protocols we use to surf the net.
-The domain name system, or DNS, is the layer four protocol we use to abstract away IP addresses.
-Online games sit in layer four, instant messaging sits in layer four, VoIP sits in layer four -- I could go on and on and on!
+SMTP, IMAP & POP are the Layer 4 protocols we use to send and receive email.
+HTTP, HTTPS, and to a lesser extent FTP are the Layer 4 protocols we use to surf the net.
+The domain name system, or DNS, is the Layer 4 protocol we use to abstract away IP addresses.
+Online games sit in Layer 4, instant messaging sits in Layer 4, VoIP sits in Layer 4 -- I could go on and on and on!
 
-The majority of layer four protocols sit on top of TCP, but a sizeable amount sit on top of UDP instead.
-Some applications make use of both -- for example, when you log on to Skype you're using a TCP connection, when you send instant messages via Skype you're also almost certainly using TCP, and the under-the-hood signalling back-and-forth needed to initialise a call is also almost certainly done over TCP, before the app hands over to UDP for transmission of the actual sound and/or video streams.
+The majority of Layer 4 protocols sit on top of TCP, but a sizeable amount sit on top of UDP instead.
+Some applications make use of both -- for example, when you log on to Skype you're using a TCP connection. When you send instant messages via Skype you're also almost certainly using TCP, and the under-the-hood signalling back-and-forth needed to initialise a call is also almost certainly done over TCP. All that happens before the app hands over to UDP for transmission of the actual sound and/or video streams.
 
 == Putting it All Together
 
 From our point of view as a user trying to communicate across our home network or the internet, the process always starts at the application layer.
 We are sending an email, or we are viewing a web page, or we are downloading a file, or we are playing a game, or we are chatting with friends, or whatever.
 
-As a worked example, let's look at what happens when you use your web browser to try to visit `+https://www.so-4pt.net/~bart/ttt23/+`.
+As a worked example, let's look at what happens when you use your web browser to try to visit `+http://www.so-4pt.net/~bart/ttt23/+`.
 
 Before you can visit that URL, I have to have put some digital ducks in a row on my end.
 Firstly, I have to have arranged for a DNS server to advertise to the world that my webserver has the IP address `46.22.130.125`, and, I have to have the server with that IP address configured to act as a webserver.
 
-On my server, a piece of software has to be running which speaks the HTTP protocol, we'll call this piece of software the webserver process.
+On my server, a piece of software has to be running which speaks the HTTP protocol. We'll call this piece of software the webserver process.
 This process has to have asked the OS to '`listen`' on TCP port 80 (the standard HTTP port).
 That means that when any computer initiates a TCP connection to port 80 on my server, my server's OS will hand that connection to my webserver process.
 
-Assuming I have everything properly configured on my end, you open your favourite browser, and type `https://www.so-4pt.net/~bart/ttt23/` into the address bar, and hit enter.
+Assuming I have everything properly configured on my end, you open your favourite browser, and type `http://www.so-4pt.net/~bart/ttt23/` into the address bar, and hit enter.
 
 Your browser speaks HTTP, so it starts by formulating an HTTP request which will look something like:
 
@@ -219,13 +219,13 @@ Host:            www.so-4pt.net
 User-Agent:      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25
 ----
 
-It then has to figure out, based on the URL your typed, what IP address it should strike up a TCP conversation with!
+It then has to figure out, based on the URL you typed, what IP address it should strike up a TCP conversation with!
 
-To do that it asks your OS to do a DNS lookup in its behalf.
+To do that it asks your OS to do a DNS lookup on its behalf.
 For simplicity, let's assume your OS had the answer in its cache, so it just gives the browser the answer that `www.so-4pt.net` maps to the IP address to `46.22.130.125`.
 We'll be looking at the DNS protocol in much more detail in a future instalment!
 
-Your browser then asks your OS to open a TCP connection to port 80 on 46.22.130.125 on its behalf.
+Your browser then asks your OS to open a TCP connection to port 80 on `46.22.130.125` on its behalf.
 Once your OS has done that, a TCP connection will exist between your browser and the webserver process on my server.
 As far as either end of that connection is concerned, any data written into the connection on their end will pop out on the other end exactly as it was written.
 This is a two-way connection, so the browser can send data to the webserver process, and the webserver process can send data back to the browser.
@@ -262,13 +262,13 @@ You might notice that this response includes the HTML that makes up the content 
 Once my webserver process has formulated this response somehow (in this case by reading a file from the hard disk on my server and copying its contents into the data part of the HTTP response) it sends the response to your browser through the TCP connection.
 
 Your browser then interprets the response and acts accordingly.
-The `200 OK` response code tells your browser the request was successful, and that the HTML it got back is not an error message or a redirect or anything like that, but the HTML for the web page you requested.
-It the interprets that HTML and draws the resulting web page on your screen.
+The `200 OK` response code tells your browser the request was successful, and that the HTML it got back is not an error message or a redirect or anything like that, and is the HTML for the web page you requested.
+It then interprets that HTML and draws the resulting web page on your screen.
 
 The key point is that your browser and my webserver app communicated using HTTP, and they were oblivious to how the data got from one to the other.
 All either side knew about the network was that TCP was at their service.
 How TCP made it possible for the data to go from your browser to my webserver is irrelevant to them both.
-Notice how neither the HTTP request nor the HTTP response contained either an IP address or a MAC address, those things happen below HTTP in the stack, so they are irrelevant to HTTP.
+Notice how neither the HTTP request nor the HTTP response contained either an IP address or a MAC address. Those things happen below HTTP in the stack, so they are irrelevant to HTTP.
 
 The takeaway from this example is that at a logical level, both sides talked HTTP to each other.
 Logically, communication is always directly across the stack.
@@ -279,28 +279,28 @@ The two TCP implementations were totally oblivious to how the data got between t
 All our TCP implementations knew is that they could pass a packet down to the IP implementations within our operating systems and that our IP implementations would send the packet on their behalf.
 
 So far, nothing has actually left our computers yet!
-All of this chatter between the network layers has been in software, it's not until the IP implementations in our OS finally hand those packets down to the ethernet implementation within our OSes that anything physical actually happens!
+All of this chatter between the network layers has been in software. It's not until the IP implementations in our OS finally hand those packets down to the Ethernet implementation within our OSes that anything physical actually happens!
 
 To understand how the packets actually move from one physical computer to another, let's focus on what happens to just one single IP packet and let's chose a packet that's being sent from your computer to my server.
 Let's assume your computer is using wifi to connect to the internet and that you have an ADSL router.
 
 We join our packet in the IP implementation of your computer's OS.
-The first thing your computer's IP implementation does it look at the IP address on the packet and compare it to the IP address range of your network.
+The first thing your computer's IP implementation does is look at the IP address on the packet and compare it to the IP address range of your network.
 My server is not in your network, so the IP implementation concludes that the packet is not local and so must be routed.
 Because your network is properly configured, your OS knows the IP and MAC addresses of your router's internal network interface.
-Your IP implementation takes the IP packet and hands it to the ethernet implementation with your OS along with the MAC address it should be sent to, that of your router.
-Your OS's ethernet implementation then wraps some metadata around the IP packet to turn it into an ethernet packet.
-Finally, using the driver software for your wifi card, your OS's ethernet implementation transmits the ethernet packet which contains the IP packet we are following as modulated radio waves.
+Your IP implementation takes the IP packet and hands it to the Ethernet implementation with your OS along with the MAC address it should be sent to, that of your router.
+Your OS's Ethernet implementation then wraps some metadata around the IP packet to turn it into an Ethernet packet.
+Finally, using the driver software for your wifi card, your OS's Ethernet implementation transmits the Ethernet packet which contains the IP packet we are following as modulated radio waves.
 
-Your router's wireless card receives the radio waves, interprets them and hands the ethernet packet up to the ethernet implementation in your router's firmware.
-Your router's ethernet firmware unwraps the packet and hands it up to your router's IP firmware.
+Your router's wireless card receives the radio waves, interprets them and hands the Ethernet packet up to the Ethernet implementation in your router's firmware.
+Your router's Ethernet firmware unwraps the packet and hands it up to your router's IP firmware.
 Your router's IP firmware looks at the destination address on the IP packet and sees that it's destined for the Internet, so it hands the packet down to your router's ADSL firmware which wraps the packet again and converts it into electrical impulses which run through the phone network to your ISP's router.
 
 Your ISP's router strips off the ADSL wrapper and passes the packet up to its IP firmware.
-The router's IP firmware looks at the destination IP and then decides which of your ISP's many interconnections to other routers is the best suited to this packet.
-It then wraps the packet in the appropriate layer 1 wrapper for the connection it chooses and send it on its way.
-The next router along again strips off the layer 1 wrapper, looks at the IP address, decides which way to router it, wraps it as appropriate and send it on to the next router.
-This continues for as long as it takes for the packet to arrive at the router in the data centre where my webserver lives (I'm in Ireland and so is my server, and for me, it still takes 8 '`hops`' for the packet to get from my router to the router in the data centre hosting my server, for people further away it will be more).
+The router's IP firmware looks at the destination IP and then decides which of your ISP's many interconnections to other routers is best suited to this packet.
+It then wraps the packet in the appropriate Layer 1 wrapper for the connection it chooses and send it on its way.
+The next router along again strips off the Layer 1 wrapper, looks at the IP address, decides which way to route it, wraps it as appropriate and sends it on to the next router.
+This continues for as long as it takes for the packet to arrive at the router in the data centre where my webserver lives. I'm in Ireland and so is my server, and for me, it still takes 8 '`hops`' for the packet to get from my router to the router in the data centre hosting my server. For people farther away it will be even more.
 
 [NOTE]
 ====
@@ -327,30 +327,30 @@ bart-iMac2013:~ bart$
 
 Each line of output is a router your packet passed through.
 Some routers refuse to return the metadata traceroute requests, so they show up as a row of stars.
-The first router you see will be your home router (because I have a complex configuration, the first two routers in my trace are actually within my house), the last line will be my webserver, and the second-last line will be the router in the data centre that hosts my webserver.
-subtracting those four IPs out, there are eight routers between my home router and the router in my data centre.
+The first router you see will be your home router (because I have a complex configuration, the first two routers in my trace are actually within my house), the last line will be my webserver, and the second-to-last line will be the router in the data centre that hosts my webserver.
+Subtracting those four IPs out, there are eight routers between my home router and the router in my data centre.
 
 Note that we'll be looking at `traceroute` in more detail in a future instalment.
 
 (If you're not running as an admin you may find that traceroute is not in your path.)
 ====
 
-The router in my data centre will get the packet, unwrap whatever layer 1 wrapper is around it, pass it up to its IP firmware, and look at the destination IP.
+The router in my data centre will get the packet, unwrap whatever Layer 1 wrapper is around it, pass it up to its IP firmware, and look at the destination IP.
 Because my data centre and server are correctly configured, the router's IP firmware will recognise that this packet is destined for a device on its local network, and know the MAC address of my server.
-It will pass the packet down to its ethernet firmware one last time, asking it to send the packet to my server's MAC address.
-The router's ethernet firmware will convert the packet to electrical signals, and send them down the UTP patch cable connected to my server.
+It will pass the packet down to its Ethernet firmware one last time, asking it to send the packet to my server's MAC address.
+The router's Ethernet firmware will convert the packet to electrical signals, and send them down the UTP patch cable connected to my server.
 
-My server's network card will receive the ethernet packet, unwrap it, and pass it up to my server's OS's IP implementation, which will remove the IP wrapper and pass the packet to TCP which will finally know what to do with the data inside the last wrapper, and eventually, those 1s and 0s will get to the webserver process as a part of the HTTP request.
+My server's network card will receive the Ethernet packet, unwrap it, and pass it up to my server's OS's IP implementation, which will remove the IP wrapper and pass the packet to TCP which will finally know what to do with the data inside the last wrapper, and eventually, those 1s and 0s will get to the webserver process as a part of the HTTP request.
 
 The key point is how the layers interact.
-As we saw initially, logically the browser and the server talked HTTP to each other, but physically, the packet started in the application layer and moved down the layers to the link layer, then up and down between the link and internet layers many times as it moved across the before finally being handed all the way up the layers back to the application layer when it arrived at my server.
+As we saw initially, logically the browser and the server talked HTTP to each other, but physically, the packet started in the application layer and moved down the layers to the link layer, then up and down between the link and internet layers many times as it moved across before finally being handed all the way up the layers back to the application layer when it arrived at my server.
 The diagram below illustrates this idea:
 
 image::wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
 
 So, we followed the path of a single IP packet, how many IP packets were actually needed for this very simple HTTP transaction?
 The answer is 12 (see below).
-Only a subset of those 12 packets contained the actual data transmitted, the rest were IP packets sent by TCP in order to negotiate and un-negotiate the TCP connection, and to signal back and forth what packets had and had not been received safely.
+Only a subset of those 12 packets contained the actual data transmitted. The rest were IP packets sent by TCP in order to negotiate and un-negotiate the TCP connection, and to signal back and forth what packets had and had not been received safely.
 
 [NOTE]
 ====
@@ -369,7 +369,7 @@ In the other terminal window we will use the `curl` command to fetch the website
 
 [source,html,linenums,highlight='1']
 ----
-bart-iMac2013:~ bart$ curl -v https://www.so-4pt.net/~bart/ttt23/
+bart-iMac2013:~ bart$ curl -v http://www.so-4pt.net/~bart/ttt23/
 * Hostname was NOT found in DNS cache
 *   Trying 46.22.130.125...
 * Connected to www.so-4pt.net (46.22.130.125) port 80 (#0)
@@ -406,7 +406,7 @@ bart-iMac2013:~ bart$
 Note that every line starting with a `*` is debug information telling us what `curl` is doing, the lines starting with a `>` at the top of the output are the HTTP request, and the lines starting with `<` in the middle of the output are the HTTP response header.
 The remaining lines are the data part of the response, which in this case is the HTML code for the page.
 
-Once we enter the above command in our second terminal window we should see some lines whizz by in our first terminal window.
+Once we enter the above command in our second terminal window we should see some lines whiz by in our first terminal window.
 Click on this window and end the capture by hitting kbd:[Ctrl+c].
 You should now have something that looks like:
 
@@ -458,6 +458,6 @@ For now, if just the following key points have sunk in, you're golden:
 ** The Internet Layer -- lets computers on different networks send single packets of data to each other
 ** The Transport Layer -- lets computers send meaningful streams of data between each other
 ** The Application Layer -- where all the networked apps we use live
-* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, ethernet to ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
+* Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, Ethernet to Ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
 In the following instalments, we'll start to make our way up the stack, looking at each layer in more detail, and learning about terminal commands that interact with some of the protocols that make up each layer.
