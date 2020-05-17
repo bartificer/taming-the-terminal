@@ -312,7 +312,7 @@ h6 {
 /* We'll just use the stronger rule for all paragraph-related stuff to be sure */
 body p {
     margin: 1em 0 0 0;
-    text-align: justify;
+    text-align: left;
     text-indent: 0;
 
     widows: 2;
@@ -595,7 +595,7 @@ dd {
 li>span.principal,
 dd>span.principal {
     display: block;
-    text-align: justify;
+    text-align: left;
 }
 
 ol.brief>li>span.principal,
@@ -952,7 +952,7 @@ body:first-of-type aside.sidebar > h2 {
 
 aside.sidebar>div.content {
     margin-bottom: 1em;
-    text-align: justify;
+    text-align: left;
     /* restore text alignment in content */
 }
 
