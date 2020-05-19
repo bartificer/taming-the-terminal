@@ -57,7 +57,7 @@ Every network card on your computer has a MAC address, regardless of whether it'
 An Ethernet packet travelling through your network has a source and a destination MAC address.
 
 Ethernet was designed to work on a shared medium -- i.e., all network cards see all Ethernet packets travelling across the network.
-In normal use, a network card ignores all Ethernet packets that are not addressed to it, but a card can be instructed to pass all packets that reach it up to the OS, even those addressed to different MAC addresses, this is known as _promiscuous mode_.
+In normal use, a network card ignores all Ethernet packets that are not addressed to it, but a card can be instructed to pass all packets that reach it up to the OS, even those addressed to different MAC addresses. This is known as _promiscuous mode_.
 
 The special MAC address `ff:ff:ff:ff:ff:ff` is used to _broadcast_ an Ethernet packet to every device on the network.
 All network cards consider packets addressed to this special MAC address to be addressed to them, and pass that packet up to the OS, even when not in promiscuous mode.
@@ -89,7 +89,7 @@ While the naming of network devices on Linux/Unix/OS X is confusing, there are s
 lo0::
 This is the so-called _loop-back address_, it's a virtual network interface that can be used to communicate internally within a computer using the TCP/IP stack.
 `lo0` will usually have the IP address `127.0.0.1` and map to the hostname `localhost`.
-(this is also the genesis of the two popular nerd T-shirts _"`There's no place like 127.0.0.1`"_ and _"`127.0.0.1 sweet 127.0.0.1`"_)
+(This is also the genesis of the two popular nerd T-shirts _"`There's no place like 127.0.0.1`"_ and _"`127.0.0.1 sweet 127.0.0.1`"_)
 
 gif0::
 This is an OS X-specific virtual network interface called the _Software Network Interface_.
@@ -99,7 +99,7 @@ stf0::
 This is another OS X-specific virtual network interface which is used by the OS to bridge IPV4 and IPV6 traffic -- again, this is not relevant to users, so it can be ignored.
 
 fw0, fw1 ...::
-OS X addresses firewire interfaces as `fw0` and up, this is because a FireWire connection between two computers can be used as a network connection between those computers.
+OS X addresses firewire interfaces as `fw0` and up because a FireWire connection between two computers can be used as a network connection between those computers.
 
 en0, en1 ...::
 OS X addresses Ethernet cards, be they wired or wireless, as `en0` and up.
@@ -117,7 +117,7 @@ br0, br1 ... or bridge0, bridge1 ...::
 These virtual network devices are known as _bridged networks_ and are often created by virtualisation software to allow VMs to access the network with their own dedicated MAC addresses.
 
 vmnetX::
-VMWare uses its own convention for allowing virtual machines to access the network, it created virtual network devices with names consisting of `vmnet` followed by a number.
+VMWare uses its own convention for allowing virtual machines to access the network. it created virtual network devices with names consisting of `vmnet` followed by a number.
 
 p2p0, p2p1 ...::
 These virtual network devices are known as _point to point networks_ and are used by things like VPNs to send traffic through some kind of tunnel to a server located somewhere else on the internet.
@@ -135,10 +135,10 @@ ifconfig -a | egrep '^\s*ether'
 
 == Hubs, Switches & Routers -- What's the Difference?
 
-Because Ethernet uses a shared medium, it's susceptible to congestion -- if two network cards try to transmit a packet at the same time they interfere with each other, and both messages become garbled.
+Because Ethernet uses a shared medium, it's susceptible to congestion -- if two network cards try to transmit a packet at the same time, they interfere with each other and both messages become garbled.
 This is known as a _collision_.
 When an Ethernet card detects a collision, it stops transmitting and waits a random amount of milliseconds before trying again.
-This simple approach has been proven to be very effective, but, it's Achilles heel is that it's very prone to congestion.
+This simple approach has been proven to be very effective, but it's Achilles heel is that it's very prone to congestion.
 When an Ethernet network gets busy the ratio of successful transitions to collisions can collapse to the point where almost no packets actually get through.
 
 With WiFi this shortcoming is unavoidable -- a radio frequency is a broadcast medium, so collisions are always going to be a problem, and this is why it's very important to choose a WiFi channel that's not also being used by too many of your neighbours!
@@ -151,9 +151,9 @@ This kind of simplistic device is known as an _Ethernet hub_.
 An Ethernet network held together by one or more hubs is prone to congestion.
 
 A way to alleviate this problem is to add some intelligence into the box that connects the Ethernet cables together.
-Rather than blindly re-transmitting every packet, the device can interpret the Ethernet packet, read the destination MAC address, and then only repeat it down the cable connected to the destination MAC address.
+Rather than blindly retransmitting every packet, the device can interpret the Ethernet packet, read the destination MAC address, and then only repeat it down the cable connected to the destination MAC address.
 Intelligent devices like this are called _Ethernet switches_.
-In order to function, an Ethernet switch maintains a lookup table of all MAC addresses reachable via each cable plugged into it (connections to hubs/switches are often referred to as _legs_ or _ports_).
+In order to function, an Ethernet switch maintains a lookup table of all MAC addresses reachable via each cable plugged into it. Connections to hubs/switches are often referred to as _legs_ or _ports_.
 These lookup tables take into account the fact that you can connect switches together, so they allow the mapping of multiple MAC addresses to each leg/port.
 If you have an eight-port switch with seven devices connected to it, and you then connect that switch to another switch, that second switch sees seven MAC addresses at the end of one of its legs.
 
@@ -167,11 +167,11 @@ A router is a device that has a Layer 1 connection to two or more different netw
 It uses the Layer 2 IP protocol to intelligently move packets between those networks.
 
 Our home routers cause a lot of confusion because they are actually hybrid devices happen to contain a router.
-The best way to think of a home router is as a box containing two or three component devices -- a router to pass packets between your home network and the internet, an Ethernet switch that forms the heart of your home network, and, optionally, a wireless access point, which is the wifi-equivalent of an Ethernet hub.
+The best way to think of a home router is as a box containing two or three component devices -- a router to pass packets between your home network and the internet, an Ethernet switch that forms the heart of your home network, and, optionally, a wireless access point, which is the WiFi-equivalent of an Ethernet hub.
 Importantly, if it's present, the wireless access point is connected to the Ethernet switch, ensuring that a single Ethernet network exists on both the copper and the airwaves.
 This means that an Ethernet packet can be sent from a wired network card to a wireless network card in a single Layer 1 hop -- i.e.
 Layer 2 is not needed to get a single packet from a phone on your wifi to a desktop computer on your wired Ethernet.
-Confusingly, while this single packet will pass through a device you *call* a router, it will *not* be routed -- it will go nowhere near the router inside your home router, it will stay on the switch and the wireless access points inside your home router.
+Confusingly, while this single packet will pass through a device you *call* a router, it will *not* be routed -- it will go nowhere near the router inside your home router, it will stay on the switch and the wireless access point inside your home router.
 The diagram below illustrates the typical setup:
 
 image::ttt24/HomeRouter.png[Home Router]
@@ -179,12 +179,12 @@ image::ttt24/HomeRouter.png[Home Router]
 == The Address Resolution Protocol (ARP)
 
 The protocol that sits on top of Ethernet is the IP Protocol.
-The IP protocol moves a packet from one IP address to another, and it does so by repeatedly dropping the packet down to the link layer below to move the packet one _hop_ at a time from a directly connected device to another directly connected device until it arrives at its destination.
+The IP protocol moves a packet from one IP address to another, and it does so by repeatedly dropping the packet down to the link layer below to move the packet one _hop_ at a time from a directly-connected device to another directly-connected device until it arrives at its destination.
 As a quick reminder, see the diagram below from the previous instalment:
 
 image::wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
 
-Within our LAN, the Layer 1 protocol IP uses to move a packet from one device on our LAN to another device on our LAN is Ethernet.
+Within our LAN, the Layer 1 protocol IP used to move a packet from one device on our LAN to another device on our LAN is Ethernet.
 Ethernet can only move a packet from one MAC address to another, and IP moves packets from one IP address to another, so how does the IP protocol figure out what MAC address matches to what IP address so it knows where to ask Ethernet to send the packet?
 
 The Address Resolution Protocol, or ARP, is an Ethernet protocol that maps IP addresses to MAC addresses.
@@ -251,7 +251,7 @@ This assumption is why *ALL* untrusted Ethernet networks are dangerous -- be the
 This is why the Ethernet port in a hotel room is just as dangerous as public wifi.
 To intercept other people's network traffic, an attacker simply has to send out false ARP replies and erroneously advertise their MAC address as matching their victim's IP address.
 The attacker can then read the packets before passing them on to the correct MAC address.
-Users will not lose connectivity because the packets all get where they are supposed to eventually but, the attacker can read and alter every packet.
+Users will not lose connectivity because the packets all get where they are supposed to eventually go, but the attacker can read and alter every packet.
 This technique is known as https://en.wikipedia.org/wiki/ARP_spoofing[ARP Spoofing] or ARP Poison Routing (APR) and is staggeringly easy to execute.
 
 ARP is just the first example we have met of the Internet's total lack of built-in security.
@@ -261,6 +261,6 @@ If it didn't have such detrimental effects on all our security, the naive innoce
 == Conclusions
 
 This is the last we'll see of Layer 1 in this series.
-In the next instalment, we'll be moving up the stack Layer 2 and the IP protocol -- the real work-horse of the internet.
+In the next instalment, we'll be moving up the stack to Layer 2 and the IP protocol -- the real work-horse of the internet.
 In particular, we'll be tackling one of the single most confusing, and most critical, networking concepts -- that of the IP subnet.
 It's impossible to effectively design or troubleshoot home networks without understanding subnets, and yet they are a mystery to so many.
