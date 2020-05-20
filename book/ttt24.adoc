@@ -170,7 +170,7 @@ Our home routers cause a lot of confusion because they are actually hybrid devic
 The best way to think of a home router is as a box containing two or three component devices -- a router to pass packets between your home network and the internet, an Ethernet switch that forms the heart of your home network, and, optionally, a wireless access point, which is the WiFi-equivalent of an Ethernet hub.
 Importantly, if it's present, the wireless access point is connected to the Ethernet switch, ensuring that a single Ethernet network exists on both the copper and the airwaves.
 This means that an Ethernet packet can be sent from a wired network card to a wireless network card in a single Layer 1 hop -- i.e.
-Layer 2 is not needed to get a single packet from a phone on your wifi to a desktop computer on your wired Ethernet.
+Layer 2 is not needed to get a single packet from a phone on your WiFi to a desktop computer on your wired Ethernet.
 Confusingly, while this single packet will pass through a device you *call* a router, it will *not* be routed -- it will go nowhere near the router inside your home router, it will stay on the switch and the wireless access point inside your home router.
 The diagram below illustrates the typical setup:
 
@@ -248,7 +248,7 @@ The more devices on your LAN you are interacting with, the more mappings you'll 
 
 Something you may have noticed about ARP is that it assumes all computers are truthful, that is to say, that no computer will falsely assert their MAC address maps to any given IP.
 This assumption is why *ALL* untrusted Ethernet networks are dangerous -- be they wired or wireless.
-This is why the Ethernet port in a hotel room is just as dangerous as public wifi.
+This is why the Ethernet port in a hotel room is just as dangerous as public WiFi.
 To intercept other people's network traffic, an attacker simply has to send out false ARP replies and erroneously advertise their MAC address as matching their victim's IP address.
 The attacker can then read the packets before passing them on to the correct MAC address.
 Users will not lose connectivity because the packets all get where they are supposed to eventually go, but the attacker can read and alter every packet.

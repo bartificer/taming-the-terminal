@@ -110,7 +110,7 @@ You can get more information by adding the `-v` flag (for verbose).
 
 Putting it all together, the command to run when verifying that there is basic network connectivity is `ifconfig -uv`.
 
-The following sample output shows one active Ethernet network connection, *en0*, and one inactive wifi connection (en1).
+The following sample output shows one active Ethernet network connection, *en0*, and one inactive WiFi connection (en1).
 The important parts of the output have been highlighted for clarity:
 
 [source,shell,highlight='1,20,21,30,31']
@@ -379,7 +379,7 @@ If the home router provided by my ISP were to be down I would expect the trace t
 
 * If there is not even connectivity as far as the default gateway then either the network settings are wrong, or there is a hardware problem with the LAN
 * If there is packet loss when pinging the default gateway, then either there is congestion on the LAN, or there is a hardware problem -- perhaps a faulty switch/router or perhaps a faulty network card.
-If using Ethernet it could also be a damaged Ethernet cable, and if using wifi it could be low signal strength, congestion of the channel because too many of your neighbours are using the same channel or RF interference of some kind.
+If using Ethernet it could also be a damaged Ethernet cable, and if using WiFi it could be low signal strength, congestion of the channel because too many of your neighbours are using the same channel or RF interference of some kind.
 * If the ping to the public IP does not respond at all then either the server you are pinging is down, or, more likely, your connection to the internet is down.
 `traceroute` may help you prove it really is your ISP that is the problem before you spend an eternity on hold with them!
 
