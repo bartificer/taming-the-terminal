@@ -152,7 +152,7 @@ bart-iMac2013:~ bart$
 
 === Expected Results
 
-If all is well, there should be two network interfaces active, the loopback interface (`lo0`), and an interface of either type `Ethernet` or `Wi-Fi`.
+If all is well, there should be two network interfaces active, the loopback interface (`lo0`), and an interface of either type `Ethernet` or `WiFi`.
 
 === Possible Problems/Solutions
 
