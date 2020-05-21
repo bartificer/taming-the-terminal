@@ -3,7 +3,9 @@ Bart Busschots
 :doctype: book
 :docinfo: shared
 :doctitle: Taming the Terminal
-:lang: en_gb
+:lang: en-GB
+:creator: {author}
+:producer: Allison Sheridan and Helma van der Linden
 :copyright: CC-BY-NC-ND 4.0
 :front-cover-image: assets/cover3.png
 :pagenums:
@@ -13,6 +15,7 @@ Bart Busschots
 :rouge-style: github
 :pygments-linenums-mode: inline
 :pygments-style: manni
+:pygments-css: class
 :table-stripes: even
 :toc: left
 ifndef::backend-pdf[:toclevels: 0]

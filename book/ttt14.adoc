@@ -89,7 +89,7 @@ This means you have to be explicit about deleting or overriding files, instead o
 
 To see a list of all currently defined aliases, simply run the `alias` command without any arguments:
 
-[source,shell,linenums]
+[source,console?prompt=bart$,linenums]
 ----
 bart-imac2013:~ bart$ alias
 alias cp='cp -i'
@@ -149,14 +149,14 @@ echo $PS1
 
 On OS X the default value of `PS1` is `\h:\W \u\$`, giving prompts that look like:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-imac2013:~ bart$
 ----
 
 On the RedHat and CentOS variants of Linus the default is `[\u@\h \W]\$`, which give prompts that look like:
 
-[source,shell]
+[source,console?prompt=$]
 ----
 [bart@www ~]$
 ----

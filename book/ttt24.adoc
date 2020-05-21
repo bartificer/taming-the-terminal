@@ -45,7 +45,7 @@ Later in the instalment, we're going to refer back to results of the following c
 sudo tcpdump -nneq arp
 ----
 
-== Ethernet -- A Quick Overview
+== Ethernet {longdash} A Quick Overview
 
 As we discussed in the previous instalment, the bottom of the four layers in the TCP/IP model is the _Link Layer_.
 Its function is to move a single packet of data from one device connected to a network to another device connected to the same network.
@@ -133,7 +133,7 @@ To see all MAC addresses associated with your computer, regardless of which netw
 ifconfig -a | egrep '^\s*ether'
 ----
 
-== Hubs, Switches & Routers -- What's the Difference?
+== Hubs, Switches & Routers {longdash} What's the Difference?
 
 Because Ethernet uses a shared medium, it's susceptible to congestion -- if two network cards try to transmit a packet at the same time, they interfere with each other and both messages become garbled.
 This is known as a _collision_.
@@ -194,7 +194,7 @@ Whenever a computer needs to figure out what MAC address matches a given IP addr
 The command you've had running in the background since the start of this instalment has been listening for ARP packets and printing every one your computer sees.
 You should see output something like:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-iMac2013:~ bart$ sudo tcpdump -nneq arp
 Password:
@@ -230,7 +230,7 @@ While we're on the subject of efficiency, computers don't send an ARP request ea
 You can see the MAC to IP mappings currently cached by your OS with the command `arp -an`.
 You'll get output something like:
 
-[source,shell,linenums,highlight='1']
+[source,console?prompt=bart$,linenums,highlight='1']
 ----
 bart-iMac2013:~ bart$ arp -an
 ? (192.168.10.1) at 0:13:3b:e:3f:30 on en0 ifscope [Ethernet]

@@ -346,12 +346,16 @@ We can use `ifconfig` and `egrep` again to find all the IP addresses our compute
 ifconfig | egrep '\b\d{1,3}([.]\d{1,3}){3}\b'
 ----
 
+ifndef::backend-pdf[]
 pass:[<!-- vale Vale.Repetition = NO -->]
+endif::[]
 
 So, let's go right back to the examples we used at the very very start of all this.
 Firstly, to the RE for domain names:
 
+ifndef::backend-pdf[]
 pass:[<!-- vale Vale.Repetition = YES -->]
+endif::[]
 
 [source,shell]
 ----
@@ -404,7 +408,7 @@ image::ttt18/Screen-Shot-2014-05-10-at-18.14.12.png[Name Mangler]
 
 image::ttt18/Screen-Shot-2014-05-10-at-18.17.19.png[Screen Shot 2014-05-10 at 18.17.19]
 
-== Update (19 Oct 2015) -- A Nice Web Tool
+== Update (19 Oct 2015) {longdash} A Nice Web Tool
 
 Thanks to NosillaCast listener Caleb Fong for recommending a great online RE testing tool which you can find at https://regex101.com[regex101.com]
 

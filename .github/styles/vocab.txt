@@ -46,6 +46,7 @@ kbd
 Komodo
 ksh
 lego
+longdash
 loopback
 lossy
 Magick

@@ -40,7 +40,7 @@ Where things get interesting is when you enter a command that is not a builtin.
 What Bash does then is interpret the command as a request to run an executable file with that name.
 If Bash finds such a file it runs it, and if not, it gives an error like:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-imac2013:~ bart$ donky
 -bash: donky: command not found
@@ -216,7 +216,7 @@ whereAmI
 
 Now, close your command shell, and open a new one, and try to use your script as a command again:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-imac2013:~ bart$ whereAmI
 -bash: whereAmI: command not found
@@ -356,7 +356,7 @@ We'll look at this in more detail next time.
 So far there are two files doing the customisation of Bash for us, `/etc/profile` and `/etc/bashrc`.
 These are both system files, and if you try to edit them as a regular user you'll find you don't have permission:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-imac2013:~ bart$ ls -l /etc/profile /etc/bashrc
 -r--r--r--  1 root  wheel  745 10 Nov 18:55 /etc/bashrc

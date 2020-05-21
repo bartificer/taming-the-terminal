@@ -280,7 +280,7 @@ sudo ipconfig getpacket enX
 
 The relevant information is in the options section near the bottom of the output, highlighted below:
 
-[source,shell,linenums,highlight='20,22..25']
+[source,console?prompt=bart$,linenums,highlight='20,22..25']
 ----
 BW-MBP-2:~ bart$ sudo ipconfig getpacket en1
 Password:

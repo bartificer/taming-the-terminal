@@ -96,7 +96,7 @@ rm -rf /tmp/ttt31
 ssh $SSH_USER@$SSH_COMP 'rm -rf /tmp/ttt31'
 ----
 
-== `scp` -- The Secure Copy Command
+== `scp` {longdash} The Secure Copy Command
 
 The simplest way to securely copy files between computers is with the secure copy command, `scp`.
 As its name would suggest, it is very like the regular POSIX copy command, `cp`, but with the added ability to copy files between computers.

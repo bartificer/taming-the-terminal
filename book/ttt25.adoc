@@ -420,7 +420,7 @@ netstat -rn | egrep '^default'
 With these filtered versions of the commands, we can clearly see the three pieces of information we are looking for.
 Below is my output, with the desired information highlighted:
 
-[source,shell,linenums,highlight='2,4']
+[source,console?prompt=bart$,linenums,highlight='2,4']
 ----
 bart-iMac2013:~ bart$ ifconfig -a | egrep '\binet\b' | egrep -v '127[.]'
 	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255
@@ -431,7 +431,7 @@ bart-iMac2013:~ bart$
 
 If you copy and paste the IP and netmask values from the above commands into the calculator at http://subnetcalc.it/[www.subnetcalc.it] you can see the structure of your subnet.
 
-== Routable -v- Un-Routable Protocols -- A Home Networking Pitfall
+== Routable -v- Un-Routable Protocols {longdash} A Home Networking Pitfall
 
 The application layer protocols we use to actually do things on our networks or the internet use protocols which sit on top of IP (usually TCP or UDP).
 Because IP can send packets between subnets, you might assume that all Application layer protocols that use IP under the hood would also be able to work across different subnets, but you'd be mistaken.
@@ -461,11 +461,11 @@ This is working quite well, but you have terrible WiFi reception in the back bed
 That device, like your home router, is probably three devices in one, a router, an Ethernet switch, and a wireless access point, that means that depending on your configuration, you can end up with one big IP subnet in the house, or, with two separate IP subnets.
 The diagrams below show two possible configurations with two home routers -- one with a single IP Subnet, the other with two separate subnets.
 
-=== Good -- A Single Subnet
+=== Good {longdash} A Single Subnet
 
 image::ttt25/HomeNetwork-WirelessAccessPoint-Good.png[Wireless Access Point - Good]
 
-=== Bad -- Two Subnets
+=== Bad {longdash} Two Subnets
 
 image::ttt25/HomeNetwork-WirelessAccessPoint-BAD.png[Wireless Access Point - BAD]
 

@@ -78,7 +78,7 @@ This is particularly powerful at the link layer, where it allows the practicalit
 
 == The Four Network Abstraction Layers
 
-=== 1 -- The Link Layer
+=== 1 {longdash} The Link Layer
 
 The link layer allows a single packet of data to be sent within a network.
 Assuming you have only one home network, then the link layer allows packets to get from any one device on your home to any other device on your home.
@@ -98,7 +98,7 @@ For example, there is a protocol called FiberChannel that can send data through 
 
 The key point is that no matter what protocols are used in Layer 1, the protocols used in the layers above don't care at all about the practicalities, all that matters is the contracts between protocols.
 
-=== 2 -- The Internet Layer
+=== 2 {longdash} The Internet Layer
 
 The link layer can move a packet of data between any two devices within a single network. Layer two takes things a step further, allowing for the movement of a single a packet of data between any two devices located anywhere within a set of connected networks.
 
@@ -134,7 +134,7 @@ The key to this is that the IP protocol contains a bunch of subprotocols.
 For example, IGMP allows for so-called multi-cast traffic where a single packet gets delivered to many recipients instead of one.
 Another subprotocol we'll be seeing again is ICMP, which is used for network troubleshooting.
 
-=== 3 -- The Transport Layer
+=== 3 {longdash} The Transport Layer
 
 Layers one and two deal with single packets of data.
 We usually want to send or receive a lot more than a single packet, so we need to layer some protocols on top of IP to deal with that reality.
@@ -178,7 +178,7 @@ Compared to UDP, TCP is much less efficient in every way -- the buffers take up 
 
 However, all these inefficiencies are a small price to pay for the promise that the data received will be identical to the data sent!
 
-=== 4 -- The Application Layer
+=== 4 {longdash} The Application Layer
 
 The bottom three layers are in effect the infrastructure of the internet. The application layer is where the user-facing functionality starts.
 The vast majority of the protocols we interact with through the various apps we use are Layer 4 protocols.
@@ -306,7 +306,7 @@ This continues for as long as it takes for the packet to arrive at the router in
 ====
 *Aside:* you can use the terminal command `traceroute` (`tracert` on Windows) to see what routers a packet follows from your computer to my server as follows:
 
-[source,shell,linenums,highlight='1']
+[source,console?prompt=bart$,linenums,highlight='1']
 ----
 bart-iMac2013:~ bart$ traceroute -n 46.22.130.125
 traceroute to 46.22.130.125 (46.22.130.125), 64 hops max, 52 byte packets
@@ -367,7 +367,7 @@ This will print some metadata and then sit there and do nothing until matching p
 
 In the other terminal window we will use the `curl` command to fetch the website in question (and print out the HTTP request and response for good measure) using:
 
-[source,html,linenums,highlight='1']
+[source,console?prompt=bart$,linenums,highlight='1']
 ----
 bart-iMac2013:~ bart$ curl -v http://www.so-4pt.net/~bart/ttt23/
 * Hostname was NOT found in DNS cache
@@ -410,7 +410,7 @@ Once we enter the above command in our second terminal window we should see some
 Click on this window and end the capture by hitting kbd:[Ctrl+c].
 You should now have something that looks like:
 
-[source,shell]
+[source,console?prompt=bart$]
 ----
 bart-iMac2013:~ bart$ sudo tcpdump -nn host 46.22.130.125
 Password:

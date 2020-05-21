@@ -60,7 +60,7 @@ In this instalment, we'll be focusing on Environment Variables, and specifically
 The command to list the names and values of all currently set environment variables is simply `env` (or `printenv` on some systems).
 E.g.:
 
-[source,shell,linenums]
+[source,console?prompt=bart$,linenums]
 ----
 bart-imac2013:~ bart$ env
 TERM_PROGRAM=Apple_Terminal
@@ -98,7 +98,7 @@ We already know that `env` lets us see all the environment variables which exist
 To see all the shell variables that exist, call `set` with no arguments.
 E.g.
 
-[source,shell,linenums]
+[source,console?prompt=bart$,linenums]
 ----
 bart-imac2013:~ bart$ set
 Apple_PubSub_Socket_Render=/tmp/launch-MLs1hi/Render
@@ -294,7 +294,7 @@ We can now verify that we really have pushed our new variable to the environment
 env
 ----
 
-=== Environment Variables and subshells -- OPTIONAL
+=== Environment Variables and subshells {longdash} OPTIONAL
 
 As mentioned, when one process starts another, the child process inherits a copy of the parent's environment.
 If a child makes a change to an environment variable, that change is not seen by the parent.
@@ -411,7 +411,7 @@ echo $TTT_VAR
 
 You should get output that looks something like:
 
-[source,shell,linenums]
+[source,console?prompt=bart$,linenums]
 ----
 bart-imac2013:~ bart$ echo $TTT_VAR
 Hello World!
@@ -439,7 +439,7 @@ echo $TTT_VAR
 
 This should give you output something like:
 
-[source,shell,linenums]
+[source,console?prompt=bart$,linenums]
 ----
 bart-imac2013:~ bart$ echo $TTT_VAR
 Hello World!

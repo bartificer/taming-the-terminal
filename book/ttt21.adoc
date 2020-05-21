@@ -139,7 +139,7 @@ find / -iname '*base*' -exec chown -R us {} ';'
 
 (If you don't get it, https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us[this might help].)
 
-== OS X Only -- Spotlight from the Terminal
+== OS X Only {longdash} Spotlight from the Terminal
 
 On OSX the operating system indexes the files on your computer so you can quickly search them with Spotlight.
 Rather than having to search through all the files, Spotlight just searches the index, which makes it much faster than `find` when searching through big chunks of the file system.
