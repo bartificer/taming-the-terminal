@@ -82,7 +82,7 @@ Unlike Ethernet, the IP protocol can send packets across different networks.
 The act of moving a packet through different networks from source to destination is known as _routing_.
 The heavy-lifting in routing, figuring out a route through the maze of interconnected networks that make up the internet, is done by routers, and is beyond the scope of this series.
 However, each and every device that speaks IP needs to make some simple routing decisions.
-Fundamentally our computers have to answer one simple routing question _"`is the destination IP address for this packet on my local network, or is it on a different network?`"_.
+Fundamentally our computers have to answer one simple routing question _"is the destination IP address for this packet on my local network, or is it on a different network?"_.
 
 If your computer determines that the destination IP address is on the local network, then it looks up the MAC address for the destination IP using ARP (as described in <<ttt24,the previous instalment>>) and sends the packet directly to its destination using Ethernet.
 

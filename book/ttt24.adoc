@@ -89,7 +89,7 @@ While the naming of network devices on Linux/Unix/OS X is confusing, there are s
 lo0::
 This is the so-called _loop-back address_, it's a virtual network interface that can be used to communicate internally within a computer using the TCP/IP stack.
 `lo0` will usually have the IP address `127.0.0.1` and map to the hostname `localhost`.
-(This is also the genesis of the two popular nerd T-shirts _"`There's no place like 127.0.0.1`"_ and _"`127.0.0.1 sweet 127.0.0.1`"_)
+(This is also the genesis of the two popular nerd T-shirts _"There's no place like 127.0.0.1"_ and _"127.0.0.1 sweet 127.0.0.1"_)
 
 gif0::
 This is an OS X-specific virtual network interface called the _Software Network Interface_.
