@@ -15,7 +15,7 @@ As a quick reminder, the most important points were:
 
 In <<ttt25,the previous instalment>>, we looked at how IP subnet works.
 The key takeaway was that a computer needs a minimum of three settings correctly configured to be able to participate in an IP network: an IP address, a subnet mask, and a default gateway (the IP address of the router providing access outside the subnet).
-We also looked at how to read those three settings from your Mac using the GUI and the Terminal.
+We also looked at how to read those three settings from your Mac using the GUI (Graphical User Interface) and the Terminal.
 Finally, we noted that historically, those settings had to be manually configured, but that today, almost all computers acquire those settings automatically.
 In this instalment, we'll look at the protocol that makes that possible, the Dynamic Host Configuration Protocol, or DHCP.
 
@@ -45,11 +45,11 @@ A network admin would connect the computer to the network, configure the three v
 
 Even at this early stage, there was some friction with this process.
 Manually configured network settings make seamless network changes impossible.
-Once the network is changed in some way, a network engineer has to re-visit each computer one by one to update the settings.
+Once the network is changed in some way, a network engineer has to revisit each computer one by one to update the settings.
 
 However, it was the invention of the portable networked computer that turned this friction into a major problem.
 We all expect to be able to get network access where ever we go with our laptops, iPhones, and iPads.
-If we were doing things the old way and manually configuring out devices, we would need to know what IP address, netmask, and gateway for every network we used, and, we would have to manually change the settings each time we moved from one network to another.
+If we were doing things the old way and manually configuring our devices, we would need to know the IP address, netmask, and gateway for every network we used, and we would have to manually change the settings each time we moved from one network to another.
 Obviously, manually configured network settings are just not practical in the modern world!
 
 The solution was to develop a protocol that would allow computers to automatically discover their own settings.
@@ -80,13 +80,13 @@ The DHCP protocol makes liberal use of these broadcast packets.
 
 == Prerequisites
 
-For DHCP to work on a given Ethernet network that network must contain one of two things -- a DHCP server, or a DHCP relay agent.
+For DHCP to work on a given Ethernet network, that network must contain one of two things -- a DHCP server, or a DHCP relay agent.
 We've already mentioned that so-called home routers are not actually routers, but boxes containing many components.
-We already know that these devices contain a router component, an Ethernet switch component, and a wireless access point component, but they actually contain more components than that.
+We already know that these devices contain a router component, an Ethernet switch component, and a wireless access point component but they actually contain more components than that.
 Another one of the components contained within the little boxes we refer to as home routers is a DHCP server.
 This means that on our home networks we have a DHCP server directly connected to our Ethernet network.
 
-On larger networks, like those you'd find in corporations or educational institutions you won't find home routers powering the network.
+On larger networks, like those you'd find in corporations or educational institutions, you won't find home routers powering the network.
 Instead, what you'll find is that the managed switches and routers used by these organisations contain DHCP relay agents, which relay DHCP requests from all the different subnets on the network to a single central cluster of DHCP servers (usually with redundancy built-in in case a server crashes).
 This more complex environment is outside of the scope of this series.
 We'll be ignoring DHCP relay agents for the remainder of this discussion.
@@ -96,11 +96,11 @@ We'll be ignoring DHCP relay agents for the remainder of this discussion.
 DHCP is a simple request-response protocol.
 DHCP relies heavily on UDP broadcast packets, but whenever possible it uses regular UDP packets because they cause less congestion on a network.
 
-When a computer configured to use DHCP is first connected to a network a four-part conversation should follow, at the end of which the computer should have a fully configured TCP/IP stack.
+When a computer configured to use DHCP is first connected to a network, a four-part conversation should follow, at the end of which the computer should have a fully configured TCP/IP stack.
 Assuming everything goes to plan, the following should be the sequence of events:
 
 . The client broadcasts a DHCP DISCOVER packet to `255.255.255.255`.
-. A DHCP server received that packet and responds with A DHCP OFFER packet also broadcast to `255.255.255.255`.
+. A DHCP server receives that packet and responds with A DHCP OFFER packet also broadcast to `255.255.255.255`.
 . The client receives the OFFER and broadcasts a DHCP REQUEST packet.
 . The server receives the REQUEST and broadcasts back a DHCP ACK packet.
 
@@ -116,12 +116,12 @@ The DHCP OFFER will contain the magic cookie, an IP, subnet, and gateway for the
 If the client is happy with the settings it was offered it will broadcast a DHCP REQUEST, formally asking that it be assigned the offered IP.
 The REQUEST contains the IP being requested, the client's MAC address, the magic cookie again, and another copy of the list of desired settings.
 
-Assuming the requested IP is still free, the server will broadcast back a DHCP ACK packet confirming to the client that it can use those details.
+Assuming the requested IP is still free, the server will broadcast back a DHCP ACK (acknowledgemnt) packet confirming to the client that it can use those details.
 The ACK contains the same information as the original OFFER.
 
 Once that four-way transaction is complete, the DHCP server marks the IP as being in use for the duration of the lease, and the client uses the supplied details to configure its IP stack.
 
-The so-called _magic cookie_ is just a random value generated by the client that is used to tie the different DHCP packets together.
+The magic cookie is just a random value generated by the client that is used to tie the different DHCP packets together.
 On a busy network, there could be many DISCOVERs, OFFERs, REQUESTs, and ACKs broadcast every second, so without the magic cookie, it would be impossible to tell which response is meant for which client.
 
 When the lease comes to an end, the whole process does not have to be repeated.
@@ -210,28 +210,28 @@ Below is a capture if the DHCP conversation between my laptop and my router, wit
 We've already seen the four most common types of DHCP packet, DISCOVER, OFFER, REQUEST, and ACK.
 There are three more types you may see:
 
-DHCP INFORM packets are used by clients to request more information from the server.
+* DHCP INFORM packets are used by clients to request more information from the server.
 If you configure your browser to use automatic proxy configuration, your computer can send a DHCP INFORM packet to ask the DHCP server if it knows what proxy settings should be used.
 
-Polite DHCP clients can also use DHCP RELEASE packets to tell a DHCP server they are finished with an IP address.
-This allows the IP to marked as free before the lease expires.
+* Polite DHCP clients can also use DHCP RELEASE packets to tell a DHCP server they are finished with an IP address.
+This allows the IP to be marked as free before the lease expires.
 
-The final type of DHCP packet is the one you need to be wary of -- the DHCP NACK.
+* The final type of DHCP packet is the one you need to be wary of -- the DHCP NACK.
 
 As the name may suggest to you, NACK stands for NOT ACK, in other words, it's a negative response to a DHCP REQUEST.
-It's perfectly normal for a small percentage of the DHCP packets on a network to be NACKs, they can be produced in innocent ways.
+It's perfectly normal for a small percentage of the DHCP packets on a network to be NACKs as they can be produced in innocent ways.
 However, on a healthy network, you should see far fewer NACKs than ACKS.
 
-When a client's lease is coming to an end it sends a DHCP REQUEST to ask that its lease be extended.
+When a client's lease is coming to an end, it sends a DHCP REQUEST to ask that its lease be extended.
 If for any reason the server does not want to extend the lease, it will respond with a DHCP NACK.
 On receiving this NACK the client simply starts from zero again and sends a DHCP DISCOVER, at which point it will receive an OFFER of a different IP, which it can then REQUEST, and which the server should then ACK.
 This means that the pattern REQUEST, NACK, DISCOVER, OFFER, REQUEST, ACK is entirely innocent, and nothing to worry about.
 
 DHCP NACKs can also be generated when an address that's supposed to be managed by DHCP is hard-coded onto a device somewhere on the network.
-Before sending out an ACK for an IP that's not supposed to be leased to anyone yet, the DHCP server will try ping the IP to make sure it really is free, if it gets a reply, it will respond to the REQUEST with a NACK.
+Before sending out an ACK for an IP that's not supposed to be leased to anyone yet, the DHCP server will try ping the IP to make sure it really is free. If it gets a reply, it will respond to the REQUEST with a NACK.
 
 Finally, some computers, when waking up from sleep or booting, like to request their old IP again, even if the lease time has expired.
-When this happens, it's quite possible that the server has re-used the IP, and hence it has to NACK that request.
+When this happens, it's quite possible that the server has reused the IP, and hence it has to NACK that request.
 This will result in the innocent pattern REQUEST, NACK, DISCOVER, OFFER, REQUEST, ACK.
 
 When you need to start worrying is when you see the same client get NACKed over and over again, and never get to an ACK, or, when you start to see as many or more NACKs as ACKs.
@@ -240,7 +240,7 @@ There are two common problems that can lead to excessive NACKs.
 
 Firstly, if a network contains two DHCP servers (or more), they can end up fighting with each other.
 One can NACK every offer made by the other, and vice-versa.
-It's possible for two duelling DHCP servers to make it impossible for anyone on the network to get an IP via DHCP.
+It's possible for two dueling DHCP servers to make it impossible for anyone on the network to get an IP via DHCP.
 This is something I've witnessed a few times during my day job.
 This can be done accidentally, or maliciously.
 
@@ -338,6 +338,6 @@ The two critical pieces of information to take away from this instalment are tha
 
 In the previous two instalments, we learned how Ethernet and IP provide the basic networking functionality our computers need to communicate.
 In this instalment, we've seen how our home routers use the DHCP protocol to automatically configure the IP settings on our devices.
-In the next instalment, we'll learn how DNS allows us, humans, to ignore IP addresses while surfing the web, sending emails, playing games, and so much more.
+In the next instalment, we'll learn how DNS allows us as humans to ignore IP addresses while surfing the web, sending emails, playing games, and so much more.
 
 Once we've added an understanding of DNS to our mental toolkit, we'll be ready to apply everything we have learned in instalments 23 through 27 together in a single instalment dedicated to terminal commands for network troubleshooting.
