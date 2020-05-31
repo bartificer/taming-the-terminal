@@ -1,18 +1,29 @@
 [colophon]
 = Colophon
 
-The Asciidoctor Press, Ceres and Denver
+The Nosillacast Press
 
-(C) 2020 by The Asciidoctor Press
+(C) 2020 by The Nosillacast Press
 
 Published in the Milky Way Galaxy
 
-Version {revnumber} - {revdate}
+Version {revnumber}
+
+Date {revdate}
 
 Compiled: {compile_time}
 
-This book is designed by Dagger Flush, Denver, Colorado.
-The types are handset Chinchilla and Dust, designed by Mickey.
-Mickey designed the typefaces to soften the bluntness of documentation.
+This book is designed and handcrafted by {producer}.
+The cover is designed by {cover-artist}.
+The font types are Noto Sans and Noto Serif.
+
 Created in Asciidoctor and macOS.
-The printing and binding is by Ceres Lithographing, Inc., Ceres, Milky Way.
+
+[[license]]
+*Creative Commons license*
+
+This work is licensed under a http://creativecommons.org/licenses/by-nc-nd/4.0/[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License, rel='license'].
+
+:imagesdir: assets
+[link=http://creativecommons.org/licenses/by-nc-nd/4.0/, rel='license']
+image::creativecommons.org_by-nc-nd_4.0_88x31.png[Creative Commons License]
