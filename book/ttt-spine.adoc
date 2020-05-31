@@ -13,10 +13,11 @@ Bart Busschots
 :icons: font
 :source-highlighter: rouge
 :rouge-linenums-mode: inline
+:rouge-css: inline
 :rouge-style: github
 :pygments-linenums-mode: inline
 :pygments-style: manni
-:pygments-css: class
+:pygments-css: inline
 :table-stripes: even
 :toc: left
 ifndef::backend-pdf[:toclevels: 0]
