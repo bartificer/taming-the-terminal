@@ -2,7 +2,15 @@
 # Foreword
 include::variables.adoc[]
 
-This section is added to avoid all kinds of warnings when generating the output.
+The differences between a foreword, a preface and an introduction:
+
+https://greenleafbookgroup.com/learning-center/book-creation/distinguishing-between-a-foreword-a-preface-and-an-introduction[DISTINGUISHING BETWEEN A FOREWORD, A PREFACE, AND AN INTRODUCTION]
+
+* A foreword is written by someone other than the author and tells the readers why they should read the book.
+* A preface is written by the author and tells readers how and why the book came into being.
+* An introduction introduces readers to the main topics of the manuscript and prepares readers for what they can expect.
+
+They are added to the book in this order.
 
 ## Date started
 

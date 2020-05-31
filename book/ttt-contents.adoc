@@ -2,9 +2,9 @@ ifndef::backend-html[:leveloffset: +1]
 
 include::colophon.adoc[]
 
-include::ttt-preface.adoc[]
-
 include::ttt-foreword.adoc[]
+
+include::ttt-preface.adoc[]
 
 include::ttt01.adoc[]
 
