@@ -24,7 +24,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::qrcodes/TTT_03.png[QRcode, align='left']
+image::qrcodes/TTT_03.png[QRcode]
 
 You can also {url-mp3}/TTT03FileSystems/TTT_03_File_Systems.mp3[download the MP3]
 ****
