@@ -16,7 +16,7 @@ As a quick reminder, the most important points were:
 We have now looked in detail at <<ttt24,Layer 1>> and <<ttt25,Layer 2>>, and have looked at how <<ttt26,DHCP>> allows our computers to automatically configure their TCP/IP network stack.
 In this instalment, we're going to look at a Layer 4 protocol that is essential to our use of the internet -- DNS.
 
-At layers 2 and 3 all addressing is by IP address, yet just about every networked app we use totally insulates us from that fact.
+At layers 2 and 3, all addressing is by IP address, yet just about every networked app we use totally insulates us from that fact.
 Our computers think in terms of IP addresses, but we think in terms of domain names.
 The Domain Name System (DNS) exists to bridge this gap, allowing domain names to be converted to IP addresses, and IP addresses to domain names.
 
@@ -50,7 +50,7 @@ a|image::qrcodes/TTT_27b.png[QRcode 27b]
 
 == The Hosts File
 
-In the early days of the internet the conversion between human-readable hostnames for computers, and IP addresses was stored within each computer in a single file -- `/etc/hosts`.
+In the early days of the internet the conversion between human-readable hostnames for computers and IP addresses was stored within each computer in a single file -- `/etc/hosts`.
 This meant that names were not in any way authoritative.
 I could give whatever name I wanted to an IP address and save that mapping into my `/etc/hosts` file, and you could give the same IP address a completely different name and save that mapping in your `/etc/hosts` file.
 
@@ -67,7 +67,7 @@ cat /etc/hosts
 
 This file is given a higher priority than DNS by your operating system, so any name to IP mappings you add to this file will override the official mappings from DNS.
 This can be very useful.
-It can be used as a crude form of website blocking, if you map a website you don't want your kids to use to a non-existent IP address, or to the loopback address (`127.0.0.1`), then that site will be inaccessible.
+It can be used as a crude form of website blocking. If you map a website you don't want your kids to use to a non-existent IP address, or to the loopback address (`127.0.0.1`), then that site will be inaccessible.
 Another great use for the hosts file is to test a new website before you make it live.
 Finally, you can also use the hosts file to add memorable names to computers on your own home network.
 It's a much simpler approach than running your own private DNS infrastructure.
@@ -101,8 +101,8 @@ Although the spec has been added to in the intervening years, the fundamental de
 
 === The DNS Philosophy
 
-Before DNS computers had simple hostnames, but DNS took things to the next level by introducing the concept of a hierarchy of names.
-In DNS speak a group of related names are known as a zone, but most people refer to them as domains.
+Before DNS, computers had simple hostnames but DNS took things to the next level by introducing the concept of a hierarchy of names.
+In DNS speak, a group of related names are known as a zone but most people refer to them as domains.
 
 The hierarchy of domain names is anchored at the top by the so-called root zone, which has the one-letter name `.` (almost universally omitted when domain names are written).
 Below the root, you will find the so-called TLDs or _Top Level Domains_ like `.com`, `.net`, `.org`, and so on.
@@ -139,13 +139,13 @@ The list below is not exhaustive, but covers the records you're most likely to e
 | A DNS A record maps a domain name to an IPv4 IP address -- the most common kind of DNS record
 
 | `AAAA`
-| Some day DNS AAAA records may replace A records as the most common -- they map domain names to IPv6 addresses.
+| Someday DNS AAAA records may replace A records as the most common -- they map domain names to IPv6 addresses.
 
 | `CNAME`
 | A DNS CNAME (Canonical Name) record maps a domain name to another domain name.
 Think of CNAME records as DNS aliases.
 E.g.
-If you out-source your email service to a third party but don't want to give people a URL with another company's domain name in it, you could set up a CNAME record to alias `webmail.yourdomain.com` to `webmail.serviceprovider.com`.
+If you outsource your email service to a third party but don't want to give people a URL with another company's domain name in it, you could set up a CNAME record to alias `webmail.yourdomain.com` to `webmail.serviceprovider.com`.
 
 | `MX`
 | DNS MX records, or Mail eXchanger records specify the domain name of the mail server that accepts email for a given domain.
@@ -167,27 +167,27 @@ Microsoft Windows licensing and Microsoft Active Directory make extensive use of
 E.g., a DNS SRV record is used by Windows desktop computers in large organisations with centrally managed multi-user licenses to figure out what server they should contact to license themselves.
 |===
 
-If this series were targeted at corporate sysadmins we'd focus heavily on A, AAAA, PRT & SRV records.
-If it were targeted at webmasters we'd focus on A, CNAME, NS and TXT records.
+If this series was targeted at corporate sysadmins we'd focus heavily on A, AAAA, PRT & SRV records.
+If it was targeted at webmasters we'd focus on A, CNAME, NS and TXT records.
 But, as this series is targeted at home users, we're only really interested in A, CNAME & MX records.
 
 == DNS Servers
 
 An important subtlety in the operation of DNS is that there are two very distinct types of DNS servers that fulfil two entirely different roles.
 Hence, talking about a _DNS Server_ without any more specificity is meaningless, and only likely to lead to confusion.
-To save everyone's sanity you should never use the term _DNS Server_, instead, always refer to either _Authoritative DNS Servers_ or _DNS Resolvers_.
+To save everyone's sanity you should never use the term _DNS Server_. Instead, always refer to either _Authoritative DNS Servers_ or _DNS Resolvers_.
 
 === Authoritative DNS Servers
 
 Authoritative DNS servers are responsible for hosting the DNS records for a domain.
 Each domain has to be served by at least one authoritative server, and almost all domains have two or more authoritative servers.
-Large organisations like corporations and Universities often run their own authoritative servers, but the general public generally pays a domain registrar to provide authoritative DNS servers for their domains.
+Large organisations like corporations and universities often run their own authoritative servers, but the general public generally pays a domain registrar to provide authoritative DNS servers for their domains.
 E.g.
-I pay Register365 to host the DNS zone for `bartb.ie` on their cluster of authoritative DNS servers, and Allison pays Hover to host the DNS zone for `podfeet.com` on their cluster of authoritative DNS servers.
+I pay Register365 to host the DNS zone for `bartb.ie` on their cluster of authoritative DNS servers, and Allison pays GoDaddy to host the DNS zone for `podfeet.com` on their cluster of authoritative DNS servers.
 
 Most of us rely on our domain registrars to perform two functions for us -- register the domain, and host the DNS zone on their authoritative servers.
 It is entirely possible to separate those two functions.
-Sometimes it makes more sense to have the company that hosts your website host your DNS zone on their authoritative DNS servers.
+Sometimes it makes more sense to have the company that hosts your website also host your DNS zone on their authoritative DNS servers.
 The fact that these two roles are separable causes a lot of confusion.
 
 What really happens is that your registrar manages the NS records for your domain, and you can then point those NS records at their authoritative DNS servers, or any other authoritative DNS servers of your choice, perhaps those belonging to your hosting company.
@@ -203,7 +203,7 @@ ifndef::backend-pdf[]
 pass:[<!-- vale Vale.Repetition = NO -->]
 endif::[]
 
-What you can see in the screenshot above is that there are just three DNS records in the `xkpasswd.net` zone, two A records (one for `xkpasswd.net`, and one for `www.xkpasswd.net`), and an MX record.
+What you can see in the screenshot above is that there are just three DNS records in the `xkpasswd.net` zone: two A records (one for `xkpasswd.net`, and one for `www.xkpasswd.net`), and an MX record.
 You'll notice that one of the A records and the MX record use the shortcut symbol `@` to represent '`this domain`'.
 In other words, in this example, where ever you see `@`, replace it with `xkpasswd.net`.
 The `@` symbol is used in this way in many DNS control panels, and indeed many many DNS configuration files.
@@ -214,8 +214,8 @@ endif::[]
 
 === DNS Resolvers
 
-DNS Resolvers do the actual work of looking up the DNS records for a given domain name, be that A records and CNAME records for turning domain names into IP addresses, or MX records for figuring out what mail server email for a given domain should be sent to.
-DNS resolvers query the authoritative DNS servers to perform these lookup.
+DNS Resolvers do the actual work of looking up the DNS records for a given domain name, whether it's A records and CNAME records for turning domain names into IP addresses, or MX records for figuring out what mail server an email for a given domain should be sent to.
+DNS resolvers query the authoritative DNS servers to perform these lookups.
 
 When DHCP pushes a _name server_ setting to your computer, it is specifying which DNS Resolver your computer should use.
 When you look at the Name Server setting in the Network System Preference Pane, you will see what DNS Resolver your computer is configured to use.
@@ -224,7 +224,7 @@ image::ttt27/f106e4d1-f8fe-4f75-9a19-67f355fa73fa.png[Name Server Setting]
 
 On most Linux and Unix OSes, DNS resolution is controlled using the configuration file `/etc/resolv.conf`.
 This file is present in OS X but is used as a way for the OS to expose the settings to scripts and command-line utilities rather than as a way of controlling DNS configuration.
-The file on OS X is in the identical format to the ones on Linus and Unix.
+The file on OS X is in the identical format to the ones on Linux and Unix.
 You can have a look at this file with the command:
 
 [source,shell]
@@ -241,12 +241,12 @@ For example, for a DNS resolver to convert `www.bartb.ie` to an IP address it mu
 . The root DNS server will respond that it doesn't know the answer to that query, but that it does know the authoritative name servers responsible for the `.ie.` zone.
 In other words, the first query returns a list of NS records for the `.ie` domain.
 . The resolver then asks one of the authoritative DNS servers for `.ie` if it has an A record for `www.bartb.ie.`
-. The `.ie` authoritative server responds that it doesn't, but that it does know the authoritative servers for the `bart.ie.` zone.
+. The `.ie` authoritative server responds that it doesn't, but that it does know the authoritative servers for the `bartb.ie.` zone.
 The server returns the list of NS records for `bartb.ie` to the resolver.
 . The resolver then asks one of the authoritative servers for the `bartb.ie.` zone if it has an A record for `www.bartb.ie.`
 . This is my authoritative DNS server, and I have properly configured it, so it does indeed know the answer, and returns the IP address for `www.bartb.ie` to the resolver.
 
-The second type of DNS resolver is a so-called stub-resolver.
+The second type of DNS resolver is called the stub resolver.
 Stub resolvers don't do the hard work of resolution themselves, instead, they forward the request to another resolver and wait to be told the answer.
 
 Our operating systems contain stub resolvers and our home routers contain stub resolvers.
@@ -297,7 +297,7 @@ They only become visible when all the caches between the user and the authoritat
 DNS is a Layer 4 protocol that sits on top of UDP.
 Each query consists of a single packet, as does each reply.
 This use of single packets makes DNS very efficient, but it limits the amount of data that can be contained in a reply, and, it means that requests and replies can get silently dropped because UDP does not guarantee delivery of every packet.
-Because of this DNS resolvers sometimes have to re-try their requests after a certain timeout value.
+Because of this, DNS resolvers sometimes have to retry their requests after a certain timeout value.
 
 Authoritative servers and DNS resolvers listen on UDP port 53.
 
@@ -543,7 +543,7 @@ Once `dig` knows the root name servers, it starts the actual resolution of `www.
 
 The root server doesn't respond with a direct answer to the question, but with a list of eight authoritative name servers for the `.ie` zone.
 
-`dig` then asks one of the `.ie` name servers (`77.72.72.44`) if it has an A record for www.bartb.ie.
+`dig` then asks one of the `.ie` name servers (`77.72.72.44`) if it has an A record for `www.bartb.ie`.
 It also doesn't answer the question but responds with a list of three authoritative name servers for the `bartb.ie` zone.
 
 Finally, `dig` asks one of the authoritative servers for `bartb.ie` (`85.233.160.79`) if it has an A record for `www.bartb.ie`.
@@ -554,7 +554,7 @@ This server does know the answer, so it replies with that A record, specifying t
 As with so many of the older protocols we've discussed in this series, DNS was created at a time when security simply wasn't a consideration.
 
 The source of the weakness is two-fold, firstly, DNS packets are not encrypted, and there is no tamper detection included in the protocol, so it's trivially easy for any attackers who get themselves into a man-in-the-middle position to rewrite DNS responses to silently redirect people to malicious servers.
-If you were in a coffee shop and one of your fellow caffeine aficionados had absurd the lack of security in the ARP protocol to become a man-in-the-middle, they could alter the IP address your computer thinks any site, say paypal.com as an example, maps to.
+If you were in a coffee shop and one of your fellow caffeine aficionados had used the lack of security in the ARP protocol to become a man-in-the-middle, they could alter the IP address your computer thinks any site, say paypal.com as an example, maps to.
 If they then set up their own server at the incorrect IP and make it look like PayPal's site, they could easily trick people into revealing their usernames and passwords.
 
 Because of how UDP works, it is possible to send a UDP packet with a forged source address.
@@ -564,7 +564,7 @@ This is known as DNS Cache Poisoning.
 
 Cache poisoning is not as easy as it used to be because the source ports for DNS queries are now randomised.
 This means that a remote attacker needs to correctly guess the random port number for their fake packet to have any chance of being accepted.
-Attackers can get around this by sending LOTS of false responses with different random port numbers, but the protection is not perfect.
+Attackers can get around this by sending LOTS of false responses with different random port numbers but the protection is not perfect.
 An attacker with enough determination and bandwidth can still poison a DNS cache.
 Also, note that Man-in-the-middle (MITM) attackers see both the request and response packets, so they don't need to guess the port number, they can simply alter the valid response packet to say what they want it to say, so port randomisation provides no protection from MITM attacks.
 
@@ -584,4 +584,4 @@ We can now add a fourth required setting, a DNS resolver, or name server.
 
 In the next instalment, we'll focus on tools for troubleshooting network problems.
 We'll have seen many of the commands before, but we're looking at them in more detail and in context.
-The aim of the next instalment will be to build up a troubleshooting strategy that starts at the bottom of the network stack and works up through it methodically to locate the problem, allowing your to focus your efforts in the right place, and avoid wasting your time debugging things that are actually working just fine.
+The aim of the next instalment will be to build up a troubleshooting strategy that starts at the bottom of the network stack and works up through it methodically to locate the problem, allowing you to focus your efforts in the right place, and avoid wasting your time debugging things that are actually working just fine.
