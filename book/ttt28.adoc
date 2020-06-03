@@ -48,7 +48,7 @@ You can break the process down into four loose steps:
  .. Test whether the computer can communicate with a server on the internet
 . *Domain Name Resolution:* make sure the computer can use DNS to resolve domain names to IP addresses.
 
-Let's now look at these steps in more detail, and at the terminal commands, we'll need for each.
+Let's now look at these steps in more detail, and at the terminal commands we'll need for each.
 At the end of each section, we'll also describe what we should see if everything is working correctly at that level of the stack, and some things to consider if you find results that are not as expected.
 
 == Step 1 {longdash} Check Basic Network Connectivity
@@ -110,7 +110,7 @@ You can get more information by adding the `-v` flag (for verbose).
 
 Putting it all together, the command to run when verifying that there is basic network connectivity is `ifconfig -uv`.
 
-The following sample output shows one active Ethernet network connection, *en0*, and one inactive WiFi connection (en1).
+The following sample output shows one active Ethernet network connection, `*en0*`, and one inactive WiFi connection `*en1*`.
 The important parts of the output have been highlighted for clarity:
 
 [source,console?prompt=bart$,highlight='1,20,21,30,31']
@@ -156,17 +156,17 @@ If all is well, there should be two network interfaces active, the loopback inte
 
 === Possible Problems/Solutions
 
-* No interface is active -- turn one on in the Networks System Preference Pane
+* No interface is active -- turn one on in the Network System Preference Pane
 * If using Ethernet, the cable could be bad, or the router/switch it is plugged into could be bad -- check for a link light on the router/switch
 * The network card could be broken (unlikely)
 
 == Step 2 {longdash} Check Basic IP Configuration
 
-For a computer to have IP connectivity is needs three settings.
+For a computer to have IP connectivity it needs three settings.
 It needs to know its IP address, it needs to know its Netmask, and it needs to know the IP address of the router it should use to communicate beyond the local network.
 This last setting is referred to by a number of different names, including _default gateway_, _default route_, and just _router_.
 A network is incorrectly configured if the IP address for the default gateway is outside the subnet defined by the combination of the IP address and netmask.
-If you're not sure if the gateway address is contained within the defined subnet, you may find an online IP subnet calculator like https://subnetcalc.it[subnetcalc.it] helpful.
+If you're not sure if the gateway address is contained within the defined subnet, you may find an online IP subnet calculator like http://subnetcalc.it[subnetcalc.it] helpful.
 
 If an IP address has been configured for an interface there will be a line starting with `inet` in that interface's description in the output from `ifconfig`.
 This line will give you the IP address and netmask.
@@ -219,7 +219,7 @@ Make a note of these three settings for future reference.
 
 === Possible Problems/Solutions
 
-* DHCP has been disabled on the interface -- enable it using the Networks System Preference Pane
+* DHCP has been disabled on the interface -- enable it using the Network System Preference Pane
 * DHCP is not working on the network -- this will need to be addressed on the router
 
 == Step 3 {longdash} Test IP Connectivity
@@ -232,17 +232,17 @@ This command is ubiquitous across OSes and even exists on Windows, though there 
 
 `ping` uses the Internet Control Message Protocol (ICMP).
 This is a protocol that sits in Layer 2 next to IP and is used for network diagnostics rather than information transport.
-`ping` works by sending an ICPM echo request packet to the target IP and waiting for an ICMP echo response packet back.
+`ping` works by sending an ICMP echo request packet to the target IP and waiting for an ICMP echo response packet back.
 According to the RFCs, all TCP/IP stacks should respond to ICMP echo requests, but many do not.
-Service's like Steve Gibson's Shields Up even go so far as to actively discourage obeying the RFCs.
+Services like Steve Gibson's Shields Up even go so far as to actively discourage obeying the RFCs.
 Personally, I think it's reasonable for home routers not to reply to pings, but world-facing servers should be good netizens and obey the RFCs.
 (Windows Server also blocks ICMP requests by default, which is very annoying when trying to monitor your own network's health!)
 
 To use the `ping` command simply pass it the IP address to be pinged as an argument.
 
-On OS X, Unix, and Linux `ping` will default to continuously sending pings until the user interrupts the process, while on Windows `ping` defaults to sending exactly 4 pings and then stopping.
+On OS X, Unix and Linux, `ping` will default to continuously sending pings until the user interrupts the process, while on Windows `ping` defaults to sending exactly 4 pings and then stops.
 To get the Windows version of `ping` to ping continuously use the `-t` flag.
-If ping is running continuously, you stop it by pressing kbd:[Ctrl+c].
+If `ping` is running continuously, you stop it by pressing kbd:[Ctrl+c].
 That will stop new pings being sent, and `ping` will then print some summary information before exiting.
 
 To avoid having to hit kbd:[Ctrl+c], while still getting a good sample size, the `-c` flag can be used to specify the desired number of pings to send.
@@ -273,7 +273,7 @@ bart-iMac2013:~ bart$
 ----
 
 If all is well on the local network (LAN), then there should be 0% packet loss reported by `ping`.
-You would also expect the round trip times to be very small -- a fraction of a millisecond would be normal.
+You would also expect the round trip times to be very small.
 The round trip times should also be reasonably similar to each other -- at the very least of the same order of magnitude.
 
 If there is little or no packet loss, we need to probe further for the source of the problems.
@@ -305,7 +305,7 @@ round-trip min/avg/max/stddev = 11.189/19.283/34.798/7.488 ms
 bart-iMac2013:~ bart$
 ----
 
-Notice that the round trip times are much longer now -- not fractions of a millisecond but tens of milliseconds.
+Notice that the round trip times are much longer now -- tens of milliseconds.
 If you have a slower internet connection the times could even rise to hundreds of milliseconds.
 What is important though is that they are all similar.
 If there are massive fluctuations in response times that suggests that your ISP is having capacity issues and that your internet connection is unstable.
@@ -319,7 +319,7 @@ Both the default gateway and the IP address on the internet reply to the pings, 
 Any packet loss at all when pinging your default gateway is a bad sign.
 It is indicative of an unhealthy LAN or at the very least an unhealthy connection between the computer being tested and the core of the LAN.
 
-If your ISP's network is healthy packets loss out to google should be zero too, but if your ISP's network is a little congested, you might see the odd dropped packet creep in.
+If your ISP's network is healthy, packet loss out to Google should be zero too, but if your ISP's network is a little congested, you might see the odd dropped packet creep in.
 Losing the occasional packet is tolerable, especially at peak times, but it does suggest that your ISP's network is under stress, or that your connection to your ISP is perhaps a little lossy.
 
 If your default gateway reports expected results, but the public IP address doesn't, that implies there is a problem somewhere between your default gateway and the public IP address you were pinging.
@@ -373,13 +373,13 @@ traceroute to 8.8.8.8 (8.8.8.8), 64 hops max, 52 byte packets
 bart-iMac2013:~ bart$
 ----
 
-If the home router provided by my ISP were to be down I would expect the trace to get stuck after it hits my main router (`bw-pfsense`) if that hop showed up, but then the trace went dark, then I would know that all equipment within my house is working fine, but that nothing is getting out onto the internet from my house, implicating my ISP.
+If the home router provided by my ISP were to be down I would expect the trace to get stuck after it hits my main router (`bw-pfsense`). If that hop showed up, but then the trace went dark, then I would know that all equipment within my house is working fine, but that nothing is getting out onto the internet from my house, implicating my ISP.
 
 === Possible Problems/Solutions
 
 * If there is not even connectivity as far as the default gateway then either the network settings are wrong, or there is a hardware problem with the LAN
 * If there is packet loss when pinging the default gateway, then either there is congestion on the LAN, or there is a hardware problem -- perhaps a faulty switch/router or perhaps a faulty network card.
-If using Ethernet it could also be a damaged Ethernet cable, and if using WiFi it could be low signal strength, congestion of the channel because too many of your neighbours are using the same channel or RF interference of some kind.
+If using Ethernet it could also be a damaged Ethernet cable, and if using WiFi it could be low signal strength, congestion of the channel because too many of your neighbours are using the same channel, or RF interference of some kind.
 * If the ping to the public IP does not respond at all then either the server you are pinging is down, or, more likely, your connection to the internet is down.
 `traceroute` may help you prove it really is your ISP that is the problem before you spend an eternity on hold with them!
 
@@ -414,7 +414,7 @@ google.com mail is handled by 30 alt2.aspmx.l.google.com.
 bart-iMac2013:~ bart$
 ----
 
-The actual details returned could vary depending on where and when you run the command, what matters is that you get back a list of IPs.
+The actual details returned could vary depending on where and when you run the command; what matters is that you get back a list of IPs.
 
 If that fails, check that DNS resolvers have been configured on the computer by running:
 
@@ -454,7 +454,7 @@ bart-iMac2013:~ bart$ dig +short google.com @8.8.8.8
 bart-iMac2013:~ bart$
 ----
 
-The actual IPs returned could well be different depending on where and when you run the command, the important thing is that a list of IPs is returned.
+The actual IPs returned could well be different depending on where and when you run the command; the important thing is that a list of IPs is returned.
 
 === Expected Result
 
@@ -463,7 +463,7 @@ The test name resolves to one or more IP addresses without error.
 === Possible Problems/Solutions
 
 * If there are no resolvers listed in `/etc/resolve.conf`, then ideally the user's home router should be checked to make sure DNS is properly configured there because DNS settings should be passed down to the computer via DHCP.
-* Only if the problem can't be addressed on the router does it make sense to try to fix it on the computer itself by hard-coding it to use a particular resolver in the Networks System Preference Pane.
+* Only if the problem can't be addressed on the router does it make sense to try to fix it on the computer itself by hard-coding it to use a particular resolver in the Network System Preference Pane.
 
 == Conclusions
 
@@ -471,7 +471,7 @@ When a family member, colleague, or friend comes to you with a vague problem sta
 By starting at the bottom of the stack and working your way up methodically you should be able to discover the point at which things break down, and hence know where to focus your efforts at fixing the problem.
 The methodology described here does not tell you exactly what to do in any given situation because the variability is infinite, but it should help you focus your efforts where they are needed.
 
-Up until now the networking segment of this series has focused on how the internet works.
+Up until now, the networking segment of this series has focused on how the internet works.
 We've looked in detail at the protocols that could best be described as the infrastructure of the internet.
 The series is now going to shift focus away from the infrastructure itself, and onto some uses of that infrastructure.
 
