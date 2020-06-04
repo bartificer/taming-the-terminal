@@ -233,7 +233,7 @@ This command is ubiquitous across OSes and even exists on Windows, though there 
 `ping` uses the Internet Control Message Protocol (ICMP).
 This is a protocol that sits in Layer 2 next to IP and is used for network diagnostics rather than information transport.
 `ping` works by sending an ICMP echo request packet to the target IP and waiting for an ICMP echo response packet back.
-According to the RFCs, all TCP/IP stacks should respond to ICMP echo requests, but many do not.
+According to the RFCs (Requests for Comment), all TCP/IP stacks should respond to ICMP echo requests, but many do not.
 Services like Steve Gibson's Shields Up even go so far as to actively discourage obeying the RFCs.
 Personally, I think it's reasonable for home routers not to reply to pings, but world-facing servers should be good netizens and obey the RFCs.
 (Windows Server also blocks ICMP requests by default, which is very annoying when trying to monitor your own network's health!)
