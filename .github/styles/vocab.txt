@@ -85,6 +85,7 @@ subexpressions
 subnet
 subnets
 subnetworks
+subprotocol
 subprotocols
 subshell
 subshells
