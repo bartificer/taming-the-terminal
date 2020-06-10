@@ -4,16 +4,16 @@ include::variables.adoc[]
 
 In the previous six instalments, we looked in detail at how TCP/IP networks tick.
 In these instalments we worked our way up from the bottom of the four-layer TCP/IP network model to the top, finishing off with a look at two protocols in the Application Layer at the top of the stack.
-Those two protocols, DHCP & DNS exist in the top layer but are different to most other top layer protocols in that they can reasonably be described as forming part of the infrastructure of the internet.
-The email and web protocols may site within the same network layer, but they still rely on DNS to function.
+Those two protocols, DHCP & DNS exist in the top layer but are different to most other top-layer protocols in that they can reasonably be described as forming part of the infrastructure of the internet.
+The email and web protocols may sit within the same network layer, but they still rely on DNS to function.
 
 For the remainder of the networking section in this series we're moving away from infrastructure-like protocols, and focusing on the user-facing Application Layer protocols.
 The first of these we'll be looking at is the https://en.wikipedia.org/wiki/Secure_Shell[Secure Shell] or SSH.
-This protocol is one of the absolute work-horses of the internet, and a vital tool for all Linux, Unix, and OS X sysadmins.
+This protocol is one of the absolute workhorses of the internet, and a vital tool for all Linux, Unix, and OS X sysadmins.
 
 At it's simplest level SSH allows you to execute commands on a remote computer, but because it was designed around the concept of a secure tunnel between two systems, SSH has expanded to allow all kinds of advanced features.
 The least-generous description of this could be that SSH has become a kind of sysadmins https://www.urbandictionary.com/define.php?term=fridgeoven[fridgeoven].
-But I don't buy that, I prefer the alternative interpretation -- it simply makes sense not to reinvent the wheel, and to allow as much information as possible to flow throw the secure connection SSH provides between the two end-points.
+But I don't buy that, I prefer the alternative interpretation -- it simply makes sense not to reinvent the wheel, and to allow as much information as possible to flow throw the secure connection SSH provides between the two endpoints.
 
 Today we're just going to start with the basics, but in future instalments, we'll move on to the more advanced features.
 
@@ -58,7 +58,7 @@ The two computers can be a mix of OS X, Linux, and Unix.
 
 OS X comes with SSH installed by default, but remote logins over SSH are disabled by default, i.e.
 the SSH service is not running by default.
-This means that a Mac can always act as an SSH client, but can only act as an SSH server it has been configured to do so.
+This means that a Mac can always act as an SSH client, but can only act as an SSH server when it has been configured to do so.
 
 To enable the SSH service on a Mac, open the Sharing preference pane and enable the '`Remote Login`' option.
 This interface will allow you to limit SSH access to just some of the user accounts on your Mac, or to allow all users to connect to your Mac over SSH.
@@ -120,7 +120,7 @@ When SSHing to a remote computer, your computer tries its best to authenticate t
 Web servers solve this problem using Certificates signed by Certificate Authorities and validated by trust anchors installed in our computers.
 If SSH had been designed the same way, we would need to apply for a certificate for each computer we wanted to SSH to.
 This would create a major barrier to the adoption of SSH, so thankfully the SSH protocol solves the man-in-the-middle problem in a very different way.
-The solution SSH has chosen works without the need for any central authorities like the CAs that underpin security on the web, but the price we pay for that convenience is that we have to deal with prompts like the one above.
+The solution SSH has chosen works without the need for any central authorities like the Certificate Authorities that underpin security on the web, but the price we pay for that convenience is that we have to deal with prompts like the one above.
 Because there are no central authorities to rely on, the end-user has to take responsibility for their own security.
 
 When the SSH service is installed on a computer, a random asymmetric key-pair is generated.
@@ -172,13 +172,13 @@ Host key verification failed.
 This *could* mean there is a man-in-the-middle attack in progress.
 But before you assume the worst, remember that there are legitimate reasons a server's public and private keys could change.
 
-Firstly, if you re-install the OS on a computer, a new set of SSH keys will be generated, so the server will legitimately change identity.
+Firstly, if you reinstall the OS on a computer, a new set of SSH keys will be generated, so the server will legitimately change identity.
 
 Secondly, if you regularly connect to multiple servers on a network that has dynamically assigned IPs, then sooner or later you'll get this error because you once saw one computer at this IP, and now a different one has randomly been assigned it.
 It's largely to avoid problems like this that I like to set static DHCP leases for all my computers on my home network.
 
 Once you have satisfied yourself that the warning message is innocent, the solution is to edit `~/.ssh/known_hosts` with your favourite text editor and remove the line containing the old key.
-Conveniently, the line number is given in the error message, it's the number after the `:`, so in the example above, the offending key is on line 14, so that's the line I need to delete.
+Conveniently, the line number is given in the error message. It's the number after the `:`, so in the example above, the offending key is on line 14, so that's the line I need to delete.
 
 *Update:* An alternative to manually editing the file is to use the `ssh-keygen` command to delete the offending key for you.
 You do this using the `-R` flag (R for remove) to pass the IP or hostname who's key you need to remove:
