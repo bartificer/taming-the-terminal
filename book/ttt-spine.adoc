@@ -9,7 +9,7 @@ Bart Busschots
 :cover-artist: Helma van der Linden
 :copyright: CC-BY-NC-ND 4.0
 :imagesdir: assets
-:front-cover-image: image:cover.png[Front Cover,1050,1588]
+:front-cover-image: image:cover.png[Front Cover,1050,1404]
 :pagenums:
 :icons: font
 :source-highlighter: rouge
