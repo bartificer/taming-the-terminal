@@ -39,6 +39,7 @@ hardcoded
 Helma
 hostname
 hostnames
+http
 https
 internets
 internetwork
@@ -47,6 +48,7 @@ Komodo
 ksh
 lego
 longdash
+lookups
 loopback
 lossy
 Magick
@@ -60,6 +62,8 @@ nerdery
 netizens
 netmask
 netmasks
+Nosillacast
+Noto
 ors
 plist
 Podcast
@@ -81,6 +85,7 @@ subexpressions
 subnet
 subnets
 subnetworks
+subprotocols
 subshell
 subshells
 syslog
@@ -92,6 +97,7 @@ transcoding
 unencrypted
 unintimidating
 unintuitive
+unroutable
 untrusted
 webmail
 webmin
