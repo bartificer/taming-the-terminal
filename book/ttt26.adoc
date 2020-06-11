@@ -116,7 +116,7 @@ The DHCP OFFER will contain the magic cookie, an IP, subnet, and gateway for the
 If the client is happy with the settings it was offered it will broadcast a DHCP REQUEST, formally asking that it be assigned the offered IP.
 The REQUEST contains the IP being requested, the client's MAC address, the magic cookie again, and another copy of the list of desired settings.
 
-Assuming the requested IP is still free, the server will broadcast back a DHCP ACK (acknowledgemnt) packet confirming to the client that it can use those details.
+Assuming the requested IP is still free, the server will broadcast back a DHCP ACK (acknowledgement) packet confirming to the client that it can use those details.
 The ACK contains the same information as the original OFFER.
 
 Once that four-way transaction is complete, the DHCP server marks the IP as being in use for the duration of the lease, and the client uses the supplied details to configure its IP stack.
