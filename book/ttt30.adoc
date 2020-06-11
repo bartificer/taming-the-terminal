@@ -218,7 +218,7 @@ So, whether you are using OS X's key chain, or `ssh-agent`, you can now securely
 * *Security* -- once you have key-based authentication in place, you can either set a really long and secure password on the remote account or even disable password-based logins completely (we don't cover how to do that in this series).
 SSH keys are much more difficult to brute force than even the most complex of passwords.
 * *A Form of 2-Factor Auth* -- in order to log in as you, an attacker needs to have your private key and needs to know the password for your private key.
-_Some argue that this is only 1.5-factor auth because unlike a physical dongle, you have no real way of knowing if someone has stolen a copy of your private key -- since it is digital, a copy can be taken without depriving you of your copy, and hence alerting you to its loss._
+_Some argue that this is only 1.5-factor auth because unlike a physical dongle, you have no real way of knowing if someone has stolen a copy of your private key. Since it is digital, a copy can be taken without depriving you of your copy, and hence alerting you to its loss._
 
 One place where key-based auth really comes into its own is with shared accounts.
 
@@ -247,8 +247,8 @@ If that information is not sufficient, you can add comment lines to the file by 
 
 == Conclusions
 
-Usually, we have to choose between convenience and security, but with SSH keys we get to have our proverbial cake and eat it.
-By putting in a little work upfront, we get a more convenient and more secure SSH experience.
+Usually, we have to choose between convenience and security, but with SSH keys we get to have our proverbial cake and eat it too.
+By putting in a little work up front, we get a more convenient and more secure SSH experience.
 
 So far we have only looked at using SSH to execute terminal commands remotely, either one command at a time, or through an interactive command shell running on the remote computer.
 But, SSH's encrypted connection can be used to secure much more than just a command shell.
