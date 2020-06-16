@@ -30,7 +30,7 @@ You can also {url-mp3}/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3[downl
 
 == Examples Prep.
 
-Before we get sucked in, just a reminder that in order to play along with the examples, you'll need two computers with SSH installed, one you can SSH from, and one you can SSH to.
+Before we get tucked in, just a reminder that in order to play along with the examples, you'll need two computers with SSH installed, one you can SSH from, and one you can SSH to.
 Throughout the examples, I'll refer to the computer you are SSHing from as the local computer and the one you are SSHing to as the remote computer.
 
 It should also be noted that if you have not set up SSH keys as described in the previous instalment, you'll be entering your password a lot as you work through these examples!
@@ -157,7 +157,7 @@ Again, you can verify that the files transferred over with the command:
 ssh $SSH_USER@$SSH_COMP 'ls /tmp/ttt31/fromLocal'
 ----
 
-We're not going to describe all the optional flags `scp` supports, you can read about those in `scp`'`s man page.
+We're not going to describe all the optional flags `scp` supports. You can read about those in the man age for `scp`.
 However, I do want to mention that like `cp`, `scp` allows entire folders to be transferred using the `-r` flag (for recursive).
 
 As an example, let's copy the entire remote folder `/tmp/ttt31/scp_folder` to the local folder `/tmp/ttt31/fromRemote/`.
@@ -202,7 +202,7 @@ The `-v` flag puts `rsync` into _verbose mode_, which means it will print out ea
 The scary looking `--delete` option tells `rsync` that it should remove any files at the destination that are not present at the source.
 If this flag is not used, the destination will get ever bigger over time as files deleted at the source are left in place at the destination.
 
-When specifying the source folder, whether or not you add a trailing `/` makes a really big difference to `rsync`'`s behaviour.
+When specifying the source folder, whether or not you add a trailing `/` makes a really big difference to the behaviour of `rsync`.
 If you leave off the trailing `/`, then a new folder with the same name as the source folder will be created in the destination folder.
 If you add the trailing `/`, then the contents of the source folder will be copied to the destination folder.
 I always use the trailing `/`, because I find that behaviour the most intuitive.
@@ -294,8 +294,8 @@ ls /tmp/ttt31/fromRemote/rsync_backup
 
 == Secure FTP
 
-The final secure file transfer protocol we'll be looking at is SFTP, which is basically the old insecure FTP protocol re-implemented to use SSH as the communication channel.
-This protocol mostly used by GUI apps like https://panic.com/transmit/[Panic's Transmit] rather than from the terminal.
+The final secure file transfer protocol we'll be looking at is SFTP, which is basically the old insecure FTP protocol reimplemented to use SSH as the communication channel.
+This protocol is mostly used by GUI apps like https://panic.com/transmit/[Panic's Transmit] rather than from the terminal.
 This is because, unlike `rsync` and `scp`, this command does not immediately do anything, it simply gives you a new command shell in which to enter FTP commands.
 
 If you know the source and destination paths, I would recommend using `scp` or `rsync` over SFTP when working in the terminal.
@@ -348,7 +348,7 @@ Similarly, to upload a file from the local present working directory to the remo
 
 == Conclusions
 
-We have now seen three different commands for securely copping files between computers via an SSH connection.
+We have now seen three different commands for securely copying files between computers via an SSH connection.
 All three of these commands have different strengths and weaknesses and are the best-fit solution for different scenarios.
 For example, backing up files that don't change very often with `scp` would be very wasteful on bandwidth, and using an SFTP shell is a total waste of time if you know both source and destination paths, but, if you need to explore a remote filesystem to find a file to download, SFTP is the best fit.
 
