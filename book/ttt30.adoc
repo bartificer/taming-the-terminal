@@ -196,9 +196,8 @@ The good news is that Mac users have it best in this regard.
 
 [NOTE]
 .Commands to Save RSA Key Passphrase to Apple Keychain 
-
 ====
-In later versions of OSX (macOS), you may not get the popup offering to save your passphrase to Apple Keychain. In that case follow the instructions in this Stack Exchange post: https://apple.stackexchange.com/questions/48502/how-can-i-permanently-add-my-ssh-private-key-to-keychain-so-it-is-automatically[apple.stackexchange.com/...]
+In later versions of OSX (macOS), you will not get the popup offering to save your passphrase to Apple Keychain. See Chapter 30 under SSH "Agent on OS X & macOS" for the new method.
 ====
 
 The version of SSH that ships with OS X has support for OS X's secure keychain.
@@ -208,7 +207,7 @@ Once you do this you will never have to enter that password again, you will now 
 
 Users of other OSes are not completely out of luck, but the solutions available are less convenient.
 On Linux and other versions of Unix, a service called `ssh-agent` can be used to cache the passwords for SSH keys.
-Since this series is targeted primarily at Mac users, I won't go into the details here, but there are plenty of guides available online if you search for _'`ssh-agent tutorial`'_.
+Since this series is targeted primarily at Mac users, I won't go into the details here, but there are plenty of guides available online if you search for _`ssh-agent tutorial`_.
 
 So, whether you are using OS X's key chain, or `ssh-agent`, you can now securely log in to remote computers over SSH with the minimum of effort.
 
