@@ -461,10 +461,12 @@ This is working quite well, but you have terrible WiFi reception in the back bed
 That device, like your home router, is probably three devices in one, a router, an Ethernet switch, and a wireless access point, that means that depending on your configuration, you can end up with one big IP subnet in the house, or, with two separate IP subnets.
 The diagrams below show two possible configurations with two home routers -- one with a single IP Subnet, the other with two separate subnets.
 
+<<<
 === Good {longdash} A Single Subnet
 
 image::ttt25/HomeNetwork-WirelessAccessPoint-Good.png[Wireless Access Point - Good]
 
+<<<
 === Bad {longdash} Two Subnets
 
 image::ttt25/HomeNetwork-WirelessAccessPoint-BAD.png[Wireless Access Point - BAD]
