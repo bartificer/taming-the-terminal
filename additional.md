@@ -28,3 +28,15 @@ It solved many of my problems:
 I converted an episode by hand, Markdown and Asciidoctor have very similar syntax, and ran it through the build script. Lo and behold there was nice color coding. And the switch to Rouge, another syntax highlighter was even easier and provided also color coding for the builtins.
 
 The decision was made, TTT would be in Asciidoctor.
+
+## Links
+
+This section contains additional links that might be relevant to the publications:
+
+- https://itunespartner.apple.com/books/articles/create-book-cover-art-2712
+- https://help.apple.com/itc/booksassetguide/#/itc04314e64a
+- https://blog.kotobee.com/publishing-amazon-ibookstore-10-things-watch/
+- https://www.w3.org/publishing/epub32/epub-packages.html#elemdef-opf-package
+- https://w3c.github.io/publ-epub-revision/epub32/spec/epub-packages.html#attrdef-item-fallback
+- https://github.com/krisztianmukli/epub-boilerplate/blob/master/publish-ebook
+- https://matthewsetter.com/writing-tools/npm-broken-link-checker/
