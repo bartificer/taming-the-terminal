@@ -157,7 +157,7 @@ Again, you can verify that the files transferred over with the command:
 ssh $SSH_USER@$SSH_COMP 'ls /tmp/ttt31/fromLocal'
 ----
 
-We're not going to describe all the optional flags `scp` supports. You can read about those in the man age for `scp`.
+We're not going to describe all the optional flags `scp` supports. You can read about those in the man page for `scp`.
 However, I do want to mention that like `cp`, `scp` allows entire folders to be transferred using the `-r` flag (for recursive).
 
 As an example, let's copy the entire remote folder `/tmp/ttt31/scp_folder` to the local folder `/tmp/ttt31/fromRemote/`.
