@@ -1439,3 +1439,13 @@ nav#toc ol {
         font-family: monospace;
     }
 }
+
+/* Include highlighting effect for Rouge source-highlighter
+ */
+pre.rouge .hll {
+    background-color: #ffc;
+}
+
+pre.rouge .hll * {
+    background-color: initial;
+}

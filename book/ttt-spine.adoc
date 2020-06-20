@@ -13,6 +13,8 @@ Bart Busschots
 :pagenums:
 :icons: font
 :source-highlighter: rouge
+// ifndef::backend-epub3[:source-highlighter: rouge]
+// ifdef::backend-epub3[:source-highligter: pygments]
 :rouge-linenums-mode: inline
 :rouge-css: inline
 :rouge-style: github
