@@ -229,8 +229,9 @@ If your CPU is stressed, load averages will go up, if you've run out of RAM and 
 The next obvious question is, how high a load average is too high?
 A good metric is that ideally none of your load averages should cross the number of logical CPUs you have during regular user.
 
+[NOTE]
 ====
-Aside: you can find out how many effective CPUs you have with the command:
+You can find out how many effective CPUs you have with the command:
 
 `sysctl hw.ncpu | awk '{print $2}'`
 ====

@@ -72,7 +72,7 @@ The order is important, if two folders in your path contain files with the same 
 
 [NOTE]
 ====
-*Aside:* notice that the folder `.` is not in the standard `PATH` on Unix or Linux.
+Notice that the folder `.` is not in the standard `PATH` on Unix or Linux.
 This means that executable files in the present working directory are not searched.
 This is different from Windows/DOS where `.` is included in the standard path.
 Not including `.` in the path is a security feature, it stops malicious versions of common commands dropped into folders being inadvertently executed.
@@ -97,7 +97,7 @@ which bash
 
 [NOTE]
 ====
-*Aside:* the location of common commands on the file system may seem random at first, but there is a logic to it.
+The location of common commands on the file system may seem random at first, but there is a logic to it.
 
 Firstly, commands regular users can run are usually in folders ending in `bin` (short for binary), while commands which require root/admin privileges are usually in folders ending in `sbin`.
 
@@ -178,7 +178,7 @@ Enter the following content into the file `whereAmI` and save:
 print "Hi $ENV{USER}, you are currently in $ENV{PWD}\n";
 ----
 
-NOTE: *Aside:* in the last instalment we used a Bash shell script for our example, this time, for some variety, I'm using a Perl script. The language used has no bearing on how all this works.
+NOTE: In the last instalment we used a Bash shell script for our example, this time, for some variety, I'm using a Perl script. The language used has no bearing on how all this works.
 
 
 Then make the script executable, and test it:
@@ -395,7 +395,7 @@ export PATH="$PATH:$HOME/myScripts"
 
 [NOTE]
 ====
-*Aside:* Note that any line in a shell script starting with a `#` is a comment, so it is ignored by the computer and there purely for your information.
+Note that any line in a shell script starting with a `#` is a comment, so it is ignored by the computer and there purely for your information.
 Also, note that the `echo` lines are there only as a helpful hint in case you make a mistake and break your `PATH`.
 The command simply renames `~/.bash_profile` to `~/bash_profile.disabled`, hence disabling it, and, because the new name does not start with a `.`, making it visible in the Finder should you want to delete or edit it easily.
 You can test any changes you make to try to fix whatever problem you were having by editing the file and then running:

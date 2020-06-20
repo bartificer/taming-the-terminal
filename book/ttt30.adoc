@@ -111,7 +111,7 @@ cat ~/.ssh/id_rsa.pub
 ----
 
 [TIP]
-.Aside -- Base64 Encoding
+.Base64 Encoding
 ====
 If you are wondering what format the keys are stored in, it's the very commonly used https://en.wikipedia.org/wiki/Base64[base64 encoding].
 This is a very robust format that ignores characters like line breaks and spaces which could get introduced if a key were to be copied and pasted into an email or something like that.
@@ -195,7 +195,7 @@ The exact details of the mechanism vary from OS to OS.
 The good news is that Mac users have it best in this regard.
 
 [NOTE]
-.Commands to Save RSA Key Passphrase to Apple Keychain 
+.Commands to Save RSA Key Passphrase to Apple Keychain
 ====
 In later versions of OSX (macOS), you will not get the popup offering to save your passphrase to Apple Keychain. See Chapter 30 under SSH "Agent on OS X & macOS" for the new method.
 ====

@@ -68,7 +68,7 @@ The `!!` command lets you go back just a single command, you can go back further
 
 [TIP]
 ====
-*Aside:* by default Bash on OS X (and RHEL/CentOS Linux) saves every command you execute into its history, so if you run the same command four times in a row, you will have to hit the up arrow four times to get past it in the history.
+By default Bash on OS X (and RHEL/CentOS Linux) saves every command you execute into its history, so if you run the same command four times in a row, you will have to hit the up arrow four times to get past it in the history.
 You can alter this behaviour by setting the environment variable `HISTCONTROL` to the value `ignoredups`.
 If you want to configure Bash in this way you'll want to set that environment variable automatically each time you open a new Terminal, so to do that you need to add the line below into `~/.bash_profile`:
 

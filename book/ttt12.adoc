@@ -323,7 +323,7 @@ echo "TTT_VAR=$TTT_VAR"
 
 [NOTE]
 ====
-*Aside:* The first line of this script is called the "`shebang line`", and it tells Bash what interpreter it should use to run the file.
+The first line of this script is called the "`shebang line`", and it tells Bash what interpreter it should use to run the file.
 If we were writing a Perl script instead of a Bash script we would start our file with the line:
 
 `#!/usr/bin/perl`

@@ -76,7 +76,7 @@ less /etc/man.conf
 
 [NOTE]
 ====
-*Aside* -- on OS X `less` has literally replaced `more`.
+On OS X `less` has literally replaced `more`.
 While there is a `more` command, it's actually a copy of `less`, as can be seen by running: `more --version` (CentOS & Ubuntu Linux still ship with both `more` and `less`).
 ====
 
@@ -183,7 +183,7 @@ As it happens I'm a `vi` guy, so it's `vi` that I'm going to give a quick overvi
 
 [NOTE]
 ====
-*Aside* -- there are actually two major variants of `vi`, the original `vi` and a more powerful enhanced version called `vim`.
+There are actually two major variants of `vi`, the original `vi` and a more powerful enhanced version called `vim`.
 Some older Linux and Unix distributions ship both `vi` and `vim`, so if you're running an older OS, always open `vi` with the command `vim`.
 However, on modern distributions (including OS X), the only version of `vi` installed is `vim`, and when you run `vi` you are actually running `vim`.
 If in doubt, `vi --version` will tell you whether or not `vi` is `vim` on your OS.

@@ -304,7 +304,7 @@ This continues for as long as it takes for the packet to arrive at the router in
 
 [NOTE]
 ====
-*Aside:* you can use the terminal command `traceroute` (`tracert` on Windows) to see what routers a packet follows from your computer to my server as follows:
+You can use the terminal command `traceroute` (`tracert` on Windows) to see what routers a packet follows from your computer to my server as follows:
 
 [source,console?prompt=bart$,linenums,highlight='1']
 ----
@@ -354,7 +354,7 @@ Only a subset of those 12 packets contained the actual data transmitted. The res
 
 [NOTE]
 ====
-*Aside:* you can see the packets needed to fetch my website by opening two terminal windows and issuing two commands.
+You can see the packets needed to fetch my website by opening two terminal windows and issuing two commands.
 
 In the first window, we'll use the `tcpdump` command to print out each packet that is sent from your computer to my server as follows:
 
