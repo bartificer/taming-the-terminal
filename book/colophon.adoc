@@ -11,7 +11,7 @@ Version {revnumber}
 
 Date {revdate}
 
-Compiled: {compile_time}
+_Compiled: {compile_time}_
 
 This book is designed and handcrafted by {producer}.
 The cover is designed by {cover-artist}.

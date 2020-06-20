@@ -6,7 +6,7 @@ Bart Busschots
 :lang: en-GB
 :creator: {author}
 :producer: Allison Sheridan and Helma van der Linden
-:cover-artist: Helma van der Linden
+:cover-artist: Allison Sheridan
 :copyright: CC-BY-NC-ND 4.0
 :imagesdir: assets
 :front-cover-image: image:cover.png[Front Cover,1400,1873]
