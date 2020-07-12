@@ -150,7 +150,7 @@ drwxr-xr-x 16 bart bart 4096 Mar 15 14:32 ..
 Remember that in a list of the contents of the folder `~/.ssh`, the permissions on that folder itself are the permissions on the special file `.`.
 I have highlighted the command, and the two important sets of permissions highlighted.
 
-==== Simplifying the Process with `ssh-copy-id`
+=== Simplifying the Process with `ssh-copy-id`
 
 It takes time and effort to manually copy across your public key and to make sure all the file permissions are correct.
 Assuming you know the password to log in to the remote computer, you can automate the process with the `ssh-copy-id` utility.
