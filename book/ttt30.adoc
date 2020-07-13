@@ -198,8 +198,6 @@ The good news is that Mac users have it best in this regard.
 .Commands to Save RSA Key Passphrase to Apple Keychain
 ====
 In later versions of OSX (macOS Sierra and higher), you will not get the popup offering to save your passphrase to Apple Keychain. See <<ttt37,TTT37>> under "SSH Agent on OS X & macOS" for the new method to store your passphrase in Keychain.
-=======
-In later versions of OSX (macOS), you will not get the popup offering to save your passphrase to Apple Keychain. See Chapter 37 under "SSH Agent on OS X & macOS" for the new method.
 ====
 
 The version of SSH that ships with OS X has support for OS X's secure keychain.
