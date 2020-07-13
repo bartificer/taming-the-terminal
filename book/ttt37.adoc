@@ -51,18 +51,18 @@ When SSH config files or commands require the path to an identity, what they're 
 SSH identities are created using the `ssh-keygen` command.
 
 SSH has the concept of a default identity.
-Where ever an identity can be used, SSH will check a number of pre-defined file paths (in a pre-defined order) for a valid identity file, and use the first one it finds.
+Whereever an identity can be used, SSH will check a number of pre-defined file paths (in a pre-defined order) for a valid identity file, and use the first one it finds.
 Today, using the most modern versions of SSH and the default key algorithms, that effectively means that your default identity is `~/.ssh/id_rsa` (and `~/.ssh/id_rsa.pub`).
 
 As with any cryptographic system based on public & private keys, your security completely depends on keeping the private key secret, and the publication of your public key has no impact on your security at all.
 That means that the half of the identity that doesn't end in `.pub` is the crown jewels, and you are free to share the half that does end in `.pub` freely.
 
-No sysadmin should ever ask you for your private key, they should only ever need your public key.
+No sysadmin should ever ask you for your private key; they should only ever need your public key.
 If you want to be granted access to a computer, you give the person who manages that computer your public key, they grant access to that key, and you can then log on from the computer that had the matching private key.
 
 To protect your private key, SSH identity files support passphrase-based encryption.
 The actual values stored in the files can be the result of encrypting the private key with a passphrase.
-The ssh-keygen command will allow you to set a blank password on an identity, but it very much encourages you not to do that, and to set a good secure passphrase.
+The ssh-keygen command will allow you to set a blank password on an identity, but it very much encourages you not to do that, and to set a good, secure passphrase.
 
 If you follow best practice and do indeed set a passphrase on your identity, SSH will prompt you for that passphrase whenever it needs the private key part of that identity.
 This gets very tedious very quickly, and that's where the SSH Agent comes in.
@@ -72,11 +72,11 @@ This gets very tedious very quickly, and that's where the SSH Agent comes in.
 
 The SSH Agent's _raison d'être_ is to take the pain out of using passphrase-protected SSH identities.
 SSH Agents securely cache the decrypted private keys belonging to SSH identities.
-SSH Agent processes are generally not shared between users, in fact, they're generally not even shared between login sessions.
+SSH Agent processes are generally not shared between users. In fact, they're generally not even shared between login sessions.
 When I log into my Mac, a new SSH Agent is automatically started, and that specific SSH Agent is only accessible by apps or commands that I start within that login session.
 SSH Agents don't store anything permanently -- they forget everything as soon as they stop running, and logging out will kill the SSH Agent associated with a specific login session.
 
-The core SSH libraries are aware of SSH Agents and can communicate with them, so the caching they provide is available to all the SSH-related terminal commands like `ssh`, `scp`, `sftp`, as well as to any GUI apps footnote:[Here`'s a link to the SSH Client myself and Allison recommended during the recording of the matching podcast for this blog post: https://itunes.apple.com/us/app/ssh-shell/id981765152?mt=12] that make use of the appropriate SSH APIs, for example, both Transmit and SequelPro have SSH Agent support.
+The core SSH libraries are aware of SSH Agents and can communicate with them, so the caching they provide is available to all the SSH-related terminal commands like `ssh`, `scp`, `sftp`, as well as to any GUI apps footnote:[Allison and I recommended an app called SSH Shell during the matching podcast episode for this blog post, but it has been replaced by Core Shell: https://apps.apple.com/us/app/core-shell/id1354319581] that make use of the appropriate SSH APIs, for example, both Transmit and SequelPro have SSH Agent support.
 
 The exact mechanisms for configuring an SSH Agent to automatically start and stop on login and logout varies from OS to OS, but many desktop Unix/Linux flavours start SSH Agents by default.
 Apple has done so on the Mac since Mac OS X 10.5 Leopard.
@@ -177,7 +177,7 @@ This allows the passphrase for SSH identities to be safely stored in the Keychai
 In versions of Apple's OS from Mac OS X 10.5 Leopard up to and including OS X 10.11 El Capitan, Apple completely automated the integration between the Keychain and the SSH Agent -- it just worked.
 No setup, no configuration, no user action at all, it just made users`' lives easier!
 
-Each time SSH on a Mac tried to load an encrypted SSH identity it would try to find the matching passphrase in the user's Login keychain, if found, the passphrase would be would used to decrypt the private key, which SSH would then cache in the user's SSH Agent.
+Each time SSH on a Mac tried to load an encrypted SSH identity it would try to find the matching passphrase in the user's Login keychain, if found, the passphrase would be used to decrypt the private key, which SSH would then cache in the user's SSH Agent.
 From the user's point of view, this meant that if the passphrase for an SSH identity was in their keychain, they could use that identity without ever being asked to enter their passphrase.
 If the needed passphrase was not found in the Keychain, the OS would pop up a GUI dialogue box requesting the passphrase, and, providing a tick box to save the passphrase into the Keychain if desired.
 
@@ -196,7 +196,7 @@ However, by default, that SSH Agent won't go looking for passphrase in your keyc
 
 The integration isn't gone though, it's just dormant by default.
 
-If you only want the integration between your Keychain and your SSH Agent every now and then, Apple provides a quick and easy way to load all SSH identities for which there are passphrase in your keychain into your SSH Agent -- simply call `ssh-add` with the `-A` flag.
+If you only want the integration between your Keychain and your SSH Agent every now and then, Apple provides a quick and easy way to load all SSH identities for which there are passphrases in your keychain into your SSH Agent -- simply call `ssh-add` with the `-A` flag.
 I keep the passphrase for just one SSH key in my keychain (the one for my default key), so when I load all identities from my keychain, this is what I see:
 
 [source,console?prompt=$]
