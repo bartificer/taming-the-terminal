@@ -30,6 +30,12 @@ You can also {url-mp3}/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3[downl
 
 == Examples Prep.
 
+[NOTE]
+.Commands to Save RSA Key Passphrase to Apple Keychain
+====
+In later versions of OSX (macOS Sierra and higher), you will not get the popup offering to save your passphrase to Apple Keychain. See <<ttt37,TTT37>> under "SSH Agent on OS X & macOS" for the new method to store your passphrase in Keychain.
+====
+
 Before we get tucked in, just a reminder that in order to play along with the examples, you'll need two computers with SSH installed, one you can SSH from, and one you can SSH to.
 Throughout the examples, I'll refer to the computer you are SSHing from as the local computer and the one you are SSHing to as the remote computer.
 
@@ -315,7 +321,7 @@ While the FTP shell is not difficult to use, I don't think it is worth spending 
 Personally, I never use it because I find that `scp` and `rsync` allow me to achieve my goals more easily.
 But, I would like to give you a flavour of it, and you can then decide whether or not you'd like to learn more.
 
-Let's looks at how to initiate an SFTP session, at some of the most important FTP commands.
+Let's look at how to initiate an SFTP session, and some of the most important FTP commands.
 
 You can connect to the remote computer with the command:
 
