@@ -85,7 +85,7 @@ X11 forwarding makes it possible to do this on remote Linux servers.
 * *Accessing web interfaces that are restricted to local access Only* -- if you have a web interface that allows something sensitive to be configured, it's good security practice to limit access to it to `localhost` only.
 This means it can only be accessed by a browser running on the computer itself.
 If you don't have physical access that gets awkward unless you have X11 forwarding which will allow you to run a browser on the remote computer, but with the GUI forwarded to your local computer.
-Two common examples of this are the CUPS (Common Unix Printing System) printer sharing configuration interface (you'll find it at `+https://localhost:631+` if it's configured), and the https://www.webmin.com[webmin] server management interface.
+Two common examples of this are the CUPS (Common Unix Printing System) printer sharing configuration interface (you'll find it at `+https://localhost:631+` if it's configured), and the http://www.webmin.com[webmin] server management interface.
 
 == SSH Port Forwarding
 
@@ -144,7 +144,7 @@ ssh user@computer -L 3306:127.0.0.1:3306
 As long as that SSH connection is left open, port 3306 on your computer (the standard MySQL port) is mapped to port 3306 on the remote computer's localhost IP.
 You now instruct your favourite MySQL client to connect to port 3306 on your local computer, and SSH then securely forwards that connection to the remote server for you, allowing you safe and secure access to MySQL.
 
-This is such a common use case that many modern MySQL QUI clients allow you to configure this kind of port forwarding from within the GUI, removing the need to remember the terminal command.
+This is such a common use case that many modern MySQL GUI clients allow you to configure this kind of port forwarding from within the GUI, removing the need to remember the terminal command.
 An example of a beautiful free MySQL GUI with SSH port forwarding support is https://www.sequelpro.com[Sequel Pro] (OS X Only).
 I use SSH port forwarding with Sequel Pro each and every day!
 
@@ -157,21 +157,21 @@ This means it can only be used when all that information is known in advance and
 
 This limitation makes it effectively impossible to route applications that make many network connections to many destinations, like a web browser, through regular SSH port forwarding.
 
-Dynamic Port Forwarding makes it possible for any app that can use the standard https://en.wikipedia.org/wiki/SOCKS[SOCKS protocol] to route traffic through an SSH connection, that includes apps like web browsers, chat clients, and email clients.
+Dynamic Port Forwarding makes it possible for any app that can use the standard https://en.wikipedia.org/wiki/SOCKS[SOCKS protocol] to route traffic through an SSH connection. That includes apps like web browsers, chat clients, and email clients.
 
 === Description
 
 Dynamic port forwarding is a relatively recent addition to SSH, and one of SSH's little-known gems.
 
 The SOCKS protocol can be used to proxy a TCP connection from any port to any port on behalf of any client that supports the protocol.
-It is normally used at the permitter of corporate networks to regulate external internet access.
+It is normally used at the perimeter of corporate networks to regulate external internet access.
 All computers inside the corporation that need to make out-going network connections use the SOCKS proxy, which can then apply any rules to those connection requests the corporation desires.
 All network connections effectively get broken in two.
 The clients talk to the SOCKS proxy and the SOCKS proxy talks to the destination server.
 
 When using SSH dynamic port forwarding, what happens is that a SOCKS server is started on your local computer, running on a port you specify, and it sends all the traffic it proxies through the SSH connection, and out onto the internet from the remote end of the SSH connection.
 While the traffic is encapsulated within the SSH connection it's encrypted.
-Once it leaves the SSH connection it is un-encrypted for the remainder of its journey.
+Once it leaves the SSH connection it is unencrypted for the remainder of its journey.
 
 This really is analogous to a VPN, with the caveat that only traffic sent to the locally running SOCKS proxy is secured.
 
