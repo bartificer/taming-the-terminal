@@ -3,7 +3,7 @@
 include::variables.adoc[]
 
 In <<ttt33,the previous instalment>>, we finished a five-part series on SSH.
-Before moving on, let's take a moment to step back and look at the big-picture.
+Before moving on, let's take a moment to step back and look at the big picture.
 The five SSH instalments are all part of the now long-running series on networking.
 We have been working our way through the networking stack since <<ttt23,instalment 23>>.
 We started at the bottom of the stack, and have worked our way up.
@@ -36,13 +36,13 @@ You can also {url-mp3}/TTT34IntroducingHTTP/TTT_34_Introducing_HTTP.mp3[download
 
 HTTP, the Hyper Text Transfer Protocol, is an application layer protocol that sits on top of TCP.
 By default, HTTP servers listen on TCP port 80.
-HTTP is a request-response protocol, where the clients (usually web browsers) formulate an HTTP request and send it to an HTTP server, which then interprets it and formulates an HTTP response, which the client then processes.
+HTTP is a request-response protocol, where the clients (usually web browsers) formulate an HTTP request and send it to an HTTP server, which then interprets it and formulates an HTTP response which the client then processes.
 The HTTP protocol is plain-text and human-readable.
 
 The HTTP protocol is most closely associated with web browsers, which use it to fetch web pages, but it's used by other apps too.
-Another common example is pod-catchers, which use HTTP to fetch the RSS feeds that define podcasts, as well as the media files those feeds link to.
+Another common example is podcatchers, which use HTTP to fetch the RSS feeds that define podcasts, as well as the media files those feeds link to.
 Many modern phone & tablet apps also use HTTP to communicate with the so-called cloud that powers them.
-HTTP is one of the real work-horses of the modern internet.
+HTTP is one of the real workhorses of the modern internet.
 
 == HTTP Requests
 
@@ -77,14 +77,14 @@ The first line is the request line, which states that the HTTP `GET` method shou
 The remainder of the lines are request headers, there is no data included in this request.
 We won't look at all the headers, but I do want to draw attention to a few notable ones.
 
-The `Host` header is what makes it possible for multiple web sites to be served from a single IP address.
+The `Host` header is what makes it possible for multiple websites to be served from a single IP address.
 The receiving web server will have many different domains configured, and this header will tell it which content is being requested.
 The `User-Agent` header identifies the browser to the server and makes it possible to gather browser and OS usage stats.
 Notice how you can tell from the above header that I was using FireFox 37 on OS X 10.10.
 
 Notice that any cookies my browser has stored for the domain `podfeet.com` have been added to the request via the `Cookie` header.
 Each HTTP request to a server is completely independent of all other requests.
-There is no relationship between then, no concept of an extended connection or session.
+There is no relationship between them, no concept of an extended connection or session.
 This was a major shortcoming of HTTP, and cookies were added later to make it possible for multiple requests to be tied together.
 When sending a reply to the client, the server can include a `Set-Cookie` header containing a string of text.
 It is expected that the client will include this cookie in the request headers of all future requests to that same domain until the cookie expires.
@@ -130,7 +130,7 @@ You'll find a https://www.w3schools.com/tags/ref_urlencode.asp[full list of URL 
 
 == HTTP Responses
 
-When a web server receives an HTTP request, it interprets it, and tries to fetch the data requested, and return it.
+When a web server receives an HTTP request, it interprets it, tries to fetch the data requested and return it.
 It may well fail, but whatever the result of attempting to fulfil the request, the server will formulate an HTTP response to communicate the outcome of the request to the client.
 
 Similar to the request, an HTTP response has three parts, a status line, zero or more response header lines, and a final optional data segment, separated from the headers by a blank line.
@@ -172,10 +172,17 @@ Also notice that the server is requesting the client set a new cookie using the 
 The actual HTML markup for Allison's home page is hundreds of lines long, I have only shown the first six lines.
 
 It's important to note that rendering a single web page generally involves many HTTP requests, often to multiple servers.
-The first response will usually be the HTML markup for the web page in question, but that HTML will almost certainly contain links to other resources need to render the page, like style sheets, images, JavaScript files, etc..
+The first response will usually be the HTML markup for the web page in question, but that HTML will almost certainly contain links to other resources need to render the page, like style sheets, images, JavaScript files, etc.
 As an example, rendering Allison's home page requires 107 HTTP requests!
 That's on the high side because Allison has a lot of videos embedded in her home page, and quite a few widgets embedded in her sidebars.
 However, on the modern web, it's not unusual to need this many requests to render a single page.
+
+
+[NOTE]
+.Note - a later redesign of Allison's site reduced the number of http requests to 68.
+====
+
+====
 
 === HTTP Response Codes
 
@@ -198,7 +205,7 @@ This is the response code you always hope to get, it means your request was succ
 A permanent redirect, this redirect may be cached by clients
 
 `302 - Found`::
-A temporary redirect, this redirect should not be cached by clients, it could change at any time
+A temporary redirect, this redirect should not be cached by clients as it could change at any time
 
 `400 - Bad Request`::
 The HTTP request sent to the server was not valid.
@@ -219,19 +226,19 @@ The web programmers' most hated error -- it just means the server encountered an
 `502 - Bad Gateway`::
 In the days of CDNs (Content Delivery Networks), these errors are becoming ever more common.
 It means that your browser has successfully contacted a front-end web server, probably at the CDN, but that the back-end server that actually contains the information you need is not responding to the front-end server.
-The front-end server is considered a gateway to the backend server, hence the name of the error.
+The front-end server is considered a gateway to the back-end server, hence the name of the error.
 
 `503 - Service Unavailable`::
 The server is temporarily too busy to deal with you -- effectively a request to try again later.
 
 `504 - Gateway Timeout`::
-This error is similar to a 502 and is also becoming ever more common with the rise of CDNs, it means the backend server is up but is responding too slowly to the front-end server, and the front-end server is giving up.
+This error is similar to a 502 and is also becoming ever more common with the rise of CDNs, it means the back-end server is up but is responding too slowly to the front-end server, and the front-end server is giving up.
 
 === MIME Types
 
 HTTP uses the `Content-Type` header to specify the type of data being returned.
 The value of that header must be a so-called MIME Type or _internet media type_.
-MIME Types have their origins in the common suite of email protocols, and were later adopted for use on the world wide web -- after all, why re-invent the wheel!?
+MIME Types have their origins in the common suite of email protocols, and were later adopted for use on the world wide web -- after all, why reinvent the wheel!?
 
 There are MIME types for just about everything, and they consist of two parts, a general type, and then a more specific identifier.
 E.g.
@@ -277,7 +284,7 @@ https://www.bartb.ie/[www.bartb.ie], and click on `Tools` â†’ `Web Developer` â†
 
 image::ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
 
-This will open a new sub-window at the bottom of your FireFox window with a message telling you to re-load the page.
+This will open a new subwindow at the bottom of your FireFox window with a message telling you to re-load the page.
 
 image::ttt34/Screen-Shot-2015-05-09-at-17.33.58.png[FireFox Dev Tools - Reload Page]
 
