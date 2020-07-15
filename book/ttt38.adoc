@@ -1,0 +1,391 @@
+[[ttt38]]
+= TTT Part 38 of n {longdash} TMUX (A Screen Alternative)
+include::variables.adoc[]
+
+Since we covered the `screen` command in <<ttt36,instalment 36>>, it has been deprecated in Red Enterprise Linux 8, and https://access.redhat.com/solutions/4136481[the official advice from Red Hat] is to transition to the `tmux` command. Having been a fan of `screen` for years, I was skeptical, but I shouldn't have been -- `tmux` can do everything `screen` can, it can arguably do it better, and, it can do much more than `screen` ever could!
+
+.Matching Podcast Episode 583
+****
+
+Listen along to this instalment on https://www.podfeet.com/blog/2020/07/ccatp-645/[episode 583 of the Chit Chat Across the Pond Podcast]
+
+// no audiocontrols in pdf
+ifndef::backend-pdf[]
+pass:m,a[<audio controls='controls' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_11.mp3">Your browser does not support HTML 5 audio</audio>]
+endif::[]
+
+Scan the QRcode to listen on a different device
+
+image::qrcodes/TTT_38.png[QRcode, align='left']
+
+You can also
+https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_11.mp3[download the MP3]
+****
+
+As you may remember, the `screen` command allows you to create a command line session that continues to run after you close your terminal window or disconnect from your SSH session. At a later time you can then re-connect to the still running screen session and pick up where you left off. This is very useful for executing long-running commands, and, for working on a remote server over a spotty internet connection.
+
+It's very easy to use `tmux` to achieve exactly the same result, and the commands are arguably simpler -- the arguments are certainly a lot more sensible and obvious anyway 🙂
+
+== Sessions, Windows, and Panes
+
+The `screen` command works on a very simplistic model -- each virtual terminal is a session, and you can have as many sessions as you like. By default `screen` sessions are numbered, but you can name them for your convenience.
+
+The `tmux` command expands this model by introducing the concepts of _windows_ and _panes_ within numbered or optionally named _sessions_. The name `tmux` is a portmanteau of _terminal multiplexer_, so it's built around the idea of running multiple terminals within a single visible window.
+
+_Tmux sessions_ contain one or more _tmux windows_ each of which contain one or more _tmux panes_. A _tmux pane_ is a command shell. You can tile these panes into _tmux windows_, and you can stack these _tmux windows_ one on top of the other within _tmux sessions_.
+
+It's unfortunate that `tmux` chose to re-use the word _window_, because it already has a meaning within GUI operating systems, so it often leads to confusion. I find it helpful to think of _tmux windows_ as being like browser tabs -- multiple full-page vertically stacked windows-within-a-window. Like a single browser window stacks multiple tabs on top of each other, a single _tmux session_ stacks multiple _tmux windows_ on top of each other.
+
+If this all sounds too complicated, don't worry, a default `tmux` session contains a single window which contains a single pane. In other words, *by default,* `tmux` *behaves like* `screen`.
+
+== Installing `tmux`
+
+On Linux tmux will almost certainly be available from your distribution's standard package manager, so for people on RHEL-flavoured distros it will probably be:
+
+[source,shell]
+----
+sudo yum install tmux
+----
+
+And for Debian-flavoured distros probably:
+
+[source,shell]
+----
+sudo apt-get install tmux
+----
+
+On macOS we'll need to use a third-party package manager like https://brew.sh[Homebrew] to easily install tmux:
+
+[source,shell]
+----
+brew install tmux
+----
+
+== The `tmux` Command
+
+Regardless of what you're trying to do with `tmux`, the command will generally be of the form:
+
+[source,bash]
+----
+tmux COMMAND [OPTIONS]
+----
+
+Where `COMMAND` is one of the many `tmux` commands listed in the extensive manual page (`man tmux`), and `OPTIONS` are optional extra flags to pass information to the specified command.
+
+The tmux commands are very descriptively named, but that makes them easy to read but hard to type, so, tmux provides short aliases for the most commonly used commands, e.g. `lscm` is an alias for the extremely convenient `list-commands` which lists all the commands `tmux` supports, or, gives details on a specific command:
+
+[source,console?prompt=bart%]
+----
+bart-imac2018:~ bart% tmux lscm
+attach-session (attach) [-dErx] [-c working-directory] [-t target-session]
+bind-key (bind) [-nr] [-T key-table] [-N note] key command [arguments]
+break-pane (breakp) [-dP] [-F format] [-n window-name] [-s src-pane] [-t dst-window]
+capture-pane (capturep) [-aCeJNpPq] [-b buffer-name] [-E end-line] [-S start-line] [-t target-pane]
+choose-buffer [-NrZ] [-F format] [-f filter] [-O sort-order] [-t target-pane] [template]
+choose-client [-NrZ] [-F format] [-f filter] [-O sort-order] [-t target-pane] [template]
+choose-tree [-GNrswZ] [-F format] [-f filter] [-O sort-order] [-t target-pane] [template]
+clear-history (clearhist) [-t target-pane]
+clock-mode [-t target-pane]
+command-prompt [-1kiN] [-I inputs] [-p prompts] [-t target-client] [template]
+confirm-before (confirm) [-p prompt] [-t target-client] command
+copy-mode [-eHMuq] [-t target-pane]
+delete-buffer (deleteb) [-b buffer-name]
+detach-client (detach) [-aP] [-E shell-command] [-s target-session] [-t target-client]
+display-menu (menu) [-c target-client] [-t target-pane] [-T title] [-x position] [-y position] name key command ...
+display-message (display) [-aIpv] [-c target-client] [-F format] [-t target-pane] [message]
+display-panes (displayp) [-b] [-d duration] [-t target-client] [template]
+find-window (findw) [-CNrTZ] [-t target-pane] match-string
+has-session (has) [-t target-session]
+if-shell (if) [-bF] [-t target-pane] shell-command command [command]
+join-pane (joinp) [-bdfhv] [-l size] [-s src-pane] [-t dst-pane]
+kill-pane (killp) [-a] [-t target-pane]
+kill-server
+kill-session [-aC] [-t target-session]
+kill-window (killw) [-a] [-t target-window]
+last-pane (lastp) [-deZ] [-t target-window]
+last-window (last) [-t target-session]
+link-window (linkw) [-dk] [-s src-window] [-t dst-window]
+list-buffers (lsb) [-F format]
+list-clients (lsc) [-F format] [-t target-session]
+list-commands (lscm) [-F format] [command]
+list-keys (lsk) [-1aN] [-P prefix-string] [-T key-table] [key]
+list-panes (lsp) [-as] [-F format] [-t target-window]
+list-sessions (ls) [-F format]
+list-windows (lsw) [-a] [-F format] [-t target-session]
+load-buffer (loadb) [-b buffer-name] path
+lock-client (lockc) [-t target-client]
+lock-server (lock)
+lock-session (locks) [-t target-session]
+move-pane (movep) [-bdhv] [-p percentage|-l size] [-s src-pane] [-t dst-pane]
+move-window (movew) [-dkr] [-s src-window] [-t dst-window]
+new-session (new) [-AdDEPX] [-c start-directory] [-F format] [-n window-name] [-s session-name] [-t target-session] [-x width] [-y height] [command]
+new-window (neww) [-adkP] [-c start-directory] [-e environment] [-F format] [-n window-name] [-t target-window] [command]
+next-layout (nextl) [-t target-window]
+next-window (next) [-a] [-t target-session]
+paste-buffer (pasteb) [-dpr] [-s separator] [-b buffer-name] [-t target-pane]
+pipe-pane (pipep) [-IOo] [-t target-pane] [command]
+previous-layout (prevl) [-t target-window]
+previous-window (prev) [-a] [-t target-session]
+refresh-client (refresh) [-cDlLRSU] [-C XxY] [-F flags] [-t target-client] [adjustment]
+rename-session (rename) [-t target-session] new-name
+rename-window (renamew) [-t target-window] new-name
+resize-pane (resizep) [-DLMRUZ] [-x width] [-y height] [-t target-pane] [adjustment]
+resize-window (resizew) [-aADLRU] [-x width] [-y height] [-t target-window] [adjustment]
+respawn-pane (respawnp) [-k] [-c start-directory] [-e environment] [-t target-pane] [command]
+respawn-window (respawnw) [-k] [-c start-directory] [-e environment] [-t target-window] [command]
+rotate-window (rotatew) [-DUZ] [-t target-window]
+run-shell (run) [-b] [-t target-pane] shell-command
+save-buffer (saveb) [-a] [-b buffer-name] path
+select-layout (selectl) [-Enop] [-t target-pane] [layout-name]
+select-pane (selectp) [-DdeLlMmRUZ] [-T title] [-t target-pane]
+select-window (selectw) [-lnpT] [-t target-window]
+send-keys (send) [-FHlMRX] [-N repeat-count] [-t target-pane] key ...
+send-prefix [-2] [-t target-pane]
+set-buffer (setb) [-a] [-b buffer-name] [-n new-buffer-name] data
+set-environment (setenv) [-gru] [-t target-session] name [value]
+set-hook [-agRu] [-t target-session] hook [command]
+set-option (set) [-aFgopqsuw] [-t target-pane] option [value]
+set-window-option (setw) [-aFgoqu] [-t target-window] option [value]
+show-buffer (showb) [-b buffer-name]
+show-environment (showenv) [-gs] [-t target-session] [name]
+show-hooks [-g] [-t target-session]
+show-messages (showmsgs) [-JT] [-t target-client]
+show-options (show) [-AgHpqsvw] [-t target-pane] [option]
+show-window-options (showw) [-gv] [-t target-window] [option]
+source-file (source) [-nqv] path ...
+split-window (splitw) [-bdefhIPv] [-c start-directory] [-e environment] [-F format] [-l size] [-t target-pane] [command]
+start-server (start)
+suspend-client (suspendc) [-t target-client]
+swap-pane (swapp) [-dDUZ] [-s src-pane] [-t dst-pane]
+swap-window (swapw) [-d] [-s src-window] [-t dst-window]
+switch-client (switchc) [-ElnprZ] [-c target-client] [-t target-session] [-T key-table]
+unbind-key (unbind) [-an] [-T key-table] key
+unlink-window (unlinkw) [-k] [-t target-window]
+wait-for (wait) [-L|-S|-U] channel
+bart-imac2018:~ bart% tmux lscm rename-session
+rename-session (rename) [-t target-session] new-name
+bart-imac2018:~ bart%
+----
+
+== Managing Sessions
+
+Let's start our exploration of `tmux` at the highest level -- the session.
+
+=== Listing Sessions Creating & Joining Sessions
+
+Before we create our first session, let's learn how to list the currently running sessions. The command is `list-sessions`, but it has the convenient alias `ls`.
+
+When you have no sessions running you should expect to see something like:
+
+[source,console?prompt=bart%]
+----
+bart-imac2018:~ bart% tmux ls
+no server running on /private/tmp/tmux-501/default
+bart-imac2018:~ bart%
+----
+
+The default command is `new-session`, or `new`, so to create an un-named new session and attach to it (`tmux` jargon for connect), simply run `tmux` with no arguments.
+
+You'll now find yourself inside a `tmux` session. Leave this session alone for now, and open another terminal window.
+
+From this new terminal we can see that we now have a single running `tmux` session numbered `0` with no name:
+
+[source,console?prompt=bart%]
+----
+bart-imac2018:~ bart% tmux ls
+0: 1 windows (created Sat Jul 11 12:39:56 2020) (attached)
+bart-imac2018:~ bart%
+----
+
+When reading this output, note that the session's name is the very first line in the output. Since we didn't give our session a human-friendly name, it defaulted to the very computery `0`! We can also see that the session contains one window, the date it was created. The `(attached)` suffix tells us there is currently a client connected to the session, i.e. our first terminal window.
+
+*In tmux-jargon connecting to a session is _attaching_, and disconnecting is _detaching_.*
+
+If we run the `tmux` command again in our second terminal window we will create a new session -- let's go ahead and do that:
+
+[source,bash]
+----
+tmux
+----
+
+Now, go ahead and open a third terminal window and list the sessions again:
+
+[source,console?prompt=bart%]
+----
+bart-imac2018:~ bart% tmux ls
+0: 1 windows (created Sat Jul 11 12:39:56 2020) (attached)
+1: 1 windows (created Sat Jul 11 12:47:35 2020) (attached)
+bart-imac2018:~ bart%
+----
+
+We can now see that we have two sessions, again, rather un-imaginatively named `0` and `1` 🙂
+
+Let's not use our third terminal window to join our first session using the `attach-session` command via it's alias `attach`:
+
+[source,bash]
+----
+tmux attach -t 0
+----
+
+Note that you *use the* `-t` *flag to target a specific session with any session-specific tmux commands*.
+
+Let's do something inside this session, say run the `top` command with no arguments. Have a look at your first terminal window -- both windows are now seeing the same session in real time! Switch to the first window and end the top command by pressing `q`. Not only can both windows see the same session, both are controlling it!
+
+Before we move on, notice that while you're in a tmux session there is a green status bar at the bottom of your terminal window. This tells you important information about your current session. Here's my third terminal window:
+
+image::ttt38/Screenshot-2020-07-11-at-12.59.30.png[tmux window]
+
+On the right of the status bar you'll see the text `"bart-imac2018.localdo" 13:02 11-Jul-20`. The part in quotation marks is my Mac's hostname (not very imaginative), that's not that useful when you're running tmux on your local computer, but can it can be very convenient when SSHed into a remote server. You'll also see the current date and time, not all that useful, but it can be convenient.
+
+On the left of the status bar you'll see information about your current session, in this case `[0] 0:zsh*`. The first part is the name of the session, simply `0` in this case, and the part after that is the name of the window, and the command executing in that window. Since we only have one window by default, and since we didn't name it, it also has the default name `0`.
+
+You'll notice that I'm using zsh as my shell these days rather than bash (more on this in future instalments). If you run the `top` command again you'll see the current command change appropriately.
+
+=== Controlling The Session From the Inside
+
+You'll notice that we now have three terminal windows open -- that's literally what a terminal multiplexer is supposed to avoid, so clearly, we're missing something!
+
+You can issue commands for controlling your tmux session from within your tmux session by first pressing `ctrl+b` to enter _command mode_, and then entering your desired command.
+
+Notice it's `cntrl+b` *followed by another key*, not `cntrl+b+OTHER_KEY`.
+
+Once you can enter command mode there are lots of things you can do, but thankfully, most of the really important stuff is mapped to single-key shortcuts. There is even a single-key shortcut to see all the available commands, the question mark. Try pressing `ctrl+b` then `?`. You can now scroll up and down through a list of all the supported commands. When you're done being overwhelmed by how much tmux can do, hit the escape key to return to your session 🙂
+
+The single most important shortcut is the one to detach from a session, i.e. to exit out of tmux but leave your session running. To detach from tmux press `ctrl+b` followed by `d`.
+
+== Naming Sessions
+
+If you're only going to use tmux as a work-around for a spotty internet connection to a server then you'll only want one session, so having it named 0 is not a problem -- it's short and logical, so you're not likely to forget it. You would simply connect each time using `tmux attach -t 0` in fact, when there is only one session you don't even have to specify its name, you can simply connect with `tmux attach`!
+
+However, if you're going to have multiple sessions, numbers become a real pain to manage. In that situation you really want descriptive names on your sessions to help you remember which is which.
+
+=== Naming a Session from Within
+
+*You can (re)name a session any time from within the session by pressing* `cmd+b` *followed by* `$`*.*
+
+Practice by re-naming the first session to `ttt` by pressing `cmd+b`, then `$`, then back-space to delete the existing name (`0`), and finally typing `ttt` and pressing enter.
+
+Notice that the name immediately changes in the status bar. If you now detach from this session with `ctrl+b` followed by `d` you can see the name is also visible in the session listing:
+
+[source,console?prompt=bart%]
+----
+bart-imac2018:~ bart% tmux ls
+1: 1 windows (created Sat Jul 11 13:33:05 2020) (attached)
+ttt: 1 windows (created Sat Jul 11 13:33:00 2020) (attached)
+bart-imac2018:~ bart%
+----
+
+=== Naming Sessions at Creation
+
+We can name a new session as we create it with the `-s` flag. Using the terminal window we just used for the session listing, let's make a new named session:
+
+[source,bash]
+----
+tmux new -s ttt2
+----
+
+Notice the name is reflected in the status bar.
+
+We could detach and run the listing again to see our third session, but let's use this as an excuse to learn how to list sessions from within a session. Press `ctrl+b` to enter command mode, and then `s` to enter session selection mode. We continue to see our session in the lower half of the window, but the top of the window now contains a list of running sessions. We can select one by using the up and down arrow keys and then pressing enter, or, by typing the number next to each session on the list.
+
+image::ttt38/Screenshot-2020-07-11-at-13.43.52.png[tmux session selector]
+
+== Ending Sessions
+
+Creating sessions is great, but you do also need to be able to clean up after yourself, so let's look at some choices for ending sessions.
+
+=== Ending the Current Session
+
+If you're in a single-window-single-pane tmux session (like all the sessions we've been using in this instalment), you can end it by simply exiting from the shell running within that session, i.e., simply enter the bash/zsh command `exit`.
+
+Try it by using one of your three terminal windows, connecting to the ttt2 tmux session, then, from within that session simply typing `exit`.
+
+=== Ending a Session with the `tmux` Command
+
+You can also end a session from the outside using the tmux command kill-session. As an example, let's kill the session we re-named to `ttt`:
+
+[source,bash]
+----
+tmux kill-session -t ttt
+----
+
+If you still had a terminal window connected to that session you'll notice you got exited from tmux and are back in your regular shell.
+
+=== Killing all Sessions
+
+We have one final proverbial sledge-hammer at our disposal to end all our sessions in one fell swoop -- we can kill the tmux server process that's hosting all our sessions with the `kill-server` command:
+
+[source,bash]
+----
+tmux kill-server
+----
+
+== Revisiting the `attach-session` Command
+
+Since attaching to a running session is one of the most important things to be able to do, let's take a moment to circle back to this critical command in a little more detail.
+
+Firstly, this command is so important that it doesn't just have a regular alias (`attach`), it also has the single-letter alias `a`.
+
+Secondly, you don't have to specify the session you wish to attach to. If you omit the -t flag tmux will connect to the most recently detached session.
+
+Putting those to things together, in a situation where you only use one session, you can always re-attach to it with the simple command:
+
+[source,bash]
+----
+tmux a
+----
+
+== Recipe {longdash} Using `tmux` for a Resilient SSH Connection
+
+Before finishing this instalment, let's circle back to the problem we first used the `screen` command to solve -- executing long-running commands on a remote server over SSH from over a patching internet connection.
+
+What we want is a single quick and easy command to _connect to session 0 if it exists, or create a new session 0 if it doesn't._
+
+We know that the command `tmux a` will try attach to the mostly recently used session, so if there will only ever be a session 0, then that command will work most of the time. It will fail the first time you try to connect after session 0 or the entire tmux server were killed. How could that happen? Leaving aside the obvious answer that you killed them intentionally, the most likely reason is that the Linux/Mac server your are SSHing to was rebooted.
+
+To take our simple `tmux a` command to the next level, and have it intelligently create a session if none exists, we can leverage three additional things:
+
+. The fact that the `tmux` command emits standards-compliant exit codes depending on whether it succeeds or fails.
+. The fact that sh-derived shells like bash and zsh interpret error exit codes as `false`.
+. The fact that sh-derived shells implement so-called _lazy evaluation_ of boolean operators.
+
+In shells derived from sh, like bash and zsh, a double-pipe indicates a boolean _or_ operation. When or-ing two values, if the first is `true`, the final result will always be `true` because `true || true` is `true`, and `true || false` is also `true`. That means that when the shell executes the command to the left of the `||` and it evaluates to `true` (emits a success exit code), there is no need to execute the command to the right to determine the result of the `||` operation. For this reason, sh, bash, and zsh all skip the command to the right of an
+`||`` operator when the command to the left succeeds. This approach is known as _lazy evaluation_, and used by many programming languages too.
+
+Note that sh-derived shells take the same approach when evaluating boolean _and_ operations, the operator for which is `&&`. In this case, when the command to the left of the `&&` evaluates to `false`, the result will always be `false`, regardless of the outcome of the second command, because `false true` is `false`, and so is `false && false`.
+
+This second approach is probably more commonly used than the first, because it allows you do execute a second command if, and only if, the first succeeds. I often use this to conditionally reboot a server after a successful software update:
+
+[source,bash]
+----
+yum update -y && shutdown -r now
+----
+
+However, in this case we want to execute a second command only if the first fails, so we'll make use of lazy execution of `||` rather than `&&`.
+
+What we want to do is attach to an existing session if possible, and, only if that fails, make a new session. We know that `tmux a` will attach to the most recent existing session if there is one, or fail with an error, and, we know that `tmux` will create a new session and attach to it.
+
+Putting it all together, the following very short command will try attach to an existing session or create a new one:
+
+[source,bash]
+----
+tmux a || tmux
+----
+
+To have a robust SSH connection you can do one of the following things:
+
+. Always manually run `tmux a || tmux` before doing any work when you connect over SSH (tedious and error prone).
+. Add the command `tmux a || tmux` to the end of your `~/.ssh/rc` file on the server you're connecting to.
+. Assuming your SSH GUI supports it, add the command `tmux a || tmux` to the shortcut/favourite for your server so your SSH client automatically executes it for you.
+
+Note that I am suggesting `~/.ssh/rc` rather than `~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, or `~/.zlogin` because I only want `tmux` to kick in when SSHing to the machine, not when opening a terminal window in the GUI or connecting via a console.
+
+Not all SSH clients support automatically executing a command when you connect, but my favourite SSH client, Core Shell, does. If you're a fellow Core Shell user you'll find the correct place to enter the command at the bottom of the _Advanced_ tab of the server's _Settings_ pane. The setting is named _RemoteCommand_, and is grouped under _Post Command_:
+
+image::ttt38/Screenshot-2020-07-11-at-16.15.55.png[The Core Shell Post Command Setting]
+
+== Final Thoughts
+
+In this instalment we've focused on using `tmux` as a replacement for `screen`, so we've confined ourselves to the simple situation where each of our sessions has a single window containing a single pane -- we've ignored the ways in which `tmux` is much more feature-rich. In the next instalment we'll rectify that by learning how to work with windows and panes within our sessions.
+
+Finally, you might want to bookmark this wonderful https://gist.github.com/MohamedAlaa/2961058[tmux cheat-sheet].

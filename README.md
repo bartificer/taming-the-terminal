@@ -6,6 +6,8 @@ This repository contains all the content of the Taming the Terminal tutorial as 
 
 ## How it works
 
+Download the HTML file of the episode and convert it to Markdown using the tttconvert code.
+Then, convert the Markdown to Asciidoctor using Kramdoc.
 Once you've set up all the necessary tools, you can simply build all three versions using the command
 
 `bundle exec rake book:build`
@@ -23,6 +25,10 @@ To get there you need:
 
 ## Prepare your environment
 
+### Install NodeJS
+
+Install NodeJS version 12.x.x or later. Follow the instructions on [nodejs.org](https://nodejs.org/en/).
+
 ### Install Ruby on macOS
 
 Ruby is default part of macOS but every 'gem install <some package>' will lead to an attempt to update the system framework. Not a good idea.
@@ -30,6 +36,16 @@ Ruby is default part of macOS but every 'gem install <some package>' will lead t
 Follow the instructions at: [GoRails.com](https://gorails.com/setup/osx/10.15-catalina)
 
 just the part 'Installing Ruby'
+
+### Install Kramdoc
+
+Install Kramdoc using
+
+```
+gem install kramdown-asciidoc
+```
+
+more information at [Convert Markdown to AsciiDoc](https://matthewsetter.com/technical-documentation/asciidoc/convert-markdown-to-asciidoc-with-kramdoc/)
 
 ### Clone the git repository
 
@@ -48,6 +64,51 @@ gem install
 ```
 
 This installs all Ruby gems in the `Gemfile`.
+
+## Compile
+
+### Prepare the files
+
+1. Download the file from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles`.
+2. Convert HTML to Markdown
+
+```
+cd tttconvert
+./tttconvert.sh xx # xx is the number of episode, leave blank to convert all files
+```
+
+This app also downloads the images. Output is in `convert2` and `convert2/assets`.
+
+3. Convert to Asciidoctor
+
+```
+cd ../convert2
+kramdoc --format=GFM --output=tttXX.adoc tttXX.md
+```
+
+4. Copy the Asciidoctor files + assets to the book
+
+```
+cd ../../convert2
+cp tttXX.adoc ../book  # XX is the file you want to copy
+cp -r assets/tttXX ../book/assets
+```
+
+5. Make the QRcode
+
+- Copy the link to the podcast to the file `publish/mp3_files
+- run the script
+
+```
+cd ../scripts
+./generate_qrcode.sh
+```
+
+6. Cleanup
+
+- add the new tttXX.adoc file to `book/ttt-contents.adoc`
+- if necessary, rename the QRcode file to match the TTT_XX.png naming convention
+- open the `book/tttXX.adoc` file and fix the episode box, the reference to the QRcode and miscellaneous changes.
 
 ### Build the files
 
