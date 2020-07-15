@@ -284,7 +284,7 @@ https://www.bartb.ie/[www.bartb.ie], and click on `Tools` â†’ `Web Developer` â†
 
 image::ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
 
-This will open a new subwindow at the bottom of your FireFox window with a message telling you to re-load the page.
+This will open a new subwindow at the bottom of your FireFox window with a message telling you to reload the page.
 
 image::ttt34/Screen-Shot-2015-05-09-at-17.33.58.png[FireFox Dev Tools - Reload Page]
 
