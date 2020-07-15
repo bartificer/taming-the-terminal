@@ -92,7 +92,7 @@ The `ssh-keygen` command will accept a blank password, but this is to be strongl
 
 It should also be noted that if you forget the password protecting your private key, you won't be able to use that key-pair any more, and you'll need to generate a fresh key-pair!
 
-Once you enter a password `ssh-keygen` will generate a public and private key, tell you where it has saved them, tell you the key's fingerprint (a big long hexadecimal string separated with `:`s), and it will show you the key's random art image.
+Once you enter a password `ssh-keygen` will generate a public and private key, tell you where it has saved them, tell you the key's fingerprint (a big long hexadecimal string separated with ``:``s), and it will show you the key's random art image.
 This is a representation of the key as a little ASCII art graphic.
 This is much more memorable to humans than the fingerprint. Show us two different pictures and we'll spot the difference in seconds, show us two different strings of hex and we'll find it very hard to spot subtle differences!
 
