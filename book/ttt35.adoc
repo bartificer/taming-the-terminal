@@ -3,11 +3,11 @@
 include::variables.adoc[]
 
 
-The previous instalment we introduced the HTTP protocol.
+In <<ttt34,the previous instalment>> we introduced the HTTP protocol.
 In this instalment, we'll look at three terminal commands which make use of the HTTP protocol.
 
 We'll start by browsing from the terminal, and then move on to a pair of very similar commands for making HTTP requests from the terminal.
-These two commands can do many things, but we'll focus on two specific use-cases, downloading files, and viewing HTTP headers.
+These two commands can do many things, but we'll focus on two specific use cases: downloading files, and viewing HTTP headers.
 
 .Matching Podcast Episode 35
 ****
@@ -92,6 +92,7 @@ The two commands below can be used to download that file to the present working 
 [source,shell]
 ----
 wget https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
+
 curl -O https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
 ----
 
@@ -105,7 +106,9 @@ Both commands allow an alternative output file to be specified:
 [source,shell,linenums]
 ----
 wget -O HSXKPasswd.zip https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
+
 curl -o HSXKPasswd.zip https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
+
 curl https://github.com/bbusschots/xkpasswd.pm/archive/master.zip > HSXKPasswd.zip
 ----
 
@@ -247,13 +250,13 @@ bart-iMac2013:~ bart$
 === And More ...
 
 This is just a taster of what `curl` and `wget` can do.
-For more details see their relevant `man` pages.
+For more details, see their relevant `man` pages.
 
 I like to have both `curl` and `wget` installed on all my computers because I find `wget` easier to use for downloading files and `curl` easier to use for viewing HTTP headers.
 
 == Conclusions
 
-Armed with `lynx`, `curl`, and `wget`, you can use the terminal to browse we web, download files, and peep under the hood of HTTP connections.
+Armed with `lynx`, `curl`, and `wget`, you can use the terminal to browse the web, download files, and peep under the hood of HTTP connections.
 When working on websites, you may find you can save a lot of time and energy by using these terminal commands to see exactly what your web server is returning.
 
 This instalment concludes our look at the HTTP protocol.
