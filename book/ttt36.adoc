@@ -7,6 +7,12 @@ The previous 13 instalments in this series related to networking, but we're goin
 to change tack completely for this instalment, and look at two unrelated, but
 very useful terminal commands -- `screen`, and `cron`.
 
+[NOTE]
+.`screen` has been replaced with `tmux`
+====
+Please refer to <<ttt38,ttt38>> in which it is explained that `screen` was deprecated in all Red Hat variants of Linux in 2019, and replaced with the much more powerful `tmux`.
+====
+
 `screen` is a utility that allows for the creation of persistent virtual terminal sessions that you can disconnect from without terminating, and reconnect and pick up where you left off at a later time.
 `screen` is particularly useful when used in conjunction with SSH.
 
@@ -37,10 +43,10 @@ https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-36-screen-a
 The `screen` command is included with OS X by default, but it is not included by default on all Linux distros.
 It is however usually available through the distro's standard package manager.
 
-Screen creates a virtual terminal that detaches itself from the shell that starts
-it, so it will continue to run, even when that shell ends because you closed the
+`screen` creates a virtual terminal that detaches itself from the shell that starts
+it. It will continue to run even when that shell ends, because you closed the
 terminal window or logged out of the computer.
-This means that screen sessions keep running until they explicitly ended, or the computer is rebooted.
+This means that screen sessions keep running until they are explicitly ended, or the computer is rebooted.
 The idea is that you can connect and disconnect as often as you like, allowing you to pick up right where you left off.
 
 There are many situations in which this is very useful.
@@ -51,8 +57,7 @@ sleep -- if you do all your work on the remote server in a screen session, you
 can disconnect and reconnect without interrupting your workflow.
 * When connecting to a server over SSH from a location with poor internet connectivity -- if you use screen, a network interruption will not terminate a running command.
 * When running commands that will take a long time to execute -- you can start the command in a screen session, disconnect, and check back on it a few hours, or even days, later.
-* When multiple real humans have to share a single login account on a computer.
-Each can do their work in their own named screen session.
+* When multiple real humans have to share a single login account on a computer — each can do their work in their own named screen session.
 
 Remember that `screen` must be installed on the computer where the session will run, so if you want to run a session on a remote machine you are SSHing to, `screen` needs to be installed on the remote machine.
 
@@ -165,7 +170,7 @@ In the first, now detached terminal window, enter:
 
 `screen -rx test`
 
-Notice that now, both terminal windows are seeing the same session, and they are sharing it in real-time, if you type in one, you'll see yourself in the other!
+Notice that now, both terminal windows are seeing the same session, and they are sharing it in real time. If you type in one, you'll see yourself in the other!
 
 As well as allowing you to have multiple sessions, `screen` also allows you to have multiple virtual windows within each session.
 When in a screen session, you can create a new window with the key combination kbd:[Ctrl+a+c] (for create).
@@ -180,7 +185,7 @@ Some people do find it very useful though, so I thought it was worth mentioning 
 
 == The `cron` Utility
 
-Unix/Linux systems, including OS X, use a system known as cron for automating the repeated execution of tasks.
+Unix/Linux systems, including OS X, use a system known as `cron` for automating the repeated execution of tasks.
 The rules of the repetition are extremely flexible, and as a result, the syntax can be a little daunting at first.
 
 The way the cron system works is that each user may define a so-called _crontab_, which is a table listing tasks to be run, and defining when they should be run.
