@@ -69,7 +69,10 @@ This installs all Ruby gems in the `Gemfile`.
 
 ### Prepare the files
 
-1. Download the file from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles` directory.
+The original episodes are HTML pages on Bart's website. They need to be converted first to AsciiDoctor file before they can be processed further. This section explains how to do that for a new episode.
+
+1. Download the HTML page from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles` directory. This ensures the correct naming convention and the original links to the images and other assets.
+
 2. Convert HTML to Markdown
 
 ```
@@ -129,19 +132,26 @@ because `book:build` is the default.
 When it finishes, the output looks like this:
 
 ```
-fatal: No names found, cannot describe anything.
 Generating contributors list
+
 Converting to HTML...
- -- HTML output at ttt.html
+ -- HTML output at output/ttt.html
+Sync the assets
+
 Converting to EPub...
- -- Epub output at ttt.epub
-Converting to PDF... (this one takes a while)
- -- PDF output at ttt.pdf
+ -- Epub output at output/ttt.epub
+
+Converting to PDF A4... (this one takes a while)
+ -- PDF output at output/ttt.pdf
+
+Converting to PDF US... (this one takes a while)
+ -- PDF output at output/ttt-us.pdf
 ```
 
 and no other errors, there should be a PDF in A4-size, a PDF in letter-size, an HTML file and an ePub file in the `output` directory.
 
-**Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`.
+<s>**Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`</s>.
+Assets are already synced in the build script.
 
 ## Book setup
 
