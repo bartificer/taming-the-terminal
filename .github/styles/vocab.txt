@@ -67,6 +67,7 @@ Noto
 ors
 plist
 Podcast
+podcatchers
 podfeet
 Powershell
 prepending
@@ -90,10 +91,12 @@ subprotocol
 subprotocols
 subshell
 subshells
+subwindow
 syslog
 tcpdump
 tcsh
 teleports
+tmux
 traceroute
 transcoding
 unencrypted
