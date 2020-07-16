@@ -19,6 +19,7 @@ cardinalities
 chown
 cmd
 commandkey
+computery
 config
 cron
 crontab
