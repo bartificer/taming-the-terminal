@@ -2,7 +2,7 @@
 = TTT Part 38 of n {longdash} TMUX (A Screen Alternative)
 include::variables.adoc[]
 
-Since we covered the `screen` command in <<ttt36,instalment 36>>, it has been deprecated in Red Enterprise Linux 8, and https://access.redhat.com/solutions/4136481[the official advice from Red Hat] is to transition to the `tmux` command. Having been a fan of `screen` for years, I was skeptical, but I shouldn't have been -- `tmux` can do everything `screen` can, it can arguably do it better, and, it can do much more than `screen` ever could!
+Since we covered the `screen` command in <<ttt36,instalment 36>>, it has been deprecated in Red Enterprise Linux 8, and https://access.redhat.com/solutions/4136481[the official advice from Red Hat] is to transition to the `tmux` command. Having been a fan of `screen` for years, I was skeptical, but I shouldn't have been. `tmux` can do everything `screen` can, it can arguably do it better, and, it can do much more than `screen` ever could!
 
 .Matching Podcast Episode 38
 ****
@@ -23,7 +23,7 @@ You can also
 https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_11.mp3[download the MP3]
 ****
 
-As you may remember, the `screen` command allows you to create a command line session that continues to run after you close your terminal window or disconnect from your SSH session. At a later time you can then re-connect to the still running screen session and pick up where you left off. This is very useful for executing long-running commands, and, for working on a remote server over a spotty internet connection.
+As you may remember, the `screen` command allows you to create a command line session that continues to run after you close your terminal window or disconnect from your SSH session. At a later time you can then reconnect to the still-running screen session and pick up where you left off. This is very useful for executing long-running commands, and for working on a remote server over a spotty internet connection.
 
 It's very easy to use `tmux` to achieve exactly the same result, and the commands are arguably simpler -- the arguments are certainly a lot more sensible and obvious anyway. 🙂
 
@@ -33,15 +33,15 @@ The `screen` command works on a very simplistic model -- each virtual terminal i
 
 The `tmux` command expands this model by introducing the concepts of _windows_ and _panes_ within numbered or optionally named _sessions_. The name `tmux` is a portmanteau of _terminal multiplexer_, so it's built around the idea of running multiple terminals within a single visible window.
 
-_Tmux sessions_ contain one or more _tmux windows_ each of which contain one or more _tmux panes_. A _tmux pane_ is a command shell. You can tile these panes into _tmux windows_, and you can stack these _tmux windows_ one on top of the other within _tmux sessions_.
+_tmux sessions_ contain one or more _tmux windows_ each of which contain one or more _tmux panes_. A _tmux pane_ is a command shell. You can tile these panes into _tmux windows_, and you can stack these _tmux windows_ one on top of the other within _tmux sessions_.
 
 It's unfortunate that `tmux` chose to re-use the word _window_, because it already has a meaning within GUI operating systems, so it often leads to confusion. I find it helpful to think of _tmux windows_ as being like browser tabs -- multiple full-page vertically stacked windows-within-a-window. Like a single browser window stacks multiple tabs on top of each other, a single _tmux session_ stacks multiple _tmux windows_ on top of each other.
 
-If this all sounds too complicated, don't worry, a default `tmux` session contains a single window which contains a single pane. In other words, *by default,* `tmux` *behaves like* `screen`.
+If this all sounds too complicated, don't worry, a default `tmux` session contains a single window which contains a single pane. In other words, *by default* `tmux` *behaves like* `screen`.
 
 == Installing `tmux`
 
-On Linux tmux will almost certainly be available from your distribution's standard package manager, so for people on RHEL-flavoured distros it will probably be:
+On Linux `tmux` will almost certainly be available from your distribution's standard package manager, so for people on RHEL-flavoured distros it will probably be:
 
 [source,shell]
 ----
@@ -55,7 +55,7 @@ And for Debian-flavoured distros probably:
 sudo apt-get install tmux
 ----
 
-On macOS we'll need to use a third-party package manager like https://brew.sh[Homebrew] to easily install tmux:
+On macOS we'll need to use a third-party package manager like https://brew.sh[Homebrew] to easily install `tmux`:
 
 [source,shell]
 ----
@@ -73,7 +73,7 @@ tmux COMMAND [OPTIONS]
 
 Where `COMMAND` is one of the many `tmux` commands listed in the extensive manual page (`man tmux`), and `OPTIONS` are optional extra flags to pass information to the specified command.
 
-The tmux commands are very descriptively named, but that makes them easy to read but hard to type, so, tmux provides short aliases for the most commonly used commands, e.g. `lscm` is an alias for the extremely convenient `list-commands` which lists all the commands `tmux` supports, or, gives details on a specific command:
+The `tmux` commands are very descriptively named, which  makes them easy to read but hard to type, so `tmux` provides short aliases for the most commonly used commands, e.g. `lscm` is an alias for the extremely convenient `list-commands` which lists all the commands `tmux` supports, or, gives details on a specific command:
 
 [source,console?prompt=bart%]
 ----
@@ -156,11 +156,11 @@ Note that you *use the* `-t` *flag to target a specific session with any session
 
 Let's do something inside this session, say run the `top` command with no arguments. Have a look at your first terminal window -- both windows are now seeing the same session in real time! Switch to the first window and end the top command by pressing `q`. Not only can both windows see the same session, both are controlling it!
 
-Before we move on, notice that while you're in a tmux session there is a green status bar at the bottom of your terminal window. This tells you important information about your current session. Here's my third terminal window:
+Before we move on, notice that while you're in a `tmux` session there is a green status bar at the bottom of your terminal window. This tells you important information about your current session. Here's my third terminal window:
 
 image::ttt38/Screenshot-2020-07-11-at-12.59.30.png[tmux window]
 
-On the right of the status bar you'll see the text `"bart-imac2018.localdo" 12:59 11-Jul-20`. The part in quotation marks is my Mac's hostname (not very imaginative), that's not that useful when you're running tmux on your local computer, but can it can be very convenient when SSHed into a remote server. You'll also see the current date and time, not all that useful, but it can be convenient.
+On the right of the status bar you'll see the text `"bart-imac2018.localdo" 12:59 11-Jul-20`. The part in quotation marks is my Mac's hostname (not very imaginative). That's not that useful when you're running `tmux` on your local computer, but can it can be very convenient when SSHed into a remote server. You'll also see the current date and time, not all that useful, but it can be convenient.
 
 On the left of the status bar you'll see information about your current session, in this case `[0] 0:zsh*`. The first part is the name of the session, simply `0` in this case, and the part after that is the name of the window, and the command executing in that window. Since we only have one window by default, and since we didn't name it, it also has the default name `0`.
 
@@ -170,17 +170,17 @@ You'll notice that I'm using zsh as my shell these days rather than bash (more o
 
 You'll notice that we now have three terminal windows open -- that's literally what a terminal multiplexer is supposed to avoid, so clearly, we're missing something!
 
-You can issue commands for controlling your tmux session from within your tmux session by first pressing kbd:[ctrl+b] to enter _command mode_, and then entering your desired command.
+You can issue commands for controlling your `tmux` session from within your `tmux` session by first pressing kbd:[ctrl+b] to enter _command mode_, and then entering your desired command.
 
 Notice it's kbd:[ctrl+b] *followed by another key*, not kbd:[ctrl+b+OTHER_KEY].
 
-Once you can enter command mode there are lots of things you can do, but thankfully, most of the really important stuff is mapped to single-key shortcuts. There is even a single-key shortcut to see all the available commands, the question mark. Try pressing kbd:[ctrl+b] then kbd:[?]. You can now scroll up and down through a list of all the supported commands. When you're done being overwhelmed by how much tmux can do, hit the escape key to return to your session. 🙂
+Once you can enter command mode there are lots of things you can do, but thankfully, most of the really important stuff is mapped to single-key shortcuts. There is even a single-key shortcut to see all the available commands: the question mark. Try pressing kbd:[ctrl+b] then kbd:[?]. You can now scroll up and down through a list of all the supported commands. When you're done being overwhelmed by how much `tmux` can do, hit the escape key to return to your session. 🙂
 
-The single most important shortcut is the one to detach from a session, i.e. to exit out of tmux but leave your session running. To detach from tmux press kbd:[ctrl+b] followed by kbd:[d].
+The single most important shortcut is the one to detach from a session, i.e. to exit out of `tmux` but leave your session running. To detach from `tmux` press kbd:[ctrl+b] followed by kbd:[d].
 
 == Naming Sessions
 
-If you're only going to use tmux as a work-around for a spotty internet connection to a server then you'll only want one session, so having it named 0 is not a problem -- it's short and logical, so you're not likely to forget it. You would simply connect each time using `tmux attach -t 0` in fact, when there is only one session you don't even have to specify its name, you can simply connect with `tmux attach`!
+If you're only going to use `tmux` as a work-around for a spotty internet connection to a server then you'll only want one session, so having it named 0 is not a problem. It's short and logical, so you're not likely to forget it. You would simply connect each time using `tmux attach -t 0` in fact, when there is only one session you don't even have to specify its name, you can simply connect with `tmux attach`!
 
 However, if you're going to have multiple sessions, numbers become a real pain to manage. In that situation you really want descriptive names on your sessions to help you remember which is which.
 
@@ -211,7 +211,7 @@ tmux new -s ttt2
 
 Notice the name is reflected in the status bar.
 
-We could detach and run the listing again to see our third session, but let's use this as an excuse to learn how to list sessions from within a session. Press kbd:[ctrl+b] to enter command mode, and then kbd:[s] to enter session selection mode. We continue to see our session in the lower half of the window, but the top of the window now contains a list of running sessions. We can select one by using the up and down arrow keys and then pressing enter, or, by typing the number next to each session on the list.
+We could detach and run the listing again to see our third session, but let's use this as an excuse to learn how to list sessions from within a session. Press kbd:[ctrl+b] to enter command mode, and then kbd:[s] to enter session selection mode. We continue to see our session in the lower half of the window, but the top of the window now contains a list of running sessions. We can select one by using the up and down arrow keys and then pressing enter, or by typing the number next to each session on the list.
 
 image::ttt38/Screenshot-2020-07-11-at-13.43.52.png[tmux session selector]
 
@@ -221,24 +221,24 @@ Creating sessions is great, but you do also need to be able to clean up after yo
 
 === Ending the Current Session
 
-If you're in a single-window-single-pane tmux session (like all the sessions we've been using in this instalment), you can end it by simply exiting from the shell running within that session, i.e., simply enter the bash/zsh command `exit`.
+If you're in a single-window-single-pane `tmux` session (like all the sessions we've been using in this instalment), you can end it by simply exiting from the shell running within that session, i.e., simply enter the bash/zsh command `exit`.
 
-Try it by using one of your three terminal windows, connecting to the ttt2 tmux session, then, from within that session simply typing `exit`.
+Try it by using one of your three terminal windows, connecting to the ttt2 `tmux` session, then, from within that session simply typing `exit`.
 
 === Ending a Session with the `tmux` Command
 
-You can also end a session from the outside using the tmux command kill-session. As an example, let's kill the session we re-named to `ttt`:
+You can also end a session from the outside using the `tmux` command kill-session. As an example, let's kill the session we re-named to `ttt`:
 
 [source,bash]
 ----
 tmux kill-session -t ttt
 ----
 
-If you still had a terminal window connected to that session you'll notice you got exited from tmux and are back in your regular shell.
+If you still had a terminal window connected to that session you'll notice you got exited from `tmux` and are back in your regular shell.
 
 === Killing all Sessions
 
-We have one final proverbial sledge-hammer at our disposal to end all our sessions in one fell swoop -- we can kill the tmux server process that's hosting all our sessions with the `kill-server` command:
+We have one final proverbial sledge-hammer at our disposal to end all our sessions in one fell swoop -- we can kill the `tmux` server process that's hosting all our sessions with the `kill-server` command:
 
 [source,bash]
 ----
@@ -251,9 +251,9 @@ Since attaching to a running session is one of the most important things to be a
 
 Firstly, this command is so important that it doesn't just have a regular alias (`attach`), it also has the single-letter alias `a`.
 
-Secondly, you don't have to specify the session you wish to attach to. If you omit the -t flag tmux will connect to the most recently detached session.
+Secondly, you don't have to specify the session you wish to attach to. If you omit the `-t` flag `tmux` will connect to the most recently detached session.
 
-Putting those to things together, in a situation where you only use one session, you can always re-attach to it with the simple command:
+Putting those two things together in a situation where you only use one session, you can always reattach to it with the simple command:
 
 [source,bash]
 ----
@@ -266,7 +266,7 @@ Before finishing this instalment, let's circle back to the problem we first used
 
 What we want is a single quick and easy command to _connect to session 0 if it exists, or create a new session 0 if it doesn't._
 
-We know that the command `tmux a` will try to attach to the mostly recently used session, so if there will only ever be a session 0, then that command will work most of the time. It will fail the first time you try to connect after session 0 or the entire tmux server were killed. How could that happen? Leaving aside the obvious answer that you killed them intentionally, the most likely reason is that the Linux/Mac server your are SSHing to was rebooted.
+We know that the command `tmux a` will try to attach to the mostly recently used session, so if there will only ever be a session 0, then that command will work most of the time. It will fail the first time you try to connect after session 0 or the entire `tmux` server were killed. How could that happen? Leaving aside the obvious answer that you killed them intentionally, the most likely reason is that the Linux/Mac server you are SSHing to was rebooted.
 
 To take our simple `tmux a` command to the next level, and have it intelligently create a session if none exists, we can leverage three additional things:
 
@@ -288,7 +288,7 @@ yum update -y && shutdown -r now
 
 However, in this case we want to execute a second command only if the first fails, so we'll make use of lazy execution of `||` rather than `&&`.
 
-What we want to do is attach to an existing session if possible, and, only if that fails, make a new session. We know that `tmux a` will attach to the most recent existing session if there is one, or fail with an error, and, we know that `tmux` will create a new session and attach to it.
+What we want to do is attach to an existing session if possible, and, only if that fails, make a new session. We know that `tmux a` will attach to the most recent existing session if there is one, or fail with an error, and we know that `tmux` will create a new session and attach to it.
 
 Putting it all together, the following very short command will try attach to an existing session or create a new one:
 
@@ -305,12 +305,12 @@ To have a robust SSH connection you can do one of the following things:
 
 Note that I am suggesting `~/.ssh/rc` rather than `~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, or `~/.zlogin` because I only want `tmux` to kick in when SSHing to the machine, not when opening a terminal window in the GUI or connecting via a console.
 
-Not all SSH clients support automatically executing a command when you connect, but my favourite SSH client, Core Shell, does. If you're a fellow Core Shell user you'll find the correct place to enter the command at the bottom of the _Advanced_ tab of the server's _Settings_ pane. The setting is named _RemoteCommand_, and is grouped under _Post Command_:
+Not all SSH clients support automatically executing a command when you connect, but my favourite SSH client, https://apps.apple.com/us/app/core-shell/id1354319581?mt=12[Core Shell], does. If you're a fellow Core Shell user you'll find the correct place to enter the command at the bottom of the _Advanced_ tab of the server's _Settings_ pane. The setting is named _RemoteCommand_, and is grouped under _Post Command_:
 
 image::ttt38/Screenshot-2020-07-11-at-16.15.55.png[The Core Shell Post Command Setting]
 
 == Final Thoughts
 
-In this instalment we've focused on using `tmux` as a replacement for `screen`, so we've confined ourselves to the simple situation where each of our sessions has a single window containing a single pane -- we've ignored the ways in which `tmux` is much more feature-rich. In the next instalment we'll rectify that by learning how to work with windows and panes within our sessions.
+In this instalment we've focused on using `tmux` as a replacement for `screen`, so we've confined ourselves to the simple situation where each of our sessions has a single window containing a single pane. We've ignored the ways in which `tmux` is much more feature-rich. In the next instalment we'll rectify that by learning how to work with windows and panes within our sessions.
 
 Finally, you might want to bookmark this wonderful https://gist.github.com/MohamedAlaa/2961058[tmux cheat-sheet].
