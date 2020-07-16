@@ -82,87 +82,11 @@ attach-session (attach) [-dErx] [-c working-directory] [-t target-session]
 bind-key (bind) [-nr] [-T key-table] [-N note] key command [arguments]
 break-pane (breakp) [-dP] [-F format] [-n window-name] [-s src-pane] [-t dst-window]
 capture-pane (capturep) [-aCeJNpPq] [-b buffer-name] [-E end-line] [-S start-line] [-t target-pane]
-choose-buffer [-NrZ] [-F format] [-f filter] [-O sort-order] [-t target-pane] [template]
-choose-client [-NrZ] [-F format] [-f filter] [-O sort-order] [-t target-pane] [template]
-choose-tree [-GNrswZ] [-F format] [-f filter] [-O sort-order] [-t target-pane] [template]
-clear-history (clearhist) [-t target-pane]
-clock-mode [-t target-pane]
-command-prompt [-1kiN] [-I inputs] [-p prompts] [-t target-client] [template]
-confirm-before (confirm) [-p prompt] [-t target-client] command
-copy-mode [-eHMuq] [-t target-pane]
-delete-buffer (deleteb) [-b buffer-name]
-detach-client (detach) [-aP] [-E shell-command] [-s target-session] [-t target-client]
-display-menu (menu) [-c target-client] [-t target-pane] [-T title] [-x position] [-y position] name key command ...
-display-message (display) [-aIpv] [-c target-client] [-F format] [-t target-pane] [message]
-display-panes (displayp) [-b] [-d duration] [-t target-client] [template]
-find-window (findw) [-CNrTZ] [-t target-pane] match-string
-has-session (has) [-t target-session]
-if-shell (if) [-bF] [-t target-pane] shell-command command [command]
-join-pane (joinp) [-bdfhv] [-l size] [-s src-pane] [-t dst-pane]
-kill-pane (killp) [-a] [-t target-pane]
-kill-server
-kill-session [-aC] [-t target-session]
-kill-window (killw) [-a] [-t target-window]
-last-pane (lastp) [-deZ] [-t target-window]
-last-window (last) [-t target-session]
-link-window (linkw) [-dk] [-s src-window] [-t dst-window]
-list-buffers (lsb) [-F format]
-list-clients (lsc) [-F format] [-t target-session]
-list-commands (lscm) [-F format] [command]
-list-keys (lsk) [-1aN] [-P prefix-string] [-T key-table] [key]
-list-panes (lsp) [-as] [-F format] [-t target-window]
-list-sessions (ls) [-F format]
-list-windows (lsw) [-a] [-F format] [-t target-session]
-load-buffer (loadb) [-b buffer-name] path
-lock-client (lockc) [-t target-client]
-lock-server (lock)
-lock-session (locks) [-t target-session]
-move-pane (movep) [-bdhv] [-p percentage|-l size] [-s src-pane] [-t dst-pane]
-move-window (movew) [-dkr] [-s src-window] [-t dst-window]
-new-session (new) [-AdDEPX] [-c start-directory] [-F format] [-n window-name] [-s session-name] [-t target-session] [-x width] [-y height] [command]
-new-window (neww) [-adkP] [-c start-directory] [-e environment] [-F format] [-n window-name] [-t target-window] [command]
-next-layout (nextl) [-t target-window]
-next-window (next) [-a] [-t target-session]
-paste-buffer (pasteb) [-dpr] [-s separator] [-b buffer-name] [-t target-pane]
-pipe-pane (pipep) [-IOo] [-t target-pane] [command]
-previous-layout (prevl) [-t target-window]
-previous-window (prev) [-a] [-t target-session]
-refresh-client (refresh) [-cDlLRSU] [-C XxY] [-F flags] [-t target-client] [adjustment]
-rename-session (rename) [-t target-session] new-name
-rename-window (renamew) [-t target-window] new-name
-resize-pane (resizep) [-DLMRUZ] [-x width] [-y height] [-t target-pane] [adjustment]
-resize-window (resizew) [-aADLRU] [-x width] [-y height] [-t target-window] [adjustment]
-respawn-pane (respawnp) [-k] [-c start-directory] [-e environment] [-t target-pane] [command]
-respawn-window (respawnw) [-k] [-c start-directory] [-e environment] [-t target-window] [command]
-rotate-window (rotatew) [-DUZ] [-t target-window]
-run-shell (run) [-b] [-t target-pane] shell-command
-save-buffer (saveb) [-a] [-b buffer-name] path
-select-layout (selectl) [-Enop] [-t target-pane] [layout-name]
-select-pane (selectp) [-DdeLlMmRUZ] [-T title] [-t target-pane]
-select-window (selectw) [-lnpT] [-t target-window]
-send-keys (send) [-FHlMRX] [-N repeat-count] [-t target-pane] key ...
-send-prefix [-2] [-t target-pane]
-set-buffer (setb) [-a] [-b buffer-name] [-n new-buffer-name] data
-set-environment (setenv) [-gru] [-t target-session] name [value]
-set-hook [-agRu] [-t target-session] hook [command]
-set-option (set) [-aFgopqsuw] [-t target-pane] option [value]
-set-window-option (setw) [-aFgoqu] [-t target-window] option [value]
-show-buffer (showb) [-b buffer-name]
-show-environment (showenv) [-gs] [-t target-session] [name]
-show-hooks [-g] [-t target-session]
-show-messages (showmsgs) [-JT] [-t target-client]
-show-options (show) [-AgHpqsvw] [-t target-pane] [option]
-show-window-options (showw) [-gv] [-t target-window] [option]
-source-file (source) [-nqv] path ...
-split-window (splitw) [-bdefhIPv] [-c start-directory] [-e environment] [-F format] [-l size] [-t target-pane] [command]
-start-server (start)
-suspend-client (suspendc) [-t target-client]
-swap-pane (swapp) [-dDUZ] [-s src-pane] [-t dst-pane]
-swap-window (swapw) [-d] [-s src-window] [-t dst-window]
-switch-client (switchc) [-ElnprZ] [-c target-client] [-t target-session] [-T key-table]
+...
 unbind-key (unbind) [-an] [-T key-table] key
 unlink-window (unlinkw) [-k] [-t target-window]
 wait-for (wait) [-L|-S|-U] channel
+
 bart-imac2018:~ bart% tmux lscm rename-session
 rename-session (rename) [-t target-session] new-name
 bart-imac2018:~ bart%
