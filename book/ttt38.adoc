@@ -25,7 +25,7 @@ https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_
 
 As you may remember, the `screen` command allows you to create a command line session that continues to run after you close your terminal window or disconnect from your SSH session. At a later time you can then re-connect to the still running screen session and pick up where you left off. This is very useful for executing long-running commands, and, for working on a remote server over a spotty internet connection.
 
-It's very easy to use `tmux` to achieve exactly the same result, and the commands are arguably simpler -- the arguments are certainly a lot more sensible and obvious anyway 🙂
+It's very easy to use `tmux` to achieve exactly the same result, and the commands are arguably simpler -- the arguments are certainly a lot more sensible and obvious anyway. 🙂
 
 == Sessions, Windows, and Panes
 
@@ -145,7 +145,7 @@ bart-imac2018:~ bart%
 
 We can now see that we have two sessions, again, rather un-imaginatively named `0` and `1` 🙂
 
-Let's not use our third terminal window to join our first session using the `attach-session` command via it's alias `attach`:
+Let's now use our third terminal window to join our first session using the `attach-session` command via it's alias `attach`:
 
 [source,bash]
 ----
@@ -160,7 +160,7 @@ Before we move on, notice that while you're in a tmux session there is a green s
 
 image::ttt38/Screenshot-2020-07-11-at-12.59.30.png[tmux window]
 
-On the right of the status bar you'll see the text `"bart-imac2018.localdo" 13:02 11-Jul-20`. The part in quotation marks is my Mac's hostname (not very imaginative), that's not that useful when you're running tmux on your local computer, but can it can be very convenient when SSHed into a remote server. You'll also see the current date and time, not all that useful, but it can be convenient.
+On the right of the status bar you'll see the text `"bart-imac2018.localdo" 12:59 11-Jul-20`. The part in quotation marks is my Mac's hostname (not very imaginative), that's not that useful when you're running tmux on your local computer, but can it can be very convenient when SSHed into a remote server. You'll also see the current date and time, not all that useful, but it can be convenient.
 
 On the left of the status bar you'll see information about your current session, in this case `[0] 0:zsh*`. The first part is the name of the session, simply `0` in this case, and the part after that is the name of the window, and the command executing in that window. Since we only have one window by default, and since we didn't name it, it also has the default name `0`.
 
@@ -262,11 +262,11 @@ tmux a
 
 == Recipe {longdash} Using `tmux` for a Resilient SSH Connection
 
-Before finishing this instalment, let's circle back to the problem we first used the `screen` command to solve -- executing long-running commands on a remote server over SSH from over a patching internet connection.
+Before finishing this instalment, let's circle back to the problem we first used the `screen` command to solve -- executing long-running commands on a remote server over SSH from over a patchy internet connection.
 
 What we want is a single quick and easy command to _connect to session 0 if it exists, or create a new session 0 if it doesn't._
 
-We know that the command `tmux a` will try attach to the mostly recently used session, so if there will only ever be a session 0, then that command will work most of the time. It will fail the first time you try to connect after session 0 or the entire tmux server were killed. How could that happen? Leaving aside the obvious answer that you killed them intentionally, the most likely reason is that the Linux/Mac server your are SSHing to was rebooted.
+We know that the command `tmux a` will try to attach to the mostly recently used session, so if there will only ever be a session 0, then that command will work most of the time. It will fail the first time you try to connect after session 0 or the entire tmux server were killed. How could that happen? Leaving aside the obvious answer that you killed them intentionally, the most likely reason is that the Linux/Mac server your are SSHing to was rebooted.
 
 To take our simple `tmux a` command to the next level, and have it intelligently create a session if none exists, we can leverage three additional things:
 
@@ -275,7 +275,7 @@ To take our simple `tmux a` command to the next level, and have it intelligently
 . The fact that sh-derived shells implement so-called _lazy evaluation_ of boolean operators.
 
 In shells derived from sh, like bash and zsh, a double-pipe indicates a boolean _or_ operation. When or-ing two values, if the first is `true`, the final result will always be `true` because `true || true` is `true`, and `true || false` is also `true`. That means that when the shell executes the command to the left of the `||` and it evaluates to `true` (emits a success exit code), there is no need to execute the command to the right to determine the result of the `||` operation. For this reason, sh, bash, and zsh all skip the command to the right of an
-`||`` operator when the command to the left succeeds. This approach is known as _lazy evaluation_, and used by many programming languages too.
+`||` operator when the command to the left succeeds. This approach is known as _lazy evaluation_, and used by many programming languages too.
 
 Note that sh-derived shells take the same approach when evaluating boolean _and_ operations, the operator for which is `&&`. In this case, when the command to the left of the `&&` evaluates to `false`, the result will always be `false`, regardless of the outcome of the second command, because `false true` is `false`, and so is `false && false`.
 
