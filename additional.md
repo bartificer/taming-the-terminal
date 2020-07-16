@@ -18,16 +18,19 @@ In hindsight, 3 weeks later, I found out I didn't look hard enough at Pandoc's d
 Pygments, the source code highlighter does have support for Bash or shell scripts, but somehow most builtins are not color coded. Because the earlier episodes mostly use builtins, that would mean there is no color coding at all.
 I came across an extension that added these builtins to Pygments, but I wasn't able to convert them to the language and plugin syntax Pandoc could understand.
 
-In my search for a solution I came across the [Progit](https://github.com/progit/progit) eBook repository. They referred to their second version [Progit 2](https://github.com/progit/progit2) which mentioned that they switched to Asciidoc. Curious, I googled some more and came across the [Asciidoctor](https://asciidoctor.org) website.
+In my search for a solution I came across the [Progit](https://github.com/progit/progit) eBook repository. They referred to their second version [Progit 2](https://github.com/progit/progit2) which mentioned that they switched to Asciidoc. Curious, I googled some more and came across this page [Convert Markdown to Asciidoctor with PanDoc](https://matthewsetter.com/convert-markdown-to-asciidoc-withpandoc/) and the
+[Asciidoctor](https://asciidoctor.org) website.
 It solved many of my problems:
 
 - definition lists
 - support for various source code highlighters, including Pygments, which also support shell scripts
-- and the Progit 2 project had a script file that could generate and ePub as well as a PDF and single page HTML.
+- and the Progit 2 project had a script file that could generate an ePub as well as a PDF and a single page HTML.
 
 I converted an episode by hand, Markdown and Asciidoctor have very similar syntax, and ran it through the build script. Lo and behold there was nice color coding. And the switch to Rouge, another syntax highlighter was even easier and provided also color coding for the builtins.
 
 The decision was made, TTT would be in Asciidoctor.
+
+Note: it turned out to be easier to convert Markdown to Asciidoctor using [Kramdoc-Asciidoc](https://matthewsetter.com/technical-documentation/asciidoc/convert-markdown-to-asciidoc-with-kramdoc/).
 
 ## Links
 

@@ -69,7 +69,7 @@ This installs all Ruby gems in the `Gemfile`.
 
 ### Prepare the files
 
-1. Download the file from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles`.
+1. Download the file from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles` directory.
 2. Convert HTML to Markdown
 
 ```
@@ -118,7 +118,15 @@ Test if your setup works by running
 bundle exec rake book:build
 ```
 
-When it finishes output like this:
+or simply
+
+```
+bundle exec rake
+```
+
+because `book:build` is the default.
+
+When it finishes, the output looks like this:
 
 ```
 fatal: No names found, cannot describe anything.
@@ -131,9 +139,9 @@ Converting to PDF... (this one takes a while)
  -- PDF output at ttt.pdf
 ```
 
-and no other errors, there should be a PDF, an HTML file and an ePub file in the `output` directory.
+and no other errors, there should be a PDF in A4-size, a PDF in letter-size, an HTML file and an ePub file in the `output` directory.
 
-**Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`
+**Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`.
 
 ## Book setup
 
@@ -144,14 +152,14 @@ Every episode is put in its own file in `book`. All images are in
 
 For now:
 
-- `colophon.adoc` holds some boilerplate text. It needs to be update to proper information
-- `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it.
+- <s>`colophon.adoc` holds some boilerplate text. It needs to be update to proper information</s>
+- `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it. Because the entries are only visible in the PDF, the entire section is commented out.
 
 Note: language is British English!
 
 ## Bug fixes and workaround
 
-This section contains some notes on bug fixes and workarounds that have been applied to get it working
+This section contains some notes on bug fixes and workarounds that have been applied to get it working.
 
 ### Fake second paragraph
 
@@ -188,9 +196,19 @@ Somehow there is a bug in `asciidoctor` that causes backticks to be passed throu
 
 Source: [Prepare an asciidoc document](https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document)
 
+**UPDATE 2020-07-16**: Looks like Rouge _is_ supported now in ePub, _AND_ it gives better colour coding, so all ePub is now also switched to Rouge.
+
 ### Highlights in source code
 
 It is not possible to highlight specific parts of the source code, so all references to e.g. `<strong>` must be removed from the snippet or it will show up verbatim in the output file.
+
+**UPDATE 2020-07-16**: highlighting is supported by adding an attribute to the codeblock indicating the lines to be highlighted and by adding appropriate CSS to the various themes. All code blocks that have highlighting in the original html are now marked for highlighting in the Asciidoctor files as well.
+
+### Line numbering in source code
+
+Although Rouge supports line numbering in source code blocks, the implementation in Asciidoctor is very simple. The code is placed in 2 table cells, one with the line numbers, one with the code. It doesn't take into account the extra space needed when long code lines wrap to the next line.
+After numerous attempts to fix the problem I got stuck because my code adjustments in the Asciidoctor code broke the functionality to add annotations in the code and I haven't found a way to preserve that functionality.
+I therefore decided to skip the line numberin in code blocks that have long lines of mostly output. The highlighting does work, therefore it's still possible to point out the important lines.
 
 ### Keyboard shortcuts
 
