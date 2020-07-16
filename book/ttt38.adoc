@@ -143,7 +143,7 @@ bart-imac2018:~ bart% tmux ls
 bart-imac2018:~ bart%
 ----
 
-We can now see that we have two sessions, again, rather un-imaginatively named `0` and `1` 🙂
+We can now see that we have two sessions, again, rather un-imaginatively named `0` and `1`. 🙂
 
 Let's now use our third terminal window to join our first session using the `attach-session` command via it's alias `attach`:
 
@@ -174,7 +174,7 @@ You can issue commands for controlling your tmux session from within your tmux s
 
 Notice it's kbd:[ctrl+b] *followed by another key*, not kbd:[ctrl+b+OTHER_KEY].
 
-Once you can enter command mode there are lots of things you can do, but thankfully, most of the really important stuff is mapped to single-key shortcuts. There is even a single-key shortcut to see all the available commands, the question mark. Try pressing kbd:[ctrl+b] then kbd:[?]. You can now scroll up and down through a list of all the supported commands. When you're done being overwhelmed by how much tmux can do, hit the escape key to return to your session 🙂.
+Once you can enter command mode there are lots of things you can do, but thankfully, most of the really important stuff is mapped to single-key shortcuts. There is even a single-key shortcut to see all the available commands, the question mark. Try pressing kbd:[ctrl+b] then kbd:[?]. You can now scroll up and down through a list of all the supported commands. When you're done being overwhelmed by how much tmux can do, hit the escape key to return to your session. 🙂
 
 The single most important shortcut is the one to detach from a session, i.e. to exit out of tmux but leave your session running. To detach from tmux press kbd:[ctrl+b] followed by kbd:[d].
 
