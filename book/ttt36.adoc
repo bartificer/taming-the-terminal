@@ -209,7 +209,7 @@ The way it works is that every minute, every cron job who's five-part time speci
 Lines in the crontab starting with `#` are comment lines, that is to say, `cron` ignores them.
 Blank lines are also ignored.
 
-As well as lines starting with time specifiers, and comment lines, a crontab can also contain a number of special command lines.
+As well as lines starting with time specifiers and comment lines, a crontab can also contain a number of special command lines.
 We'll see some of these later in this instalment.
 
 === Specifying When
@@ -222,7 +222,7 @@ The five parts to the time specifier are:
 . Month (1-12)
 . Day of Week (0-6, with Sunday as zero)
 
-For each of these five specifies, you can enter a number, or, the character `*`, which is interpreted to mean _any_.
+For each of these five specifiers, you can enter a number, or, the character `*`, which is interpreted to mean _any_.
 
 So, to run a command on-the-hour-every-hour, you would use the specifier:
 
@@ -236,7 +236,7 @@ To run a command at 4:30 am on the first of every month you would use the specif
 
 In other words, the specifier will match when the minute is 30, the hour is 4, the day of the month is 1, the month is anything, and the day of the week is anything.
 
-As well as taking single numbers, each of the five parts of the specifier can take multiple comma-separated values, and ranges (don't add spaces after the commas).
+As well as taking single numbers, each of the five parts of the specifier can take multiple comma-separated values and ranges (don't add spaces after the commas).
 So, to run a task at 8 am and 8 pm every weekday you would use the specifier:
 
 `0 8,20 * * 1-5`
@@ -244,7 +244,7 @@ So, to run a task at 8 am and 8 pm every weekday you would use the specifier:
 That is, when the minute is zero, the hour is 8 or 20, any day of the month, any month, and the day of the week is between 1 and 5 inclusive, i.e.
 Monday to Friday.
 
-Finally, you can use the `*/n` syntax to specify that something should happen every `n` minutes (or hours etc.).
+Finally, you can use the `*/n` syntax to specify that something should happen every `n` minutes (or hours etc.)
 To run a command every two minutes you would use the specifier:
 
 `*/2 * * * *`
@@ -272,7 +272,7 @@ It does for me.
 However, many ISPs and many mail servers will reject email coming from home IP addresses rather than trusted mail servers.
 
 If you definitely want to use email, you have two options.
-Firstly, OS X uses the open source MTA (Mail Transfer Agent) https://www.postfix.org[Postfix], so you could re-configure postfix to use a mail relay to send the emails on your behalf.
+Firstly, OS X uses the open source MTA (Mail Transfer Agent) http://www.postfix.org[Postfix], so you could re-configure postfix to use a mail relay to send the emails on your behalf.
 In the past, many ISPs provided an SMTP server for their customers to use, so if your ISP does, this is at least a plausible option.
 This is not for the faint-hearted though -- you'll need to take the time to familiarise yourself with Postfix and to learn what the different settings in the config file do.
 
@@ -280,7 +280,7 @@ Your second option is to use the built-in command-line mail client in OS X to re
 The command is `mail`, and there is a man page explaining how it works.
 This works, but it's quite clunky.
 
-If email doesn't _just work_ for you, my advice would be to change tack and use stream redirection (as described in instalments <<ttt15,15>> and <<ttt16,16>>) instead.
+If email doesn't "just work" for you, my advice would be to change tack and use stream redirection (as described in instalments <<ttt15,15>> and <<ttt16,16>>) instead.
 This is the approach we will use in our examples in this instalment.
 
 === A simple cron Example
