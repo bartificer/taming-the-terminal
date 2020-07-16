@@ -190,7 +190,7 @@ However, if you're going to have multiple sessions, numbers become a real pain t
 
 Practice by re-naming the first session to `ttt` by pressing kbd:[ctrl+b], then kbd:[$], then back-space to delete the existing name (`0`), and finally typing `ttt` and pressing enter.
 
-Notice that the name immediately changes in the status bar. If you now detach from this session with `ctrl+b` followed by `d` you can see the name is also visible in the session listing:
+Notice that the name immediately changes in the status bar. If you now detach from this session with kbd:[ctrl+b] followed by kbd:[d] you can see the name is also visible in the session listing:
 
 [source,console?prompt=bart%]
 ----
