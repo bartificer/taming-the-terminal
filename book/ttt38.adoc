@@ -186,9 +186,9 @@ However, if you're going to have multiple sessions, numbers become a real pain t
 
 === Naming a Session from Within
 
-*You can (re)name a session any time from within the session by pressing* kbd:[cmd+b] *followed by* kbd:[$]*.*
+*You can (re)name a session any time from within the session by pressing* kbd:[ctrl+b] *followed by* kbd:[$]*.*
 
-Practice by re-naming the first session to `ttt` by pressing kbd:[cmd+b], then kbd:[$], then back-space to delete the existing name (`0`), and finally typing `ttt` and pressing enter.
+Practice by re-naming the first session to `ttt` by pressing kbd:[ctrl+b], then kbd:[$], then back-space to delete the existing name (`0`), and finally typing `ttt` and pressing enter.
 
 Notice that the name immediately changes in the status bar. If you now detach from this session with `ctrl+b` followed by `d` you can see the name is also visible in the session listing:
 
