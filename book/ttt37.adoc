@@ -51,7 +51,7 @@ When SSH config files or commands require the path to an identity, what they're 
 SSH identities are created using the `ssh-keygen` command.
 
 SSH has the concept of a default identity.
-Whereever an identity can be used, SSH will check a number of pre-defined file paths (in a pre-defined order) for a valid identity file, and use the first one it finds.
+Wherever an identity can be used, SSH will check a number of pre-defined file paths (in a pre-defined order) for a valid identity file, and use the first one it finds.
 Today, using the most modern versions of SSH and the default key algorithms, that effectively means that your default identity is `~/.ssh/id_rsa` (and `~/.ssh/id_rsa.pub`).
 
 As with any cryptographic system based on public & private keys, your security completely depends on keeping the private key secret, and the publication of your public key has no impact on your security at all.

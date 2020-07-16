@@ -20,6 +20,13 @@ TAPFILE='tttconvert.tap'
 INDEXFILE='tttconvert.index'
 counter=0
 
+FILE=${1:-'*'}
+
+if [[ $FILE != '*' ]]; then
+    FILE='*'${FILE}'*'
+fi
+
+# echo $FILE
 
 # -------------------
 # tapResult
@@ -79,7 +86,7 @@ function generateIndex() {
 function downloadZips() {
     mkdir  -p ${SOURCEDIR}/zip
     cd ${SOURCEDIR}/zip
-    for f in $(grep '.*\.zip' ../*.html | cut -d'=' -f2 | cut -d'"' -f 2 | grep 'wp-content')
+    for f in $(grep '.*\.zip' ../${FILE}.html | cut -d'=' -f2 | cut -d'"' -f 2 | grep 'wp-content')
     do
         curl $f -O
     done
@@ -90,17 +97,17 @@ function downloadZips() {
 # ===================
 # Main program starts here
 
-# downloadZips
+downloadZips
 
 # start the tapfile with the plan
-tapplan=$(ls -l ${SOURCEDIR}/*.html | wc -l)
+tapplan=$(ls -l ${SOURCEDIR}/${FILE}.html | wc -l)
 echo 0..${tapplan} > ${TAPFILE}
 
 # start with an empty indexfile
 
 echo -n > $INDEXFILE
 
-for f in ${SOURCEDIR}/*.html
+for f in ${SOURCEDIR}/${FILE}.html
 do
     TTTNO=$(echo $f | cut -d' ' -f3)
     TTTMD=ttt${TTTNO}.md

@@ -6,6 +6,8 @@ This repository contains all the content of the Taming the Terminal tutorial as 
 
 ## How it works
 
+Download the HTML file of the episode and convert it to Markdown using the tttconvert code.
+Then, convert the Markdown to Asciidoctor using Kramdoc.
 Once you've set up all the necessary tools, you can simply build all three versions using the command
 
 `bundle exec rake book:build`
@@ -23,6 +25,10 @@ To get there you need:
 
 ## Prepare your environment
 
+### Install NodeJS
+
+Install NodeJS version 12.x.x or later. Follow the instructions on [nodejs.org](https://nodejs.org/en/).
+
 ### Install Ruby on macOS
 
 Ruby is default part of macOS but every 'gem install <some package>' will lead to an attempt to update the system framework. Not a good idea.
@@ -30,6 +36,16 @@ Ruby is default part of macOS but every 'gem install <some package>' will lead t
 Follow the instructions at: [GoRails.com](https://gorails.com/setup/osx/10.15-catalina)
 
 just the part 'Installing Ruby'
+
+### Install Kramdoc
+
+Install Kramdoc using
+
+```
+gem install kramdown-asciidoc
+```
+
+more information at [Convert Markdown to AsciiDoc](https://matthewsetter.com/technical-documentation/asciidoc/convert-markdown-to-asciidoc-with-kramdoc/)
 
 ### Clone the git repository
 
@@ -49,6 +65,54 @@ gem install
 
 This installs all Ruby gems in the `Gemfile`.
 
+## Compile
+
+### Prepare the files
+
+The original episodes are HTML pages on Bart's website. They need to be converted first to AsciiDoctor file before they can be processed further. This section explains how to do that for a new episode.
+
+1. Download the HTML page from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles` directory. This ensures the correct naming convention and the original links to the images and other assets.
+
+2. Convert HTML to Markdown
+
+```
+cd tttconvert
+./tttconvert.sh xx # xx is the number of episode, leave blank to convert all files
+```
+
+This app also downloads the images. Output is in `convert2` and `convert2/assets`.
+
+3. Convert to Asciidoctor
+
+```
+cd ../convert2
+kramdoc --format=GFM --output=tttXX.adoc tttXX.md
+```
+
+4. Copy the Asciidoctor files + assets to the book
+
+```
+cd ../../convert2
+cp tttXX.adoc ../book  # XX is the file you want to copy
+cp -r assets/tttXX ../book/assets
+```
+
+5. Make the QRcode
+
+- Copy the link to the podcast to the file `publish/mp3_files
+- run the script
+
+```
+cd ../scripts
+./generate_qrcode.sh
+```
+
+6. Cleanup
+
+- add the new tttXX.adoc file to `book/ttt-contents.adoc`
+- if necessary, rename the QRcode file to match the TTT_XX.png naming convention
+- open the `book/tttXX.adoc` file and fix the episode box, the reference to the QRcode and miscellaneous changes.
+
 ### Build the files
 
 Test if your setup works by running
@@ -57,22 +121,37 @@ Test if your setup works by running
 bundle exec rake book:build
 ```
 
-When it finishes output like this:
+or simply
 
 ```
-fatal: No names found, cannot describe anything.
+bundle exec rake
+```
+
+because `book:build` is the default.
+
+When it finishes, the output looks like this:
+
+```
 Generating contributors list
+
 Converting to HTML...
- -- HTML output at ttt.html
+ -- HTML output at output/ttt.html
+Sync the assets
+
 Converting to EPub...
- -- Epub output at ttt.epub
-Converting to PDF... (this one takes a while)
- -- PDF output at ttt.pdf
+ -- Epub output at output/ttt.epub
+
+Converting to PDF A4... (this one takes a while)
+ -- PDF output at output/ttt.pdf
+
+Converting to PDF US... (this one takes a while)
+ -- PDF output at output/ttt-us.pdf
 ```
 
-and no other errors, there should be a PDF, an HTML file and an ePub file in the `output` directory.
+and no other errors, there should be a PDF in A4-size, a PDF in letter-size, an HTML file and an ePub file in the `output` directory.
 
-**Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`
+<s>**Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`</s>.
+Assets are already synced in the build script.
 
 ## Book setup
 
@@ -83,14 +162,14 @@ Every episode is put in its own file in `book`. All images are in
 
 For now:
 
-- `colophon.adoc` holds some boilerplate text. It needs to be update to proper information
-- `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it.
+- <s>`colophon.adoc` holds some boilerplate text. It needs to be update to proper information</s>
+- `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it. Because the entries are only visible in the PDF, the entire section is commented out.
 
 Note: language is British English!
 
 ## Bug fixes and workaround
 
-This section contains some notes on bug fixes and workarounds that have been applied to get it working
+This section contains some notes on bug fixes and workarounds that have been applied to get it working.
 
 ### Fake second paragraph
 
@@ -127,9 +206,19 @@ Somehow there is a bug in `asciidoctor` that causes backticks to be passed throu
 
 Source: [Prepare an asciidoc document](https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document)
 
+**UPDATE 2020-07-16**: Looks like Rouge _is_ supported now in ePub, _AND_ it gives better colour coding, so all ePub is now also switched to Rouge.
+
 ### Highlights in source code
 
 It is not possible to highlight specific parts of the source code, so all references to e.g. `<strong>` must be removed from the snippet or it will show up verbatim in the output file.
+
+**UPDATE 2020-07-16**: highlighting is supported by adding an attribute to the codeblock indicating the lines to be highlighted and by adding appropriate CSS to the various themes. All code blocks that have highlighting in the original html are now marked for highlighting in the Asciidoctor files as well.
+
+### Line numbering in source code
+
+Although Rouge supports line numbering in source code blocks, the implementation in Asciidoctor is very simple. The code is placed in 2 table cells, one with the line numbers, one with the code. It doesn't take into account the extra space needed when long code lines wrap to the next line.
+After numerous attempts to fix the problem I got stuck because my code adjustments in the Asciidoctor code broke the functionality to add annotations in the code and I haven't found a way to preserve that functionality.
+I therefore decided to skip the line numberin in code blocks that have long lines of mostly output. The highlighting does work, therefore it's still possible to point out the important lines.
 
 ### Keyboard shortcuts
 
