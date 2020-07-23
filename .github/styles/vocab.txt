@@ -17,6 +17,7 @@ bundler
 Capitan
 cardinalities
 chown
+cloudbased
 cmd
 commandkey
 computery
@@ -29,6 +30,7 @@ datagram
 datagrams
 Dev
 distros
+ebook
 Englishy
 ethernet
 experimentations
