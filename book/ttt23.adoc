@@ -347,7 +347,7 @@ The key point is how the layers interact.
 As we saw initially, logically the browser and the server talked HTTP to each other, but physically, the packet started in the application layer and moved down the layers to the link layer, then up and down between the link and internet layers many times as it moved across before finally being handed all the way up the layers back to the application layer when it arrived at my server.
 The diagram below illustrates this idea:
 
-image::wikipedia/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
+image::ttt23/512px-IP_stack_connections.svg.png[IP stack connections,link=https://commons.wikimedia.org/wiki/File%3AIP_stack_connections.svg]
 
 So, we followed the path of a single IP packet, how many IP packets were actually needed for this very simple HTTP transaction?
 The answer is 12 (see below).
