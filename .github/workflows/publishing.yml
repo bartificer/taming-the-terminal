@@ -30,7 +30,7 @@ jobs:
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: output/ttt.*
+          file: output/ttt*
           tag: v0.1
           overwrite: true
           file_glob: true
