@@ -2,6 +2,22 @@
 # Foreword
 include::variables.adoc[]
 
+As an IT-person and Apple geek I started listening to the Nosillacast podcast somewhere in the early '10s. I especially enjoyed the sections where Bart was explaining some technical topic. The podcasts kept me company on my long commute to and from work.
+
+Somewhere in 2013 Bart announced he was starting a series of tutorials on the Terminal and all kinds of commands to teach Allison. Cool, let's see how much I already know. The first sessions were easy. I knew most of what Bart was explaining, and yes, I was one of those persons yelling in the car when Bart asked a question.
+Soon I heard new things and quickly it became a game. What would Bart explain this time and would I know it or would it be new. I started to look forward to the commute time because that's the time I would listen to the podcast. I even felt sad when Bart explained that episode 35 was the last one of the series. Luckily time proved him wrong.
+
+When people at work expressed fear of Terminal commands I would point them to the series on Bart's website. I even added the most relevant episodes to the training we had for our new junior developers.
+
+In 2016 I went to Dublin for a holiday and actually met Bart IRL. Turns out he's a great guy and a kindred spirit. It's his passion to teach people about the stuff he loves. He's combining that with academic precision to present well researched information in bitesized chunks that makes it easy to follow along, no matter what your skills level is.
+
+I hope you get as much fun and knowledge out of this series as I did.
+
+Helma van der Linden +
+_TTT fan_
+
+
+## placeholder text
 The differences between a foreword, a preface and an introduction:
 
 https://greenleafbookgroup.com/learning-center/book-creation/distinguishing-between-a-foreword-a-preface-and-an-introduction[DISTINGUISHING BETWEEN A FOREWORD, A PREFACE, AND AN INTRODUCTION]
