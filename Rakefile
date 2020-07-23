@@ -83,8 +83,11 @@ namespace :book do
       `bundle exec asciidoctor-epub3 #{buildParams(epubParams)} #{book_dir}/ttt-spine.adoc`
       puts " -- Epub output at #{epubParams['destination-dir']}/#{epubParams['out-file']}"
 
-      # puts "Validating ePub"
-      # `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']}`
+      puts "\nFixing references to podcasts in ePub package.opf file"
+      `scripts/fix-epub.sh`
+
+      puts "Validating ePub"
+      `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
     #   puts "Converting to Mobi (kf8)..."
     #   `bundle exec asciidoctor-epub3 #{params} -a ebook-format=kf8 #{book_dir}/ttt-spine.adoc`
