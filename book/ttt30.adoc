@@ -136,7 +136,12 @@ Because public keys are not sensitive information, SSH does not care if other us
 To prevent this from happening, SSH will not accept a key if it's contained in a file that is writeable by anyone but the owner of the account.
 An example of working permissions on an account with the username `bart` is shown below:
 
+ifndef::backend-epub3[]
 [source,console?prompt=$,linenums,highlight='1,3,5']
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=$,highlight='1,3,5']
+endif::[]
 ----
 [bart@www ~]$ ls -al ~/.ssh
 total 20

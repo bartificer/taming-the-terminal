@@ -319,7 +319,12 @@ To see what the environment looks like from cron's point of view, add the follow
 
 When more than two minutes have passed, you should see a copy of the environment from the point of view of a cron job with the command:
 
+ifndef::backend-epub3[]
 [source,console?prompt=$,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=$]
+endif::[]
 ----
 $ cat /tmp/cronenv.txt
 SHELL=/bin/sh

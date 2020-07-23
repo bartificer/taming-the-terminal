@@ -135,7 +135,7 @@ ssh myserver
 
 All you would have to do to make your life that much easier would be to create the following host definition in your SSH config file:
 
-[source,shell,linenums]
+[source,shell]
 ----
 Host myserver
   HostName this-is-a-really-long-name.com

@@ -98,7 +98,7 @@ wc -c random.txt
 
 If we re-run the command we can verify that the file still only contains 256 characters because the original version of the file was simply replaced by a new version because we used the `>` operator:
 
-[source,shell,linenums]
+[source,shell]
 ----
 head -c $N /dev/random | base64 | head -c $N > random.txt
 wc -c random.txt
@@ -123,7 +123,7 @@ wc -c randomAccumulator.txt
 
 Now, each time we repeat the command we will add 8 more characters to the file rather than replacing its contents each time:
 
-[source,shell,linenums]
+[source,shell]
 ----
 head -c $N /dev/random | base64 | head -c $N >> randomAccumulator.txt
 wc -c randomAccumulator.txt

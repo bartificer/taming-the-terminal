@@ -209,7 +209,7 @@ $
 How is this different to `ssh-add` with no arguments?
 Let's see -- I'll empty the SSH Agent, and re-add the same identity without using the Keychain integration:
 
-[source,console?prompt=$,linenums]
+[source,console?prompt=$]
 ----
 $ ssh-add -D
 All identities removed.

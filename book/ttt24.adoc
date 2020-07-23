@@ -230,7 +230,7 @@ While we're on the subject of efficiency, computers don't send an ARP request ea
 You can see the MAC to IP mappings currently cached by your OS with the command `arp -an`.
 You'll get output something like:
 
-[source,console?prompt=bart$,linenums,highlight='1']
+[source,console?prompt=bart$,highlight='1']
 ----
 bart-iMac2013:~ bart$ arp -an
 ? (192.168.10.1) at 0:13:3b:e:3f:30 on en0 ifscope [Ethernet]

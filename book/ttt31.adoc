@@ -56,7 +56,7 @@ SSH_COMP=my_remote_computer
 
 === Create the Local Dummy Files
 
-[source,shell,linenums]
+[source,shell]
 ----
 mkdir -p /tmp/ttt31/fromRemote
 echo "Hello World! (Local Text File 1)" > /tmp/ttt31/scp_local1.txt
@@ -73,7 +73,12 @@ ls -R /tmp/ttt31/
 
 === Create the Remote Dummy Files
 
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
 ssh $SSH_USER@$SSH_COMP 'mkdir -p /tmp/ttt31/fromLocal'
 ssh $SSH_USER@$SSH_COMP 'echo "Hello World! (Remote Text File)" > /tmp/ttt31/scp_remote.txt'

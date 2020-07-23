@@ -103,7 +103,7 @@ While that is a sensible default, it's not always what you want.
 In fact, in this case, the default file name is probably not what you want, since `master.zip` is very nondescript.
 Both commands allow an alternative output file to be specified:
 
-[source,shell,linenums]
+[source,shell]
 ----
 wget -O HSXKPasswd.zip https://github.com/bbusschots/xkpasswd.pm/archive/master.zip
 
@@ -177,7 +177,12 @@ By default, `wget` will follow up to 20 redirects, so there is much more output 
 The information we need is there, and I have highlighted it, but it would be easier to get to if `wget` didn't follow the redirect and then ask Twitter's server for its headers too.
 Since we only need the first set of headers, we need to tell `wget` not to follow any redirects at all, and we can do that with the `--max-redirect` flag:
 
+ifndef::backend-epub3[]
 [source,console?prompt=bart$,linenums,highlight='7,10']
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=bart$,highlight='7,10']
+endif::[]
 ----
 bart-iMac2013:~ bart$ wget --spider -S --max-redirect 0 https://www.podfeet.com/twitter
 Spider mode enabled. Check if remote file exists.
@@ -202,7 +207,12 @@ We can see that Allison`'s server is returning a permanent redirect (HTTP respon
 
 We can, of course, do the same with `curl`:
 
+ifndef::backend-epub3[]
 [source,console?prompt=bart$,linenums,highlight='2,5']
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=bart$,highlight='2,5']
+endif::[]
 ----
 bart-iMac2013:~ bart$ curl -I https://www.podfeet.com/twitter
 HTTP/1.1 301 Moved Permanently
@@ -219,7 +229,13 @@ When fetching headers, `curl` does not follow redirects by default, so there is 
 
 Often, you only care about the response headers, so the output of `curl -I` is perfect, but, when you do want to see the request headers too, you can add the `-v` flag to put `curl` into verbose mode:
 
+
+ifndef::backend-epub3[]
 [source,console?prompt=bart$,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=bart$]
+endif::[]
 ----
 bart-iMac2013:~ bart$ curl -vI https://www.podfeet.com/twitter
 * Hostname was NOT found in DNS cache

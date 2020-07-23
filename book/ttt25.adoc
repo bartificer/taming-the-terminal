@@ -310,7 +310,12 @@ This is the most intuitive representation of a netmask, and for our example netw
 This is the most commonly used representation and is used in the System Preferences app on OS X and the Windows Control Panel.
 * Netmasks can also be written in hexadecimal. Every group of four bits gets converted to a symbol between `0` and `f` in the following way:
 +
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
   0000 = 0
   0001 = 1
@@ -420,7 +425,7 @@ netstat -rn | egrep '^default'
 With these filtered versions of the commands, we can clearly see the three pieces of information we are looking for.
 Below is my output, with the desired information highlighted:
 
-[source,console?prompt=bart$,linenums,highlight='2,4']
+[source,console?prompt=bart$,highlight='2,4']
 ----
 bart-iMac2013:~ bart$ ifconfig -a | egrep '\binet\b' | egrep -v '127[.]'
 	inet 192.168.10.42 netmask 0xffffff00 broadcast 192.168.10.255

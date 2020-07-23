@@ -210,7 +210,7 @@ Assuming I have everything properly configured on my end, you open your favourit
 
 Your browser speaks HTTP, so it starts by formulating an HTTP request which will look something like:
 
-[source,html,linenums]
+[source,html]
 ----
 GET /~bart/ttt23/ HTTP/1.1
 Accept:	         text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -234,7 +234,12 @@ This is a two-way connection, so the browser can send data to the webserver proc
 Your browser then sends the HTTP request it formulated to the webserver process on my server through the TCP connection your OS negotiated with my OS on your browser's behalf.
 The webserver process receives the request, understands it because it speaks HTTP, and formulates a response in the form of an HTTP response that will look something like:
 
+ifndef::backend-epub3[]
 [source,html,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,html]
+endif::[]
 ----
 HTTP/1.1 200 OK
 Date: Fri, 24 Oct 2014 22:40:07 GMT
@@ -307,7 +312,7 @@ This continues for as long as it takes for the packet to arrive at the router in
 ====
 You can use the terminal command `traceroute` (`tracert` on Windows) to see what routers a packet follows from your computer to my server as follows:
 
-[source,console?prompt=bart$,linenums,highlight='1']
+[source,console?prompt=bart$,highlight='1']
 ----
 bart-iMac2013:~ bart$ traceroute -n 46.22.130.125
 traceroute to 46.22.130.125 (46.22.130.125), 64 hops max, 52 byte packets
@@ -368,7 +373,7 @@ This will print some metadata and then sit there and do nothing until matching p
 
 In the other terminal window we will use the `curl` command to fetch the website in question (and print out the HTTP request and response for good measure) using:
 
-[source,console?prompt=bart$,linenums,highlight='1']
+[source,console?prompt=bart$,highlight='1']
 ----
 bart-iMac2013:~ bart$ curl -v http://www.so-4pt.net/~bart/ttt23/
 * Hostname was NOT found in DNS cache

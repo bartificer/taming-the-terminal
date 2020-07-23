@@ -132,7 +132,7 @@ sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
 When you execute your command, visit a few web pages, and watch as DNS queries are sent from your computer to your router.
 When I visit https://www.whitehouse.gov[www.whitehouse.gov] I get the following output:
 
-[source,console?prompt=bart$,linenums]
+[source,console?prompt=bart$]
 ----
 bart-imac2013:~ bart$ sudo tcpdump -i any -nn | egrep '[ ]192[.]168[.]10[.]1[.]53:[ ]'
 tcpdump: data link type PKTAP

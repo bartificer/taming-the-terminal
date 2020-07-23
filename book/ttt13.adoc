@@ -231,7 +231,12 @@ When SH or Bash are initialising they start the environment building process by 
 The out-of-the-box content of this file will be determined by your choice of OS.
 On my Ubuntu server `/etc/profile` contains the following:
 
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
 # /etc/profile: system-wide .profile file for the Bourne shell (sh(1))
 # and Bourne compatible shells (bash(1), ksh(1), ash(1), ...).
@@ -267,7 +272,12 @@ fi
 
 While OS X comes with a much shorter and easier to understand `/etc/profile`:
 
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
 # System-wide .profile for sh(1)
 
@@ -312,7 +322,12 @@ These system-level paths should only be used for system-level things, as we'll s
 
 For completeness, let's have a look at `/etc/bashrc`.
 
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
 # System-wide .bashrc file for interactive bash(1) shells.
 if [ -z "$PS1" ]; then
@@ -381,7 +396,7 @@ nano ~/.bash_profile
 
 Enter the following and save the file (BE CAREFUL TO GET IT RIGHT):
 
-[source,shell,linenums]
+[source,shell]
 ----
 # print warning message (leave out the echo lines if you prefer)
 echo "NOTE - applying customisations in ~/.bash_profile"

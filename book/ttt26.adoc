@@ -280,7 +280,12 @@ sudo ipconfig getpacket enX
 
 The relevant information is in the options section near the bottom of the output, highlighted below:
 
+ifndef::backend-epub3[]
 [source,console?prompt=bart$,linenums,highlight='20,22..25']
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=bart$,highlight='20,22..25']
+endif::[]
 ----
 BW-MBP-2:~ bart$ sudo ipconfig getpacket en1
 Password:

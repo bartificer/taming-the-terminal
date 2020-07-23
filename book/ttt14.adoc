@@ -89,7 +89,12 @@ This means you have to be explicit about deleting or overriding files, instead o
 
 To see a list of all currently defined aliases, simply run the `alias` command without any arguments:
 
+ifndef::backend-epub3[]
 [source,console?prompt=bart$,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=bart$]
+endif::[]
 ----
 bart-imac2013:~ bart$ alias
 alias cp='cp -i'
@@ -116,7 +121,12 @@ As we learned in the previous instalment, for Mac users that means adding our al
 
 If we include the examples from the previous instalment an updated `~/.bash_profile` file to include the `ll` alias would look something like:
 
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
 # print warning message (leave out the echo lines if you prefer)
 echo "NOTE – applying customisations in ~/.bash_profile"
@@ -193,7 +203,12 @@ If we want to make the change permanent, we need to add it to our bash startup f
 
 A `~/.bash_profile` file setting all the customisations we've discussed in this instalment and the previous instalment would look like:
 
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
 # print warning message (leave out the echo lines if you prefer)
 echo "NOTE – applying customisations in ~/.bash_profile"

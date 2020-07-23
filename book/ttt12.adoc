@@ -60,14 +60,18 @@ In this instalment, we'll be focusing on Environment Variables, and specifically
 The command to list the names and values of all currently set environment variables is simply `env` (or `printenv` on some systems).
 E.g.:
 
+ifndef::backend-epub3[]
 [source,console?prompt=bart$,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=bart$]
+endif::[]
 ----
 bart-imac2013:~ bart$ env
 TERM_PROGRAM=Apple_Terminal
 SHELL=/bin/bash
 TERM=xterm-256color
-TMPDIR=/var/folders/_8/s3xv9qg94dl9cbrqq9x3ztwm0000gn/T/
-Apple_PubSub_Socket_Render=/tmp/launch-MLs1hi/Render
+TMPDIR=/var/folders/_8/s3xv9qg94dl9cbrqq9x3ztwm0000gn/T/Apple_PubSub_Socket_Render=/tmp/launch-MLs1hi/Render
 TERM_PROGRAM_VERSION=326
 TERM_SESSION_ID=7661AF3B-0D62-435F-B880-C5428000E9D8
 USER=bart
@@ -98,7 +102,12 @@ We already know that `env` lets us see all the environment variables which exist
 To see all the shell variables that exist, call `set` with no arguments.
 E.g.
 
+ifndef::backend-epub3[]
 [source,console?prompt=bart$,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,console?prompt=bart$]
+endif::[]
 ----
 bart-imac2013:~ bart$ set
 Apple_PubSub_Socket_Render=/tmp/launch-MLs1hi/Render
@@ -390,7 +399,12 @@ nano ~/Documents/ttt12script2.sh
 
 Update the new script so it contains the following code, then save and exit:
 
+ifndef::backend-epub3[]
 [source,shell,linenums]
+endif::[]
+ifdef::backend-epub3[]
+[source,shell]
+endif::[]
 ----
 #!/bin/bash
 
@@ -411,7 +425,7 @@ echo $TTT_VAR
 
 You should get output that looks something like:
 
-[source,console?prompt=bart$,linenums]
+[source,console?prompt=bart$]
 ----
 bart-imac2013:~ bart$ echo $TTT_VAR
 Hello World!
@@ -439,7 +453,7 @@ echo $TTT_VAR
 
 This should give you output something like:
 
-[source,console?prompt=bart$,linenums]
+[source,console?prompt=bart$]
 ----
 bart-imac2013:~ bart$ echo $TTT_VAR
 Hello World!
