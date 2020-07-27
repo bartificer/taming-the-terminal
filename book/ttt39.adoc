@@ -19,7 +19,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::qrcodes/TTT_38.png[QRcode, align='left']
+image::qrcodes/TTT_39.png[QRcode, align='left']
 
 You can also
 https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3[download the MP3]
@@ -125,7 +125,7 @@ The left-most item is the name of the session in square brackets. Because we ope
 
 Next to the session name in square brackets are items for each of our windows in order. Like sessions, windows have names, but unlike sessions, the default names are useful! By default a window is named for its currently running process. As you start and stop commands, the name of the window changes. The status bar item for each window consists of the windows's number in the list and its name, separated by a colon, so `0:zsh` is the first window and it's named `zsh` because we didn't give it an explicit name, and it is currently running zsh shell. Similarly, `2:less` is the third window and is currently running the `less` command.
 
-But what about the `-` and `*` tagged on to the ends of the items for the second and fourth windows? As you were moving around between windows you may have noticed that `*` is appended to the current window, and `-` to the last-viewed window before the current one. Because we jumped straight from the second to the fourth window, the last-viewed window is not adjacent to the current window.
+But what about the `-` and `\*` tagged on to the ends of the items for the second and fourth windows? As you were moving around between windows you may have noticed that ``*`` is appended to the current window, and `-` to the last-viewed window before the current one. Because we jumped straight from the second to the fourth window, the last-viewed window is not adjacent to the current window.
 
 === Toggling Between Last-viewed Windows
 
@@ -163,7 +163,7 @@ Panes are created by splitting an existing pane horizontally or vertically. Reme
 
 `To split a pane enter command mode with kbd:[ctrl+b], then press kbd:["] to split it horizontally, or % to split it vertically.` Let's do both of those in order in our session. You should now have three panes, a big one across the top, and two small ones across the bottom. The current pane is highlighted with a green border.
 
-image::./assets/ttt39/Screenshot-2020-07-25-at-16.52.40.png[Screenshot showing 3-pane TMUX window]
+image::./ttt39/Screenshot-2020-07-25-at-16.52.40.png[Screenshot showing 3-pane TMUX window]
 
 === Moving Between Panes
 
