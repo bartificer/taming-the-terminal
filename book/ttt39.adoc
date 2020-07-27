@@ -97,13 +97,13 @@ Finally, before we look at navigating between windows, let's create one more win
 
 === Navigating Between Windows
 
-*We can move between windows by entering control mode with ctrl+b and then pressing p for _previous window_, or n for _next window_.* Remember, think of windows like tabs in a browser, they have an order based on the order they were created in, the first window to be opened becomes the left-most _tab_, and subsequent windows line up to the right. With this mental model in place, we can get into the habit of thinking of _previous_ as _the one directly to my left_, and next as _the one directly to my right_. One last thing to note is that both _next_ and _previous_ wrap around, so if you go next/right from the right-most window you end up on the left-most window, and _vice-versa_.
+*We can move between windows by entering control mode with kbd:[ctrl+b] and then pressing kbd:[p] for _previous window_, or n for _next window_.* Remember, think of windows like tabs in a browser, they have an order based on the order they were created in, the first window to be opened becomes the left-most _tab_, and subsequent windows line up to the right. With this mental model in place, we can get into the habit of thinking of _previous_ as _the one directly to my left_, and next as _the one directly to my right_. One last thing to note is that both _next_ and _previous_ wrap around, so if you go next/right from the right-most window you end up on the left-most window, and _vice-versa_.
 
 Use those keystrokes to move about as you wish, and as you do, watch the status bar changing.
 
-The more windows you have, the more useful it becomes to be able to jump directly to a specific window, and we have two options for doing that. Firstly, *the first ten windows are available by entering command mode with ctrl+b and hitting the numbers 0 to 9*. And secondly, like ctrl+b s gives us a session picker (as we saw in the previous instalment), *ctrl+b w gives us a window picker*.
+The more windows you have, the more useful it becomes to be able to jump directly to a specific window, and we have two options for doing that. Firstly, *the first ten windows are available by entering command mode with kbd:[ctrl+b] and hitting the numbers kbd:[0] to kbd:[9]*. And secondly, like kbd:[ctrl+b] kbd:[s] gives us a session picker (as we saw in the previous instalment), *kbd:[ctrl+b] kbd:[w] gives us a window picker*.
 
-Using the method of your choice, jump to the second window, and then, directly to the fourth (ctrl+b 1 followed by ctrl+b 3 will do it).
+Using the method of your choice, jump to the second window, and then, directly to the fourth (kbd:[ctrl+b] kbd:[1] followed by kbd:[ctrl+b] kbd:[3] will do it).
 
 === Understanding the Status Bar
 
@@ -116,7 +116,7 @@ The status bar should now look like this:
 
 So what does it mean?
 
-The left-most item is the name of the session in square brackets. Because we opened a completely default session without naming it, it has defaulted to the very unimaginative `0`! Let's prove that it really is the session name by entering control mode with ctrl+b and hitting $ to rename the session. I'm going to call mine _BB Sess_. My status bar now looks like this:
+The left-most item is the name of the session in square brackets. Because we opened a completely default session without naming it, it has defaulted to the very unimaginative `0`! Let's prove that it really is the session name by entering control mode with kbd:[ctrl+b] and hitting kbd:[$] to rename the session. I'm going to call mine _BB Sess_. My status bar now looks like this:
 
 [source,shell]
 ----
@@ -129,7 +129,7 @@ But what about the `-` and `*` tagged on to the ends of the items for the second
 
 === Toggling Between Last-viewed Windows
 
-Why would TMUX dedicate valuable status-bar space to an indicate for the last viewed window? Simple -- because *you can jump directly to that window by entering command mode with ctrl+b and hitting l* (lower-case L for _last_).
+Why would TMUX dedicate valuable status-bar space to an indicate for the last viewed window? Simple -- because *you can jump directly to that window by entering command mode with kbd:[ctrl+b] and hitting kbd:[l]* (lower-case L for _last_).
 
 === Renaming Windows
 
@@ -142,7 +142,7 @@ Switch to the fourth window using what ever means you like, then change into the
 cd /var/log
 ----
 
-*You can rename the current window by entering command mode with ctrl+b and pressing ,*.
+*You can rename the current window by entering command mode with kbd:[ctrl+b] and pressing kbd:[,]*.
 
 I'm going to name the window `logs`, and after I do my status bar now looks like this:
 
@@ -155,33 +155,33 @@ I'm going to name the window `logs`, and after I do my status bar now looks like
 
 *You can close a window by ending the shell process running within it, e.g. with the `exit` command*. Try this in the 4th window. You should now be in the third window with the `top` process we started near the beginning of this instalment still running.
 
-*You can also close a window by pressing ctrl+b to enter command mode and hitting &.* Try it on the third and second windows. Notice that TMUX is polite enough to ask you if you're sure 🙂
+*You can also close a window by pressing kbd:[ctrl+b] to enter command mode and hitting kbd:[&].* Try it on the third and second windows. Notice that TMUX is polite enough to ask you if you're sure 🙂
 
 == Working with Panes
 
 Panes are created by splitting an existing pane horizontally or vertically. Remember that by default, every TMUX window contains one pane, so there is always a pane to split.
 
-`To split a pane enter command mode with ctrl+b, then press " to split it horizontally, or % to split it vertically.` Let's do both of those in order in our session. You should now have three panes, a big one across the top, and two small ones across the bottom. The current pane is highlighted with a green border.
+`To split a pane enter command mode with kbd:[ctrl+b], then press kbd:["] to split it horizontally, or % to split it vertically.` Let's do both of those in order in our session. You should now have three panes, a big one across the top, and two small ones across the bottom. The current pane is highlighted with a green border.
 
 image::./assets/ttt39/Screenshot-2020-07-25-at-16.52.40.png[Screenshot showing 3-pane TMUX window]
 
 === Moving Between Panes
 
-You can `move between panes is by pressing ctrl+b to enter command mode and then pressing an arrow key`. Additionally *you can cycle through your panes by entering command mode with ctrl+b and pressing o to move to the next pane in the sequence*.
+You can `move between panes is by pressing kbd:[ctrl+b] to enter command mode and then pressing an arrow key`. Additionally *you can cycle through your panes by entering command mode with kbd:[ctrl+b] and pressing kbd:[o] to move to the next pane in the sequence*.
 
-You can also jump directly to a specific pane by number. *To see the numbers assigned to each pane enter command mode with ctrl+b and press q*. *To jump directly to a pane by number enter command mode with ctrl+b, press q, then the desired number* (you need to be quite quick -- you have to press the number before the labels vanish!).
+You can also jump directly to a specific pane by number. *To see the numbers assigned to each pane enter command mode with kbd:[ctrl+b] and press kbd:[q]*. *To jump directly to a pane by number enter command mode with kbd:[ctrl+b], press kbd:[q], then the desired number* (you need to be quite quick -- you have to press the number before the labels vanish!).
 
-You can also *jump to the most recently active pane by entering command mode with ctrl+b and pressing ;*.
+You can also *jump to the most recently active pane by entering command mode with kbd:[ctrl+b] and pressing kbd:[;]*.
 
 === Expanding Panes with Zoom Mode
 
-The whole point in having panes is to be able to easily see the outputs from multiple commands at once, but that doesn't mean there are not times you'll want to focus in on a single pane for a while. TMUX supports this with a toggleable _zoom mode_. When you enter zoom mode the current pane takes up the full window until you toggle zoom mode off again. *You can toggle zoom mode by entering command mode with ctrl+b and pressing z*. Note that zoom mode is applied at the window level, not the session level, so if you have multiple windows you can zoom some of them but not others. Finally, TMUX will not allow you to enter zoom mode on windows with just a single pane.
+The whole point in having panes is to be able to easily see the outputs from multiple commands at once, but that doesn't mean there are not times you'll want to focus in on a single pane for a while. TMUX supports this with a toggleable _zoom mode_. When you enter zoom mode the current pane takes up the full window until you toggle zoom mode off again. *You can toggle zoom mode by entering command mode with kbd:[ctrl+b] and pressing kbd:[z]*. Note that zoom mode is applied at the window level, not the session level, so if you have multiple windows you can zoom some of them but not others. Finally, TMUX will not allow you to enter zoom mode on windows with just a single pane.
 
 Try entering zoom mode and watch the status bar. Notice that zoomed windows get a `Z` appended to them in the status bar.
 
 === Closing Panes
 
-*You can close the current pane by exiting the shell* running within it, for example with the `exit` command. Also, you can close a pane by entering command mode with ctrl+b and pressing x.
+*You can close the current pane by exiting the shell* running within it, for example with the `exit` command. Also, you can close a pane by entering command mode with kbd:[ctrl+b] and pressing kbd:[x].
 
 == Final Thoughts
 
