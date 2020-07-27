@@ -175,7 +175,7 @@ You can also *jump to the most recently active pane by entering command mode wit
 
 === Expanding Panes with Zoom Mode
 
-The whole point in having panes is to be able to easily see the outputs from multiple commands at once, but that doesn't mean there are not times you'll want to focus in on a single pane for a while. TMUX supports this with a togglable _zoom mode_. When you enter zoom mode the current pane takes up the full window until you toggle zoom mode off again. *You can toggle zoom mode by entering command mode with kbd:[ctrl+b] and pressing kbd:[z]*. Note that zoom mode is applied at the window level, not the session level, so if you have multiple windows you can zoom some of them but not others. Finally, TMUX will not allow you to enter zoom mode on windows with just a single pane.
+The whole point in having panes is to be able to easily see the outputs from multiple commands at once, but that doesn't mean there are not times you'll want to focus in on a single pane for a while. TMUX supports this with a toggleable _zoom mode_. When you enter zoom mode the current pane takes up the full window until you toggle zoom mode off again. *You can toggle zoom mode by entering command mode with kbd:[ctrl+b] and pressing kbd:[z]*. Note that zoom mode is applied at the window level, not the session level, so if you have multiple windows you can zoom some of them but not others. Finally, TMUX will not allow you to enter zoom mode on windows with just a single pane.
 
 Try entering zoom mode and watch the status bar. Notice that zoomed windows get a `Z` appended to them in the status bar.
 
