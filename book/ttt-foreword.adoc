@@ -2,7 +2,8 @@
 # Foreword
 include::variables.adoc[]
 
-As an IT-person and Apple geek I started listening to the NosillaCast podcast somewhere in the early '10s. I especially enjoyed the sections where Bart was explaining some technical topic. The podcasts kept me company on my long commute to and from work.
+As an IT-person and Apple geek I started listening to the NosillaCast podcast by Allison Sheridan somewhere in the early '10s. It's a podcast with a wide variety of tech topics with a _slight_ Apple bias. Topics range from an interview of a blind person using an iPhone to an article on the security measures of a certain bank's webapp to tutorials on how to fix a tech problem with one of your devices.
+I especially enjoyed the sections where Bart was explaining some technical topic. The podcasts kept me company on my long commute to and from work.
 
 Somewhere in 2013 Bart announced he was starting a series of tutorials on the Terminal and all kinds of commands to teach Allison. Cool, let's see how much I already know. The first sessions were easy. I knew most of what Bart was explaining, and yes, I was one of those persons yelling in the car when Bart quizzed Allison.
 
@@ -16,31 +17,3 @@ I hope you get as much fun and knowledge out of this series as I did, now in an 
 
 Helma van der Linden +
 _TTT fan_
-
-
-## placeholder text
-The differences between a foreword, a preface and an introduction:
-
-https://greenleafbookgroup.com/learning-center/book-creation/distinguishing-between-a-foreword-a-preface-and-an-introduction[DISTINGUISHING BETWEEN A FOREWORD, A PREFACE, AND AN INTRODUCTION]
-
-* A foreword is written by someone other than the author and tells the readers why they should read the book.
-* A preface is written by the author and tells readers how and why the book came into being.
-* An introduction introduces readers to the main topics of the manuscript and prepares readers for what they can expect.
-
-They are added to the book in this order.
-
-## Date started
-
-somewhere in 2013
-
-
-[[contributors]]
-## Contributors
-obviously Bart and me but also Steve for the podcast logo, suggesting we make it a standalone show, and doing all of the editing to make it so
-Helma for making the book a reality
-
-For true programmer's nerdery, the contributors according to git:
-
-----
-include::contributors.txt[]
-----
