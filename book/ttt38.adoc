@@ -66,7 +66,7 @@ brew install tmux
 
 Regardless of what you're trying to do with `tmux`, the command will generally be of the form:
 
-[source,bash]
+[source,shell]
 ----
 tmux COMMAND [OPTIONS]
 ----
@@ -128,7 +128,7 @@ When reading this output, note that the session's name is the very first line in
 
 If we run the `tmux` command again in our second terminal window we will create a new session -- let's go ahead and do that:
 
-[source,bash]
+[source,shell]
 ----
 tmux
 ----
@@ -147,7 +147,7 @@ We can now see that we have two sessions, again, rather un-imaginatively named `
 
 Let's now use our third terminal window to join our first session using the `attach-session` command via it's alias `attach`:
 
-[source,bash]
+[source,shell]
 ----
 tmux attach -t 0
 ----
@@ -204,7 +204,7 @@ bart-imac2018:~ bart%
 
 We can name a new session as we create it with the `-s` flag. Using the terminal window we just used for the session listing, let's make a new named session:
 
-[source,bash]
+[source,shell]
 ----
 tmux new -s ttt2
 ----
@@ -229,7 +229,7 @@ Try it by using one of your three terminal windows, connecting to the ttt2 `tmux
 
 You can also end a session from the outside using the `tmux` command kill-session. As an example, let's kill the session we re-named to `ttt`:
 
-[source,bash]
+[source,shell]
 ----
 tmux kill-session -t ttt
 ----
@@ -240,7 +240,7 @@ If you still had a terminal window connected to that session you'll notice you g
 
 We have one final proverbial sledge-hammer at our disposal to end all our sessions in one fell swoop -- we can kill the `tmux` server process that's hosting all our sessions with the `kill-server` command:
 
-[source,bash]
+[source,shell]
 ----
 tmux kill-server
 ----
@@ -255,7 +255,7 @@ Secondly, you don't have to specify the session you wish to attach to. If you om
 
 Putting those two things together in a situation where you only use one session, you can always reattach to it with the simple command:
 
-[source,bash]
+[source,shell]
 ----
 tmux a
 ----
@@ -281,7 +281,7 @@ Note that sh-derived shells take the same approach when evaluating boolean _and_
 
 This second approach is probably more commonly used than the first, because it allows you do execute a second command if, and only if, the first succeeds. I often use this to conditionally reboot a server after a successful software update:
 
-[source,bash]
+[source,shell]
 ----
 yum update -y && shutdown -r now
 ----
@@ -292,7 +292,7 @@ What we want to do is attach to an existing session if possible, and, only if th
 
 Putting it all together, the following very short command will try attach to an existing session or create a new one:
 
-[source,bash]
+[source,shell]
 ----
 tmux a || tmux
 ----

@@ -30,21 +30,21 @@ https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_
 
 Let's start by opening a completely vanilla default tmux session:
 
-[source,bash]
+[source,shell]
 ----
 tmux new
 ----
 
 This session has one window, very imaginatively named `0`. So that we can recognise it later, let's just enter a command:
 
-[source,bash]
+[source,shell]
 ----
 echo 'The first window!'
 ----
 
 Before we start creating and navigating between windows, I'd like to draw your attention to the left-part of the status bar. In this entirely default single-window-single-pane session is should look like this:
 
-[source,bash]
+[source,shell]
 ----
 [0] 0:zsh*
 ----
@@ -55,42 +55,42 @@ As we create and manipulate windows it will change, and I expect the meaning wil
 
 Let's start by creating a new window within our simple session. We do this be entering control mode with ctrl+b, and then pressing c for _create window_. We immediately jump to a fresh window. If you look down at the status bar you'll see that the left-most part has changed to:
 
-[source,bash]
+[source,shell]
 ----
 [0] 0:zsh- 1:zsh*
 ----
 
 Let's now start a process in this new window so we can easily recognise it in future:
 
-[source,bash]
+[source,shell]
 ----
 top
 ----
 
 Notice that starting the `top` command in the second window change the status bar again:
 
-[source,bash]
+[source,shell]
 ----
 [0] 0:zsh- 1:top*
 ----
 
 Let's create a third one by entering command mode again with ctrl+b and pressing c. So we can recognise it, let's run a command so it has some content:
 
-[source,bash]
+[source,shell]
 ----
 less /etc/profile
 ----
 
 Again, notice the status bar change:
 
-[source,bash]
+[source,shell]
 ----
 [0] 0:zsh- 1:top  2:less*
 ----
 
 Finally, before we look at navigating between windows, let's create one more window by again entering command mode again with ctrl+b and pressing c. Notice the state of the status bar is now:
 
-[source,bash]
+[source,shell]
 ----
 [0] 0:zsh  1:top  2:less- 3:zsh*
 ----
@@ -109,7 +109,7 @@ Using the method of your choice, jump to the second window, and then, directly t
 
 The status bar should now look like this:
 
-[source,bash]
+[source,shell]
 ----
 [0] 0:zsh  1:top- 2:less  3:zsh*
 ----
@@ -118,7 +118,7 @@ So what does it mean?
 
 The left-most item is the name of the session in square brackets. Because we opened a completely default session without naming it, it has defaulted to the very unimaginative `0`! Let's prove that it really is the session name by entering control mode with ctrl+b and hitting $ to rename the session. I'm going to call mine _BB Sess_. My status bar now looks like this:
 
-[source,bash]
+[source,shell]
 ----
 [BB Sess] 0:zsh  1:top- 2:less  3:zsh*
 ----
@@ -137,7 +137,7 @@ Just like you can rename sessions, you can rename windows. Note that when you ex
 
 Switch to the fourth window using what ever means you like, then change into the system log folder:
 
-[source,bash]
+[source,shell]
 ----
 cd /var/log
 ----
@@ -146,7 +146,7 @@ cd /var/log
 
 I'm going to name the window `logs`, and after I do my status bar now looks like this:
 
-[source,bash]
+[source,shell]
 ----
 [BB Sess] 0:zsh  1:top- 2:less  3:logs*
 ----
