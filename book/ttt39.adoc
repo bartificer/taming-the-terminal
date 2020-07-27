@@ -53,7 +53,7 @@ As we create and manipulate windows it will change, and I expect the meaning wil
 
 === Creating Windows
 
-Let's start by creating a new window within our simple session. We do this be entering control mode with ctrl+b, and then pressing c for _create window_. We immediately jump to a fresh window. If you look down at the status bar you'll see that the left-most part has changed to:
+Let's start by creating a new window within our simple session. We do this be entering control mode with kbd:[ctrl+b] and then pressing kbd:[c] for _create window_. We immediately jump to a fresh window. If you look down at the status bar you'll see that the left-most part has changed to:
 
 [source,shell]
 ----
@@ -74,7 +74,7 @@ Notice that starting the `top` command in the second window change the status ba
 [0] 0:zsh- 1:top*
 ----
 
-Let's create a third one by entering command mode again with ctrl+b and pressing c. So we can recognise it, let's run a command so it has some content:
+Let's create a third one by entering command mode again with kbd:[ctrl+b] and pressing kbd:[c]. So we can recognise it, let's run a command so it has some content:
 
 [source,shell]
 ----
@@ -88,7 +88,7 @@ Again, notice the status bar change:
 [0] 0:zsh- 1:top  2:less*
 ----
 
-Finally, before we look at navigating between windows, let's create one more window by again entering command mode again with ctrl+b and pressing c. Notice the state of the status bar is now:
+Finally, before we look at navigating between windows, let's create one more window by again entering command mode again with kbd:[ctrl+b] and pressing kbd:[c]. Notice the state of the status bar is now:
 
 [source,shell]
 ----
@@ -133,7 +133,7 @@ Why would TMUX dedicate valuable status-bar space to an indicate for the last vi
 
 === Renaming Windows
 
-Just like you can rename sessions, you can rename windows. Note that when you explicitly set a window's name it will not change as you run different processes. A lot of the time, the default name is more than sufficient, but that breaks down in situations where you're running the same command in different windows similtaneously -- perhaps you're editing two files with `vi`, or watching two log files with `tail`.
+Just like you can rename sessions, you can rename windows. Note that when you explicitly set a window's name it will not change as you run different processes. A lot of the time, the default name is more than sufficient, but that breaks down in situations where you're running the same command in different windows simultaneously -- perhaps you're editing two files with `vi`, or watching two log files with `tail`.
 
 Switch to the fourth window using what ever means you like, then change into the system log folder:
 
@@ -175,7 +175,7 @@ You can also *jump to the most recently active pane by entering command mode wit
 
 === Expanding Panes with Zoom Mode
 
-The whole point in having panes is to be able to easily see the outputs from multiple commands at once, but that doesn't mean there are not times you'll want to focus in on a single pane for a while. TMUX supports this with a toggleable _zoom mode_. When you enter zoom mode the current pane takes up the full window until you toggle zoom mode off again. *You can toggle zoom mode by entering command mode with kbd:[ctrl+b] and pressing kbd:[z]*. Note that zoom mode is applied at the window level, not the session level, so if you have multiple windows you can zoom some of them but not others. Finally, TMUX will not allow you to enter zoom mode on windows with just a single pane.
+The whole point in having panes is to be able to easily see the outputs from multiple commands at once, but that doesn't mean there are not times you'll want to focus in on a single pane for a while. TMUX supports this with a togglable _zoom mode_. When you enter zoom mode the current pane takes up the full window until you toggle zoom mode off again. *You can toggle zoom mode by entering command mode with kbd:[ctrl+b] and pressing kbd:[z]*. Note that zoom mode is applied at the window level, not the session level, so if you have multiple windows you can zoom some of them but not others. Finally, TMUX will not allow you to enter zoom mode on windows with just a single pane.
 
 Try entering zoom mode and watch the status bar. Notice that zoomed windows get a `Z` appended to them in the status bar.
 

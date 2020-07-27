@@ -107,6 +107,7 @@ unintimidating
 unintuitive
 unroutable
 untrusted
+webapp
 webmail
 webmin
 webserver
