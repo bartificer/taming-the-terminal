@@ -1,14 +1,30 @@
-= TTT Part 39 of n -- Advanced TMUX
+[[ttt39]]
+= TTT Part 39 of n {longdash} Advanced TMUX
+include::variables.adoc[]
 
 In the previous instalment we learned how to use the `tmux` as a replacement for the `screen` command which has been deprecated on RedHat Enterprise Linux (and hence CentOS too). In this instalment we'll take TMUX to the next level, making use of the fact that a single TMUX session can contain arbitrarily many windows, each consisting of arbitrarily many panes.
 
 As a reminder from last time -- in the TMUX-universe, sessions contain windows contain panes. By default a session contains one window which contains one full-width and full-height pane. Windows can be thought of as stacking behind each other, like tabs in a browser, and panes are arrayed next to each other within a window.
 
-== Matching Postcast Episode 583
+.Matching Podcast Episode 39
+****
 
-Listen along to this instalment on https://www.podfeet.com/blog/2020/07/ccatp-647/[episode 583 of the Chit Chat Across the Pond Podcast]+++<audio controls="1" data-external="1" src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3">+++Your browser does not support HTML 5 audio 🙁+++</audio>+++
+Listen Along: Taming the Terminal Podcast Episode 39 +
+part of  https://www.podfeet.com/blog/2020/07/ccatp-647/[episode 583 of the Chit Chat Across the Pond Podcast]
 
-You can also https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3?autoplay=0&loop=0&controls=1[Download the MP3]
+// no audiocontrols in pdf
+ifndef::backend-pdf[]
+pass:m,a[<audio controls='controls' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3">Your browser does not support HTML 5 audio</audio>]
+endif::[]
+
+Scan the QRcode to listen on a different device
+
+image::qrcodes/TTT_38.png[QRcode, align='left']
+
+You can also
+https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3[download the MP3]
+****
+
 
 == Working with Windows
 
