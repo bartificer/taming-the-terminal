@@ -92,14 +92,15 @@ kramdoc --format=GFM --output=tttXX.adoc tttXX.md
 4. Copy the Asciidoctor files + assets to the book
 
 ```
-cd ../../convert2
+cd ../convert2
 cp tttXX.adoc ../book  # XX is the file you want to copy
 cp -r assets/tttXX ../book/assets
 ```
 
 5. Make the QRcode
 
-- Copy the link to the podcast to the file `publish/mp3_files
+- open book/tttXXX.adoc
+- copy the link to the podcast to the file `publish/mp3_files
 - run the script
 
 ```
