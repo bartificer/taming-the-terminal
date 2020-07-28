@@ -6,6 +6,8 @@ include::ttt-foreword.adoc[]
 
 include::ttt-preface.adoc[]
 
+include::ttt-introduction.adoc[]
+
 include::ttt01.adoc[]
 
 include::ttt02.adoc[]
