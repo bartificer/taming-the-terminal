@@ -6,11 +6,11 @@ As an IT-person and Apple geek I started listening to the NosillaCast podcast so
 
 Somewhere in 2013 Bart announced he was starting a series of tutorials on the Terminal and all kinds of commands to teach Allison. Cool, let's see how much I already know. The first sessions were easy. I knew most of what Bart was explaining, and yes, I was one of those persons yelling in the car when Bart quizzed Allison.
 
-Soon I heard new things and quickly it became a game. What would Bart explain this time and would I know it or would it be new. I started to look forward to the commute time because that's the time I would listen to the podcast. I even felt sad when Bart explained that episode 35 was the last one of the series. Luckily time proved him wrong.
+Soon I heard new things and quickly it became a game. What would Bart explain this time and would I know it or would it be new. I started to look forward to the commute time because that's the time I would listen to the podcast. I even felt sad when Bart explained that episode 35 was the last one of the series. Luckily time proved him wrong and now the episodes kept coming.
 
-When people at work expressed fear of Terminal commands I would point them to the series on Bart's website, allowing my co-workers to read his tutorials and listen to the podcast audio. I even added the most relevant episodes to the training we had for our new junior developers.
+When people at work expressed fear of Terminal commands, I would point them to the series on Bart's website, allowing my co-workers to read his tutorials and listen to the podcast audio. I even added the most relevant episodes to the training we had for our new junior developers.
 
-In 2016 I went to Dublin for a holiday and actually met Bart IRL. Turns out he's a great guy and a kindred spirit. It's his passion to teach people about the stuff he loves that makes him so valuable to the community. He combines that with academic precision to present well researched information in bite-sized chunks that makes it easy to follow along, no matter what your skill level is.
+In 2016 I went to Dublin for a holiday and actually met Bart in real life. Turns out he's a great guy and a kindred spirit. It's his passion to teach people about the stuff he loves that makes him so valuable to the community. He combines that with academic precision to present well-researched information in bite-sized chunks that makes it easy to follow along, no matter what your skill level is.
 
 I hope you get as much fun and knowledge out of this series as I did, now in an eBook.
 
@@ -31,13 +31,17 @@ They are added to the book in this order.
 
 ## Date started
 
-somewhere in 2013
+13 April 2013
 
 
 [[contributors]]
 ## Contributors
-obviously Bart and me but also Steve for the podcast logo, suggesting we make it a standalone show, and doing all of the editing to make it so
-Helma for making the book a reality
+Contributors to Taming the Terminal
+
+Bart Busschots is the author of all of the written tutorials in the Taming the Terminal series so the lion's share of the credit goes to him.  Allison Sheridan is the student of the series asking the dumb questions, and she created the podcast.  Steve Sheridan convinced Bart and Allison that instead of having the series buried inside the larger NosillaCast Podcast, that it should be a standalone podcast.  He did all of the editing to pull out the audio for the 35 original episodes from the NosillaCast, top and tail with music, and pushed Bart and Allison to record the intros.  Steve even created the Taming the Terminal logo.
+
+Allison had a vision of Taming the Terminal becoming an eBook but had not idea how to accomplish this.  Helma van der Linden figured out how to programmatically turn the original feature-rich set of HTML web pages into an ePub book as well as producing a PDF version, and even an HTML version.  She managed the Github project and kept Allison on task as she did the proofreading and editing of the entire book.  Allison created the book cover as well.
+
 
 For true programmer's nerdery, the contributors according to git:
 
