@@ -33,7 +33,8 @@ You can solve this problem by following these actions.
 * add the ebook to a folder that you can sync with your iPad outside of Books. This can be a folder in iCloud Drive or Dropbox or any cloudbased storage that is linked to both your computer and your iPad.
 * or Airdrop the ebook from your Mac to your iPad.
 * on the iPad you will get a message that asks you to select the application you want to open the ebook in.
-* Select Books.
+* select Books.
 * you will now see the ebook with its cover in the library.
+* you can now delete the file from your cloudbased storage as syncing will be taken care of by Books.
 
 This also works on the iPhone.
