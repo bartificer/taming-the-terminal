@@ -2,7 +2,7 @@
 = TTT Part 39 of n {longdash} Advanced TMUX
 include::variables.adoc[]
 
-In the previous instalment we learned how to use the `tmux` as a replacement for the `screen` command which has been deprecated on RedHat Enterprise Linux (and hence CentOS too). In this instalment we'll take TMUX to the next level, making use of the fact that a single TMUX session can contain arbitrarily many windows, each consisting of arbitrarily many panes.
+In the previous instalment we learned how to use the `tmux` command as a replacement for the `screen` command which has been deprecated on RedHat Enterprise Linux (and hence CentOS as well.) In this instalment we'll take TMUX to the next level, making use of the fact that a single TMUX session can contain arbitrarily many windows, each consisting of arbitrarily many panes.
 
 As a reminder from last time -- in the TMUX-universe, sessions contain windows contain panes. By default a session contains one window which contains one full-width and full-height pane. Windows can be thought of as stacking behind each other, like tabs in a browser, and panes are arrayed next to each other within a window.
 
@@ -28,7 +28,7 @@ https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-39-advanced
 
 == Working with Windows
 
-Let's start by opening a completely vanilla default tmux session:
+Let's start by opening a completely vanilla default `tmux` session:
 
 [source,shell]
 ----
@@ -85,7 +85,7 @@ Again, notice the status bar change:
 
 [source,shell]
 ----
-[0] 0:zsh- 1:top  2:less*
+[0] 0:zsh 1:top-  2:less*
 ----
 
 Finally, before we look at navigating between windows, let's create one more window by again entering command mode again with kbd:[ctrl+b] and pressing kbd:[c]. Notice the state of the status bar is now:
@@ -97,7 +97,7 @@ Finally, before we look at navigating between windows, let's create one more win
 
 === Navigating Between Windows
 
-*We can move between windows by entering control mode with kbd:[ctrl+b] and then pressing kbd:[p] for _previous window_, or n for _next window_.* Remember, think of windows like tabs in a browser, they have an order based on the order they were created in, the first window to be opened becomes the left-most _tab_, and subsequent windows line up to the right. With this mental model in place, we can get into the habit of thinking of _previous_ as _the one directly to my left_, and next as _the one directly to my right_. One last thing to note is that both _next_ and _previous_ wrap around, so if you go next/right from the right-most window you end up on the left-most window, and _vice-versa_.
+*We can move between windows by entering control mode with kbd:[ctrl+b] and then pressing kbd:[p] for _previous window_, or n for _next window_.* Remember, think of windows like tabs in a browser, they have an order based on the order in which they were created. The first window to be opened becomes the left-most _tab_, and subsequent windows line up to the right. With this mental model in place, we can get into the habit of thinking of _previous_ as _the one directly to my left_, and next as _the one directly to my right_. One last thing to note is that both _next_ and _previous_ wrap around, so if you go next/right from the right-most window you end up on the left-most window, and _vice-versa_.
 
 Use those keystrokes to move about as you wish, and as you do, watch the status bar changing.
 
@@ -123,13 +123,13 @@ The left-most item is the name of the session in square brackets. Because we ope
 [BB Sess] 0:zsh  1:top- 2:less  3:zsh*
 ----
 
-Next to the session name in square brackets are items for each of our windows in order. Like sessions, windows have names, but unlike sessions, the default names are useful! By default a window is named for its currently running process. As you start and stop commands, the name of the window changes. The status bar item for each window consists of the windows's number in the list and its name, separated by a colon, so `0:zsh` is the first window and it's named `zsh` because we didn't give it an explicit name, and it is currently running zsh shell. Similarly, `2:less` is the third window and is currently running the `less` command.
+Next to the session name in square brackets are items for each of our windows in order. Like sessions, windows have names, but unlike sessions, the default names are useful! By default a window is named for its currently running process. As you start and stop commands, the name of the window changes. The status bar item for each window consists of the windows's number in the list and its name, separated by a colon, so `0:zsh` is the first window and it's named `zsh` because we didn't give it an explicit name, and it is currently running a `zsh` shell. Similarly, `2:less` is the third window and is currently running the `less` command.
 
 But what about the `-` and `\*` tagged on to the ends of the items for the second and fourth windows? As you were moving around between windows you may have noticed that ``*`` is appended to the current window, and `-` to the last-viewed window before the current one. Because we jumped straight from the second to the fourth window, the last-viewed window is not adjacent to the current window.
 
 === Toggling Between Last-viewed Windows
 
-Why would TMUX dedicate valuable status-bar space to an indicate for the last viewed window? Simple -- because *you can jump directly to that window by entering command mode with kbd:[ctrl+b] and hitting kbd:[l]* (lower-case L for _last_).
+Why would TMUX dedicate valuable status bar space to an indicator for the last viewed window? Simple -- because *you can jump directly to that window by entering command mode with kbd:[ctrl+b] and hitting kbd:[l]* (lower-case L for _last_).
 
 === Renaming Windows
 
@@ -161,15 +161,15 @@ I'm going to name the window `logs`, and after I do my status bar now looks like
 
 Panes are created by splitting an existing pane horizontally or vertically. Remember that by default, every TMUX window contains one pane, so there is always a pane to split.
 
-`To split a pane enter command mode with kbd:[ctrl+b], then press kbd:["] to split it horizontally, or % to split it vertically.` Let's do both of those in order in our session. You should now have three panes, a big one across the top, and two small ones across the bottom. The current pane is highlighted with a green border.
+*To split a pane enter command mode with kbd:[ctrl+b], then press kbd:["] to split it horizontally, or kbd:[%] to split it vertically.* Let's do both of those in order in our session. You should now have three panes, a big one across the top, and two small ones across the bottom. The current pane is highlighted with a green border.
 
 image::./ttt39/Screenshot-2020-07-25-at-16.52.40.png[Screenshot showing 3-pane TMUX window]
 
 === Moving Between Panes
 
-You can `move between panes is by pressing kbd:[ctrl+b] to enter command mode and then pressing an arrow key`. Additionally *you can cycle through your panes by entering command mode with kbd:[ctrl+b] and pressing kbd:[o] to move to the next pane in the sequence*.
+You can *move between panes by pressing kbd:[ctrl+b] to enter command mode and then pressing an arrow key.* Additionally *you can cycle through your panes by entering command mode with kbd:[ctrl+b] and pressing kbd:[o] to move to the next pane in the sequence*.
 
-You can also jump directly to a specific pane by number. *To see the numbers assigned to each pane enter command mode with kbd:[ctrl+b] and press kbd:[q]*. *To jump directly to a pane by number enter command mode with kbd:[ctrl+b], press kbd:[q], then the desired number* (you need to be quite quick -- you have to press the number before the labels vanish!).
+You can also jump directly to a specific pane by number. *To see the numbers assigned to each pane enter command mode with kbd:[ctrl+b] and press kbd:[q]*. *To jump directly to a pane by number enter command mode with kbd:[ctrl+b], press kbd:[q], then the desired number.* (You need to be quite quick -- you have to press the number before the labels vanish!).
 
 You can also *jump to the most recently active pane by entering command mode with kbd:[ctrl+b] and pressing kbd:[;]*.
 
@@ -185,6 +185,6 @@ Try entering zoom mode and watch the status bar. Notice that zoomed windows get 
 
 == Final Thoughts
 
-As you might remember from the previous instalment, the name TMUX is a portmanteau of _Terminal Multiplexer_, in this instalment we've really put the _multi_ into _multiplexer_ by adding multiple windows to our sessions, and then splitting those windows into multiple panes.
+As you might remember from the previous instalment, the name TMUX is a portmanteau of _Terminal Multiplexer_. In this instalment we've really put the _multi_ into _multiplexer_ by adding multiple windows to our sessions, and then splitting those windows into multiple panes.
 
 These complex TMUX layouts can be very useful, but it takes a lot of keystrokes to create them. Wouldn't it be nice to be able to build an entire layout in a single command and somehow save that for future use? I certainly find that ability very useful, so that's what we'll be doing in the next instalment.
