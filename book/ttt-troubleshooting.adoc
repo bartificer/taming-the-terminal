@@ -10,18 +10,20 @@ If you open the ePub version of this book in Books on an iPad or iPhone you migh
 
 You can solve this problem by following these actions:
 
-* go back to the home screen
-* go to menu:Settings[Books]
-* toggle 'Online Content' to off
-* in Books, go back to the library
-* remove the downloaded book, just the download, no need to remove the book from iCloud
-* switch to Settings
-* toggle the 'Online Content' to on
-* open Books
-* open this ebook
-* you now get a message to confirm that you want *allow Apple Books to access the publisher's online content for this book?*
-* tap Allow
+* Go to the iOS/iPadOS home screen
+* Open menu:Settings[Books]
+* Toggle 'Online Content' to *off*
+* In Books, go back to the library
+* Remove the downloaded book, just the download, no need to remove the book from iCloud
+* Switch back to Settings
+* Toggle the 'Online Content' to *on*
+* Open Books
+* Select the Taming the Terminal Book in your to redownload
+* You should now get a message to confirm that you want *allow Apple Books to access the publisher's online content for this book?*
+* Select Allow
+
 The audio files should now play and not give an error.
+In some cases it make take some time for the audio files to be available.
 
 == No cover in Apple Books
 
