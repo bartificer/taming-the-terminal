@@ -14,6 +14,7 @@ boolean
 breakpoint
 builtins
 bundler
+Busschots
 Capitan
 cardinalities
 chown
@@ -38,6 +39,7 @@ firewire
 Fong
 Gemfile
 Ghostbusters
+GitHub
 hardcoded
 Helma
 hostname
@@ -103,6 +105,7 @@ tmux
 toggleable
 traceroute
 transcoding
+ttt
 unencrypted
 unintimidating
 unintuitive
