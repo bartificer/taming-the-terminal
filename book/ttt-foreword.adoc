@@ -1,5 +1,5 @@
 [[foreword]]
-# Foreword
+= Foreword
 include::variables.adoc[]
 
 As an IT-person and Apple geek I started listening to the NosillaCast podcast by Allison Sheridan somewhere in the early '10s. It's a podcast with a wide variety of tech topics with a _slight_ Apple bias. Topics range from an interview of a blind person using an iPhone to an article on the security measures of a certain bank's webapp to tutorials on how to fix a tech problem with one of your devices.

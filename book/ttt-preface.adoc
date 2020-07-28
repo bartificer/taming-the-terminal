@@ -1,19 +1,19 @@
 [[preface]]
-# Preface
+= Preface
 
 Taming the Terminal was created as a podcast and written tutorial with Bart Busschots as the instructor and Allison Sheridan as the student.  Taming the Terminal started its life as part of the https://www.podfeet.com[NosillaCast Apple Podcast] and was eventually spun off as a standalone Podcast. Bart and Allison have been podcasting together for many years, and their friendship and camaraderie make the recordings a delightful way to learn these technical concepts.
 
 The book version of the podcast was a labor of love by Allison Sheridan and Helma van der Linden as a surprise gift to Bart Busschots for all he has done for the community.
 
 [[contributors]]
-## Contributors to Taming the Terminal
+== Contributors to Taming the Terminal
 
 Bart Busschots is the author of all of the written tutorials in the Taming the Terminal series so the lion's share of the credit goes to him.  Allison Sheridan is the student of the series asking the dumb questions, and she created the podcast.  Steve Sheridan convinced Bart and Allison that instead of having the series buried inside the larger NosillaCast Podcast, that it should be a standalone podcast.  He did all of the editing to pull out the audio for the 35 original episodes from the NosillaCast, top and tail with music, and pushed Bart and Allison to record the intros.  Steve even created the Taming the Terminal logo.
 
 Allison had a vision of Taming the Terminal becoming an eBook but had not idea how to accomplish this.  Helma van der Linden figured out how to programmatically turn the original feature-rich set of HTML web pages into an ePub book as well as producing a PDF version, and even an HTML version.  She managed the Github project and fixed the technical aspects of the book and kept Allison on task as she did the proofreading and editing of the entire book.  Allison created the book cover as well.
 
 ifdef::backend-epub3[]
-## Problems with the ePub
+== Problems with the ePub
 
 In the course of putting this ebook together we noticed that you might run into some issues with the ePub in Apple's Books reader. The instructions on how to solve them are in the <<troubleshooting, Troubleshooting>> chapter of this book.
 

@@ -1,12 +1,12 @@
 [[introduction]]
-# Introduction
+= Introduction
 include::variables.adoc[]
 
 Taming the Terminal is specifically targeted at learning the macOS Terminal but most of the content is applicable to the Linux command line. If you're on Windows, it is recommended that you use the Linux Subsystem for Windows to learn along with this book. Wherever practical, Bart explains the differences that you may encounter if you're not on macOS.
 
 The series started in April 2013 and was essentially complete in 2015 after 35 of n lessons, but Bart carefully labeled them as "of n" because he knew that over time there likely would be new episodes.  More episodes have indeed come out, and this book will be updated over time as the new instalments are released.
 
-## Zsh vs Bash
+== Zsh vs Bash
 In macOS Catalina, released after much of the tutorial content in this book was released, Apple replaced the default shell bash with the zsh shell. As a result you'll notice the prompt change from `$` to `%` partway through the book.  There may be cases where the instructions given during the bash days might not work with today's zsh.
 
 To switch back to bash if you do run into problems, simply enter:
