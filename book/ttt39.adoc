@@ -19,7 +19,7 @@ endif::[]
 
 Scan the QRcode to listen on a different device
 
-image::qrcodes/TTT_38.png[QRcode, align='left']
+image::qrcodes/TTT_39.png[QRcode, align='left']
 
 You can also
 https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3[download the MP3]
@@ -53,7 +53,7 @@ As we create and manipulate windows it will change, and I expect the meaning wil
 
 === Creating Windows
 
-Let's start by creating a new window within our simple session. We do this be entering control mode with ctrl+b, and then pressing c for _create window_. We immediately jump to a fresh window. If you look down at the status bar you'll see that the left-most part has changed to:
+Let's start by creating a new window within our simple session. We do this be entering control mode with kbd:[ctrl+b] and then pressing kbd:[c] for _create window_. We immediately jump to a fresh window. If you look down at the status bar you'll see that the left-most part has changed to:
 
 [source,shell]
 ----
@@ -74,7 +74,7 @@ Notice that starting the `top` command in the second window change the status ba
 [0] 0:zsh- 1:top*
 ----
 
-Let's create a third one by entering command mode again with ctrl+b and pressing c. So we can recognise it, let's run a command so it has some content:
+Let's create a third one by entering command mode again with kbd:[ctrl+b] and pressing kbd:[c]. So we can recognise it, let's run a command so it has some content:
 
 [source,shell]
 ----
@@ -88,7 +88,7 @@ Again, notice the status bar change:
 [0] 0:zsh- 1:top  2:less*
 ----
 
-Finally, before we look at navigating between windows, let's create one more window by again entering command mode again with ctrl+b and pressing c. Notice the state of the status bar is now:
+Finally, before we look at navigating between windows, let's create one more window by again entering command mode again with kbd:[ctrl+b] and pressing kbd:[c]. Notice the state of the status bar is now:
 
 [source,shell]
 ----
@@ -125,7 +125,7 @@ The left-most item is the name of the session in square brackets. Because we ope
 
 Next to the session name in square brackets are items for each of our windows in order. Like sessions, windows have names, but unlike sessions, the default names are useful! By default a window is named for its currently running process. As you start and stop commands, the name of the window changes. The status bar item for each window consists of the windows's number in the list and its name, separated by a colon, so `0:zsh` is the first window and it's named `zsh` because we didn't give it an explicit name, and it is currently running zsh shell. Similarly, `2:less` is the third window and is currently running the `less` command.
 
-But what about the `-` and `*` tagged on to the ends of the items for the second and fourth windows? As you were moving around between windows you may have noticed that `*` is appended to the current window, and `-` to the last-viewed window before the current one. Because we jumped straight from the second to the fourth window, the last-viewed window is not adjacent to the current window.
+But what about the `-` and `\*` tagged on to the ends of the items for the second and fourth windows? As you were moving around between windows you may have noticed that ``*`` is appended to the current window, and `-` to the last-viewed window before the current one. Because we jumped straight from the second to the fourth window, the last-viewed window is not adjacent to the current window.
 
 === Toggling Between Last-viewed Windows
 
@@ -133,7 +133,7 @@ Why would TMUX dedicate valuable status-bar space to an indicate for the last vi
 
 === Renaming Windows
 
-Just like you can rename sessions, you can rename windows. Note that when you explicitly set a window's name it will not change as you run different processes. A lot of the time, the default name is more than sufficient, but that breaks down in situations where you're running the same command in different windows similtaneously -- perhaps you're editing two files with `vi`, or watching two log files with `tail`.
+Just like you can rename sessions, you can rename windows. Note that when you explicitly set a window's name it will not change as you run different processes. A lot of the time, the default name is more than sufficient, but that breaks down in situations where you're running the same command in different windows simultaneously -- perhaps you're editing two files with `vi`, or watching two log files with `tail`.
 
 Switch to the fourth window using what ever means you like, then change into the system log folder:
 
@@ -163,7 +163,7 @@ Panes are created by splitting an existing pane horizontally or vertically. Reme
 
 `To split a pane enter command mode with kbd:[ctrl+b], then press kbd:["] to split it horizontally, or % to split it vertically.` Let's do both of those in order in our session. You should now have three panes, a big one across the top, and two small ones across the bottom. The current pane is highlighted with a green border.
 
-image::./assets/ttt39/Screenshot-2020-07-25-at-16.52.40.png[Screenshot showing 3-pane TMUX window]
+image::./ttt39/Screenshot-2020-07-25-at-16.52.40.png[Screenshot showing 3-pane TMUX window]
 
 === Moving Between Panes
 

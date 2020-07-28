@@ -2,7 +2,8 @@
 # Foreword
 include::variables.adoc[]
 
-As an IT-person and Apple geek I started listening to the NosillaCast podcast somewhere in the early '10s. I especially enjoyed the sections where Bart was explaining some technical topic. The podcasts kept me company on my long commute to and from work.
+As an IT-person and Apple geek I started listening to the NosillaCast podcast by Allison Sheridan somewhere in the early '10s. It's a podcast with a wide variety of tech topics with a _slight_ Apple bias. Topics range from an interview of a blind person using an iPhone to an article on the security measures of a certain bank's webapp to tutorials on how to fix a tech problem with one of your devices.
+I especially enjoyed the sections where Bart was explaining some technical topic. The podcasts kept me company on my long commute to and from work.
 
 Somewhere in 2013 Bart announced he was starting a series of tutorials on the Terminal and all kinds of commands to teach Allison. Cool, let's see how much I already know. The first sessions were easy. I knew most of what Bart was explaining, and yes, I was one of those persons yelling in the car when Bart quizzed Allison.
 
@@ -17,18 +18,6 @@ I hope you get as much fun and knowledge out of this series as I did, now in an 
 Helma van der Linden +
 _TTT fan_
 
-
-## placeholder text
-The differences between a foreword, a preface and an introduction:
-
-https://greenleafbookgroup.com/learning-center/book-creation/distinguishing-between-a-foreword-a-preface-and-an-introduction[DISTINGUISHING BETWEEN A FOREWORD, A PREFACE, AND AN INTRODUCTION]
-
-* A foreword is written by someone other than the author and tells the readers why they should read the book.
-* A preface is written by the author and tells readers how and why the book came into being.
-* An introduction introduces readers to the main topics of the manuscript and prepares readers for what they can expect.
-
-They are added to the book in this order.
-
 ## Date started
 
 13 April 2013
@@ -41,10 +30,3 @@ Contributors to Taming the Terminal
 Bart Busschots is the author of all of the written tutorials in the Taming the Terminal series so the lion's share of the credit goes to him.  Allison Sheridan is the student of the series asking the dumb questions, and she created the podcast.  Steve Sheridan convinced Bart and Allison that instead of having the series buried inside the larger NosillaCast Podcast, that it should be a standalone podcast.  He did all of the editing to pull out the audio for the 35 original episodes from the NosillaCast, top and tail with music, and pushed Bart and Allison to record the intros.  Steve even created the Taming the Terminal logo.
 
 Allison had a vision of Taming the Terminal becoming an eBook but had not idea how to accomplish this.  Helma van der Linden figured out how to programmatically turn the original feature-rich set of HTML web pages into an ePub book as well as producing a PDF version, and even an HTML version.  She managed the Github project and kept Allison on task as she did the proofreading and editing of the entire book.  Allison created the book cover as well.
-
-
-For true programmer's nerdery, the contributors according to git:
-
-----
-include::contributors.txt[]
-----

@@ -100,6 +100,7 @@ tcpdump
 tcsh
 teleports
 tmux
+toggleable
 traceroute
 transcoding
 unencrypted
@@ -107,6 +108,7 @@ unintimidating
 unintuitive
 unroutable
 untrusted
+webapp
 webmail
 webmin
 webserver

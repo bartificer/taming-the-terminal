@@ -16,7 +16,7 @@ jobs:
           ruby-version: '2.7'
 
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Run bundle install
         run: |
