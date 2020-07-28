@@ -7,7 +7,7 @@ namespace :book do
       book_dir = 'book'
       output_dir = 'output'
 
-      version_string = ENV['TRAVIS_TAG'] || `git describe --tags`.chomp
+      version_string = ENV['TRAVIS_TAG'] || `git describe --tags | cut -d- -f1`.chomp
       if version_string.empty?
         version_string = '1.0'
       end

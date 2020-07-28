@@ -31,6 +31,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: output/ttt*
-          tag: v0.1
+          tag: v0.9
           overwrite: true
           file_glob: true

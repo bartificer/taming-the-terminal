@@ -1,4 +1,4 @@
-[colophon]
+[[colophon]]
 = Colophon
 
 The Nosillacast Press
@@ -9,7 +9,7 @@ Published in the Milky Way Galaxy
 
 Version {revnumber}
 
-Date {revdate}
+Date revision {revdate}
 
 _Compiled: {compile_time}_
 
@@ -17,7 +17,7 @@ This book is designed and handcrafted by {producer}.
 The cover is designed by {cover-artist}.
 The font types are Noto Sans and Noto Serif.
 
-Created in Asciidoctor and macOS.
+Created in https://asciidoctor.org[Asciidoctor] and macOS.
 
 [[license]]
 *Creative Commons license*
