@@ -8,11 +8,11 @@ Since we covered the `screen` command in <<ttt36,instalment 36>>, it has been de
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 38 +
-part of  https://www.podfeet.com/blog/2020/07/ccatp-645/[episode 583 of the Chit Chat Across the Pond Podcast]
+part of  https://www.podfeet.com/blog/2020/07/ccatp-645/[episode 645 of the Chit Chat Across the Pond Podcast]
 
 // no audiocontrols in pdf
 ifndef::backend-pdf[]
-pass:m,a[<audio controls='controls' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_11.mp3">Your browser does not support HTML 5 audio</audio>]
+pass:m,a[<audio controls='controls' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-38-tmux/TTT_38_TMUX.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -20,7 +20,7 @@ Scan the QRcode to listen on a different device
 image::qrcodes/TTT_38.png[QRcode, align='left']
 
 You can also
-https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_11.mp3[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-38-tmux/TTT_38_TMUX.mp3[download the MP3]
 ****
 
 As you may remember, the `screen` command allows you to create a command line session that continues to run after you close your terminal window or disconnect from your SSH session. At a later time you can then reconnect to the still-running screen session and pick up where you left off. This is very useful for executing long-running commands, and for working on a remote server over a spotty internet connection.

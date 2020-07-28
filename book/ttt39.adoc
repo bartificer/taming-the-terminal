@@ -10,11 +10,11 @@ As a reminder from last time -- in the TMUX-universe, sessions contain windows c
 ****
 
 Listen Along: Taming the Terminal Podcast Episode 39 +
-part of  https://www.podfeet.com/blog/2020/07/ccatp-647/[episode 583 of the Chit Chat Across the Pond Podcast]
+part of  https://www.podfeet.com/blog/2020/07/ccatp-647/[episode 647 of the Chit Chat Across the Pond Podcast]
 
 // no audiocontrols in pdf
 ifndef::backend-pdf[]
-pass:m,a[<audio controls='controls' src="https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3">Your browser does not support HTML 5 audio</audio>]
+pass:m,a[<audio controls='controls' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-39-advanced-tmux/TTT_39_Advanced_TMUX.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 
 Scan the QRcode to listen on a different device
@@ -22,7 +22,7 @@ Scan the QRcode to listen on a different device
 image::qrcodes/TTT_39.png[QRcode, align='left']
 
 You can also
-https://media.blubrry.com/nosillacast/traffic.libsyn.com/nosillacast/CCATP_2020_07_25.mp3[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-39-advanced-tmux/TTT_39_Advanced_TMUX.mp3[download the MP3]
 ****
 
 
