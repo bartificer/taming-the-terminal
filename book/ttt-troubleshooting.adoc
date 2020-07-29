@@ -18,7 +18,7 @@ You can solve this problem by following these actions:
 * Switch back to Settings
 * Toggle the 'Online Content' to *on*
 * Open Books
-* Select the Taming the Terminal Book in your to redownload
+* Select the Taming the Terminal Book in your library to redownload
 * You should now get a message to confirm that you want *allow Apple Books to access the publisher's online content for this book?*
 * Select Allow
 
@@ -31,12 +31,12 @@ If your ebook has no cover image in Apple Books on your iPad or iPhone, just the
 
 You can solve this problem by following these actions.
 
-* remove the ebook from the library. Select *Delete everywhere*.
-* add the ebook to a folder that you can sync with your iPad outside of Books. This can be a folder in iCloud Drive or Dropbox or any cloudbased storage that is linked to both your computer and your iPad.
-* or Airdrop the ebook from your Mac to your iPad.
-* on the iPad you will get a message that asks you to select the application you want to open the ebook in.
-* select Books.
-* you will now see the ebook with its cover in the library.
-* you can now delete the file from your cloudbased storage as syncing will be taken care of by Books.
+* Remove the ebook from the library. Select *Delete everywhere*
+* Airdrop the ebook from your Mac to your iPad
+* or add the ebook to a folder that you can sync with your iPad outside of Books. This can be a folder in iCloud Drive or Dropbox or any cloudbased storage that is linked to both your computer and your iPad.
+* On the iPad you will get a message that asks you to select the application you want to open the Taming the Terminal Book in.
+* Select *Books*
+* You will now see the ebook with its cover in the library
+* You can now delete the file from your cloudbased storage as syncing will be taken care of by Books.
 
 This also works on the iPhone.
