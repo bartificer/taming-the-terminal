@@ -83,7 +83,7 @@ image::ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command Prompt o
 
 `username@hostname:current_directory$`
 
-_**Handy Tip:** if you find the text in the Terminal window to small to read, you can make it bigger or smaller with kbd:[{commandkey} + +] or kbd:[{commandkey} + -].
+**Handy Tip:** if you find the text in the Terminal window to small to read, you can make it bigger or smaller with kbd:[{commandkey} + +] or kbd:[{commandkey} + -].
 This will affect just your current Terminal window.
 You can permanently change the default by editing the default profile in menu:Terminal[Preferences > Profiles].
 

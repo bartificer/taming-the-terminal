@@ -1,7 +1,8 @@
 // switch to experimental so we can show keyboard buttons
 :experimental:
 // Define unicode for Apple Command key.
-:commandkey: &#8984;
+ifndef::backend-pdf[:commandkey: &#8984;]
+ifdef::backend-pdf[:commandkey: Cmd]
 // Define longdash
 :longdash: &#8212;
 // Some urls
