@@ -29,8 +29,8 @@ endif::[]
 a|image::qrcodes/TTT_18a.png[QRcode 18a]
 a|image::qrcodes/TTT_18b.png[QRcode 18b]
 
-| You can also {url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3[download the MP3 (a)]
-| You can also {url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3[download the MP3 (b)]
+| You can also {url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3[play/download the MP3 in your browser (a)]
+| You can also {url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3[play/download the MP3 in your browser (b)]
 
 |===
 

@@ -28,7 +28,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_12.png[QRcode, align='left']
 
-You can also {url-mp3}/TTT12TheEnvironment/TTT_12_The_Environment.mp3[download the MP3]
+You can also {url-mp3}/TTT12TheEnvironment/TTT_12_The_Environment.mp3[play/download the MP3 in your browser]
 
 ****
 

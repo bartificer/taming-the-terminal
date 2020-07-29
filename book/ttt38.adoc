@@ -20,7 +20,7 @@ Scan the QRcode to listen on a different device
 image::qrcodes/TTT_38.png[QRcode, align='left']
 
 You can also
-https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-38-tmux/TTT_38_TMUX.mp3[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-38-tmux/TTT_38_TMUX.mp3[play/download the MP3 in your browser]
 ****
 
 As you may remember, the `screen` command allows you to create a command line session that continues to run after you close your terminal window or disconnect from your SSH session. At a later time you can then reconnect to the still-running screen session and pick up where you left off. This is very useful for executing long-running commands, and for working on a remote server over a spotty internet connection.

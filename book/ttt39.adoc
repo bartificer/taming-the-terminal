@@ -22,7 +22,7 @@ Scan the QRcode to listen on a different device
 image::qrcodes/TTT_39.png[QRcode, align='left']
 
 You can also
-https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-39-advanced-tmux/TTT_39_Advanced_TMUX.mp3[download the MP3]
+https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-39-advanced-tmux/TTT_39_Advanced_TMUX.mp3[play/download the MP3 in your browser]
 ****
 
 

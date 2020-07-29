@@ -24,7 +24,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_35.png[QRcode, align='left']
 
-You can also {url-mp3}/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3[download the MP3]
+You can also {url-mp3}/TTT35HTTPCommands/TTT_35_HTTP_Commands.mp3[play/download the MP3 in your browser]
 
 ****
 

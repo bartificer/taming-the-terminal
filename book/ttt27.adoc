@@ -42,8 +42,8 @@ endif::[]
 a|image::qrcodes/TTT_27a.png[QRcode 27a]
 a|image::qrcodes/TTT_27b.png[QRcode 27b]
 
-|You can also {url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3[download the MP3 (a)]
-|You can also {url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3[download the MP3 (b)]
+|You can also {url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3[play/download the MP3 in your browser (a)]
+|You can also {url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3[play/download the MP3 in your browser (b)]
 |===
 
 ****

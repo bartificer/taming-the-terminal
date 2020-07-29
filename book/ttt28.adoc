@@ -32,7 +32,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_28.png[QRcode, align='left']
 
-You can also {url-mp3}/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3[download the MP3]
+You can also {url-mp3}/TTT28NetworkTroubleshooting/TTT_28_Network_Troubleshooting.mp3[play/download the MP3 in your browser]
 ****
 
 When troubleshooting network problems, the basic advice is to start at the bottom of the stack and work your way up until you find the problem.

@@ -34,8 +34,8 @@ endif::[]
 a|image::qrcodes/TTT_23a.png[QRcode 23a]
 a|image::qrcodes/TTT_23b.png[QRcode 23b]
 
-|You can also {url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[download the MP3 (a)]
-|You can also {url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[download the MP3 (b)]
+|You can also {url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[play/download the MP3 in your browser (a)]
+|You can also {url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[play/download the MP3 in your browser (b)]
 
 |===
 

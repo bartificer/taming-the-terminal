@@ -24,7 +24,7 @@ Scan the QRcode to listen on a different device
 
 image::qrcodes/TTT_31.png[QRcode, align='left']
 
-You can also {url-mp3}/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3[download the MP3]
+You can also {url-mp3}/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3[play/download the MP3 in your browser]
 
 ****
 
