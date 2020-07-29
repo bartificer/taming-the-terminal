@@ -10,11 +10,13 @@ Instructions on how to build the ebooks are in the INSTALLATION.md file.
 
 In the releases you can find various formats:
 
-- ttt.epub: ePub without audioplayer
-- ttt-audio.epub: ePub with inline audioplayer
-- ttt.modi: Kindle version
-- ttt.pdf: PDF with pages in A4 size
-- ttt-us.pdf: PDF with pages in Letter size
-- ttt.html: single page HTML version
+| Format         | Description                   |
+| -------------- | ----------------------------- |
+| ttt.epub       | ePub without audioplayer      |
+| ttt-audio.epub | ePub with inline audioplayer  |
+| ttt.modi       | Kindle version                |
+| ttt.pdf        | PDF with pages in A4 size     |
+| ttt-us.pdf     | PDF with pages in Letter size |
+| ttt.html       | single page HTML version      |
 
 Note, for the HTML version you need to download the ttt_all.zip. This zip not only contains the 4 output formats, but also the images for the HTML version.
