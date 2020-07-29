@@ -1,14 +1,22 @@
 name: Publish
 on:
-  push:
-    branch:
-      - master
   schedule:
-    - cron: '0 0 * * *'
-
+    - cron: '15 11 * * *' # Nightly, run at 03:00 UTC
+  push:
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v2.0
 jobs:
   build:
+    if: >
+      github.repository_owner == 'hepabolu'
+      || startsWith(github.ref, 'refs/heads/ci/test/')
+      || startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.release_info.outputs.version }}
+      tag: ${{ steps.release_info.outputs.tag }}
+      date: ${{ steps.release_info.outputs.date }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
@@ -17,6 +25,36 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - id: release_info
+        name: Get release information
+        run: python3 ci/release-info.py "$GITHUB_EVENT_NAME"
+
+      - if: ${{ steps.release_info.outputs.release_type == 'nightly' }}
+        name: Delete existing nightly releases
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          git ls-remote --tags --refs origin 'refs/tags/nightly*' |
+          cut -f 2 |
+          while read ref; do
+            hub release delete ${ref#refs/tags/}
+            git push --delete origin $ref
+          done
+
+      - id: create_release
+        name: Create a draft release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          release_tag='${{ steps.release_info.outputs.tag }}'
+          hub release create ${{ steps.release_info.outputs.release_flags }} --draft \
+            -m "Release ${{ steps.release_info.outputs.version }} (in progress)" \
+            -t $GITHUB_SHA $release_tag
+          upload_url=$(hub release show -f '%uA' $release_tag)
+          echo "::set-output name=upload_url::$upload_url"
 
       - name: Run bundle install
         run: |
@@ -30,7 +68,8 @@ jobs:
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
           file: output/ttt*
-          tag: v1.0
+          tag: ${{ steps.release_info.outputs.tag }}
           overwrite: true
           file_glob: true
