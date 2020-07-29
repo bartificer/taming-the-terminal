@@ -15,7 +15,7 @@ We'll be introducing the concept of streams, which can be used to connect comman
 Listen Along: Taming the Terminal Podcast Episode 15
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT15Plumbing/TTT_15_Plumbing.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

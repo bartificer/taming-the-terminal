@@ -17,7 +17,7 @@ This time we'll be looking at the anatomy of file systems in general, and the Un
 Listen Along: Taming the Terminal Podcast Episode 3
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT03FileSystems/TTT_03_File_Systems.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

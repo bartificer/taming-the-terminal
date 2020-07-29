@@ -100,6 +100,15 @@ namespace :book do
       puts "Validating ePub"
       `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
+      `mv #{epubParams['destination-dir']}/#{epubParams['out-file']} #{epubParams['destination-dir']}/ttt-audio.epub`
+
+      puts "\nConverting to EPub without audio..."
+      `bundle exec asciidoctor-epub3 #{buildParams(epubParams)} -a 'apple-books=1' #{book_dir}/ttt-spine.adoc`
+      puts " -- Epub output at #{epubParams['destination-dir']}/#{epubParams['out-file']}"
+
+      puts "Validating ePub"
+      `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
+
       puts "\nConverting to Mobi (kf8)..."
       `bundle exec asciidoctor-epub3 #{buildParams(mobiParams)} #{book_dir}/ttt-spine.adoc`
       puts " -- Mobi output at #{mobiParams['destination-dir']}/#{mobiParams['out-file']}"

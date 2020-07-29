@@ -18,7 +18,7 @@ Listen Along: Taming the Terminal Podcast Episodes 18a & 18b
 | Episode 18a
 | Episode 18b
 
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 | pass:m,a[<audio controls='controls' src="{url-mp3}/TTT18aMoreREs/TTT_18a_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]
 | pass:m,a[<audio controls='controls' src="{url-mp3}/TTT18bMoreREs/TTT_18b_More_REs.mp3">Your browser does not support HTML 5 audio</audio>]

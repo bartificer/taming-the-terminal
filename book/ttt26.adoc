@@ -25,7 +25,7 @@ In this instalment, we'll look at the protocol that makes that possible, the Dyn
 Listen Along: Taming the Terminal Podcast Episode 26
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT26DHCP/TTT_26_DHCP.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

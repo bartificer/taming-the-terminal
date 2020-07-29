@@ -11,7 +11,7 @@ Listen Along: Taming the Terminal Podcast Episode 38 +
 part of  https://www.podfeet.com/blog/2020/07/ccatp-645/[episode 645 of the Chit Chat Across the Pond Podcast]
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 pass:m,a[<audio controls='controls' src="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-38-tmux/TTT_38_TMUX.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
 

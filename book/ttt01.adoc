@@ -19,7 +19,7 @@ I hope I'm right in interpreting that as evidence that there are a lot of Nosill
 Listen Along: Taming the Terminal Podcast Episode 1
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT01CommandShells/TTT_01_Command_Shells.mp3">Your browser does not support HTML 5 audio</audio>]
 

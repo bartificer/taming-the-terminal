@@ -23,7 +23,7 @@ Today we're just going to start with the basics, but in future instalments, we'l
 Listen Along: Taming the Terminal Podcast Episode 29
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT29IntroToSSH/TTT_29_Intro_to_SSH.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

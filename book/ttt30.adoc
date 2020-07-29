@@ -13,7 +13,7 @@ In this instalment, we're going to look at how we can improve both SSH security 
 Listen Along: Taming the Terminal Podcast Episode 30
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT30SSHingMoreSecurely/TTT_30_SSHing_More_Securely.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

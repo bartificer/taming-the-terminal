@@ -22,7 +22,7 @@ If you run it from the command line, the chances are very high that there will b
 Listen Along: Taming the Terminal Podcast Episode 10
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT10Man/TTT_10_man.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]

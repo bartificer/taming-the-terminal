@@ -15,7 +15,7 @@ For those interested in learning a little more I'll also give a very quick overv
 Listen Along: Taming the Terminal Podcast Episode 11
 
 // no audiocontrols in pdf
-ifndef::backend-pdf[]
+ifndef::backend-pdf,apple-books[]
 
 pass:m,a[<audio controls='controls' src="{url-mp3}/TTT11TextFiles/TTT_11_Text_Files.mp3">Your browser does not support HTML 5 audio</audio>]
 endif::[]
