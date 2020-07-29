@@ -52,18 +52,6 @@ jobs:
       - name: Publish the book
         run: bundle exec rake
 
-      - id: create_release
-        name: Create a draft release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          release_tag='${{ steps.release_info.outputs.tag }}'
-          hub release create ${{ steps.release_info.outputs.release_flags }} --draft \
-            -m "Release ${{ steps.release_info.outputs.version }} (in progress)" \
-            -t $GITHUB_SHA $release_tag
-          upload_url=$(hub release show -f '%uA' $release_tag)
-          echo "::set-output name=upload_url::$upload_url"
-
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v1-release
         with:
