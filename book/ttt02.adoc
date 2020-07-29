@@ -1,6 +1,5 @@
 [[ttt02]]
 = TTT Part 2 of n {longdash} Commands
-
 include::variables.adoc[]
 
 
@@ -61,7 +60,7 @@ On OS X, the prompt takes the following form:
 
 `hostname:current_directory username$`
 
-First, you have the hostname of the computer on which the command shell is running (defined in `System Preferences → Sharing → Computer Name`).
+First, you have the hostname of the computer on which the command shell is running (defined in menu:System Preferences[Sharing > Computer Name]).
 This might seem superfluous, but it becomes exceptionally useful once you start using ssh to log in to other computers via the Terminal.
 
 The hostname is followed by a `:` and then the command shell's current directory (note that `~` is short-hand for "`the current user's home folder`", more on this next time).
@@ -84,10 +83,9 @@ image::ttt2/Screen-Shot-2013-04-26-at-21.16.18.png[Default Bash Command Prompt o
 
 `username@hostname:current_directory$`
 
-_**Handy Tip:** if you find the text in the Terminal window to small to read, you can make it bigger or smaller with cmd+ or cmd-.
+_**Handy Tip:** if you find the text in the Terminal window to small to read, you can make it bigger or smaller with kbd:[{commandkey} + +] or kbd:[{commandkey} + -].
 This will affect just your current Terminal window.
-You can permanently change the default by editing the default profile in `+Terminal → Preferences
-→ Profiles+`_.
+You can permanently change the default by editing the default profile in menu:Terminal[Preferences > Profiles].
 
 == The Anatomy of a Command
 

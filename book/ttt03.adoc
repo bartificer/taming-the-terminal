@@ -124,7 +124,7 @@ Going back to our imaginary thumb drive called `Allison_Pen_Drive` (which Ubuntu
 If you had a second partition, or a second internal drive, called, say, `Fatso` (a little in-joke for Allison), OS X would mount that as `/Volumes/Fatso/`.
 Likewise, if you double-clicked on a DMG file you downloaded from the net, say with the Adium installer, OS X would mount that as something like `/Volumes/Adium/` until you eject the DMG.
 The '`disks`' listed in the Finder sidebar in the section headed `Devices` are just links to the contents of `/Volumes/`.
-You can see this for yourself by opening a Finder Window and either hitting the key-combo `cmd+shift+g`, or navigating to `+Go→Go To Folder ...+` in the menubar to bring up the `Go To Folder` text box, and then typing the path `/Volumes` and hitting return.
+You can see this for yourself by opening a Finder Window and either hitting the key-combo kbd:[{commandkey}+shift+g], or navigating to menu:Go[Go To Folder ...] in the menubar to bring up the `Go To Folder` text box, and then typing the path `/Volumes` and hitting return.
 
 OS X's greatly simplified handling of mount points definitely makes OS X less confusing, but, the simplicity comes at a price.
 If you DO want to do more complicated things like having your home folders on a separate partition, you are stepping outside of what Apple considers the norm, and into a world of pain.

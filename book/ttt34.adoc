@@ -280,7 +280,7 @@ All modern browsers have developer tools, and they all do similar things, but th
 My personal preference is to use Safari's developer tools, but so as to make this section accessible to as many people as possible, we'll use the cross-platform FireFox browser.
 
 To enable the developer tools we are interested in today, browse to the site you want to explore, e.g.
-https://www.bartb.ie/[www.bartb.ie], and click on `Tools` → `Web Developer` → `Network`.
+https://www.bartb.ie/[www.bartb.ie], and click on menu:Tools[Web Developer > Network].
 
 image::ttt34/Screen-Shot-2015-05-09-at-17.33.50.png[Enable FireFox Dev Tools]
 

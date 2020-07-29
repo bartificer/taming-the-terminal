@@ -80,7 +80,7 @@ Firstly, let's run `tcpdump` without filtering its output to see just how much n
 sudo tcpdump -i any -nn
 ----
 
-`tcpdump` will keep capturing traffic until it is interrupted, so when you've seen enough, you can exit it with `ctrl+c`.
+`tcpdump` will keep capturing traffic until it is interrupted, so when you've seen enough, you can exit it with kbd:[Ctrl+c].
 
 It probably won't be long until you start seeing packets fly by, but if it's a bit sluggish, try checking your email or visiting a web page and the packets will soon start to fly!
 

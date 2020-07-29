@@ -148,7 +148,7 @@ ifndef::backend-pdf[]
  kbd:[{commandkey} + Q]
 endif::[]
 ifdef::backend-pdf[]
- kbd:[Cmd + Q]
+ kbd:[{commandkey} + Q]
 endif::[]
  or selecting _Quit_ from an app's menu.
 

@@ -170,13 +170,13 @@ You'll notice that I'm using zsh as my shell these days rather than bash (more o
 
 You'll notice that we now have three terminal windows open -- that's literally what a terminal multiplexer is supposed to avoid, so clearly, we're missing something!
 
-You can issue commands for controlling your `tmux` session from within your `tmux` session by first pressing kbd:[ctrl+b] to enter _command mode_, and then entering your desired command.
+You can issue commands for controlling your `tmux` session from within your `tmux` session by first pressing kbd:[Ctrl+b] to enter _command mode_, and then entering your desired command.
 
-Notice it's kbd:[ctrl+b] *followed by another key*, not kbd:[ctrl+b+OTHER_KEY].
+Notice it's kbd:[Ctrl+b] *followed by another key*, not kbd:[Ctrl+b+OTHER_KEY].
 
-Once you can enter command mode there are lots of things you can do, but thankfully, most of the really important stuff is mapped to single-key shortcuts. There is even a single-key shortcut to see all the available commands: the question mark. Try pressing kbd:[ctrl+b] then kbd:[?]. You can now scroll up and down through a list of all the supported commands. When you're done being overwhelmed by how much `tmux` can do, hit the escape key to return to your session. 🙂
+Once you can enter command mode there are lots of things you can do, but thankfully, most of the really important stuff is mapped to single-key shortcuts. There is even a single-key shortcut to see all the available commands: the question mark. Try pressing kbd:[Ctrl+b] then kbd:[?]. You can now scroll up and down through a list of all the supported commands. When you're done being overwhelmed by how much `tmux` can do, hit the escape key to return to your session. 🙂
 
-The single most important shortcut is the one to detach from a session, i.e. to exit out of `tmux` but leave your session running. To detach from `tmux` press kbd:[ctrl+b] followed by kbd:[d].
+The single most important shortcut is the one to detach from a session, i.e. to exit out of `tmux` but leave your session running. To detach from `tmux` press kbd:[Ctrl+b] followed by kbd:[d].
 
 == Naming Sessions
 
@@ -186,11 +186,11 @@ However, if you're going to have multiple sessions, numbers become a real pain t
 
 === Naming a Session from Within
 
-*You can (re)name a session any time from within the session by pressing* kbd:[ctrl+b] *followed by* kbd:[$]*.*
+*You can (re)name a session any time from within the session by pressing* kbd:[Ctrl+b] *followed by* kbd:[$]*.*
 
-Practice by re-naming the first session to `ttt` by pressing kbd:[ctrl+b], then kbd:[$], then back-space to delete the existing name (`0`), and finally typing `ttt` and pressing enter.
+Practice by re-naming the first session to `ttt` by pressing kbd:[Ctrl+b], then kbd:[$], then back-space to delete the existing name (`0`), and finally typing `ttt` and pressing enter.
 
-Notice that the name immediately changes in the status bar. If you now detach from this session with kbd:[ctrl+b] followed by kbd:[d] you can see the name is also visible in the session listing:
+Notice that the name immediately changes in the status bar. If you now detach from this session with kbd:[Ctrl+b] followed by kbd:[d] you can see the name is also visible in the session listing:
 
 [source,console?prompt=bart%]
 ----
@@ -211,7 +211,7 @@ tmux new -s ttt2
 
 Notice the name is reflected in the status bar.
 
-We could detach and run the listing again to see our third session, but let's use this as an excuse to learn how to list sessions from within a session. Press kbd:[ctrl+b] to enter command mode, and then kbd:[s] to enter session selection mode. We continue to see our session in the lower half of the window, but the top of the window now contains a list of running sessions. We can select one by using the up and down arrow keys and then pressing enter, or by typing the number next to each session on the list.
+We could detach and run the listing again to see our third session, but let's use this as an excuse to learn how to list sessions from within a session. Press kbd:[Ctrl+b] to enter command mode, and then kbd:[s] to enter session selection mode. We continue to see our session in the lower half of the window, but the top of the window now contains a list of running sessions. We can select one by using the up and down arrow keys and then pressing enter, or by typing the number next to each session on the list.
 
 image::ttt38/Screenshot-2020-07-11-at-13.43.52.png[tmux session selector]
 
