@@ -1,7 +1,7 @@
 name: Publish
 on:
   schedule:
-    - cron: '15 11 * * *' # Nightly, run at 03:00 UTC
+    - cron: '55 12 * * *' # Nightly, run at 03:00 UTC
   push:
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v2.0
@@ -68,7 +68,6 @@ jobs:
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
           file: output/ttt*
           tag: ${{ steps.release_info.outputs.tag }}
           overwrite: true
