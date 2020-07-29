@@ -51,7 +51,8 @@ namespace :book do
           'epub3-stylesdir' => "'theme/epub'",
           'pygments-style' => 'manni',
           'pygments-linenums-mode' => 'inline',
-          'ebook-format' => 'kf8'
+          'ebook-format' => 'kf8',
+          'apple-books' => '1'
         }),
         'out-file' => 'ttt.mobi'
       })
