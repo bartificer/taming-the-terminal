@@ -3,6 +3,7 @@ Bart Busschots
 :doctype: book
 :docinfo: shared
 :doctitle: Taming the Terminal
+:subtitle: The technical manual and podcast to master the macOS command line
 :lang: en-GB
 :creator: {author}
 :producer: Allison Sheridan and Helma van der Linden
