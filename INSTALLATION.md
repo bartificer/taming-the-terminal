@@ -1,8 +1,6 @@
-![Vale Linting](https://github.com/hepabolu/ttt/workflows/Linting/badge.svg)
-
 # Creating the TTT publications
 
-This repository contains all the content of the Taming the Terminal tutorial as well as the scripts that are needed to build the output.
+This file contains the instructions of how to build the various ebook formats of the Taming the Terminal tutorial.
 
 ## How it works
 
