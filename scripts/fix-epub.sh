@@ -25,3 +25,4 @@ rm -rf */package.opf.BAK
 zip -r ttt-fixed.epub EPUB/package.opf
 mv ttt-fixed.epub ../ttt.epub
 cd - > /dev/null
+rm -rf "${DIR}/../output/ttt"

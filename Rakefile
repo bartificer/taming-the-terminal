@@ -108,7 +108,7 @@ namespace :book do
       puts " -- PDF output at #{params['destination-dir']}/#{params['out-file']}"
 
       puts "\nZip everything"
-      `zip -r output/ttt_all.zip output/ttt* output/assets`
+      `zip -r output/ttt_all.zip output/ttt*.* output/assets`
     end
   end
 end
