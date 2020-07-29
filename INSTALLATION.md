@@ -29,7 +29,7 @@ Install NodeJS version 12.x.x or later. Follow the instructions on [nodejs.org](
 
 ### Install Ruby on macOS
 
-Ruby is default part of macOS but every 'gem install <some package>' will lead to an attempt to update the system framework. Not a good idea.
+Ruby is default part of macOS but every `gem install <some package>` will lead to an attempt to update the system framework. Not a good idea.
 
 Follow the instructions at: [GoRails.com](https://gorails.com/setup/osx/10.15-catalina)
 
@@ -39,7 +39,7 @@ just the part 'Installing Ruby'
 
 Install Kramdoc using
 
-```
+```shell
 gem install kramdown-asciidoc
 ```
 
@@ -49,7 +49,7 @@ more information at [Convert Markdown to AsciiDoc](https://matthewsetter.com/tec
 
 Clone the repository
 
-```
+```shell
 git clone https://github.com/hepabolu/ttt.git
 ```
 
@@ -57,11 +57,17 @@ git clone https://github.com/hepabolu/ttt.git
 
 switch to the root directory of the git repository you just cloned and run
 
-```
+```shell
 gem install
 ```
 
 This installs all Ruby gems in the `Gemfile`.
+
+### Install the QRcode library
+
+```shell
+npm install
+```
 
 ## Compile
 
@@ -69,66 +75,69 @@ This installs all Ruby gems in the `Gemfile`.
 
 The original episodes are HTML pages on Bart's website. They need to be converted first to AsciiDoctor file before they can be processed further. This section explains how to do that for a new episode.
 
-1. Download the HTML page from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles` directory. This ensures the correct naming convention and the original links to the images and other assets.
+1. Download the HTML page from Bart's website, use Safari and download it as 'page source'. Save in the `sourcefiles` directory (create this if it's not present).
+   This ensures the correct naming convention and the original links to the images and other assets.
 
 2. Convert HTML to Markdown
 
-```
-cd tttconvert
-./tttconvert.sh xx # xx is the number of episode, leave blank to convert all files
-```
+   ```shell
+   cd tttconvert
+   ./tttconvert.sh xx
+   # xx is the number of episode,
+   # leave blank to convert all files
+   ```
 
-This app also downloads the images. Output is in `convert2` and `convert2/assets`.
+   This app also downloads the images. Output is in `convert2` and `convert2/assets`.
 
 3. Convert to Asciidoctor
 
-```
-cd ../convert2
-kramdoc --format=GFM --output=tttXX.adoc tttXX.md
-```
+   ```shell
+   cd ../convert2
+   kramdoc --format=GFM --output=tttXX.adoc tttXX.md
+   ```
 
 4. Copy the Asciidoctor files + assets to the book
 
-```
-cd ../convert2
-cp tttXX.adoc ../book  # XX is the file you want to copy
-cp -r assets/tttXX ../book/assets
-```
+   ```shell
+   cd ../convert2
+   cp tttXX.adoc ../book  # XX is the file you want to copy
+   cp -r assets/tttXX ../book/assets
+   ```
 
 5. Make the QRcode
 
-- open book/tttXXX.adoc
-- copy the link to the podcast to the file `publish/mp3_files
-- run the script
+   - open book/tttXXX.adoc
+   - copy the link to the podcast to the file `publish/mp3_files
+   - run the script
 
-```
-cd ../scripts
-./generate_qrcode.sh
-```
+   ```shell
+   cd ../scripts
+   ./generate_qrcode.sh
+   ```
 
 6. Update the external_resources.xml file
 
-- copy the link from 5. to the file `publish/external_resources.xml`
-- update the line to turn it into an XML tag matching the other lines in the file
-- save the file
+   - copy the link from 5. to the file `publish/external_resources.xml`
+   - update the line to turn it into an XML tag matching the other lines in the file
+   - save the file
 
 7. Cleanup
 
-- add the new tttXX.adoc file to `book/ttt-contents.adoc`
-- if necessary, rename the QRcode file to match the TTT_XX.png naming convention
-- open the `book/tttXX.adoc` file and fix the episode box, the reference to the QRcode and miscellaneous changes.
+   - add the new tttXX.adoc file to `book/ttt-contents.adoc`
+   - if necessary, rename the QRcode file to match the TTT_XX.png naming convention
+   - open the `book/tttXX.adoc` file and fix the episode box, the reference to the QRcode and miscellaneous changes.
 
 ### Build the files
 
 Test if your setup works by running
 
-```
+```shell
 bundle exec rake book:build
 ```
 
 or simply
 
-```
+```shell
 bundle exec rake
 ```
 
@@ -136,7 +145,7 @@ because `book:build` is the default.
 
 When it finishes, the output looks like this:
 
-```
+```shell
 Generating contributors list
 
 Converting to HTML...
@@ -153,24 +162,21 @@ Converting to PDF US... (this one takes a while)
  -- PDF output at output/ttt-us.pdf
 ```
 
-and no other errors, there should be a PDF in A4-size, a PDF in letter-size, an HTML file and an ePub file in the `output` directory.
-
-<s>**Note**: to have the screenshots visible in the HTML file, copy the `assets` folder from `book/assets` to `output/assets`</s>.
-Assets are already synced in the build script.
+and no other errors, there should be a PDF in A4-size, a PDF in Letter-size, an HTML file and an ePub file in the `output` directory.
+Assets are already synced by the build script.
 
 ## Book setup
 
-Every episode is put in its own file in `book`. All images are in
+Every episode is put in its own file in the `book` directory. All images are in
 `book/assets/ttt<nr of episode>`.
 
-`ttt-spine.adoc`, `ttt-epub-spine.adoc` and `ttt-contents.adoc` hold the general information to pull the content together in one output file.
+`ttt-spine.adoc` and `ttt-contents.adoc` hold the general information to pull the content together in one output file.
 
 For now:
 
-- <s>`colophon.adoc` holds some boilerplate text. It needs to be update to proper information</s>
 - `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it. Because the entries are only visible in the PDF, the entire section is commented out.
 
-Note: language is British English!
+Note: language is **_British English_**!
 
 ## Bug fixes and workaround
 
@@ -181,13 +187,13 @@ This section contains some notes on bug fixes and workarounds that have been app
 See: [Asciidoctor git repository](https://github.com/asciidoctor/asciidoctor/issues/2860)
 Worked around by adding a second paragraph either by separating the last (few) sentence(s) or by adding an invisible second paragraph consisting of a single space.
 
-```
+```asciidoc
 +++&nbsp;+++
 ```
 
 Books doesn't like this, so I had to surround it with `ifdef`s:
 
-```
+```asciidoc
 ifndef::backend-epub3[]
 +++&nbsp;+++
 endif::[]
@@ -223,25 +229,25 @@ It is not possible to highlight specific parts of the source code, so all refere
 
 Although Rouge supports line numbering in source code blocks, the implementation in Asciidoctor is very simple. The code is placed in 2 table cells, one with the line numbers, one with the code. It doesn't take into account the extra space needed when long code lines wrap to the next line.
 After numerous attempts to fix the problem I got stuck because my code adjustments in the Asciidoctor code broke the functionality to add annotations in the code and I haven't found a way to preserve that functionality.
-I therefore decided to skip the line numberin in code blocks that have long lines of mostly output. The highlighting does work, therefore it's still possible to point out the important lines.
+I therefore decided to skip the line numbering in code blocks that have long lines of mostly output. The highlighting does work, therefore it's still possible to point out the important lines.
+
+**UPDATE 2020-07-29**: line numbering is removed altogether for the ePub version, because the epubcheck throws errors.
 
 ### Keyboard shortcuts
 
 Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to keyboard shortcuts to the HTML5 keyboard counterparts.
 Note, the command key (CMD) can be used as `{commandkey}`.
-<s>For the shortcuts to show up properly in the VScode previewer, each document needs an `:experimental:` option in the header.</s>
 I added a document with variables to each document so this is automatically taken care of.
 
-<s>Rather than `Ctrl` write `Control`, because that's what it says on the key cap.</s>
-I changed my mind, `Ctrl` is much more common than 'control'.
+`Ctrl` is used for the 'Control' key, because it's much more commonly used than 'control'.
 
-NB. with
+NB. with the codes in the following table it's possible to create `kbd:[&larr;]` arrow keys.
 
-```
-&#8594; &rarr;  →      Right arrow
-&#8592; &larr;  ←      Left arrow
-&#8593; &uarr;  ↑      Up arrow
-&#8595; &darr;  ↓      Down arrow
-```
+| Unicode   | HTML entity | Symbol | Name        |
+| --------- | ----------- | ------ | ----------- |
+| `&#8594;` | `&rarr;`    | →      | Right arrow |
+| `&#8592;` | `&larr;`    | ←      | Left arrow  |
+| `&#8593;` | `&uarr;`    | ↑      | Up arrow    |
+| `&#8595;` | `&darr;`    | ↓      | Down arrow  |
 
-it's possible to create `kbd:[&larr;]` arrow keys. However, ePub doesn't support the second column definitions, PDF doesn't support the Unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
+However, ePub doesn't support the HTML entities definitions, PDF doesn't support the Unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
