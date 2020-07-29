@@ -45,6 +45,17 @@ namespace :book do
         'out-file' => 'ttt.epub'
       })
 
+      # mobi specific parameters
+      mobiParams = paramsHash.merge({
+        'attribute' => paramsAttr.merge({
+          'epub3-stylesdir' => "'theme/epub'",
+          'pygments-style' => 'manni',
+          'pygments-linenums-mode' => 'inline',
+          'ebook-format' => 'kf8'
+        }),
+        'out-file' => 'ttt.mobi'
+      })
+
       # PDF specific parameters
       pdfParams = paramsHash.merge({
         'attribute' => paramsAttr.merge({
@@ -89,9 +100,9 @@ namespace :book do
       puts "Validating ePub"
       `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
-    #   puts "Converting to Mobi (kf8)..."
-    #   `bundle exec asciidoctor-epub3 #{params} -a ebook-format=kf8 #{book_dir}/ttt-spine.adoc`
-    #   puts " -- Mobi output at ttt.mobi"
+      puts "\nConverting to Mobi (kf8)..."
+      `bundle exec asciidoctor-epub3 #{buildParams(mobiParams)} #{book_dir}/ttt-spine.adoc`
+      puts " -- Mobi output at #{mobiParams['destination-dir']}/#{mobiParams['out-file']}"
 
       puts "\nConverting to PDF A4... (this one takes a while)"
       `bundle exec asciidoctor-pdf #{buildParams(pdfParams)} #{book_dir}/ttt-spine.adoc`
