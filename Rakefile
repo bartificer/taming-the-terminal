@@ -116,7 +116,7 @@ namespace :book do
       puts " -- Mobi output at #{mobiParams['destination-dir']}/#{mobiParams['out-file']}"
 
       # removing the ttt-kf8.epub version, because it doesn't have any function
-      # `rm #{mobiParams['destination-dir']}/ttt-kf8.epub`
+      `rm #{mobiParams['destination-dir']}/ttt-kf8.epub`
 
       puts "\nConverting to PDF A4... (this one takes a while)"
       `bundle exec asciidoctor-pdf #{buildParams(pdfParams)} #{book_dir}/ttt-spine.adoc`
