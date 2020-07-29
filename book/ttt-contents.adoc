@@ -86,7 +86,7 @@ include::ttt38.adoc[]
 
 include::ttt39.adoc[]
 
-ifdef::backend-epub3[include::ttt-troubleshooting.adoc[]]
+ifdef::troubleshoot[include::ttt-troubleshooting.adoc[]]
 
 // ifndef::backend-html[:leveloffset: 0]
 
