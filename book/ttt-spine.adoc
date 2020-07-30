@@ -1,9 +1,8 @@
-= Taming the Terminal
+= Taming the Terminal: The Technical Manual and Podcast to Master the macOS Command Line
 Bart Busschots
 :doctype: book
 :docinfo: shared
 :doctitle: Taming the Terminal
-:subtitle: The technical manual and podcast to master the macOS command line
 :lang: en-GB
 :creator: {author}
 :producer: Allison Sheridan and Helma van der Linden
