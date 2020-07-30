@@ -60,12 +60,7 @@ In this instalment, we'll be focusing on Environment Variables, and specifically
 The command to list the names and values of all currently set environment variables is simply `env` (or `printenv` on some systems).
 E.g.:
 
-ifndef::backend-epub3[]
-[source,console?prompt=bart$,linenums]
-endif::[]
-ifdef::backend-epub3[]
 [source,console?prompt=bart$]
-endif::[]
 ----
 bart-imac2013:~ bart$ env
 TERM_PROGRAM=Apple_Terminal
@@ -102,12 +97,7 @@ We already know that `env` lets us see all the environment variables which exist
 To see all the shell variables that exist, call `set` with no arguments.
 E.g.
 
-ifndef::backend-epub3[]
-[source,console?prompt=bart$,linenums]
-endif::[]
-ifdef::backend-epub3[]
 [source,console?prompt=bart$]
-endif::[]
 ----
 bart-imac2013:~ bart$ set
 Apple_PubSub_Socket_Render=/tmp/launch-MLs1hi/Render
@@ -169,6 +159,7 @@ update_terminal_cwd ()
 }
 bart-imac2013:~ bart$
 ----
+
 
 If you compare the output of `env` and `set` you'll see that every environment variable is a shell variable, but, there are many more shell variables than there are environment variables.
 Remember, when a child process is created *only* the environment variables get copied into the child process's environment, even if the child process is another Bash process.
