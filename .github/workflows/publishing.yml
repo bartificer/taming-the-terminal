@@ -52,6 +52,12 @@ jobs:
       - name: Publish the book
         run: bundle exec rake
 
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: 'Updating docs'
+          add: 'docs'
+
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v1-release
         with:

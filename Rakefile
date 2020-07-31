@@ -91,6 +91,11 @@ namespace :book do
 
       puts "Sync the assets"
       `rsync -r --delete book/assets/* output/assets/`
+      `mkdir -p docs/assets`
+      `rsync -r --delete book/assets/* docs/assets/`
+
+      puts "Update the website"
+      `cp #{htmlParams['destination-dir']}/#{htmlParams['out-file']} docs/`
 
       puts "\nConverting to EPub..."
       `bundle exec asciidoctor-epub3 #{buildParams(epubParams)} #{book_dir}/ttt-spine.adoc`
