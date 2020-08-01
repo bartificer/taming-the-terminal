@@ -93,6 +93,7 @@ namespace :book do
       `rsync -r --delete book/assets/* output/assets/`
       `mkdir -p docs/assets`
       `rsync -r --delete book/assets/* docs/assets/`
+      `mv docs/ttt.html docs/index.html`
 
       puts "Update the website"
       `cp #{htmlParams['destination-dir']}/#{htmlParams['out-file']} docs/`
