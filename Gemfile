@@ -15,5 +15,3 @@ gem 'rouge', '~> 3.19'
 gem 'thread_safe'
 gem 'epubcheck-ruby', '~> 4.2.2.0'
 gem 'kindlegen'
-
-# gem 'asciidoctor-epub3', '1.5.0.alpha.16.dev', :git => 'https://github.com/asciidoctor/asciidoctor-epub3.git'
