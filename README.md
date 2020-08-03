@@ -14,7 +14,7 @@ In the releases you can find various formats:
 | -------------- | ----------------------------- |
 | ttt.epub       | ePub without audioplayer      |
 | ttt-audio.epub | ePub with inline audioplayer  |
-| ttt.modi       | Kindle version                |
+| ttt.mobi       | Kindle version                |
 | ttt.pdf        | PDF with pages in A4 size     |
 | ttt-us.pdf     | PDF with pages in Letter size |
 | ttt.html       | single page HTML version      |
