@@ -37,7 +37,8 @@ body {
     /* add margin to ~ match Kindle's narrow setting */
     /* don't use !important on margin as it interferes with reader overrides (Calibre and Kindle) */
     margin: 0;
-    font-size: 100%;
+    /* don't use the font-size on the body, because it prevents the font to resize in Apple Books */
+    /* font-size: 100%; */
     /* NOTE putting optimizeLegibility on the body slows down rendering considerably */
     text-rendering: optimizeSpeed;
     /* -webkit-font-smoothing has no noticable effect and is controversial, so leaving it off */
