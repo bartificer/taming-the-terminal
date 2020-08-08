@@ -19,6 +19,15 @@ The font types are Noto Sans and Noto Serif.
 
 Created in https://asciidoctor.org[Asciidoctor] and macOS.
 
+[[updates]]
+====
+*Updates*
+
+This book will be updated whenever new episodes are added or errors are fixed.
+You can check if a new update is available at:
+{update-url}
+====
+
 [[license]]
 *Creative Commons license*
 
