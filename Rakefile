@@ -97,6 +97,7 @@ namespace :book do
 
       puts "Update the website"
       `cp #{htmlParams['destination-dir']}/#{htmlParams['out-file']} docs/`
+      `mv docs/ttt.html docs/index.html`
 
       puts "\nConverting to EPub..."
       `bundle exec asciidoctor-epub3 #{buildParams(epubParams)} #{book_dir}/ttt-spine.adoc`
