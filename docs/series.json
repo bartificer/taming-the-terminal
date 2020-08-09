@@ -11,7 +11,7 @@
         "1": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/04/13/taming-the-terminal-part-1-of-n/",
             "commands": [],
-            "keywords": ["shell", "command shell"]
+            "keywords": ["shell", "command shell", "command line", "bash"]
         },
         "2": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/04/26/taming-the-terminal-part-2-of-n/",
@@ -47,53 +47,53 @@
         },
         "5": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/06/30/taming-the-terminal-part-5-of-n/",
-            "commands": [],
-            "keywords": []
+            "commands": ["whoami", "groups", "ls"],
+            "keywords": ["permissions", "file", "folder", "directory", "file system", "user", "group", "unix file permissions", "file permission mask", "unix file permission mask"]
         },
         "6": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/07/13/taming-the-terminal-part-6-of-n/",
-            "commands": [],
-            "keywords": []
+            "commands": ["chown", "chgrp", "chmod", "ls", "xattr"],
+            "keywords": ["permissions", "file", "folder", "directory", "file system", "user", "group", "unix file permissions", "file permission mask", "unix file permission mask"]
         },
         "7": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/07/19/taming-the-terminal-part-7-of-n/",
-            "commands": [],
-            "keywords": []
+            "commands": ["mkdir", "ls", "touch", "cp", "mv", "rm"],
+            "keywords": ["file", "folder", "directory", "file system", "copy", "move", "rename", "delete"]
         },
         "8": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/09/21/taming-the-terminal-part-8-of-n-processes/",
-            "commands": [],
-            "keywords": []
+            "commands": ["ps", "top"],
+            "keywords": ["process", "user", "group", "process ID", "parent process", "parent process ID", "PID", "PPID"]
         },
         "9": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/10/06/taming-the-terminal-part-9-of-n-controlling-processes/",
-            "commands": [],
-            "keywords": []
+            "commands": ["open", "kill", "killall"],
+            "keywords": ["process", "user", "group", "process ID", "PID"]
         },
         "10": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/11/02/taming-the-terminal-part-10-of-n-man/",
-            "commands": [],
-            "keywords": []
+            "commands": ["man"],
+            "keywords": ["manual", "documentation", "man page"]
         },
         "11": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/11/22/taming-the-terminal-part-11-of-n-text-files/",
-            "commands": [],
-            "keywords": []
+            "commands": ["cat", "more", "less", "head", "tail", "nano", "pico", "vi", "vim"],
+            "keywords": ["text file", "text", "plain text", "edit", "text editor", "plain text editor"]
         },
         "12": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/12/14/taming-the-terminal-part-12-of-n-the-environment/",
-            "commands": [],
-            "keywords": []
+            "commands": ["env", "printenv", "echo", "export"],
+            "keywords": ["environment", "shell", "variable", "environment  variable", "shell variable", "bash"]
         },
         "13": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/12/21/taming-the-terminal-part-13-of-n-path/",
-            "commands": [],
-            "keywords": []
+            "commands": ["which"],
+            "keywords": ["environment", "shell", "variable", "environment variable", "PATH", "shell script", "profile", "bash profile", ".bash_profile", "prompt", "PS1"]
         },
-        "14": {
+         "14": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/01/11/taming-the-terminal-part-14-of-n-aliases-prompts/",
-            "commands": [],
-            "keywords": []
+            "commands": ["alias", "unalias"],
+            "keywords": ["environment", "shell", "variable", "environment variable", "profile", "bash profile", ".bash_profile", "alias", "prompt", "PS1"]
         },
         "15": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/02/02/taming-the-terminal-part-15-of-n-plumbing/",
