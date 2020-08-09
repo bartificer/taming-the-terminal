@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hepabolu/ttt.git"
+    "url": "git+https://github.com//bartificer/taming-the-terminal.git"
   },
   "keywords": [
     "ebook",
@@ -18,9 +18,9 @@
   "author": "Bart Busschots",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hepabolu/ttt/issues"
+    "url": "https://github.com/bartificer/taming-the-terminal/issues"
   },
-  "homepage": "https://github.com/hepabolu/ttt#readme",
+  "homepage": "https://github.com/bartificer/taming-the-terminal#readme",
   "dependencies": {
     "qrcode": "^1.4.4"
   }
