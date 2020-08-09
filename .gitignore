@@ -9,3 +9,7 @@ todo.tasks
 Ubuntu_Mono.zip
 Roboto.zip
 archive/*
+
+.DS_Store
+
+*.komodoproject
