@@ -21,185 +21,192 @@
         "3": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/05/11/taming-the-terminal-part-3-of-n/",
             "commands": [],
-            "keywords": ["file system", "directory", "folder", "file", "file path", "path"]
+            "keywords": [
+                "file system",
+                "directory",
+                "folder",
+                "file",
+                "file path",
+                "path"
+            ]
         },
         "4": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/05/26/taming-the-terminal-part-4-of-n/",
             "commands": ["pwd", "ls", "cd", "dir"],
-            "keywords": ["file system", "directory", "folder", "file", "file path", "path", "working directory", "current working directory", "present working directory"]
+            "keywords": [
+                "file system",
+                "directory",
+                "folder",
+                "file",
+                "file path",
+                "path",
+                "working directory",
+                "current working directory",
+                "present working directory"
+            ]
         },
         "5": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/06/30/taming-the-terminal-part-5-of-n/",
             "commands": [],
             "keywords": []
         },
         "6": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/07/13/taming-the-terminal-part-6-of-n/",
             "commands": [],
             "keywords": []
         },
         "7": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/07/19/taming-the-terminal-part-7-of-n/",
             "commands": [],
             "keywords": []
         },
         "8": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/09/21/taming-the-terminal-part-8-of-n-processes/",
             "commands": [],
             "keywords": []
         },
         "9": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/10/06/taming-the-terminal-part-9-of-n-controlling-processes/",
             "commands": [],
             "keywords": []
         },
         "10": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/11/02/taming-the-terminal-part-10-of-n-man/",
             "commands": [],
             "keywords": []
         },
         "11": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/11/22/taming-the-terminal-part-11-of-n-text-files/",
             "commands": [],
             "keywords": []
         },
         "12": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/12/14/taming-the-terminal-part-12-of-n-the-environment/",
             "commands": [],
             "keywords": []
         },
         "13": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2013/12/21/taming-the-terminal-part-13-of-n-path/",
             "commands": [],
             "keywords": []
         },
         "14": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/01/11/taming-the-terminal-part-14-of-n-aliases-prompts/",
             "commands": [],
             "keywords": []
         },
         "15": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/02/02/taming-the-terminal-part-15-of-n-plumbing/",
             "commands": [],
             "keywords": []
         },
         "16": {
-            "originalUrl": "",
-            "commands": [],
-            "keywords": []
-        },
-        "17": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/04/27/taming-the-terminal-part-16-of-n-regular-expressions/",
             "commands": [],
             "keywords": []
         },
         "18": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/05/10/taming-the-terminal-part-18-of-n-more-res/",
             "commands": [],
             "keywords": []
         },
         "19": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/07/19/taming-the-terminal-part-19-of-n-text-searches/",
             "commands": [],
             "keywords": []
         },
         "20": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/09/07/taming-the-terminal-part-20-of-n-file-searches/",
             "commands": [],
             "keywords": []
         },
         "21": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/09/26/taming-the-terminal-part-21-of-n-more-searching/",
             "commands": [],
             "keywords": []
         },
         "22": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/10/10/taming-the-terminal-part-22-of-n-tips-tricks/",
             "commands": [],
             "keywords": []
         },
         "23": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/10/25/taming-the-terminal-part-23-of-n-networking-intro/",
             "commands": [],
             "keywords": []
         },
         "24": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/11/23/taming-the-terminal-part-24-of-n-ethernet-arp/",
             "commands": [],
             "keywords": []
         },
         "25": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/12/07/taming-the-terminal-part-25-of-n-ip-subnets/",
             "commands": [],
             "keywords": []
         },
         "26": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2014/12/22/taming-the-terminal-part-26-of-n-dhcp/",
             "commands": [],
             "keywords": []
         },
         "27": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/01/10/taming-the-terminal-part-27-of-n-dns/",
             "commands": [],
             "keywords": []
         },
         "28": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/01/30/taming-the-terminal-part-28-of-n-network-troubleshooting/",
             "commands": [],
             "keywords": []
         },
         "29": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/02/14/taming-the-terminal-part-29-of-n-intro-to-ssh/",
             "commands": [],
             "keywords": []
         },
         "30": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/03/29/taming-the-terminal-part-30-of-n-sshing-more-securely/",
             "commands": [],
             "keywords": []
         },
         "31": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/04/04/taming-the-terminal-part-31-of-n-ssh-file-transfers/",
             "commands": [],
             "keywords": []
         },
         "32": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/04/06/taming-the-terminal-part-32-of-n-ssh-tunnelling/",
             "commands": [],
             "keywords": []
         },
         "33": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/04/25/taming-the-terminal-part-33-of-n-ssh-bookmarks/",
             "commands": [],
             "keywords": []
         },
         "34": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2015/05/09/taming-the-terminal-part-34-of-n-introducing-http/",
             "commands": [],
             "keywords": []
         },
         "35": {
-            "originalUrl": "",
-            "commands": [],
-            "keywords": []
-        },
-        "36": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2016/11/19/taming-the-terminal-part-35-of-n-screen-cron/",
             "commands": [],
             "keywords": []
         },
         "37": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2017/05/25/taming-the-terminal-part-37-of-n-ssh-agent/",
             "commands": [],
             "keywords": []
         },
         "38": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2020/07/11/ttt-part-38-of-n-tmux-a-screen-alternative/",
             "commands": [],
             "keywords": []
         },
         "39": {
-            "originalUrl": "",
+            "originalUrl": "https://www.bartbusschots.ie/s/2020/07/26/ttt-part-39-of-n-advanced-tmux/",
             "commands": [],
             "keywords": []
         },
