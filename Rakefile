@@ -105,7 +105,7 @@ namespace :book do
       `scripts/fix-epub.sh`
 
       puts "Validating ePub"
-      `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
+      `epubcheck #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
       `mv #{epubParams['destination-dir']}/#{epubParams['out-file']} #{epubParams['destination-dir']}/ttt-audio.epub`
 
@@ -114,7 +114,7 @@ namespace :book do
       puts " -- Epub output at #{epubParams['destination-dir']}/#{epubParams['out-file']}"
 
       puts "Validating ePub"
-      `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
+      `epubcheck #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
       puts "\nConverting to Mobi (kf8)..."
       `bundle exec asciidoctor-epub3 #{buildParams(mobiParams)} #{book_dir}/ttt-spine.adoc`
