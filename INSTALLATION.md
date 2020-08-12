@@ -50,7 +50,7 @@ more information at [Convert Markdown to AsciiDoc](https://matthewsetter.com/tec
 Clone the repository
 
 ```shell
-git clone https://github.com/hepabolu/ttt.git
+git clone git clone https://github.com/bartificer/taming-the-terminal.git
 ```
 
 ### Install necessary Ruby gems
@@ -58,10 +58,17 @@ git clone https://github.com/hepabolu/ttt.git
 switch to the root directory of the git repository you just cloned and run
 
 ```shell
-gem install
+bundle install
 ```
 
 This installs all Ruby gems in the `Gemfile`.
+
+### Install the dependencies for the tttconvert program
+
+```shell
+cd tttconvert
+npm install
+```
 
 ### Install the QRcode library
 
