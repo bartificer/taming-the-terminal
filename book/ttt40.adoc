@@ -1,0 +1,27 @@
+[[ttt01]]
+= TTT Part 40 of n {longdash} New Title
+include::variables.adoc[]
+:mp3file:ttt-40-new-title/TTT_40_New_Title.mp3
+
+Intro here
+
+.Matching Podcast Episode 40
+****
+
+Listen Along: Taming the Terminal Podcast Episode 40 +
+part of  https://www.podfeet.com/blog/2020/07/ccatp-647/[episode 647 of the Chit Chat Across the Pond Podcast]
+
+// no audiocontrols in pdf
+ifndef::backend-pdf,apple-books[]
+pass:m,a[<audio controls='controls' src="{url-mp3}/{mp3file}">Your browser does not support HTML 5 audio</audio>]
+endif::[]
+
+Scan the QRcode to listen on a different device
+
+image::qrcodes/TTT_40.png[QRcode]
+
+You can also
+{url-mp3}/{mp3file}[play/download the MP3 in your browser]
+****
+
+== Section Header
