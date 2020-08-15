@@ -1,3 +1,9 @@
+/* It is not possible to include the original epub3.css file
+ * by copying and renaming it and importing it in this file.
+ * So I'll copy the entire content here and add modifications
+ * to the bottom.
+ */
+
 @import url("epub3-fonts.css");
 
 *,
@@ -37,8 +43,7 @@ body {
     /* add margin to ~ match Kindle's narrow setting */
     /* don't use !important on margin as it interferes with reader overrides (Calibre and Kindle) */
     margin: 0;
-    /* don't use the font-size on the body, because it prevents the font to resize in Apple Books */
-    /* font-size: 100%; */
+    font-size: 100%;
     /* NOTE putting optimizeLegibility on the body slows down rendering considerably */
     text-rendering: optimizeSpeed;
     /* -webkit-font-smoothing has no noticable effect and is controversial, so leaving it off */
@@ -124,8 +129,8 @@ strong {
 
 b.button {
     font-weight: normal;
-    text-shadow: 1px 0 0 #666665;
-    color: #191918;
+    text-shadow: 1px 0 0 #333332;
+    color: #101010;
     white-space: nowrap;
 }
 
@@ -187,7 +192,7 @@ img {
 
 mark {
     background-color: #FFC14F;
-    color: #191918;
+    color: #101010;
 }
 
 small {
@@ -244,14 +249,54 @@ th {
     padding: 0;
 }
 
+/* We need to apply text-align to <p> too in order to override global text-align:justify */
+th.halign-left,
+td.halign-left,
+th.halign-left>p,
+td.halign-left>p {
+    text-align: left
+}
+
+th.halign-right,
+td.halign-right,
+th.halign-right>p,
+td.halign-right>p {
+    text-align: right
+}
+
+th.halign-center,
+td.halign-center,
+th.halign-center>p,
+td.halign-center>p {
+    text-align: center
+}
+
+th.valign-top,
+td.valign-top,
+th.valign-top>p,
+td.valign-top>p {
+    vertical-align: top
+}
+
+th.valign-bottom,
+td.valign-bottom,
+th.valign-bottom>p,
+td.valign-bottom>p {
+    vertical-align: bottom
+}
+
+th.valign-middle,
+td.valign-middle,
+th.valign-middle>p,
+td.valign-middle>p {
+    vertical-align: middle
+}
+
 body a:link {
-    color: #333332;
-    /* hack for font color in iBooks and Gitden (though Gitden would accept color !important too) */
-    -webkit-text-fill-color: #333332;
     /* Kindle requires the !important on text-decoration */
     /* In night mode, the only indicator of a link is the underline, so we need it or a background image */
     text-decoration: none !important;
-    border-bottom: 1px dashed #666665;
+    border-bottom: 1px dashed #333332;
     /* allow URLs to break anywhere if they don't fit on a line; but how do we know it's a URL? */
     /*
   word-break: break-all;
@@ -268,9 +313,9 @@ body:first-of-type a:link {
 }
 
 body a:visited {
-    color: #666665;
+    color: #333332;
     /* hack for font color in iBooks */
-    -webkit-text-fill-color: #666665;
+    -webkit-text-fill-color: #333332;
 }
 
 code.literal {
@@ -313,7 +358,7 @@ h6 {
 /* We'll just use the stronger rule for all paragraph-related stuff to be sure */
 body p {
     margin: 1em 0 0 0;
-    text-align: left;
+    text-align: justify;
     text-indent: 0;
 
     widows: 2;
@@ -333,7 +378,6 @@ table.table th,
 table.table td,
 figcaption,
 caption {
-    color: #333332;
     /* NOTE iBooks will forcefully override font-family of text inside div, p and span elements when font other than Original is selected */
     /* NOTE iBooks honors Original font for prose text if declared in display-options.xml */
     font-family: "Noto Serif", serif;
@@ -350,7 +394,7 @@ footer {
 code,
 kbd,
 pre {
-    color: #191918;
+    color: #101010;
     font-family: "M+ 1mn", monospace;
     -webkit-hyphens: none;
     /* disable hyphenation where supported (e.g., iBooks) */
@@ -550,7 +594,7 @@ ul>li::before {
 ul>li::before {
     content: "\25AA";
     /* small black square */
-    color: #666665;
+    color: #333332;
 }
 
 ul ul>li::before {
@@ -562,7 +606,7 @@ ul ul>li::before {
 ul ul ul>li::before {
     content: "\2022";
     /* small black circle */
-    color: #666665;
+    color: #333332;
 }
 
 ul ul ul ul>li::before {
@@ -596,7 +640,7 @@ dd {
 li>span.principal,
 dd>span.principal {
     display: block;
-    text-align: left;
+    text-align: justify;
 }
 
 ol.brief>li>span.principal,
@@ -627,7 +671,6 @@ ul.references>li>span.principal {
 /* sized based on the major third modular scale (4:5, 16px, 24px) */
 h1,
 h2 {
-    color: #333332;
     font-size: 1.5em;
     word-spacing: -0.075em;
     margin-top: 1em;
@@ -637,7 +680,6 @@ h2 {
 }
 
 h3 {
-    color: #333332;
     font-size: 1.25em;
     margin-top: 0.84em;
     /* 1.05rem */
@@ -646,7 +688,7 @@ h3 {
 }
 
 h4 {
-    color: #4F4F4C;
+    color: #202020;
     font-weight: 200;
 
     font-size: 1.1em;
@@ -667,7 +709,7 @@ h4 {
 }
 
 h5 {
-    color: #666665;
+    color: #333332;
     /*
   font-size: 1em;
   text-transform: uppercase;
@@ -705,7 +747,7 @@ h5 code {
     /*padding: 0.75em 1.5em 0.25em 1.5em;*/
     padding: 0.25em 0;
     margin-bottom: 2.5em;
-    border-bottom: 1px solid #666665;
+    border-bottom: 1px solid #333332;
     /* TODO maybe what we need to get articles to start in left column
   -webkit-column-break-before: left;
   page-break-before: left;
@@ -720,7 +762,7 @@ h1.chapter-title {
     margin-bottom: 0;
     padding-bottom: 0.8333em;
     /* 1.2rem */
-    color: #666665;
+    color: #333332;
     text-transform: uppercase;
     /* not supported in Adobe Digital Editions */
     word-spacing: -0.075em;
@@ -729,7 +771,6 @@ h1.chapter-title {
 
 h1.chapter-title .subtitle {
     font-weight: 400;
-    color: #333332;
     display: block;
     font-size: 1.5em;
     margin: 0 0 0 0.75em;
@@ -748,7 +789,6 @@ h1.chapter-title b {
 }
 
 .chapter-header p.byline {
-    color: #333332;
     /* float left and height 0 takes this line out of the flow */
     float: left;
     height: 0;
@@ -781,16 +821,16 @@ div.abstract {
 }
 
 div.abstract>p {
-    color: #666665;
+    color: #333332;
     font-size: 1.05em;
     /* or 1.1em? */
     line-height: 1.75;
 }
 
 div.abstract>p a:link {
-    color: #666665;
+    color: #333332;
     /* hack for font color in iBooks */
-    -webkit-text-fill-color: #666665;
+    -webkit-text-fill-color: #333332;
 }
 
 div.abstract>p:first-child::first-line {
@@ -839,12 +879,14 @@ aside.sidebar {
     margin-top: 1em;
 }
 
+/*
 aside.sidebar {
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    -webkit-margin-top-collapse: separate;
-    margin-bottom: 1em;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  float: left;
+  margin-bottom: 1em;
 }
+*/
 
 figure.image {
     -webkit-column-break-inside: avoid;
@@ -865,7 +907,7 @@ figcaption,
 caption {
     font-size: 0.9em;
     font-style: italic;
-    color: #666665;
+    color: #333332;
     letter-spacing: -0.01em;
     line-height: 1.4;
     text-align: left;
@@ -899,10 +941,10 @@ figure.listing>figcaption+pre {
 }
 
 aside.sidebar {
-    border: 1px solid #B3B3B1;
+    border: 1px solid #C8C8C8;
     padding: 0 1.5em;
     font-size: 0.9em;
-    background-color: #F2F2F2;
+    background-color: #E0E0E0;
     text-align: right;
     /* aligns heading to right */
     /*
@@ -935,7 +977,7 @@ aside.sidebar>h2 {
     display: inline-block;
     white-space: nowrap;
     /* for some reason it's wrapping prematurely */
-    border: 1px solid #B3B3B1;
+    border: 1px solid #C8C8C8;
     padding: 1.5em .75em .5em .75em;
     margin: -1em 0.5em -0.25em 0.5em;
     background-color: #FFFFFF;
@@ -953,7 +995,7 @@ body:first-of-type aside.sidebar > h2 {
 
 aside.sidebar>div.content {
     margin-bottom: 1em;
-    text-align: left;
+    text-align: justify;
     /* restore text alignment in content */
 }
 
@@ -973,7 +1015,7 @@ div[class~="blockquote"] {
 }
 
 blockquote>p {
-    color: #191918;
+    color: #101010;
     font-style: italic;
 
     /*
@@ -990,7 +1032,7 @@ blockquote>p {
 
 blockquote>p:first-of-type::before {
     display: inline-block;
-    color: #666665;
+    color: #333332;
     text-shadow: 0 1px 2px rgba(102, 102, 101, 0.3);
 
     /* using serif quote from entypo */
@@ -1025,7 +1067,7 @@ blockquote footer {
 blockquote footer .context {
     font-size: 0.9em;
     letter-spacing: -0.05em;
-    color: #666665;
+    color: #333332;
 }
 
 pre {
@@ -1041,15 +1083,11 @@ pre {
     font-size: 0.85em;
     line-height: 1.4;
     /* matches what Kindle uses and can't go less */
-    background-color: #F2F2F2;
+    background-color: #E0E0E0;
     padding: 0.6em 0.9em;
     /* this is supposed to be '0.5rem 0.75rem' but Sony Readers crash when see that (at least, PRS-350, PRS-505, PRS-T1) */
-    /*
-  border-top: 3px solid #DCDCDE;
-  */
-    /* QUESTION #B3B3B1? */
-    border-top: 1px solid #DCDCDE;
-    border-right: 1px solid #DCDCDE;
+    border-top: 1px solid #C8C8C8;
+    border-right: 1px solid #C8C8C8;
 }
 
 body:first-of-type pre {
@@ -1258,8 +1296,6 @@ table.table th,
 table.table td {
     line-height: 1.4;
     padding: 0.5em 0.5em 1em 0.1em;
-    vertical-align: top;
-    text-align: left;
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
 }
@@ -1269,16 +1305,12 @@ table.table th {
 }
 
 table.table thead th {
-    border-bottom: 1px solid #80807F;
+    border-bottom: 1px solid #707070;
 }
 
 table.table td>p,
 table.table div.embed>* {
     margin-top: 0;
-}
-
-table.table td>p {
-    text-align: left;
 }
 
 /* REVIEW */
@@ -1287,37 +1319,37 @@ table.table div.embed>*+* {
     margin-top: 1em;
 }
 
-table.table-framed {
+table.table-framed-all {
     border-width: 1px;
     border-style: solid;
-    border-color: #80807F;
+    border-color: #707070;
 }
 
 table.table-framed-topbot {
     border-width: 1px 0;
     border-style: solid;
-    border-color: #80807F;
+    border-color: #707070;
 }
 
 table.table-framed-sides {
     border-width: 0 1px;
     border-style: solid;
-    border-color: #80807F;
+    border-color: #707070;
 }
 
-table.table-grid th,
-table.table-grid td {
-    border-width: 0 1px 1px 0;
+table.table-grid-all th,
+table.table-grid-all td {
+    border-width: 1px 1px 1px 1px;
     border-style: solid;
-    border-color: #80807F;
+    border-color: #707070;
 }
 
-table.table-grid thead tr>*:last-child {
+table.table-grid-all thead tr>*:last-child {
     border-right-width: 0;
 }
 
-table.table-grid tbody tr:last-child>th,
-table.table-grid tbody tr:last-child>td {
+table.table-grid-all tbody tr:last-child>th,
+table.table-grid-all tbody tr:last-child>td {
     border-bottom-width: 0;
 }
 
@@ -1325,14 +1357,14 @@ table.table-grid-rows tbody th,
 table.table-grid-rows tbody td {
     border-width: 1px 0 0 0;
     border-style: solid;
-    border-color: #80807F;
+    border-color: #707070;
 }
 
 table.table-grid-cols th,
 table.table-grid-cols td {
     border-width: 0 1px 0 0;
     border-style: solid;
-    border-color: #80807F;
+    border-color: #707070;
 }
 
 table.table-grid-cols thead th:last-child {
@@ -1363,7 +1395,7 @@ hr.pagebreak+* {
 
 img.headshot {
     float: left;
-    border: 1px solid #80807F;
+    border: 1px solid #707070;
     padding: 1px;
     margin: 0.35em 1em 0.15em 0;
     height: 5em !important;
@@ -1399,6 +1431,11 @@ sup.noteref a {
 
 nav#toc ol {
     list-style-type: none;
+}
+
+/* Calibre doesn't hide <nav hidden="hidden"> for some reason */
+nav[hidden~="hidden"] {
+    display: none;
 }
 
 .icon {
@@ -1439,6 +1476,37 @@ nav#toc ol {
     i.conum {
         font-family: monospace;
     }
+}
+
+/*
+ * --------------------------------------------------
+ * changes added for Taming the Terminal
+ * --------------------------------------------------
+ */
+
+aside.sidebar {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-margin-top-collapse: separate;
+    margin-bottom: 1em;
+    /* float: left; removed */
+}
+
+/* this block should override the definition in the original file */
+
+body {
+    /* don't use the font-size on the body, because it prevents the font to resize in Apple Books */
+    font-size: inherit;
+}
+
+body p {
+    text-align: left;
+}
+
+/* Kindle does not justify list-item element, must wrap in nested block element */
+li>span.principal,
+dd>span.principal {
+    text-align: left;
 }
 
 /* Include highlighting effect for Rouge source-highlighter
