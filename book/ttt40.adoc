@@ -59,11 +59,11 @@ This is very useful for simply refreshing your memory, but you may need to refer
 
 If you run a `tmux` command that operates on a specific session, pane, or window from within a shell in a TMUX session it will default to the session/window/pane the command is running in. So, to end a TMUX session from within a TMUX session simply run the command `tmux kill-session`. You'll find this quite convenient as you go through the examples in this instalment, otherwise you'll end up with a lot of TMUX sessions!
 
-Since this sensible defaulting works with any TMUX command that targets a session, window, or pane those of you who find the kbd[ctrl+b] key combinations harder to remember than English-y terminal commands can use the same approach for splitting panes (`tmux split-window`) or killing them (`tmux kill-pane`) etc..
+Since this sensible defaulting works with any TMUX command that targets a session, window, or pane those of you who find the kbd:[ctrl+b] key combinations harder to remember than English-y terminal commands can use the same approach for splitting panes (`tmux split-window`) or killing them (`tmux kill-pane`) etc..
 
 == Building Complex TMUX Sessions from the CLI
 
-I you run `tmux lscm`, or indeed `man tmux`, you'll notice that TMUX supports a lot of commands — far more than we've seen to so far in this series of TMUX instalments, and indeed, far more than we will see in the remainder of the series. If you want to do something with TMUX, there's probably a command for it, you'll just need to RTFM (_read the fine manual_).
+If you run `tmux lscm`, or indeed `man tmux`, you'll notice that TMUX supports a lot of commands — far more than we've seen to so far in this series of TMUX instalments, and indeed, far more than we will see in the remainder of the series. If you want to do something with TMUX, there's probably a command for it, you'll just need to RTFM (_read the fine manual_).
 
 Although I don't want to duplicate the manual by listing everything TMUX can do, I do want to draw your attention to a few important features you're likely to want when building TMUX sessions from the CLI (_Commandline interface_).
 
@@ -115,9 +115,9 @@ tmux new -s ttt40-toptail2-mac top \; split-window 'tail -f /var/log/system.log'
 
 === Moving the Focus
 
- Notice that so far, the final pane to be created has always been the active one. What if we wanted our pane with nothing in it to be at the top and and for that to be the pane to get fous? We can use the `select-pane` command for that:
+Notice that so far, the final pane to be created has always been the active one. What if we wanted our pane with nothing in it to be at the top and and for that to be the pane to get focus? We can use the `select-pane` command for that:
 
- [source,shell]
+[source,shell]
 ----
 # on Linux
 tmux new -s ttt40-toptail3-linux \; split-window top \; split-window 'tail -f /var/log/messages' \; select-layout even-vertical \; select-pane -t 0
@@ -130,7 +130,7 @@ Notice the use of the `-t` flag to _target_ the 0th pane.
 
 == Advice on Targetting Sessions, Windows & Panes
 
-Many TMUX commands use the `-t` flag to allow you to target a secific session, window, or pane. TMUX acutally supports many different targetting mechanisms, and they man page explains them all in detail, and in the order they are applied, but my advice is to keep it simple.
+Many TMUX commands use the `-t` flag to allow you to target a secific session, window, or pane. TMUX acutally supports many different targetting mechanisms, and the man page explains them all in detail, and in the order they are applied, but my advice is to keep it simple.
 
 The first thing to understand is full paths — for sessions that's simply their name, which as we learned right at the start of our exploration of TMUX defaults to being a number. For windows the full path takes the form `SESSION:WINDOW` where `SESSION` is a session name and `WINDOW` is a window name or number. Finally, for panes the full path takes the form `SESSION:WINDOW.PANE` where `PANE` is the pane's number.
 
@@ -153,9 +153,9 @@ split-window top \; \
 select-pane -t 0
 ----
 
-== Saving Complex TMUX Commands for Easy Re-Use
+== Saving Complex TMUX Commands for Easy Reuse
 
-Having taken so much time to build up a complex TMUX command, it makes sense to save it in some way for future re-use. You could use tools outside of the terminal for that, perhaps one of the many key-stroke expanders like TextExpander, but since we're in the business of taming terminals here, let's look at two approaches for saving our comples commands within the terminal environment.
+Having taken so much time to build up a complex TMUX command, it makes sense to save it in some way for future reuse. You could use tools outside of the terminal for that, perhaps one of the many key-stroke expanders like TextExpander, but since we're in the business of taming terminals here, let's look at two approaches for saving our comples commands within the terminal environment.
 
 Before we do that, we should make our commands just a little but more robust by re-using the tip from the end of instalment 38 and using the `||` operator to re-attach to an existing session with the desired name, or, create a new one:
 
@@ -223,9 +223,7 @@ chmod 755 topterm
 
 You can now run this script from the current folder with `./topterm`, or better yet, from any folder using `~/scripts/topterm`.
 
-TO DO — find which TTT instalment to call back to
-
-If you'd like this script to be executable from any folder without needing to pre-fix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment. In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
+If you'd like this script to be executable from any folder without needing to pre-fix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment (for a detailed discussion on `PATH` see instalment 13). In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
 
 [source,shell]
 ----
@@ -236,9 +234,7 @@ export PATH=$PATH:~/scripts
 
 An alternative approach to shell scripts is shell aliases. Most shells support these, including Bash & ZSH. 
 
-TO DO — find which TTT instalment to call back to
-
-As a reminder, the command to create an alias in Bash (and ZSH) is `alias`, it takes the following form:
+We looked as aliases in instalment 14, but as a quick reminder — the command to create an alias in Bash (and ZSH) is `alias`, it takes the following form:
 
 [source,shell]
 ----
@@ -276,4 +272,4 @@ TMUX is clearly a very powerful tool. We've used it to build complex multi-shell
 
 However, since my intention here was never to try teach everything there is to know about TMUX, we're going to end our exploration of the tool here. Hopefully this has been enough to pique your interest, and to enable you to learn anything else you need independently.
 
-This series will now go back on hiatus for a little while, but the plan is to resurect it again in a few months when Apple release macOS 11 Big Sur. Why? Because that's an opportune moment to release a series of instalments on the topic of switching from Bash to ZSH. Since macOS Catalina the default shell on the Mac has been ZSH rather than Bash, with Bash available as an option. Since Catalina was such a bug-fest on launch many people have chosen not to upgrade all their machines (me included!), but I expect that with Big Sur's debut there will be a lot of Terminal Tamers suddently finding Bash's familar `$` command prompt replaced with ZSH's alien-feeling `%` command prompt!
+This series will now go back on hiatus for a little while, but the plan is to resurrect it again in a few months when Apple release macOS 11 Big Sur. Why? Because that's an opportune moment to release a series of instalments on the topic of switching from Bash to ZSH. Since macOS Catalina the default shell on the Mac has been ZSH rather than Bash, with Bash available as an option. Since Catalina was such a bug-fest on launch many people have chosen not to upgrade all their machines (me included!), but I expect that with Big Sur's debut there will be a lot of Terminal Tamers suddently finding Bash's familar `$` command prompt replaced with ZSH's alien-feeling `%` command prompt!
