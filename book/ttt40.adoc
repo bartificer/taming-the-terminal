@@ -8,7 +8,7 @@ In instalment 38 We introduced TMUX as a replacement for the `screen` command wh
 
 We learned how to create a fresh TMUX session which gives us a single window containing a single pane running our default shell (bash or ZSH most probably). We then used TMUX commands to split create additional windows, which we described as being like browser tabs, and we learned how to navigate between them. Finally, we learned how to split single panes vertically or horixontally, and to navigate between the panes within the current window.
 
-Given the knowledge we have to date we can start a TMUX session, create the windows we need, and split those into the desired number of panes, but, we have to do it all manually each time we start a new TMUX session. Wouldn't it be nice to be able to automate the process? Well, that's what we're going to do in this instalment, and along the way we'll get a little shell-related bonus tip to boot!
+Given the knowledge we have to date we can start a TMUX session, create the windows we need, and split those into the desired number of panes, but, we have to do it all manually each time we start a new TMUX session. Wouldn't it be nice to be able to automate the process? Well, that's what we're going to do in this instalment, and along the way we'll get two little shell-related bonus tips to boot!
 
 PLAYER WILL GO HERE
 
@@ -140,12 +140,140 @@ If you do need to use full paths, I strongly recommend always naming your sessio
 
 == Bonus 2 — Single Shell/Terminal Commands on Multiple Lines
 
-TO DO
+At this stage our single `tmux` terminal commands are getting very long indeed, and as a result, quite difficult to read. Wouldn't it be nice to be able to be able to split long terminal commands across multiple lines? Thankfully the good people behind Bash and ZSH thought so too!
 
-== Saving Complex TMUX Commands as Shell Scripts
+We've already seen that the `\` can be used to escape special characters in Bash/ZSH, well, the newline character is a speical character, so it too can be escaped by preceeding it with a `\`. To spread a terminal command over muliple lines, simply end each line that's not the last line with a backslash.
 
-TO DO
+We can use this to divide our complex TMUX commands into easier to read, and hence understand, pieces:
 
-== Saving Complex TMUX Commands as Bash/ZSH Aliases
+[source,shell]
+----
+tmux new -s ttt40-top2 \; \
+split-window top \; \
+select-pane -t 0
+----
 
-TO DO
+== Saving Complex TMUX Commands for Easy Re-Use
+
+Having taken so much time to build up a complex TMUX command, it makes sense to save it in some way for future re-use. You could use tools outside of the terminal for that, perhaps one of the many key-stroke expanders like TextExpander, but since we're in the business of taming terminals here, let's look at two approaches for saving our comples commands within the terminal environment.
+
+Before we do that, we should make our commands just a little but more robust by re-using the tip from the end of instalment 38 and using the `||` operator to re-attach to an existing session with the desired name, or, create a new one:
+
+[source,shell]
+----
+tmux a -t topterm || \
+tmux new -s topterm \; \
+split-window top \; \
+select-pane -t 0
+----
+
+As a reminder, the `||` operator represents binary OR, and Bash & ZSH use so-called _lazy evaluation_ to determine whether an OR operation evaluates to true or false. That means that if the first command succeeds, the second one will never be attempted, but if the first fails, it will. So, in this case that means if we succeed in re-attaching to a session named `topterm` we'll do that and never execute the command to build a new session, but if we fail to attach to an existing session we'll create a new one named `topterm`.
+
+=== TMUX Commands in Shell Scripts
+
+The simplest way to save any terminal command or series of terminal commands for re-use is to save them as a shell script.
+
+A shell script is simply a text file that meets three simple criteria:
+
+. The file file is a plain text file
+. The first line is a so-called _shebang line_
+. The file is marked as executable
+
+In Linux/Unix/Mac environments, the operating system can figure out how to run a plain-text executable file automatically if the very first line starts with `#!` followed by the path to a shell. This specially formatted opening line is known coloquially as the _shebang line_.
+
+We'll be using Bash, so our scripts will be plain text files starting with:
+
+[source,shell]
+----
+#!/bin/bash
+----
+
+Let's create a script to start a TMUX session named `topterm` that will have two panes, one to enter commands into at  the top, and one below running the `top` command.
+
+To start, let's create a folder in our home folder named `scripts`, and change into it:
+
+[source,shell]
+----
+mkdir -p ~/scripts
+cd ~/scripts
+----
+
+Note that by using `-p` (for _path_) we stop `mkdir` complaining if the folder already exists.
+
+In this folder, use your favourite plain text editor to create a file named `topterm` without a file extension containing the following:
+
+[source,shell]
+----
+#!/bin/bash
+tmux a -t topterm \
+ || \
+tmux new -s topterm \; \
+  split-window top \; \
+  select-pane -t 0
+----
+
+Notice that I've chosen to use some indentation to make the complex command a little more readable.
+
+Now make the file executable:
+
+[source,shell]
+----
+chmod 755 topterm
+----
+
+You can now run this script from the current folder with `./topterm`, or better yet, from any folder using `~/scripts/topterm`.
+
+TO DO — find which TTT instalment to call back to
+
+If you'd like this script to be executable from any folder without needing to pre-fix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment. In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
+
+[source,shell]
+----
+export PATH=$PATH:~/scripts
+----
+
+=== TMUX Commands as Bash Aliases
+
+An alternative approach to shell scripts is shell aliases. Most shells support these, including Bash & ZSH. 
+
+TO DO — find which TTT instalment to call back to
+
+As a reminder, the command to create an alias in Bash (and ZSH) is `alias`, it takes the following form:
+
+[source,shell]
+----
+alias ALIAS="COMMAND"
+----
+
+As an example, the following aliases `ls -l` as `lsl`:
+
+[source,shell]
+----
+alias lsl="ls -l"
+----
+
+You can now invokle `ls -l` by simply typing `lsl`.
+
+Similarly, we can create an alias for our `topterm` TMUX session like so:
+
+[source,shell]
+----
+alias topterm="\
+  tmux a -t topterm \
+  || \
+  tmux new -s topterm \; \
+    split-window top \; \
+    select-pane -t 0"
+----
+
+Notice that the trick of using `\` at the end of lines to split commands over multiple lines even works within double-quoted strings!
+
+Something to note is that aliases only last until the current shell ends, so to have a permanent alias you need to create it in a file that gets loaded each time your shell starts. If you're using Bash the correct file to add your aliases to is `~/.bashrc`.
+
+== Final Thoughts
+
+TMUX is clearly a very powerful tool. We've used it to build complex multi-shell environments that can be connected to and detached from at will, and simultaneously connected to from arbitarily many terminal windows. The most amazing thing about TMUX is that we've only scratched the surface of what it can do!
+
+However, since my intention here was never to try teach everything there is to know about TMUX, we're going to end our exploration of the tool here. Hopefully this has been enough to pique your interest, and to enable you to learn anything else you need independently.
+
+This series will now go back on hiatus for a little while, but the plan is to resurect it again in a few months when Apple release macOS 11 Big Sur. Why? Because that's an opportune moment to release a series of instalments on the topic of switching from Bash to ZSH. Since macOS Catalina the default shell on the Mac has been ZSH rather than Bash, with Bash available as an option. Since Catalina was such a bug-fest on launch many people have chosen not to upgrade all their machines (me included!), but I expect that with Big Sur's debut there will be a lot of Terminal Tamers suddently finding Bash's familar `$` command prompt replaced with ZSH's alien-feeling `%` command prompt!
