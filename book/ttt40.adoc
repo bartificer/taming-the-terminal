@@ -150,7 +150,7 @@ Notice the use of the `-t` flag to _target_ the 0th pane.
 
 == Advice on Targeting Sessions, Windows & Panes
 
-Many TMUX commands use the `-t` flag to allow you to target a secific session, window, or pane. TMUX acutally supports many different targeting mechanisms, and the man page explains them all in detail, and in the order they are applied, but my advice is to keep it simple.
+Many TMUX commands use the `-t` flag to allow you to target a specific session, window, or pane. TMUX actually supports many different targeting mechanisms, and the man page explains them all in detail, and in the order they are applied, but my advice is to keep it simple.
 
 The first thing to understand is full paths — for sessions that's simply their name, which as we learned right at the start of our exploration of TMUX defaults to being a number. For windows the full path takes the form `SESSION:WINDOW` where `SESSION` is a session name and `WINDOW` is a window name or number. Finally, for panes the full path takes the form `SESSION:WINDOW.PANE` where `PANE` is the pane's number.
 
