@@ -2,7 +2,6 @@
 
 = TTT Part 40 of n {longdash} Automating TMUX
 include::variables.adoc[]
-:mp3file:ttt-40-new-title/TTT_40_Automating_TMUX.mp3
 
 In <<ttt38,instalment 38>> We introduced TMUX as a replacement for the `screen` command which RedHat have depricated on RedHat Enterprise Linux, and it's free community variants CentOS and Fedora. Next we looked at how we can use TMUX's windows and panes model to take things to the next level and give us multiple virtual terminal windows within a single actual terminal window. We learned that sessions contain windows which contain panes which run a shell.
 
@@ -12,6 +11,8 @@ Given the knowledge we have to date we can start a TMUX session, create the wind
 
 .Matching Podcast Episode 40
 ****
+
+:mp3file: ttt-40-new-title/TTT_40_Automating_TMUX.mp3
 
 Listen Along: Taming the Terminal Podcast Episode 40 +
 part of  https://www.podfeet.com/blog/2020/08/ccatp-650/[episode 650 of the Chit Chat Across the Pond Podcast]
