@@ -60,7 +60,7 @@ In both cases we have a single shell command which executes `tmux`, and within t
 
 As we learned previously, we can use the `list-commands` TMUX command (or its alias `lscm`) to get a listing of all TMUX commands. We can also use `grep` to see the details of just a single command, e.g. to see all the commands for creating new things with their arguments we can run:
 
-[source,shell]
+[source,console?prompt=~]
 ----
 [root@www2 ~]# tmux lscm | grep new
 new-session (new) [-AdDP] [-F format] [-n window-name] [-s session-name] [-t target-session] [-x width] [-y height] [command]
