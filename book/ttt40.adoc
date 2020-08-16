@@ -2,7 +2,7 @@
 
 = TTT Part 40 of n {longdash} Automating TMUX
 include::variables.adoc[]
-:mp3file:ttt-40-new-title/TTT_40_New_Title.mp3
+:mp3file:ttt-40-new-title/TTT_40_Automating_TMUX.mp3
 
 In instalment 38 We introduced TMUX as a replacement for the `screen` command which RedHat have depricated on RedHat Enterprise Linux, and it's free community variants CentOS and Fedora. Next we looked at how we can use TMUX's windows and panes model to take things to the next level and give us multiple virtual terminal windows within a single actual terminal window. We learned that sessions contain windows which contain panes which run a shell.
 
@@ -10,7 +10,24 @@ We learned how to create a fresh TMUX session which gives us a single window con
 
 Given the knowledge we have to date we can start a TMUX session, create the windows we need, and split those into the desired number of panes, but, we have to do it all manually each time we start a new TMUX session. Wouldn't it be nice to be able to automate the process? Well, that's what we're going to do in this instalment, and along the way we'll get two little shell-related bonus tips to boot!
 
-PLAYER WILL GO HERE
+.Matching Podcast Episode 40
+****
+
+Listen Along: Taming the Terminal Podcast Episode 40 +
+part of  https://www.podfeet.com/blog/2020/08/ccatp-650/[episode 650 of the Chit Chat Across the Pond Podcast]
+
+// no audiocontrols in pdf
+ifndef::backend-pdf,apple-books[]
+pass:m,a[<audio controls='controls' src="{url-mp3}/{mp3file}">Your browser does not support HTML 5 audio</audio>]
+endif::[]
+
+Scan the QRcode to listen on a different device
+
+image::qrcodes/TTT_40.png[QRcode, align='left']
+
+You can also
+{url-mp3}/{mp3file}[play/download the MP3 in your browser]
+****
 
 == Multiple TMUX Commands in a Single Shell Command
 
