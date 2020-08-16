@@ -12,7 +12,7 @@ Given the knowledge we have to date we can start a TMUX session, create the wind
 .Matching Podcast Episode 40
 ****
 
-:mp3file: ttt-40-new-title/TTT_40_Automating_TMUX.mp3
+:mp3file: ttt-40-automating-tmux/TTT_40_Automating_TMUX.mp3
 
 Listen Along: Taming the Terminal Podcast Episode 40 +
 part of  https://www.podfeet.com/blog/2020/08/ccatp-650/[episode 650 of the Chit Chat Across the Pond Podcast]
