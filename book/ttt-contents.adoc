@@ -86,7 +86,7 @@ include::ttt38.adoc[]
 
 include::ttt39.adoc[]
 
-// include::ttt40.adoc[] // comment out for now so it won't be visible prematurely
+include::ttt40.adoc[]
 
 ifdef::troubleshoot[include::ttt-troubleshooting.adoc[]]
 
