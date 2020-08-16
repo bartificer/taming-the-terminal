@@ -251,7 +251,7 @@ export PATH=$PATH:~/scripts
 
 === TMUX Commands as Bash Aliases
 
-An alternative approach to shell scripts is shell aliases. Most shells support these, including Bash & ZSH. 
+An alternative approach to shell scripts is shell aliases. Most shells support these, including Bash & ZSH.
 
 We looked as aliases in <<ttt14,instalment 14>>, but as a quick reminder — the command to create an alias in Bash (and ZSH) is `alias`, it takes the following form:
 
