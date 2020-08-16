@@ -88,8 +88,10 @@ Although I don't want to duplicate the manual by listing everything TMUX can do,
 
 TMUX's commands for creating new sessions, new windows, and new panes accept arguments named `command` in the descriptions — this is how you can specify a shell/terminal command to execute in the new session/window/pane. The command should be passed as a single shell argument, so if the command to run has spaces or special characters in it you'll need to quote and/or escape those.
 
-TO DO MAKE ASIDE
+[NOTE]
+====
 The astute readers of man pages amony you note that in some situations TMUX can understand and accept shell commands spread over multiple arguments, but in my experience that doesn't work reliably, especially when the commands have flags in them, so I always pass the entire command as single shell argument, quoted and/or escaped as needed.
+====
 
 As an example, if we want a named session running the `top` command in the first pane and no command in the second we would run:
 
