@@ -21,6 +21,7 @@ chown
 cloudbased
 cmd
 commandkey
+Commandline
 computery
 config
 cron
@@ -38,6 +39,7 @@ expanders
 experimentations
 firewire
 Fong
+fridgeoven
 Gemfile
 Ghostbusters
 GitHub
@@ -53,6 +55,7 @@ kbd
 Komodo
 ksh
 lego
+localdomain
 longdash
 lookups
 loopback
@@ -63,6 +66,7 @@ mdfind
 menubar
 misconfiguration
 multitasker
+myrouter
 namespace
 nerdery
 netizens
@@ -71,6 +75,7 @@ netmasks
 Nosillacast
 Noto
 ors
+pbs
 plist
 Podcast
 podcatchers
@@ -78,6 +83,7 @@ podfeet
 Powershell
 prepending
 pwd
+raison
 redirections
 redownload
 reimplemented
@@ -87,6 +93,7 @@ revnumber
 routable
 rsync
 scp
+Sess
 Smultron
 spacebar
 subexpression
