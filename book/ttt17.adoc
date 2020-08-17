@@ -92,10 +92,10 @@ Because this series is all about the Terminal, the answer is actually very easy,
 
 Let's start with some context.
 Firstly, when it comes to regular expressions you can't ignore my favourite scripting language, Perl.
-Perl was developed for the purpose of processing text, which means pattern matching is at the very core of it's DNA.
+Perl was developed for the purpose of processing text, which means pattern matching is at the very core of its DNA.
 The official backronym for Perl is _the Practical Extracting and Reporting Language_, and the joke backronym is _the Pathologically Eclectic Rubbish Lister_. Either way, Perl is all about extracting information from textual data, so it's all about pattern matching.
 
-Because Perl has pattern matching so deeply embedded within it's being, it should come as no surprise that the gold standard for regular expressions are so-called _Perl-Style Regular Expressions_, which you'll often find referenced in man pages and other documentation as PCRE, which stands for _Perl Compatible Regular Expression_.
+Because Perl has pattern matching so deeply embedded within its being, it should come as no surprise that the gold standard for regular expressions are so-called _Perl-Style Regular Expressions_, which you'll often find referenced in man pages and other documentation as PCRE, which stands for _Perl Compatible Regular Expression_.
 What we're going to learn is not exactly PCRE, but, a sub-set of PCRE called POSIX ERE.
 The fact that POSIX ERE is a subset of PCRE means that everything we learn will be useful to us in any application that uses PCRE, which means we can transfer what we learn here to a LOT of other contexts, including the two common web programming languages PHP and JavaScript (which both use PCRE for their regular expression implementations).
 

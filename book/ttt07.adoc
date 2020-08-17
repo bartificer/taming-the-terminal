@@ -128,7 +128,7 @@ To copy a file to the folder you are currently in, you can use `.` as the destin
 By default, `cp` will only copy files, but, it can copy folders (and their contents) if you use the `-R` (recursive) flag.
 The flag should precede the argument list.
 
-Let's now create yet another empty folder and copy the folder `secondLevelFolder`, and all it's contents, into the new folder:
+Let's now create yet another empty folder and copy the folder `secondLevelFolder`, and all its contents, into the new folder:
 
 [source,shell]
 ----

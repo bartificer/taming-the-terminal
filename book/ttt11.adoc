@@ -82,7 +82,7 @@ While there is a `more` command, it's actually a copy of `less`, as can be seen 
 
 
 The `less` command is very powerful, and it can deal with very large files without getting bogged down. As an example, most Linux and Unix distributions contain a dictionary file, usually located at `/usr/share/dict/words`.
-This file is 235,886 long on OS X, and `less` has no problems searching or navigating it:
+This file is 235,886 lines long on OS X, and `less` has no problems searching or navigating it:
 
 [source,shell]
 ----

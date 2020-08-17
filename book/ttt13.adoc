@@ -149,7 +149,7 @@ ls -alh
 nano testFile.txt
 ----
 
-It's not that the executable files have gone, or no longer work, it's that our instance of Bash has lost the ability to find them because it's `PATH` is blank.
+It's not that the executable files have gone, or no longer work, it's that our instance of Bash has lost the ability to find them because its `PATH` is blank.
 We can still run the executables by using their full paths, e.g.:
 
 [source,shell]
