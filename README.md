@@ -4,11 +4,11 @@
 
 This repository contains all the content of the Taming the Terminal tutorial as well as the scripts that are needed to build the output.
 
-Under Releases you will find all the ebook versions of this tutorial.
+Please note this book is written in British English
 
 Instructions on how to build the ebooks are in the INSTALLATION.md file.
 
-In the releases you can find various formats:
+Under Releases you will find all the ebook versions of this tutorial.
 
 | Format         | Description                   |
 | -------------- | ----------------------------- |
