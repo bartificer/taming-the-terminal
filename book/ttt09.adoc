@@ -56,7 +56,7 @@ First, let's start FireFox from the Terminal as a regular foreground process:
 
 You'll see that the FireFox GUI launches as normal and that it outputs some information on what it's doing to the Terminal.
 You'll also notice that you have lost your command prompt.
-You can hammer the enter key all you want, but you're not getting that command prompt back until the FireFox process exists and hands control back to your command shell.
+You can hammer the enter key all you want, but you're not getting that command prompt back until the FireFox process exits and hands control back to your command shell.
 Go ahead and do that through the GUI as normal.
 Notice how the moment FireFox quits you get your command prompt back.
 
@@ -84,7 +84,7 @@ You can use a command prompt to quickly check your FireFox version number withou
 /Applications/Firefox.app/Contents/MacOS/firefox-bin --version
 ----
 
-Also, when you launch FireFox from a command shell you can pass it flags and arguments to alter it's behaviour, for a list of valid options run:
+Also, when you launch FireFox from a command shell you can pass it flags and arguments to alter its behaviour, for a list of valid options run:
 
 [source,shell]
 ----
@@ -187,7 +187,7 @@ For what seems like the millionth time today, let's start FireFox and background
 /Applications/Firefox.app/Contents/MacOS/firefox-bin &
 ----
 
-Rather than looking up it's PID, let's now exit it with the `killall` command:
+Rather than looking up its PID, let's now exit it with the `killall` command:
 
 [source,shell]
 ----

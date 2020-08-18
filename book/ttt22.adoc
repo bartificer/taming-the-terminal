@@ -31,7 +31,7 @@ You can also {url-mp3}/TTT22TipsAndTricks/TTT_22_Tips_and_Tricks.mp3[play/downlo
 
 Bash provides a number of different ways to repeat commands you've executed in the past.
 The simplest command of all of these is `!!`.
-You can use this on it's own:
+You can use this on its own:
 
 [source,console?prompt=bart$,highlight='1,5']
 ----

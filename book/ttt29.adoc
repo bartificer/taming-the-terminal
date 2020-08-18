@@ -12,7 +12,7 @@ The first of these we'll be looking at is the https://en.wikipedia.org/wiki/Secu
 This protocol is one of the absolute workhorses of the internet, and a vital tool for all Linux, Unix, and OS X sysadmins.
 
 At it's simplest level SSH allows you to execute commands on a remote computer, but because it was designed around the concept of a secure tunnel between two systems, SSH has expanded to allow all kinds of advanced features.
-The least-generous description of this could be that SSH has become a kind of sysadmins https://www.urbandictionary.com/define.php?term=fridgeoven[fridgeoven].
+The least-generous description of this could be that SSH has become a kind of sysadmin's https://www.urbandictionary.com/define.php?term=fridgeoven[fridgeoven].
 But I don't buy that, I prefer the alternative interpretation -- it simply makes sense not to reinvent the wheel, and to allow as much information as possible to flow throw the secure connection SSH provides between the two endpoints.
 
 Today we're just going to start with the basics, but in future instalments, we'll move on to the more advanced features.

@@ -332,7 +332,7 @@ After all, it would be embarrassing to phone your ISP only to find that the prob
 You can use the `traceroute` command to attempt to clarify the location of the problem.
 The `traceroute` command streams out a series of packets with different TTLs (Time To Live specified not in time but in hops between IP routers).
 Every TCP/IP stack that interacts with a `traceroute` packet at an IP level should decrement the TTL by one before passing the packet on to the next router along the packet's route to the destination being tested.
-If a TCP/IP stack gets a `traceroute` packet and there is no TTL left, it should reply to the originator informing it of where the packet got to within it's TTL.
+If a TCP/IP stack gets a `traceroute` packet and there is no TTL left, it should reply to the originator informing it of where the packet got to within its TTL.
 By piecing together the information contained in all the returned packets for each TTL it's possible to see how packets between the source and destination IPs traverse the internet.
 Because this protocol uses many packets, you are not seeing the journey any one packet took, but the average journey of all the packets.
 
@@ -385,7 +385,7 @@ If using Ethernet it could also be a damaged Ethernet cable, and if using WiFi i
 
 == Step 4 {longdash} Check Name Resolution
 
-Almost everything we do online involves domain names rather than IP addresses, so if a computer has lost the ability to convert domain names to IP addresses it will appear to have lost it's internet connection even if it has full IP-level connectivity.
+Almost everything we do online involves domain names rather than IP addresses, so if a computer has lost the ability to convert domain names to IP addresses it will appear to have lost its internet connection even if it has full IP-level connectivity.
 
 To test name resolution simply try to resolve a known-good domain name like `google.com`:
 

@@ -3,7 +3,7 @@
 = TTT Part 40 of n {longdash} Automating TMUX
 include::variables.adoc[]
 
-In <<ttt38,instalment 38>> we introduced TMUX as a replacement for the `screen` command which RedHat have deprecated on RedHat Enterprise Linux, and it's free community variants CentOS and Fedora. Next we looked at how we can use TMUX's windows and panes model to take things to the next level and give us multiple virtual terminal windows within a single actual terminal window. We learned that sessions contain windows which contain panes which run a shell.
+In <<ttt38,instalment 38>> we introduced TMUX as a replacement for the `screen` command which RedHat have deprecated on RedHat Enterprise Linux, and its free community variants CentOS and Fedora. Next we looked at how we can use TMUX's windows and panes model to take things to the next level and give us multiple virtual terminal windows within a single actual terminal window. We learned that sessions contain windows which contain panes which run a shell.
 
 We learned how to create a fresh TMUX session which gives us a single window containing a single pane running our default shell (bash or ZSH most probably). We then used TMUX commands to create additional windows, which we described as being like browser tabs, and we learned how to navigate between them. Finally, we learned how to split single panes vertically or horizontally, and to navigate between the panes within the current window.
 
@@ -47,7 +47,7 @@ So, we have a single shell command executing TMUX with a single TMUX command. Al
 
 The key to automating the creation of complex TMUX sessions is TMUX's ability to accept multiple TMUX commands within a single shell command. These multiple commands will be applied in order, so they effectively allow us to script the TMUX session initialisation.
 
-Multiple TMUX commands are separated by passing `;` as a shell argument. The thing to watch out for is that the `;` character has a meaning in the shells we are using in this series (Bash & ZSH), so we need to escape that character. We can do that in two ways, we can pre-fix it with a backslash, or, we can single-quote it. The following will both create named new sessions with a horizontally split pane:
+Multiple TMUX commands are separated by passing `;` as a shell argument. The thing to watch out for is that the `;` character has a meaning in the shells we are using in this series (Bash & ZSH), so we need to escape that character. We can do that in two ways, we can prefix it with a backslash, or, we can single-quote it. The following will both create named new sessions with a horizontally split pane:
 
 [source,shell]
 ----
@@ -243,7 +243,7 @@ chmod 755 topterm
 
 You can now run this script from the current folder with `./topterm`, or better yet, from any folder using `~/scripts/topterm`.
 
-If you'd like this script to be executable from any folder without needing to pre-fix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment (for a detailed discussion on `PATH` see <<ttt13,instalment 13>>). In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
+If you'd like this script to be executable from any folder without needing to prefix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment (for a detailed discussion on `PATH` see <<ttt13,instalment 13>>). In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
 
 [source,shell]
 ----
@@ -292,4 +292,4 @@ TMUX is clearly a very powerful tool. We've used it to build complex multi-shell
 
 However, since my intention here was never to try teach everything there is to know about TMUX, we're going to end our exploration of the tool here. Hopefully this has been enough to pique your interest, and to enable you to learn anything else you need independently.
 
-This series will now go back on hiatus for a little while, but the plan is to resurrect it again in a few months when Apple release macOS 11 Big Sur. Why? Because that's an opportune moment to release a series of instalments on the topic of switching from Bash to ZSH. Since macOS Catalina the default shell on the Mac has been ZSH rather than Bash, with Bash available as an option. Since Catalina was such a bug-fest on launch many people have chosen not to upgrade all their machines (me included!), but I expect that with Big Sur's debut there will be a lot of Terminal Tamers suddenly finding Bash's familar `$` command prompt replaced with ZSH's alien-feeling `%` command prompt!
+This series will now go back on hiatus for a little while, but the plan is to resurrect it again in a few months when Apple release macOS 11 Big Sur. Why? Because that's an opportune moment to release a series of instalments on the topic of switching from Bash to ZSH. Since macOS Catalina the default shell on the Mac has been ZSH rather than Bash, with Bash available as an option. Since Catalina was such a bug-fest on launch many people have chosen not to upgrade all their machines (me included!), but I expect that with Big Sur's debut there will be a lot of Terminal Tamers suddenly finding Bash's familiar `$` command prompt replaced with ZSH's alien-feeling `%` command prompt!

@@ -88,6 +88,8 @@ include::ttt39.adoc[]
 
 include::ttt40.adoc[]
 
+include::ttt-afterword.adoc[]
+
 ifdef::troubleshoot[include::ttt-troubleshooting.adoc[]]
 
 // ifndef::backend-html[:leveloffset: 0]

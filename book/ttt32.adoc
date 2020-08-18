@@ -52,7 +52,7 @@ With XQuartz installed, X11 apps can run in a regular OS X window.
 What X11 Forwarding allows you to do is have an app running on the remote computer but with the GUI rendered on your local computer.
 SSH effectively teleports the GUI across the network!
 
-For this to work the remote computer must have X11 installed, the remotely running app must use X11 to render it's GUI, and the local computer must have X11 installed.
+For this to work the remote computer must have X11 installed, the remotely running app must use X11 to render its GUI, and the local computer must have X11 installed.
 
 This means that Macs with XQuartz installed can receive remote GUIs, but cannot be the source or remote GUIs unless there are X11 apps installed on the Mac (possible, but uncommon).
 

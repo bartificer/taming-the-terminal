@@ -5,7 +5,7 @@ Taming the Terminal was created as a podcast and written tutorial with Bart Buss
 
 The book version of the podcast was a labor of love by Allison Sheridan and Helma van der Linden as a surprise gift to Bart Busschots for all he has done for the community.
 
-If you enjoy Taming the Terminal, you may also enjoy Bart and Allison's second podcast entitled Programming By Stealth.  This is a fortnightly podcast where Bart is teaching the audienct to program, starting with HTML and CSS (that's the stealthy part since it's not proper programming), into JavaScript and beyond. As with Taming the Terminal, Bart creates fantastic written tutorials for Programming By Stealth, including challenges to cement the listener's skills.
+If you enjoy Taming the Terminal, you may also enjoy Bart and Allison's second podcast entitled Programming By Stealth.  This is a fortnightly podcast where Bart is teaching the audience to program, starting with HTML and CSS (that's the stealthy part since it's not proper programming), into JavaScript and beyond. As with Taming the Terminal, Bart creates fantastic written tutorials for Programming By Stealth, including challenges to cement the listener's skills.
 
 You can find Programming By Stealth and Taming the Terminal podcasts along with Allison's other shows at https://www.podfeet.com/blog/subscribe-to-the-podcasts/[podfeet.com/blog/subscribe-to-the-podcasts/].
 

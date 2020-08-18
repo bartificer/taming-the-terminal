@@ -64,7 +64,7 @@ echo "#Hello World! (Local Markdown File 1)" > /tmp/ttt31/scp_local1.md
 echo "#Hello World! (Local Markdown File 2)" > /tmp/ttt31/scp_local2.md
 ----
 
-As we move files around, you can monitor the content of the local folder, and it's sub-folders, with the command:
+As we move files around, you can monitor the content of the local folder, and its sub-folders, with the command:
 
 [source,shell]
 ----
@@ -90,7 +90,7 @@ ssh $SSH_USER@$SSH_COMP 'echo "Hello World! (Remote Text File 1)" > /tmp/ttt31/r
 ssh $SSH_USER@$SSH_COMP 'echo "Hello World! (Remote Text File 2)" > /tmp/ttt31/rsync_folder/file2.txt'
 ----
 
-As we move files around, you can monitor the content of the remote folder, and it's sub-folders, with the command:
+As we move files around, you can monitor the content of the remote folder, and its sub-folders, with the command:
 
 [source,shell]
 ----

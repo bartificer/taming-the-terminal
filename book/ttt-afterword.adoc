@@ -1,0 +1,4 @@
+[[afterword]]
+= Afterword
+
+The creation of Taming the Terminal was executed using open source tools on an open source platform and with version control through the open source git technology. Allison Sheridan interviewed Dr. Helma van der Linden on how she created the book in an episode of the Chit Chat Across the Pond podcast. Helma walks through how each tool played its part, and how she developed the process. It's a great story of ingenuity on Helma's part and an amazing story of how open source allows us to build great things. You can find the audio and notes with links to the tools at https://www.podfeet.com/blog/2020/08/ccatp-649/

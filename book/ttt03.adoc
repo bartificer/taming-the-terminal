@@ -112,7 +112,7 @@ Thankfully, we now have something called `automount` to automatically mount any 
 The exact details will change from OS to OS, but on Ubuntu, the folder `/media/` is used to hold mount points for any file system you connect to the computer.
 Unlike Windows, most Linux/Unix systems make use of filesystems`' volume names and use them to give the mount points sensible names, rather than random letters.
 If I connect a USB drive containing a single partition with a filesystem with the volume name `Allison_Pen_Drive`, Ubuntu will automatically mount the filesystem on that thumb drive when you plug it in, using the mount point `/media/Allison_Pen_Drive/`.
-If that pen drive contained a single folder called `myFolder` containing a single file called `myFile.txt`, then `myFile.txt` would be added to the filesystem as `/media/Allison_Pen_Driver/myFolder/MyFile.txt`.
+If that pen drive contained a single folder called `myFolder` containing a single file called `myFile.txt`, then `myFile.txt` would be added to the filesystem as `/media/Allison_Pen_Drive/myFolder/myFile.txt`.
 
 Having the ability to mount any filesystem as any folder within a single master filesystem allows you to easily separate different parts of your OS across different drives.
 This is very useful if you are a Linux/Unix sysadmin or power user, but it can really confuse regular users.

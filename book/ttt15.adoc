@@ -46,19 +46,19 @@ Within applications, this stream could be attached to anything really.
 E.g.
 within a web server it is connected to the HTTP request data sent to the server by the browser.
 
-Many Unix/Linux commands can take their input from `STDIN`, and just about every command will write it's output to `STDOUT` and/or `STDERR`.
+Many Unix/Linux commands can take their input from `STDIN`, and just about every command will write its output to `STDOUT` and/or `STDERR`.
 This allows commands to be strung together by the simple act of redirecting these streams -- if you redirect the output of one command to the input of another, you have chained them together!
 
-Remember that every process has its own environment, and therefore, it's own version of the three standard streams.
+Remember that every process has its own environment, and therefore, its own version of the three standard streams.
 The redirection operators alter the copies of these three variables within individual processes, so, from the command's point of view, it always reads from `STDIN`, and always writes to `STDOUT` and/or `STDERR`, but where those streams flow to is determined by their environment.
 
 == Stream Redirection
 
 Bash provides a number of stream redirection operators:
 
-* *`|` (the '`pipe`' operator)* -- this operator connects `STDOUT` in the environment of the command to it's left to `STDIN` in the environment of the command to it's right.
-* *`>` and `>>`* -- these operators connect `STDOUT` in the environment of the command to their left a file at the path specified to their right
-* *`<`* -- this operator connects the contents of the file at the path specified to it's right to `STDIN` in the environment of the command to it's left
+* *`|` (the '`pipe`' operator)* -- this operator connects `STDOUT` in the environment of the command to its left to `STDIN` in the environment of the command to its right.
+* *`>` and `>>`* -- these operators connect `STDOUT` in the environment of the command to their left to a file at the path specified to their right
+* *`<`* -- this operator connects the contents of the file at the path specified to its right to `STDIN` in the environment of the command to its left
 
 The `|` operator is probably the most used of the three, as it allows straight-forward command chaining.
 It's also the simplest.
