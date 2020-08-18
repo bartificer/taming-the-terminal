@@ -1,7 +1,7 @@
 [[preface]]
 = Preface
 
-Taming the Terminal was created as a podcast and written tutorial with Bart Busschots as the instructor and Allison Sheridan as the student.  Taming the Terminal started its life as part of the https://www.podfeet.com[NosillaCast Apple Podcast] and was eventually spun off as a standalone Podcast. Bart and Allison have been podcasting together for many years, and their friendship and camaraderie make the recordings a delightful way to learn these technical concepts.
+Taming the Terminal was created as a podcast and written tutorial with Bart Busschots as the instructor and Allison Sheridan as the student.  Taming the Terminal started its life as part of the https://www.podfeet.com[NosillaCast Apple Podcast] and was eventually spun off as a standalone Podcast. Bart and Allison have been podcasting together for many years, and their friendship and camaraderie make the recordings a delightful way to learn these technical concepts. To our American readers, note that the text is written in British English so some words such as "instalment" may appear misspelled, but they are not.
 
 The book version of the podcast was a labor of love by Allison Sheridan and Helma van der Linden as a surprise gift to Bart Busschots for all he has done for the community.
 
