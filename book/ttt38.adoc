@@ -277,7 +277,7 @@ To take our simple `tmux a` command to the next level, and have it intelligently
 In shells derived from sh, like bash and zsh, a double-pipe indicates a boolean _or_ operation. When or-ing two values, if the first is `true`, the final result will always be `true` because `true || true` is `true`, and `true || false` is also `true`. That means that when the shell executes the command to the left of the `||` and it evaluates to `true` (emits a success exit code), there is no need to execute the command to the right to determine the result of the `||` operation. For this reason, sh, bash, and zsh all skip the command to the right of an
 `||` operator when the command to the left succeeds. This approach is known as _lazy evaluation_, and used by many programming languages too.
 
-Note that sh-derived shells take the same approach when evaluating boolean _and_ operations, the operator for which is `&&`. In this case, when the command to the left of the `&&` evaluates to `false`, the result will always be `false`, regardless of the outcome of the second command, because `false true` is `false`, and so is `false && false`.
+Note that sh-derived shells take the same approach when evaluating boolean _and_ operations, the operator for which is `&&`. In this case, when the command to the left of the `&&` evaluates to `false`, the result will always be `false`, regardless of the outcome of the second command, because `false && true` is `false`, and so is `false && false`.
 
 This second approach is probably more commonly used than the first, because it allows you do execute a second command if, and only if, the first succeeds. I often use this to conditionally reboot a server after a successful software update:
 
