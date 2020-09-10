@@ -45,8 +45,8 @@ jobs:
             git push --delete origin $ref
           done
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v2
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v2
 
       - name: Run bundle install
         run: |
