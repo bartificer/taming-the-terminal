@@ -116,12 +116,12 @@ namespace :book do
       puts "Validating ePub"
       `epubcheck #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
-      puts "\nConverting to Mobi (kf8)..."
-      `bundle exec asciidoctor-epub3 #{buildParams(mobiParams)} #{book_dir}/ttt-spine.adoc`
-      puts " -- Mobi output at #{mobiParams['destination-dir']}/#{mobiParams['out-file']}"
+      # puts "\nConverting to Mobi (kf8)..."
+      # `bundle exec asciidoctor-epub3 #{buildParams(mobiParams)} #{book_dir}/ttt-spine.adoc`
+      # puts " -- Mobi output at #{mobiParams['destination-dir']}/#{mobiParams['out-file']}"
 
-      # removing the ttt-kf8.epub version, because it doesn't have any function
-      `rm #{mobiParams['destination-dir']}/ttt-kf8.epub`
+      # # removing the ttt-kf8.epub version, because it doesn't have any function
+      # `rm #{mobiParams['destination-dir']}/ttt-kf8.epub`
 
       puts "\nConverting to PDF A4... (this one takes a while)"
       `bundle exec asciidoctor-pdf #{buildParams(pdfParams)} #{book_dir}/ttt-spine.adoc`
