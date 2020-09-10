@@ -9,5 +9,3 @@ todo.tasks
 Ubuntu_Mono.zip
 Roboto.zip
 archive/*
-vagrant/.vagrant
-vagrant/*.log
