@@ -1484,6 +1484,8 @@ nav[hidden~="hidden"] {
  * --------------------------------------------------
  */
 
+/* avoid page breaks in the sidebar */
+
 aside.sidebar {
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
@@ -1495,8 +1497,8 @@ aside.sidebar {
 /* this block should override the definition in the original file */
 
 body {
-    /* don't use the font-size on the body, because it prevents the font to resize in Apple Books */
-    font-size: inherit;
+    /* don't use the font-size 100% on the body, because it prevents the font to resize in Apple Books */
+    font-size: 1em;
 }
 
 body p {
