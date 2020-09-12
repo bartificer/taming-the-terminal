@@ -137,6 +137,15 @@ namespace :book do
       # 2>/dev/null`
       puts " -- PDF output at #{params['destination-dir']}/#{params['out-file']}"
 
+      params = pdfParams
+      params['out-file'] = 'ttt-a5.pdf'
+      params['attribute']['pdf-theme'] = 'bartificer-a5'
+
+      puts "\nConverting to PDF A5... (this one takes a while)"
+      `bundle exec asciidoctor-pdf #{buildParams(params)} --trace #{book_dir}/ttt-spine.adoc`
+      # 2>/dev/null`
+      puts " -- PDF output at #{params['destination-dir']}/#{params['out-file']}"
+
       puts "\nZip everything"
       `zip -r output/ttt_all.zip output/ttt*.* output/assets`
     end

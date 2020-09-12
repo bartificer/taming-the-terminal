@@ -1,0 +1,47 @@
+extends: default-with-fallback-font
+font:
+  merge: true
+  catalog:
+    UbuntuMono:
+      normal: ubuntumono-normal.ttf
+      italic: ubuntumono-italic.ttf
+      bold: ubuntumono-bold.ttf
+      bold_italic: ubuntumono-bold_italic.ttf
+    Noto Sans:
+      normal: notosans-normal.ttf
+      italic: notosans-italic.ttf
+      bold: notosans-bold.ttf
+      bold_italic: notosans-bold_italic.ttf
+    Noto Serif:
+      normal: GEM_FONTS_DIR/notoserif-regular-subset.ttf
+      bold: GEM_FONTS_DIR/notoserif-bold-subset.ttf
+      italic: GEM_FONTS_DIR/notoserif-italic-subset.ttf
+      bold_italic: GEM_FONTS_DIR/notoserif-bold_italic-subset.ttf
+    M+ 1mn:
+      normal: GEM_FONTS_DIR/mplus1mn-regular-subset.ttf
+      bold: GEM_FONTS_DIR/mplus1mn-bold-subset.ttf
+      italic: GEM_FONTS_DIR/mplus1mn-italic-subset.ttf
+      bold_italic: GEM_FONTS_DIR/mplus1mn-bold_italic-subset.ttf
+  fallbacks: GEM_FONTS_DIR/mplus1p-regular-fallback.ttf
+bartificer:
+  accent-color: #00408d
+  base-color: #333333
+  link-color: #002FA7
+  base-font: Noto Sans
+  heading-font: UbuntuMono
+  literal-color: #e83e8c;
+page:
+  layout: portrait
+  margin: [1.5cm, 1.5cm, 1.5cm, 1.5cm]
+  # margin_inner and margin_outer keys are used for recto/verso print margins when media=prepress
+  margin_inner: 1.5cm
+  margin_outer: 1.5cm
+  size: A5
+base:
+  font-color: $bartificer-base-color
+  font-family: $bartificer-base-font
+heading:
+  font-color: $bartificer-accent-color
+  font-family: $bartificer-heading-font
+# link:
+#   font-color: $bartificer-link-color
