@@ -1505,6 +1505,13 @@ body p {
     text-align: left;
 }
 
+/* detect dark mode in Apple Books
+ * src: https: //stackoverflow.com/questions/14305164/any-way-to-detect-if-dark-theme-is-active-in-ibooks-from-within-epub
+ */
+:root[__ibooks_internal_theme*="Night"] body a:visited {
+    color: initial;
+    /* hack for font color in iBooks */
+    -webkit-text-fill-color: initial;
 }
 
 /* Include highlighting effect for Rouge source-highlighter
