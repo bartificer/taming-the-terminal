@@ -1505,10 +1505,6 @@ body p {
     text-align: left;
 }
 
-/* Kindle does not justify list-item element, must wrap in nested block element */
-li>span.principal,
-dd>span.principal {
-    text-align: left;
 }
 
 /* Include highlighting effect for Rouge source-highlighter
