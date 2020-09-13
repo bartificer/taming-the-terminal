@@ -4,7 +4,7 @@ include::variables.adoc[]
 
 In the previous two instalments (<<ttt17,17>> & <<ttt18,18>>) of this series, we learned how to represent patterns with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).
 We used the `egrep` command to test our regular expressions, but we didn't discuss the command itself in detail.
-Now that we understand regular expressions, it's time to take a closer look at both `egrep`, and it's older brother `grep`, both commands for filtering and searching text.
+Now that we understand regular expressions, it's time to take a closer look at both `egrep`, and its older brother `grep`, both commands for filtering and searching text.
 
 .Matching Podcast Episode 19
 ****

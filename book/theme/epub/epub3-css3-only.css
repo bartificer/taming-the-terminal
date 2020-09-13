@@ -1,3 +1,8 @@
+/* It is not possible to include the original epub3-css3-only.css file
+ * by copying and renaming it and importing it in this file.
+ * So I'll copy the entire content here and add modifications
+ * to the bottom.
+ */
 /* @page is for EPUB2 only */
 @page {
     margin: 0;

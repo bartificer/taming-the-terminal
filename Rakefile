@@ -105,7 +105,7 @@ namespace :book do
       `scripts/fix-epub.sh`
 
       puts "Validating ePub"
-      `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
+      `epubcheck #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
       `mv #{epubParams['destination-dir']}/#{epubParams['out-file']} #{epubParams['destination-dir']}/ttt-audio.epub`
 
@@ -114,14 +114,14 @@ namespace :book do
       puts " -- Epub output at #{epubParams['destination-dir']}/#{epubParams['out-file']}"
 
       puts "Validating ePub"
-      `java -jar epubcheck/epubcheck.jar #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
+      `epubcheck #{epubParams['destination-dir']}/#{epubParams['out-file']} -e`
 
-      puts "\nConverting to Mobi (kf8)..."
-      `bundle exec asciidoctor-epub3 #{buildParams(mobiParams)} #{book_dir}/ttt-spine.adoc`
-      puts " -- Mobi output at #{mobiParams['destination-dir']}/#{mobiParams['out-file']}"
+      # puts "\nConverting to Mobi (kf8)..."
+      # `bundle exec asciidoctor-epub3 #{buildParams(mobiParams)} #{book_dir}/ttt-spine.adoc`
+      # puts " -- Mobi output at #{mobiParams['destination-dir']}/#{mobiParams['out-file']}"
 
-      # removing the ttt-kf8.epub version, because it doesn't have any function
-      `rm #{mobiParams['destination-dir']}/ttt-kf8.epub`
+      # # removing the ttt-kf8.epub version, because it doesn't have any function
+      # `rm #{mobiParams['destination-dir']}/ttt-kf8.epub`
 
       puts "\nConverting to PDF A4... (this one takes a while)"
       `bundle exec asciidoctor-pdf #{buildParams(pdfParams)} #{book_dir}/ttt-spine.adoc`
@@ -133,6 +133,15 @@ namespace :book do
       params['attribute']['pdf-theme'] = 'bartificer-us'
 
       puts "\nConverting to PDF US... (this one takes a while)"
+      `bundle exec asciidoctor-pdf #{buildParams(params)} --trace #{book_dir}/ttt-spine.adoc`
+      # 2>/dev/null`
+      puts " -- PDF output at #{params['destination-dir']}/#{params['out-file']}"
+
+      params = pdfParams
+      params['out-file'] = 'ttt-a5.pdf'
+      params['attribute']['pdf-theme'] = 'bartificer-a5'
+
+      puts "\nConverting to PDF A5... (this one takes a while)"
       `bundle exec asciidoctor-pdf #{buildParams(params)} --trace #{book_dir}/ttt-spine.adoc`
       # 2>/dev/null`
       puts " -- PDF output at #{params['destination-dir']}/#{params['out-file']}"

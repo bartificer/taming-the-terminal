@@ -1,7 +1,5 @@
 ifndef::backend-html[:leveloffset: +1]
 
-include::colophon.adoc[]
-
 include::ttt-foreword.adoc[]
 
 include::ttt-preface.adoc[]
@@ -86,8 +84,14 @@ include::ttt38.adoc[]
 
 include::ttt39.adoc[]
 
+include::ttt40.adoc[]
+
+include::ttt-afterword.adoc[]
+
 ifdef::troubleshoot[include::ttt-troubleshooting.adoc[]]
 
 // ifndef::backend-html[:leveloffset: 0]
 
 // ifndef::backend-html[include::index.asc[]]
+
+include::colophon.adoc[]

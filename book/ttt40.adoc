@@ -1,0 +1,295 @@
+[[ttt40]]
+
+= TTT Part 40 of n {longdash} Automating TMUX
+include::variables.adoc[]
+
+In <<ttt38,instalment 38>> we introduced TMUX as a replacement for the `screen` command which RedHat have deprecated on RedHat Enterprise Linux, and its free community variants CentOS and Fedora. Next we looked at how we can use TMUX's windows and panes model to take things to the next level and give us multiple virtual terminal windows within a single actual terminal window. We learned that sessions contain windows which contain panes which run a shell.
+
+We learned how to create a fresh TMUX session which gives us a single window containing a single pane running our default shell (bash or ZSH most probably). We then used TMUX commands to create additional windows, which we described as being like browser tabs, and we learned how to navigate between them. Finally, we learned how to split single panes vertically or horizontally, and to navigate between the panes within the current window.
+
+Given the knowledge we have to date we can start a TMUX session, create the windows we need, and split those into the desired number of panes, but, we have to do it all manually each time we start a new TMUX session. Wouldn't it be nice to be able to automate the process? Well, that's what we're going to do in this instalment, and along the way we'll get two little shell-related bonus tips to boot!
+
+.Matching Podcast Episode 40
+****
+
+:mp3file: ttt-40-automating-tmux/TTT_40_Automating_TMUX.mp3
+
+Listen Along: Taming the Terminal Podcast Episode 40 +
+part of https://www.podfeet.com/blog/2020/08/ccatp-650/[episode 650 of the Chit Chat Across the Pond Podcast]
+
+// no audiocontrols in pdf
+ifndef::backend-pdf,apple-books[]
+pass:m,a[<audio controls='controls' src="{url-mp3}/{mp3file}">Your browser does not support HTML 5 audio</audio>]
+endif::[]
+
+Scan the QRcode to listen on a different device
+
+image::qrcodes/TTT_40.png[QRcode, align='left']
+
+You can also
+{url-mp3}/{mp3file}[play/download the MP3 in your browser]
+****
+
+== Multiple TMUX Commands in a Single Shell Command
+
+The phraseology and nomenclature is about to get potentially confusing, so let's nip that in the bud by being extremely explicit.
+
+Consider the following shell/terminal command:
+
+[source,shell]
+----
+tmux new -s ttt40
+----
+
+This is a single shell command that executes `tmux` with three shell arguments — `new`, `-s`, and `ttt40`. Those three shell arguments are handed to `tmux` which gets to interpret them how it will. To TMUX those three shell arguments are interpreted as the TMUX command `new`, the TMUX flag `-s` for _session name_, and a value for the flag, i.e. the name to give the session.
+
+So, we have a single shell command executing TMUX with a single TMUX command. All our examples to date have taken this form.
+
+The key to automating the creation of complex TMUX sessions is TMUX's ability to accept multiple TMUX commands within a single shell command. These multiple commands will be applied in order, so they effectively allow us to script the TMUX session initialisation.
+
+Multiple TMUX commands are separated by passing `;` as a shell argument. The thing to watch out for is that the `;` character has a meaning in the shells we are using in this series (Bash & ZSH), so we need to escape that character. We can do that in two ways, we can prefix it with a backslash, or, we can single-quote it. The following will both create named new sessions with a horizontally split pane:
+
+[source,shell]
+----
+tmux new -s ttt40-slash \; split-window
+tmux new -s ttt40-quote ';' split-window
+----
+
+In both cases we have a single shell command which executes `tmux`, and within that single shell command we have two TMUX commands, `new` with the `-s` flag, and `split-window` with no arguments.
+
+== Refresher — Listing TMUX Commands
+
+As we learned previously, we can use the `list-commands` TMUX command (or its alias `lscm`) to get a listing of all TMUX commands. We can also use `grep` to see the details of just a single command, e.g. to see all the commands for creating new things with their arguments we can run:
+
+[source,console?prompt=#]
+----
+[root@www2 ~]# tmux lscm | grep new
+new-session (new) [-AdDP] [-F format] [-n window-name] [-s session-name] [-t target-session] [-x width] [-y height] [command]
+new-window (neww) [-adkP] [-c start-directory] [-F format] [-n window-name] [-t target-window] [command]
+rename-session (rename) [-t target-session] new-name
+rename-window (renamew) [-t target-window] new-name
+[root@www2 ~]#
+----
+
+This is very useful for simply refreshing your memory, but you may need to refer to the man pages for more details, like for example, the meaning of the various one-letter flags supported by the `new-session` command.
+
+== Bonus 1 — Controlling the Current TMUX Session from Within TMUX with `tmux`
+
+If you run a `tmux` command that operates on a specific session, pane, or window from within a shell in a TMUX session it will default to the session/window/pane the command is running in. So, to end a TMUX session from within a TMUX session simply run the command `tmux kill-session`. You'll find this quite convenient as you go through the examples in this instalment, otherwise you'll end up with a lot of TMUX sessions!
+
+Since this sensible defaulting works with any TMUX command that targets a session, window, or pane those of you who find the kbd:[ctrl+b] key combinations harder to remember than English-y terminal commands can use the same approach for splitting panes (`tmux split-window`) or killing them (`tmux kill-pane`) etc..
+
+== Building Complex TMUX Sessions from the CLI
+
+If you run `tmux lscm`, or indeed `man tmux`, you'll notice that TMUX supports a lot of commands — far more than we've seen to so far in this series of TMUX instalments, and indeed, far more than we will see in the remainder of the series. If you want to do something with TMUX, there's probably a command for it, you'll just need to RTFM (_read the fine manual_).
+
+Although I don't want to duplicate the manual by listing everything TMUX can do, I do want to draw your attention to a few important features you're likely to want when building TMUX sessions from the CLI (_Commandline interface_).
+
+=== Executing Shell/Terminal Commands in Sessions/Windows/Panes
+
+TMUX's commands for creating new sessions, new windows, and new panes accept arguments named `command` in the descriptions — this is how you can specify a shell/terminal command to execute in the new session/window/pane. The command should be passed as a single shell argument, so if the command to run has spaces or special characters in it you'll need to quote and/or escape those.
+
+[NOTE]
+====
+The astute readers of man pages among you note that in some situations TMUX can understand and accept shell commands spread over multiple arguments, but in my experience that doesn't work reliably, especially when the commands have flags in them, so I always pass the entire command as single shell argument, quoted and/or escaped as needed.
+====
+
+As an example, if we want a named session running the `top` command in the first pane and no command in the second we would run:
+
+[source,shell]
+----
+tmux new -s ttt40-top1 top \; split-window
+----
+
+Notice that because `top` is a single word shell command we didn't have to quote or escape it.
+
+If we wanted three panes with one for running commands, one for showing top, and one for showing the main system log file could do something like:
+
+[source,shell]
+----
+# on Linux
+tmux new -s ttt40-toptail1-linux top \; split-window 'tail -f /var/log/messages' \; split-window
+
+# on Mac
+tmux new -s ttt40-toptail1-mac top \; split-window 'tail -f /var/log/system.log' \; split-window
+----
+
+Notice that because the `tail -f ...` command contains spaces, I had to quote it to represent it as a single shell argument.
+
+=== Applying Standard Layouts
+
+So far we've simply been splitting panes and accepting the default behaviour of each pane splitting in half horizontally each time. What if we wanted our three panes to be equal, or what if we had six and we wanted them nicely tiled?
+
+These are very common things to want to do, so TMUX provides us with a mechanism for easily arranging our panes into a number of pre-defined standard layouts. You'll find the full list of them in the man page. The three I find most useful are `even-horizontal`, `even-vertical`, and `tiled`.
+
+We can use the `select-layout` command to enable one of these standard layouts. As an example, let's enhance the previous example by applying the `even-vertical` layout:
+
+[source,shell]
+----
+# on Linux
+tmux new -s ttt40-toptail2-linux top \; split-window 'tail -f /var/log/messages' \; split-window \; select-layout even-vertical
+
+# on Mac
+tmux new -s ttt40-toptail2-mac top \; split-window 'tail -f /var/log/system.log' \; split-window \; select-layout even-vertical
+----
+
+=== Moving the Focus
+
+Notice that so far, the final pane to be created has always been the active one. What if we wanted our pane with nothing in it to be at the top and for that to be the pane to get focus? We can use the `select-pane` command for that:
+
+[source,shell]
+----
+# on Linux
+tmux new -s ttt40-toptail3-linux \; split-window top \; split-window 'tail -f /var/log/messages' \; select-layout even-vertical \; select-pane -t 0
+
+# on Mac
+tmux new -s ttt40-toptail3-mac \; split-window top \; split-window 'tail -f /var/log/system.log' \; select-layout even-vertical \; select-pane -t 0
+----
+
+Notice the use of the `-t` flag to _target_ the 0th pane.
+
+== Advice on Targeting Sessions, Windows & Panes
+
+Many TMUX commands use the `-t` flag to allow you to target a specific session, window, or pane. TMUX actually supports many different targeting mechanisms, and the man page explains them all in detail, and in the order they are applied, but my advice is to keep it simple.
+
+The first thing to understand is full paths — for sessions that's simply their name, which as we learned right at the start of our exploration of TMUX defaults to being a number. For windows the full path takes the form `SESSION:WINDOW` where `SESSION` is a session name and `WINDOW` is a window name or number. Finally, for panes the full path takes the form `SESSION:WINDOW.PANE` where `PANE` is the pane's number.
+
+Thankfully you don't often need to use full paths because TMUX defaults to the current session, window, and pane. This is why `select-pane -t 0` worked in the previous example — the session and window were defaulted to the current ones, so the target was simply pane 0.
+
+If you do need to use full paths, I strongly recommend always naming your sessions and panes so the full paths look sensible — that can really help save your sanity. 🙂
+
+== Bonus 2 — Single Shell/Terminal Commands on Multiple Lines
+
+At this stage our single `tmux` terminal commands are getting very long indeed, and as a result, quite difficult to read. Wouldn't it be nice to be able to split long terminal commands across multiple lines? Thankfully the good people behind Bash and ZSH thought so too!
+
+We've already seen that the `\` can be used to escape special characters in Bash/ZSH, well, the newline character is a special character, so it too can be escaped by preceding it with a `\`. To spread a terminal command over multiple lines, simply end each line that's not the last line with a backslash.
+
+We can use this to divide our complex TMUX commands into easier to read, and hence understand, pieces:
+
+[source,shell]
+----
+tmux new -s ttt40-top2 \; \
+split-window top \; \
+select-pane -t 0
+----
+
+== Saving Complex TMUX Commands for Easy Reuse
+
+Having taken so much time to build up a complex TMUX command, it makes sense to save it in some way for future reuse. You could use tools outside of the terminal for that, perhaps one of the many key-stroke expanders like TextExpander, but since we're in the business of taming terminals here, let's look at two approaches for saving our complete commands within the terminal environment.
+
+Before we do that, we should make our commands just a little bit more robust by reusing the tip from the end of <<ttt38,instalment 38>> and using the `||` operator to reattach to an existing session with the desired name, or, create a new one:
+
+[source,shell]
+----
+tmux a -t topterm || \
+tmux new -s topterm \; \
+split-window top \; \
+select-pane -t 0
+----
+
+As a reminder, the `||` operator represents binary OR, and Bash & ZSH use so-called _lazy evaluation_ to determine whether an OR operation evaluates to true or false. That means that if the first command succeeds, the second one will never be attempted, but if the first fails, it will. So, in this case that means if we succeed in reattaching to a session named `topterm` we'll do that and never execute the command to build a new session, but if we fail to attach to an existing session we'll create a new one named `topterm`.
+
+=== TMUX Commands in Shell Scripts
+
+The simplest way to save any terminal command or series of terminal commands for reuse is to save them as a shell script.
+
+A shell script is simply a text file that meets three simple criteria:
+
+. The file is a plain text file
+. The first line is a so-called _shebang line_
+. The file is marked as executable
+
+In Linux/Unix/Mac environments, the operating system can figure out how to run a plain-text executable file automatically if the very first line starts with `#!` followed by the path to a shell. This specially formatted opening line is known colloquially as the _shebang line_.
+
+We'll be using Bash, so our scripts will be plain text files starting with:
+
+[source,shell]
+----
+#!/bin/bash
+----
+
+Let's create a script to start a TMUX session named `topterm` that will have two panes, one to enter commands into at the top, and one below running the `top` command.
+
+To start, let's create a folder in our home folder named `scripts`, and change into it:
+
+[source,shell]
+----
+mkdir -p ~/scripts
+cd ~/scripts
+----
+
+Note that by using `-p` (for _path_) we stop `mkdir` complaining if the folder already exists.
+
+In this folder, use your favourite plain text editor to create a file named `topterm` without a file extension containing the following:
+
+[source,shell]
+----
+#!/bin/bash
+tmux a -t topterm \
+ || \
+tmux new -s topterm \; \
+  split-window top \; \
+  select-pane -t 0
+----
+
+Notice that I've chosen to use some indentation to make the complex command a little more readable.
+
+Now make the file executable:
+
+[source,shell]
+----
+chmod 755 topterm
+----
+
+You can now run this script from the current folder with `./topterm`, or better yet, from any folder using `~/scripts/topterm`.
+
+If you'd like this script to be executable from any folder without needing to prefix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment (for a detailed discussion on `PATH` see <<ttt13,instalment 13>>). In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
+
+[source,shell]
+----
+export PATH=$PATH:~/scripts
+----
+
+=== TMUX Commands as Bash Aliases
+
+An alternative approach to shell scripts is shell aliases. Most shells support these, including Bash & ZSH.
+
+We looked as aliases in <<ttt14,instalment 14>>, but as a quick reminder — the command to create an alias in Bash (and ZSH) is `alias`, it takes the following form:
+
+[source,shell]
+----
+alias ALIAS="COMMAND"
+----
+
+As an example, the following aliases `ls -l` as `lsl`:
+
+[source,shell]
+----
+alias lsl="ls -l"
+----
+
+You can now invoke `ls -l` by simply typing `lsl`.
+
+Similarly, we can create an alias for our `topterm` TMUX session like so:
+
+[source,shell]
+----
+alias topterm="\
+  tmux a -t topterm \
+  || \
+  tmux new -s topterm \; \
+    split-window top \; \
+    select-pane -t 0"
+----
+
+Notice that the trick of using `\` at the end of lines to split commands over multiple lines even works within double-quoted strings!
+
+Something to note is that aliases only last until the current shell ends, so to have a permanent alias you need to create it in a file that gets loaded each time your shell starts. If you're using Bash the correct file to add your aliases to is `~/.bashrc`.
+
+== Final Thoughts
+
+TMUX is clearly a very powerful tool. We've used it to build complex multi-shell environments that can be connected to and detached from at will, and simultaneously connected to from arbitrarily many terminal windows. The most amazing thing about TMUX is that we've only scratched the surface of what it can do!
+
+However, since my intention here was never to try teach everything there is to know about TMUX, we're going to end our exploration of the tool here. Hopefully this has been enough to pique your interest, and to enable you to learn anything else you need independently.
+
+This series will now go back on hiatus for a little while, but the plan is to resurrect it again in a few months when Apple release macOS 11 Big Sur. Why? Because that's an opportune moment to release a series of instalments on the topic of switching from Bash to ZSH. Since macOS Catalina the default shell on the Mac has been ZSH rather than Bash, with Bash available as an option. Since Catalina was such a bug-fest on launch many people have chosen not to upgrade all their machines (me included!), but I expect that with Big Sur's debut there will be a lot of Terminal Tamers suddenly finding Bash's familiar `$` command prompt replaced with ZSH's alien-feeling `%` command prompt!
