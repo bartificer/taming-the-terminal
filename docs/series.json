@@ -97,38 +97,38 @@
         },
         "15": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/02/02/taming-the-terminal-part-15-of-n-plumbing/",
-            "commands": [],
-            "keywords": []
+            "commands": ["wc", "base64"],
+            "keywords": ["pipe", "stream", "redirect", "STDOUT", "STDIN", "STDERR", "/dev/null", "/dev/urandom", "/dev/random", "/dev/zero"]
         },
         "16": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/02/08/taming-the-terminal-part-16-of-n-crossing-the-streams/",
             "commands": [],
-            "keywords": []
+            "keywords": ["streams", "pipe", "redirect", "append"]
         },
         "17": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/04/27/taming-the-terminal-part-16-of-n-regular-expressions/",
-            "commands": [],
-            "keywords": []
+            "commands": ["egrep"],
+            "keywords": ["Regular Expression", "Reg Exp", "RE", "PCRE", "POSIX ERE"]
         },
         "18": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/05/10/taming-the-terminal-part-18-of-n-more-res/",
-            "commands": [],
-            "keywords": []
+            "commands": ["egrep"],
+            "keywords": ["Regular Expression", "Reg Exp", "RE", "PCRE", "POSIX ERE"]
         },
         "19": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/07/19/taming-the-terminal-part-19-of-n-text-searches/",
-            "commands": [],
-            "keywords": []
+            "commands": ["grep", "egrep", "tcpdump", "netstat"],
+            "keywords": ["search", "Regular Expression", "Reg Exp", "RE", "PCRE", "POSIX ERE"]
         },
         "20": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/09/07/taming-the-terminal-part-20-of-n-file-searches/",
-            "commands": [],
-            "keywords": []
+            "commands": ["find"],
+            "keywords": ["search", "Regular Expression", "Reg Exp", "RE", "PCRE", "POSIX ERE"]
         },
         "21": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/09/26/taming-the-terminal-part-21-of-n-more-searching/",
-            "commands": [],
-            "keywords": []
+            "commands": ["find", "mdfind"],
+            "keywords": ["search"]
         },
         "22": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/10/10/taming-the-terminal-part-22-of-n-tips-tricks/",
