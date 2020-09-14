@@ -94,9 +94,6 @@ namespace :book do
       `mkdir -p docs/assets`
       `rsync -r --delete book/assets/* docs/assets/`
 
-      puts "Zip the html version"
-      `zip output/ttt_html.zip output/ttt.html output/assets`
-
       puts "Update the website"
       `cp #{htmlParams['destination-dir']}/#{htmlParams['out-file']} docs/book.html`
 
@@ -148,6 +145,9 @@ namespace :book do
       `bundle exec asciidoctor-pdf #{buildParams(params)} --trace #{book_dir}/ttt-spine.adoc`
       # 2>/dev/null`
       puts " -- PDF output at #{params['destination-dir']}/#{params['out-file']}"
+
+      puts "\nZip the html version"
+      `zip -r output/ttt_html.zip output/ttt.html output/assets`
 
       puts "\nZip everything except the html zip"
       `zip -r output/ttt_all.zip output/ttt*.[a-y]* output/assets`
