@@ -32,7 +32,7 @@
         },
         "4": {
             "originalUrl": "https://www.bartbusschots.ie/s/2013/05/26/taming-the-terminal-part-4-of-n/",
-            "commands": ["pwd", "ls", "cd", "dir"],
+            "commands": ["pwd", "ls", "cd", "dir", ".", "..", "~"],
             "keywords": [
                 "file system",
                 "directory",
@@ -97,7 +97,7 @@
         },
         "15": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/02/02/taming-the-terminal-part-15-of-n-plumbing/",
-            "commands": ["wc", "base64"],
+            "commands": ["wc", "base64", "|", ">", ">>", "<"],
             "keywords": ["pipe", "stream", "redirect", "STDOUT", "STDIN", "STDERR", "/dev/null", "/dev/urandom", "/dev/random", "/dev/zero"]
         },
         "16": {
@@ -132,18 +132,18 @@
         },
         "22": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/10/10/taming-the-terminal-part-22-of-n-tips-tricks/",
-            "commands": [],
-            "keywords": []
+            "commands": ["!!", "open"],
+            "keywords": ["Bash", "reverse search", "drag and drop", "drag & drop", "cursor"]
         },
         "23": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/10/25/taming-the-terminal-part-23-of-n-networking-intro/",
-            "commands": [],
-            "keywords": []
+            "commands": ["traceroute", "tracert", "tcpdump"],
+            "keywords": ["networking", "internet", "network layer", "link layer", "internet layer", "transport layer", "application layer", "TCP/IP", "TCP", "IP", "IP address", "DNS", "HTTP"]
         },
         "24": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/11/23/taming-the-terminal-part-24-of-n-ethernet-arp/",
-            "commands": [],
-            "keywords": []
+            "commands": ["tcpdump", "ifconfig"],
+            "keywords": ["networking", "internet", "network layer", "link layer", "TCP/IP", "ethernet", "ARP", "Address Resolution Protocol", "MAC", "MAC address", "127.0.0.1", "loopback", "loopback address", "network interface", "NIC", "network card", "hub", "switch", "router", "wifi"]
         },
         "25": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/12/07/taming-the-terminal-part-25-of-n-ip-subnets/",
