@@ -151,6 +151,9 @@ namespace :book do
 
       puts "\nZip everything except the html zip"
       `zip -r output/ttt_all.zip output/ttt*.[a-y]* output/assets`
+
+      puts"\nRemove the ttt.html file because we have already a zip version which includes the assets"
+      `rm #{htmlParams['destination-dir']}/#{htmlParams['out-file']}`
     end
   end
 end
