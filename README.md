@@ -18,7 +18,7 @@ Under Releases you will find all the ebook versions of this tutorial.
 | ttt.pdf         | PDF with pages in A4 size                |
 | ttt-us.pdf      | PDF with pages in Letter size            |
 | ttt-A5.pdf      | PDF with pages in A5 size                |
-| ttt.html        | single page HTML version                 |
+| ttt_html.zip    | single page HTML version with assets     |
 
 Note, for the HTML version you need to download the ttt_all.zip. This zip not only contains the 4 output formats, but also the images for the HTML version.
 
