@@ -122,13 +122,7 @@ The original episodes are HTML pages on Bart's website. They need to be converte
    ./generate_qrcode.sh
    ```
 
-6. Update the external_resources.xml file
-
-   - copy the link from 5. to the file `publish/external_resources.xml`
-   - update the line to turn it into an XML tag matching the other lines in the file
-   - save the file
-
-7. Cleanup
+6. Cleanup
 
    - add the new tttXX.adoc file to `book/ttt-contents.adoc`
    - if necessary, rename the QRcode file to match the TTT_XX.png naming convention
