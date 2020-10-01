@@ -19,19 +19,36 @@ jobs:
       date: ${{ steps.release_info.outputs.date }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
+      - id: release_info
+        name: Get release information
+        run: python3 ci/release-info.py "$GITHUB_EVENT_NAME"
+
+      - name: Activity check
+        shell: bash
+        run: |
+             D=86400 # 24 hours in seconds
+
+             lastcommit="$(curl -sL https://api.github.com/repos/$GITHUB_REPOSITORY/commits | jq -r '[.[] | select (.commit.message != "Updating docs") ][0].commit.author.date')"
+             timestamp=$(date -u -d "$lastcommit" +%s)
+             days=$(( ( $(date -u +%s) - $timestamp ) / $D ))
+             worktodo=1
+            if [ $days -gt 0 && steps.release_info.outputs.release_type == 'nightly']; then
+              echo "nothing to do, last 'human' commit was $days days ago"
+              worktodo=0
+            fi
+            echo ::set-env name=GHA_WORK_TO_DO::$worktodo
+
       - name: Setup Ruby
+        if: env.GHA_WORK_TO_DO == 1
         uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.7'
 
       - name: Checkout
+        if: env.GHA_WORK_TO_DO == 1
         uses: actions/checkout@v2
 
-      - id: release_info
-        name: Get release information
-        run: python3 ci/release-info.py "$GITHUB_EVENT_NAME"
-
-      - if: ${{ steps.release_info.outputs.release_type == 'nightly' }}
+      - if: ${{ steps.release_info.outputs.release_type == 'nightly' }} && env.GHA_WORK_TO_DO == 1
         name: Delete existing nightly releases
         continue-on-error: true
         env:
@@ -49,20 +66,24 @@ jobs:
       #   uses: mxschmitt/action-tmate@v2
 
       - name: Run bundle install
+        if: env.GHA_WORK_TO_DO == 1
         run: |
           gem install bundler
           bundle install
 
       - name: Publish the book
+        if: env.GHA_WORK_TO_DO == 1
         run: bundle exec rake
 
       - name: Commit changes
+        if: env.GHA_WORK_TO_DO == 1
         uses: EndBug/add-and-commit@v4
         with:
           message: 'Updating docs'
           add: 'docs'
 
       - name: Upload binaries to release
+        if: env.GHA_WORK_TO_DO == 1
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
