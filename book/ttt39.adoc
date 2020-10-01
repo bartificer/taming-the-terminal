@@ -14,7 +14,7 @@ part of  https://www.podfeet.com/blog/2020/07/ccatp-647/[episode 647 of the Chit
 
 // no audiocontrols in pdf
 ifndef::backend-pdf,apple-books[]
-pass:m,a[<audio controls='controls' src="{url-mp3}/ttt-39-advanced-tmux/TTT_39_Advanced_TMUX.mp3">Your browser does not support HTML 5 audio</audio>]
+audio::{url-mp3}/ttt-39-advanced-tmux/TTT_39_Advanced_TMUX.mp3[]
 endif::[]
 
 Scan the QRcode to listen on a different device

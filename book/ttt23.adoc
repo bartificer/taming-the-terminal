@@ -25,8 +25,8 @@ Listen Along: Taming the Terminal Podcast Episodes 23a & 23b
 
 ifndef::backend-pdf,apple-books[]
 
-|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
-|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3">Your browser does not support HTML 5 audio</audio>]
+a|audio::{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[]
+a|audio::{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[]
 endif::[]
 
 2+|Scan the QRcode to listen on a different device

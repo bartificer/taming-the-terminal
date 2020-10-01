@@ -26,7 +26,7 @@ Listen Along: Taming the Terminal Podcast Episode 36
 
 // no audiocontrols in pdf
 ifndef::backend-pdf,apple-books[]
-pass:m,a[<audio controls='controls' src="{url-mp3}/ttt-36-screen-and-cron_202004/TTT_36_screen_and_cron.mp3">Your browser does not support HTML 5 audio</audio>]
+audio::{url-mp3}/ttt-36-screen-and-cron_202004/TTT_36_screen_and_cron.mp3[]
 endif::[]
 
 Scan the QRcode to listen on a different device

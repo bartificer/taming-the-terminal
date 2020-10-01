@@ -15,7 +15,7 @@ Listen Along: Taming the Terminal Podcast Episode 9
 // no audiocontrols in pdf
 ifndef::backend-pdf,apple-books[]
 
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3">Your browser does not support HTML 5 audio</audio>]
+audio::{url-mp3}/TTT09ControllingProcesses/TTT_09_Controlling_Processes.mp3[]
 endif::[]
 
 Scan the QRcode to listen on a different device

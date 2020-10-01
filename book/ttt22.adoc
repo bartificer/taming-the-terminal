@@ -14,7 +14,7 @@ Listen Along: Taming the Terminal Podcast Episode 22
 // no audiocontrols in pdf
 ifndef::backend-pdf,apple-books[]
 
-pass:m,a[<audio controls='controls' src="{url-mp3}/TTT22TipsAndTricks/TTT_22_Tips_and_Tricks.mp3">Your browser does not support HTML 5 audio</audio>]
+audio::{url-mp3}/TTT22TipsAndTricks/TTT_22_Tips_and_Tricks.mp3[]
 endif::[]
 
 Scan the QRcode to listen on a different device

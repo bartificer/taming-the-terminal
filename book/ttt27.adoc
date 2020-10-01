@@ -33,8 +33,8 @@ Listen Along: Taming the Terminal Podcast Episodes 27a & 27b
 
 ifndef::backend-pdf,apple-books[]
 
-|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
-|pass:m,a[<audio controls='controls' src="{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3">Your browser does not support HTML 5 audio</audio>]
+a|audio::{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3[]
+a|audio::{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3[]
 endif::[]
 
 2+|Scan the QRcode to listen on a different device
