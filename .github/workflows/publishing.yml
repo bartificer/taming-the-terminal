@@ -19,10 +19,6 @@ jobs:
       date: ${{ steps.release_info.outputs.date }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
-      - id: release_info
-        name: Get release information
-        run: python3 ci/release-info.py "$GITHUB_EVENT_NAME"
-
       - name: Activity check
         shell: bash
         run: |
@@ -32,7 +28,8 @@ jobs:
           timestamp=$(date -u -d "$lastcommit" +%s)
           days=$(( ( $(date -u +%s) - $timestamp ) / $D ))
           worktodo=1
-          if [ $days -gt 0 && steps.release_info.outputs.release_type == 'nightly']; then
+          # cannot use 'nightly' because repo is not yet checked out
+          if [ $days -gt 0 && $GITHUB_EVENT_NAME == 'scheduled']; then
             echo "nothing to do, last 'human' commit was $days days ago"
             worktodo=0
           fi
@@ -47,6 +44,10 @@ jobs:
       - name: Checkout
         if: env.GHA_WORK_TO_DO == 1
         uses: actions/checkout@v2
+
+      - id: release_info
+        name: Get release information
+        run: python3 ci/release-info.py "$GITHUB_EVENT_NAME"
 
       - if: ${{ steps.release_info.outputs.release_type == 'nightly' }} && env.GHA_WORK_TO_DO == 1
         name: Delete existing nightly releases
