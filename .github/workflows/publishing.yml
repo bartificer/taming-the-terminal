@@ -29,7 +29,7 @@ jobs:
           days=$(( ( $(date -u +%s) - $timestamp ) / $D ))
           worktodo=1
           # cannot use 'nightly' because repo is not yet checked out
-          if [ $days -gt 0 && $GITHUB_EVENT_NAME == 'scheduled']; then
+          if [ $days -gt 0 && $GITHUB_EVENT_NAME == 'scheduled' ]; then
             echo "nothing to do, last 'human' commit was $days days ago"
             worktodo=0
           fi
