@@ -22,14 +22,14 @@ jobs:
       - name: Activity check
         shell: bash
         run: |
+          # check if we need to build
           D=86400 # 24 hours in seconds
 
           lastcommit="$(curl -sL https://api.github.com/repos/$GITHUB_REPOSITORY/commits | jq -r '[.[] | select (.commit.message != "Updating docs") ][0].commit.author.date')"
           timestamp=$(date -u -d "$lastcommit" +%s)
           days=$(( ( $(date -u +%s) - $timestamp ) / $D ))
           worktodo=1
-          # cannot use 'nightly' because repo is not yet checked out
-          if [ $days -gt 0 && $GITHUB_EVENT_NAME == 'scheduled' ]; then
+          if [[ $days -gt 0 && $GITHUB_EVENT_NAME == 'scheduled' ]]; then
             echo "nothing to do, last 'human' commit was $days days ago"
             worktodo=0
           fi
