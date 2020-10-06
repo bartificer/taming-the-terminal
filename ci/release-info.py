@@ -46,7 +46,7 @@ else:
     raise ValueError('unexpected event name ' + event_name)
 
 version = read_version('release.json', ref)
-release_flags = ''
+prerelease = 'false'
 if release_type == 'tagged':
     tag = 'v' + version
 elif release_type == 'nightly':
@@ -56,7 +56,7 @@ elif release_type == 'nightly':
         version,
     )
     tag = 'nightly.' + date
-    release_flags = '--prerelease'
+    prerelease = 'true'
 
-for name in 'version', 'date', 'tag', 'release_type', 'release_flags':
+for name in 'version', 'date', 'tag', 'release_type', 'prerelease':
     print('::set-output name={0}::{1}'.format(name, globals()[name]))
