@@ -30,10 +30,14 @@ jobs:
           days=$(( ( $(date -u +%s) - $timestamp ) / $D ))
           worktodo=1
           if [[ $days -gt 0 && $GITHUB_EVENT_NAME == 'scheduled' ]]; then
+          echo "lastcommit: $lastcommit"
+          echo "timestamp: $timestamp"
+          echo "days: $days"
             echo "nothing to do, last 'human' commit was $days days ago"
             worktodo=0
           fi
           echo ::set-env name=GHA_WORK_TO_DO::$worktodo
+          echo "worktodo: $worktodo"
 
       - name: Setup Ruby
         if: env.GHA_WORK_TO_DO == 1
