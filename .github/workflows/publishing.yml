@@ -17,7 +17,7 @@ jobs:
       version: ${{ steps.release_info.outputs.version }}
       tag: ${{ steps.release_info.outputs.tag }}
       date: ${{ steps.release_info.outputs.date }}
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
+      download_url: ${{ steps.publish_release.outputs.browser_download_url }}
     steps:
       - name: Activity check
         shell: bash
@@ -90,6 +90,7 @@ jobs:
 
       - name: Upload binaries to release
         if: env.GHA_WORK_TO_DO == 1
+        id: publish_release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
