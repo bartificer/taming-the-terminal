@@ -29,10 +29,10 @@ jobs:
           timestamp=$(date -u -d "$lastcommit" +%s)
           days=$(( ( $(date -u +%s) - $timestamp ) / $D ))
           worktodo=1
-          if [[ $days -gt 0 && $GITHUB_EVENT_NAME == 'scheduled' ]]; then
           echo "lastcommit: $lastcommit"
           echo "timestamp: $timestamp"
           echo "days: $days"
+          if [[ $days -gt 0 && $GITHUB_EVENT_NAME == 'schedule' ]]; then
             echo "nothing to do, last 'human' commit was $days days ago"
             worktodo=0
           fi
