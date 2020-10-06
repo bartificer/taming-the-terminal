@@ -96,5 +96,5 @@ jobs:
           file: output/ttt*
           tag: ${{ steps.release_info.outputs.tag }}
           overwrite: true
-          prerlease: ${{ steps.release_info.outputs.prerelease }}
+          prerelease: ${{ steps.release_info.outputs.prerelease }}
           file_glob: true
