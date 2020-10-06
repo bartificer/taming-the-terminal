@@ -36,8 +36,8 @@ jobs:
             echo "nothing to do, last 'human' commit was $days days ago"
             worktodo=0
           fi
-          echo ::set-env name=GHA_WORK_TO_DO::$worktodo
           echo "worktodo: $worktodo"
+          echo "GHA_WORK_TO_DO=$worktodo" >> $GITHUB_ENV
 
       - name: Setup Ruby
         if: env.GHA_WORK_TO_DO == 1
