@@ -49,8 +49,9 @@ jobs:
         if: env.GHA_WORK_TO_DO == 1
         uses: actions/checkout@v2
 
-      - id: release_info
-        name: Get release information
+      - name: Get release information
+        if: env.GHA_WORK_TO_DO == 1
+        id: release_info
         run: python3 ci/release-info.py "$GITHUB_EVENT_NAME"
 
       - if: ${{ steps.release_info.outputs.release_type == 'nightly' }} && env.GHA_WORK_TO_DO == 1
