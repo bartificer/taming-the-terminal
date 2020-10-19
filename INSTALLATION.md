@@ -50,7 +50,7 @@ more information at [Convert Markdown to AsciiDoc](https://matthewsetter.com/tec
 Clone the repository
 
 ```shell
-git clone git clone https://github.com/bartificer/taming-the-terminal.git
+git clone https://github.com/bartificer/taming-the-terminal.git
 ```
 
 ### Install necessary Ruby gems
