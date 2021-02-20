@@ -186,7 +186,7 @@ Since Apple added support for SSH Agents they have also customised the version o
 
 In Mac OS X the integration with the Keychain was always on, and each time a passphrase was needed for an SSH identity the OS popped up a password prompt in a separate window, and that window had a checkbox to let you store the password in the Keychain. If you checked that box, then from that point forward you would never be prompted for the password again, SSH would always read the passphrase from the Keychain without any user interaction.
 
-What was happening under the hood is that you logged into your Mac an SSH Agent was started for you, and all SSH passwords found in the Keychain were automatically loaded into that SSH Agent.
+What was happening under the hood is that when you logged into your Mac an SSH Agent was started for you, and all SSH passwords found in the Keychain were automatically loaded into that SSH Agent.
 
 This behaviour was very convenient, but also very non-standard, it's simply not how SSH Agents behave on other platforms.
 
@@ -198,7 +198,7 @@ Apple did not remove the integration with the Keychain, they simply stopped the 
 
 To integrate with the Keychain Apple has added two flags to the `ssh-add` command — `-K` and `-A`.
 
-The `-K` flag effectively means _'and on the keychain too'_ — if you use `ssh-add -K` to load your default identity into your SSH Agent the passphrase will also get coppied into your Keychain. If you want to remove a identity and its passphrase from both your Agent and the keychain use the `-K` flag along with the `-d` flag (for delete).
+The `-K` flag effectively means _'and on the keychain too'_ — if you use `ssh-add -K` to load your default identity into your SSH Agent the passphrase will also get copied into your Keychain. If you want to remove a identity and its passphrase from both your Agent and the keychain use the `-K` flag along with the `-d` flag (for delete).
 
 You can load your default SSH identity into your SSH Agent and copy it into your Keychain with the simple command:
 
@@ -261,7 +261,7 @@ Remembering to run `ssh-add -A` every time is not a huge imposition, but it seem
 
 As well as adding two flags to the `ssh-add` command, Apple also added two additional config directives.
 
-The first of these, `AddKeysToAgent` can be used to automatially load the SSH identities for which there are passphrases in your Keychain into your SSH Agent when you log in to your Mac. This has the same effect as always running `ssh-add -A` after login.
+The first of these, `AddKeysToAgent` can be used to automatically load the SSH identities for which there are passphrases in your Keychain into your SSH Agent when you log in to your Mac. This has the same effect as always running `ssh-add -A` after login.
 
 The second, `UseKeychain`, defaults `ssh-add` to always add passphrases to your Keychain when you load them into your SSH Agent. In effect, it turns `ssh-add` into `ssh-add -K`, saving you the need to remember to use the `-K` flag.
 
