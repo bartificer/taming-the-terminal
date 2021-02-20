@@ -302,4 +302,3 @@ This is yet another reason to stop using password-less SSH identities -- with an
 
 And, for all you Mac users like me who were cranky at the loss of the automated integration between the Keychain and the SSH Agent in macOS Sierra, you've now got a robust and supported fix.
 
-// test line to test commit
