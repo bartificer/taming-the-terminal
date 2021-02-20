@@ -7,6 +7,15 @@ We also saw how SSH uses host keys to protect us from man-in-the-middle (MITM) a
 
 In this instalment, we're going to look at how we can improve both SSH security and convenience with SSH keys.
 
+[NOTE]
+====
+This instalment was initially written, and the matching podcast episode recoreded, in October 2015.
+
+In February 2021 some sections of this instalment specific Mac OS X/macOS were updated to reflect signifficant changes in Apple's handling of SSH keys. The most signifficant change Apple made is in the SSH Agent, which is described in <<ttt37,TTT37>>, but Apple also added support for the `ssh-copy-id` command described in this instalment.
+
+The podcast episode for this instalment was not updated in February 2021, but the update to `ssh-copy-id` was mentioned in a suplimental podcast episode for <<ttt37,TTT37>>.
+====
+
 .Matching Podcast Episode 30
 ****
 
@@ -157,22 +166,18 @@ I have highlighted the command, and the two important sets of permissions highli
 
 === Simplifying the Process with `ssh-copy-id`
 
+_**Update -- February 2021:** this section has been updated to reflect changes in macOS as opposed to Mac OS X._
+
 It takes time and effort to manually copy across your public key and to make sure all the file permissions are correct.
 Assuming you know the password to log in to the remote computer, you can automate the process with the `ssh-copy-id` utility.
 
-This utility comes as standard on all the Linux distributions I have used, but annoyingly, OS X's version of SSH does not come with `ssh-copy-id`.
-All is not lost though, because the open source community are here to help!
+This utility comes as standard on all the Linux distributions I have used, and on modern versions of the macOS.
 
-OS X users can install `ssh-copy-id` onto their Mac using the free and open source project https://github.com/beautifulcode/ssh-copy-id-for-OSX[ssh-copy-id-for-OSX].
-
-If you follow the link above you'll see that installing `ssh-copy-id` onto your mac is as simple as running the command:
-
-[source,shell]
-----
-curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh
-----
-
-The above command has to be run from an admin account, and it uses `sudo` for the install, so you will be prompted for your password.
+[NOTE]
+.Installing `ssh-copy-id` on Mac OS X 10.11 El Capitan an Older
+====
+When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the `ssh-copy-id` command. Before Apple made this move the Mac did not ship with `ssh-copy-id`, but the open source community stepped in to fill the void. As of Febraury 2021 there are at least three options available to Mac OS X users — (https://formulae.brew.sh/formula/ssh-copy-id)[a Hombrew formula], a https://ports.macports.org/port/ssh-copy-id/summary[MacPorts port], and a https://github.com/beautifulcode/ssh-copy-id-for-OSX/[simple script].
+====
 
 Whatever OS you are on, once you have `ssh-copy-id` installed, copying over your public key becomes as easy as running the command below (replacing `user` and `computer` as appropriate):
 
@@ -197,28 +202,21 @@ I promised convenience AND security, but surely swapping one password for anothe
 
 The good news is that there are mechanisms for safely caching that password so you don't have to keep entering it each time you SSH.
 The exact details of the mechanism vary from OS to OS.
-The good news is that Mac users have it best in this regard.
 
-[NOTE]
-.Commands to Save RSA Key Passphrase to Apple Keychain
-====
-In later versions of OSX (macOS Sierra and higher), you will not get the popup offering to save your passphrase to Apple Keychain. See <<ttt37,TTT37>> under "SSH Agent on OS X & macOS" for the new method to store your passphrase in Keychain.
-====
+_**Update -- February 2021:** this section has been updated to reflect changes in macOS as opposed to Mac OS X._
 
-The version of SSH that ships with OS X has support for OS X's secure keychain.
-This is a secure vault OS X uses to store the passwords you save in all sorts of apps, including Mail.app and Safari.
-This means that on OS X, when you use SSH key authentication, a popup window will appear asking for the password for your private key, and that pop window has a checkbox to allow the password to be saved in your keychain.
-Once you do this you will never have to enter that password again, you will now be able to SSH without entering a password in a secure manner.
+The version of SSH that ships with Apple's macOS (formerly Mac OS X)has support for Apple's secure keychain.
+This is a secure vault the Mac uses to store the passwords you save in all sorts of apps, including Mail.app and Safari. It's possible to securely store your SSH Key passphrases in Apple's Keychain, and once you do, you can use your key without entering your passphrase each time you use it.
 
-Users of other OSes are not completely out of luck, but the solutions available are less convenient.
-On Linux and other versions of Unix, a service called `ssh-agent` can be used to cache the passwords for SSH keys.
-Since this series is targeted primarily at Mac users, I won't go into the details here, but there are plenty of guides available online if you search for _`ssh-agent tutorial`_.
+On older versions of Apple's operating system the integration with the Keychain was integreated into the Mac GUI and enabled by default. When you used an SSH key a popup window would appearing asking for your password and offering to save it to your Keychain. If you ticked the box to same the password, you could then log in with out entering your password in future. This was extremely convenient, but very much non-standard behaviour.
 
-So, whether you are using OS X's key chain, or `ssh-agent`, you can now securely log in to remote computers over SSH with the minimum of effort.
+Starting with macOS Sierra, Apple removed their custom UI, and switched to an integration more in keeping with how SSH keys are managed on other OSes.
+
+Regardless of whether you're using macOS or Linux, you now need to use the SSH Agent to manage your SSH keys. This agent is discussed in detail in <<ttt37,TTT37>>.
 
 == Advantages to Key-based Authentication
 
-* *Convenience* -- with OS X's keychain or `ssh-agent` securely storing the password for your private key, you can safely use SSH without having to enter a password.
+* *Convenience* -- with `ssh-agent` securely storing the password for your private key, you can safely use SSH without having to enter a password.
 * *Security* -- once you have key-based authentication in place, you can either set a really long and secure password on the remote account or even disable password-based logins completely (we don't cover how to do that in this series).
 SSH keys are much more difficult to brute force than even the most complex of passwords.
 * *A Form of 2-Factor Auth* -- in order to log in as you, an attacker needs to have your private key and needs to know the password for your private key.
