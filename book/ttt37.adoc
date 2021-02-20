@@ -171,7 +171,7 @@ $
 ----
 
 [#SSH_Agent_on_macOS]
-== SSH Agent on macOS (and Mac OS X)
+== SSH Agent on macOS (and OS X)
 
 _**Update -- February 2021:** this section has been completely re-written to better reflect the current state of play on the Mac._
 
@@ -182,9 +182,9 @@ When you log in to a Mac, you'll find an SSH Agent running and ready to accept i
 
 One of the Mac's core security technologies is the Keychain. Each user account has a Keychain associated with it, and those Keychains securely store sensitive data like passwords and private keys. Keychains are encrypted files, the contents of which can only be accessed through the operating system. The keychain's encryption key is secured with the user's password, and by default, when the a user logs into their Mac their password is used to simultaneously unlock their Keychain, allowing the OS to securely share passwords with apps the user runs.
 
-Since Apple added support for SSH Agents they have also customised the version of the SSH Agent that runs on the Mac to integrate it with the Keychain. While we've had this integration all along, the change from Mac OS X to macOS brought with it a dramatic change in how SSH Agents behave by default, and specifically, how they interact with the Keychain by default.
+Since Apple added support for SSH Agents they have also customised the version of the SSH Agent that runs on the Mac to integrate it with the Keychain. While we've had this integration all along, the change from OS X to macOS brought with it a dramatic change in how SSH Agents behave by default, and specifically, how they interact with the Keychain by default.
 
-In Mac OS X the integration with the Keychain was always on, and each time a passphrase was needed for an SSH identity the OS popped up a password prompt in a separate window, and that window had a checkbox to let you store the password in the Keychain. If you checked that box, then from that point forward you would never be prompted for the password again, SSH would always read the passphrase from the Keychain without any user interaction.
+In OS X the integration with the Keychain was always on, and each time a passphrase was needed for an SSH identity the OS popped up a password prompt in a separate window, and that window had a checkbox to let you store the password in the Keychain. If you checked that box, then from that point forward you would never be prompted for the password again, SSH would always read the passphrase from the Keychain without any user interaction.
 
 What was happening under the hood is that when you logged into your Mac an SSH Agent was started for you, and all SSH passwords found in the Keychain were automatically loaded into that SSH Agent.
 
