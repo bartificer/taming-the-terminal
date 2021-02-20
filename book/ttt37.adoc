@@ -242,7 +242,7 @@ To start using your Keychain for your SSH identity you'll need to load it into y
 
 [source,console]
 ----
-ssh-add -k
+ssh-add -K
 ----
 
 You only have to do that once — your identity has been permanently added to your Keychain.
