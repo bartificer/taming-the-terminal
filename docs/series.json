@@ -147,23 +147,23 @@
         },
         "25": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/12/07/taming-the-terminal-part-25-of-n-ip-subnets/",
-            "commands": [],
-            "keywords": []
+            "commands": ["ifconfig", "netstat"],
+            "keywords": ["networking", "internet", "network layer", "internet layer", "IP", "IP address", "TCP/IP", "subnet", "netmask", "broadcast", "LAN", "local area network", "network address", "net address", "broadcast address", "broadcast", "NAT", "router", "home router", "routable protocol", "unroutable protocol", "gateway", "default gateway", "default router"]
         },
         "26": {
             "originalUrl": "https://www.bartbusschots.ie/s/2014/12/22/taming-the-terminal-part-26-of-n-dhcp/",
-            "commands": [],
-            "keywords": []
+            "commands": ["tcpdump", "ipconfig"],
+            "keywords": ["networking", "internet", "network layer", "internet layer", "IP", "IP address", "TCP/IP", "subnet", "netmask", "broadcast", "LAN", "local area network", "broadcast address", "broadcast", "NAT", "router", "home router", "dynamic host configuration protocol", "DHCP", "BOOTP", "RARP", "DISCOVER", "OFFER", "REQUEST", "ACK", "NACK", "RELEASE", "INFORM", "lease", "static lease", "gateway", "default gateway", "default router"]
         },
         "27": {
             "originalUrl": "https://www.bartbusschots.ie/s/2015/01/10/taming-the-terminal-part-27-of-n-dns/",
-            "commands": [],
-            "keywords": []
+            "commands": ["nslookup", "host", "dig"],
+            "keywords": ["networking", "internet", "application layer", "internet layer", "IP", "IP address", "TCP/IP", "DNS", "domain name system", "domain name", "domain", "top-level domain", "subdomain", "TLD", "hosts file", "/etc/hosts", "A", "AAAA", "CNAME", "MX", "PTR", "NS", "TXT", "SRV", "DNS server", "name server", "DNS resolver", "authoritative DNS server", "recursive", "stub", "stub resolver", "NXDOMAIN", "ANSWER", "NOERROR", "cache", "cache poisoning"]
         },
         "28": {
             "originalUrl": "https://www.bartbusschots.ie/s/2015/01/30/taming-the-terminal-part-28-of-n-network-troubleshooting/",
-            "commands": [],
-            "keywords": []
+            "commands": ["ifconfig", "netstat", "ping", "traceroute", "tracert", "host", "dig"],
+            "keywords": ["networking", "internet", "LAN", "local area network", "router", "home router", "IP", "IP address", "TCP/IP", "subnet", "netmask", "default router", "gateway", "default gateway", "DNS", "domain name system", "DHCP", "dynamic host configuration protocol", "ethernet", "wifi", "/etc/resolv.conf"]
         },
         "29": {
             "originalUrl": "https://www.bartbusschots.ie/s/2015/02/14/taming-the-terminal-part-29-of-n-intro-to-ssh/",
