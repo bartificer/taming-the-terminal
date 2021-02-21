@@ -23,7 +23,7 @@ The good news is that while things have changed on the Mac, with a small amount 
 
 [NOTE]
 ====
-TO DO — describe how the podcast episode was re-done
+This instalmemt was originally written, and its matching podcast episode recorded in May 2017. The Mac-specific aspects of this instalment were updated in February 2021, and an additional supplemental podcast was recorded and has been linked below.
 ====
 
 .Matching Podcast Episode 37
