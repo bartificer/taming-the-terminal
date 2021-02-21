@@ -41,7 +41,7 @@ Scan the QRcode to listen on a different device
 image::qrcodes/TTT_37.png[QRcode, align='left']
 
 You can also
-{url-mp3}/ttt-37-a-ssh-agents/TTT_37A_SSH_Agents.mp3[play/download the MP3 in your browser]
+{url-mp3}/ttt-37-ssh-agents_202004/TTT_37_SSH_Agents.mp3[play/download the MP3 in your browser]
 ****
 
 .Matching Podcast Episode 37 Supplemental
@@ -51,7 +51,7 @@ Listen Along: Taming the Terminal Podcast Episode 37A
 
 // no audiocontrols in pdf
 ifndef::backend-pdf,apple-books[]
-audio::{url-mp3}/ttt-37A-ssh-agents_202004/TTT_37A_SSH_Agents.mp3[]
+audio::{url-mp3}/ttt-37-a-ssh-agents/TTT_37A_SSH_Agents.mp3[]
 endif::[]
 
 Scan the QRcode to listen on a different device
