@@ -223,9 +223,9 @@ You can load your default SSH identity into your SSH Agent and copy it into your
 [source,console?prompt=%]
 ----
 % ssh-add -K
-Enter passphrase for /Users/bart/.ssh/id_rsa: 
+Enter passphrase for /Users/bart/.ssh/id_rsa:
 Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
-% 
+%
 ----
 
 You can similarly add other identities by adding their file paths to the command above, e.g. `ssh-add -K some_identity`.
@@ -240,9 +240,9 @@ To remove your default identity from your Keychain (and your SSH Agent), use the
 
 [source,console?prompt=%]
 ----
-% ssh-add -dK /Users/bart/.ssh/id_rsa 
+% ssh-add -dK /Users/bart/.ssh/id_rsa
 Identity removed: /Users/bart/.ssh/id_rsa (bart@bartmac.local)
-% 
+%
 ----
 
 Note that you have to remove identities from the Keychain one-by-one, you can's use the `-K` flag in conjunction with the `-D` (delete all) flag.
@@ -299,14 +299,14 @@ For example, this is what my config file looks like:
 # enable integration between Keychain and SSH Agent
 UseKeychain yes
 AddKeysToAgent yes
-% 
+%
 ----
 
 To make sure you have enabled Keychain integration correctly, log out, log back in again, and open a fresh Terminal window. If everything is working as expected your default identiy should be loaded into your SSH Agent ready for use. You can verify this with `ssh-add -l`, e.g.:
 
 [source,console?prompt=%]
 ----
-% ssh-add -l       
+% ssh-add -l
 2048 SHA256:rTpb4ShxOt0QzwfFu+SJ5nCIeA99/EUC8WPeYp56WCk /Users/bart/.ssh/id_rsa (RSA)
 %
 ----
@@ -319,4 +319,3 @@ This is true on all OSes, even Windows.
 This is yet another reason to stop using password-less SSH identities -- with an SSH Agent, you can have both security and convenience!
 
 And, for all you Mac users like me who were cranky at the loss of the automated integration between the Keychain and the SSH Agent in macOS Sierra, you've now got a robust and supported fix.
-

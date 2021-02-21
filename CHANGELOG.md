@@ -1,5 +1,9 @@
 # Changelog
 
+## V1.5
+
+- Episode 37A updated with a supplemental section
+
 ## V1.4
 
 - vale-linter updated
