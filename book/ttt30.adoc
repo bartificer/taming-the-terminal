@@ -9,7 +9,7 @@ In this instalment, we're going to look at how we can improve both SSH security 
 
 [NOTE]
 ====
-This instalment was initially written, and the matching podcast episode recoreded, in October 2015.
+This instalment was initially written, and the matching podcast episode recorded, in October 2015.
 
 In February 2021 some sections of this instalment specific Mac OS X/macOS were updated to reflect signifficant changes in Apple's handling of SSH keys. The most signifficant change Apple made is in the SSH Agent, which is described in <<ttt37,TTT37>>, but Apple also added support for the `ssh-copy-id` command described in this instalment.
 
@@ -174,9 +174,9 @@ Assuming you know the password to log in to the remote computer, you can automat
 This utility comes as standard on all the Linux distributions I have used, and on modern versions of the macOS.
 
 [NOTE]
-.Installing `ssh-copy-id` on Mac OS X 10.11 El Capitan an Older
+.Installing `ssh-copy-id` on Mac OS X 10.11 El Capitan and Older
 ====
-When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the `ssh-copy-id` command. Before Apple made this move the Mac did not ship with `ssh-copy-id`, but the open source community stepped in to fill the void. As of Febraury 2021 there are at least three options available to Mac OS X users — (https://formulae.brew.sh/formula/ssh-copy-id)[a Hombrew formula], a https://ports.macports.org/port/ssh-copy-id/summary[MacPorts port], and a https://github.com/beautifulcode/ssh-copy-id-for-OSX/[simple script].
+When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the `ssh-copy-id` command. Before Apple made this move the Mac did not ship with `ssh-copy-id`, but the open source community stepped in to fill the void. As of February 2021 there are at least three options available to Mac OS X users — (https://formulae.brew.sh/formula/ssh-copy-id)[a Hombrew formula], a https://ports.macports.org/port/ssh-copy-id/summary[MacPorts port], and a https://github.com/beautifulcode/ssh-copy-id-for-OSX/[simple script].
 ====
 
 Whatever OS you are on, once you have `ssh-copy-id` installed, copying over your public key becomes as easy as running the command below (replacing `user` and `computer` as appropriate):
