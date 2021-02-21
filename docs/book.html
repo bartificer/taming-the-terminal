@@ -461,8 +461,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>Taming the Terminal</h1>
 <div class="details">
 <span id="author" class="author">Bart Busschots</span><br>
-<span id="revnumber">version 1.4.2,</span>
-<span id="revdate">2020-10-19</span>
+<span id="revnumber">version 1.5.3
+minor version update, due to an update to episode 37,</span>
+<span id="revdate">2021-02-21</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -11777,6 +11778,26 @@ We also saw how SSH uses host keys to protect us from man-in-the-middle (MITM) a
 <div class="paragraph">
 <p>In this instalment, we&#8217;re going to look at how we can improve both SSH security and convenience with SSH keys.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This instalment was initially written, and the matching podcast episode recorded, in October 2015.</p>
+</div>
+<div class="paragraph">
+<p>In February 2021 some sections of this instalment specific Mac OS X/macOS were updated to reflect signifficant changes in Apple&#8217;s handling of SSH keys. The most signifficant change Apple made is in the SSH Agent, which is described in <a href="#ttt37">TTT37</a>, but Apple also added support for the <code>ssh-copy-id</code> command described in this instalment.</p>
+</div>
+<div class="paragraph">
+<p>The podcast episode for this instalment was not updated in February 2021, but the update to <code>ssh-copy-id</code> was mentioned in a suplimental podcast episode for <a href="#ttt37">TTT37</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Matching Podcast Episode 30</div>
@@ -12007,26 +12028,29 @@ I have highlighted the command, and the two important sets of permissions highli
 <div class="sect3">
 <h4 id="_simplifying_the_process_with_ssh_copy_id">Simplifying the Process with <code>ssh-copy-id</code></h4>
 <div class="paragraph">
+<p><em><strong>Update&#8201;&#8212;&#8201;February 2021:</strong> this section has been updated to reflect changes in macOS as opposed to Mac OS X.</em></p>
+</div>
+<div class="paragraph">
 <p>It takes time and effort to manually copy across your public key and to make sure all the file permissions are correct.
 Assuming you know the password to log in to the remote computer, you can automate the process with the <code>ssh-copy-id</code> utility.</p>
 </div>
 <div class="paragraph">
-<p>This utility comes as standard on all the Linux distributions I have used, but annoyingly, OS X&#8217;s version of SSH does not come with <code>ssh-copy-id</code>.
-All is not lost though, because the open source community are here to help!</p>
+<p>This utility comes as standard on all the Linux distributions I have used, and on modern versions of the macOS.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Installing <code>ssh-copy-id</code> on Mac OS X 10.11 El Capitan and Older</div>
 <div class="paragraph">
-<p>OS X users can install <code>ssh-copy-id</code> onto their Mac using the free and open source project <a href="https://github.com/beautifulcode/ssh-copy-id-for-OSX">ssh-copy-id-for-OSX</a>.</p>
+<p>When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the <code>ssh-copy-id</code> command. Before Apple made this move the Mac did not ship with <code>ssh-copy-id</code>, but the open source community stepped in to fill the void. As of February 2021 there are at least three options available to Mac OS X users — (<a href="https://formulae.brew.sh/formula/ssh-copy-id)">a Hombrew formula</a>, a <a href="https://ports.macports.org/port/ssh-copy-id/summary">MacPorts port</a>, and a <a href="https://github.com/beautifulcode/ssh-copy-id-for-OSX/">simple script</a>.</p>
 </div>
-<div class="paragraph">
-<p>If you follow the link above you&#8217;ll see that installing <code>ssh-copy-id</code> onto your mac is as simple as running the command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="shell">curl <span style="color: #000080">-L</span> https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The above command has to be run from an admin account, and it uses <code>sudo</code> for the install, so you will be prompted for your password.</p>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Whatever OS you are on, once you have <code>ssh-copy-id</code> installed, copying over your public key becomes as easy as running the command below (replacing <code>user</code> and <code>computer</code> as appropriate):</p>
@@ -12058,37 +12082,23 @@ If your private key is not in the default location you need to tell SSH what key
 </div>
 <div class="paragraph">
 <p>The good news is that there are mechanisms for safely caching that password so you don&#8217;t have to keep entering it each time you SSH.
-The exact details of the mechanism vary from OS to OS.
-The good news is that Mac users have it best in this regard.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Commands to Save RSA Key Passphrase to Apple Keychain</div>
-<div class="paragraph">
-<p>In later versions of OSX (macOS Sierra and higher), you will not get the popup offering to save your passphrase to Apple Keychain. See <a href="#ttt37">TTT37</a> under "SSH Agent on OS X &amp; macOS" for the new method to store your passphrase in Keychain.</p>
-</div>
-</td>
-</tr>
-</table>
+The exact details of the mechanism vary from OS to OS.</p>
 </div>
 <div class="paragraph">
-<p>The version of SSH that ships with OS X has support for OS X&#8217;s secure keychain.
-This is a secure vault OS X uses to store the passwords you save in all sorts of apps, including Mail.app and Safari.
-This means that on OS X, when you use SSH key authentication, a popup window will appear asking for the password for your private key, and that pop window has a checkbox to allow the password to be saved in your keychain.
-Once you do this you will never have to enter that password again, you will now be able to SSH without entering a password in a secure manner.</p>
+<p><em><strong>Update&#8201;&#8212;&#8201;February 2021:</strong> this section has been updated to reflect changes in macOS as opposed to Mac OS X.</em></p>
 </div>
 <div class="paragraph">
-<p>Users of other OSes are not completely out of luck, but the solutions available are less convenient.
-On Linux and other versions of Unix, a service called <code>ssh-agent</code> can be used to cache the passwords for SSH keys.
-Since this series is targeted primarily at Mac users, I won&#8217;t go into the details here, but there are plenty of guides available online if you search for <em>`ssh-agent tutorial`</em>.</p>
+<p>The version of SSH that ships with Apple&#8217;s macOS (formerly Mac OS X)has support for Apple&#8217;s secure keychain.
+This is a secure vault the Mac uses to store the passwords you save in all sorts of apps, including Mail.app and Safari. It&#8217;s possible to securely store your SSH Key passphrases in Apple&#8217;s Keychain, and once you do, you can use your key without entering your passphrase each time you use it.</p>
 </div>
 <div class="paragraph">
-<p>So, whether you are using OS X&#8217;s key chain, or <code>ssh-agent</code>, you can now securely log in to remote computers over SSH with the minimum of effort.</p>
+<p>On older versions of Apple&#8217;s operating system the integration with the Keychain was integreated into the Mac GUI and enabled by default. When you used an SSH key a popup window would appearing asking for your password and offering to save it to your Keychain. If you ticked the box to same the password, you could then log in with out entering your password in future. This was extremely convenient, but very much non-standard behaviour.</p>
+</div>
+<div class="paragraph">
+<p>Starting with macOS Sierra, Apple removed their custom UI, and switched to an integration more in keeping with how SSH keys are managed on other OSes.</p>
+</div>
+<div class="paragraph">
+<p>Regardless of whether you&#8217;re using macOS or Linux, you now need to use the SSH Agent to manage your SSH keys. This agent is discussed in detail in <a href="#ttt37">TTT37</a>.</p>
 </div>
 </div>
 </div>
@@ -12097,7 +12107,7 @@ Since this series is targeted primarily at Mac users, I won&#8217;t go into the 
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Convenience</strong>&#8201;&#8212;&#8201;with OS X&#8217;s keychain or <code>ssh-agent</code> securely storing the password for your private key, you can safely use SSH without having to enter a password.</p>
+<p><strong>Convenience</strong>&#8201;&#8212;&#8201;with <code>ssh-agent</code> securely storing the password for your private key, you can safely use SSH without having to enter a password.</p>
 </li>
 <li>
 <p><strong>Security</strong>&#8201;&#8212;&#8201;once you have key-based authentication in place, you can either set a really long and secure password on the remote account or even disable password-based logins completely (we don&#8217;t cover how to do that in this series).
@@ -14521,14 +14531,7 @@ This provides us with a good opportunity to have a look at the SSH Agent in gene
 </div>
 </li>
 <li>
-<p><a href="#SSH_Agent_on_OS_X_038_macOS">3 SSH Agent on OS X &amp; macOS</a></p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p><a href="#Changes_in_macOS_Sierra">3.1 Changes in macOS Sierra</a></p>
-</li>
-</ul>
-</div>
+<p><a href="#SSH_Agent_on_macOS">3 SSH Agent on OS X &amp; macOS</a></p>
 </li>
 <li>
 <p><a href="#Final_Thoughts">4 Final Thoughts</a></p>
@@ -14536,6 +14539,20 @@ This provides us with a good opportunity to have a look at the SSH Agent in gene
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This instalment was originally written, and its matching podcast episode recorded in May 2017. The Mac-specific aspects of this instalment were updated in February 2021, and an additional supplemental podcast was recorded and has been linked below.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -14560,7 +14577,34 @@ Your browser does not support the audio tag.
 </div>
 <div class="paragraph">
 <p>You can also
-<a href="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-37-ssh-agents_202004/TTT_37_SSH_Agents.mp3">play/download the MP3 in your browser</a></p>
+<a href="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-37-a-ssh-agents/TTT_37A_SSH_Agents.mp3">play/download the MP3 in your browser</a></p>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Matching Podcast Episode 37 Supplemental</div>
+<div class="paragraph">
+<p>Listen Along: Taming the Terminal Podcast Episode 37A</p>
+</div>
+<div class="audioblock">
+<div class="content">
+<audio src="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-37A-ssh-agents_202004/TTT_37A_SSH_Agents.mp3" controls>
+Your browser does not support the audio tag.
+</audio>
+</div>
+</div>
+<div class="paragraph">
+<p>Scan the QRcode to listen on a different device</p>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="assets/qrcodes/TTT_37A.png" alt="QRcode">
+</div>
+</div>
+<div class="paragraph">
+<p>You can also
+<a href="https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-37-a-ssh-agents/TTT_37A_SSH_Agents.mp3">play/download the MP3 in your browser</a></p>
 </div>
 </div>
 </div>
@@ -14710,126 +14754,173 @@ You can remove just your default identity by passing only the <code>-d</code> fl
 </div>
 </div>
 <div class="sect2">
-<h3 id="SSH_Agent_on_OS_X_038_macOS">SSH Agent on OS X &amp; macOS</h3>
+<h3 id="SSH_Agent_on_macOS">SSH Agent on macOS (and OS X)</h3>
+<div class="paragraph">
+<p><em><strong>Update&#8201;&#8212;&#8201;February 2021:</strong> this section has been completely re-written to better reflect the current state of play on the Mac.</em></p>
+</div>
 <div class="paragraph">
 <p>Since Mac OS X 10.5 Leopard, Apple has integrated SSH Agents into their OS.
-When you log in to a Mac, you&#8217;ll find an SSH Agent running and ready to accept identities.
-As well as taking care of starting and stopping an agent for each user on login and logout, Apple also added their own additional features to the standard SSH Agent from OpenSSH to allow it to integrate with the OS&#8217;s Keychain feature.
-This allows the passphrase for SSH identities to be safely stored in the Keychain, and easily flowed from there to your SSH Agent as needed.</p>
-</div>
-<div class="paragraph">
-<p>In versions of Apple&#8217;s OS from Mac OS X 10.5 Leopard up to and including OS X 10.11 El Capitan, Apple completely automated the integration between the Keychain and the SSH Agent&#8201;&#8212;&#8201;it just worked.
-No setup, no configuration, no user action at all, it just made users&#8217; lives easier!</p>
-</div>
-<div class="paragraph">
-<p>Each time SSH on a Mac tried to load an encrypted SSH identity it would try to find the matching passphrase in the user&#8217;s Login keychain, if found, the passphrase would be used to decrypt the private key, which SSH would then cache in the user&#8217;s SSH Agent.
-From the user&#8217;s point of view, this meant that if the passphrase for an SSH identity was in their keychain, they could use that identity without ever being asked to enter their passphrase.
-If the needed passphrase was not found in the Keychain, the OS would pop up a GUI dialogue box requesting the passphrase, and, providing a tick box to save the passphrase into the Keychain if desired.</p>
-</div>
-<div class="paragraph">
-<p>From a user&#8217;s point of view this meant that if you ticked the box to save the passphrase once, you&#8217;d never need to enter it ever again.</p>
+When you log in to a Mac, you&#8217;ll find an SSH Agent running and ready to accept identities.</p>
 </div>
 <div class="sect3">
-<h4 id="Changes_in_macOS_Sierra">Changes in macOS Sierra</h4>
+<h4 id="_ssh_agents_and_the_keychain">SSH Agents and the Keychain</h4>
 <div class="paragraph">
-<p>This behaviour was very convenient, but also completely non-standard.
-Other Unix/Linux OSes don&#8217;t behave like this.
-And, as of macOS 10.12 Sierra, neither does Apple&#8217;s OS!
-The core abilities haven&#8217;t changed, but the integration with the Keychain is no longer enabled by default.</p>
+<p>One of the Mac&#8217;s core security technologies is the Keychain. Each user account has a Keychain associated with it, and those Keychains securely store sensitive data like passwords and private keys. Keychains are encrypted files, the contents of which can only be accessed through the operating system. The keychain&#8217;s encryption key is secured with the user&#8217;s password, and by default, when the a user logs into their Mac their password is used to simultaneously unlock their Keychain, allowing the OS to securely share passwords with apps the user runs.</p>
 </div>
 <div class="paragraph">
-<p>MacOS Sierra still automatically starts an SSH Agent when you log in and shuts it down when you log out, so there&#8217;s still an SSH Agent waiting for you by default.
-However, by default, that SSH Agent won&#8217;t go looking for passphrase in your keychain, nor will it save any passphrase you do enter into your Keychain.</p>
+<p>Since Apple added support for SSH Agents they have also customised the version of the SSH Agent that runs on the Mac to integrate it with the Keychain. While we&#8217;ve had this integration all along, the change from OS X to macOS brought with it a dramatic change in how SSH Agents behave by default, and specifically, how they interact with the Keychain by default.</p>
 </div>
 <div class="paragraph">
-<p>The integration isn&#8217;t gone though, it&#8217;s just dormant by default.</p>
+<p>In OS X the integration with the Keychain was always on, and each time a passphrase was needed for an SSH identity the OS popped up a password prompt in a separate window, and that window had a checkbox to let you store the password in the Keychain. If you checked that box, then from that point forward you would never be prompted for the password again, SSH would always read the passphrase from the Keychain without any user interaction.</p>
 </div>
 <div class="paragraph">
-<p>If you only want the integration between your Keychain and your SSH Agent every now and then, Apple provides a quick and easy way to load all SSH identities for which there are passphrases in your keychain into your SSH Agent&#8201;&#8212;&#8201;simply call <code>ssh-add</code> with the <code>-A</code> flag.
-I keep the passphrase for just one SSH key in my keychain (the one for my default key), so when I load all identities from my keychain, this is what I see:</p>
+<p>What was happening under the hood is that when you logged into your Mac an SSH Agent was started for you, and all SSH passwords found in the Keychain were automatically loaded into that SSH Agent.</p>
+</div>
+<div class="paragraph">
+<p>This behaviour was very convenient, but also very non-standard, it&#8217;s simply not how SSH Agents behave on other platforms.</p>
+</div>
+<div class="paragraph">
+<p>When Apple released macOS 10.12 Sierra, they changed their SSH Agent&#8217;s default behaviour to bring it into line with its behaviour eleswhere.</p>
+</div>
+<div class="paragraph">
+<p>Apple did not remove the integration with the Keychain, they simply stopped the SSH Agent sharing passwords with the Keychain by default. Unless you explicitly ask it to, your SSH Agent won&#8217;t read passwords from the Keychain, or, write passwords to the Keychain. It can still do both of those things, but only when you tell it to!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_apples_custom_ssh_add_flags">Apple&#8217;s Custom <code>ssh-add</code> Flags</h4>
+<div class="paragraph">
+<p>To integrate with the Keychain Apple has added two flags to the <code>ssh-add</code> command — <code>-K</code> and <code>-A</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>-K</code> flag effectively means <em>'and on the keychain too'</em> — if you use <code>ssh-add -K</code> to load your default identity into your SSH Agent the passphrase will also get copied into your Keychain. If you want to remove a identity and its passphrase from both your Agent and the keychain use the <code>-K</code> flag along with the <code>-d</code> flag (for delete).</p>
+</div>
+<div class="paragraph">
+<p>You can load your default SSH identity into your SSH Agent and copy it into your Keychain with the simple command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #555555">$</span><span style="color: #bbbbbb"> </span>ssh-add <span style="color: #000080">-A</span>
-<span style="color: #888888">Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
-</span><span style="color: #555555">$</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>How is this different to <code>ssh-add</code> with no arguments?
-Let&#8217;s see&#8201;&#8212;&#8201;I&#8217;ll empty the SSH Agent, and re-add the same identity without using the Keychain integration:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #555555">$</span><span style="color: #bbbbbb"> </span>ssh-add <span style="color: #000080">-D</span>
-<span style="color: #888888">All identities removed.
-</span><span style="color: #555555">$</span><span style="color: #bbbbbb"> </span>ssh-add
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #555555">%</span><span style="color: #bbbbbb"> </span>ssh-add <span style="color: #000080">-K</span>
 <span style="color: #888888">Enter passphrase for /Users/bart/.ssh/id_rsa:
 Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
-</span><span style="color: #555555">$</span></code></pre>
+</span><span style="color: #555555">%</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Notice that without the Keychain integration, I have to enter my passphrase.</p>
+<p>You can similarly add other identities by adding their file paths to the command above, e.g. <code>ssh-add -K some_identity</code>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">View SSH Identities in Keychain</div>
+<div class="paragraph">
+<p>You can see the SSH identities stored in your keychain by opening the <strong>Keychain Access</strong> app (in <strong>Applications</strong> → <strong>Utilities</strong>) and searching for ssh. Identities will be listed as the path to the private key pre-fixed with <code>SSH:</code>, e.g. my SSH identity is in my Keychain as <code>SSH: /Users/bart/.ssh/id_rsa</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Initially, when macOS Sierra first shipped and people started to notice that their SSH identities were no longer automatically loading into their SSH Agents using the passphrases in their keychains, the internet was full of people insisting that the <code>ssh-add -A</code> command was the only solution.
-Many people also suggested that the only way to automate the integration between your keychain and your SSH Agent was to add this command into one of your shell&#8217;s startup files, e.g.
-<code>~/.bash_profile</code>.
-I&#8217;m happy to tell you that these people were mistaken and that you shouldn&#8217;t follow their advice.</p>
-</div>
-<div class="paragraph">
-<p>You&#8217;ll be happy to learn that Apple has provided an official, documented, mechanism for enabling the integration between your keychain and your SSH Agent.
-What the internet mavens offering their poor advice had failed to do was RTFM (Read The <em>Fine</em> Manual):</p>
+<p>To remove your default identity from your Keychain (and your SSH Agent), use the <code>-d</code> and <code>-K</code> flags with the path to your default identity. Note that you  can <em>cuddle</em> the flags, so for me the command is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="shell">man ssh_config</code></pre>
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #555555">%</span><span style="color: #bbbbbb"> </span>ssh-add <span style="color: #000080">-dK</span> /Users/bart/.ssh/id_rsa
+<span style="color: #888888">Identity removed: /Users/bart/.ssh/id_rsa (bart@bartmac.local)
+</span><span style="color: #555555">%</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Don&#8217;t worry, I&#8217;ll summaries the relevant bits for you&#8201;&#8212;&#8201;with macOS Sierra, Apple introduced two new SSH configuration options for controlling the integration between the SSH Agent and the Keychain.
-Both of these options can be specified in your <code>~/.ssh/config</code> file.</p>
+<p>Note that you have to remove identities from the Keychain one-by-one, you can&#8217;s use the <code>-K</code> flag in conjunction with the <code>-D</code> (delete all) flag.</p>
 </div>
 <div class="paragraph">
-<p>The first option, <code>UseKeychain</code>, controls the flow of passphrases from the SSH Agent to your Keychain&#8201;&#8212;&#8201;setting this option to <code>yes</code> will cause all passphrases entered into your SSH Agent to be stored in your Login keychain.</p>
-</div>
-<div class="paragraph">
-<p>The second option, <code>AddKeysToAgent</code>, controls the auto-fetching of passphrases from the Keychain by the SSH Agent as required.
-The two valid values for this option are <code>yes</code> and <code>no</code>.</p>
-</div>
-<div class="paragraph">
-<p>So, to restore the old pre-macOS behaviour, edit your <code>~/.ssh/config</code> file so it contains the following (the first line is just a comment and has no effect on the OS&#8217;s actual behaviour):</p>
+<p>So, we use the <code>-K</code> flag to send changes to the Keychain, how do we read identities from the keychain? That&#8217;s what the <code>-A</code> flag is for — it loads <strong>all</strong> SSH identities found in your Keychain into your SSH Agent'. The flag requires no arguments, so loading SSH identities into your SSH Agent from your Keychain is as simple as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="shell"><span style="color: #999988;font-style: italic"># enable integration between Keychain and SSH Agent</span>
-UseKeychain <span style="color: #0086B3">yes
-</span>AddKeysToAgent <span style="color: #0086B3">yes</span></code></pre>
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #888888">ssh-add -A</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_start_using_your_keychain_for_your_ssh_identity">Start Using your Keychain for your SSH Identity</h4>
+<div class="paragraph">
+<p>To start using your Keychain for your SSH identity you&#8217;ll need to load it into your Keychain with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #888888">ssh-add -K</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once that&#8217;s done, log out and log back in, and all should be as it was under El Capitan.</p>
+<p>You only have to do that once — your identity has been permanently added to your Keychain.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">SSH Identites on Multiple Macs</div>
+<div class="paragraph">
+<p>If you have multiple Macs and have iCloud Keychain enabled, the passphrases for your SSH Keys will synchronise to all your Macs. For this to work reliably you should use the same SSH identity on all your Macs.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>We can verify that everything is working as it should, and, that the loading of keys happens on-demand, not on login, with a little experiment.</p>
+<p>To use the passphrase now stored in your keychain, simply run <code>ssh-add -A</code> once before using SSH to load the passphrase for your identities into your SSH Agent from your Keychain.</p>
 </div>
 <div class="paragraph">
-<p>Start by logging out and then back in.
-At this point, you should have a running SSH Agent, but it should contain no identities.
-You can verify this with the <code>ssh-add -l</code> command.</p>
+<p>Remembering to run <code>ssh-add -A</code> every time is not a huge imposition, but it seems like the kind of thing you should be able to automate, and thankfully, it is!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_automating_the_keychain_integration">Automating the Keychain Integration</h4>
+<div class="paragraph">
+<p>As well as adding two flags to the <code>ssh-add</code> command, Apple also added two additional config directives.</p>
 </div>
 <div class="paragraph">
-<p>Next, SSH to a server which you have configured to use an encrypted SSH identity.
-The first thing you should notice is that you get logged in to the server without needing to enter your passphrase&#8201;&#8212;&#8201;the <code>ssh</code> command tried to load your identity from disk, but found the private key to be encrypted, so it asked your SSH Agent if it had a cached copy of the private key, which it didn&#8217;t, so it asked your keychain if it had the passphrase for the relevant identity, which it did, so it decrypted and cached the private key, and then passed it back to the <code>ssh</code> command, which logged you into the server.
-You can verify that the identity has been cached in your SSH Agent with the <code>ssh-add -l</code> command.</p>
+<p>The first of these, <code>AddKeysToAgent</code> can be used to automatically load the SSH identities for which there are passphrases in your Keychain into your SSH Agent when you log in to your Mac. This has the same effect as always running <code>ssh-add -A</code> after login.</p>
 </div>
 <div class="paragraph">
-<p>One final thing to note is that the GUI for entering SSH identity passphrases has been removed from macOS Sierra.
-This means that you may have to explicitly add your identity to your SSH Agent once using the <code>ssh-add</code> command, even if you enable keychain integration.</p>
+<p>The second, <code>UseKeychain</code>, defaults <code>ssh-add</code> to always add passphrases to your Keychain when you load them into your SSH Agent. In effect, it turns <code>ssh-add</code> into <code>ssh-add -K</code>, saving you the need to remember to use the <code>-K</code> flag.</p>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll find more detailed information about the SSH Agent-related changes Apple made in macOS Sierra in <a href="https://developer.apple.com/library/content/technotes/tn2449/_index.html">Apple Technical Note TN2449</a>.</p>
+<p>To enable one or both of these options, add them to your SSH config file (<code>~/.ssh/config</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code>UseKeychain yes
+AddKeysToAgent yes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, this is what my config file looks like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #555555">%</span><span style="color: #bbbbbb"> </span><span style="color: #0086B3">cat</span> ~/.ssh/config
+<span style="color: #999988;font-style: italic"># enable integration between Keychain and SSH Agent
+</span><span style="color: #888888">UseKeychain yes
+AddKeysToAgent yes
+</span><span style="color: #555555">%</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To make sure you have enabled Keychain integration correctly, log out, log back in again, and open a fresh Terminal window. If everything is working as expected your default identiy should be loaded into your SSH Agent ready for use. You can verify this with <code>ssh-add -l</code>, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight" style="background-color: #f8f8f8"><code data-lang="console"><span style="color: #555555">%</span><span style="color: #bbbbbb"> </span>ssh-add <span style="color: #000080">-l</span>
+<span style="color: #888888">2048 SHA256:rTpb4ShxOt0QzwfFu+SJ5nCIeA99/EUC8WPeYp56WCk /Users/bart/.ssh/id_rsa (RSA)
+</span><span style="color: #555555">%</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -15952,13 +16043,14 @@ tmux new <span style="color: #000080">-s</span> topterm <span style="color: #d14
 <p>Published in the Milky Way Galaxy</p>
 </div>
 <div class="paragraph">
-<p>Version 1.4.2</p>
+<p>Version 1.5.3
+minor version update, due to an update to episode 37</p>
 </div>
 <div class="paragraph">
-<p>Date revision 2020-10-19</p>
+<p>Date revision 2021-02-21</p>
 </div>
 <div class="paragraph">
-<p><em>Compiled: 2020-10-19  6-18-22</em></p>
+<p><em>Compiled: 2021-02-21 17-04-33</em></p>
 </div>
 <div class="paragraph">
 <p>This book is designed and handcrafted by Allison Sheridan and Helma van der Linden.
@@ -16005,8 +16097,9 @@ You can check if a new update is available at:
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.4.2<br>
-Last updated 2020-10-19 06:17:10 UTC
+Version 1.5.3
+minor version update, due to an update to episode 37<br>
+Last updated 2021-02-21 17:04:12 UTC
 </div>
 </div>
 </body>
