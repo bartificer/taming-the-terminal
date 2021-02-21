@@ -1,8 +1,10 @@
 #!/bin/bash
+# where is this script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # echo ${DIR}
 
+# set the path to the qrcode app
 _qrcode="${DIR}/../node_modules/qrcode/bin/qrcode"
 
 # color red of the red in the monospace in the PDF
@@ -11,6 +13,7 @@ color_red='9F0E36'
 # color blue of Bart's Jekyll theme (navbar background)
 color_blue='00408d'
 
+# get every line from the list of urls in mp3_files
 cat  "${DIR}/../publish/mp3_files" | while read file
 do
     BN=`basename ${file}`
