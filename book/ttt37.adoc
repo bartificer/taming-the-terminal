@@ -208,7 +208,7 @@ What was happening under the hood is that when you logged into your Mac an SSH A
 
 This behaviour was very convenient, but also very non-standard, it's simply not how SSH Agents behave on other platforms.
 
-When Apple released macOS 10.12 Sierra, they changed their SSH Agent's default behaviour to bring it into line with its behaviour eleswhere.
+When Apple released macOS 10.12 Sierra, they changed their SSH Agent's default behaviour to bring it into line with its behaviour elsewhere.
 
 Apple did not remove the integration with the Keychain, they simply stopped the SSH Agent sharing passwords with the Keychain by default. Unless you explicitly ask it to, your SSH Agent won't read passwords from the Keychain, or, write passwords to the Keychain. It can still do both of those things, but only when you tell it to!
 
@@ -266,7 +266,7 @@ ssh-add -K
 You only have to do that once — your identity has been permanently added to your Keychain.
 
 [NOTE]
-.SSH Identites on Multiple Macs
+.SSH Identities on Multiple Macs
 ====
 If you have multiple Macs and have iCloud Keychain enabled, the passphrases for your SSH Keys will synchronise to all your Macs. For this to work reliably you should use the same SSH identity on all your Macs.
 ====
@@ -302,7 +302,7 @@ AddKeysToAgent yes
 %
 ----
 
-To make sure you have enabled Keychain integration correctly, log out, log back in again, and open a fresh Terminal window. If everything is working as expected your default identiy should be loaded into your SSH Agent ready for use. You can verify this with `ssh-add -l`, e.g.:
+To make sure you have enabled Keychain integration correctly, log out, log back in again, and open a fresh Terminal window. If everything is working as expected your default identity should be loaded into your SSH Agent ready for use. You can verify this with `ssh-add -l`, e.g.:
 
 [source,console?prompt=%]
 ----
