@@ -462,7 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Bart Busschots</span><br>
 <span id="revnumber">version 1.5.5,</span>
-<span id="revdate">2021-02-22</span>
+<span id="revdate">2021-03-24</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -11788,10 +11788,10 @@ We also saw how SSH uses host keys to protect us from man-in-the-middle (MITM) a
 <p>This instalment was initially written, and the matching podcast episode recorded, in October 2015.</p>
 </div>
 <div class="paragraph">
-<p>In February 2021 some sections of this instalment specific Mac OS X/macOS were updated to reflect signifficant changes in Apple&#8217;s handling of SSH keys. The most signifficant change Apple made is in the SSH Agent, which is described in <a href="#ttt37">TTT37</a>, but Apple also added support for the <code>ssh-copy-id</code> command described in this instalment.</p>
+<p>In February 2021 some sections of this instalment specific Mac OS X/macOS were updated to reflect significant changes in Apple&#8217;s handling of SSH keys. The most significant change Apple made is in the SSH Agent, which is described in <a href="#ttt37">TTT37</a>, but Apple also added support for the <code>ssh-copy-id</code> command described in this instalment.</p>
 </div>
 <div class="paragraph">
-<p>The podcast episode for this instalment was not updated in February 2021, but the update to <code>ssh-copy-id</code> was mentioned in a suplimental podcast episode for <a href="#ttt37">TTT37</a>.</p>
+<p>The podcast episode for this instalment was not updated in February 2021, but the update to <code>ssh-copy-id</code> was mentioned in a supplemental podcast episode for <a href="#ttt37">TTT37</a>.</p>
 </div>
 </td>
 </tr>
@@ -12045,7 +12045,7 @@ Assuming you know the password to log in to the remote computer, you can automat
 <td class="content">
 <div class="title">Installing <code>ssh-copy-id</code> on Mac OS X 10.11 El Capitan and Older</div>
 <div class="paragraph">
-<p>When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the <code>ssh-copy-id</code> command. Before Apple made this move the Mac did not ship with <code>ssh-copy-id</code>, but the open source community stepped in to fill the void. As of February 2021 there are at least three options available to Mac OS X users — (<a href="https://formulae.brew.sh/formula/ssh-copy-id)">a Hombrew formula</a>, a <a href="https://ports.macports.org/port/ssh-copy-id/summary">MacPorts port</a>, and a <a href="https://github.com/beautifulcode/ssh-copy-id-for-OSX/">simple script</a>.</p>
+<p>When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the <code>ssh-copy-id</code> command. Before Apple made this move the Mac did not ship with <code>ssh-copy-id</code>, but the open source community stepped in to fill the void. As of February 2021 there are at least three options available to Mac OS X users — (<a href="https://formulae.brew.sh/formula/ssh-copy-id)">a Homebrew formula</a>, a <a href="https://ports.macports.org/port/ssh-copy-id/summary">MacPorts port</a>, and a <a href="https://github.com/beautifulcode/ssh-copy-id-for-OSX/">simple script</a>.</p>
 </div>
 </td>
 </tr>
@@ -12091,7 +12091,7 @@ The exact details of the mechanism vary from OS to OS.</p>
 This is a secure vault the Mac uses to store the passwords you save in all sorts of apps, including Mail.app and Safari. It&#8217;s possible to securely store your SSH Key passphrases in Apple&#8217;s Keychain, and once you do, you can use your key without entering your passphrase each time you use it.</p>
 </div>
 <div class="paragraph">
-<p>On older versions of Apple&#8217;s operating system the integration with the Keychain was integreated into the Mac GUI and enabled by default. When you used an SSH key a popup window would appearing asking for your password and offering to save it to your Keychain. If you ticked the box to same the password, you could then log in with out entering your password in future. This was extremely convenient, but very much non-standard behaviour.</p>
+<p>On older versions of Apple&#8217;s operating system the integration with the Keychain was integrated into the Mac GUI and enabled by default. When you used an SSH key a popup window would appearing asking for your password and offering to save it to your Keychain. If you ticked the box to same the password, you could then log in with out entering your password in future. This was extremely convenient, but very much non-standard behaviour.</p>
 </div>
 <div class="paragraph">
 <p>Starting with macOS Sierra, Apple removed their custom UI, and switched to an integration more in keeping with how SSH keys are managed on other OSes.</p>
@@ -14779,7 +14779,7 @@ When you log in to a Mac, you&#8217;ll find an SSH Agent running and ready to ac
 <p>This behaviour was very convenient, but also very non-standard, it&#8217;s simply not how SSH Agents behave on other platforms.</p>
 </div>
 <div class="paragraph">
-<p>When Apple released macOS 10.12 Sierra, they changed their SSH Agent&#8217;s default behaviour to bring it into line with its behaviour eleswhere.</p>
+<p>When Apple released macOS 10.12 Sierra, they changed their SSH Agent&#8217;s default behaviour to bring it into line with its behaviour elsewhere.</p>
 </div>
 <div class="paragraph">
 <p>Apple did not remove the integration with the Keychain, they simply stopped the SSH Agent sharing passwords with the Keychain by default. Unless you explicitly ask it to, your SSH Agent won&#8217;t read passwords from the Keychain, or, write passwords to the Keychain. It can still do both of those things, but only when you tell it to!</p>
@@ -14864,7 +14864,7 @@ Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">SSH Identites on Multiple Macs</div>
+<div class="title">SSH Identities on Multiple Macs</div>
 <div class="paragraph">
 <p>If you have multiple Macs and have iCloud Keychain enabled, the passphrases for your SSH Keys will synchronise to all your Macs. For this to work reliably you should use the same SSH identity on all your Macs.</p>
 </div>
@@ -14912,7 +14912,7 @@ AddKeysToAgent yes
 </div>
 </div>
 <div class="paragraph">
-<p>To make sure you have enabled Keychain integration correctly, log out, log back in again, and open a fresh Terminal window. If everything is working as expected your default identiy should be loaded into your SSH Agent ready for use. You can verify this with <code>ssh-add -l</code>, e.g.:</p>
+<p>To make sure you have enabled Keychain integration correctly, log out, log back in again, and open a fresh Terminal window. If everything is working as expected your default identity should be loaded into your SSH Agent ready for use. You can verify this with <code>ssh-add -l</code>, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -16045,10 +16045,10 @@ tmux new <span style="color: #000080">-s</span> topterm <span style="color: #d14
 <p>Version 1.5.5</p>
 </div>
 <div class="paragraph">
-<p>Date revision 2021-02-22</p>
+<p>Date revision 2021-03-24</p>
 </div>
 <div class="paragraph">
-<p><em>Compiled: 2021-02-22  6-19-35</em></p>
+<p><em>Compiled: 2021-03-24  6-09-48</em></p>
 </div>
 <div class="paragraph">
 <p>This book is designed and handcrafted by Allison Sheridan and Helma van der Linden.
@@ -16096,7 +16096,7 @@ You can check if a new update is available at:
 <div id="footer">
 <div id="footer-text">
 Version 1.5.5<br>
-Last updated 2021-02-22 06:19:18 UTC
+Last updated 2021-03-24 06:09:26 UTC
 </div>
 </div>
 </body>
