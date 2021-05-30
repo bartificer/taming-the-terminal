@@ -11,9 +11,9 @@ In this instalment, we're going to look at how we can improve both SSH security 
 ====
 This instalment was initially written, and the matching podcast episode recorded, in October 2015.
 
-In February 2021 some sections of this instalment specific Mac OS X/macOS were updated to reflect signifficant changes in Apple's handling of SSH keys. The most signifficant change Apple made is in the SSH Agent, which is described in <<ttt37,TTT37>>, but Apple also added support for the `ssh-copy-id` command described in this instalment.
+In February 2021 some sections of this instalment specific Mac OS X/macOS were updated to reflect significant changes in Apple's handling of SSH keys. The most significant change Apple made is in the SSH Agent, which is described in <<ttt37,TTT37>>, but Apple also added support for the `ssh-copy-id` command described in this instalment.
 
-The podcast episode for this instalment was not updated in February 2021, but the update to `ssh-copy-id` was mentioned in a suplimental podcast episode for <<ttt37,TTT37>>.
+The podcast episode for this instalment was not updated in February 2021, but the update to `ssh-copy-id` was mentioned in a supplemental podcast episode for <<ttt37,TTT37>>.
 ====
 
 .Matching Podcast Episode 30
@@ -176,7 +176,7 @@ This utility comes as standard on all the Linux distributions I have used, and o
 [NOTE]
 .Installing `ssh-copy-id` on Mac OS X 10.11 El Capitan and Older
 ====
-When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the `ssh-copy-id` command. Before Apple made this move the Mac did not ship with `ssh-copy-id`, but the open source community stepped in to fill the void. As of February 2021 there are at least three options available to Mac OS X users — (https://formulae.brew.sh/formula/ssh-copy-id)[a Hombrew formula], a https://ports.macports.org/port/ssh-copy-id/summary[MacPorts port], and a https://github.com/beautifulcode/ssh-copy-id-for-OSX/[simple script].
+When Apple re-named Mac OS X to macOS they updated the version of Open SSH included with the OS to one that includes the `ssh-copy-id` command. Before Apple made this move the Mac did not ship with `ssh-copy-id`, but the open source community stepped in to fill the void. As of February 2021 there are at least three options available to Mac OS X users — (https://formulae.brew.sh/formula/ssh-copy-id)[a Homebrew formula], a https://ports.macports.org/port/ssh-copy-id/summary[MacPorts port], and a https://github.com/beautifulcode/ssh-copy-id-for-OSX/[simple script].
 ====
 
 Whatever OS you are on, once you have `ssh-copy-id` installed, copying over your public key becomes as easy as running the command below (replacing `user` and `computer` as appropriate):
@@ -208,7 +208,7 @@ _**Update -- February 2021:** this section has been updated to reflect changes i
 The version of SSH that ships with Apple's macOS (formerly Mac OS X)has support for Apple's secure keychain.
 This is a secure vault the Mac uses to store the passwords you save in all sorts of apps, including Mail.app and Safari. It's possible to securely store your SSH Key passphrases in Apple's Keychain, and once you do, you can use your key without entering your passphrase each time you use it.
 
-On older versions of Apple's operating system the integration with the Keychain was integreated into the Mac GUI and enabled by default. When you used an SSH key a popup window would appearing asking for your password and offering to save it to your Keychain. If you ticked the box to save the password, you could then log in with out entering your password in future. This was extremely convenient, but very much non-standard behaviour.
+On older versions of Apple's operating system the integration with the Keychain was integrated into the Mac GUI and enabled by default. When you used an SSH key a popup window would appearing asking for your password and offering to save it to your Keychain. If you ticked the box to same the password, you could then log in with out entering your password in future. This was extremely convenient, but very much non-standard behaviour.
 
 Starting with macOS Sierra, Apple removed their custom UI, and switched to an integration more in keeping with how SSH keys are managed on other OSes.
 

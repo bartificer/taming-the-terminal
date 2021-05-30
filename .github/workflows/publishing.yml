@@ -6,8 +6,8 @@ on:
   push:
     paths:
       - "release.json" # Push events when this file is changed
-    # tags:
-    #   - "v*" # Push events to matching v*, i.e. v1.0, v2.0
+    tags:
+      - "v*" # Push events to matching v*, i.e. v1.0, v2.0
 jobs:
   build:
     if: >
