@@ -108,7 +108,7 @@ E.g.
 `/bin/ls` & `/bin/bash`, and `/sbin/mount`
 . Commands that are supported as part of the OS, but not considered core are one step down the hierarchy in `/usr/bin` and `/usr/bin`.
 E.g.
-`/usr/bin/man`& `/usr/bin/perl`, and `/usr/sbin/automount`
+`/usr/bin/man` & `/usr/bin/perl`, and `/usr/sbin/automount`
 . Finally, third-party commands tend to show up in two distinct sets of locations, `/usr/local/bin` and `/usr/local/sbin` and/or `/opt/local/bin` and `/opt/local/sbin`.
 E.g.
 MacPorts installs all its binaries in `+/opt/local/...+`, so when I install https://www.imagemagick.org/[Image Magick] via MacPorts the `convert` binary is installed to `/opt/local/bin/convert`.
