@@ -86,7 +86,7 @@ bart-imac2013:~ bart$
 `env` lists the environment variables one per line.
 On each line, the name of the variable is the text before the first `=`, and the value is everything after it.
 
-Some of these variables are purely informational, while others are used to affect how a process behaves.
+Some of these variables are purely informational, while others are used to effect how a process behaves.
 
 == Environment Variables & Bash Shell Variables
 
