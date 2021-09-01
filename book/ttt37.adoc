@@ -109,7 +109,7 @@ You can use https://cygwin.com/[Cygwin] to run OpenSSH's SSH Agent, or, you can 
 [#It8217s_All_About_the_ssh-add_Command]
 === It's All About the `ssh-add` Command
 
-On Linux/Unix systems (including Apple's OSes), the SSH Agent is provided by the command `ssh-agent`, but that's not the command you use to interact with your particular SSH Agent.
+On Linux/Unix systems, the SSH Agent is provided by the command `ssh-agent`, but that's not the command you use to interact with your particular SSH Agent.
 Instead, all your interaction with your SSH Agent will be via the command `ssh-add`.
 
 Firstly, you can check that you actually have a running SSH Agent associated with your login using the `-l` flag (for list).
