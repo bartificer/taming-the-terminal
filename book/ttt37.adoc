@@ -216,7 +216,7 @@ Apple did not remove the integration with the Keychain, they simply stopped the 
 
 To integrate with the Keychain Apple has added two flags to the `ssh-add` command — `-K` and `-A`.
 
-The `-K` flag effectively means _'and on the keychain too'_ — if you use `ssh-add -K` to load your default identity into your SSH Agent the passphrase will also get copied into your Keychain. If you want to remove a identity and its passphrase from both your Agent and the keychain use the `-K` flag along with the `-d` flag (for delete).
+The `-K` flag effectively means _'and on the keychain too'_ — if you use `ssh-add -K` to load your default identity into your SSH Agent the passphrase will also get copied into your Keychain. If you want to remove an identity and its passphrase from both your Agent and the keychain use the `-K` flag along with the `-d` flag (for delete).
 
 You can load your default SSH identity into your SSH Agent and copy it into your Keychain with the simple command:
 
