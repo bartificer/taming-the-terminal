@@ -228,6 +228,15 @@ Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
 %
 ----
 
+Note that you may not be propted for the passphrase, in which case you'll get a message like the following:
+
+[source,console?prompt=%]
+----
+% ssh-add -K
+Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
+%
+----
+
 You can similarly add other identities by adding their file paths to the command above, e.g. `ssh-add -K some_identity`.
 
 [TIP]
