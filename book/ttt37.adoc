@@ -228,7 +228,7 @@ Identity added: /Users/bart/.ssh/id_rsa (/Users/bart/.ssh/id_rsa)
 %
 ----
 
-Note that you may not be propted for the passphrase, in which case you'll get a message like the following:
+Note that you may not be prompted for the passphrase, in which case you'll get a message like the following:
 
 [source,console?prompt=%]
 ----
