@@ -32,3 +32,6 @@ If you enjoy the format of this series, you might also enjoy the podcast and wri
 Feedback on the book can be sent to allison@podfeet.com.
 
 We hope you enjoy your journey with Taming the Terminal.
+
+== Full Disk Access
+Starting with macOS 10.14 Mojave, Apple added privacy controls that prevent apps from accessing your entire disk without explicit permission. This series assumes the Terminal app has been granted either _Files and Folders_ or _Full Disk Access_ permission under _Privacy & Security_ in the macOS settings.
