@@ -24,6 +24,11 @@ image::qrcodes/TTT_13.png[QRcode, align='left']
 You can also {url-mp3}/TTT13PATH/TTT_13_PATH.mp3[play/download the MP3 in your browser]
 ****
 
+[NOTE]
+====
+This instalment assumes you're using Bash, if you're on macOS Catalina or later you're probably using Zsh, see <<introduction,the Introduction>> for more information on using Bash on newer Macs.
+====
+
 == Paths
 
 So far in this series I have been a little loose with the term _command_, I've avoided putting too fine a point on exactly what a terminal command is, but we'll remedy that today.
