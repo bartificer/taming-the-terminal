@@ -96,8 +96,7 @@ That means that your home folder contains a folder called `Music`, which contain
 Describing relative paths to items deeper in the file system hierarchy from you is easy, but what if you need to go the other way, not to folders contained in your current folder, but instead to the folders that contain your current folder?
 Have another look at the output of `ls -aG1` in any folder.
 What are the top two entries?
-I don't have to know what folder you are in to know the answer, the first entry will be a folder called `.`, and the second entry will be a folder called `..`.
-These are the key to allowing relative paths that go up the chain.
+I don't have to know what folder you are in to know the answer, the first entry will be a folder called `.`, and the second entry will be a folder called `..` which are the key to allowing relative paths that go up the chain.
 
 The folder `.` is a hard link to the current folder.
 If you are in your home folder, `ls ./Documents` and `ls Documents` will do the same thing, show you the contents of a folder called `Documents` in your current folder.
@@ -127,15 +126,15 @@ The command to do this is `cd` (change directory).
 
 Firstly, if you ever get lost and you want to get straight back to your home directory, just run the `cd` command with no arguments and it will take you home!
 
-Generally, though we want to use the `cd` command to navigate to a particular folder, to do that, simply use either the absolute or relative path to the folder you want to navigate to as the only argument to the `cd` command, and assuming the path you entered is free of typos, off you'll go!
+Generally, though we want to use the `cd` command to navigate to a particular folder, to do that, simply use either the absolute or relative path to the folder you want to navigate to as the only argument to the `cd` command and assuming the path you entered is free of typos, off you'll go!
 
-Finally, for this instalment, I just want to mention one other nice trick the cd command has up its sleeve, it has a (very short) memory.
-If you type `cd -` you will go back to where ever you were before you last used `cd`.
+Finally, for this instalment, I just want to mention one other nice trick the `cd` command has up its sleeve, it has a (very short) memory.
+If you type `cd -` you will go back to wherever you were before you last used `cd`.
 
 As an example, let's say you spent ages navigating a very complex file system and are now 20 folders deep.
 You've forgotten how you got there, but you've finally found that obscure system file you need to edit to make some app do some non-standard thing.
-Then, you make a boo boo, and you accidentally type just `cd` on its own, all of a sudden, you are back in your home folder.
-Don't panic, you won't have to find that complicated path again, just type `cd -` and you'll be right back where you were before your rubber-fingered the `cd` command!
+Then, you make a boo-boo, and you accidentally type just `cd` on its own, and all of a sudden, you are back in your home folder.
+Don't panic, you won't have to find that complicated path again, just type `cd -` and you'll be right back where you were before you rubber-fingered the `cd` command!
 
 That's where we'll leave things for this instalment.
 We now understand the structure of our file systems and how to navigate around them. Next time we'll dive head-long into these file permissions we've been ignoring for the last two instalments.

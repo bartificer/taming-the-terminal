@@ -64,7 +64,7 @@ What this means is that every file and folder belongs to one user and one group.
 In the standard Linux/Unix file permissions model there are only three permissions that can be granted on a file or folder:
 
 * *Read (`r`):* if set on a file it means the contents of the file can be read.
-If set on a folder it means the contents of the files and folders contained in within the folder can be read, assuming the permissions masks further down the filesystem tree also allow that.
+If set on a folder it means the contents of the files and folders contained within the folder can be read, assuming the permissions masks further down the filesystem tree also allow that.
 If you are trying to access a file, and read permission is blocked at even one point along the absolute path to the file, access will be denied.
 * *Write (`w`):* if set on a file it means the contents can be altered, or the file deleted.
 If set on a folder it means new files or folders can be created within the folder.
@@ -80,14 +80,14 @@ You can use the `ls -l` command to see the ownership information and file permis
 
 The hard part is interpreting the meaning of the file permission mask.
 
-On standard Unix/Linux systems this mask contains ten characters, though on OS X it can contain an optional 11th or even 12th character appended to the end of the mask (we'll be ignoring these for this instalment).
+On standard Unix/Linux systems, this mask contains ten characters, though on OS X it can contain an optional 11th or even 12th character appended to the end of the mask (we'll be ignoring these for this instalment).
 
 The first character specifies the '`type`' of the file:
 
 * `-` signifies a regular file
 * `d` signifies a directory (i.e. a folder)
 * `l` signifies a symbolic link (more on these in a later instalment)
-* `b` `c` `d` and `p` are also valid file types, but they are used to represent things like block devices and sockets rather than '`normal`' files, and we'll be ignoring them in this series.
+* `b` `c` `p` and `s` are also valid file types, but they are used to represent things like block devices and sockets rather than '`normal`' files, and we'll be ignoring them in this series.
 
 The remaining nine characters represent three sets of read, write, and execute permissions (`rwx`), specified in that order.
 If a permission is present then it is represented by an `r`, `w`, or `x`, and if it's not present, it's represented by a `-`.
