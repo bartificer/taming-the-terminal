@@ -2,7 +2,7 @@
 = TTT Part 1 of n {longdash} Command Shells
 include::variables.adoc[]
 
-I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond audio  podcast segment on the https://www.podfeet.com[NosillaCast Apple Podcast] (to be released Sunday evening PST), I'm going to try to start what will hopefully be an on-going series of short unintimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app.
+I have no idea whether or not this idea is going to work out, but on this week's Chit Chat Across the Pond audio podcast segment on the https://www.podfeet.com[NosillaCast Apple Podcast] (to be released Sunday evening PST), I'm going to try to start what will hopefully be an on-going series of short unintimidating segments to gently introduce Mac users to the power contained within the OS X Terminal app.
 
 _Note: this entire series was later moved to a standalone podcast called Taming the Terminal at https://podfeet.com/ttt-podcast[podfeet.com/...]._
 
@@ -10,8 +10,9 @@ _Note: this entire series was later moved to a standalone podcast called Taming 
 I'm on with Allison every second week, and I'll have other topics to talk about, so the most frequent the instalments in this series could be would be biweekly, but I think they'll turn out to be closer to monthly on average.
 While the focus will be on OS X, the majority of the content will be equally applicable to any other Unix or Linux operating system.
 
-In the https://www.podfeet.com/wordpress/2013/03/31/412-rslsteeper-autismate-audio-hijack-pro-mail-security/[last CCATP], we did a very detailed segment on email security, and despite the fact that with the benefit of hindsight I realise it was too much to do at once and should have been split into two segments, it received the strongest listener response of anything of any of my many contributions to the NosillaCast in the last 5 or more years.
-I hope I'm right in interpreting that as evidence that there are a lot of NosillaCast listeners who want to get a little more technical, and get their hands dirty with some good old-fashioned nerdery!
+In the 
+https://www.podfeet.com/blog/2013/03/412-rslsteeper-autismate-audio-hijack-pro-mail-security/[last CCATP], we did a very detailed segment on email security, and despite the fact that with the benefit of hindsight, I realise it was too much to do at once and should have been split into two segments, it received the strongest listener response of anything of any of my many contributions to the NosillaCast in the last 5 or more years.
+I hope I'm right in interpreting that as evidence that there are a lot of NosillaCast listeners who want to get a little more technical and get their hands dirty with some good old-fashioned nerdery!
 
 .Matching Podcast Episode 1
 ****
