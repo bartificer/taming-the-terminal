@@ -1,0 +1,74 @@
+[[ttt41]]
+
+= TTT Part 41 of n {longdash} Protecting Your Screts
+include::variables.adoc[]
+
+This installment is the first in a number of years, and while it's inspiration is very timely (the rise of Artificial Intelligence), the topic and the commands discussed are evergreen.
+
+It has always been important to protect your secrets on the terminal, but as AI-integrated terminals become more popular, uploading every command you type to the provider's servers, it's become more important than ever to make sure your terminal commands never contain secrets like passwords, API keys, or other sensitive information.
+
+.Matching Podcast Episode 41
+****
+
+:mp3file: ttt-41-automating-tmux/TTT_40_Automating_TMUX.mp3
+
+Listen Along: Taming the Terminal Podcast Episode 41 +
+part of https://www.podfeet.com/blog/2020/08/ccatp-650/[episode 650 of the Chit Chat Across the Pond Podcast]
+
+// no audiocontrols in pdf
+ifndef::backend-pdf,apple-books[]
+audio::{url-mp3}/{mp3file}[]
+endif::[]
+
+Scan the QRcode to listen on a different device
+
+image::qrcodes/TTT_41.png[QRcode, align='left']
+
+You can also
+{url-mp3}/{mp3file}[play/download the MP3 in your browser]
+****
+
+== Why Protect Your Secrets on the Terminal?
+
+It has always been true that every terminal command you type gets saved in your shell's history file. For Bash that's `~/.bash_history`, and for ZSH it's `~/.zsh_history`. These files power the various shell history mechanisms like the up-arrow to replay recent commands, the `history` command to list previously executed commands, and Bash's reverse search trigged with kbd:[ctrl+r]. Some security tools stream these files to central logging servers for auditing purposes, and stealer-type malware looks for and steals coppies of these files. For this reason they should never contain any secrets.
+
+By secrets we mean things that would compromise your security if they were to fall into the wrong hands. This includes passwords, API keys, private keys, etc..
+
+== Guiding Principles
+
+Let's start with the big picture — these are they key points to remember:
+
+. When possible, only store secrets in your password manager your OS's keychain.
+. Avoid duplication, make as few copies of secrets as possible, ideally have just one copy in your password manegr or OS keychain, and if you absolutely need to store copies elsewhere, make as few copies as possible, and record the details in your password manager.
+. Never hard-code secrets into scrripts.
+. Never type secrets directlty into the terminal commands (if you do they get coppied to your shell history file!)
+. For interactive commands, provide secrets in real-time as-and-when-needed.
+. For automations, favour integreations with your password manager or your OS's keychain over configuration files.
+. If you absolutely have to store secrets in files, use Unix file permissions to apply the _principle of least privilege_ by configurating the file ownership and permossions as restrictively as possible.
+
+Our focus in this instalment will be on interactive commands, because how we most often interact with our terminals. Automations that need to run un-attended are outside of the scope of this series, and often involve advanced tools or making carefully considered tradeoffs. As the cliché goes, we'll leave that as an excercise for the reader 🙂
+
+== Secure Terminal Inputs are Secure
+
+TO DO — explain how to recognise secure terminal input prompts
+
+TO DO — using the `read` command to trigger secure terminal inputs
+
+[source,shell]
+----
+read -s VARIABLE_NAME
+----
+
+== Strategies for Saving Your Sanity
+
+TO DO — reminder about SSH agents
+
+TO DO — evnironent variables
+
+TO DO — shell variables
+
+TO DO — password managers & OS keychains
+
+== Final Thoughts
+
+TO DO
