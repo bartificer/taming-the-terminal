@@ -46,18 +46,100 @@ Let's start with the big picture — these are they key points to remember:
 . For automations, favour integreations with your password manager or your OS's keychain over configuration files.
 . If you absolutely have to store secrets in files, use Unix file permissions to apply the _principle of least privilege_ by configurating the file ownership and permossions as restrictively as possible.
 
-Our focus in this instalment will be on interactive commands, because how we most often interact with our terminals. Automations that need to run un-attended are outside of the scope of this series, and often involve advanced tools or making carefully considered tradeoffs. As the cliché goes, we'll leave that as an excercise for the reader 🙂
+Our focus in this instalment will be on interactive commands, because that's how we most often interact with our command shells. Automations that need to run un-attended are outside of the scope of this series, and often involve advanced tools, or making carefully considered tradeoffs. As the cliché goes, we'll leave that as an excercise for the reader 🙂
 
 == Secure Terminal Inputs are Secure
 
-TO DO — explain how to recognise secure terminal input prompts
+POSIX compliant environments like Linux and macOS terminals provide a secure input stream expressly for the purpose of securely entering secrets. You'll recognise these secure inputs because they silently accept your input without echoing it to the screen as you type. Well written terminal apps will use this secure input stream when prompting for secrets like passwords. In fact, we've already seen a few examples of this in previous installments — the `sudo` and `ssh` commands both use secure terminal inputs to prompt for passwords.
 
-TO DO — using the `read` command to trigger secure terminal inputs
+=== Create Your Own Secure Input Prompts with the `read` Command
+
+It's all good and well using secure inputs when the terminal commands you need to use support them, but what about the situations where they don't? Some commands expect to be passed secrets as command line arguments. As you become more comformtable on the terminal you may well start writting ever more and ever more complex scripts of your own, and you may need those script to prompt for secrets too.
+
+The solution both for securely passing secrets as arguments and for securely prompting for secrets in your own scripts is the the same, the `read` command with the `-s` (for secure) flag.
+
+Before we look at secure inputs with `read`, let's first look at how `read` works by default.
+
+Read's function is to prompt for input from the terminal's standard input stream (STDIN), generally your keyboard, and save the entered text into a shell variable.
+
+If you run the command without any flags or arguments a cursor will appear on teh next line, waiing for input, with no prompt text to give you any clue what to, and what ever you type will be echoed to the screen until you press kbd:[Enter] to submit the input. The text you entered gets saved to s special shell variable named `$REPLY`. We can see this for ourselves by entering the command `read`, typing some text, hitting kbd:[Enter], and then running the command `echo $REPLY` so show the content of the `$REPLY` variable.
+
+Having the text go into the `$REPLY` variable is not very useful, so you'll almost always want to specify your own variable name by passing it, without a leading `$`, as the only argument, for example, to read into a variable named `$my_text`, you would run:
 
 [source,shell]
 ----
-read -s VARIABLE_NAME
+read my_text
 ----
+
+Enter some text, then verify that it was indeed saved to `$my_text` by running:
+
+[source,shell]
+----
+echo "$my_text"
+----
+
+This is great for reading non-secret text, but what about secrets like passwords? For that we need the `-s` flag to trigger secure the terminal's secure input mode. For example, to securely read an API key into a variable named `$my_api_key` you would use the command:
+
+[source,shell]
+----
+read -s my_api_key
+----
+
+Notice that as you typed nothing was echoed to the screen. Again, you can verify that the text was indeed saved to `$my_api_key` by running:
+
+[source,shell]
+----
+echo "$my_api_key"
+----
+
+Finally, while there's little value in specificying a prompt when you're reading directly into a variable on the temrinal, that's really not going to work in scripts! Realistically you won't remember what your own script is prompting for a few weeks down the line, let alone what someone else's script is asking for!
+
+The solution here is to use the `-p` flag to specify a prompt string. For example, to securely read an API key into a variable named `$my_api_key` with a prompt, you would use the command:
+
+[source,shell]
+----
+read -s -p 'API key: ' my_api_key
+----
+
+=== How to Use `read` to Keep Secrets Out of Your Shell History
+
+The problem to be solved is that we want to pass a secret to a command as an arugment but without the secret showing up in our history file.
+
+At the time of recording, November 2025, Have I Been Pwned (HIBP) have just released a free test API key that can be used to experiment with their powerful API before you start paying for a subscription. We're going to use this free publicly available API key in our example. HIBP's API is a so-called REST API, so you access it over the HTTP(S) protocol. From the terminal we can sent HTTP requests using the `curl` command.
+
+Before we do things the right way, let's first intentionally do it insecurely by directly passing the API key in our arguments to the `curl` command:
+
+[source,shell]
+----
+curl --header 'hibp-api-key: 00000000000000000000000000000000' https://haveibeenpwned.com/api/v3/breachedaccount/multiple-breaches@hibp-integration-tests.com
+----
+
+This command sends a request to the HIBP asking for a list of breaches for the test email address `multiple-breaches@hibp-integration-tests.com`, and it returns a JSON response listing the breaches:
+
+[source,json]
+----
+[{"Name":"Adobe"},{"Name":"Stratfor"},{"Name":"Gawker"}]
+----
+
+Great, the command works, but what's happened to our API key? We've written it to our disk in plain text!
+
+If you're running Bash you'll find the API at the end of the `~/.bash_history` file:
+
+[source,shell]
+----
+tail ~/.bash_history
+----
+
+And if you're running ZSH (the default on modern versions of macOS) you'll find it at the end of the `~/.zsh_history` file:
+
+[source,shell]
+----
+tail ~/.zsh_history
+----
+
+Oops! Not good!
+
+TO DO — show how to use read to avoid this
 
 == Strategies for Saving Your Sanity
 
