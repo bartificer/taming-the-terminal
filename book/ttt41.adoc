@@ -3,9 +3,13 @@
 = TTT Part 41 of n {longdash} Protecting Your Screts
 include::variables.adoc[]
 
-This installment is the first in a number of years, and while it's inspiration is very timely (the rise of Artificial Intelligence), the topic and the commands discussed are evergreen.
+This installment is the first in a number of years, and while it's inspiration is very timely — the rise of Artificial Intelligence (AI) — the topic and the commands discussed are evergreen.
 
-It has always been important to protect your secrets on the terminal, but as AI-integrated terminals become more popular, uploading every command you type to the provider's servers, it's become more important than ever to make sure your terminal commands never contain secrets like passwords, API keys, or other sensitive information.
+It's always been important to protect your secrets on the terminal. Information stealer malware has been checking shell history files for passwords and API keys for a digital eternity, but as AI-integrated terminals add an extra urgency, because your commands could well be uploaded to the AI company's servers as *context*, and depending on their terms of service, even training data!
+
+As the old cliché goes, the best time to start protecting your secrets on the commandline is a the first time you started using the commandline, but the second best time is now!
+
+You need to develop the muscle memory to wince every time you see a password or an API key appear on your terminal, and in this installmenmt we'll give you the tools you need to respond to that wince by tweaking your use of the the commandline and shell scripts a little.
 
 .Matching Podcast Episode 41
 ****
