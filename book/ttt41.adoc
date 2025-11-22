@@ -123,7 +123,11 @@ This command sends a request to the HIBP asking for a list of breaches for the t
 
 Great, the command works, but what's happened to our API key? We've written it to our disk in plain text!
 
-If you're running Bash you'll find the API at the end of the `~/.bash_history` file:
+We can infer this has happened because when we hit the up-arrow to show previous commands we now see that curl command with the API key. We can also reveal it with the `history` command (no arguments needed).
+
+These features are all powered by our shell's history file, so let's take a look at that file directly to see the API key. 
+
+If you're running Bash you'll find the API key at the end of the `~/.bash_history` file:
 
 [source,shell]
 ----
@@ -139,18 +143,92 @@ tail ~/.zsh_history
 
 Oops! Not good!
 
-TO DO — show how to use read to avoid this
+Now, let's do this the right way and contrast the resulting history file entry.
 
-== Strategies for Saving Your Sanity
+First, we'll use the `read` command to securely prompt for the API key and save it to a variable named `$hibp_api_key`:
 
-TO DO — reminder about SSH agents
+[source,shell]
+----
+read -s hibp_api_key
+----
 
-TO DO — evnironent variables
+Enter the API key (`00000000000000000000000000000000`) into the prompt and hit kbd:[Enter].
 
-TO DO — shell variables
+Note that I didn't bother to add prompt text because I'm running this directly rather than in a script.
 
-TO DO — password managers & OS keychains
+We now have the API key safely stored in the `$hibp_api_key` variable without it ever being written to disk, we can verify this with the `echo` command:
+
+[source,shell]
+----
+echo "$hibp_api_key"
+----
+
+Let's now use this variable to construct a safe vesion of the previous `curl` command:
+
+[source,shell]
+----
+curl --header "hibp-api-key: $hibp_api_key" https://haveibeenpwned.com/api/v3/breachedaccount/multiple-breaches@hibp-integration-tests.com
+----
+
+Firstly, the command works just as before, returning the same JSON response, but more importantly, let's check our shell history file to see what got written there this time.
+
+[source,shell]
+----
+history
+----
+
+Success! The API key was not written to disk this time!
+
+== Some Helpful Tipes and Tricks
+
+We've seen how to use a variable to pass a secret using a commandline argument, but there are other commands that can read secrets from environment variables. These commands will specify the name of the environment variable to use in their documentation. We've already seen that we can read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that simply pass the name of the variable to be prompted as the only argument *without a preceding `$`*. For example, we can promote our `$hibp_api_key` shell variable to an environment variable with:
+
+[source,shell]
+----
+export hibp_api_key
+----
+
+A very common kind of secret is the password used to unlock an SSH key. Remember that SSH provides a tool specifically designed to avoid the need to repeatedly enter that password, `ssh-agent`, and we explored that in great detail in link:#ttt37[Instalment 37].
+
+Mac users can use the `pbbaste` command to safely copy a secret from the clipboard straight into a shell variable. For example, select the following text and copy it: `some big secret!`
+
+Now, run the command:
+
+[source,shell]
+----
+my_secret=$(pbpaste)
+----
+
+The text from the clipboard is now safely stored in the `$my_secret` variable without ever being written to disk. We can prove this with:
+
+[source,shell]
+----
+echo "$my_secret"
+----
+
+One nice advantage of this approach is that you can combine it with the `export` command to save the value and prompte the newly craeted shell variable to an environment variable in one step:
+
+[source,shell]
+----
+export my_secret=$(pbpaste)
+----
+
+Finally, if you use a password manager you may find it offers command line tools to make it easier to move secrets from your vault straight into shell variables. Each password manager is different, so you'll need to check the documentation for your specific password manager to see if it has these kinds of features and how to use them.
+
+Since I'm a long-time 1Passord user I know they offer a commandline tool named `op` which can be quickly installed on a Mac using Homebrew:
+
+[source,shell]
+----
+brew install 1password-cli
+----
+
+You'll find the full documentation for how to connect the app to the commandline tool link:https://developer.1password.com/docs/cli/get-started/[here], but here's a quick exmaple:
+
+[source,shell]
+----
+twitter_password=$(op item get 'Twitter (Personal)' --fields 'label=Password' --reveal)
+----
 
 == Final Thoughts
 
-TO DO
+Remember to keep your secrets secret! If you can see a secret by hitting the up-arrow you're doing it wrong! Stop, think about how you can avoid doing that, and start doing it the right way from that point on. It will take a little time, and perhaps some faffing about while you get the hang of things, but it will soon become second nature. Your future security is worth the effort!
