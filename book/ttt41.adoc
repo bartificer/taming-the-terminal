@@ -5,11 +5,11 @@ include::variables.adoc[]
 
 This installment is the first in a number of years, and while it's inspiration is very timely — the rise of Artificial Intelligence (AI) — the topic and the commands discussed are evergreen.
 
-It's always been important to protect your secrets on the terminal. Information stealer malware has been checking shell history files for passwords and API keys for a digital eternity, but the rise of AI-integrated terminals adds an extra urgency. when younuse these kinds of tools (I love WARP), the commands your type and perhaps even the output they produce are allost certainly uploaded to an AI company's servers as *context*. At the very least your secrets are now out of your contorl, but dependong on the provider's terms of service, your secrets could even be add to the training data for future models!
+It's always been important to protect your secrets on the terminal. Information-stealing malware has been checking shell history files for passwords and API keys for a digital eternity, but the rise of AI-integrated terminals adds an extra urgency. When you use these kinds of tools (I love WARP), the commands you type and perhaps even the output they produce are almost certainly uploaded to an AI company's servers as *context*. At the very least, your secrets are now out of your control, but depending on the provider's terms of service, your secrets could even be added to the training data for future models!
 
-As the old cliché goes, the best time to start protecting your secrets on the commandline is a the first time you started using the commandline, but the second best time is now!
+As the old cliché goes, the best time to start protecting your secrets on the command line is the first time you started using the command line, but the second-best time is now!
 
-You need to develop the muscle memory to wince every time you type or paste a secret and see it echoed back to you, and in this installmenmt we'll give you the tools you need to respond to that wince by tweaking your behaviour a little.
+You need to develop the muscle memory to wince every time you type or paste a secret and see it echoed back to you, and in this instalment, we'll give you the tools you need to respond to that wince by tweaking your behaviour a little.
 
 .Matching Podcast Episode 41
 ****
@@ -41,41 +41,41 @@ The term is intentionally generic because we really do mean any text that would 
 
 == Why Protect Your Secrets on the Terminal?
 
-It has always been true that every terminal command you type gets saved in your shell's history file. For Bash that's `~/.bash_history`, and for ZSH it's `~/.zsh_history`. These files power the various shell history mechanisms like the up-arrow to replay recent commands, the `history` command to list previously executed commands, and Bash's reverse search trigged with kbd:[ctrl+r].
+It has always been true that every terminal command you type gets saved in your shell's history file. For Bash, that's `~/.bash_history`, and for ZSH it's `~/.zsh_history`. These files power the various shell history mechanisms like the up-arrow to replay recent commands, the `history` command to list previously executed commands, and Bash's reverse search triggered with kbd:[ctrl+r].
 
-Some security tools stream these files to central logging servers for auditing purposes, and of course stealer-type malware looks for and steals coppies of these files as a matter of course. This is why you need to avoid including secrets directly in your commands.
+Some security tools stream these files to central logging servers for auditing purposes, and of course, stealer-type malware looks for and steals copies of these files as a matter of course. This is why you need to avoid including secrets directly in your commands.
 
 == Guiding Principles
 
 Let's start with the big picture — these are the key points to remember:
 
-. When possible, only store secrets in your password manager your OS's keychain.
-. Avoid duplication — make as few copies of secrets as possible. The ideal is to keep just one copy in your password manegr or OS keychain, but that's not always practicalmormpoasible. When you absolutely need to store copies elsewhere, make as few copies as possible, and record the locations in your password manager.
+. When possible, only store secrets in your password manager or your OS's keychain.
+. Avoid duplication — make as few copies of secrets as possible. The ideal is to keep just one copy in your password manager or OS keychain, but that's not always practical or possible. When you absolutely need to store copies elsewhere, make as few copies as possible, and record the locations in your password manager.
 . Never hard-code secrets into scripts or code of any kind.
-. Never include secrets directlty in shell commands so they stay out of your history file!
-. For interactive commands, provide secrets in real-time as-and-when-needed.
-. For automations, favour integreations with your password manager, your OS's keychain, or environment variables over configuration files.
-. If you absolutely must store secrets in configuration files, use Unix file permissions to apply the _principle of least privilege_ by configurating the file ownership and permoisions as restrictively as possible.
+. Never include secrets directly in shell commands so they stay out of your history file!
+. For interactive commands, provide secrets in real-time as and when needed.
+. For automations, favour integrations with your password manager, your OS's keychain, or environment variables over configuration files.
+. If you absolutely must store secrets in configuration files, use Unix file permissions to apply the _principle of least privilege_ by configuring the file ownership and permissions as restrictively as possible.
 
-Our focus in this instalment will be on interactive commands, because that's how we most often interact with our command shells. Automations that need to run un-attended are outside of the scope of this series, and often involve advanced tools, or making carefully considered tradeoffs. As the cliché goes, we'll leave that as an excercise for the reader 🙂
+Our focus in this instalment will be on interactive commands, because that's how we most often interact with our command shells. Automations that need to run unattended are outside of the scope of this series, and often involve advanced tools or making carefully considered tradeoffs. As the cliché goes, we'll leave that as an exercise for the reader 🙂
 
 == Secure Terminal Inputs are Secure
 
-POSIX compliant command shells like those we use in our Linux and macOS terminals provide a secure input stream expressly for the purpose of securely entering secrets. You'll recognise these secure inputs because they silently accept your input without echoing it to the screen as you type.
+POSIX-compliant command shells like those we use in our Linux and macOS terminals provide a secure input stream expressly for the purpose of securely entering secrets. You'll recognise these secure inputs because they silently accept your input without echoing it to the screen as you type.
 
-Well written terminal apps will use this secure input stream when prompting for secrets like passwords. In fact, we've already seen a few examples of this in previous installments — the `sudo` and `ssh` commands both use secure terminal inputs to prompt for passwords.
+Well-written terminal apps will use this secure input stream when prompting for secrets like passwords. In fact, we've already seen a few examples of this in previous installments — the `sudo` and `ssh` commands both use secure terminal inputs to prompt for passwords.
 
 === Create Your Own Secure Input Prompts with the `read` Command
 
-It's all good and well using secure inputs when the commands you need to use support them, but what about the situations where they don't? Some commands expect to be passed secrets as command line arguments. As you become more comformtable on the terminal you may well start writting ever more and ever more complex scripts of your own, and you may need those script to prompt for secrets too.
+It's all good and well using secure inputs when the commands you need to use support them, but what about the situations where they don't? Some commands expect to be passed secrets as command-line arguments. As you become more comfortable on the terminal, you may well start writing ever more and ever more complex scripts of your own, and you may need those scripts to prompt for secrets too.
 
-The solution both for securely passing secrets as arguments and for securely prompting for secrets in your own scripts is the the same — the `read` command with the `-s` (for secure) flag.
+The solution both for securely passing secrets as arguments and for securely prompting for secrets in your own scripts is the same — the `read` command with the `-s` (for secure) flag.
 
 Before we look at secure inputs with `read`, let's first look at how `read` works by default.
 
 Read's function is to prompt for input from the shell's standard input stream (STDIN), generally your keyboard, and save the entered text into a shell variable.
 
-If you run the command without any flags or arguments a cursor will appear on a new line, awaiting your for input. Confusingly, there is no prompt, just a nlinking cursor! What ever you type will be echoed to the screen until you press kbd:[Enter] to submit the input.
+If you run the command without any flags or arguments, a cursor will appear on a new line, awaiting your input. Confusingly, there is no prompt, just a blinking cursor! Whatever you type will be echoed to the screen until you press kbd:[Enter] to submit the input.
 
 The text you entered gets saved to a special shell variable named `$REPLY`. We can see this for ourselves by entering the command `read`, typing some text, hitting kbd:[Enter], and then running the command `echo "$REPLY"` to show the content of the `$REPLY` variable.
 
@@ -93,21 +93,21 @@ Enter some text, then verify that it was indeed saved to `$my_text` by running:
 echo "$my_text"
 ----
 
-This is great for reading non-secret text, but what about secrets like passwords? For that we need the `-s` flag to trigger the terminal's secure input mode. For example, to securely read an API key into a variable named `$my_api_key` you would use the command:
+This is great for reading non-secret text, but what about secrets like passwords? For that, we need the `-s` flag to trigger the terminal's secure input mode. For example, to securely read an API key into a variable named `$my_api_key`, you would use the command:
 
 [source,shell]
 ----
 read -s my_api_key
 ----
 
-Notice that as you typed nothing was echoed to the screen. Again, you can verify that the text was indeed saved to `$my_api_key` by running:
+Notice that as you typed, nothing was echoed to the screen. Again, you can verify that the text was indeed saved to `$my_api_key` by running:
 
 [source,shell]
 ----
 echo "$my_api_key"
 ----
 
-Finally, while there's little value in specificying a prompt when you're reading directly into a variable on the temrinal, you really do need to privide some kind of prompt when your scripts ask for input!
+Finally, while there's little value in specifying a prompt when you're reading directly into a variable on the terminal, you really do need to provide some kind of prompt when your scripts ask for input!
 
 The solution here is to use the `-p` flag to specify a prompt string. For example, to securely read an API key into a variable named `$my_api_key` with a prompt, you would use the command:
 
@@ -120,9 +120,9 @@ Notice I needed to include the space after the `:` in the prompt string!
 
 === How to use `read` to Keep Secrets Out of Your Shell History
 
-The problem to be solved is that we want to pass a secret to a command as an arugment but without the secret showing up in our history file.
+The problem to be solved is that we want to pass a secret to a command as an argument, but without the secret showing up in our history file.
 
-At the time of recording, November 2025, link:https://haveibeenpwned.com[Have I Been Pwned] (HIBP) have just released a free test API key that can be used to experiment with their powerful API before you start paying for a subscription. We're going to use this free publicly available API key in our example. HIBP's API is a so-called REST API, so you access it over the HTTP(S) protocol. From the terminal we can sent HTTP requests using the `curl` command.
+At the time of recording, November 2025, link:https://haveibeenpwned.com[Have I Been Pwned] (HIBP) have just released a free test API key that can be used to experiment with their powerful API before you start paying for a subscription. We're going to use this free, publicly available API key in our example. HIBP's API is a so-called REST API, so you access it over the HTTP(S) protocol. From the terminal, we can send HTTP requests using the `curl` command.
 
 Before we do things the right way, let's first intentionally do it insecurely by directly passing the API key in our arguments to the `curl` command:
 
