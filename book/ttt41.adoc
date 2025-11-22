@@ -109,14 +109,27 @@ echo "$my_api_key"
 
 Finally, while there's little value in specifying a prompt when you're reading directly into a variable on the terminal, you really do need to provide some kind of prompt when your scripts ask for input!
 
-The solution here is to use the `-p` flag to specify a prompt string. For example, to securely read an API key into a variable named `$my_api_key` with a prompt, you would use the command:
+Unfortunately this is one of the few places where ZSH has made a breaking change from Bash, so the syntax is compeltely different between the two shells.
+
+Even though Macs now ship with ZSH as the default shell, Bash is still considered the de facto standard shell for scripting, so I still write all my scripts in Bash even though I use ZSH in my terminal windows.
+
+In Bash, you simply us the `-p` flag to specify a prompt string. For example, to securely read an API key into a variable named `$my_api_key` with a prompt, you would use the command:
 
 [source,shell]
 ----
+# Bash only!!!
 read -s -p 'API key: ' my_api_key
 ----
 
-Notice I needed to include the space after the `:` in the prompt string!
+ZSH does things differently, you add the prompt to the end of the variable name argument using `?` symbol as the separator, so the example above becomes:
+
+[source,shell]
+----
+# ZSH only!!!
+read -s 'my_api_key?API key: '
+----
+
+Notice that in both variants I needed to include the space after the `:` as part of the prompt string.
 
 === How to use `read` to Keep Secrets Out of Your Shell History
 
