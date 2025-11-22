@@ -1,6 +1,6 @@
 [[ttt41]]
 
-= TTT Part 41 of n {longdash} Protecting Your Screts
+= TTT Part 41 of n {longdash} Protecting Your Secrets
 include::variables.adoc[]
 
 This installment is the first in a number of years, and while it's inspiration is very timely — the rise of Artificial Intelligence (AI) — the topic and the commands discussed are evergreen.
