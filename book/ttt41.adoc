@@ -140,18 +140,18 @@ This command sends a request to the HIBP API asking for a list of breaches for t
 
 Great, the command works, but what's happened to our API key? We've written it to our disk in plain text!
 
-We can infer this has happened because when we hit the up-arrow to show previous commands we now see that curl command with the API key. We can also reveal it with the `history` command (no arguments needed).
+We can infer this has happened because when we hit the up-arrow to show previous commands, we now see that `curl` command with the API key. We can also reveal it with the `history` command (no arguments needed).
 
 These features are all powered by our shell's history file, so let's take a look at that file directly to see the API key. 
 
-If you're running Bash you'll find the API key at the end of the `~/.bash_history` file:
+If you're running Bash, you'll find the API key at the end of the `~/.bash_history` file:
 
 [source,shell]
 ----
 tail ~/.bash_history
 ----
 
-And if you're running ZSH (the default on modern versions of macOS) you'll find it at the end of the `~/.zsh_history` file:
+And if you're running ZSH (the default on modern versions of macOS), you'll find it at the end of the `~/.zsh_history` file:
 
 [source,shell]
 ----
@@ -173,14 +173,14 @@ Enter the API key (`00000000000000000000000000000000`) into the prompt and hit k
 
 Note that I didn't bother to add prompt text because I'm running this directly rather than in a script.
 
-We now that we have the API key safely stored in the `$hibp_api_key` variable without it ever being written to disk, we can verify this with the `echo` command:
+We know that we have the API key safely stored in the `$hibp_api_key` variable without it ever being written to disk. We can verify this with the `echo` command:
 
 [source,shell]
 ----
 echo "$hibp_api_key"
 ----
 
-Let's now use this variable to construct a safe vesion of the previous `curl` command:
+Let's now use this variable to construct a safe version of the previous `curl` command:
 
 [source,shell]
 ----
@@ -199,9 +199,9 @@ Success! The API key was not written to disk this time!
 [NOTE]
 .Winodws Users can Achieve Similar Results with PowerShell
 ====
-When you need a modern shell on Windows you should be useing PowerShell rather than the old DOS shell, and PowerShell's `Read-Host` commandlet can safely read secrets into variables like `read` can in Bash/ZSH.
+When you need a modern shell on Windows, you should be using PowerShell rather than the old DOS shell, and PowerShell's `Read-Host` commandlet can safely read secrets into variables like `read` can in Bash/ZSH.
 
-In PowerShell there are two types of strings; regular strings, and secure strings. Secure strings are encrypted in memory, so they're more secure than regular strings, but not all commandlets support them. This means there are times you need to safely read into a secure string, and times you need to safely read into a regular string.
+In PowerShell, there are two types of strings: regular strings and secure strings. Secure strings are encrypted in memory, so they're more secure than regular strings, but not all commandlets support them. This means there are times you need to safely read into a secure string, and times you need to safely read into a regular string.
 
 [source,powershell]
 ----
@@ -212,7 +212,7 @@ $APIKey = Read-Host -MaskInput
 $SecureStringAPIKey = Read-Host -AsSecureString
 ----
 
-When using this in a script you can provide a prompt string with the `-Prompt` parameter:
+When using this in a script, you can provide a prompt string with the `-Prompt` parameter:
 
 [source,powershell] 
 ----
@@ -221,11 +221,13 @@ $SecureStringAPIKey = Read-Host -Prompt 'API Key' -AsSecureString
 ----
 ====
 
-== Some Helpful Tipes and Tricks
+== Some Helpful Tips and Tricks
 
-We've seen how to use a variable to pass a secret using a commandline argument, but there are scripts and commands that expect to find the secrets they need in environment variables. These scripts and commands will specify the name of the environment variable to use in their documentation.
+We've seen how to use a variable to pass a secret using a command-line argument, but there are scripts and commands that expect to find the secrets they need in environment variables. These scripts and commands will specify the name of the environment variable to use in their documentation.
 
-We've already seen how to read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that simply pass the name of the variable as the only argument *without a preceding `$`*. 
+We've already seen how to read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that, simply pass the name of the variable as the only argument *without a preceding `$`*. 
+
+*BART: Can you remind us what an environment variable is and why we'd want to do this?*
 
 For example, we can promote our `$hibp_api_key` shell variable to an environment variable with:
 
@@ -234,7 +236,7 @@ For example, we can promote our `$hibp_api_key` shell variable to an environment
 export hibp_api_key
 ----
 
-A very common kind of secret is the password used to unlock an SSH key. Remember that SSH provides a tool specifically designed to avoid the need to repeatedly enter that password — `ssh-agent` We explored that in great detail in link:#ttt37[Instalment 37].
+A very common kind of secret is the password used to unlock an SSH key. Remember that SSH provides a tool specifically designed to avoid the need to repeatedly enter that password — `ssh-agent`. We explored that in great detail in link:#ttt37[Instalment 37].
 
 Mac users can use the `pbbaste` command to safely copy a secret from the clipboard straight into a shell variable. For example, select the following text and copy it: `some big secret!`
 
@@ -252,23 +254,23 @@ The text from the clipboard is now safely stored in the `$my_secret` variable wi
 echo "$my_secret"
 ----
 
-One nice advantage of this approach is that you can combine it with the `export` command to save the value and prompt the newly craeted shell variable to an environment variable in one step:
+One nice advantage of this approach is that you can combine it with the `export` command to save the value and prompt the newly created shell variable to an environment variable in one step:
 
 [source,shell]
 ----
 export my_secret=$(pbpaste)
 ----
 
-Finally, if you use a password manager you may find it offers command line tools to make it easier to move secrets from your vaults straight into shell variables. Each password manager is different, so you'll need to check the documentation for your specific password manager to see if it has these kinds of features and how to use them.
+Finally, if you use a password manager, you may find that it offers command-line tools to make it easier to move secrets from your vaults straight into shell variables. Each password manager is different, so you'll need to check the documentation for your specific password manager to see if it has these kinds of features and how to use them.
 
-Since I'm a long-time link:https://1password.com/[1Password] user I know they offer a commandline tool named `op` which can be quickly installed on a Mac using link:https://brew.sh/[Homebrew]:
+Since I'm a long-time link:https://1password.com/[1Password] user, I know they offer a command-line tool named `op` which can be quickly installed on a Mac using link:https://brew.sh/[Homebrew]:
 
 [source,shell]
 ----
 brew install 1password-cli
 ----
 
-You'll find the full documentation for how to connect the app to the commandline tool link:https://developer.1password.com/docs/cli/get-started/[here], but here's a quick exmaple:
+You'll find the full documentation for how to connect the app to the command-line tool link:https://developer.1password.com/docs/cli/get-started/[here], but here's a quick exmaple:
 
 [source,shell]
 ----
@@ -277,6 +279,6 @@ twitter_password=$(op item get 'Twitter (Personal)' --fields 'label=Password' --
 
 == Final Thoughts
 
-Remember to keep your secrets secret! If you can see a secret by hitting the up-arrow you're doing it wrong! Stop, think about how you can avoid doing that, and start doing it the right way from then on.
+Remember to keep your secrets secret! If you can see a secret by hitting the up-arrow, you're doing it wrong! Stop, think about how you can avoid doing that, and start doing it the right way from then on.
 
 It will take some time, and perhaps some faffing about, to get the hang of things, but it'll soon become second nature. Your future security is worth the effort!
