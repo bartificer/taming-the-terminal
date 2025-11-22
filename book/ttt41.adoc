@@ -3,7 +3,7 @@
 = TTT Part 41 of n {longdash} Protecting Your Secrets
 include::variables.adoc[]
 
-This installment is the first in a number of years, and while it's inspiration is very timely — the rise of Artificial Intelligence (AI) — the topic and the commands discussed are evergreen.
+This installment is the first in a number of years, and while its inspiration is very timely — the rise of Artificial Intelligence (AI) — the topic and the commands discussed are evergreen.
 
 It's always been important to protect your secrets on the terminal. Information-stealing malware has been checking shell history files for passwords and API keys for a digital eternity, but the rise of AI-integrated terminals adds an extra urgency. When you use these kinds of tools (I love WARP), the commands you type and perhaps even the output they produce are almost certainly uploaded to an AI company's servers as *context*. At the very least, your secrets are now out of your control, but depending on the provider's terms of service, your secrets could even be added to the training data for future models!
 
@@ -14,10 +14,9 @@ You need to develop the muscle memory to wince every time you type or paste a se
 .Matching Podcast Episode 41
 ****
 
-:mp3file: ttt-41-protecting-your-secrets/TTT_40_Protecting_Your_Secrets.mp3
+:mp3file: ttt-41-protecting-your-secrets/TTT_41_Protecting_Your_Secrets.mp3
 
 Listen Along: Taming the Terminal Podcast Episode 41 +
-part of https://www.podfeet.com/blog/2020/08/ccatp-650/[episode 650 of the Chit Chat Across the Pond Podcast]
 
 // no audiocontrols in pdf
 ifndef::backend-pdf,apple-books[]
@@ -283,7 +282,7 @@ Since I'm a long-time link:https://1password.com/[1Password] user, I know they o
 brew install 1password-cli
 ----
 
-You'll find the full documentation for how to connect the app to the command-line tool link:https://developer.1password.com/docs/cli/get-started/[here], but here's a quick exmaple:
+You'll find the full documentation for how to connect the app to the command-line tool link:https://developer.1password.com/docs/cli/get-started/[here], but here's a quick example:
 
 [source,shell]
 ----
