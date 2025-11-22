@@ -179,6 +179,31 @@ history
 
 Success! The API key was not written to disk this time!
 
+[NOTE]
+.Winodws Users Can Achiece Similar Results with PowerShell
+====
+When you need a modern shell on Windows you should be usering PowerShell rather than the old DOS shell, and PowerShell's `Read-Host` commandlet can safely read secrets into variables like `read` can.
+
+In PowerShell there are two types of strings, regular strings and secure strings. Secure strings are encrypted in memory, so they're more secure than regular strings, but not all commandlets support them, so sometimes you need to safely read into a secure string, and sometimes you need to safely read into a regular string.
+
+[source,powershell]
+----
+# Read into a regular string
+$APIKey = Read-Host -MaskInput
+
+# Read into a secure string
+$SecureStringAPIKey = Read-Host -AsSecureString
+----
+
+When using this in a script you can provide a prompt string with the `-Prompt` flag:
+
+[source,powershell] 
+----
+$APIKey = Read-Host -Prompt 'API Key' -MaskInput
+$SecureStringAPIKey = Read-Host -Prompt 'API Key' -AsSecureString
+----
+====
+
 == Some Helpful Tipes and Tricks
 
 We've seen how to use a variable to pass a secret using a commandline argument, but there are other commands that can read secrets from environment variables. These commands will specify the name of the environment variable to use in their documentation. We've already seen that we can read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that simply pass the name of the variable to be prompted as the only argument *without a preceding `$`*. For example, we can promote our `$hibp_api_key` shell variable to an environment variable with:
