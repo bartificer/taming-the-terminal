@@ -5,11 +5,11 @@ include::variables.adoc[]
 
 This installment is the first in a number of years, and while it's inspiration is very timely — the rise of Artificial Intelligence (AI) — the topic and the commands discussed are evergreen.
 
-It's always been important to protect your secrets on the terminal. Information stealer malware has been checking shell history files for passwords and API keys for a digital eternity, but as AI-integrated terminals add an extra urgency, because your commands could well be uploaded to the AI company's servers as *context*, and depending on their terms of service, even training data!
+It's always been important to protect your secrets on the terminal. Information stealer malware has been checking shell history files for passwords and API keys for a digital eternity, but the rise of AI-integrated terminals adds an extra urgency. when younuse these kinds of tools (I love WARP), the commands your type and perhaps even the output they produce are allost certainly uploaded to an AI company's servers as *context*. At the very least your secrets are now out of your contorl, but dependong on the provider's terms of service, your secrets could even be add to the training data for future models!
 
 As the old cliché goes, the best time to start protecting your secrets on the commandline is a the first time you started using the commandline, but the second best time is now!
 
-You need to develop the muscle memory to wince every time you see a password or an API key appear on your terminal, and in this installmenmt we'll give you the tools you need to respond to that wince by tweaking your use of the the commandline and shell scripts a little.
+You need to develop the muscle memory to wince every time you type or paste a secret and see it echoed back to you, and in this installmenmt we'll give you the tools you need to respond to that wince by tweaking your behaviour a little.
 
 .Matching Podcast Episode 41
 ****
@@ -32,43 +32,54 @@ You can also
 {url-mp3}/{mp3file}[play/download the MP3 in your browser]
 ****
 
+== Secrets?
+
+The whole point of this instalment is to help you protect your secrets, so let's start by describing what we mean!
+
+The term is intentionally generic because we really do mean any text that would compromise your security if it were to fall into the wrong hands. This includes passwords, API keys, private keys, and more.
+
+
 == Why Protect Your Secrets on the Terminal?
 
-It has always been true that every terminal command you type gets saved in your shell's history file. For Bash that's `~/.bash_history`, and for ZSH it's `~/.zsh_history`. These files power the various shell history mechanisms like the up-arrow to replay recent commands, the `history` command to list previously executed commands, and Bash's reverse search trigged with kbd:[ctrl+r]. Some security tools stream these files to central logging servers for auditing purposes, and stealer-type malware looks for and steals coppies of these files. For this reason they should never contain any secrets.
+It has always been true that every terminal command you type gets saved in your shell's history file. For Bash that's `~/.bash_history`, and for ZSH it's `~/.zsh_history`. These files power the various shell history mechanisms like the up-arrow to replay recent commands, the `history` command to list previously executed commands, and Bash's reverse search trigged with kbd:[ctrl+r].
 
-By secrets we mean things that would compromise your security if they were to fall into the wrong hands. This includes passwords, API keys, private keys, etc..
+Some security tools stream these files to central logging servers for auditing purposes, and of course stealer-type malware looks for and steals coppies of these files as a matter of course. This is why you need to avoid including secrets directly in your commands.
 
 == Guiding Principles
 
-Let's start with the big picture — these are they key points to remember:
+Let's start with the big picture — these are the key points to remember:
 
 . When possible, only store secrets in your password manager your OS's keychain.
-. Avoid duplication, make as few copies of secrets as possible, ideally have just one copy in your password manegr or OS keychain, and if you absolutely need to store copies elsewhere, make as few copies as possible, and record the details in your password manager.
-. Never hard-code secrets into scrripts.
-. Never type secrets directlty into the terminal commands (if you do they get coppied to your shell history file!)
+. Avoid duplication — make as few copies of secrets as possible. The ideal is to keep just one copy in your password manegr or OS keychain, but that's not always practicalmormpoasible. When you absolutely need to store copies elsewhere, make as few copies as possible, and record the locations in your password manager.
+. Never hard-code secrets into scripts or code of any kind.
+. Never include secrets directlty in shell commands so they stay out of your history file!
 . For interactive commands, provide secrets in real-time as-and-when-needed.
-. For automations, favour integreations with your password manager or your OS's keychain over configuration files.
-. If you absolutely have to store secrets in files, use Unix file permissions to apply the _principle of least privilege_ by configurating the file ownership and permossions as restrictively as possible.
+. For automations, favour integreations with your password manager, your OS's keychain, or environment variables over configuration files.
+. If you absolutely must store secrets in configuration files, use Unix file permissions to apply the _principle of least privilege_ by configurating the file ownership and permoisions as restrictively as possible.
 
 Our focus in this instalment will be on interactive commands, because that's how we most often interact with our command shells. Automations that need to run un-attended are outside of the scope of this series, and often involve advanced tools, or making carefully considered tradeoffs. As the cliché goes, we'll leave that as an excercise for the reader 🙂
 
 == Secure Terminal Inputs are Secure
 
-POSIX compliant environments like Linux and macOS terminals provide a secure input stream expressly for the purpose of securely entering secrets. You'll recognise these secure inputs because they silently accept your input without echoing it to the screen as you type. Well written terminal apps will use this secure input stream when prompting for secrets like passwords. In fact, we've already seen a few examples of this in previous installments — the `sudo` and `ssh` commands both use secure terminal inputs to prompt for passwords.
+POSIX compliant command shells like those we use in our Linux and macOS terminals provide a secure input stream expressly for the purpose of securely entering secrets. You'll recognise these secure inputs because they silently accept your input without echoing it to the screen as you type.
+
+Well written terminal apps will use this secure input stream when prompting for secrets like passwords. In fact, we've already seen a few examples of this in previous installments — the `sudo` and `ssh` commands both use secure terminal inputs to prompt for passwords.
 
 === Create Your Own Secure Input Prompts with the `read` Command
 
-It's all good and well using secure inputs when the terminal commands you need to use support them, but what about the situations where they don't? Some commands expect to be passed secrets as command line arguments. As you become more comformtable on the terminal you may well start writting ever more and ever more complex scripts of your own, and you may need those script to prompt for secrets too.
+It's all good and well using secure inputs when the commands you need to use support them, but what about the situations where they don't? Some commands expect to be passed secrets as command line arguments. As you become more comformtable on the terminal you may well start writting ever more and ever more complex scripts of your own, and you may need those script to prompt for secrets too.
 
-The solution both for securely passing secrets as arguments and for securely prompting for secrets in your own scripts is the the same, the `read` command with the `-s` (for secure) flag.
+The solution both for securely passing secrets as arguments and for securely prompting for secrets in your own scripts is the the same — the `read` command with the `-s` (for secure) flag.
 
 Before we look at secure inputs with `read`, let's first look at how `read` works by default.
 
-Read's function is to prompt for input from the terminal's standard input stream (STDIN), generally your keyboard, and save the entered text into a shell variable.
+Read's function is to prompt for input from the shell's standard input stream (STDIN), generally your keyboard, and save the entered text into a shell variable.
 
-If you run the command without any flags or arguments a cursor will appear on teh next line, waiing for input, with no prompt text to give you any clue what to, and what ever you type will be echoed to the screen until you press kbd:[Enter] to submit the input. The text you entered gets saved to s special shell variable named `$REPLY`. We can see this for ourselves by entering the command `read`, typing some text, hitting kbd:[Enter], and then running the command `echo $REPLY` so show the content of the `$REPLY` variable.
+If you run the command without any flags or arguments a cursor will appear on a new line, awaiting your for input. Confusingly, there is no prompt, just a nlinking cursor! What ever you type will be echoed to the screen until you press kbd:[Enter] to submit the input.
 
-Having the text go into the `$REPLY` variable is not very useful, so you'll almost always want to specify your own variable name by passing it, without a leading `$`, as the only argument, for example, to read into a variable named `$my_text`, you would run:
+The text you entered gets saved to a special shell variable named `$REPLY`. We can see this for ourselves by entering the command `read`, typing some text, hitting kbd:[Enter], and then running the command `echo "$REPLY"` to show the content of the `$REPLY` variable.
+
+Having the text go into the `$REPLY` variable is not very useful, so you'll almost always want to specify your own variable name by passing it, without a leading `$`, as the only argument. For example, to read into a variable named `$my_text`, you would run:
 
 [source,shell]
 ----
@@ -82,7 +93,7 @@ Enter some text, then verify that it was indeed saved to `$my_text` by running:
 echo "$my_text"
 ----
 
-This is great for reading non-secret text, but what about secrets like passwords? For that we need the `-s` flag to trigger secure the terminal's secure input mode. For example, to securely read an API key into a variable named `$my_api_key` you would use the command:
+This is great for reading non-secret text, but what about secrets like passwords? For that we need the `-s` flag to trigger the terminal's secure input mode. For example, to securely read an API key into a variable named `$my_api_key` you would use the command:
 
 [source,shell]
 ----
@@ -96,7 +107,7 @@ Notice that as you typed nothing was echoed to the screen. Again, you can verify
 echo "$my_api_key"
 ----
 
-Finally, while there's little value in specificying a prompt when you're reading directly into a variable on the temrinal, that's really not going to work in scripts! Realistically you won't remember what your own script is prompting for a few weeks down the line, let alone what someone else's script is asking for!
+Finally, while there's little value in specificying a prompt when you're reading directly into a variable on the temrinal, you really do need to privide some kind of prompt when your scripts ask for input!
 
 The solution here is to use the `-p` flag to specify a prompt string. For example, to securely read an API key into a variable named `$my_api_key` with a prompt, you would use the command:
 
@@ -105,11 +116,13 @@ The solution here is to use the `-p` flag to specify a prompt string. For exampl
 read -s -p 'API key: ' my_api_key
 ----
 
-=== How to Use `read` to Keep Secrets Out of Your Shell History
+Notice I needed to include the space after the `:` in the prompt string!
+
+=== How to use `read` to Keep Secrets Out of Your Shell History
 
 The problem to be solved is that we want to pass a secret to a command as an arugment but without the secret showing up in our history file.
 
-At the time of recording, November 2025, Have I Been Pwned (HIBP) have just released a free test API key that can be used to experiment with their powerful API before you start paying for a subscription. We're going to use this free publicly available API key in our example. HIBP's API is a so-called REST API, so you access it over the HTTP(S) protocol. From the terminal we can sent HTTP requests using the `curl` command.
+At the time of recording, November 2025, link:https://haveibeenpwned.com[Have I Been Pwned] (HIBP) have just released a free test API key that can be used to experiment with their powerful API before you start paying for a subscription. We're going to use this free publicly available API key in our example. HIBP's API is a so-called REST API, so you access it over the HTTP(S) protocol. From the terminal we can sent HTTP requests using the `curl` command.
 
 Before we do things the right way, let's first intentionally do it insecurely by directly passing the API key in our arguments to the `curl` command:
 
@@ -118,7 +131,7 @@ Before we do things the right way, let's first intentionally do it insecurely by
 curl --header 'hibp-api-key: 00000000000000000000000000000000' https://haveibeenpwned.com/api/v3/breachedaccount/multiple-breaches@hibp-integration-tests.com
 ----
 
-This command sends a request to the HIBP asking for a list of breaches for the test email address `multiple-breaches@hibp-integration-tests.com`, and it returns a JSON response listing the breaches:
+This command sends a request to the HIBP API asking for a list of breaches for the test email address `multiple-breaches@hibp-integration-tests.com`, and it returns a JSON response listing the breaches:
 
 [source,json]
 ----
@@ -160,7 +173,7 @@ Enter the API key (`00000000000000000000000000000000`) into the prompt and hit k
 
 Note that I didn't bother to add prompt text because I'm running this directly rather than in a script.
 
-We now have the API key safely stored in the `$hibp_api_key` variable without it ever being written to disk, we can verify this with the `echo` command:
+We now that we have the API key safely stored in the `$hibp_api_key` variable without it ever being written to disk, we can verify this with the `echo` command:
 
 [source,shell]
 ----
@@ -184,11 +197,11 @@ history
 Success! The API key was not written to disk this time!
 
 [NOTE]
-.Winodws Users Can Achiece Similar Results with PowerShell
+.Winodws Users can Achieve Similar Results with PowerShell
 ====
-When you need a modern shell on Windows you should be usering PowerShell rather than the old DOS shell, and PowerShell's `Read-Host` commandlet can safely read secrets into variables like `read` can.
+When you need a modern shell on Windows you should be useing PowerShell rather than the old DOS shell, and PowerShell's `Read-Host` commandlet can safely read secrets into variables like `read` can in Bash/ZSH.
 
-In PowerShell there are two types of strings, regular strings and secure strings. Secure strings are encrypted in memory, so they're more secure than regular strings, but not all commandlets support them, so sometimes you need to safely read into a secure string, and sometimes you need to safely read into a regular string.
+In PowerShell there are two types of strings; regular strings, and secure strings. Secure strings are encrypted in memory, so they're more secure than regular strings, but not all commandlets support them. This means there are times you need to safely read into a secure string, and times you need to safely read into a regular string.
 
 [source,powershell]
 ----
@@ -199,7 +212,7 @@ $APIKey = Read-Host -MaskInput
 $SecureStringAPIKey = Read-Host -AsSecureString
 ----
 
-When using this in a script you can provide a prompt string with the `-Prompt` flag:
+When using this in a script you can provide a prompt string with the `-Prompt` parameter:
 
 [source,powershell] 
 ----
@@ -210,14 +223,18 @@ $SecureStringAPIKey = Read-Host -Prompt 'API Key' -AsSecureString
 
 == Some Helpful Tipes and Tricks
 
-We've seen how to use a variable to pass a secret using a commandline argument, but there are other commands that can read secrets from environment variables. These commands will specify the name of the environment variable to use in their documentation. We've already seen that we can read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that simply pass the name of the variable to be prompted as the only argument *without a preceding `$`*. For example, we can promote our `$hibp_api_key` shell variable to an environment variable with:
+We've seen how to use a variable to pass a secret using a commandline argument, but there are scripts and commands that expect to find the secrets they need in environment variables. These scripts and commands will specify the name of the environment variable to use in their documentation.
+
+We've already seen how to read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that simply pass the name of the variable as the only argument *without a preceding `$`*. 
+
+For example, we can promote our `$hibp_api_key` shell variable to an environment variable with:
 
 [source,shell]
 ----
 export hibp_api_key
 ----
 
-A very common kind of secret is the password used to unlock an SSH key. Remember that SSH provides a tool specifically designed to avoid the need to repeatedly enter that password, `ssh-agent`, and we explored that in great detail in link:#ttt37[Instalment 37].
+A very common kind of secret is the password used to unlock an SSH key. Remember that SSH provides a tool specifically designed to avoid the need to repeatedly enter that password — `ssh-agent` We explored that in great detail in link:#ttt37[Instalment 37].
 
 Mac users can use the `pbbaste` command to safely copy a secret from the clipboard straight into a shell variable. For example, select the following text and copy it: `some big secret!`
 
@@ -235,16 +252,16 @@ The text from the clipboard is now safely stored in the `$my_secret` variable wi
 echo "$my_secret"
 ----
 
-One nice advantage of this approach is that you can combine it with the `export` command to save the value and prompte the newly craeted shell variable to an environment variable in one step:
+One nice advantage of this approach is that you can combine it with the `export` command to save the value and prompt the newly craeted shell variable to an environment variable in one step:
 
 [source,shell]
 ----
 export my_secret=$(pbpaste)
 ----
 
-Finally, if you use a password manager you may find it offers command line tools to make it easier to move secrets from your vault straight into shell variables. Each password manager is different, so you'll need to check the documentation for your specific password manager to see if it has these kinds of features and how to use them.
+Finally, if you use a password manager you may find it offers command line tools to make it easier to move secrets from your vaults straight into shell variables. Each password manager is different, so you'll need to check the documentation for your specific password manager to see if it has these kinds of features and how to use them.
 
-Since I'm a long-time 1Passord user I know they offer a commandline tool named `op` which can be quickly installed on a Mac using Homebrew:
+Since I'm a long-time link:https://1password.com/[1Password] user I know they offer a commandline tool named `op` which can be quickly installed on a Mac using link:https://brew.sh/[Homebrew]:
 
 [source,shell]
 ----
@@ -260,4 +277,6 @@ twitter_password=$(op item get 'Twitter (Personal)' --fields 'label=Password' --
 
 == Final Thoughts
 
-Remember to keep your secrets secret! If you can see a secret by hitting the up-arrow you're doing it wrong! Stop, think about how you can avoid doing that, and start doing it the right way from that point on. It will take a little time, and perhaps some faffing about while you get the hang of things, but it will soon become second nature. Your future security is worth the effort!
+Remember to keep your secrets secret! If you can see a secret by hitting the up-arrow you're doing it wrong! Stop, think about how you can avoid doing that, and start doing it the right way from then on.
+
+It will take some time, and perhaps some faffing about, to get the hang of things, but it'll soon become second nature. Your future security is worth the effort!
