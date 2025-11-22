@@ -238,9 +238,9 @@ $SecureStringAPIKey = Read-Host -Prompt 'API Key' -AsSecureString
 
 We've seen how to use a variable to pass a secret using a command-line argument, but there are scripts and commands that expect to find the secrets they need in environment variables. These scripts and commands will specify the name of the environment variable to use in their documentation.
 
-We've already seen how to read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that, simply pass the name of the variable as the only argument *without a preceding `$`*. 
+link:#ttt12[Instalment 12] is decicated to the environment, but the key difference between shell variables and environment variables is that they're available to the commands you run in your shell as well as within the shell itself.
 
-*BART: Can you remind us what an environment variable is and why we'd want to do this?*
+We've already seen how to read secrets into shell variables with any arbitrary name, so the only extra step needed is to use the `export` command to promote the shell variable to an environment variable. To do that, simply pass the name of the variable as the only argument *without a preceding `$`*. 
 
 For example, we can promote our `$hibp_api_key` shell variable to an environment variable with:
 
