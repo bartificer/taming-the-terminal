@@ -14,7 +14,7 @@ You need to develop the muscle memory to wince every time you type or paste a se
 .Matching Podcast Episode 41
 ****
 
-:mp3file: ttt-41-automating-tmux/TTT_40_Automating_TMUX.mp3
+:mp3file: ttt-41-protecting-your-secrets/TTT_40_Protecting_Your_Secrets.mp3
 
 Listen Along: Taming the Terminal Podcast Episode 41 +
 part of https://www.podfeet.com/blog/2020/08/ccatp-650/[episode 650 of the Chit Chat Across the Pond Podcast]
