@@ -209,7 +209,7 @@ history
 Success! The API key was not written to disk this time!
 
 [NOTE]
-.Winodws Users can Achieve Similar Results with PowerShell
+.Windows Users can Achieve Similar Results with PowerShell
 ====
 When you need a modern shell on Windows, you should be using PowerShell rather than the old DOS shell, and PowerShell's `Read-Host` commandlet can safely read secrets into variables like `read` can in Bash/ZSH.
 
