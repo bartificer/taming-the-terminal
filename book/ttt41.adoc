@@ -108,7 +108,7 @@ echo "$my_api_key"
 
 Finally, while there's little value in specifying a prompt when you're reading directly into a variable on the terminal, you really do need to provide some kind of prompt when your scripts ask for input!
 
-Unfortunately this is one of the few places where ZSH has made a breaking change from Bash, so the syntax is compeltely different between the two shells.
+Unfortunately this is one of the few places where ZSH has made a breaking change from Bash, so the syntax is completely different between the two shells.
 
 Even though Macs now ship with ZSH as the default shell, Bash is still considered the de facto standard shell for scripting, so I still write all my scripts in Bash even though I use ZSH in my terminal windows.
 
