@@ -250,7 +250,7 @@ export hibp_api_key
 
 A very common kind of secret is the password used to unlock an SSH key. Remember that SSH provides a tool specifically designed to avoid the need to repeatedly enter that password — `ssh-agent`. We explored that in great detail in link:#ttt37[Instalment 37].
 
-Mac users can use the `pbbaste` command to safely copy a secret from the clipboard straight into a shell variable. For example, select the following text and copy it: `some big secret!`
+Mac users can use the `pbpaste` command to safely copy a secret from the clipboard straight into a shell variable. For example, select the following text and copy it: `some big secret!`
 
 Now, run the command:
 
