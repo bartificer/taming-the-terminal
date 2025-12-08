@@ -1,5 +1,9 @@
 ifndef::backend-html[:leveloffset: +1]
 
+ifdef::backend-pdf,backend-epub3[]
+include::colophon.adoc[]
+endif::[]
+
 include::ttt-foreword.adoc[]
 
 include::ttt-preface.adoc[]
@@ -86,6 +90,7 @@ include::ttt39.adoc[]
 
 include::ttt40.adoc[]
 
+include::ttt41.adoc[]
 include::ttt-afterword.adoc[]
 
 ifdef::troubleshoot[include::ttt-troubleshooting.adoc[]]
@@ -94,4 +99,7 @@ ifdef::troubleshoot[include::ttt-troubleshooting.adoc[]]
 
 // ifndef::backend-html[include::index.asc[]]
 
+
+ifdef::backend-html5[]
 include::colophon.adoc[]
+endif::[]
