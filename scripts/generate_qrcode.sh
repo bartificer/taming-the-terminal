@@ -16,8 +16,8 @@ color_blue='00408d'
 # get every line from the list of urls in mp3_files
 cat  "${DIR}/../publish/mp3_files" | while read file
 do
-    BN=`basename ${file}`
-    PNG=`echo ${BN} | cut -d_ -f1-2`.png
+    BN=$(basename ${file})
+    PNG=$(echo ${BN} | cut -d_ -f1-2).png
 
     # coloring the QRcode to have the same color as Bart's theme
 
