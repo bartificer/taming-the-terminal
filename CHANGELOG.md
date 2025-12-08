@@ -1,5 +1,13 @@
 # Changelog
 
+_Note_: the version numbering is based on the impact on the book content. Therefore a new episode will be a minor upgrade, even though the change of the build system would warrant a major upgrade.
+
+## V1.6
+
+- Episode 41 added
+- build system overhaul to use a Docker based build
+- switch to modern day linking to anchors (other instalments) in the book.
+
 ## V1.5
 
 - Episode 37A updated with a supplemental section
