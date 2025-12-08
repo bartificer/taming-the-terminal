@@ -27,7 +27,8 @@ jobs:
           # check if we need to build
           D=86400 # 24 hours in seconds
 
-          lastcommit="$(curl -sL https://api.github.com/repos/$GITHUB_REPOSITORY/commits | jq -r '[.[] | select (.commit.message != "Updating docs") ][0].commit.author.date')"
+          lastcommit="$(curl -sL https://api.github.com/repos/$GITHUB_REPOSITORY/commits | \
+          jq -r '[.[] | select (.commit.message != "Updating docs") ][0].commit.author.date')"
           timestamp=$(date -u -d "$lastcommit" +%s)
           days=$(( ( $(date -u +%s) - $timestamp ) / $D ))
           worktodo=1
