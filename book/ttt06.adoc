@@ -2,7 +2,7 @@
 = TTT Part 6 of n {longdash} More File Permissions
 include::variables.adoc[]
 
-In <<ttt05,the previous instalment>> of this series, we had a look at how standard Unix File Permissions worked.
+In xref:ttt05[the previous instalment] of this series, we had a look at how standard Unix File Permissions worked.
 We looked at how to understand the permissions on existing files and folders, but not at how to change them.
 We also mentioned that the standard Unix file permissions are now only a subset of the file permissions on OS X and Linux (OS X also supports file ACLs, and Linux has SELinux as an optional extra layer of security).
 

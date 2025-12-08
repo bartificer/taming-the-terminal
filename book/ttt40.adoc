@@ -3,7 +3,7 @@
 = TTT Part 40 of n {longdash} Automating TMUX
 include::variables.adoc[]
 
-In <<ttt38,instalment 38>> we introduced TMUX as a replacement for the `screen` command which RedHat have deprecated on RedHat Enterprise Linux, and its free community variants CentOS and Fedora. Next we looked at how we can use TMUX's windows and panes model to take things to the next level and give us multiple virtual terminal windows within a single actual terminal window. We learned that sessions contain windows which contain panes which run a shell.
+In xref:ttt38[instalment 38] we introduced TMUX as a replacement for the `screen` command which RedHat have deprecated on RedHat Enterprise Linux, and its free community variants CentOS and Fedora. Next we looked at how we can use TMUX's windows and panes model to take things to the next level and give us multiple virtual terminal windows within a single actual terminal window. We learned that sessions contain windows which contain panes which run a shell.
 
 We learned how to create a fresh TMUX session which gives us a single window containing a single pane running our default shell (bash or ZSH most probably). We then used TMUX commands to create additional windows, which we described as being like browser tabs, and we learned how to navigate between them. Finally, we learned how to split single panes vertically or horizontally, and to navigate between the panes within the current window.
 
@@ -177,7 +177,7 @@ select-pane -t 0
 
 Having taken so much time to build up a complex TMUX command, it makes sense to save it in some way for future reuse. You could use tools outside of the terminal for that, perhaps one of the many key-stroke expanders like TextExpander, but since we're in the business of taming terminals here, let's look at two approaches for saving our complete commands within the terminal environment.
 
-Before we do that, we should make our commands just a little bit more robust by reusing the tip from the end of <<ttt38,instalment 38>> and using the `||` operator to reattach to an existing session with the desired name, or, create a new one:
+Before we do that, we should make our commands just a little bit more robust by reusing the tip from the end of xref:ttt38[instalment 38] and using the `||` operator to reattach to an existing session with the desired name, or, create a new one:
 
 [source,shell]
 ----
@@ -243,7 +243,7 @@ chmod 755 topterm
 
 You can now run this script from the current folder with `./topterm`, or better yet, from any folder using `~/scripts/topterm`.
 
-If you'd like this script to be executable from any folder without needing to prefix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment (for a detailed discussion on `PATH` see <<ttt13,instalment 13>>). In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
+If you'd like this script to be executable from any folder without needing to prefix it with `~/scripts/` you need to add `~/scripts` to your `PATH` environment (for a detailed discussion on `PATH` see xref:ttt13[instalment 13]). In Bash you can do that by adding the following line to the end of your `~/.bash_profile` file and opening a fresh terminal window (or sourcing the updated profile with `source ~/.bash_profile`):
 
 [source,shell]
 ----
@@ -254,7 +254,7 @@ export PATH=$PATH:~/scripts
 
 An alternative approach to shell scripts is shell aliases. Most shells support these, including Bash & ZSH.
 
-We looked as aliases in <<ttt14,instalment 14>>, but as a quick reminder — the command to create an alias in Bash (and ZSH) is `alias`, it takes the following form:
+We looked as aliases in xref:ttt14[instalment 14], but as a quick reminder — the command to create an alias in Bash (and ZSH) is `alias`, it takes the following form:
 
 [source,shell]
 ----

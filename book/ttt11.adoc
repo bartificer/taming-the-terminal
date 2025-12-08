@@ -65,7 +65,7 @@ While you'll find `more` included in just about every modern Unix or Linux OS, i
 `more` has been superseded by a newer and more feature-rich pager, which is humorously called `less` (because we all know less is more).
 
 We're actually already familiar with `less` because it's the pager used by the `man` command.
-All the commands we learned in <<ttt10,the previous instalment>> for navigating around man pages are actually commands for navigation around text files with `less`!
+All the commands we learned in xref:ttt10[the previous instalment] for navigating around man pages are actually commands for navigation around text files with `less`!
 
 The `less` command is invoked in the same way as `cat` and `more`, e.g.:
 

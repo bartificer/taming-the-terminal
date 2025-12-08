@@ -3,7 +3,7 @@
 include::variables.adoc[]
 
 This is the final SSH instalment.
-So far we've learned how to <<ttt29,securely execute terminal commands on remote computers>>, how to <<ttt31,securely copy files across the network using SSH>>, how to <<ttt30,add both security and convenience>> to both those operations with SSH key pairs, and how to <<ttt32,tunnel just about anything through SSH>>.
+So far we've learned how to xref:ttt29[securely execute terminal commands on remote computers], how to xref:ttt31[securely copy files across the network using SSH], how to xref:ttt30[add both security and convenience] to both those operations with SSH key pairs, and how to xref:ttt32[tunnel just about anything through SSH].
 
 In this final instalment, we'll look at two approaches for creating SSH bookmarks, SSH config files, and SSH GUIs.
 

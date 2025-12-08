@@ -2,7 +2,7 @@
 = TTT Part 19 of n {longdash} Text Searches
 include::variables.adoc[]
 
-In the previous two instalments (<<ttt17,17>> & <<ttt18,18>>) of this series, we learned how to represent patterns with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).
+In the previous two instalments (xref:ttt17[17] & xref:ttt18[18]) of this series, we learned how to represent patterns with regular expressions, or, to be more specific, with POSIX Extended Regular Expression (or EREs).
 We used the `egrep` command to test our regular expressions, but we didn't discuss the command itself in detail.
 Now that we understand regular expressions, it's time to take a closer look at both `egrep`, and its older brother `grep`, both commands for filtering and searching text.
 
@@ -41,7 +41,7 @@ However, in this series, I'm going to follow my own advice and only use `egrep`.
 For `egrep`, lines of text are atomic.
 In other words, `egrep` searches or filters text one line at a time, checking the entire line against the given pattern, and considering the whole line to match the pattern or not.
 
-There are two basic ways in which `egrep` can be used -- it can filter whatever is sent to via standard in (`STDIN` -- see <<ttt15,part 15>>) against a given pattern, or, it can search for lines matching a given pattern in one or more files.
+There are two basic ways in which `egrep` can be used -- it can filter whatever is sent to via standard in (`STDIN` -- see xref:ttt15[part 15]) against a given pattern, or, it can search for lines matching a given pattern in one or more files.
 
 == Filtering `STDIN`
 

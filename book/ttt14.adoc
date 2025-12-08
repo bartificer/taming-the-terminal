@@ -2,7 +2,7 @@
 = TTT Part 14 of n {longdash} Aliases & Prompts
 include::variables.adoc[]
 
-In <<ttt13,the previous instalment>>, we looked at how to make permanent changes to our environment.
+In xref:ttt13[the previous instalment], we looked at how to make permanent changes to our environment.
 We made a permanent change to the `PATH` environment variable to demonstrate how it's done
 (by editing `~/.bash_profile` on a Mac,
 or `~/.bashrc` on Linux).
@@ -30,7 +30,7 @@ You can also {url-mp3}/TTT14AliasesAndPrompts/TTT_14_Aliases_and_Prompts.mp3[pla
 
 [NOTE]
 ====
-This instalment assumes you're using Bash, if you're on macOS Catalina or later you're probably using Zsh, see <<introduction,the Introduction>> for more information on using Bash on newer Macs.
+This instalment assumes you're using Bash, if you're on macOS Catalina or later you're probably using Zsh, see xref:introduction[the Introduction] for more information on using Bash on newer Macs.
 ====
 
 == Aliases

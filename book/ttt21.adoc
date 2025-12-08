@@ -3,8 +3,8 @@
 include::variables.adoc[]
 
 This is the third and final instalment on searching.
-In the <<ttt19,first instalment>> on `find`, we learned how to search for text within files and streams using `egrep`.
-In <<ttt20,the second>>, we learned to search for files based on all sorts of criteria with the `find` command.
+In the xref:ttt19[first instalment] on `find`, we learned how to search for text within files and streams using `egrep`.
+In xref:ttt20[the second], we learned to search for files based on all sorts of criteria with the `find` command.
 
 In this final instalment, we'll start by looking at one last feature of `find`, its ability to execute commands on the files it finds.
 Then we'll end by looking at an OS X-only alternative to `find` that makes use of the Spotlight search index to really speed up searches.
@@ -52,7 +52,7 @@ The `-exec` flag means we are about to start specifying a command to execute, an
 
 This sounds quite complicated, but hopefully, a practical example will help.
 A real-world problem you may encounter is that you need to make all Perl scripts in a given set of nested folders executable.
-As we learned in <<ttt06,instalment 6>>, we can make a file executable with the command:
+As we learned in xref:ttt06[instalment 6], we can make a file executable with the command:
 
 [source,shell]
 ----
@@ -96,7 +96,7 @@ We know from last time that we can find all relevant files with the command:
 find search_path -name '*.pl' -or -name '*.pm'
 ----
 
-We also know from <<ttt15,instalment 15>> that we can use the `wc` command with the `-l` flag to count the number of lines in  one or more files:
+We also know from xref:ttt15[instalment 15] that we can use the `wc` command with the `-l` flag to count the number of lines in  one or more files:
 
 [source,shell]
 ----

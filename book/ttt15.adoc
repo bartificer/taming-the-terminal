@@ -2,7 +2,7 @@
 = TTT Part 15 of n {longdash} 'Plumbing'
 include::variables.adoc[]
 
-Right back in the very <<ttt01,first instalment>>, we described the Unix philosophy as being Lego-like,
+Right back in the very xref:ttt01[first instalment], we described the Unix philosophy as being Lego-like,
 that is, having lots of simple commands that do one thing well, and then assembling them together to do something really powerful.
 
 So far, we've only been working with a single command at a time, but that changes with this instalment.
@@ -145,7 +145,7 @@ Before we can begin there are two complications that we need to understand.
 Firstly, these special streams have no beginning or end, so we have to be sure to always read from then in a controlled way -- if you ask a command like `cat` to print out the contents of such a file it will never stop, because cat continues until it reaches the end of file marker, and these special '`files`' have no end!
 Also, `/dev/urandom` does not output text characters, it outputs binary data, and while some combinations of binary data map to characters on our keyboards, most don't, so we will need to convert this stream of binary data into a stream of text characters.
 
-We can overcome the first of these limitations by using the `head` command we met in <<ttt11,part 11 of this series>>.
+We can overcome the first of these limitations by using the `head` command we met in xref:ttt11[part 11 of this series].
 Previously we've used `head` to show us the first n lines of a file, but we can use the `-c` flag to request a specific number of characters rather than lines.
 
 The second problem can be overcome with the `base64` command, which converts binary data to text characters using the https://en.wikipedia.org/wiki/Base64[Base64 encoding algorithm].

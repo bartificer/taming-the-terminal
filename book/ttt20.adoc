@@ -2,7 +2,7 @@
 = TTT Part 20 of n {longdash} File Searches
 include::variables.adoc[]
 
-In the <<ttt19,previous instalment>>, we looked at using `egrep` to search for a particular piece of text in a stream or file.
+In the xref:ttt19[previous instalment], we looked at using `egrep` to search for a particular piece of text in a stream or file.
 `egrep` is often a great tool for finding a file you are looking for, but only if the file is a plain text file, and only if you are searching for that file based on its content.
 What if you want to search for files based on other criteria, like the last time the file was edited, or the name of the file, or the size of the file, or the type of the file etc.?
 For that, you need a different command, for that you need `find`.
@@ -37,7 +37,7 @@ find path criteria 1 [criteria 2 ...]
 
 The path is searched recursively (by default), so if you give a path of `~/Documents`, it will search your documents folder and all folders within your documents folder.
 To search your entire computer, and all mounted drives, use a path of just `/`.
-To use the current folder as the base of your search use a path of `.` (which always means '`the current folder`' as we learned in <<ttt04,instalment 4>>).
+To use the current folder as the base of your search use a path of `.` (which always means '`the current folder`' as we learned in xref:ttt04[instalment 4]).
 
 == Defining Search Criteria
 
@@ -64,7 +64,7 @@ find / -name 'php.ini'
 ----
 
 NOTE: if you're going to search your whole computer (like we did above), you'll see a lot of '`permission denied`' errors.
-To avoid this, run the command with `sudo`, or, if you want to just ignore the errors, redirect `STDERR` to `/dev/null` with `2>/dev/null` like we learned in <<ttt16,instalment 16>>.
+To avoid this, run the command with `sudo`, or, if you want to just ignore the errors, redirect `STDERR` to `/dev/null` with `2>/dev/null` like we learned in xref:ttt16[instalment 16].
 
 Something else you very often want to do is find all files of a given extension in a given location.
 For example, the command below will list all text files in your home directory:
@@ -114,7 +114,7 @@ There are two very important caveats when using regular expressions with `find`.
 Firstly, unlike with `-name`, `-regex` and `-iregex` do not match against just the file name, they match against the entire file path.
 It's important that you remember this when constructing your patterns, or you'll get unexpected results, either false positives or false negatives.
 
-Secondly, by default `-regex` and `-iregex` use Basic POSIX Regular Expressions (BREs), rather than the newer Extended POSIX Regular Expressions (EREs) we learned about in instalments <<ttt17,17>> and <<ttt18,18>>.
+Secondly, by default `-regex` and `-iregex` use Basic POSIX Regular Expressions (BREs), rather than the newer Extended POSIX Regular Expressions (EREs) we learned about in instalments xref:ttt17[17] and xref:ttt18[18].
 Don't worry, you can make `find` use EREs, you just need to add a `-E` flag to the start of the command (before the path).
 
 Given our knowledge of regular expressions, we could re-write our JPEG search as follows:

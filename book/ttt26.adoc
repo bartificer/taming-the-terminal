@@ -2,7 +2,7 @@
 = TTT Part 26 of n {longdash} DHCP
 include::variables.adoc[]
 
-In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.
+In xref:ttt23[part 23 of n], we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP
@@ -13,7 +13,7 @@ As a quick reminder, the most important points were:
 ** The Application Layer -- where all the networked apps we use live
 * Logically, data travels across the layers -- HTTP to HTTP, TCP to TCP, IP to IP, Ethernet to Ethernet, but physically, data travels up and down the stack, one layer to another, only moving from one device to another when it gets to the Link Layer at the very bottom of the stack.
 
-In <<ttt25,the previous instalment>>, we looked at how IP subnet works.
+In xref:ttt25[the previous instalment], we looked at how IP subnet works.
 The key takeaway was that a computer needs a minimum of three settings correctly configured to be able to participate in an IP network: an IP address, a subnet mask, and a default gateway (the IP address of the router providing access outside the subnet).
 We also looked at how to read those three settings from your Mac using the GUI (Graphical User Interface) and the Terminal.
 Finally, we noted that historically, those settings had to be manually configured, but that today, almost all computers acquire those settings automatically.
@@ -74,7 +74,7 @@ How can a protocol that relies on the IP protocol be used to configure the compu
 
 The reason DHCP can work is that even an un-configured IP stack can send and receive so-called _broadcast packets_.
 ARP maps the IP address `255.255.255.255` to the MAC address `FF:FF:FF:FF:FF:FF`.
-As we learned in <<ttt24,Instalment 24>>, `FF:FF:FF:FF:FF:FF` is a special MAC address that's used to send a packet to every device on an Ethernet network.
+As we learned in xref:ttt24[Instalment 24], `FF:FF:FF:FF:FF:FF` is a special MAC address that's used to send a packet to every device on an Ethernet network.
 Devices with an un-configured IP stack can send and receive IP (and hence UDP) packets with a source address of `0.0.0.0` and a destination address of `255.255.255.255`.
 The DHCP protocol makes liberal use of these broadcast packets.
 

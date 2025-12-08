@@ -2,7 +2,7 @@
 = TTT Part 37 of n {longdash} SSH Agents
 include::variables.adoc[]
 
-Since we covered SSH in parts <<ttt29,29>> & <<ttt30,30>>, Apple has changed how their desktop OS deals with the passphrases protecting SSH identities (key pairs).
+Since we covered SSH in parts xref:ttt29[29] & xref:ttt30[30], Apple has changed how their desktop OS deals with the passphrases protecting SSH identities (key pairs).
 This provides us with a good opportunity to have a look at the SSH Agent in general, and, how things have changed on the Mac in particular.
 
 The good news is that while things have changed on the Mac, with a small amount of effort, you can get back all the convenience and security you had before.
@@ -10,15 +10,15 @@ The good news is that while things have changed on the Mac, with a small amount 
 .Quick Links
 ****
 [none]
-* <<Revision_SSH_Identities,1 Revision -- SSH Identities>>
-* <<SSH_Agents,2 SSH Agents>>
+* xref:Revision_SSH_Identities[1 Revision -- SSH Identities]
+* xref:SSH_Agents[2 SSH Agents]
 [none]
-** <<It8217s_All_About_the_ssh-add_Command,2.1 It's All About the ssh-add Command>>
-** <<Loading_Identities_into_an_SSH_Agent,2.2 Loading Identities into an SSH Agent>>
-** <<Removing_Identities_from_an_SSH_Agent,2.3 Removing Identities from an SSH Agent>>
-* <<SSH_Agent_on_macOS,3 SSH Agent on OS X & macOS>>
+** xref:It8217s_All_About_the_ssh-add_Command[2.1 It's All About the ssh-add Command]
+** xref:Loading_Identities_into_an_SSH_Agent[2.2 Loading Identities into an SSH Agent]
+** xref:Removing_Identities_from_an_SSH_Agent[2.3 Removing Identities from an SSH Agent]
+* xref:SSH_Agent_on_macOS[3 SSH Agent on OS X & macOS]
 [none]
-* <<Final_Thoughts,4 Final Thoughts>>
+* xref:Final_Thoughts[4 Final Thoughts]
 ****
 
 [NOTE]

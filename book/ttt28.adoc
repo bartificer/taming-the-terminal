@@ -2,7 +2,7 @@
 = TTT Part 28 of n {longdash} Network Troubleshooting
 include::variables.adoc[]
 
-In <<ttt23,part 23 of n>>, we took a big-picture look at how TCP/IP networking works.
+In xref:ttt23[part 23 of n], we took a big-picture look at how TCP/IP networking works.
 As a quick reminder, the most important points were:
 
 * Our computer networks use a stack of protocols known as TCP/IP

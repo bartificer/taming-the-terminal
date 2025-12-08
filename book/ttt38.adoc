@@ -2,7 +2,7 @@
 = TTT Part 38 of n {longdash} TMUX (A Screen Alternative)
 include::variables.adoc[]
 
-Since we covered the `screen` command in <<ttt36,instalment 36>>, it has been deprecated in Red Enterprise Linux 8, and https://access.redhat.com/solutions/4136481[the official advice from Red Hat] is to transition to the `tmux` command. Having been a fan of `screen` for years, I was skeptical, but I shouldn't have been. `tmux` can do everything `screen` can, it can arguably do it better, and, it can do much more than `screen` ever could!
+Since we covered the `screen` command in xref:ttt36[instalment 36], it has been deprecated in Red Enterprise Linux 8, and https://access.redhat.com/solutions/4136481[the official advice from Red Hat] is to transition to the `tmux` command. Having been a fan of `screen` for years, I was skeptical, but I shouldn't have been. `tmux` can do everything `screen` can, it can arguably do it better, and, it can do much more than `screen` ever could!
 
 .Matching Podcast Episode 38
 ****

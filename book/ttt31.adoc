@@ -2,8 +2,8 @@
 = TTT Part 31 of n {longdash} SSH File Transfers
 include::variables.adoc[]
 
-In <<ttt29,Part 29 of n>>, we learned how to use SSH to execute commands on a remote computer.
-In <<ttt30,the previous instalment>>, we learned how to add security and convenience to SSH connections using SSH key-pairs.
+In xref:ttt29[Part 29 of n], we learned how to use SSH to execute commands on a remote computer.
+In xref:ttt30[the previous instalment], we learned how to add security and convenience to SSH connections using SSH key-pairs.
 
 The most important thing SSH provides is an encrypted connection between two computers.
 As we've seen, that encrypted connection can be used to securely issue terminal commands to a remote computer, but that same secured channel can also be used to secure other network connections between computers.
@@ -33,7 +33,7 @@ You can also {url-mp3}/TTT31SSHFileTransfers/TTT_31_SSH_File_Transfers.mp3[play/
 [NOTE]
 .Commands to Save RSA Key Passphrase to Apple Keychain
 ====
-In later versions of OSX (macOS Sierra and higher), you will not get the popup offering to save your passphrase to Apple Keychain. See <<ttt37,TTT37>> under "SSH Agent on OS X & macOS" for the new method to store your passphrase in Keychain.
+In later versions of OSX (macOS Sierra and higher), you will not get the popup offering to save your passphrase to Apple Keychain. See xref:ttt37[TTT37] under "SSH Agent on OS X & macOS" for the new method to store your passphrase in Keychain.
 ====
 
 Before we get tucked in, just a reminder that in order to play along with the examples, you'll need two computers with SSH installed, one you can SSH from, and one you can SSH to.

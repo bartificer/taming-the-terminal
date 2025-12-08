@@ -2,7 +2,7 @@
 = TTT Part 9 of n {longdash} Controlling Processes
 include::variables.adoc[]
 
-In the <<ttt08,previous instalment>>, we looked at how Unix-like operating systems such as Linux and Mac OS X represent processes.
+In the xref:ttt08[previous instalment], we looked at how Unix-like operating systems such as Linux and Mac OS X represent processes.
 We then went on to look at the commands for listing running processes and filtering and sorting them in various ways.
 This time we'll move on to controlling processes, specifically starting and stopping them.
 

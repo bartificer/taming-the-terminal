@@ -3,7 +3,7 @@
 include::variables.adoc[]
 
 
-In <<ttt34,the previous instalment>> we introduced the HTTP protocol.
+In xref:ttt34[the previous instalment] we introduced the HTTP protocol.
 In this instalment, we'll look at three terminal commands which make use of the HTTP protocol.
 
 We'll start by browsing from the terminal, and then move on to a pair of very similar commands for making HTTP requests from the terminal.

@@ -2,7 +2,7 @@
 = TTT Part 18 of n {longdash} More REs
 include::variables.adoc[]
 
-In <<ttt17,the previous instalment>>, we introduced the concept of Regular Expressions and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Perl Compatible Regular Expression (PCRE) language.
+In xref:ttt17[the previous instalment], we introduced the concept of Regular Expressions and started to learn the POSIX ERE regular expression language, noting that POSIX ERE is a sub-set of the very commonly used Perl Compatible Regular Expression (PCRE) language.
 
 In this instalment, we'll learn more POSIX ERE syntax, and have a look at some examples of REs in GUI apps.
 
