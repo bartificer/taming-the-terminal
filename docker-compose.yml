@@ -1,8 +1,16 @@
 services:
   book-builder:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     working_dir: /workspace
+    # Default command: run the full book build script
+    command: ["sh", "-lc", "./scripts/build-book.sh"]
     volumes:
+      # Mount project source into the container
       - .:/workspace
-      - ./scripts:/workspace/scripts
-    command: ["/workspace/scripts/build-book.sh"]
+      # Keep node_modules in a Docker volume (not in your repo)
+      - node_modules_cache:/workspace/node_modules
+
+volumes:
+  node_modules_cache:
