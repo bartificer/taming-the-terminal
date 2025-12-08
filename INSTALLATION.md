@@ -6,89 +6,104 @@ This file contains the instructions of how to build the various ebook formats of
 
 The old Ruby build system didn't work any more, so the build system is now switched to a Docker container with a Makefile with easy targets to build the Docker container and the publication.
 
-## Book setup
+This document describes how to set up a fresh macOS machine so you can build the HTML, EPUB, PDF, Kindle, and static-site outputs for Taming the Terminal using the Docker-based toolchain.
 
-Every episode is put in its own file in the `book` directory. All images are in
-`book/assets/ttt<nr of episode>`.
+The project is designed so all heavy dependencies run inside Docker, keeping your local system clean. Only lightweight tools (Docker + Make) are required on your Mac.
 
-`ttt-spine.adoc` and `ttt-contents.adoc` hold the general information to pull the content together in one output file.
+## System Requirements
 
-For now:
+### macOS Version
 
-- `index.asc` is empty, it's just there because the spine docs refer to it. Not sure if we need to fill it. Because the entries are only visible in the PDF, the entire section is commented out.
+- macOS **12 Monterey** or later recommended  
+- Intel and Apple Silicon are both supported
 
-Note: language is **_British English_**!
+### Required tools
 
-## Bug fixes and workaround
+- Docker Desktop
+- Make (preinstalled)
+(Optional: Git, VS Code)
 
-This section contains some notes on bug fixes and workarounds that have been applied to get it working.
+## Install Docker Desktop
 
-### Fake second paragraph
+Download from https://www.docker.com/products/docker-desktop/
 
-See: [Asciidoctor git repository](https://github.com/asciidoctor/asciidoctor/issues/2860)
-Worked around by adding a second paragraph either by separating the last (few) sentence(s) or by adding an invisible second paragraph consisting of a single space.
+After installation check the version to see if all runs.
 
-```asciidoc
-+++&nbsp;+++
+```shell
+docker --version
+docker compose version
 ```
 
-Books doesn't like this, so I had to surround it with `ifdef`s:
+## Clone the Repository
 
-```asciidoc
-ifndef::backend-epub3[]
-+++&nbsp;+++
-endif::[]
+```shell
+git clone https://github.com/bartificer/taming-the-terminal.git
+cd taming-the-terminal
 ```
 
-**Update 2020-05-01**: Since the audio section was converted to a sidebar, that counts as a second paragraph, so all the fake second paragraphs are deleted.
+## How the Build Environment Works
 
-### Backticks problems
+The book-builder Docker container contains:
 
-Somehow there is a bug in `asciidoctor` that causes backticks to be passed through rather than marking the conversion to `monospace`.
+- Ruby, Asciidoctor, EPUB/PDF toolchains
+- Node.js + QR code tooling
+- epubcheck
+- Themes, fonts
 
-### Color coding in ePub
+Local mounts:
 
-`Rouge` is used as source code highlighter in PDF and HTML, but it doesn't work in ePub. Only `Pygments` is supported in ePub, but this has no good support for shell scripts. Somehow the color coding in Books actually looks to be just black & white.
+- `book/` source
+- `output/` build artifacts
+- `docs/` website output
+- `website-static/`
+- `scripts/`
 
-**UPDATE**: it looks like the attribute for the styling in the spine is not honored. It should be added as an attribute on the command line like
+Node dependencies live in a Docker volume: `node_modules_cache`.
 
+## Building (Make Commands)
+
+All commands are now added to the Makefile to allow for easy to remember commands.
+
+### Help
+
+Both
+
+```shell
+make
 ```
--a pygments-style=manni
+
+and
+
+```shell
+make help
 ```
 
-Source: [Prepare an asciidoc document](https://asciidoctor.org/docs/asciidoctor-epub3/#prepare-an-asciidoc-document)
+give an explanation of available commands.
 
-**UPDATE 2020-07-16**: Looks like Rouge _is_ supported now in ePub, _AND_ it gives better colour coding, so all ePub is now also switched to Rouge.
+## First-Time Setup
 
-### Highlights in source code
+If you haven't created the Docker container before or after changes in the Dockerfile and/or the docker-compose.yml file, you need to run a few commands to create and prepare the Docker container:
 
-It is not possible to highlight specific parts of the source code, so all references to e.g. `<strong>` must be removed from the snippet or it will show up verbatim in the output file.
+```shell
+# Generate the container
+make docker-build
 
-**UPDATE 2020-07-16**: highlighting is supported by adding an attribute to the codeblock indicating the lines to be highlighted and by adding appropriate CSS to the various themes. All code blocks that have highlighting in the original html are now marked for highlighting in the Asciidoctor files as well.
+# Install Node deps
+make npm-install
+```
 
-### Line numbering in source code
 
-Although Rouge supports line numbering in source code blocks, the implementation in Asciidoctor is very simple. The code is placed in 2 table cells, one with the line numbers, one with the code. It doesn't take into account the extra space needed when long code lines wrap to the next line.
-After numerous attempts to fix the problem I got stuck because my code adjustments in the Asciidoctor code broke the functionality to add annotations in the code and I haven't found a way to preserve that functionality.
-I therefore decided to skip the line numbering in code blocks that have long lines of mostly output. The highlighting does work, therefore it's still possible to point out the important lines.
+## Build a release
 
-**UPDATE 2020-07-29**: line numbering is removed altogether for the ePub version, because the epubcheck throws errors.
+See RELEASE.md for detailed instructions on creating a release.
 
-### Keyboard shortcuts
+For a test run:
 
-Asciidoctor supports the HTML5 keyboard shortcuts, so change any reference to keyboard shortcuts to the HTML5 keyboard counterparts.
-Note, the command key (CMD) can be used as `{commandkey}`.
-I added a document with variables to each document so this is automatically taken care of.
+```shell
+# check if all the necessary files are updated based on a new episode
+make check
 
-`Ctrl` is used for the 'Control' key, because it's much more commonly used than 'control'.
+# build the output formats
+make build
+```
 
-NB. with the codes in the following table it's possible to create `kbd:[&larr;]` arrow keys.
-
-| Unicode   | HTML entity | Symbol | Name        |
-| --------- | ----------- | ------ | ----------- |
-| `&#8594;` | `&rarr;`    | →      | Right arrow |
-| `&#8592;` | `&larr;`    | ←      | Left arrow  |
-| `&#8593;` | `&uarr;`    | ↑      | Up arrow    |
-| `&#8595;` | `&darr;`    | ↓      | Down arrow  |
-
-However, ePub doesn't support the HTML entities definitions, PDF doesn't support the Unicode definitions for the up and down arrows. So I've decided to skip them entirely and just use the words 'up', 'down' etc.
