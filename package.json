@@ -1,26 +1,9 @@
 {
-  "name": "ttt",
+  "name": "ttt-qrcode-tools",
+  "private": true,
   "version": "1.0.0",
-  "description": "Taming the Terminal ebook",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com//bartificer/taming-the-terminal.git"
-  },
-  "keywords": [
-    "ebook",
-    "shell",
-    "terminal"
-  ],
-  "author": "Bart Busschots",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bartificer/taming-the-terminal/issues"
-  },
-  "homepage": "https://github.com/bartificer/taming-the-terminal#readme",
+  "description": "Internal utilities for generating QR codes for Taming the Terminal",
+  "scripts": {},
   "dependencies": {
     "fs-extra": "^9.0.1",
     "qrcode": "^1.4.4"
