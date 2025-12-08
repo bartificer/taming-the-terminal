@@ -1,0 +1,8 @@
+services:
+  book-builder:
+    build: .
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - ./scripts:/workspace/scripts
+    command: ["/workspace/scripts/build-book.sh"]
