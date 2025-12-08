@@ -23,7 +23,7 @@ Bart Busschots
 :pygments-css: inline
 :table-stripes: even
 :toc: left
-ifndef::backend-pdf[:toclevels: 0]
+:toclevels: 2
 ifdef::backend-pdf[:toclevels: 1]
 :experimental:
 // Define unicode for Apple Command key.
