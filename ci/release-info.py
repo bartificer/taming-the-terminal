@@ -16,7 +16,7 @@ def read_version(release_file, ref=None):
         d = json.load(read_file)
     version = d['version']
 
-    if ref is not None and ref != 'refs/tags/v' + version:
+    if ref is not None and ref.startswith('ref/tags/v') and ref != 'refs/tags/v' + version:
         print(
             '::error file={path}::version {0} does not match release tag {1}'
             .format(version, ref, path=release_file)
