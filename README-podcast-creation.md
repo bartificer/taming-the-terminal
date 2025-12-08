@@ -1,6 +1,6 @@
 # Taming the Terminal Podcast Creation
 
-## Intro Text:
+## Intro Text
 
 Hi, you're listening to Taming the Terminal, part XX of n - TITLE.
 
@@ -8,9 +8,9 @@ This series of discussions is based on a collection of tutorials written by Bart
 
 I’m Allison Sheridan, host of the NosillaCast podcast hosted at podfeet.com, and the other voice you’re about to hear is Bart Busschots of bartb.ie.
 
-## Outtro Text:
+## Outtro Text
 
-If you learn as much from Bart as I do, I'd like you to go over to lets-talk.ie and press one of the buttons over there to help support him on Patreon, PayPal, or you can use one of his referral links. I really hope you'll go over and help him out. In the meantime, you can check out all of the shows we do over at podfeet.com. 
+If you learn as much from Bart as I do, I'd like you to go over to lets-talk.ie and press one of the buttons over there to help support him on Patreon, PayPal, or you can use one of his referral links. I really hope you'll go over and help him out. In the meantime, you can check out all of the shows we do over at podfeet.com.
 
 We hope you've enjoyed this episode of Taming the Terminal. Remember that all of the information you've been hearing is available as text tutorials at ttt.bartificer.net. If you'd like to contact us, you can write to allison@podfeet.com or podcasting@bartificer.net.
 
@@ -38,9 +38,10 @@ Archive.org Login is in Allison's 1Password.
 
 In the asciidoc file, there's a line that tells you the format for the URL below:
 
+```asciidoc
 :mp3file: ttt-41-protecting-your-secrets/TTT_41_Protecting_Your_Secrets.mp3
+```
 
 https://media.blubrry.com/tamingtheterminal/archive.org/download/ttt-41-protecting-your-secrets/TTT_41_Protecting_Your_Secrets.mp3
 
 Use the link above to add the enclosure in Feeder for the RSS feed, AND add it to publish/mp3_files
-

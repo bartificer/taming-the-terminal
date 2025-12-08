@@ -4,6 +4,10 @@
 
 This repository contains all the content of the Taming the Terminal tutorial as well as the scripts that are needed to build the output.
 
+All builds run inside a contained Docker environment for maximum reproducibility.
+
+## Book information
+
 Please note this book is written in British English
 
 Instructions on how to build the ebooks are in the INSTALLATION.md file.
@@ -84,6 +88,11 @@ For detailed information, consult:
 - [**DEVELOPER.md**](DEVELOPER.md) — Internal structure & build architecture
 - [**RELEASE.md**](RELEASE.md) — Release procedure & GitHub Actions flow
 - [**CONTRIBUTING.md**](CONTRIBUTING.md) — Guidelines for contributors
+
+Older information, kept for reference:
+
+- **Conversion.md** - how the original HTML files are converted to Asciidoc
+- **Additional.md** - some extra information on the choice for Asciidoc
 
 ## License
 
