@@ -3,9 +3,7 @@ name: Linting
 on:
   push:
     branches:
-      - main
-      - master
-      - *wip*
+      - "**"
   pull_request:
 
 jobs:
