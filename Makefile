@@ -1,7 +1,7 @@
 # Default target
 .DEFAULT_GOAL := help
 
-.PHONY: help check check_episodes docker-build npm-install build shell
+.PHONY: help check check_episodes docker-build npm-install build shell lint lint-vale
 
 # ---------------------------------------------------------------------------
 # HELP SYSTEM
@@ -16,9 +16,20 @@ help:  ## Show this help message
 # ---------------------------------------------------------------------------
 # CHECKS
 # ---------------------------------------------------------------------------
-check: check_episodes  ## Run all checks (episodes, mp3 files, etc.)
+check: check_episodes lint-vale  ## Run all checks (episodes, mp3 files, Vale)
+
 check_episodes:  ## Validate episode list, mp3 list, URL checks, newline normalization
 	./scripts/check_episodes.sh
+
+# ---------------------------------------------------------------------------
+# LINTING
+# ---------------------------------------------------------------------------
+lint: lint-vale  ## Run all linters (currently Vale)
+spellcheck: lint-vale ## Run Vale style/spell checker inside Docker
+
+lint-vale: docker-build  ## Run Vale style/spell checker inside Docker
+	docker compose run --rm book-builder \
+	  sh -lc 'if command -v vale >/dev/null 2>&1; then vale ./*.md book/; else echo "vale not found in container"; exit 1; fi'
 
 # ---------------------------------------------------------------------------
 # DOCKER BUILD
