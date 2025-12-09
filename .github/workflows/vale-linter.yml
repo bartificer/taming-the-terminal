@@ -1,21 +1,26 @@
 name: Linting
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - *wip*
+  pull_request:
 
 jobs:
   prose:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
 
-      - name: Vale
-        uses: errata-ai/vale-action@v1.3.0
-        with:
-          styles: |
-            https://github.com/errata-ai/Microsoft/releases/latest/download/Microsoft.zip
-            https://github.com/errata-ai/write-good/releases/latest/download/write-good.zip
-            https://github.com/errata-ai/proselint/releases/latest/download/proselint.zip
-          files: book
-          debug: false
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show Docker info (debugging)
+        run: |
+          docker --version
+          docker compose version
+
+      # Run Vale (spelling + grammar) via the Docker-based toolchain
+      - name: Run Vale linting inside Docker
+        run: make lint

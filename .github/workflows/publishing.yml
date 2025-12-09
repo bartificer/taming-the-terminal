@@ -1,4 +1,5 @@
 name: Publish
+
 on:
   schedule:
     # - cron: '*/5 * * * *'
@@ -8,6 +9,7 @@ on:
       - "release.json" # Push events when this file is changed
     tags:
       - "v*" # Push events to matching v*, i.e. v1.0, v2.0
+
 jobs:
   build:
     if: >
@@ -20,6 +22,7 @@ jobs:
       tag: ${{ steps.release_info.outputs.tag }}
       date: ${{ steps.release_info.outputs.date }}
       download_url: ${{ steps.publish_release.outputs.browser_download_url }}
+
     steps:
       - name: Activity check
         shell: bash
@@ -42,15 +45,9 @@ jobs:
           echo "worktodo: $worktodo"
           echo "GHA_WORK_TO_DO=$worktodo" >> $GITHUB_ENV
 
-      - name: Setup Ruby
-        if: env.GHA_WORK_TO_DO == 1
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: "2.7"
-
       - name: Checkout
         if: env.GHA_WORK_TO_DO == 1
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Get release information
         if: env.GHA_WORK_TO_DO == 1
@@ -71,20 +68,19 @@ jobs:
             git push --delete origin $ref
           done
 
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v2
-
-      - name: Run bundle install
+      # Debug info (optional but handy)
+      - name: Show Docker info
         if: env.GHA_WORK_TO_DO == 1
         run: |
-          gem install bundler
-          bundle install
+          docker --version
+          docker compose version
 
-      - name: Publish the book
+      - name: Build book via Docker (make build)
         if: env.GHA_WORK_TO_DO == 1
-        run: bundle exec rake
+        run: |
+          make build
 
-      - name: Commit changes
+      - name: Commit changes (docs)
         if: env.GHA_WORK_TO_DO == 1
         uses: EndBug/add-and-commit@v4
         with:
@@ -107,7 +103,7 @@ jobs:
         if: env.GHA_WORK_TO_DO == 1
         env:
           msg_tag: ${{ steps.release_info.outputs.tag }}
-          msg_url: ${{ steps.release_info.outputs.browser_download_url }}
+          msg_url: ${{ steps.publish_release.outputs.browser_download_url }}
         run: |
           msg='Release '
           if [[ ${{ steps.release_info.outputs.release_type == 'nightly' }} ]]; then
