@@ -72,7 +72,7 @@ cd tttconvert
 npm install
 ```
 
-### Install the QRcode library
+### Install the QR code library
 
 ```shell
 npm install
@@ -113,7 +113,7 @@ The original episodes are HTML pages on Bart's website. They need to be converte
    cp -r assets/tttXX ../book/assets
    ```
 
-5. Make the QRcode
+5. Make the QR code
 
    - open book/tttXXX.adoc
    - copy the link to the podcast to the file `publish/mp3_files
@@ -127,8 +127,8 @@ The original episodes are HTML pages on Bart's website. They need to be converte
 6. Cleanup
 
    - add the new tttXX.adoc file to `book/ttt-contents.adoc`
-   - if necessary, rename the QRcode file to match the TTT_XX.png naming convention
-   - open the `book/tttXX.adoc` file and fix the episode box, the reference to the QRcode and miscellaneous changes.
+   - if necessary, rename the QR code file to match the TTT_XX.png naming convention
+   - open the `book/tttXX.adoc` file and fix the episode box, the reference to the QR code and miscellaneous changes.
 
 ### Build the files
 

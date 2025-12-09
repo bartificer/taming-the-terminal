@@ -27,9 +27,9 @@ ifndef::backend-pdf,apple-books[]
 audio::{url-mp3}/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3[]
 endif::[]
 
-Scan the QRcode to listen on a different device
+Scan the QR code to listen on a different device
 
-image::qrcodes/TTT_32.png[QRcode, align='left']
+image::qrcodes/TTT_32.png[QR code, align='left']
 
 You can also {url-mp3}/TTT32SSHTunneling/TTT_32_SSH_Tunneling.mp3[play/download the MP3 in your browser]
 

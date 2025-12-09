@@ -15,9 +15,9 @@ ifndef::backend-pdf,apple-books[]
 audio::{url-mp3}/ttt-38-tmux/TTT_38_TMUX.mp3[]
 endif::[]
 
-Scan the QRcode to listen on a different device
+Scan the QR code to listen on a different device
 
-image::qrcodes/TTT_38.png[QRcode, align='left']
+image::qrcodes/TTT_38.png[QR code, align='left']
 
 You can also
 {url-mp3}/ttt-38-tmux/TTT_38_TMUX.mp3[play/download the MP3 in your browser]

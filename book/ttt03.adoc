@@ -22,9 +22,9 @@ ifndef::backend-pdf,apple-books[]
 audio::{url-mp3}/TTT03FileSystems/TTT_03_File_Systems.mp3[]
 endif::[]
 
-Scan the QRcode to listen on a different device
+Scan the QR code to listen on a different device
 
-image::qrcodes/TTT_03.png[QRcode]
+image::qrcodes/TTT_03.png[QR code]
 
 You can also {url-mp3}/TTT03FileSystems/TTT_03_File_Systems.mp3[play/download the MP3 in your browser]
 ****

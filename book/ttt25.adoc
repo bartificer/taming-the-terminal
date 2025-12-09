@@ -35,10 +35,10 @@ a|audio::{url-mp3}/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3[]
 a|audio::{url-mp3}/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3[]
 endif::[]
 
-2+|Scan the QRcode to listen on a different device
+2+|Scan the QR code to listen on a different device
 
-a|image::qrcodes/TTT_25a.png[QRcode 25a]
-a|image::qrcodes/TTT_25b.png[QRcode 25b]
+a|image::qrcodes/TTT_25a.png[QR code 25a]
+a|image::qrcodes/TTT_25b.png[QR code 25b]
 
 |You can also {url-mp3}/TTT25aIPSubnets/TTT_25a_IP_Subnets.mp3[play/download the MP3 in your browser (a)]
 |You can also {url-mp3}/TTT25bIPSubnets/TTT_25b_IP_Subnets.mp3[play/download the MP3 in your browser (b)]

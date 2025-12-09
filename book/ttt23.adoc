@@ -29,10 +29,10 @@ a|audio::{url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[]
 a|audio::{url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[]
 endif::[]
 
-2+|Scan the QRcode to listen on a different device
+2+|Scan the QR code to listen on a different device
 
-a|image::qrcodes/TTT_23a.png[QRcode 23a]
-a|image::qrcodes/TTT_23b.png[QRcode 23b]
+a|image::qrcodes/TTT_23a.png[QR code 23a]
+a|image::qrcodes/TTT_23b.png[QR code 23b]
 
 |You can also {url-mp3}/TTT23aNetworkingIntro/TTT_23a_Networking_Intro.mp3[play/download the MP3 in your browser (a)]
 |You can also {url-mp3}/TTT23bNetworkingIntro/TTT_23b_Networking_Intro.mp3[play/download the MP3 in your browser (b)]

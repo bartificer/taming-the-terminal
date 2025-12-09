@@ -19,7 +19,7 @@ do
     BN=$(basename ${file})
     PNG=$(echo ${BN} | cut -d_ -f1-2).png
 
-    # coloring the QRcode to have the same color as Bart's theme
+    # coloring the QR code to have the same color as Bart's theme
 
     ${_qrcode} -o "${DIR}/../book/assets/qrcodes/${PNG}" -t png -w 150 -d ${color_blue}  ${file} < /dev/null
 done

@@ -37,10 +37,10 @@ a|audio::{url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3[]
 a|audio::{url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3[]
 endif::[]
 
-2+|Scan the QRcode to listen on a different device
+2+|Scan the QR code to listen on a different device
 
-a|image::qrcodes/TTT_27a.png[QRcode 27a]
-a|image::qrcodes/TTT_27b.png[QRcode 27b]
+a|image::qrcodes/TTT_27a.png[QR code 27a]
+a|image::qrcodes/TTT_27b.png[QR code 27b]
 
 |You can also {url-mp3}/TTT27aDNS/TTT_27a_DNS.mp3[play/download the MP3 in your browser (a)]
 |You can also {url-mp3}/TTT27bDNS/TTT_27b_DNS.mp3[play/download the MP3 in your browser (b)]
