@@ -12,7 +12,7 @@ RUN apk add --no-cache curl && \
     | tar -xz -C /usr/local/bin vale && \
     chmod +x /usr/local/bin/vale
 
-    # Install hunspell + English GB dictionaries for Vale
+# Install hunspell + English GB dictionaries for Vale
 RUN apk add --no-cache hunspell hunspell-en
 
 # Install epubcheck 4.2.6
