@@ -30,20 +30,24 @@ event_name = sys.argv[1]
 date = date.today().strftime('%Y%m%d')
 
 ref = None
-if event_name == 'push':
-    ref = os.getenv('GITHUB_REF')
-    if ref.startswith('refs/tags/'):
-        release_type = 'tagged'
-    elif ref == 'refs/heads/ci/test/nightly':
+if event_name == "push":
+    ref = os.getenv("GITHUB_REF")
+    if ref.startswith("refs/tags/"):
+        release_type = "tagged"
+    elif ref == "refs/heads/ci/test/nightly":
         # emulate the nightly workflow
-        release_type = 'nightly'
+        release_type = "nightly"
         ref = None
     else:
-        raise ValueError('unexpected ref ' + ref)
-elif event_name == 'schedule':
-    release_type = 'nightly'
+        raise ValueError("unexpected ref " + ref)
+elif event_name in ("schedule", "workflow_dispatch"):
+    # manual runs behave like nightly builds
+    release_type = "nightly"
 else:
-    raise ValueError('unexpected event name ' + event_name)
+    raise ValueError("unexpected event name " + event_name)
+
+version = read_version("release.json", ref)
+prerelease = "false"
 
 version = read_version('release.json', ref)
 prerelease = 'false'
