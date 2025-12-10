@@ -1,28 +1,28 @@
 # Canonical product and OS names
-\bmacOS\b
-\bLinux\b
-\bUNIX\b
-\bTaming the Terminal\b
+macOS
+Linux
+UNIX
+Taming the Terminal
 
 # Commands and tools
-\bssh\b
-\bgrep\b
-\bcat\b
-\bchmod\b
-\bchown\b
-\bTerminal\b
+ssh
+grep
+cat
+chmod
+chown
+Terminal
 
 # Networking / protocols
-\bTCP/IP\b
-\bIPv4\b
-\bIPv6\b
+TCP/IP
+IPv4
+IPv6
 
 # Project-specific words / proper nouns
-\bTTT\b
-\bBart Busschots\b
+TTT
+Bart Busschots
 Busschots
-\bAllison Sheridan\b
-\bPodfeet\b
+Allison Sheridan
+Podfeet
 Helma
 Nosillacast
 
