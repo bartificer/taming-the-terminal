@@ -1,0 +1,16 @@
+extends: existence
+message: "Capitalization issue: '%s' should follow TTT style."
+level: warning
+ignorecase: false
+
+tokens:
+  # Command names should be lowercase in prose
+  - '\bLs\b'
+  - '\bCat\b'
+  - '\bGrep\b'
+  - '\bSsh\b'
+
+  # Product/OS capitalization
+  - '\bmac os\b'
+  - '\bMac os\b'
+  - '\bOs X\b'

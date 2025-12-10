@@ -1,0 +1,23 @@
+extends: substitution
+message: "'%s' → Use '%s' as per Taming the Terminal terminology."
+level: warning
+ignorecase: true
+
+swap:
+  # # Terminal terms & general wording
+  # 'terminal window': 'Terminal window'
+  # 'commandline': 'command line'
+  # 'command-line': 'command line'
+  # 'filesystem': 'file system'
+  # 'file-system': 'file system'
+
+  # # Login vs log in
+  # 'login to': 'log in to'
+  # 'log into': 'log in to'
+
+  # # Options & flags shown inline as code
+  # '--help ': '`--help` '
+  # '-h ': '`-h` '
+
+  # Project naming
+  'Taming The Terminal': 'Taming the Terminal'
