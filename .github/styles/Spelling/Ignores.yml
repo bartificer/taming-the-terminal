@@ -9,6 +9,3 @@ dicpath: /usr/share/hunspell
 # Which dictionary to use (expects en_GB.aff and en_GB.dic)
 dictionaries:
   - en_GB
-
-# Project-specific accepted words
-ignore: ../vocab.txt

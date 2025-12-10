@@ -1,0 +1,7 @@
+# Wrong product names
+\bmac os\b
+\bMac os\b
+\bOs X\b
+
+color
+installment

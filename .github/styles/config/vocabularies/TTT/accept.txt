@@ -1,3 +1,31 @@
+# Canonical product and OS names
+\bmacOS\b
+\bLinux\b
+\bUNIX\b
+\bTaming the Terminal\b
+
+# Commands and tools
+\bssh\b
+\bgrep\b
+\bcat\b
+\bchmod\b
+\bchown\b
+\bTerminal\b
+
+# Networking / protocols
+\bTCP/IP\b
+\bIPv4\b
+\bIPv6\b
+
+# Project-specific words / proper nouns
+\bTTT\b
+\bBart Busschots\b
+Busschots
+\bAllison Sheridan\b
+\bPodfeet\b
+Helma
+Nosillacast
+
 Adium
 adoc
 asciidoc
@@ -14,7 +42,6 @@ boolean
 breakpoint
 builtins
 bundler
-Busschots
 Capitan
 cardinalities
 chown
@@ -33,7 +60,9 @@ datagrams
 Dev
 distros
 ebook
+ebook
 Englishy
+ePub
 ethernet
 expanders
 experimentations
@@ -44,11 +73,11 @@ Gemfile
 Ghostbusters
 GitHub
 hardcoded
-Helma
 hostname
 hostnames
 http
 https
+iCloud
 internets
 internetwork
 kbd
@@ -72,7 +101,6 @@ nerdery
 netizens
 netmask
 netmasks
-Nosillacast
 Noto
 ors
 pbs
@@ -96,15 +124,11 @@ scp
 Sess
 Smultron
 spacebar
-subexpression
-subexpressions
-subnet
-subnets
+subexpression(s)?
+subnet(s)?
 subnetworks
-subprotocol
-subprotocols
-subshell
-subshells
+subprotocol(s)?
+subshell(s)?
 subwindow
 syslog
 tcpdump
