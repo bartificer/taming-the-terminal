@@ -3,21 +3,7 @@ FROM asciidoctor/docker-asciidoctor:latest
 USER root
 
 # Tools needed for the build
-RUN apk add --no-cache zip rsync git openjdk17-jre wget unzip
-
-# Install Vale (style/spell checker)
-# Use a 3.x Vale and choose the right binary for the architecture
-ARG VALE_VERSION="3.13.0"
-RUN apk add --no-cache curl && \
-    ARCH="$(uname -m)" && \
-    if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then \
-      VALE_PKG="vale_${VALE_VERSION}_Linux_arm64.tar.gz"; \
-    else \
-      VALE_PKG="vale_${VALE_VERSION}_Linux_64-bit.tar.gz"; \
-    fi && \
-    curl -sL "https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/${VALE_PKG}" \
-    | tar -xz -C /usr/local/bin vale && \
-    chmod +x /usr/local/bin/vale
+RUN apk add --no-cache zip rsync git openjdk17-jre wget unzip vale
 
 # Install hunspell + English GB dictionaries for Vale
 RUN apk add --no-cache hunspell hunspell-en
