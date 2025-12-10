@@ -73,7 +73,7 @@ make shell
 
 Then test commands manually.
 
-## 6. Asciidoc bug fixes and workarounds
+## 7. Asciidoc bug fixes and workarounds
 
 This section contains some notes on bug fixes and workarounds that have been applied to get it working.
 
