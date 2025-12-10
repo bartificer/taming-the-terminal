@@ -99,22 +99,22 @@ jobs:
           prerelease: ${{ steps.release_info.outputs.prerelease }}
           file_glob: true
 
-      - name: Create a Slack message
-        if: env.GHA_WORK_TO_DO == 1
-        env:
-          msg_tag: ${{ steps.release_info.outputs.tag }}
-          msg_url: ${{ steps.publish_release.outputs.browser_download_url }}
-        run: |
-          msg='Release '
-          if [[ ${{ steps.release_info.outputs.release_type == 'nightly' }} ]]; then
-            msg='Prerelease '
-          fi
-          msg="${msg} ${msg_tag} is built.
-          Available at ${msg_url}
-          "
-          echo 'TTT_BUILD<<EOF' >> $GITHUB_ENV
-          echo "$msg" >> $GITHUB_ENV
-          echo 'EOF' >> $GITHUB_ENV
+      # - name: Create a Slack message
+      #   if: env.GHA_WORK_TO_DO == 1
+      #   env:
+      #     msg_tag: ${{ steps.release_info.outputs.tag }}
+      #     msg_url: ${{ steps.publish_release.outputs.browser_download_url }}
+      #   run: |
+      #     msg='Release '
+      #     if [[ ${{ steps.release_info.outputs.release_type == 'nightly' }} ]]; then
+      #       msg='Prerelease '
+      #     fi
+      #     msg="${msg} ${msg_tag} is built.
+      #     Available at ${msg_url}
+      #     "
+      #     echo 'TTT_BUILD<<EOF' >> $GITHUB_ENV
+      #     echo "$msg" >> $GITHUB_ENV
+      #     echo 'EOF' >> $GITHUB_ENV
 
       # - name: notify Slack
       #   if: env.GHA_WORK_TO_DO == 1
