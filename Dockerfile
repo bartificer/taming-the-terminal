@@ -6,14 +6,28 @@ USER root
 RUN apk add --no-cache zip rsync git openjdk17-jre wget unzip
 
 # Install Vale (style/spell checker)
-ARG VALE_VERSION="2.29.4"
+# Use a 3.x Vale and choose the right binary for the architecture
+ARG VALE_VERSION="3.13.0"
 RUN apk add --no-cache curl && \
-    curl -sL "https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" \
+    ARCH="$(uname -m)" && \
+    if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then \
+      VALE_PKG="vale_${VALE_VERSION}_Linux_arm64.tar.gz"; \
+    else \
+      VALE_PKG="vale_${VALE_VERSION}_Linux_64-bit.tar.gz"; \
+    fi && \
+    curl -sL "https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/${VALE_PKG}" \
     | tar -xz -C /usr/local/bin vale && \
     chmod +x /usr/local/bin/vale
 
 # Install hunspell + English GB dictionaries for Vale
 RUN apk add --no-cache hunspell hunspell-en
+
+# Install write-good Vale grammar rules inside the container
+RUN mkdir -p /opt/vale/styles \
+  && curl -sL https://github.com/errata-ai/write-good/releases/latest/download/write-good.zip \
+     -o /tmp/write-good.zip \
+  && unzip /tmp/write-good.zip -d /opt/vale/styles \
+  && rm /tmp/write-good.zip
 
 # Install epubcheck 4.2.6
 RUN wget -O /tmp/epubcheck.zip https://github.com/w3c/epubcheck/releases/download/v4.2.6/epubcheck-4.2.6.zip \
