@@ -34,4 +34,4 @@ if [ ! -d ".github/styles/write-good" ]; then
 fi
 
 # Finally run the linter
-vale ./*.md book/
+vale --no-wrap ./*.md book/
