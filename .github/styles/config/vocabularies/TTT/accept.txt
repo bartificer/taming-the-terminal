@@ -108,7 +108,7 @@ plist
 Podcast
 podcatchers
 podfeet
-Powershell
+\[source,powershell\]
 prepending
 pwd
 raison
