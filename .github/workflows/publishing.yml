@@ -9,6 +9,7 @@ on:
       - "release.json" # Push events when this file is changed
     tags:
       - "v*" # Push events to matching v*, i.e. v1.0, v2.0
+  workflow_dispatch: {}   # 👈 manual trigger
 
 jobs:
   build:
@@ -17,6 +18,8 @@ jobs:
       || startsWith(github.ref, 'refs/heads/ci/test/')
       || startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
+    env:
+      GHA_WORK_TO_DO: 1   # 👈 default to "do work" so manual runs skip the check but still run steps
     outputs:
       version: ${{ steps.release_info.outputs.version }}
       tag: ${{ steps.release_info.outputs.tag }}
@@ -25,6 +28,7 @@ jobs:
 
     steps:
       - name: Activity check
+        if: github.event_name != 'workflow_dispatch'  # 👈 skip this step on manual runs
         shell: bash
         run: |
           # check if we need to build
