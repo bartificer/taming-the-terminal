@@ -1,4 +1,4 @@
-name: Linting
+name: Spell checking
 
 on:
   push:
