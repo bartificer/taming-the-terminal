@@ -30,9 +30,19 @@ check_episodes:  ## Validate episode list, mp3 list, URL checks, newline normali
 lint: lint-vale  ## Run all linters (currently Vale)
 spellcheck: lint-vale ## Run Vale style/spell checker inside Docker
 
-lint-vale: docker-build  ## Run Vale style/spell checker inside Docker
+lint-vale: lint-vale-error  ## Default: run Vale and show only errors
+
+lint-vale-suggestion: docker-build  ## Vale: show suggestions, warnings, and errors
 	docker compose run --rm book-builder \
-	  sh -lc 'scripts/lint-vale.sh'
+	  sh -lc 'scripts/lint-vale.sh suggestion'
+
+lint-vale-warning: docker-build  ## Vale: show warnings and errors
+	docker compose run --rm book-builder \
+	  sh -lc 'scripts/lint-vale.sh warning'
+
+lint-vale-error: docker-build  ## Vale: show only errors
+	docker compose run --rm book-builder \
+	  sh -lc 'scripts/lint-vale.sh error'
 
 # ---------------------------------------------------------------------------
 # DOCKER BUILD

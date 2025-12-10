@@ -1,20 +1,25 @@
-#!/bin/bash
-#
-# Run Vale as spell checker
-#
-# 2025-12-09 Helma van der Linden
-#
-
-# Location of the script
-ME_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# assume we are in <root>/scripts
-ROOT_DIR="$( dirname "$ME_DIR" )"
-
+#!/bin/sh
 set -e
 
+# Usage:
+#   scripts/lint-vale.sh [minAlertLevel]
+#
+# minAlertLevel: suggestion | warning | error
+# default: suggestion
+
+LEVEL="${1:-suggestion}"
+
+case "$LEVEL" in
+  suggestion|warning|error)
+    ;;
+  *)
+    echo "Unknown minAlertLevel '$LEVEL', defaulting to 'suggestion'" >&2
+    LEVEL="suggestion"
+    ;;
+esac
+
 # Always run from the repo root (/workspace in the container)
-cd "${ROOT_DIR}"
+cd "$(dirname "$0")/.."
 
 if ! command -v vale >/dev/null 2>&1; then
   echo "vale not found in container" >&2
@@ -33,5 +38,7 @@ if [ ! -d ".github/styles/write-good" ]; then
   fi
 fi
 
-# Finally run the linter
-vale --no-wrap ./*.md book/
+# Finally run the linter with wide, unwrapped output
+COLUMNS="${COLUMNS:-300}"
+echo "Running Vale (minAlertLevel=$LEVEL, COLUMNS=$COLUMNS)..."
+COLUMNS="$COLUMNS" vale --no-wrap --minAlertLevel="$LEVEL" ./*.md book/
