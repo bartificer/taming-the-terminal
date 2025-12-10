@@ -12,6 +12,12 @@ archive/*
 ttt.code-workspace
 
 .DS_Store
+**/.DS_Store
 
 *.komodoproject
-docs/.DS_Store
+
+# file that handles the check in the Makefile if the image/container should be rebuild
+.docker-image.stamp
+
+# Vale downloaded styles (e.g. write-good)
+.github/styles/write-good/

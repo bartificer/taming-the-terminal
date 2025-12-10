@@ -1,7 +1,10 @@
 # Default target
 .DEFAULT_GOAL := help
 
-.PHONY: help check check_episodes docker-build npm-install build shell lint lint-vale
+.PHONY: help check check_episodes npm-install build shell lint lint-vale
+
+DOCKER_STAMP := .docker-image.stamp
+DOCKER_DEPS  := Dockerfile docker-compose.yml scripts/build-book.sh package.json package-lock.json
 
 # ---------------------------------------------------------------------------
 # HELP SYSTEM
@@ -34,8 +37,14 @@ lint-vale: docker-build  ## Run Vale style/spell checker inside Docker
 # ---------------------------------------------------------------------------
 # DOCKER BUILD
 # ---------------------------------------------------------------------------
-docker-build:  ## Build the Docker image for the book-builder environment
+
+# High-level target used everywhere (local + CI)
+docker-build: $(DOCKER_STAMP)  ## Build the Docker image for the book-builder environment (if needed)
+
+# Stamp file: updated when the image is (re)built
+$(DOCKER_STAMP): $(DOCKER_DEPS)
 	docker compose build book-builder
+	touch $(DOCKER_STAMP)
 
 # ---------------------------------------------------------------------------
 # NODE DEPENDENCIES
