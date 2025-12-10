@@ -32,7 +32,7 @@ spellcheck: lint-vale ## Run Vale style/spell checker inside Docker
 
 lint-vale: docker-build  ## Run Vale style/spell checker inside Docker
 	docker compose run --rm book-builder \
-	  sh -lc 'if command -v vale >/dev/null 2>&1; then vale ./*.md book/; else echo "vale not found in container"; exit 1; fi'
+	  sh -lc 'scripts/lint-vale.sh'
 
 # ---------------------------------------------------------------------------
 # DOCKER BUILD
