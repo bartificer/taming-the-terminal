@@ -26,10 +26,15 @@ help:  ## Show this help message
 		}' $(MAKEFILE_LIST)
 	@echo ""
 
+
 # ---------------------------------------------------------------------------
 # CHECKS
 # ---------------------------------------------------------------------------
-check: check_episodes lint-vale  ## Run all checks (episodes, mp3 files, Vale)
+
+mp3-files:  ## Regenerate mp3_files from audio macros
+	@./scripts/update-mp3_files.py
+
+check: mp3-files check_episodes lint-vale  ## Run all checks (episodes, mp3 files, Vale)
 
 check_episodes:  ## Validate episode list, mp3 list, URL checks, newline normalization
 	@./scripts/check_episodes.sh
@@ -73,7 +78,7 @@ epub: docker-build npm-install  ## Build only EPUBs
 # ---------------------------------------------------------------------------
 # FULL BOOK BUILD
 # ---------------------------------------------------------------------------
-build: npm-install  ## Build the full HTML, EPUB, PDF output using build-book.sh inside Docker
+build: npm-install mp3_files  ## Build the full HTML, EPUB, PDF output using build-book.sh inside Docker
 	@docker compose run --rm book-builder
 
 # ---------------------------------------------------------------------------
