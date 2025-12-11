@@ -1,5 +1,5 @@
 ![Vale Linting](https://github.com/bartificer/taming-the-terminal/workflows/Linting/badge.svg)
-![Publish](https://github.com/bartificer/taming-the-terminal/actions/workflows/Publish/badge.svg)
+![Publish](https://github.com/bartificer/taming-the-terminal/workflows/Publish/badge.svg)
 ![Latest Version](https://img.shields.io/github/v/tag/bartificer/taming-the-terminal?sort=semver)
 
 # Creating the TTT publications
