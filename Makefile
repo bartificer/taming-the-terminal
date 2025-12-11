@@ -45,6 +45,22 @@ lint-vale-error: docker-build  ## Vale: show only errors
 	  sh -lc 'scripts/lint-vale.sh error'
 
 # ---------------------------------------------------------------------------
+# PARTIAL BUILDS
+# ---------------------------------------------------------------------------
+
+html: docker-build npm-install  ## Build only the HTML version
+	@docker compose run --rm book-builder \
+	  sh -lc "scripts/build-book.sh html"
+
+pdf: docker-build npm-install  ## Build only PDFs
+	@docker compose run --rm book-builder \
+	  sh -lc "scripts/build-book.sh pdf"
+
+epub: docker-build npm-install  ## Build only EPUBs
+	@docker compose run --rm book-builder \
+	  sh -lc 'scripts/build-book.sh epub'
+
+# ---------------------------------------------------------------------------
 # DOCKER BUILD
 # ---------------------------------------------------------------------------
 
