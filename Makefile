@@ -14,7 +14,7 @@ help:  ## Show this help message
 	@echo "Available Make targets:"
 	@echo ""
 	@awk 'BEGIN { FS=":.*## " } \
-		/^[a-zA-Z_-]+:.*## / { \
+		/^[a-zA-Z0-9_-]+:.*## / { \
 			names[++n] = $$1; \
 			descs[n] = $$2; \
 			if (length($$1) > max) max = length($$1); \
