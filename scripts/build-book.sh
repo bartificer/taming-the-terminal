@@ -62,6 +62,14 @@ if [[ "$MODE" == "all" || "$MODE" == "html" ]]; then
     "$book_dir/ttt-spine.adoc"
   echo "-- HTML output at $output_dir/ttt.html"
 
+  # Run postprocessing step
+  echo "Post-processing HTML to add preload=metadata to <audio> tags..."
+  node scripts/postprocess-html.js \
+    "${output_dir}/ttt.html" \
+    "${output_dir}/ttt.html.tmp"
+
+  mv "${output_dir}/ttt.html.tmp" "${output_dir}/ttt.html"
+
   echo
   echo "Syncing assets..."
   mkdir -p "$output_dir/assets" "$docs_dir/assets"
