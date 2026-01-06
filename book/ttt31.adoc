@@ -346,7 +346,7 @@ Whenever any command puts me into another shell, the first thing I want to know 
 With SFTP you have two choices, the traditional FTP command `bye`, or the more memorable command `exit`.
 
 Within a Bash shell you are used to the concept of a present working directory, but in an (S)FTP shell that concept is extended to two present working directories, a present local working directory, and a present remote working directory.
-The default local present working directory is the folder from which you issued the (S)FTP command, and the default remote present wording directory is the home directory of the user you connected as.
+The default local present working directory is the folder from which you issued the (S)FTP command, and the default remote present working directory is the home directory of the user you connected as.
 You can see each of these two current paths with the commands `lpwd` (local present working directory) and `pwd` (remote present working directory).
 
 You can change both of these paths at any time using the `lcd` (local change directory), and `cd` (remote change directory) commands.
