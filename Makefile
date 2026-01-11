@@ -78,7 +78,7 @@ epub: docker-build npm-install  ## Build only EPUBs
 # ---------------------------------------------------------------------------
 # FULL BOOK BUILD
 # ---------------------------------------------------------------------------
-build: npm-install mp3_files  ## Build the full HTML, EPUB, PDF output using build-book.sh inside Docker
+build: npm-install mp3-files  ## Build the full HTML, EPUB, PDF output using build-book.sh inside Docker
 	@docker compose run --rm book-builder
 
 # ---------------------------------------------------------------------------
