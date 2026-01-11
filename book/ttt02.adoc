@@ -201,7 +201,7 @@ Many commands support both long and short form arguments, and they can be used t
 So far we know that commands consist of a command optionally followed by a list of arguments separated by spaces, and that many Unix/Linux commands use similar schemes for processing arguments where arguments starting with `-` or `--` are treated in a special way, and referred to as flags.
 That all seems very simple, but, there is one important complication that we have to address before finishing up for this segment, and that's special characters.
 
-Within Bash (and indeed every other command shell), there are some characters that have a special meaning, so they cannot be used in commands or arguments without signifying to the command shell in some way that is should interpret these symbols as literal symbols, and not as representations of some sort of special value or function.
+Within Bash (and indeed every other command shell), there are some characters that have a special meaning, so they cannot be used in commands or arguments without signifying to the command shell in some way that it should interpret these symbols as literal symbols, and not as representations of some sort of special value or function.
 
 The most obvious example from what we have learned today is the space character, it is used as the separator between commands and the argument list that follows, and within that argument list as the separator between individual arguments.
 What if we want to pass some text that contains a space to a command as an argument?
