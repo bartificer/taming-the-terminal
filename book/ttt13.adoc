@@ -322,7 +322,7 @@ cat /etc/paths.d/*
 
 (On a default OS X install the last command will fail because there are no files present in `/etc/paths.d` by default)
 
-If we wanted to add our new scripts folder to the default path for all users on the system we could edit `/etc/paths`, or add a new file with the path or our scripts folder in `/etc/paths.d`, but don't do that!
+If we wanted to add our new scripts folder to the default path for all users on the system we could edit `/etc/paths`, or add a new file with the path of our scripts folder in `/etc/paths.d`, but don't do that!
 These system-level paths should only be used for system-level things, as we'll see shortly, there is a better way to make user-specific customisations.
 
 For completeness, let's have a look at `/etc/bashrc`.
