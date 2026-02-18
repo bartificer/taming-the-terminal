@@ -460,7 +460,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Bart Busschots</span><br>
 <span id="revnumber">version 1.6.0,</span>
-<span id="revdate">2026-01-12</span>
+<span id="revdate">2026-02-18</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -568,7 +568,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ttt14">TTT Part 14 of n &#8212; Aliases &amp; Prompts</a>
 <ul class="sectlevel2">
 <li><a href="#_aliases">Aliases</a></li>
-<li><a href="#_customising_the_bashprompt">Customising the BashPrompt</a></li>
+<li><a href="#_customising_the_bash_prompt">Customising the Bash Prompt</a></li>
 <li><a href="#_conclusions_2">Conclusions</a></li>
 </ul>
 </li>
@@ -3398,7 +3398,7 @@ There is no substitute for practice though&#8201;&#8212;&#8201;the only way to l
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Q: How do you know woman are more complicated than men?</p>
+<p>Q: How do you know women are more complicated than men?</p>
 </div>
 <div class="paragraph">
 <p>A: Because you can man man, but you can&#8217;t man woman!</p>
@@ -4777,7 +4777,7 @@ To have a look at the default paths you can use:</p>
 <p>(On a default OS X install the last command will fail because there are no files present in <code>/etc/paths.d</code> by default)</p>
 </div>
 <div class="paragraph">
-<p>If we wanted to add our new scripts folder to the default path for all users on the system we could edit <code>/etc/paths</code>, or add a new file with the path or our scripts folder in <code>/etc/paths.d</code>, but don&#8217;t do that!
+<p>If we wanted to add our new scripts folder to the default path for all users on the system we could edit <code>/etc/paths</code>, or add a new file with the path of our scripts folder in <code>/etc/paths.d</code>, but don&#8217;t do that!
 These system-level paths should only be used for system-level things, as we&#8217;ll see shortly, there is a better way to make user-specific customisations.</p>
 </div>
 <div class="paragraph">
@@ -5134,7 +5134,7 @@ As we learned in the previous instalment, for Mac users that means adding our al
 </div>
 </div>
 <div class="sect2">
-<h3 id="_customising_the_bashprompt">Customising the BashPrompt</h3>
+<h3 id="_customising_the_bash_prompt">Customising the Bash Prompt</h3>
 <div class="paragraph">
 <p>As we discussed right back in the first instalment, the format of your command prompt varies from system to system.
 This variation is not just between command shells, but also within command shells, because many allow customisations to the format of the prompt.
@@ -5158,7 +5158,7 @@ You can see the current format used with the command:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>On the RedHat and CentOS variants of Linus the default is <code>[\u@\h \W]\$</code>, which give prompts that look like:</p>
+<p>On the RedHat and CentOS variants of Linux the default is <code>[\u@\h \W]\$</code>, which give prompts that look like:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5390,7 +5390,7 @@ For that reason we&#8217;re going to focus solely on the <code>|</code> operator
 <div class="paragraph">
 <p>A quick look at the man page for <code>wc</code> shows that it counts lines when used with the <code>-l</code> flag.
 Something else you might notice is that the command OPTIONALLY takes an argument of one or more file paths as input.
-This means we can count the number of lines in the standard Unix/Linus hosts file with the command:</p>
+This means we can count the number of lines in the standard Unix/Linux hosts file with the command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5489,7 +5489,7 @@ In other words, <code>/dev/random</code> promises speed, but not quality, while 
 </div>
 <div class="paragraph">
 <p>Before we can begin there are two complications that we need to understand.
-Firstly, these special streams have no beginning or end, so we have to be sure to always read from then in a controlled way&#8201;&#8212;&#8201;if you ask a command like <code>cat</code> to print out the contents of such a file it will never stop, because cat continues until it reaches the end of file marker, and these special &#8216;files&#8217; have no end!
+Firstly, these special streams have no beginning or end, so we have to be sure to always read from them in a controlled way&#8201;&#8212;&#8201;if you ask a command like <code>cat</code> to print out the contents of such a file it will never stop, because cat continues until it reaches the end of file marker, and these special &#8216;files&#8217; have no end!
 Also, <code>/dev/urandom</code> does not output text characters, it outputs binary data, and while some combinations of binary data map to characters on our keyboards, most don&#8217;t, so we will need to convert this stream of binary data into a stream of text characters.</p>
 </div>
 <div class="paragraph">
@@ -5508,7 +5508,7 @@ A quick look at the man page for <code>base64</code> shows that it can use strea
 </div>
 </div>
 <div class="paragraph">
-<p>putting it all this together we can assemble the following command:</p>
+<p>putting all this together we can assemble the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5801,8 +5801,8 @@ We could now redirect the error message to a file as follows:</p>
 <div class="sect2">
 <h3 id="_multiple_redirects">Multiple Redirects</h3>
 <div class="paragraph">
-<p>You can use multiple redirects in the one command.
-For example, you could use one redirect to send data from a file to a command, and another redirect the send the output to a different file.
+<p>You can use multiple redirects in one command.
+For example, you could use one redirect to send data from a file to a command, and another redirect to send the output to a different file.
 This is not something you&#8217;ll see very often, but again, it&#8217;s something MySQL command-line users will know well, where this is a common construct:</p>
 </div>
 <div class="listingblock">
@@ -16807,10 +16807,10 @@ Your browser does not support the audio tag.
 <p>Version 1.6.0</p>
 </div>
 <div class="paragraph">
-<p>Date revision 2026-01-12</p>
+<p>Date revision 2026-02-18</p>
 </div>
 <div class="paragraph">
-<p><em>Compiled: 2026-01-12 06-36-55</em></p>
+<p><em>Compiled: 2026-02-18 00-44-07</em></p>
 </div>
 <div class="paragraph">
 <p>This book is designed and handcrafted by Allison Sheridan and Helma van der Linden.
@@ -16858,7 +16858,7 @@ You can check if a new update is available at:
 <div id="footer">
 <div id="footer-text">
 Version 1.6.0<br>
-Last updated 2026-01-12 06:36:16 UTC
+Last updated 2026-02-18 00:43:25 UTC
 </div>
 </div>
 </body>
