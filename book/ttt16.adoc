@@ -195,8 +195,8 @@ Note that we have to redirect `STDERR` before the `|` operator, otherwise we wou
 
 == Multiple Redirects
 
-You can use multiple redirects in the one command.
-For example, you could use one redirect to send data from a file to a command, and another redirect the send the output to a different file.
+You can use multiple redirects in one command.
+For example, you could use one redirect to send data from a file to a command, and another redirect to send the output to a different file.
 This is not something you'll see very often, but again, it's something MySQL command-line users will know well, where this is a common construct:
 
 [source,shell]

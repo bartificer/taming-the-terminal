@@ -70,7 +70,7 @@ To facilitate an example, let's introduce a simple command for counting words, c
 
 A quick look at the man page for `wc` shows that it counts lines when used with the `-l` flag.
 Something else you might notice is that the command OPTIONALLY takes an argument of one or more file paths as input.
-This means we can count the number of lines in the standard Unix/Linus hosts file with the command:
+This means we can count the number of lines in the standard Unix/Linux hosts file with the command:
 
 [source,shell]
 ----
@@ -142,7 +142,7 @@ In other words, `/dev/random` promises speed, but not quality, while `/dev/urand
 As an example, let's use `/dev/urandom` to generate 10 random characters.
 
 Before we can begin there are two complications that we need to understand.
-Firstly, these special streams have no beginning or end, so we have to be sure to always read from then in a controlled way -- if you ask a command like `cat` to print out the contents of such a file it will never stop, because cat continues until it reaches the end of file marker, and these special '`files`' have no end!
+Firstly, these special streams have no beginning or end, so we have to be sure to always read from them in a controlled way -- if you ask a command like `cat` to print out the contents of such a file it will never stop, because cat continues until it reaches the end of file marker, and these special '`files`' have no end!
 Also, `/dev/urandom` does not output text characters, it outputs binary data, and while some combinations of binary data map to characters on our keyboards, most don't, so we will need to convert this stream of binary data into a stream of text characters.
 
 We can overcome the first of these limitations by using the `head` command we met in xref:ttt11[part 11 of this series].
@@ -155,7 +155,7 @@ A quick look at the man page for `base64` shows that it can use streams as well 
 With no options, `base64` reads raw data from `stdin` and writes encoded data as a continuous block to `stdout`.
 ****
 
-putting it all this together we can assemble the following command:
+putting all this together we can assemble the following command:
 
 [source,shell]
 ----
